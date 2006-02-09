@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" size="1956,1013" id="/[project" metadata="nsuml-1.4" initialized="true" showWireOptions="7" scrolledY="1029">
+  <children xsi:type="editmodel:PackageEditModel" location="672,1178" size="401,220" id="userInterface">
+    <children xsi:type="editmodel:ClassEditModel" location="11,50" size="85,43" id="userInterface/UIHelp" runTimeClassModel="">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@children.1/@sourceConnections.1 //@children.2/@children.2/@sourceConnections.1 //@children.2/@children.3/@sourceConnections.0" location="73,134" size="116,29" id="userInterface/UISentence" runTimeClassModel="">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.3/@sourceConnections.0 //@children.0/@children.3/@sourceConnections.1" location="263,45" size="118,43" stereotype="facade" id="userInterface/UserFacade" runTimeClassModel="donald1DonaldDerrickTreeForm9103,donald1DonaldDerrickTreeForm9146,donald1DonaldDerrickTreeForm9159,donald1DonaldDerrickTreeForm9123,donald1DonaldDerrickTreeForm9112,donald1DonaldDerrickTreeForm9189,donald1DonaldDerrickTreeForm9167,donald1DonaldDerrickTreeForm9151,donald1DonaldDerrickTreeForm9155,donald1DonaldDerrickTreeForm9132,donald1DonaldDerrickTreeForm9106,donald1DonaldDerrickTreeForm9173,donald1DonaldDerrickTreeForm9101,donald1DonaldDerrickTreeForm9170,donald1DonaldDerrickTreeForm9185,donald1DonaldDerrickTreeForm9163,donald1DonaldDerrickTreeForm9192,donald1DonaldDerrickTreeForm9142,donald1DonaldDerrickTreeForm9157,donald1DonaldDerrickTreeForm9135,donald1DonaldDerrickTreeForm9194,donald1DonaldDerrickTreeForm9161,donald1DonaldDerrickTreeForm9138,donald1DonaldDerrickTreeForm9100,donald1DonaldDerrickTreeForm9177,donald1DonaldDerrickTreeForm9148,donald1DonaldDerrickTreeForm9116,donald1DonaldDerrickTreeForm9127,donald1DonaldDerrickTreeForm9109,donald1DonaldDerrickTreeForm9196,donald1DonaldDerrickTreeForm9165,donald1DonaldDerrickTreeForm9181">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="188,558"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="userInterface/UserFacade#userUI" source="//@children.0/@children.2" target="//@children.0/@children.3" targetEnd="//@children.0/@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.0/@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="userInterface/UserFacade#userUI" multiplicityLabel="//@children.0/@children.2/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.0/@children.2/@sourceConnections.0/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="39,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="55,-2" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->userInterface/UserUI" source="//@children.0/@children.2" target="//@children.0/@children.3" targetEnd="//@children.0/@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="55,-2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->syntaxTree/Sentence" source="//@children.0/@children.2" target="//@children.1/@children.6" targetEnd="//@children.0/@children.2/@sourceConnections.2/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="118,14" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->syntaxTree/SyntacticAssociation" source="//@children.0/@children.2" target="//@children.1/@children.7" targetEnd="//@children.0/@children.2/@sourceConnections.3/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.3/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="50,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->syntaxTree/SyntacticFeature" source="//@children.0/@children.2" target="//@children.1/@children.8" targetEnd="//@children.0/@children.2/@sourceConnections.4/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.4/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->syntaxTree/SyntacticFeatureSet" source="//@children.0/@children.2" target="//@children.1/@children.9" targetEnd="//@children.0/@children.2/@sourceConnections.5/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.5/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="73,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->syntaxTree/SyntacticStructure" source="//@children.0/@children.2" target="//@children.1/@children.11" targetEnd="//@children.0/@children.2/@sourceConnections.6/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.6/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="97,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->enumerators/ExportPictureType" source="//@children.0/@children.2" target="//@children.3/@children.0" targetEnd="//@children.0/@children.2/@sourceConnections.7/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.7/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,25" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->enumerators/SyntacticLevel" source="//@children.0/@children.2" target="//@children.3/@children.3" targetEnd="//@children.0/@children.2/@sourceConnections.8/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.8/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="118,25" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->enumerators/SyntacticStructureType" source="//@children.0/@children.2" target="//@children.3/@children.5" targetEnd="//@children.0/@children.2/@sourceConnections.9/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.9/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="118,25" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserFacade->enumerators/SyntacticViewLayout" source="//@children.0/@children.2" target="//@children.3/@children.6" targetEnd="//@children.0/@children.2/@sourceConnections.10/@children.1" sourceEnd="//@children.0/@children.2/@sourceConnections.10/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="118,25" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.2/@sourceConnections.0 //@children.0/@children.2/@sourceConnections.1 //@children.1/@children.6/@sourceConnections.1 //@children.1/@children.6/@sourceConnections.6" location="269,142" size="84,29" id="userInterface/UserUI" runTimeClassModel="donald1DonaldDerrickTreeForm9006">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="188,540"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="userInterface/UserUI->userInterface/UserFacade" source="//@children.0/@children.3" target="//@children.0/@children.2" targetEnd="//@children.0/@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="userInterface/UserUI#userFacade" source="//@children.0/@children.3" target="//@children.0/@children.2" targetEnd="//@children.0/@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.0/@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="userInterface/UserUI#userFacade" multiplicityLabel="//@children.0/@children.3/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.0/@children.3/@sourceConnections.1/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="66,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" location="50,50" size="1123,782" id="syntaxTree">
+    <children xsi:type="editmodel:ClassEditModel" location="591,36" size="144,43" id="syntaxTree/CaseFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5855,donald1DonaldDerrickTreeForm2285,donald1DonaldDerrickTreeForm4457,donald1DonaldDerrickTreeForm5842,donald1DonaldDerrickTreeForm2390,donald1DonaldDerrickTreeForm5857,donald1DonaldDerrickTreeForm2287,donald1DonaldDerrickTreeForm5841,donald1DonaldDerrickTreeForm5852,donald1DonaldDerrickTreeForm4459,donald1DonaldDerrickTreeForm4504,donald1DonaldDerrickTreeForm2392,donald1DonaldDerrickTreeForm5849">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="136,180"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.1/@children.4/@sourceConnections.0 //@children.1/@children.12/@sourceConnections.0" id="syntaxTree/SyntacticFeatureSet&lt;-syntaxTree/CaseFeatureSet" source="//@children.1/@children.0" target="//@children.1/@children.9" targetEnd="//@children.1/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="71,0" anchorKind="FixedAtEdge" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="85,43" anchorKind="FixedAtEdge"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/CaseFeatureSet->syntaxTree/SyntacticNote" source="//@children.1/@children.0" target="//@children.1/@children.10" targetEnd="//@children.1/@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="144,2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/CaseFeatureSet->syntaxTree/SyntacticStructure" source="//@children.1/@children.0" target="//@children.1/@children.11" targetEnd="//@children.1/@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="144,10" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="236,682" size="190,43" id="syntaxTree/FontConcreteFlyweight" runTimeClassModel="">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="syntaxTree/FontFlyweight&lt;-syntaxTree/FontConcreteFlyweight" source="//@children.1/@children.1" target="//@children.1/@children.2" targetEnd="//@children.1/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="100,-1" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@children.1/@sourceConnections.0 //@children.1/@children.3/@sourceConnections.0 //@children.1/@children.5/@sourceConnections.0 //@children.1/@children.8/@sourceConnections.0 //@children.1/@children.11/@sourceConnections.0 //@children.1/@children.5/@sourceConnections.1" location="293,585" size="133,43" stereotype="entity" id="syntaxTree/FontFlyweight" runTimeClassModel="donald1DonaldDerrickTreeForm8633,donald1DonaldDerrickTreeForm8629,donald1DonaldDerrickTreeForm8646,donald1DonaldDerrickTreeForm8634,donald1DonaldDerrickTreeForm8639,donald1DonaldDerrickTreeForm8631,donald1DonaldDerrickTreeForm8669,donald1DonaldDerrickTreeForm8664,donald1DonaldDerrickTreeForm8644,donald1DonaldDerrickTreeForm8666,donald1DonaldDerrickTreeForm8625,donald1DonaldDerrickTreeForm8674,donald1DonaldDerrickTreeForm8636,donald1DonaldDerrickTreeForm8630,donald1DonaldDerrickTreeForm8628,donald1DonaldDerrickTreeForm8641,donald1DonaldDerrickTreeForm8651,donald1DonaldDerrickTreeForm8661,donald1DonaldDerrickTreeForm8676,donald1DonaldDerrickTreeForm8649,donald1DonaldDerrickTreeForm8627,donald1DonaldDerrickTreeForm8654,donald1DonaldDerrickTreeForm8671,donald1DonaldDerrickTreeForm8656,donald1DonaldDerrickTreeForm8626,donald1DonaldDerrickTreeForm8632,donald1DonaldDerrickTreeForm8659">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="151,324"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/FontFlyweight#fontFlyweightFactory" source="//@children.1/@children.2" target="//@children.1/@children.3" targetEnd="//@children.1/@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/FontFlyweight#fontFlyweightFactory" multiplicityLabel="//@children.1/@children.2/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@children.2/@sourceConnections.0/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" location="704,557" size="111,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="76,-2" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/FontFlyweight->syntaxTree/FontFlyweightFactory" source="//@children.1/@children.2" target="//@children.1/@children.3" targetEnd="//@children.1/@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="76,-2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@children.2/@sourceConnections.0 //@children.1/@children.2/@sourceConnections.1" location="20,585" size="180,43" stereotype="entity" id="syntaxTree/FontFlyweightFactory" runTimeClassModel="donald1DonaldDerrickTreeForm8600,donald1DonaldDerrickTreeForm8601,donald1DonaldDerrickTreeForm8603,donald1DonaldDerrickTreeForm8606">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="120,54"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/FontFlyweightFactory->syntaxTree/FontFlyweight" source="//@children.1/@children.3" target="//@children.1/@children.2" targetEnd="//@children.1/@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="940,210" size="163,43" id="syntaxTree/GenericFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5834,donald1DonaldDerrickTreeForm5828,donald1DonaldDerrickTreeForm2372,donald1DonaldDerrickTreeForm4446,donald1DonaldDerrickTreeForm5836,donald1DonaldDerrickTreeForm4524,donald1DonaldDerrickTreeForm5820,donald1DonaldDerrickTreeForm5831,donald1DonaldDerrickTreeForm5821,donald1DonaldDerrickTreeForm2280,donald1DonaldDerrickTreeForm2374,donald1DonaldDerrickTreeForm4444,donald1DonaldDerrickTreeForm2278">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="136,180"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="syntaxTree/SyntacticFeatureSet&lt;-syntaxTree/GenericFeatureSet" source="//@children.1/@children.4" target="//@children.1/@children.0/@sourceConnections.0" targetEnd="//@children.1/@children.4/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="81,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/GenericFeatureSet->syntaxTree/SyntacticStructure" source="//@children.1/@children.4" target="//@children.1/@children.11" targetEnd="//@children.1/@children.4/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.4/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,3" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/GenericFeatureSet->syntaxTree/SyntacticNote" source="//@children.1/@children.4" target="//@children.1/@children.10" targetEnd="//@children.1/@children.4/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.4/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="564,583" size="137,43" id="syntaxTree/PreferencesDB" runTimeClassModel="donald1DonaldDerrickTreeForm7939,donald1DonaldDerrickTreeForm7930,donald1DonaldDerrickTreeForm7919,donald1DonaldDerrickTreeForm7937">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="101,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/PreferencesDB->syntaxTree/FontFlyweight" source="//@children.1/@children.5" target="//@children.1/@children.2" targetEnd="//@children.1/@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/PreferencesDB#defaultFont" source="//@children.1/@children.5" target="//@children.1/@children.2" targetEnd="//@children.1/@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/PreferencesDB#defaultFont" multiplicityLabel="//@children.1/@children.5/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.1/@children.5/@sourceConnections.1/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="62,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@children.2/@sourceConnections.2 //@children.1/@children.11/@sourceConnections.1 //@children.2/@children.5/@sourceConnections.1 //@children.2/@children.7/@sourceConnections.0 //@children.2/@children.8/@sourceConnections.1 //@children.1/@children.11/@sourceConnections.5" location="69,42" size="103,43" stereotype="entity" id="syntaxTree/Sentence" runTimeClassModel="donald1DonaldDerrickTreeForm8475,donald1DonaldDerrickTreeForm8543,donald1DonaldDerrickTreeForm8532,donald1DonaldDerrickTreeForm8479,donald1DonaldDerrickTreeForm8478,donald1DonaldDerrickTreeForm8522,donald1DonaldDerrickTreeForm8511,donald1DonaldDerrickTreeForm8499,donald1DonaldDerrickTreeForm8490,donald1DonaldDerrickTreeForm8505,donald1DonaldDerrickTreeForm8545,donald1DonaldDerrickTreeForm8477,donald1DonaldDerrickTreeForm8515,donald1DonaldDerrickTreeForm8494,donald1DonaldDerrickTreeForm8485,donald1DonaldDerrickTreeForm8497,donald1DonaldDerrickTreeForm8537,donald1DonaldDerrickTreeForm8476,donald1DonaldDerrickTreeForm8502,donald1DonaldDerrickTreeForm8528,donald1DonaldDerrickTreeForm8519,donald1DonaldDerrickTreeForm8473,donald1DonaldDerrickTreeForm8525,donald1DonaldDerrickTreeForm8508">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="160,288"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="syntaxTree/SyntacticStructure&lt;-syntaxTree/Sentence" source="//@children.1/@children.6" target="//@children.1/@children.11" targetEnd="//@children.1/@children.6/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.6/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,14" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/Sentence#userUI" source="//@children.1/@children.6" target="//@children.0/@children.3" targetEnd="//@children.1/@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/Sentence#userUI" multiplicityLabel="//@children.1/@children.6/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.1/@children.6/@sourceConnections.1/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="39,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,2" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/Sentence->syntaxTree/SyntacticAssociation" source="//@children.1/@children.6" target="//@children.1/@children.7" targetEnd="//@children.1/@children.6/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.6/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,17" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/Sentence->syntaxTree/SyntacticFeature" source="//@children.1/@children.6" target="//@children.1/@children.8" targetEnd="//@children.1/@children.6/@sourceConnections.3/@children.1" sourceEnd="//@children.1/@children.6/@sourceConnections.3/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,16" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/Sentence->syntaxTree/SyntacticStructure" source="//@children.1/@children.6" target="//@children.1/@children.11" targetEnd="//@children.1/@children.6/@sourceConnections.4/@children.1" sourceEnd="//@children.1/@children.6/@sourceConnections.4/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,14" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/Sentence->syntaxTree/SyntacticFeatureSet" source="//@children.1/@children.6" target="//@children.1/@children.9" targetEnd="//@children.1/@children.6/@sourceConnections.5/@children.1" sourceEnd="//@children.1/@children.6/@sourceConnections.5/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,16" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/Sentence->userInterface/UserUI" source="//@children.1/@children.6" target="//@children.0/@children.3" targetEnd="//@children.1/@children.6/@sourceConnections.6/@children.1" sourceEnd="//@children.1/@children.6/@sourceConnections.6/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@children.6/@sourceConnections.2 //@children.0/@children.2/@sourceConnections.3 //@children.1/@children.8/@sourceConnections.1 //@children.1/@children.11/@sourceConnections.2 //@children.1/@children.8/@sourceConnections.2" location="447,372" size="173,43" id="syntaxTree/SyntacticAssociation" runTimeClassModel="donald1DonaldDerrickTreeForm2476,donald1DonaldDerrickTreeForm2471,donald1DonaldDerrickTreeForm716,donald1DonaldDerrickTreeForm718,donald1DonaldDerrickTreeForm616,donald1DonaldDerrickTreeForm2474">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="158,72"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticAssociation#syntacticFeature" source="//@children.1/@children.7" target="//@children.1/@children.8" targetEnd="//@children.1/@children.7/@sourceConnections.0/@children.0" sourceEnd="//@children.1/@children.7/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/SyntacticAssociation#syntacticFeature" multiplicityLabel="//@children.1/@children.7/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@children.7/@sourceConnections.0/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="89,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="95,-1" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticAssociation->syntaxTree/SyntacticFeature" source="//@children.1/@children.7" target="//@children.1/@children.8" targetEnd="//@children.1/@children.7/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.7/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="95,-1" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@children.6/@sourceConnections.3 //@children.1/@children.7/@sourceConnections.0 //@children.1/@children.7/@sourceConnections.1 //@children.0/@children.2/@sourceConnections.4" location="696,413" size="150,43" stereotype="entity" id="syntaxTree/SyntacticFeature" runTimeClassModel="donald1DonaldDerrickTreeForm8567,donald1DonaldDerrickTreeForm8565,donald1DonaldDerrickTreeForm8587,donald1DonaldDerrickTreeForm8573,donald1DonaldDerrickTreeForm8566,donald1DonaldDerrickTreeForm8580,donald1DonaldDerrickTreeForm8568,donald1DonaldDerrickTreeForm8582,donald1DonaldDerrickTreeForm8577,donald1DonaldDerrickTreeForm8570,donald1DonaldDerrickTreeForm8585">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="148,144"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticFeature->syntaxTree/FontFlyweight" source="//@children.1/@children.8" target="//@children.1/@children.2" targetEnd="//@children.1/@children.8/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.8/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="149,16" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticFeature->syntaxTree/SyntacticAssociation" source="//@children.1/@children.8" target="//@children.1/@children.7" targetEnd="//@children.1/@children.8/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.8/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticFeature#syntacticAssociation" source="//@children.1/@children.8" target="//@children.1/@children.7" targetEnd="//@children.1/@children.8/@sourceConnections.2/@children.0" sourceEnd="//@children.1/@children.8/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/SyntacticFeature#syntacticAssociation" multiplicityLabel="//@children.1/@children.8/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.1/@children.8/@sourceConnections.2/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="109,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticFeature#syntacticFeatureSet" source="//@children.1/@children.8" target="//@children.1/@children.9" targetEnd="//@children.1/@children.8/@sourceConnections.3/@children.0" sourceEnd="//@children.1/@children.8/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/SyntacticFeature#syntacticFeatureSet" multiplicityLabel="//@children.1/@children.8/@sourceConnections.3/@children.0/@children.1" roleLabel="//@children.1/@children.8/@sourceConnections.3/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="105,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="87,-2" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticFeature->syntaxTree/SyntacticFeatureSet" source="//@children.1/@children.8" target="//@children.1/@children.9" targetEnd="//@children.1/@children.8/@sourceConnections.4/@children.1" sourceEnd="//@children.1/@children.8/@sourceConnections.4/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="87,-2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.0 //@children.1/@children.6/@sourceConnections.5 //@children.1/@children.8/@sourceConnections.3 //@children.1/@children.8/@sourceConnections.4 //@children.0/@children.2/@sourceConnections.5 //@children.1/@children.10/@sourceConnections.0 //@children.1/@children.11/@sourceConnections.3 //@children.1/@children.10/@sourceConnections.2" location="233,48" size="171,43" stereotype="interface" id="syntaxTree/SyntacticFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm8307,donald1DonaldDerrickTreeForm8302,donald1DonaldDerrickTreeForm8295,donald1DonaldDerrickTreeForm8300,donald1DonaldDerrickTreeForm8312,donald1DonaldDerrickTreeForm8297,donald1DonaldDerrickTreeForm8305,donald1DonaldDerrickTreeForm8310">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="136,144"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticFeatureSet->syntaxTree/SyntacticStructure" source="//@children.1/@children.9" target="//@children.1/@children.11" targetEnd="//@children.1/@children.9/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="171,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.1 //@children.1/@children.4/@sourceConnections.2 //@children.1/@children.11/@sourceConnections.4 //@children.1/@children.12/@sourceConnections.1" location="322,268" size="130,43" id="syntaxTree/SyntacticNote" runTimeClassModel="donald1DonaldDerrickTreeForm6625,donald1DonaldDerrickTreeForm6683,donald1DonaldDerrickTreeForm6622,donald1DonaldDerrickTreeForm6680,donald1DonaldDerrickTreeForm6623,donald1DonaldDerrickTreeForm6685">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="144,72"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticNote->syntaxTree/SyntacticFeatureSet" source="//@children.1/@children.10" target="//@children.1/@children.9" targetEnd="//@children.1/@children.10/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.10/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticNote#syntacticStructure" source="//@children.1/@children.10" target="//@children.1/@children.11" targetEnd="//@children.1/@children.10/@sourceConnections.1/@children.0" sourceEnd="//@children.1/@children.10/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/SyntacticNote#syntacticStructure" multiplicityLabel="//@children.1/@children.10/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.1/@children.10/@sourceConnections.1/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="97,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="77,-1" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticNote#syntacticFeatureSet" source="//@children.1/@children.10" target="//@children.1/@children.9" targetEnd="//@children.1/@children.10/@sourceConnections.2/@children.0" sourceEnd="//@children.1/@children.10/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/SyntacticNote#syntacticFeatureSet" multiplicityLabel="//@children.1/@children.10/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.1/@children.10/@sourceConnections.2/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="105,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticNote->syntaxTree/SyntacticStructure" source="//@children.1/@children.10" target="//@children.1/@children.11" targetEnd="//@children.1/@children.10/@sourceConnections.3/@children.1" sourceEnd="//@children.1/@children.10/@sourceConnections.3/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="77,-1" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.2 //@children.1/@children.4/@sourceConnections.1 //@children.1/@children.6/@sourceConnections.0 //@children.1/@children.6/@sourceConnections.4 //@children.1/@children.9/@sourceConnections.0 //@children.1/@children.10/@sourceConnections.1 //@children.1/@children.10/@sourceConnections.3 //@children.1/@children.11/@sourceConnections.6 //@children.0/@children.2/@sourceConnections.6 //@children.1/@children.12/@sourceConnections.2" location="48,331" size="159,43" stereotype="entity" id="syntaxTree/SyntacticStructure" runTimeClassModel="donald1DonaldDerrickTreeForm8402,donald1DonaldDerrickTreeForm8397,donald1DonaldDerrickTreeForm8446,donald1DonaldDerrickTreeForm8357,donald1DonaldDerrickTreeForm8405,donald1DonaldDerrickTreeForm8360,donald1DonaldDerrickTreeForm8335,donald1DonaldDerrickTreeForm8373,donald1DonaldDerrickTreeForm8321,donald1DonaldDerrickTreeForm8415,donald1DonaldDerrickTreeForm8441,donald1DonaldDerrickTreeForm8333,donald1DonaldDerrickTreeForm8429,donald1DonaldDerrickTreeForm8326,donald1DonaldDerrickTreeForm8385,donald1DonaldDerrickTreeForm8451,donald1DonaldDerrickTreeForm8379,donald1DonaldDerrickTreeForm8331,donald1DonaldDerrickTreeForm8390,donald1DonaldDerrickTreeForm8420,donald1DonaldDerrickTreeForm8320,donald1DonaldDerrickTreeForm8329,donald1DonaldDerrickTreeForm8332,donald1DonaldDerrickTreeForm8325,donald1DonaldDerrickTreeForm8354,donald1DonaldDerrickTreeForm8392,donald1DonaldDerrickTreeForm8336,donald1DonaldDerrickTreeForm8366,donald1DonaldDerrickTreeForm8382,donald1DonaldDerrickTreeForm8322,donald1DonaldDerrickTreeForm8427,donald1DonaldDerrickTreeForm8323,donald1DonaldDerrickTreeForm8324,donald1DonaldDerrickTreeForm8343,donald1DonaldDerrickTreeForm8368,donald1DonaldDerrickTreeForm8412,donald1DonaldDerrickTreeForm8424,donald1DonaldDerrickTreeForm8407,donald1DonaldDerrickTreeForm8388,donald1DonaldDerrickTreeForm8371,donald1DonaldDerrickTreeForm8363,donald1DonaldDerrickTreeForm8330,donald1DonaldDerrickTreeForm8348,donald1DonaldDerrickTreeForm8395,donald1DonaldDerrickTreeForm8436,donald1DonaldDerrickTreeForm8439,donald1DonaldDerrickTreeForm8417,donald1DonaldDerrickTreeForm8376,donald1DonaldDerrickTreeForm8339,donald1DonaldDerrickTreeForm8328,donald1DonaldDerrickTreeForm8444,donald1DonaldDerrickTreeForm8327,donald1DonaldDerrickTreeForm8449,donald1DonaldDerrickTreeForm8410,donald1DonaldDerrickTreeForm8400,donald1DonaldDerrickTreeForm8334,donald1DonaldDerrickTreeForm8432">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="149,738"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticStructure->syntaxTree/FontFlyweight" source="//@children.1/@children.11" target="//@children.1/@children.2" targetEnd="//@children.1/@children.11/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.11/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticStructure->syntaxTree/Sentence" source="//@children.1/@children.11" target="//@children.1/@children.6" targetEnd="//@children.1/@children.11/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.11/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="159,2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticStructure->syntaxTree/SyntacticAssociation" source="//@children.1/@children.11" target="//@children.1/@children.7" targetEnd="//@children.1/@children.11/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.11/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticStructure->syntaxTree/SyntacticFeatureSet" source="//@children.1/@children.11" target="//@children.1/@children.9" targetEnd="//@children.1/@children.11/@sourceConnections.3/@children.1" sourceEnd="//@children.1/@children.11/@sourceConnections.3/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntacticStructure->syntaxTree/SyntacticNote" source="//@children.1/@children.11" target="//@children.1/@children.10" targetEnd="//@children.1/@children.11/@sourceConnections.4/@children.1" sourceEnd="//@children.1/@children.11/@sourceConnections.4/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticStructure#sentence" source="//@children.1/@children.11" target="//@children.1/@children.6" targetEnd="//@children.1/@children.11/@sourceConnections.5/@children.0" sourceEnd="//@children.1/@children.11/@sourceConnections.5/@children.1" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" id="syntaxTree/SyntacticStructure#sentence" multiplicityLabel="//@children.1/@children.11/@sourceConnections.5/@children.0/@children.1" roleLabel="//@children.1/@children.11/@sourceConnections.5/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="53,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="159,2" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntacticStructure#parent" source="//@children.1/@children.11" target="//@children.1/@children.11" targetEnd="//@children.1/@children.11/@sourceConnections.6/@children.0" sourceEnd="//@children.1/@children.11/@sourceConnections.6/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="9,0" id="syntaxTree/SyntacticStructure#parent" anchorKind="FixedAtEdge" multiplicityLabel="//@children.1/@children.11/@sourceConnections.6/@children.0/@children.1" roleLabel="//@children.1/@children.11/@sourceConnections.6/@children.0/@children.0" navigable="true" flags="2">
+          <children xsi:type="editmodel:LabelEditModel" size="39,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="822,147" size="178,43" id="syntaxTree/ThetaRoleFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5754,donald1DonaldDerrickTreeForm5776,donald1DonaldDerrickTreeForm5751,donald1DonaldDerrickTreeForm2271,donald1DonaldDerrickTreeForm4435,donald1DonaldDerrickTreeForm5778,donald1DonaldDerrickTreeForm2365,donald1DonaldDerrickTreeForm4517,donald1DonaldDerrickTreeForm5767,donald1DonaldDerrickTreeForm2363,donald1DonaldDerrickTreeForm4437,donald1DonaldDerrickTreeForm5744,donald1DonaldDerrickTreeForm2273">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="136,180"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="syntaxTree/SyntacticFeatureSet&lt;-syntaxTree/ThetaRoleFeatureSet" source="//@children.1/@children.12" target="//@children.1/@children.0/@sourceConnections.0" targetEnd="//@children.1/@children.12/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.12/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="89,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/ThetaRoleFeatureSet->syntaxTree/SyntacticNote" source="//@children.1/@children.12" target="//@children.1/@children.10" targetEnd="//@children.1/@children.12/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.12/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,15" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/ThetaRoleFeatureSet->syntaxTree/SyntacticStructure" source="//@children.1/@children.12" target="//@children.1/@children.11" targetEnd="//@children.1/@children.12/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.12/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,14" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="797,45" size="149,43" id="syntaxTree/IndexFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5800,donald1DonaldDerrickTreeForm2266,donald1DonaldDerrickTreeForm5815,donald1DonaldDerrickTreeForm4468,donald1DonaldDerrickTreeForm2383,donald1DonaldDerrickTreeForm5813,donald1DonaldDerrickTreeForm4483,donald1DonaldDerrickTreeForm2264,donald1DonaldDerrickTreeForm5807,donald1DonaldDerrickTreeForm4466,donald1DonaldDerrickTreeForm5799,donald1DonaldDerrickTreeForm5810,donald1DonaldDerrickTreeForm2381">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="136,180"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="34,508" size="163,43" stereotype="facade" id="syntaxTree/SyntaxTreeFacade" runTimeClassModel="donald1DonaldDerrickTreeForm9321,donald1DonaldDerrickTreeForm9247,donald1DonaldDerrickTreeForm9307,donald1DonaldDerrickTreeForm9273,donald1DonaldDerrickTreeForm9291,donald1DonaldDerrickTreeForm9251,donald1DonaldDerrickTreeForm9278,donald1DonaldDerrickTreeForm9296,donald1DonaldDerrickTreeForm9263,donald1DonaldDerrickTreeForm9289,donald1DonaldDerrickTreeForm9238,donald1DonaldDerrickTreeForm9303,donald1DonaldDerrickTreeForm9317,donald1DonaldDerrickTreeForm9281,donald1DonaldDerrickTreeForm9255,donald1DonaldDerrickTreeForm9299,donald1DonaldDerrickTreeForm9260,donald1DonaldDerrickTreeForm9311,donald1DonaldDerrickTreeForm9266,donald1DonaldDerrickTreeForm9293,donald1DonaldDerrickTreeForm9275">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntaxTreeFacade->enumerators/SyntacticLevel" source="//@children.1/@children.14" target="//@children.3/@children.3" targetEnd="//@children.1/@children.14/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.14/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="92,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntaxTreeFacade->enumerators/SyntacticStructureType" source="//@children.1/@children.14" target="//@children.3/@children.5" targetEnd="//@children.1/@children.14/@sourceConnections.1/@children.1" sourceEnd="//@children.1/@children.14/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="101,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="syntaxTree/SyntaxTreeFacade->enumerators/SyntacticViewLayout" source="//@children.1/@children.14" target="//@children.3/@children.6" targetEnd="//@children.1/@children.14/@sourceConnections.2/@children.1" sourceEnd="//@children.1/@children.14/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="106,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" location="50,1178" size="572,286" id="parser">
+    <children xsi:type="editmodel:ClassEditModel" location="422,41" size="130,43" id="parser/DisplayParser" runTimeClassModel="donald1DonaldDerrickTreeForm4663">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="140,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="170,118" size="114,43" id="parser/ExportGIFF" runTimeClassModel="donald1DonaldDerrickTreeForm6981">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="95,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="parser/ExportPicture&lt;-parser/ExportGIFF" source="//@children.2/@children.1" target="//@children.2/@children.3" targetEnd="//@children.2/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="114,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/ExportGIFF->userInterface/UISentence" source="//@children.2/@children.1" target="//@children.0/@children.1" targetEnd="//@children.2/@children.1/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@children.1/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="32,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="194,189" size="118,43" id="parser/ExportJPEG" runTimeClassModel="donald1DonaldDerrickTreeForm6986">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="95,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="parser/ExportPicture&lt;-parser/ExportJPEG" source="//@children.2/@children.2" target="//@children.2/@children.3" targetEnd="//@children.2/@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="118,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/ExportJPEG->userInterface/UISentence" source="//@children.2/@children.2" target="//@children.0/@children.1" targetEnd="//@children.2/@children.2/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="16,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@children.1/@sourceConnections.0 //@children.2/@children.2/@sourceConnections.0" location="19,191" size="129,43" stereotype="interface" id="parser/ExportPicture" runTimeClassModel="donald1DonaldDerrickTreeForm8283">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="95,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/ExportPicture->userInterface/UISentence" source="//@children.2/@children.3" target="//@children.0/@children.1" targetEnd="//@children.2/@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.3/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,4" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="286,46" size="108,43" id="parser/FileParser" runTimeClassModel="donald1DonaldDerrickTreeForm4534">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="67,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="37,118" size="125,43" id="parser/LaTeXParser" runTimeClassModel="donald1DonaldDerrickTreeForm6914">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="71,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.2/@children.8/@sourceConnections.0" id="parser/SaveFile&lt;-parser/LaTeXParser" source="//@children.2/@children.5" target="//@children.2/@children.7" targetEnd="//@children.2/@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.5/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="62,0" anchorKind="FixedAtEdge" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="49,42" anchorKind="FixedAtEdge"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/LaTeXParser->syntaxTree/Sentence" source="//@children.2/@children.5" target="//@children.1/@children.6" targetEnd="//@children.2/@children.5/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@children.5/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="125,15" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="17,41" size="114,43" id="parser/PrintParser" runTimeClassModel="donald1DonaldDerrickTreeForm4669,donald1DonaldDerrickTreeForm4674">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="80,36"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.2/@children.5/@sourceConnections.0" location="157,42" size="99,43" stereotype="interface" id="parser/SaveFile" runTimeClassModel="donald1DonaldDerrickTreeForm8289">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="71,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/SaveFile->syntaxTree/Sentence" source="//@children.2/@children.7" target="//@children.1/@children.6" targetEnd="//@children.2/@children.7/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.7/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="99,33" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="292,115" size="112,43" id="parser/TextParser" runTimeClassModel="donald1DonaldDerrickTreeForm6937">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel" size="71,18"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="parser/SaveFile&lt;-parser/TextParser" source="//@children.2/@children.8" target="//@children.2/@children.5/@sourceConnections.0" targetEnd="//@children.2/@children.8/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.8/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="56,0" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/TextParser->syntaxTree/Sentence" source="//@children.2/@children.8" target="//@children.1/@children.6" targetEnd="//@children.2/@children.8/@sourceConnections.1/@children.1" sourceEnd="//@children.2/@children.8/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="112,13" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" location="416,174" size="131,43" stereotype="facade" id="parser/ParserFacade" runTimeClassModel="donald1DonaldDerrickTreeForm9082,donald1DonaldDerrickTreeForm9075,donald1DonaldDerrickTreeForm9086,donald1DonaldDerrickTreeForm9078,donald1DonaldDerrickTreeForm9080">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:DependencyEditModel" id="parser/ParserFacade->enumerators/ExportPictureType" source="//@children.2/@children.9" target="//@children.3/@children.0" targetEnd="//@children.2/@children.9/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.9/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,2" attachSource="true"/>
+        <children xsi:type="editmodel:AssociationEndEditModel"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural"/>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" location="50,882" size="989,246" id="enumerators">
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.0/@sourceConnections.0 //@children.3/@children.0/@sourceConnections.1 //@children.0/@children.2/@sourceConnections.7 //@children.2/@children.9/@sourceConnections.0" location="58,70" size="160,43" id="enumerators/ExportPictureType" runTimeClassModel="donald1DonaldDerrickTreeForm7276,donald1DonaldDerrickTreeForm7280,donald1DonaldDerrickTreeForm7278">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/ExportPictureType#JPEG" source="//@children.3/@children.0" target="//@children.3/@children.0" targetEnd="//@children.3/@children.0/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.0/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/ExportPictureType#JPEG" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.0/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.0/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="35,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/ExportPictureType#GIFF" source="//@children.3/@children.0" target="//@children.3/@children.0" targetEnd="//@children.3/@children.0/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.0/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/ExportPictureType#GIFF" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.0/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.0/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="32,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.1/@sourceConnections.0 //@children.3/@children.1/@sourceConnections.1 //@children.3/@children.1/@sourceConnections.2" location="70,168" size="130,29" id="enumerators/SaveFileType" runTimeClassModel="donald1DonaldDerrickTreeForm9390,donald1DonaldDerrickTreeForm9396,donald1DonaldDerrickTreeForm9392,donald1DonaldDerrickTreeForm9394">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SaveFileType#LABELLED_BRACKET" source="//@children.3/@children.1" target="//@children.3/@children.1" targetEnd="//@children.3/@children.1/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.1/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SaveFileType#LABELLED_BRACKET" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.1/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="116,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SaveFileType#XML" source="//@children.3/@children.1" target="//@children.3/@children.1" targetEnd="//@children.3/@children.1/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.1/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SaveFileType#XML" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.1/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.1/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="31,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SaveFileType#LATEX" source="//@children.3/@children.1" target="//@children.3/@children.1" targetEnd="//@children.3/@children.1/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@children.1/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SaveFileType#LATEX" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.1/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.3/@children.1/@sourceConnections.2/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="43,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.2/@sourceConnections.0 //@children.3/@children.2/@sourceConnections.1 //@children.3/@children.2/@sourceConnections.2 //@children.3/@children.2/@sourceConnections.3 //@children.3/@children.2/@sourceConnections.4" location="532,150" size="181,43" id="enumerators/SyntacticFeatureType" runTimeClassModel="donald1DonaldDerrickTreeForm2974,donald1DonaldDerrickTreeForm2966,donald1DonaldDerrickTreeForm2972,donald1DonaldDerrickTreeForm2970,donald1DonaldDerrickTreeForm2968,donald1DonaldDerrickTreeForm4428">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticFeatureType#CASE" source="//@children.3/@children.2" target="//@children.3/@children.2" targetEnd="//@children.3/@children.2/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.2/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticFeatureType#CASE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.2/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.2/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="38,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticFeatureType#THETA" source="//@children.3/@children.2" target="//@children.3/@children.2" targetEnd="//@children.3/@children.2/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.2/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticFeatureType#THETA" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.2/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.2/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="43,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticFeatureType#TRACE" source="//@children.3/@children.2" target="//@children.3/@children.2" targetEnd="//@children.3/@children.2/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@children.2/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticFeatureType#TRACE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.2/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.3/@children.2/@sourceConnections.2/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="44,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticFeatureType#INDEX" source="//@children.3/@children.2" target="//@children.3/@children.2" targetEnd="//@children.3/@children.2/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@children.2/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticFeatureType#INDEX" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.2/@sourceConnections.3/@children.0/@children.1" roleLabel="//@children.3/@children.2/@sourceConnections.3/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="39,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticFeatureType#FEATURE" source="//@children.3/@children.2" target="//@children.3/@children.2" targetEnd="//@children.3/@children.2/@sourceConnections.4/@children.0" sourceEnd="//@children.3/@children.2/@sourceConnections.4/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticFeatureType#FEATURE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.2/@sourceConnections.4/@children.0/@children.1" roleLabel="//@children.3/@children.2/@sourceConnections.4/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="56,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.3/@sourceConnections.0 //@children.3/@children.3/@sourceConnections.1 //@children.3/@children.3/@sourceConnections.2 //@children.0/@children.2/@sourceConnections.8 //@children.1/@children.14/@sourceConnections.0" location="772,74" size="136,29" id="enumerators/SyntacticLevel" runTimeClassModel="donald1DonaldDerrickTreeForm9403,donald1DonaldDerrickTreeForm9405,donald1DonaldDerrickTreeForm9399,donald1DonaldDerrickTreeForm9401">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticLevel#HEAD" source="//@children.3/@children.3" target="//@children.3/@children.3" targetEnd="//@children.3/@children.3/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.3/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticLevel#HEAD" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.3/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.3/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="38,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticLevel#DOUBLE_BAR" source="//@children.3/@children.3" target="//@children.3/@children.3" targetEnd="//@children.3/@children.3/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.3/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticLevel#DOUBLE_BAR" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.3/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.3/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="79,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticLevel#BAR" source="//@children.3/@children.3" target="//@children.3/@children.3" targetEnd="//@children.3/@children.3/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@children.3/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticLevel#BAR" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.3/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.3/@children.3/@sourceConnections.2/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="32,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.4/@sourceConnections.0 //@children.3/@children.4/@sourceConnections.1 //@children.3/@children.4/@sourceConnections.2 //@children.3/@children.4/@sourceConnections.3" location="272,166" size="172,29" id="enumerators/SyntacticOrientation" runTimeClassModel="donald1DonaldDerrickTreeForm9413,donald1DonaldDerrickTreeForm9411,donald1DonaldDerrickTreeForm9409,donald1DonaldDerrickTreeForm9415,donald1DonaldDerrickTreeForm9417">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticOrientation#RIGHT" source="//@children.3/@children.4" target="//@children.3/@children.4" targetEnd="//@children.3/@children.4/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.4/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticOrientation#RIGHT" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.4/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.4/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="40,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticOrientation#TOP" source="//@children.3/@children.4" target="//@children.3/@children.4" targetEnd="//@children.3/@children.4/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.4/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticOrientation#TOP" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.4/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.4/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="30,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticOrientation#LEFT" source="//@children.3/@children.4" target="//@children.3/@children.4" targetEnd="//@children.3/@children.4/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@children.4/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticOrientation#LEFT" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.4/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.3/@children.4/@sourceConnections.2/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="34,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticOrientation#CENTER" source="//@children.3/@children.4" target="//@children.3/@children.4" targetEnd="//@children.3/@children.4/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@children.4/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticOrientation#CENTER" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.4/@sourceConnections.3/@children.0/@children.1" roleLabel="//@children.3/@children.4/@sourceConnections.3/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="49,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.5/@sourceConnections.0 //@children.3/@children.5/@sourceConnections.1 //@children.3/@children.5/@sourceConnections.2 //@children.3/@children.5/@sourceConnections.3 //@children.3/@children.5/@sourceConnections.4 //@children.0/@children.2/@sourceConnections.9 //@children.1/@children.14/@sourceConnections.1" location="494,74" size="190,29" id="enumerators/SyntacticStructureType" runTimeClassModel="donald1DonaldDerrickTreeForm8683,donald1DonaldDerrickTreeForm8687,donald1DonaldDerrickTreeForm8691,donald1DonaldDerrickTreeForm8693,donald1DonaldDerrickTreeForm8685,donald1DonaldDerrickTreeForm8689">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticStructureType#TRINARY" source="//@children.3/@children.5" target="//@children.3/@children.5" targetEnd="//@children.3/@children.5/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.5/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticStructureType#TRINARY" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.5/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.5/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="55,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticStructureType#UNARY" source="//@children.3/@children.5" target="//@children.3/@children.5" targetEnd="//@children.3/@children.5/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.5/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticStructureType#UNARY" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.5/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.5/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="47,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticStructureType#BINARY" source="//@children.3/@children.5" target="//@children.3/@children.5" targetEnd="//@children.3/@children.5/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@children.5/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticStructureType#BINARY" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.5/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.3/@children.5/@sourceConnections.2/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="49,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticStructureType#X_BAR" source="//@children.3/@children.5" target="//@children.3/@children.5" targetEnd="//@children.3/@children.5/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@children.5/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticStructureType#X_BAR" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.5/@sourceConnections.3/@children.0/@children.1" roleLabel="//@children.3/@children.5/@sourceConnections.3/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="45,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticStructureType#TRIANGLE" source="//@children.3/@children.5" target="//@children.3/@children.5" targetEnd="//@children.3/@children.5/@sourceConnections.4/@children.0" sourceEnd="//@children.3/@children.5/@sourceConnections.4/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticStructureType#TRIANGLE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.5/@sourceConnections.4/@children.0/@children.1" roleLabel="//@children.3/@children.5/@sourceConnections.4/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="60,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.3/@children.6/@sourceConnections.0 //@children.3/@children.6/@sourceConnections.1 //@children.3/@children.6/@sourceConnections.2 //@children.3/@children.6/@sourceConnections.3 //@children.0/@children.2/@sourceConnections.10 //@children.1/@children.14/@sourceConnections.2" location="265,79" size="176,29" id="enumerators/SyntacticViewLayout" runTimeClassModel="donald1DonaldDerrickTreeForm8618,donald1DonaldDerrickTreeForm8616,donald1DonaldDerrickTreeForm8620,donald1DonaldDerrickTreeForm8614,donald1DonaldDerrickTreeForm8622">
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <children xsi:type="editmodel:CompartmentEditModel"/>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticViewLayout#L_STRUCTURE" source="//@children.3/@children.6" target="//@children.3/@children.6" targetEnd="//@children.3/@children.6/@sourceConnections.0/@children.0" sourceEnd="//@children.3/@children.6/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticViewLayout#L_STRUCTURE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.6/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.3/@children.6/@sourceConnections.0/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="82,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticViewLayout#D_STRUCTURE" source="//@children.3/@children.6" target="//@children.3/@children.6" targetEnd="//@children.3/@children.6/@sourceConnections.1/@children.0" sourceEnd="//@children.3/@children.6/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticViewLayout#D_STRUCTURE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.6/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.3/@children.6/@sourceConnections.1/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="83,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticViewLayout#S_STRUCTURE" source="//@children.3/@children.6" target="//@children.3/@children.6" targetEnd="//@children.3/@children.6/@sourceConnections.2/@children.0" sourceEnd="//@children.3/@children.6/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticViewLayout#S_STRUCTURE" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.6/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.3/@children.6/@sourceConnections.2/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="83,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <sourceConnections xsi:type="editmodel:AssociationEditModel" id="enumerators/SyntacticViewLayout#LABELLED_BRACKET" source="//@children.3/@children.6" target="//@children.3/@children.6" targetEnd="//@children.3/@children.6/@sourceConnections.3/@children.0" sourceEnd="//@children.3/@children.6/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+        <children xsi:type="editmodel:AssociationEndEditModel" location="10,0" id="enumerators/SyntacticViewLayout#LABELLED_BRACKET" anchorKind="FixedAtEdge" multiplicityLabel="//@children.3/@children.6/@sourceConnections.3/@children.0/@children.1" roleLabel="//@children.3/@children.6/@sourceConnections.3/@children.0/@children.0" navigable="true" changeability="2" flags="1">
+          <children xsi:type="editmodel:LabelEditModel" size="116,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+          <children xsi:type="editmodel:LabelEditModel" size="19,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        </children>
+        <children xsi:type="editmodel:AssociationEndEditModel" location="0,10" anchorKind="FixedAtEdge" attachSource="true"/>
+      </sourceConnections>
+      <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+    </children>
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:PackageEditModel" location="50,1514" size="111,83" id="application">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showInterfaceStereotype="true"/>
+</editmodel:ClassDiagramEditModel>

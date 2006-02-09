@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" size="790,590" id="/[project" metadata="nsuml-1.4" initialized="true" showWireOptions="1">
+  <children xsi:type="editmodel:PackageEditModel" location="50,50" size="111,83" id="application">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="225,143" size="381,297" id="syntaxTree/ThetaRoleFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5754,donald1DonaldDerrickTreeForm5776,donald1DonaldDerrickTreeForm5751,donald1DonaldDerrickTreeForm2271,donald1DonaldDerrickTreeForm4435,donald1DonaldDerrickTreeForm5778,donald1DonaldDerrickTreeForm2365,donald1DonaldDerrickTreeForm5767,donald1DonaldDerrickTreeForm4517,donald1DonaldDerrickTreeForm2363,donald1DonaldDerrickTreeForm4437,donald1DonaldDerrickTreeForm5744,donald1DonaldDerrickTreeForm2273">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/ThetaRoleFeatureSet#visibility"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/ThetaRoleFeatureSet#syntacticNote"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/ThetaRoleFeatureSet#noteCount"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,180">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#removeNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setSyntacticNote(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true"/>
+</editmodel:ClassDiagramEditModel>

@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:UseCaseDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" name="main" size="1354,954" metadata="nsuml-1.4" initialized="true" scrolledX="-539" scrolledY="-152" tag="5" key="32303034303632382054726565466F726D">
+  <children xsi:type="editmodel:UseCaseActorEditModel" targetConnections="//@children.4/@sourceConnections.0" location="302,144" size="70,128" itemName="User">
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.1" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,51" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="3,30"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.12" targetEnd="//@children.0/@sourceConnections.1/@children.1" sourceEnd="//@children.0/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,20" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,22"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.13" targetEnd="//@children.0/@sourceConnections.2/@children.1" sourceEnd="//@children.0/@sourceConnections.2/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,89" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="0,21"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.11" targetEnd="//@children.0/@sourceConnections.3/@children.1" sourceEnd="//@children.0/@sourceConnections.3/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,72" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="3,15"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.4/@children.1" sourceEnd="//@children.0/@sourceConnections.4/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,97" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="22,7"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.5" targetEnd="//@children.0/@sourceConnections.5/@children.1" sourceEnd="//@children.0/@sourceConnections.5/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,127" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="37,2"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.18" targetEnd="//@children.0/@sourceConnections.6/@children.1" sourceEnd="//@children.0/@sourceConnections.6/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,79" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="134,20"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.10" targetEnd="//@children.0/@sourceConnections.7/@children.1" sourceEnd="//@children.0/@sourceConnections.7/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,47" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="5,23"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.6" targetEnd="//@children.0/@sourceConnections.8/@children.1" sourceEnd="//@children.0/@sourceConnections.8/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="16,127" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="102,0"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.3" targetEnd="//@children.0/@sourceConnections.9/@children.1" sourceEnd="//@children.0/@sourceConnections.9/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="8,127" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="95,1"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.7" targetEnd="//@children.0/@sourceConnections.10/@children.1" sourceEnd="//@children.0/@sourceConnections.10/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="69,15" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="38,41"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.8" targetEnd="//@children.0/@sourceConnections.11/@children.1" sourceEnd="//@children.0/@sourceConnections.11/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="50,-2" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="54,46"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.9" targetEnd="//@children.0/@sourceConnections.12/@children.1" sourceEnd="//@children.0/@sourceConnections.12/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="55,-2" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="81,48"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.19" targetEnd="//@children.0/@sourceConnections.13/@children.1" sourceEnd="//@children.0/@sourceConnections.13/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,55" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="142,29"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.20" targetEnd="//@children.0/@sourceConnections.14/@children.1" sourceEnd="//@children.0/@sourceConnections.14/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,35" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="89,27"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.21" targetEnd="//@children.0/@sourceConnections.15/@children.1" sourceEnd="//@children.0/@sourceConnections.15/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,33" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="137,28"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.22" targetEnd="//@children.0/@sourceConnections.16/@children.1" sourceEnd="//@children.0/@sourceConnections.16/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="2,-2" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="80,32"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.17" targetEnd="//@children.0/@sourceConnections.17/@children.1" sourceEnd="//@children.0/@sourceConnections.17/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,69" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="144,17"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.15" targetEnd="//@children.0/@sourceConnections.18/@children.1" sourceEnd="//@children.0/@sourceConnections.18/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,71" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="183,15"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.14" targetEnd="//@children.0/@sourceConnections.19/@children.1" sourceEnd="//@children.0/@sourceConnections.19/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,72" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="177,18"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.16" targetEnd="//@children.0/@sourceConnections.20/@children.1" sourceEnd="//@children.0/@sourceConnections.20/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-2,78" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="192,10"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.0" target="//@children.27" targetEnd="//@children.0/@sourceConnections.21/@children.1" sourceEnd="//@children.0/@sourceConnections.21/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="27,127" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="79,0"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.0" location="503,18" size="115,46" itemName="Create new Tree"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.4 //@children.5/@sourceConnections.0 //@children.34/@sourceConnections.0" location="-295,-183" size="144,48" itemName="Add Syntactic Structure"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.9 //@children.29/@sourceConnections.0" location="-82,358" size="145,53" itemName="Add Syntactic Feature&#xD;&#xA;to Structure"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.6/@sourceConnections.0" location="300,507" size="157,52" itemName="Delete Syntactic Structure">
+    <sourceConnections xsi:type="editmodel:UseCaseAssociationEditModel" source="//@children.4" target="//@children.0" targetEnd="//@children.4/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="58,1" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="53,127"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.4" target="//@children.30" targetEnd="//@children.4/@sourceConnections.1/@children.1" sourceEnd="//@children.4/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="156,29" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-1,10"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.5" location="-36,-206" size="144,49" itemName="Move Syntactic&#xD;&#xA;Structure">
+    <sourceConnections xsi:type="editmodel:ExtendsEditModel" source="//@children.5" target="//@children.2" targetEnd="//@children.5/@sourceConnections.0/@children.1" label="//@children.5/@sourceConnections.0/@children.2" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="91,48" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="53,1"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«extends»" size="52,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:ExtendsEditModel" source="//@children.5" target="//@children.27" targetEnd="//@children.5/@sourceConnections.1/@children.1" label="//@children.5/@sourceConnections.1/@children.2" sourceEnd="//@children.5/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="64,48" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="85,0"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«extends»" size="52,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.8 //@children.8/@sourceConnections.0" location="43,439" size="168,49" itemName="Delete Syntactic Feature">
+    <sourceConnections xsi:type="editmodel:ExtendsEditModel" source="//@children.6" target="//@children.4" targetEnd="//@children.6/@sourceConnections.0/@children.1" label="//@children.6/@sourceConnections.0/@children.2" sourceEnd="//@children.6/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="156,36" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="11,13"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«extends»" size="52,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.10 //@children.35/@sourceConnections.0" location="207,-145" size="174,46" itemName="Associate Syntactic Feature"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.11" location="226,390" size="144,48" itemName="Delete Syntactic&#xD;&#xA; Association">
+    <sourceConnections xsi:type="editmodel:ExtendsEditModel" source="//@children.8" target="//@children.6" targetEnd="//@children.8/@sourceConnections.0/@children.1" label="//@children.8/@sourceConnections.0/@children.2" sourceEnd="//@children.8/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="33,4" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="126,45"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«extends»" size="52,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.12" location="-179,246" size="166,49" itemName="Move Syntactic Association"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.7" location="29,-262" size="102,34" itemName="Add Note"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.3" location="538,178" size="171,40" itemName="Add Demographic Information"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.1 //@children.32/@sourceConnections.0" location="-40,91" size="111,40" itemName="Load Syntax Tree">
+    <sourceConnections xsi:type="editmodel:IncludesEditModel" source="//@children.12" target="//@children.24" targetEnd="//@children.12/@sourceConnections.0/@children.1" label="//@children.12/@sourceConnections.0/@children.2" sourceEnd="//@children.12/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="37,2" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="67,33"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" size="53,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:IncludesEditModel" source="//@children.12" target="//@children.25" targetEnd="//@children.12/@sourceConnections.1/@children.1" label="//@children.12/@sourceConnections.1/@children.2" sourceEnd="//@children.12/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="2,15" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="160,21"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" location="-207,49" size="53,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.2 //@children.36/@sourceConnections.0" location="498,107" size="113,44" itemName="Save Syntax Tree"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.19 //@children.37/@sourceConnections.1" location="503,297" size="182,50" itemName="Create New Syntactic Category"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.18 //@children.37/@sourceConnections.2" location="493,377" size="187,40" itemName="Create new Syntactic Feature"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.20 //@children.37/@sourceConnections.0" location="490,238" size="202,35" itemName="Create New Association Type"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.17" location="398,426" size="146,42" itemName="Edit Color/Presentation"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.6 //@children.31/@sourceConnections.0" location="-287,191" size="135,42" itemName="Change View Layout"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.13 //@children.33/@sourceConnections.0" location="-132,173" size="144,48" itemName="Change View Detail"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.14" location="-93,-10" size="102,34" itemName="Print Trees">
+    <sourceConnections xsi:type="editmodel:IncludesEditModel" source="//@children.20" target="//@children.23" targetEnd="//@children.20/@sourceConnections.0/@children.1" label="//@children.20/@sourceConnections.0/@children.2" sourceEnd="//@children.20/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="3,13" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="156,22"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" location="-80,-50" size="53,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.15" location="399,-199" size="160,34" itemName="Export Pictures of Trees"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.16" location="472,-79" size="116,35" itemName="Open/Read Help"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.20/@sourceConnections.0" location="-299,-125" size="160,35" itemName="Print Setup">
+    <sourceConnections xsi:type="editmodel:IncludesEditModel" source="//@children.23" target="//@children.26" targetEnd="//@children.23/@sourceConnections.0/@children.1" label="//@children.23/@sourceConnections.0/@children.2" sourceEnd="//@children.23/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="4,12" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="99,22"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«includes»" size="53,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.12/@sourceConnections.0 //@children.28/@sourceConnections.1" location="-376,56" size="102,34" itemName="Parse Tree"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.12/@sourceConnections.1 //@children.28/@sourceConnections.0 //@children.26/@sourceConnections.0" location="-345,5" size="163,34" itemName="Reogranize Page Layout"/>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.23/@sourceConnections.0" location="-357,-55" size="102,34" itemName="Fit to Page">
+    <sourceConnections xsi:type="editmodel:ExtendsEditModel" source="//@children.26" target="//@children.25" targetEnd="//@children.26/@sourceConnections.0/@children.1" label="//@children.26/@sourceConnections.0/@children.2" sourceEnd="//@children.26/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="54,33" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="75,1"/>
+      <children xsi:type="editmodel:WireLabelEditModel" name="«extends»" size="52,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:UseCaseEditModel" targetConnections="//@children.0/@sourceConnections.21 //@children.5/@sourceConnections.1" location="-52,-110" size="154,49" itemName="Change Syntactic Structure"/>
+  <children xsi:type="editmodel:NotepadEditModel" location="-538,-18" size="116,80" note="All Move, Change, &#xD;&#xA;Add, or Delete &#xD;&#xA;options include &#xD;&#xA;same">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.28" target="//@children.25" targetEnd="//@children.28/@sourceConnections.0/@children.1" sourceEnd="//@children.28/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="116,9" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="1,20"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.28" target="//@children.24" targetEnd="//@children.28/@sourceConnections.1/@children.1" sourceEnd="//@children.28/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="116,62" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="1,17"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="-263,443" size="153,80" note="Features include&#xD;&#xA; WH/Q markers (Features)&#xD;&#xA;Theta Grids&#xD;&#xA;Indexes&#xD;&#xA;Case Markers">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.29" target="//@children.3" targetEnd="//@children.29/@sourceConnections.0/@children.1" sourceEnd="//@children.29/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="119,-1" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="20,44"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" targetConnections="//@children.4/@sourceConnections.1" location="494,510" size="128,38" note="Extended by connect&#xD;&#xA; syntactic structure"/>
+  <children xsi:type="editmodel:NotepadEditModel" location="-503,209" size="134,80" note="View Layout includes:&#xD;&#xA;L Structure&#xD;&#xA;D Structure&#xD;&#xA;S Structure&#xD;&#xA;Labelled Bracket">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.31" target="//@children.18" targetEnd="//@children.31/@sourceConnections.0/@children.1" sourceEnd="//@children.31/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="133,-1" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="10,31"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="-358,124" size="158,66" note="Load Syntax Tree&#xD;&#xA;happens automatically&#xD;&#xA;when the state is disrupted&#xD;&#xA;and the program reloaded">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.32" target="//@children.12" targetEnd="//@children.32/@sourceConnections.0/@children.1" sourceEnd="//@children.32/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="74,66" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="57,1"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="-341,340" size="174,66" note="View Detail includes:&#xD;&#xA;Collapsing/Expanding Trees&#xD;&#xA;Collapsing/Expanding Features&#xD;&#xA;Hiding/Showing Features">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.33" target="//@children.19" targetEnd="//@children.33/@sourceConnections.0/@children.1" sourceEnd="//@children.33/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="174,61" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="1,22"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="-502,-251" size="159,94" note="Syntactic Strutures include:&#xD;&#xA;X-Bar&#xD;&#xA;Trinary&#xD;&#xA;Binary&#xD;&#xA;Unary&#xD;&#xA;Triangle">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.34" target="//@children.2" targetEnd="//@children.34/@sourceConnections.0/@children.1" sourceEnd="//@children.34/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="160,64" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="2,20"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="217,-321" size="106,80" note="Connects:&#xD;&#xA;Index&#xD;&#xA;Feature&#xD;&#xA;Theta Roles&#xD;&#xA;Trace/Movement">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.35" target="//@children.7" targetEnd="//@children.35/@sourceConnections.0/@children.1" sourceEnd="//@children.35/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="107,21" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="6,30"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="638,38" size="112,66" note="Includes:&#xD;&#xA;Labelled Brackets&#xD;&#xA;LaTeX&#xD;&#xA;XML">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.36" target="//@children.13" targetEnd="//@children.36/@sourceConnections.0/@children.1" sourceEnd="//@children.36/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="38,67" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="82,3"/>
+    </sourceConnections>
+  </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="702,334" size="82,24" note="Version 2.0">
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.37" target="//@children.16" targetEnd="//@children.37/@sourceConnections.0/@children.1" sourceEnd="//@children.37/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-1,6" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="201,19"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.37" target="//@children.14" targetEnd="//@children.37/@sourceConnections.1/@children.1" sourceEnd="//@children.37/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="-1,19" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="180,21"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:IndicationEditModel" source="//@children.37" target="//@children.15" targetEnd="//@children.37/@sourceConnections.2/@children.1" sourceEnd="//@children.37/@sourceConnections.2/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="16,24" attachSource="true"/>
+      <children xsi:type="editmodel:UseCaseEndEditModel" location="176,11"/>
+    </sourceConnections>
+  </children>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+</editmodel:UseCaseDiagramEditModel>

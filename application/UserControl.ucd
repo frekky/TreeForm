@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" size="1068,816" id="/[project" metadata="nsuml-1.4" initialized="true" showWireOptions="1">
+  <children xsi:type="editmodel:PackageEditModel" location="50,50" size="111,83" id="application">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="22,157" size="1026,639" id="application/UserControl" runTimeClassModel="donald1DonaldDerrickTreeForm3809,donald1DonaldDerrickTreeForm7481,donald1DonaldDerrickTreeForm3834,donald1DonaldDerrickTreeForm3840,donald1DonaldDerrickTreeForm108,donald1DonaldDerrickTreeForm3806,donald1DonaldDerrickTreeForm3862,donald1DonaldDerrickTreeForm3803,donald1DonaldDerrickTreeForm3850,donald1DonaldDerrickTreeForm3787,donald1DonaldDerrickTreeForm4657,donald1DonaldDerrickTreeForm3784,donald1DonaldDerrickTreeForm3781,donald1DonaldDerrickTreeForm3791,donald1DonaldDerrickTreeForm3824,donald1DonaldDerrickTreeForm3827,donald1DonaldDerrickTreeForm5635,donald1DonaldDerrickTreeForm3796,donald1DonaldDerrickTreeForm3830,donald1DonaldDerrickTreeForm3838,donald1DonaldDerrickTreeForm109,donald1DonaldDerrickTreeForm111,donald1DonaldDerrickTreeForm3820,donald1DonaldDerrickTreeForm3843,donald1DonaldDerrickTreeForm3832,donald1DonaldDerrickTreeForm3865,donald1DonaldDerrickTreeForm3822,donald1DonaldDerrickTreeForm3854,donald1DonaldDerrickTreeForm3858,donald1DonaldDerrickTreeForm3836,donald1DonaldDerrickTreeForm3800,donald1DonaldDerrickTreeForm3846">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" id="application/UserControl#userUI"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="188,558">
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#getUserUI()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#setUserUI(Lapplication.UserUI;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#loadSentence(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#printTree(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#changeSyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructureType;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addSyntacticStructure(Lapplication.SyntacticStructureType;LsyntaxTree.SyntacticLevel;Ljava.lang.String;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#moveSyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#associateSyntacticFeature(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;Lapplication.SyntacticFeatureSet;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#connectNote(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#connectNote(Lapplication.Sentence;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addSyntacticNote(Ljava.lang.String;Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#exportPicture(Ljava.lang.String;Lenumerators.ExportPictureType;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#openHelp()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addTree(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#saveTree(Ljava.lang.String;Lparser.SaveFileType;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addDemographicInformation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewAssociationType()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewSyntacticCategory()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#editPresenation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewSentence()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#deleteSyntacticStructure(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addSyntacticFeatureToStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#deleteSyntacticAssociation(Lapplication.SyntacticFeature;LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#deleteSyntacticFeature(Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#moveSyntacticAssociation(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#moveSyntacticFeature(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#changeVewLayout(Lapplication.SyntacticViewLayout;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#changeViewDetail()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#printSetup()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addFeatureToStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true"/>
+</editmodel:ClassDiagramEditModel>

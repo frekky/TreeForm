@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" size="881,1122" id="/[project" metadata="nsuml-1.4" initialized="true" showWireOptions="1">
+  <children xsi:type="editmodel:PackageEditModel" location="50,50" size="111,83" id="application">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="7,139" size="854,963" id="application/SyntacticStructure" runTimeClassModel="donald1DonaldDerrickTreeForm2439,donald1DonaldDerrickTreeForm2792,donald1DonaldDerrickTreeForm1900,donald1DonaldDerrickTreeForm1922,donald1DonaldDerrickTreeForm7053,donald1DonaldDerrickTreeForm2716,donald1DonaldDerrickTreeForm1896,donald1DonaldDerrickTreeForm2684,donald1DonaldDerrickTreeForm2035,donald1DonaldDerrickTreeForm2013,donald1DonaldDerrickTreeForm6831,donald1DonaldDerrickTreeForm4356,donald1DonaldDerrickTreeForm1685,donald1DonaldDerrickTreeForm2756,donald1DonaldDerrickTreeForm2413,donald1DonaldDerrickTreeForm1702,donald1DonaldDerrickTreeForm1681,donald1DonaldDerrickTreeForm2037,donald1DonaldDerrickTreeForm1967,donald1DonaldDerrickTreeForm6664,donald1DonaldDerrickTreeForm4320,donald1DonaldDerrickTreeForm2790,donald1DonaldDerrickTreeForm2441,donald1DonaldDerrickTreeForm7089,donald1DonaldDerrickTreeForm5292,donald1DonaldDerrickTreeForm2718,donald1DonaldDerrickTreeForm6828,donald1DonaldDerrickTreeForm7087,donald1DonaldDerrickTreeForm1697,donald1DonaldDerrickTreeForm4354,donald1DonaldDerrickTreeForm1942,donald1DonaldDerrickTreeForm5223,donald1DonaldDerrickTreeForm6794,donald1DonaldDerrickTreeForm1683,donald1DonaldDerrickTreeForm5255,donald1DonaldDerrickTreeForm6662,donald1DonaldDerrickTreeForm1940,donald1DonaldDerrickTreeForm1905,donald1DonaldDerrickTreeForm1861,donald1DonaldDerrickTreeForm1875,donald1DonaldDerrickTreeForm1987,donald1DonaldDerrickTreeForm6630,donald1DonaldDerrickTreeForm1893,donald1DonaldDerrickTreeForm1682,donald1DonaldDerrickTreeForm1755,donald1DonaldDerrickTreeForm1989,donald1DonaldDerrickTreeForm1688,donald1DonaldDerrickTreeForm2181,donald1DonaldDerrickTreeForm1690,donald1DonaldDerrickTreeForm1873">
+    <children xsi:type="editmodel:CompartmentEditModel">
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#children"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#childCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#noteCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#associationCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#parent"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticOrientation"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticLevel"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#branchCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#sentence"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticAssociation"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#head"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#phrase"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#visibility"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticNote"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticFeatureSet"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="148,630">
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addChild(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addAssociation(LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getParent()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setParent(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getChildren()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setChildren(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeChild(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeAssociation(LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getChildCount()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticOrientation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticOrientation(LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticLevel(LsyntaxTree.SyntacticLevel;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getBranchCount()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setBranchCount(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSentence()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSentence(Lapplication.Sentence;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticAssociation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticAssociation(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getHead()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addHeadCharacter(ILapplication.FontFlyweight;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getPhrase()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setHead(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticNote(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticFeatureSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticFeatureSet(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPrivateAttributes="true" showProtectedAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showProtectedMethods="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showStaticMethods="true" showProtectedInnerClasses="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showPrivateInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true"/>
+</editmodel:ClassDiagramEditModel>

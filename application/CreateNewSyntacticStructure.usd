@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:SequenceDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" metadata="nsuml-1.4" initialized="true">
+  <children xsi:type="editmodel:NotepadEditModel" location="130,71" size="82,24" note="Version 2.0"/>
+</editmodel:SequenceDiagramEditModel>

@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="761,2142" id="syntaxTree" metadata="nsuml-1.4" initialized="true" scrolledY="1247" tag="5" key="32303034313132352054726565466F726D">
+  <children xsi:type="editmodel:ClassEditModel" name="SFPopupMenu" location="550,1938" size="114,67" id="syntaxTree/SFPopupMenu" runTimeClassModel="SFPopupMenu(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticFeature;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="77,18">
+      <children xsi:type="editmodel:MethodEditModel" name="SFPopupMenu" id="syntaxTree/SFPopupMenu#SFPopupMenu(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticFeature;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="IndexFeatureSet" location="247,995" size="123,193" id="syntaxTree/IndexFeatureSet" runTimeClassModel="getSyntacticFeature(),visibility,setSyntacticStructure(LsyntaxTree.SyntacticStructure;),setSyntacticFeature(Ljava.util.LinkedList;),getWidth(),getSyntacticStructure(),getHeight(),testXY()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="80,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="visibility" id="syntaxTree/IndexFeatureSet#visibility"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="99,126">
+      <children xsi:type="editmodel:MethodEditModel" name="getHeight" id="syntaxTree/IndexFeatureSet#getHeight()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSyntacticFeature" id="syntaxTree/IndexFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSyntacticStructure" id="syntaxTree/IndexFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getWidth" id="syntaxTree/IndexFeatureSet#getWidth()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSyntacticFeature" id="syntaxTree/IndexFeatureSet#setSyntacticFeature(Ljava.util.LinkedList;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSyntacticStructure" id="syntaxTree/IndexFeatureSet#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testXY" id="syntaxTree/IndexFeatureSet#testXY()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" name="RepositionTree" location="50,2055" size="115,66" stereotype="interface" id="syntaxTree/RepositionTree" runTimeClassModel="children">
+    <children xsi:type="editmodel:CompartmentEditModel" size="87,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="children" id="syntaxTree/RepositionTree#children"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="FeatureDirector" location="50,1938" size="119,67" id="syntaxTree/FeatureDirector" runTimeClassModel="build(LsyntaxTree.AbstractFeatureBuilder;LuserInterface.UserInternalFrame;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="43,18">
+      <children xsi:type="editmodel:MethodEditModel" name="build" id="syntaxTree/FeatureDirector#build(LsyntaxTree.AbstractFeatureBuilder;LuserInterface.UserInternalFrame;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SyntaxTree" location="215,2055" size="96,67" id="syntaxTree/SyntaxTree" runTimeClassModel="main([LString;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="44,18">
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="syntaxTree/SyntaxTree#main([LString;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="StructureDirector" location="605,995" size="127,67" id="syntaxTree/StructureDirector" runTimeClassModel="build(LsyntaxTree.AbstractStructureBuilder;LuserInterface.UserInternalFrame;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="43,18">
+      <children xsi:type="editmodel:MethodEditModel" name="build" id="syntaxTree/StructureDirector#build(LsyntaxTree.AbstractStructureBuilder;LuserInterface.UserInternalFrame;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="PreferencesDB" location="361,2055" size="117,38" id="syntaxTree/PreferencesDB" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="TypeNotFoundError" location="420,995" size="135,67" id="syntaxTree/TypeNotFoundError" runTimeClassModel="getMessage()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="68,18">
+      <children xsi:type="editmodel:MethodEditModel" name="getMessage" id="syntaxTree/TypeNotFoundError#getMessage()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="FeatureBuilder" location="385,1938" size="115,67" id="syntaxTree/FeatureBuilder" runTimeClassModel="buildFeature(LuserInterface.UserInternalFrame;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="69,18">
+      <children xsi:type="editmodel:MethodEditModel" name="buildFeature" id="syntaxTree/FeatureBuilder#buildFeature(LuserInterface.UserInternalFrame;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="TriangleBuilder" location="219,1938" size="116,67" id="syntaxTree/TriangleBuilder" runTimeClassModel="buildSentence(LuserInterface.UserInternalFrame;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:MethodEditModel" name="buildSentence" id="syntaxTree/TriangleBuilder#buildSentence(LuserInterface.UserInternalFrame;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.13/@sourceConnections.3" name="SSPopupMenu" location="551,50" size="115,67" id="syntaxTree/SSPopupMenu" runTimeClassModel="SSPopupMenu(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticStructure;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="77,18">
+      <children xsi:type="editmodel:MethodEditModel" name="SSPopupMenu" id="syntaxTree/SSPopupMenu#SSPopupMenu(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticStructure;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.13/@sourceConnections.2" name="ListenerMove" location="50,125" size="111,85" id="syntaxTree/ListenerMove" runTimeClassModel="ListenerMove(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticStructure;),actionPerformed(Ljava.awt.event.ActionEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="83,36">
+      <children xsi:type="editmodel:MethodEditModel" name="ListenerMove" id="syntaxTree/ListenerMove#ListenerMove(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="syntaxTree/ListenerMove#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.13/@sourceConnections.1" name="ListenerReposition" location="125,626" size="135,85" id="syntaxTree/ListenerReposition" runTimeClassModel="ListenerReposition(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticStructure;),actionPerformed(Ljava.awt.event.ActionEvent;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="90,36">
+      <children xsi:type="editmodel:MethodEditModel" name="ListenerReposition" id="syntaxTree/ListenerReposition#ListenerReposition(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="actionPerformed" id="syntaxTree/ListenerReposition#actionPerformed(Ljava.awt.event.ActionEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SyntaxFacade" location="338,338" size="158,607" id="syntaxTree/SyntaxFacade" runTimeClassModel="deleteSyntacticAssociation(LsyntaxTree.SyntacticAssociation;),associateSyntacticFeature(LsyntaxTree.SyntacticStructure;LsyntaxTree.SyntacticFeature;),deleteSyntacticFeature(LsyntaxTree.SyntacticFeature;),deleteSyntacticFeatureSet(LsyntaxTree.SyntacticFeature;),getName(),displayTree(LsyntaxTree.RepositionTree;),addSyntacticFeature(LsyntaxTree.SyntacticFeature;),getContainer(),deleteSyntacticStructure(LsyntaxTree.SyntacticStructure;),addSyntacticFeatureToStructure(Lenumerators.SyntacticFeatureType;LuserInterface.UserInternalFrame;),getSentence(),setName(Ljava.lang.String;),getUnder(Ljava.awt.Point;Ljava.lang.Object;),getFile(),SyntaxFacade(LuserInterface.UserInternalFrame;),getPicture(),moveSyntacticStructure(LsyntaxTree.SyntacticStructure;LsyntaxTree.SyntacticStructure;),repositionSyntacticStructure(LsyntaxTree.SyntacticStructure;),setPicture(Ljava.lang.String;),setContainer(Ljava.awt.Component;),translateSyntacticStructure(LsyntaxTree.SyntacticStructure;Ljava.awt.event.MouseEvent;),getPopupMenu(Ljava.lang.Object;),getUIF(),setHighlight(Ljava.awt.Component;),addSyntacticStructure(Lenumerators.SyntacticStructureType;LuserInterface.UserInternalFrame;),setSentence(LsyntaxTree.Sentence;),setFile(Ljava.lang.String;),deleteSubtree(LsyntaxTree.SyntacticStructure;),redisplayTree(),translateSyntacticFeature(LsyntaxTree.SyntacticFeature;Ljava.awt.event.MouseEvent;),setUIFBounds()">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="135,558">
+      <children xsi:type="editmodel:MethodEditModel" name="SyntaxFacade" id="syntaxTree/SyntaxFacade#SyntaxFacade(LuserInterface.UserInternalFrame;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addSyntacticFeature" id="syntaxTree/SyntaxFacade#addSyntacticFeature(LsyntaxTree.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addSyntacticFeatureToStructure" id="syntaxTree/SyntaxFacade#addSyntacticFeatureToStructure(Lenumerators.SyntacticFeatureType;LuserInterface.UserInternalFrame;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="addSyntacticStructure" id="syntaxTree/SyntaxFacade#addSyntacticStructure(Lenumerators.SyntacticStructureType;LuserInterface.UserInternalFrame;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="associateSyntacticFeature" id="syntaxTree/SyntaxFacade#associateSyntacticFeature(LsyntaxTree.SyntacticStructure;LsyntaxTree.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteSubtree" id="syntaxTree/SyntaxFacade#deleteSubtree(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteSyntacticAssociation" id="syntaxTree/SyntaxFacade#deleteSyntacticAssociation(LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteSyntacticFeature" id="syntaxTree/SyntaxFacade#deleteSyntacticFeature(LsyntaxTree.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteSyntacticFeatureSet" id="syntaxTree/SyntaxFacade#deleteSyntacticFeatureSet(LsyntaxTree.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteSyntacticStructure" id="syntaxTree/SyntaxFacade#deleteSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="displayTree" id="syntaxTree/SyntaxFacade#displayTree(LsyntaxTree.RepositionTree;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getContainer" id="syntaxTree/SyntaxFacade#getContainer()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getFile" id="syntaxTree/SyntaxFacade#getFile()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getName" id="syntaxTree/SyntaxFacade#getName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPicture" id="syntaxTree/SyntaxFacade#getPicture()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getPopupMenu" id="syntaxTree/SyntaxFacade#getPopupMenu(Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSentence" id="syntaxTree/SyntaxFacade#getSentence()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUIF" id="syntaxTree/SyntaxFacade#getUIF()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUnder" id="syntaxTree/SyntaxFacade#getUnder(Ljava.awt.Point;Ljava.lang.Object;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="moveSyntacticStructure" id="syntaxTree/SyntaxFacade#moveSyntacticStructure(LsyntaxTree.SyntacticStructure;LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="redisplayTree" id="syntaxTree/SyntaxFacade#redisplayTree()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="repositionSyntacticStructure" id="syntaxTree/SyntaxFacade#repositionSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setContainer" id="syntaxTree/SyntaxFacade#setContainer(Ljava.awt.Component;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setFile" id="syntaxTree/SyntaxFacade#setFile(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHighlight" id="syntaxTree/SyntaxFacade#setHighlight(Ljava.awt.Component;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setName" id="syntaxTree/SyntaxFacade#setName(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setPicture" id="syntaxTree/SyntaxFacade#setPicture(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSentence" id="syntaxTree/SyntaxFacade#setSentence(LsyntaxTree.Sentence;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setUIFBounds" id="syntaxTree/SyntaxFacade#setUIFBounds()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="translateSyntacticFeature" id="syntaxTree/SyntaxFacade#translateSyntacticFeature(LsyntaxTree.SyntacticFeature;Ljava.awt.event.MouseEvent;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="translateSyntacticStructure" id="syntaxTree/SyntaxFacade#translateSyntacticStructure(LsyntaxTree.SyntacticStructure;Ljava.awt.event.MouseEvent;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/SAPopupMenu@" source="//@children.13" target="//@children.14" targetEnd="//@children.13/@sourceConnections.0/@children.2" label="//@children.13/@sourceConnections.0/@children.0" sourceEnd="//@children.13/@sourceConnections.0/@children.1" connectionRouterKind="Manhattan" autoLocated="true">
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,9" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mSF" location="158,247" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/SAPopupMenu@|syntaxTree/SyntaxFacade#mSF" attachSource="true" multiplicityLabel="//@children.13/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.13/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" ~ mSF" location="503,569" size="26,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="503,592" size="13,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,33" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/SAPopupMenu@|syntaxTree/SAPopupMenu#" roleLabel="//@children.13/@sourceConnections.0/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="618,569" size="1,9" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/ListenerReposition@" source="//@children.13" target="//@children.12" targetEnd="//@children.13/@sourceConnections.1/@children.2" label="//@children.13/@sourceConnections.1/@children.0" sourceEnd="//@children.13/@sourceConnections.1/@children.1" connectionRouterKind="Manhattan" autoLocated="true">
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,9" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mSF" location="0,330" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/ListenerReposition@|syntaxTree/SyntaxFacade#mSF" attachSource="true" multiplicityLabel="//@children.13/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.13/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" ~ mSF" location="305,652" size="26,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="318,675" size="13,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="135,42" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/ListenerReposition@|syntaxTree/ListenerReposition#" roleLabel="//@children.13/@sourceConnections.1/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="267,652" size="1,9" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/ListenerMove@" source="//@children.13" target="//@children.11" targetEnd="//@children.13/@sourceConnections.2/@children.2" label="//@children.13/@sourceConnections.2/@children.0" sourceEnd="//@children.13/@sourceConnections.2/@children.1" connectionRouterKind="Manhattan" autoLocated="true">
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,9" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mSF" location="0,20" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/ListenerMove@|syntaxTree/SyntaxFacade#mSF" attachSource="true" multiplicityLabel="//@children.13/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.13/@sourceConnections.2/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" ~ mSF" location="305,365" size="26,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="318,342" size="13,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="91,85" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/ListenerMove@|syntaxTree/ListenerMove#" roleLabel="//@children.13/@sourceConnections.2/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="133,217" size="1,9" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/SSPopupMenu@" source="//@children.13" target="//@children.10" targetEnd="//@children.13/@sourceConnections.3/@children.2" label="//@children.13/@sourceConnections.3/@children.0" sourceEnd="//@children.13/@sourceConnections.3/@children.1" connectionRouterKind="Manhattan" autoLocated="true">
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,9" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="mSF" location="158,20" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/SSPopupMenu@|syntaxTree/SyntaxFacade#mSF" attachSource="true" multiplicityLabel="//@children.13/@sourceConnections.3/@children.1/@children.1" roleLabel="//@children.13/@sourceConnections.3/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" ~ mSF" location="503,365" size="26,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="503,342" size="13,9" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="20,67" id="syntaxTree/SyntaxFacade@mSF+syntaxTree/SSPopupMenu@|syntaxTree/SSPopupMenu#" roleLabel="//@children.13/@sourceConnections.3/@children.2/@children.0">
+        <children xsi:type="editmodel:LabelEditModel" location="578,124" size="1,9" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.13/@sourceConnections.0" name="SAPopupMenu" location="626,552" size="115,67" id="syntaxTree/SAPopupMenu" runTimeClassModel="SAPopupMenu(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticAssociation;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="77,18">
+      <children xsi:type="editmodel:MethodEditModel" name="SAPopupMenu" id="syntaxTree/SAPopupMenu#SAPopupMenu(LsyntaxTree.SyntaxFacade;LsyntaxTree.SyntacticAssociation;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SyntacticAssociation" location="50,1731" size="146,157" id="syntaxTree/SyntacticAssociation" runTimeClassModel="getSyntacticFeature(),setSyntacticStructure(LsyntaxTree.SyntacticStructure;),setHead(Ljava.text.AttributedString;),getSyntacticStructure(),setSyntacticFeature(LsyntaxTree.SyntacticFeature;),SyntacticAssociation(LuserInterface.UserInternalFrame;)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="99,108">
+      <children xsi:type="editmodel:MethodEditModel" name="SyntacticAssociation" id="syntaxTree/SyntacticAssociation#SyntacticAssociation(LuserInterface.UserInternalFrame;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSyntacticFeature" id="syntaxTree/SyntacticAssociation#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSyntacticStructure" id="syntaxTree/SyntacticAssociation#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHead" id="syntaxTree/SyntacticAssociation#setHead(Ljava.text.AttributedString;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSyntacticFeature" id="syntaxTree/SyntacticAssociation#setSyntacticFeature(LsyntaxTree.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSyntacticStructure" id="syntaxTree/SyntacticAssociation#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="syntaxTree/EditableComponent&lt;-syntaxTree/SyntacticAssociation" source="//@children.15" target="//@children.16" targetEnd="//@children.15/@sourceConnections.0/@children.1" sourceEnd="//@children.15/@sourceConnections.0/@children.0" connectionRouterKind="Manual" autoLocated="true">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,-1" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.15/@sourceConnections.0" name="EditableComponent" location="50,995" size="147,686" id="syntaxTree/EditableComponent" runTimeClassModel="setRealTextWidth(I),setHighlightEnd(I),getOver(),insertHead(Ljava.text.AttributedString;I),setTextWidth(I),setInsertionIndex(I),getInsertionIndex(),syntaxTree.EditableComponent.UserKeyListener,setHeadObservers(),setHead(Ljava.text.AttributedString;),setTextHeight(I),setHighlightBegin(I),setHighlight(Ljava.util.Map;),paint(Ljava.awt.Graphics;),getClip(),deleteHead(),setCarat(Z),getHighlightEnd(),getHead(),getRealTextWidth(),testXY(),EditableComponent(LuserInterface.UserInternalFrame;),getTextWidth(),setUserInternalFrame(LuserInterface.UserInternalFrame;),setOver(Z),getHighlightBegin(),getHeadLength(),getUserInternalFrame(),getTextHeight(),setHeadLength(I)">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="102,522">
+      <children xsi:type="editmodel:MethodEditModel" name="EditableComponent" id="syntaxTree/EditableComponent#EditableComponent(LuserInterface.UserInternalFrame;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deleteHead" id="syntaxTree/EditableComponent#deleteHead()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getClip" id="syntaxTree/EditableComponent#getClip()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHead" id="syntaxTree/EditableComponent#getHead()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHeadLength" id="syntaxTree/EditableComponent#getHeadLength()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHighlightBegin" id="syntaxTree/EditableComponent#getHighlightBegin()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHighlightEnd" id="syntaxTree/EditableComponent#getHighlightEnd()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getInsertionIndex" id="syntaxTree/EditableComponent#getInsertionIndex()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getOver" id="syntaxTree/EditableComponent#getOver()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getRealTextWidth" id="syntaxTree/EditableComponent#getRealTextWidth()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTextHeight" id="syntaxTree/EditableComponent#getTextHeight()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getTextWidth" id="syntaxTree/EditableComponent#getTextWidth()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getUserInternalFrame" id="syntaxTree/EditableComponent#getUserInternalFrame()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="insertHead" id="syntaxTree/EditableComponent#insertHead(Ljava.text.AttributedString;I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="paint" id="syntaxTree/EditableComponent#paint(Ljava.awt.Graphics;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setCarat" id="syntaxTree/EditableComponent#setCarat(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHead" id="syntaxTree/EditableComponent#setHead(Ljava.text.AttributedString;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHeadLength" id="syntaxTree/EditableComponent#setHeadLength(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHeadObservers" id="syntaxTree/EditableComponent#setHeadObservers()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHighlight" id="syntaxTree/EditableComponent#setHighlight(Ljava.util.Map;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHighlightBegin" id="syntaxTree/EditableComponent#setHighlightBegin(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHighlightEnd" id="syntaxTree/EditableComponent#setHighlightEnd(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setInsertionIndex" id="syntaxTree/EditableComponent#setInsertionIndex(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setOver" id="syntaxTree/EditableComponent#setOver(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setRealTextWidth" id="syntaxTree/EditableComponent#setRealTextWidth(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTextHeight" id="syntaxTree/EditableComponent#setTextHeight(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setTextWidth" id="syntaxTree/EditableComponent#setTextWidth(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setUserInternalFrame" id="syntaxTree/EditableComponent#setUserInternalFrame(LuserInterface.UserInternalFrame;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testXY" id="syntaxTree/EditableComponent#testXY()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="124,105">
+      <children xsi:type="editmodel:ClassEditModel" name="UserKeyListener" size="124,103" id="syntaxTree/EditableComponent$UserKeyListener" runTimeClassModel="keyPressed(Ljava.awt.event.KeyEvent;),keyReleased(Ljava.awt.event.KeyEvent;),keyTyped(Ljava.awt.event.KeyEvent;)">
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <children xsi:type="editmodel:CompartmentEditModel" size="71,54">
+          <children xsi:type="editmodel:MethodEditModel" name="keyPressed" id="syntaxTree/EditableComponent$UserKeyListener#keyPressed(Ljava.awt.event.KeyEvent;)"/>
+          <children xsi:type="editmodel:MethodEditModel" name="keyReleased" id="syntaxTree/EditableComponent$UserKeyListener#keyReleased(Ljava.awt.event.KeyEvent;)"/>
+          <children xsi:type="editmodel:MethodEditModel" name="keyTyped" id="syntaxTree/EditableComponent$UserKeyListener#keyTyped(Ljava.awt.event.KeyEvent;)"/>
+        </children>
+        <children xsi:type="editmodel:CompartmentEditModel"/>
+        <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+      </children>
+    </children>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="10,10" gridOrigin="0,0" rulerUnit="pixel">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" showInterfaceStereotype="true" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" size="7453,4421" id="/[project" metadata="nsuml-1.4" initialized="true" showWireOptions="1" zoom="0.75">
+  <children xsi:type="editmodel:PackageEditModel" location="1843,8660" size="111,83" id="application">
+    <packagePreferences xsi:type="editmodel:UMLClassDiagramPackagePreference" showStereotype="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="988,8660" size="251,125" id="syntaxTree/SyntacticOrientation" runTimeClassModel="donald1DonaldDerrickTreeForm1854,donald1DonaldDerrickTreeForm1850,donald1DonaldDerrickTreeForm1852,donald1DonaldDerrickTreeForm1858,donald1DonaldDerrickTreeForm1856">
+    <children xsi:type="editmodel:CompartmentEditModel" size="162,72">
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticOrientation#LEFT"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticOrientation#CENTER"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticOrientation#RIGHT"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticOrientation#TOP"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="1289,8660" size="215,107" id="syntaxTree/SyntacticLevel" runTimeClassModel="donald1DonaldDerrickTreeForm1916,donald1DonaldDerrickTreeForm1914,donald1DonaldDerrickTreeForm1918,donald1DonaldDerrickTreeForm1920">
+    <children xsi:type="editmodel:CompartmentEditModel" size="166,54">
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticLevel#DOUBLE_BAR"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticLevel#BAR"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="syntaxTree/SyntacticLevel#HEAD"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="50,8660" size="269,143" stereotype="enumerator" id="application/SyntacticStructureType" runTimeClassModel="donald1DonaldDerrickTreeForm2801,donald1DonaldDerrickTreeForm2805,donald1DonaldDerrickTreeForm2803,donald1DonaldDerrickTreeForm2797,donald1DonaldDerrickTreeForm2799,donald1DonaldDerrickTreeForm2807">
+    <children xsi:type="editmodel:CompartmentEditModel" size="190,90">
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructureType#BINARY"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructureType#TRINARY"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructureType#UNARY"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructureType#TRIANGLE"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructureType#X_BAR"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="369,8660" size="260,143" id="enumerators/SyntacticFeatureType" runTimeClassModel="donald1DonaldDerrickTreeForm2974,donald1DonaldDerrickTreeForm2966,donald1DonaldDerrickTreeForm2972,donald1DonaldDerrickTreeForm2970,donald1DonaldDerrickTreeForm2968,donald1DonaldDerrickTreeForm4428">
+    <children xsi:type="editmodel:CompartmentEditModel" size="178,90">
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/SyntacticFeatureType#FEATURE"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/SyntacticFeatureType#INDEX"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/SyntacticFeatureType#THETA"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/SyntacticFeatureType#TRACE"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/SyntacticFeatureType#CASE"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="679,8660" size="259,125" id="application/SyntacticViewLayout" runTimeClassModel="donald1DonaldDerrickTreeForm3672,donald1DonaldDerrickTreeForm3744,donald1DonaldDerrickTreeForm3678,donald1DonaldDerrickTreeForm3676,donald1DonaldDerrickTreeForm3674">
+    <children xsi:type="editmodel:CompartmentEditModel" size="236,72">
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticViewLayout#D_STRUCTURE"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticViewLayout#LABELLED_BRACKET"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticViewLayout#L_STRUCTURE"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticViewLayout#S_STRUCTURE"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="1554,8660" size="239,89" id="enumerators/ExportPictureType" runTimeClassModel="donald1DonaldDerrickTreeForm7276,donald1DonaldDerrickTreeForm7280,donald1DonaldDerrickTreeForm7278">
+    <children xsi:type="editmodel:CompartmentEditModel" size="139,36">
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/ExportPictureType#GIFF"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="enumerators/ExportPictureType#JPEG"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.33/@sourceConnections.0 //@children.27/@sourceConnections.3 //@children.21/@sourceConnections.1" location="2260,6576" size="259,117" id="application/FontFlyweightFactory" runTimeClassModel="donald1DonaldDerrickTreeForm7556,donald1DonaldDerrickTreeForm7659,donald1DonaldDerrickTreeForm7555,donald1DonaldDerrickTreeForm7558">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="120,54">
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweightFactory#getFontFlyweight()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweightFactory#getFontFlyweights()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweightFactory#setFontFlyweights(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.1" location="1168,1621" size="209,81" id="parser/DisplayParser" runTimeClassModel="donald1DonaldDerrickTreeForm4663">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,18">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/DisplayParser#reorganizePageLayout()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.27/@sourceConnections.2" location="4686,6724" size="209,135" id="syntaxTree/SyntacticNote" runTimeClassModel="donald1DonaldDerrickTreeForm6625,donald1DonaldDerrickTreeForm6683,donald1DonaldDerrickTreeForm6622,donald1DonaldDerrickTreeForm6680,donald1DonaldDerrickTreeForm6623,donald1DonaldDerrickTreeForm6685">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="144,108">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticNote#setSyntacticFeatureSet(LsyntaxTree.SyntacticFeatureSet;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticNote#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticNote#getSyntacticFeatureSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticNote#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.17/@sourceConnections.1" location="5276,2884" size="216,117" id="syntaxTree/PreferencesDB" runTimeClassModel="donald1DonaldDerrickTreeForm7939,donald1DonaldDerrickTreeForm7930,donald1DonaldDerrickTreeForm7919,donald1DonaldDerrickTreeForm7937">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="101,54">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/PreferencesDB#setDefaultFont(IIZZZZZ)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/PreferencesDB#setDefaultFont(LsyntaxTree.FontFlyweight;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/PreferencesDB#getDefaultFont()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.27/@sourceConnections.1" location="3633,6969" size="252,135" id="syntaxTree/SyntacticAssociation" runTimeClassModel="donald1DonaldDerrickTreeForm2476,donald1DonaldDerrickTreeForm2471,donald1DonaldDerrickTreeForm716,donald1DonaldDerrickTreeForm718,donald1DonaldDerrickTreeForm616,donald1DonaldDerrickTreeForm2474">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,72">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticAssociation#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticAssociation#setSyntacticStructure(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticAssociation#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/SyntacticAssociation#setSyntacticFeatureGroup(LsyntaxTree.SyntacticFeature;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="2929,1711" size="211,603" id="application/UserUI" runTimeClassModel="donald1DonaldDerrickTreeForm2913,donald1DonaldDerrickTreeForm3253,donald1DonaldDerrickTreeForm3541,donald1DonaldDerrickTreeForm3374,donald1DonaldDerrickTreeForm3052,donald1DonaldDerrickTreeForm119,donald1DonaldDerrickTreeForm2860,donald1DonaldDerrickTreeForm4626,donald1DonaldDerrickTreeForm3107,donald1DonaldDerrickTreeForm2936,donald1DonaldDerrickTreeForm2582,donald1DonaldDerrickTreeForm5603,donald1DonaldDerrickTreeForm3167,donald1DonaldDerrickTreeForm2817,donald1DonaldDerrickTreeForm2835,donald1DonaldDerrickTreeForm3347,donald1DonaldDerrickTreeForm2570,donald1DonaldDerrickTreeForm3069,donald1DonaldDerrickTreeForm116,donald1DonaldDerrickTreeForm3299,donald1DonaldDerrickTreeForm3087,donald1DonaldDerrickTreeForm3427,donald1DonaldDerrickTreeForm3146,donald1DonaldDerrickTreeForm2987,donald1DonaldDerrickTreeForm3601,donald1DonaldDerrickTreeForm2901,donald1DonaldDerrickTreeForm3709,donald1DonaldDerrickTreeForm3209,donald1DonaldDerrickTreeForm3777,donald1DonaldDerrickTreeForm117,donald1DonaldDerrickTreeForm1081,donald1DonaldDerrickTreeForm7449">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="188,540">
+      <children xsi:type="editmodel:MethodEditModel" location="459,1187" id="application/UserUI#getUserControl()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#setUserControl(Lapplication.UserControl;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#addSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#addSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#printTree()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#changeSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#moveSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#addFeatureToStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#connectNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#loadSentence()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#moveSyntacticAssociation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#exportPicture()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#openHelp()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#addSyntacticFeatureToStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#deleteSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#addDemographicInformation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#createNewAssociationType()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#createNewSyntacticCategory()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#createNewSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#editPresenation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#deleteSyntacticAssociation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#moveSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#saveTree()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#addTree()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#changeVewLayout()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#deleteSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#changeViewDetail()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#printSetup()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#associateSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserUI#createNewSentence()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/UserUI@userUI+application/UserControl@userControl" source="//@children.12" target="//@children.17" targetEnd="//@children.12/@sourceConnections.0/@children.1" label="//@children.12/@sourceConnections.0/@children.2" sourceEnd="//@children.12/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/UserUI@userUI+application/UserControl@userControl|application/UserUI#userUI" attachSource="true" multiplicityLabel="//@children.12/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.12/@sourceConnections.0/@children.0/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="39,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/UserUI@userUI+application/UserControl@userControl|application/UserControl#userControl" multiplicityLabel="//@children.12/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.12/@sourceConnections.0/@children.1/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="64,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.12" target="//@children.8" targetEnd="//@children.12/@sourceConnections.1/@children.1" sourceEnd="//@children.12/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,-603" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="125,80"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.12" target="//@children.13" targetEnd="//@children.12/@sourceConnections.2/@children.1" sourceEnd="//@children.12/@sourceConnections.2/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,-603" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,97"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.12" target="//@children.15" targetEnd="//@children.12/@sourceConnections.3/@children.1" sourceEnd="//@children.12/@sourceConnections.3/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,-603" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="185,40"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.12" target="//@children.14" targetEnd="//@children.12/@sourceConnections.4/@children.1" sourceEnd="//@children.12/@sourceConnections.4/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="211,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="69,41"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPrivateMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.2" location="4449,723" size="193,99" id="parser/PrintParser" runTimeClassModel="donald1DonaldDerrickTreeForm4669,donald1DonaldDerrickTreeForm4674">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="80,36">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/PrintParser#print()"/>
+      <children xsi:type="editmodel:MethodEditModel" location="163,187" id="parser/PrintParser#printSetup()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.4" location="3256,50" size="164,43" id="userInterface/UIHelp" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.3" location="1796,442" size="195,43" stereotype="entity" id="application/UISentence" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="50,5836" size="229,171" id="application/SyntacticFeature" runTimeClassModel="donald1DonaldDerrickTreeForm6744,donald1DonaldDerrickTreeForm5927,donald1DonaldDerrickTreeForm6749,donald1DonaldDerrickTreeForm2464,donald1DonaldDerrickTreeForm6751,donald1DonaldDerrickTreeForm5922,donald1DonaldDerrickTreeForm5925,donald1DonaldDerrickTreeForm2459,donald1DonaldDerrickTreeForm2466">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="148,108">
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeature#getSyntacticAssociation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeature#setSyntacticAssociation(LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeature#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeature#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeature#setSyntacticFeatureSet(Lapplication.SyntacticFeatureSet;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeature#getSyntacticFeatureSet()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/SyntacticFeature@syntacticFeatureGroup+application/SyntacticFeatureSet@syntacticFeatureSet" source="//@children.16" target="//@children.21" targetEnd="//@children.16/@sourceConnections.0/@children.1" label="//@children.16/@sourceConnections.0/@children.2" sourceEnd="//@children.16/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="96,0" id="application/SyntacticFeature@syntacticFeatureGroup+application/SyntacticFeatureSet@syntacticFeatureSet|application/SyntacticFeature#syntacticFeatureGroup" attachSource="true" multiplicityLabel="//@children.16/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.16/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" size="121,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="17,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/SyntacticFeature@syntacticFeatureGroup+application/SyntacticFeatureSet@syntacticFeatureSet|application/SyntacticFeatureSet#syntacticFeatureSet" multiplicityLabel="//@children.16/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.16/@sourceConnections.0/@children.1/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="105,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.12/@sourceConnections.0" location="3532,3431" size="211,621" id="application/UserControl" runTimeClassModel="donald1DonaldDerrickTreeForm3809,donald1DonaldDerrickTreeForm7481,donald1DonaldDerrickTreeForm3834,donald1DonaldDerrickTreeForm3840,donald1DonaldDerrickTreeForm108,donald1DonaldDerrickTreeForm3806,donald1DonaldDerrickTreeForm3862,donald1DonaldDerrickTreeForm3803,donald1DonaldDerrickTreeForm3787,donald1DonaldDerrickTreeForm3850,donald1DonaldDerrickTreeForm4657,donald1DonaldDerrickTreeForm3784,donald1DonaldDerrickTreeForm3781,donald1DonaldDerrickTreeForm3791,donald1DonaldDerrickTreeForm3827,donald1DonaldDerrickTreeForm3824,donald1DonaldDerrickTreeForm5635,donald1DonaldDerrickTreeForm3796,donald1DonaldDerrickTreeForm3830,donald1DonaldDerrickTreeForm3838,donald1DonaldDerrickTreeForm109,donald1DonaldDerrickTreeForm111,donald1DonaldDerrickTreeForm3820,donald1DonaldDerrickTreeForm3832,donald1DonaldDerrickTreeForm3843,donald1DonaldDerrickTreeForm3865,donald1DonaldDerrickTreeForm3822,donald1DonaldDerrickTreeForm3854,donald1DonaldDerrickTreeForm3858,donald1DonaldDerrickTreeForm3836,donald1DonaldDerrickTreeForm3800,donald1DonaldDerrickTreeForm3846">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="188,558">
+      <children xsi:type="editmodel:MethodEditModel" location="979,2741" id="application/UserControl#getUserUI()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#setUserUI(Lapplication.UserUI;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addSyntacticFeatureToStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addSyntacticStructure(Lapplication.SyntacticStructureType;LsyntaxTree.SyntacticLevel;Ljava.lang.String;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#openHelp()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewAssociationType()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addTree(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#connectNote(Lapplication.Sentence;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#editPresenation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#moveSyntacticFeature(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#loadSentence(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#associateSyntacticFeature(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;Lapplication.SyntacticFeatureSet;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#exportPicture(Ljava.lang.String;Lenumerators.ExportPictureType;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addDemographicInformation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#changeSyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructureType;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#changeViewDetail()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#saveTree(Ljava.lang.String;Lparser.SaveFileType;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#moveSyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addSyntacticNote(Ljava.lang.String;Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#deleteSyntacticStructure(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#deleteSyntacticAssociation(Lapplication.SyntacticFeature;LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#deleteSyntacticFeature(Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#connectNote(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#changeVewLayout(Lapplication.SyntacticViewLayout;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#moveSyntacticAssociation(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewSyntacticCategory()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#printTree(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#printSetup()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#addFeatureToStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticFeature;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/UserControl#createNewSentence()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.17" target="//@children.26" targetEnd="//@children.17/@sourceConnections.0/@children.1" sourceEnd="//@children.17/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="91,-8" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,342"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.17" target="//@children.10" targetEnd="//@children.17/@sourceConnections.1/@children.1" sourceEnd="//@children.17/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="180,619" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="76,-4"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.19/@sourceConnections.0 //@children.26/@sourceConnections.2" location="5419,5825" size="208,81" stereotype="interface" id="application/ExportPicture" runTimeClassModel="donald1DonaldDerrickTreeForm6959">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="95,18">
+      <children xsi:type="editmodel:MethodEditModel" id="application/ExportPicture#exportPicture(Lapplication.UISentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="5314,5956" size="193,81" id="parser/ExportGIFF" runTimeClassModel="donald1DonaldDerrickTreeForm6981">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="95,18">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/ExportGIFF#exportPicture(LuserInterface.UISentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.20/@sourceConnections.0" id="donald1DonaldDerrickTreeForm6975" source="//@children.19" target="//@children.18" targetEnd="//@children.19/@sourceConnections.0/@children.1" sourceEnd="//@children.19/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan" anchorType="FixedAtEdge">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="96,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="104,81" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="5537,5956" size="197,81" id="parser/ExportJPEG" runTimeClassModel="donald1DonaldDerrickTreeForm6986">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="95,18">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/ExportJPEG#exportPicture(LuserInterface.UISentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="donald1DonaldDerrickTreeForm6978" source="//@children.20" target="//@children.19/@sourceConnections.0" targetEnd="//@children.20/@sourceConnections.0/@children.1" sourceEnd="//@children.20/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="98,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="207,63"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.22/@sourceConnections.0 //@children.16/@sourceConnections.0" location="2129,5465" size="250,207" stereotype="entity" id="application/SyntacticFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm4407,donald1DonaldDerrickTreeForm6741,donald1DonaldDerrickTreeForm4405,donald1DonaldDerrickTreeForm7100,donald1DonaldDerrickTreeForm7098,donald1DonaldDerrickTreeForm6739,donald1DonaldDerrickTreeForm6698,donald1DonaldDerrickTreeForm6696">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,144">
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#setSyntacticNote(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticFeatureSet#setSyntacticStructure(Lapplication.SyntacticStructure;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/SyntacticFeatureSet@syntacticFeatureSet+application/SyntacticStructure@syntacticStructure" source="//@children.21" target="//@children.27" targetEnd="//@children.21/@sourceConnections.0/@children.1" label="//@children.21/@sourceConnections.0/@children.2" sourceEnd="//@children.21/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="169,0" id="application/SyntacticFeatureSet@syntacticFeatureSet+application/SyntacticStructure@syntacticStructure|application/SyntacticFeatureSet#syntacticFeatureSet" attachSource="true" multiplicityLabel="//@children.21/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.21/@sourceConnections.0/@children.0/@children.0" aggregationKind="Aggregration" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="105,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="17,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/SyntacticFeatureSet@syntacticFeatureSet+application/SyntacticStructure@syntacticStructure|application/SyntacticStructure#syntacticStructure" multiplicityLabel="//@children.21/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.21/@sourceConnections.0/@children.1/@children.0" navigable="true" flags="1">
+        <children xsi:type="editmodel:LabelEditModel" size="99,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.21" target="//@children.7" targetEnd="//@children.21/@sourceConnections.1/@children.1" sourceEnd="//@children.21/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="248,206" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="58,-2"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="1733,5722" size="242,243" id="syntaxTree/GenericFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5834,donald1DonaldDerrickTreeForm5828,donald1DonaldDerrickTreeForm2372,donald1DonaldDerrickTreeForm4446,donald1DonaldDerrickTreeForm5836,donald1DonaldDerrickTreeForm4524,donald1DonaldDerrickTreeForm5820,donald1DonaldDerrickTreeForm5831,donald1DonaldDerrickTreeForm5821,donald1DonaldDerrickTreeForm2280,donald1DonaldDerrickTreeForm2374,donald1DonaldDerrickTreeForm4444,donald1DonaldDerrickTreeForm2278">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,180">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#setSyntacticNote(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/GenericFeatureSet#removeNote(LsyntaxTree.SyntacticNote;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.25/@sourceConnections.0 //@children.24/@sourceConnections.0 //@children.23/@sourceConnections.0" id="donald1DonaldDerrickTreeForm2206" source="//@children.22" target="//@children.21" targetEnd="//@children.22/@sourceConnections.0/@children.1" sourceEnd="//@children.22/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan" anchorType="FixedAtEdge">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="121,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="125,207" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="2545,5722" size="228,243" id="syntaxTree/IndexFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5800,donald1DonaldDerrickTreeForm2266,donald1DonaldDerrickTreeForm5815,donald1DonaldDerrickTreeForm4468,donald1DonaldDerrickTreeForm2383,donald1DonaldDerrickTreeForm5813,donald1DonaldDerrickTreeForm4483,donald1DonaldDerrickTreeForm2264,donald1DonaldDerrickTreeForm5807,donald1DonaldDerrickTreeForm4466,donald1DonaldDerrickTreeForm5799,donald1DonaldDerrickTreeForm5810,donald1DonaldDerrickTreeForm2381">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,180">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#setSyntacticNote(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/IndexFeatureSet#removeNote(LsyntaxTree.SyntacticNote;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="donald1DonaldDerrickTreeForm2209" source="//@children.23" target="//@children.22/@sourceConnections.0" targetEnd="//@children.23/@sourceConnections.0/@children.1" sourceEnd="//@children.23/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="114,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="107,133"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="2258,5722" size="257,243" id="syntaxTree/ThetaRoleFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5754,donald1DonaldDerrickTreeForm5776,donald1DonaldDerrickTreeForm5751,donald1DonaldDerrickTreeForm2271,donald1DonaldDerrickTreeForm4435,donald1DonaldDerrickTreeForm5778,donald1DonaldDerrickTreeForm2365,donald1DonaldDerrickTreeForm4517,donald1DonaldDerrickTreeForm5767,donald1DonaldDerrickTreeForm2363,donald1DonaldDerrickTreeForm4437,donald1DonaldDerrickTreeForm5744,donald1DonaldDerrickTreeForm2273">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,180">
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#removeNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/ThetaRoleFeatureSet#setSyntacticNote(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="donald1DonaldDerrickTreeForm2208" source="//@children.24" target="//@children.22/@sourceConnections.0" targetEnd="//@children.24/@sourceConnections.0/@children.1" sourceEnd="//@children.24/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="128,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="112,133"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="2005,5722" size="223,243" id="syntaxTree/CaseFeatureSet" runTimeClassModel="donald1DonaldDerrickTreeForm5855,donald1DonaldDerrickTreeForm2285,donald1DonaldDerrickTreeForm4457,donald1DonaldDerrickTreeForm5842,donald1DonaldDerrickTreeForm2390,donald1DonaldDerrickTreeForm5857,donald1DonaldDerrickTreeForm2287,donald1DonaldDerrickTreeForm5841,donald1DonaldDerrickTreeForm4459,donald1DonaldDerrickTreeForm5852,donald1DonaldDerrickTreeForm4504,donald1DonaldDerrickTreeForm2392,donald1DonaldDerrickTreeForm5849">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="158,180">
+      <children xsi:type="editmodel:MethodEditModel" location="1391,1507" id="syntaxTree/CaseFeatureSet#getSyntacticStructure()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#setSyntacticStructure(LsyntaxTree.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#getSyntacticFeature()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#setSyntacticFeature(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#setSyntacticNote(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#removeNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="syntaxTree/CaseFeatureSet#getSyntacticNote()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="donald1DonaldDerrickTreeForm2207" source="//@children.25" target="//@children.22/@sourceConnections.0" targetEnd="//@children.25/@sourceConnections.0/@children.1" sourceEnd="//@children.25/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="111,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="98,133"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.17/@sourceConnections.0" location="3519,6426" size="184,351" id="application/Sentence" runTimeClassModel="donald1DonaldDerrickTreeForm6224,donald1DonaldDerrickTreeForm1091,donald1DonaldDerrickTreeForm6226,donald1DonaldDerrickTreeForm4386,donald1DonaldDerrickTreeForm2888,donald1DonaldDerrickTreeForm4931,donald1DonaldDerrickTreeForm5152,donald1DonaldDerrickTreeForm5070,donald1DonaldDerrickTreeForm5656,donald1DonaldDerrickTreeForm6209,donald1DonaldDerrickTreeForm4686,donald1DonaldDerrickTreeForm4272,donald1DonaldDerrickTreeForm2005,donald1DonaldDerrickTreeForm2881,donald1DonaldDerrickTreeForm4254,donald1DonaldDerrickTreeForm5378,donald1DonaldDerrickTreeForm2886,donald1DonaldDerrickTreeForm6854,donald1DonaldDerrickTreeForm5146,donald1DonaldDerrickTreeForm5157,donald1DonaldDerrickTreeForm6852,donald1DonaldDerrickTreeForm5132,donald1DonaldDerrickTreeForm4282">
+    <children xsi:type="editmodel:CompartmentEditModel" size="161,90">
+      <children xsi:type="editmodel:AttributeEditModel" id="application/Sentence#syntacticStructure"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/Sentence#name"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/Sentence#syntacticStructureCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/Sentence#syntacticNote"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/Sentence#userUI"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="150,198">
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#getName()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#setName(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#deleteSyntacticStructure(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#addSyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#moveSyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#Sentence(LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#Sentence(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#Sentence(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#Sentence(Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/Sentence#setSyntacticNote(Ljava.util.Collection;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="application/SyntacticStructure&lt;-application/Sentence" source="//@children.26" target="//@children.27" targetEnd="//@children.26/@sourceConnections.0/@children.1" sourceEnd="//@children.26/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,34" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.26" target="//@children.31" targetEnd="//@children.26/@sourceConnections.1/@children.1" sourceEnd="//@children.26/@sourceConnections.1/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="183,266" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="9,-2"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.26" target="//@children.18" targetEnd="//@children.26/@sourceConnections.2/@children.1" sourceEnd="//@children.26/@sourceConnections.2/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="183,16" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="-1,74"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.27/@sourceConnections.0 //@children.26/@sourceConnections.0 //@children.21/@sourceConnections.0" location="3490,5341" size="242,1035" id="application/SyntacticStructure" runTimeClassModel="donald1DonaldDerrickTreeForm2439,donald1DonaldDerrickTreeForm2792,donald1DonaldDerrickTreeForm1900,donald1DonaldDerrickTreeForm1922,donald1DonaldDerrickTreeForm7053,donald1DonaldDerrickTreeForm1896,donald1DonaldDerrickTreeForm2716,donald1DonaldDerrickTreeForm2684,donald1DonaldDerrickTreeForm2035,donald1DonaldDerrickTreeForm2013,donald1DonaldDerrickTreeForm6831,donald1DonaldDerrickTreeForm4356,donald1DonaldDerrickTreeForm1685,donald1DonaldDerrickTreeForm2756,donald1DonaldDerrickTreeForm2413,donald1DonaldDerrickTreeForm1702,donald1DonaldDerrickTreeForm1681,donald1DonaldDerrickTreeForm2037,donald1DonaldDerrickTreeForm1967,donald1DonaldDerrickTreeForm6664,donald1DonaldDerrickTreeForm4320,donald1DonaldDerrickTreeForm7811,donald1DonaldDerrickTreeForm2790,donald1DonaldDerrickTreeForm2441,donald1DonaldDerrickTreeForm7089,donald1DonaldDerrickTreeForm5292,donald1DonaldDerrickTreeForm2718,donald1DonaldDerrickTreeForm6828,donald1DonaldDerrickTreeForm7087,donald1DonaldDerrickTreeForm1697,donald1DonaldDerrickTreeForm4354,donald1DonaldDerrickTreeForm7821,donald1DonaldDerrickTreeForm1942,donald1DonaldDerrickTreeForm7814,donald1DonaldDerrickTreeForm5223,donald1DonaldDerrickTreeForm6794,donald1DonaldDerrickTreeForm1683,donald1DonaldDerrickTreeForm5255,donald1DonaldDerrickTreeForm6662,donald1DonaldDerrickTreeForm1940,donald1DonaldDerrickTreeForm1905,donald1DonaldDerrickTreeForm1861,donald1DonaldDerrickTreeForm1875,donald1DonaldDerrickTreeForm1987,donald1DonaldDerrickTreeForm7817,donald1DonaldDerrickTreeForm6630,donald1DonaldDerrickTreeForm1893,donald1DonaldDerrickTreeForm1682,donald1DonaldDerrickTreeForm1755,donald1DonaldDerrickTreeForm1989,donald1DonaldDerrickTreeForm1688,donald1DonaldDerrickTreeForm2181,donald1DonaldDerrickTreeForm1690,donald1DonaldDerrickTreeForm1873">
+    <children xsi:type="editmodel:CompartmentEditModel" size="229,270">
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#children"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#childCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticOrientation"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#branchCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#sentence"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticAssociation"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#head"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#phrase"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticLevel"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#visibility"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#noteCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#parent"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticNote"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#associationCount"/>
+      <children xsi:type="editmodel:AttributeEditModel" id="application/SyntacticStructure#syntacticFeatureSet"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="149,702">
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#SyntacticStructure(Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;Lapplication.SyntacticStructure;LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addChild(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getParent()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setParent(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getChildren()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setChildren(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeChild(Lapplication.SyntacticStructure;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getChildCount()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticOrientation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticOrientation(LsyntaxTree.SyntacticOrientation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticLevel()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticLevel(LsyntaxTree.SyntacticLevel;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getBranchCount()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setBranchCount(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSentence()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSentence(Lapplication.Sentence;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticAssociation()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticAssociation(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getHead()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addHeadCharacter(ILapplication.FontFlyweight;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getPhrase()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setHead(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setVisibility(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getVisibility()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeNote(LsyntaxTree.SyntacticNote;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticNote()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticNote(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addAssociation(LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeAssociation(LsyntaxTree.SyntacticAssociation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setSyntacticFeatureSet(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#getSyntacticFeatureSet()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#setPhrase(Ljava.util.Collection;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removePhraseCharacter(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#addPhraseCharacter(ILapplication.FontFlyweight;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/SyntacticStructure#removeHeadCharacter(I)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/SyntacticStructure@parent+application/SyntacticStructure@children" source="//@children.27" target="//@children.27" targetEnd="//@children.27/@sourceConnections.0/@children.1" label="//@children.27/@sourceConnections.0/@children.2" sourceEnd="//@children.27/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="FixedAtEdge">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="20,0" id="application/SyntacticStructure@parent+application/SyntacticStructure@children|application/SyntacticStructure#parent" anchorKind="FixedAtEdge" attachSource="true" multiplicityLabel="//@children.27/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.27/@sourceConnections.0/@children.0/@children.0" aggregationKind="Aggregration" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="39,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,20" id="application/SyntacticStructure@parent+application/SyntacticStructure@children|application/SyntacticStructure#children" anchorKind="FixedAtEdge" multiplicityLabel="//@children.27/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.27/@sourceConnections.0/@children.1/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="46,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="17,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/SyntacticStructure@syntacticStructure+syntaxTree/SyntacticAssociation@syntacticAssociation" source="//@children.27" target="//@children.11" targetEnd="//@children.27/@sourceConnections.1/@children.1" label="//@children.27/@sourceConnections.1/@children.2" sourceEnd="//@children.27/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="241,203" id="application/SyntacticStructure@syntacticStructure+syntaxTree/SyntacticAssociation@syntacticAssociation|application/SyntacticStructure#syntacticStructure" attachSource="true" multiplicityLabel="//@children.27/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.27/@sourceConnections.1/@children.0/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="97,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="17,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/SyntacticStructure@syntacticStructure+syntaxTree/SyntacticAssociation@syntacticAssociation|syntaxTree/SyntacticAssociation#syntacticAssociation" multiplicityLabel="//@children.27/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.27/@sourceConnections.1/@children.1/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="109,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/SyntacticStructure@syntacticStructure+syntaxTree/SyntacticNote@syntacticNote" source="//@children.27" target="//@children.9" targetEnd="//@children.27/@sourceConnections.2/@children.1" label="//@children.27/@sourceConnections.2/@children.2" sourceEnd="//@children.27/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="60,1033" id="application/SyntacticStructure@syntacticStructure+syntaxTree/SyntacticNote@syntacticNote|application/SyntacticStructure#syntacticStructure" attachSource="true" multiplicityLabel="//@children.27/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.27/@sourceConnections.2/@children.0/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="97,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/SyntacticStructure@syntacticStructure+syntaxTree/SyntacticNote@syntacticNote|syntaxTree/SyntacticNote#syntacticNote" multiplicityLabel="//@children.27/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.27/@sourceConnections.2/@children.1/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="74,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="17,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:DependencyEditModel" source="//@children.27" target="//@children.7" targetEnd="//@children.27/@sourceConnections.3/@children.1" sourceEnd="//@children.27/@sourceConnections.3/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="241,525" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="-2,50"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPrivateAttributes="true" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.32/@sourceConnections.0" location="5181,4981" size="191,81" id="application/XMLParser" runTimeClassModel="donald1DonaldDerrickTreeForm6948">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:MethodEditModel" id="application/XMLParser#saveFile(Lapplication.Sentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.29/@sourceConnections.0 //@children.30/@sourceConnections.0" source="//@children.28" target="//@children.31" targetEnd="//@children.28/@sourceConnections.0/@children.1" sourceEnd="//@children.28/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan" anchorType="FixedAtEdge">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="95,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="89,81" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="4947,4981" size="204,81" stereotype="entity" id="parser/LaTeXParser" runTimeClassModel="donald1DonaldDerrickTreeForm6914">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/LaTeXParser#saveFile(LsyntaxTree.Sentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" source="//@children.29" target="//@children.28/@sourceConnections.0" targetEnd="//@children.29/@sourceConnections.0/@children.1" sourceEnd="//@children.29/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="102,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="88,80"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="5402,4981" size="191,81" id="parser/TextParser" runTimeClassModel="donald1DonaldDerrickTreeForm6937">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/TextParser#saveFile(LsyntaxTree.Sentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" source="//@children.30" target="//@children.28/@sourceConnections.0" targetEnd="//@children.30/@sourceConnections.0/@children.1" sourceEnd="//@children.30/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="95,0" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="150,80"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:InterfaceEditModel" targetConnections="//@children.26/@sourceConnections.1 //@children.28/@sourceConnections.0" location="5185,4850" size="178,81" stereotype="interface" id="application/SaveFile" runTimeClassModel="donald1DonaldDerrickTreeForm6932">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="78,18">
+      <children xsi:type="editmodel:MethodEditModel" id="application/SaveFile#exportFile(Lapplication.Sentence;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="5183,5112" size="187,81" id="parser/FileParser" runTimeClassModel="donald1DonaldDerrickTreeForm4534">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="105,18">
+      <children xsi:type="editmodel:MethodEditModel" id="parser/FileParser#loadFile(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="application/XMLParser&lt;-parser/FileParser" source="//@children.32" target="//@children.28" targetEnd="//@children.32/@sourceConnections.0/@children.1" sourceEnd="//@children.32/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="185,8" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="-1,75"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.34/@sourceConnections.0" location="1584,8130" size="212,387" id="application/FontFlyweight" runTimeClassModel="donald1DonaldDerrickTreeForm7654,donald1DonaldDerrickTreeForm7606,donald1DonaldDerrickTreeForm7597,donald1DonaldDerrickTreeForm7634,donald1DonaldDerrickTreeForm7652,donald1DonaldDerrickTreeForm7754,donald1DonaldDerrickTreeForm7581,donald1DonaldDerrickTreeForm7573,donald1DonaldDerrickTreeForm7636,donald1DonaldDerrickTreeForm7576,donald1DonaldDerrickTreeForm7773,donald1DonaldDerrickTreeForm7609,donald1DonaldDerrickTreeForm7564,donald1DonaldDerrickTreeForm7586,donald1DonaldDerrickTreeForm7749,donald1DonaldDerrickTreeForm7604,donald1DonaldDerrickTreeForm7578,donald1DonaldDerrickTreeForm7771,donald1DonaldDerrickTreeForm7623,donald1DonaldDerrickTreeForm7563,donald1DonaldDerrickTreeForm7566,donald1DonaldDerrickTreeForm7734,donald1DonaldDerrickTreeForm7620,donald1DonaldDerrickTreeForm7751,donald1DonaldDerrickTreeForm7639,donald1DonaldDerrickTreeForm7618,donald1DonaldDerrickTreeForm7588">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="151,324">
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getBold()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getCharacter()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getFont()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getFontFlyweightFactory()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getFontSize()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getItalics()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getSubscript()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getSuperscript()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#getUnderline()"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setBold(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setCharacter(C)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setFont(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setFontFlyweightFactory(Lapplication.FontFlyweightFactory;)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setFontSize(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setItalics(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setSubscript(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setSuperscript(Z)"/>
+      <children xsi:type="editmodel:MethodEditModel" id="application/FontFlyweight#setUnderline(Z)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" id="application/FontFlyweight@fontFlyweight+application/FontFlyweightFactory@fontFlyweightFactory" source="//@children.33" target="//@children.7" targetEnd="//@children.33/@sourceConnections.0/@children.1" label="//@children.33/@sourceConnections.0/@children.2" sourceEnd="//@children.33/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="0,130" id="application/FontFlyweight@fontFlyweight+application/FontFlyweightFactory@fontFlyweightFactory|application/FontFlyweight#fontFlyweight" attachSource="true" multiplicityLabel="//@children.33/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.33/@sourceConnections.0/@children.0/@children.0" aggregationKind="Aggregration" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="74,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="17,14" fontInfo="Arial-8-0" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" id="application/FontFlyweight@fontFlyweight+application/FontFlyweightFactory@fontFlyweightFactory|application/FontFlyweightFactory#fontFlyweightFactory" multiplicityLabel="//@children.33/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.33/@sourceConnections.0/@children.1/@children.0" navigable="true" flags="2">
+        <children xsi:type="editmodel:LabelEditModel" size="111,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" size="7,14" fontInfo="Arial-8-0" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="1,14" fontInfo="Arial-8-0" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" location="1556,8567" size="269,43" id="syntaxTree/FontConcreteFlyweight" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <children xsi:type="editmodel:CompartmentEditModel"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="syntaxTree/FontFlyweight&lt;-syntaxTree/FontConcreteFlyweight" source="//@children.34" target="//@children.33" targetEnd="//@children.34/@sourceConnections.0/@children.1" sourceEnd="//@children.34/@sourceConnections.0/@children.0" connectionRouterKind="Manual" anchorType="ChopBox">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="186,-1" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="51,368"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true"/>
+  </children>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showPublicMethods="true" showPackageMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showInterfaceStereotype="true"/>
+</editmodel:ClassDiagramEditModel>

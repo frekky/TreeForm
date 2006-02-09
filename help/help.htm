@@ -1,0 +1,90 @@
+<html>
+<title>TreeForm 0.2 help documentation</title>
+<head><h1>TreeForm 0.2</h1></head>
+<body>
+<h2>Introduction</h2>
+
+TreeForm 0.2 is a beta version of syntax tree drawing software intended to allow Syntacticians to draw complex trees using visual tools.  This software allows the representation of Syntax trees with features such as theta roles, case markings, and feature sets.  Because of the freedom of expression allowed through this tool, it is currently possible to express index and trace information, allowing this tool to be used for serious research.  TreeForm 0.2 was written in Java, and will operate in Microsoft, Linux, and MacIntosh environments.
+<br>
+<br>
+<h2>Setup</h2>
+
+To install this software in your computer, you need to download the software from <a href="http://www.ece.ubc.ca/~donaldd/treeform.htm">my website</a> and unzip the folder in any folder of your choosing.
+<br>
+<br>
+This software requires Java 1.4.2 or higher to run.  The Java runtime can be downloaded from <a href="http://java.sun.com/j2se/1.4.2/download.html">the Java Website</a>.  When at this page, download the runtime instead of the software development package (unless you ARE a software developer and want all the extra code).
+<br>
+<br>
+To make the software work on your machine, run the batch program provided in the downloaded zip file named treeform.bat.  This file starts the treeform program and makes sure that the computer requests enough memory to create jpeg and portable network graphics (png) files if requested.  The program will still run if opened directly, but it will not let you save picture files of your trees.
+<br>
+<br>
+To use Unicode fonts, you will need some kind of Unicode keyboard.  In the windows environment, you can use Tavultesoft Keyman found at: <a href="http://www.tavultesoft.com/keyman/downloads/">Tavultesoft</a>.  As of the writing of this document, the current version of Keyman is Keyman 6.0.164.0.
+<br>
+<br>
+The most notable Unicode font for linguists is the Doulous SIL font.  This font contains all the IPA symbols and diacritics, and is invaluable to any linguist wishing to represent IPA codes in a font usable by all Unicode computer systems.  The font can be found at:
+<a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=DoulosSIL_download">The Doulos SIL</a> site.  Download the font appropriate to your system.
+<br>
+<br>
+To use the font in Tavultesoft Keyman, you will need the proper keyboard.  This keyboard can be found at: <a href="http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=UniIPAKeyboard">the SIL site</a>.
+I recommend that you then unzip the file, and run Keyman.  Then right-click the keyman icon in your windows taskbar, and select the menu option "Keyman Configuration".  Then select the "Install keyboard" option, and install the new keyboard.  You will be able to select that keyboard in your program, and type with it.  (This keyboard comes with a PDF file detailing how to use it.)
+<br>
+<br>
+<h2>Creating a Tree</h2>
+First, run the program and either open a saved tree or create a new tree (using the menu option of the toolbar icon in the upper left hand corner).  Then left-click on any of the icons displayed below:
+<br><br><img src="syntacticstructure.jpg"></img><br><br>
+based on the structure you wish to draw.  Hold the mouse button down while you drag the picture onto the main canvas.
+<br><br><img src="first_drag.jpg"></img><br><br>
+Then release the mouse button, and the selected structure will be drawn on the main screen.
+<br><br><img src="first_drop.jpg"></img><br><br>
+To add structures onto trees, repeat the procedure, and make sure that the existing structure you want c-commanding your new structure is under the mouse pointer (you will know for sure because it will be highlighted light blue).  Note that if you highlight a null object (Ø), it will be replaced by the new structure, as in the screenshots below.
+<table><tr><td><br><br><img src="second_drag.jpg"></img><br><br></td>
+<td><br><br><img src="second_drop.jpg"></img><br><br></td></tr></table>
+<h2>Reordering a Tree</h2>
+If you move your mouse over a part of your tree and right-click (apple-click on MACs) you will be given the option to delete or reposition subtrees.
+<br><br><img src="right_click.jpg"></img><br><br>
+
+Deleting a subtree permanently delete the highlighted tree item and all of it’s subtrees.  Repositioning a subtree has the same effect as adding a new structure to a binary (or larger) tree element, you get a screen that looks like this:
+<br><br><img src="reposition_tree.jpg"></img><br><br>
+
+Move the mouse until the green dot is in the position in which you want the new tree drawn.  Then left-click and the tree will be drawn appropriately.
+<br><br><img src="trinary_tree.jpg"></img><br><br>
+<br>
+<br>
+<h2>Changing Text</h2>
+
+Changing text is easy.  All you need to do is move your mouse over the text you want to change, and left-click.  Then move the cursor position as you would in any drawing program, type, delete, use backspace, copy and paste as you would in any text editor program.
+<table><tr><td><br><br><img src="typing.jpg"></img><br><br></td>
+<td><br><br><img src="typing2.jpg"></img><br><br></td></tr></table>
+<br>
+<br>
+<h2>Adding Features</h2>
+
+Add features by clicking on and dragging any of the feature objects:
+<br><br><img src="syntacticfeature.jpg"></img><br><br>
+just as you would a syntactic structure.  For example:
+
+<br><br><img src="feature.jpg"></img><br><br>
+<br><br><img src="feature2.jpg"></img><br><br>
+<br>
+Features come in groups, and if you right-click on a feature set, you receive the option to delete a feature (like <agent> or <theme>), or the whole set (in this case <agent>,<theme>).
+<br><br><img src="featureset.jpg"></img><br><br>
+You can also add a new feature, for instance if you needed a third theta role like <proposition>.
+<br><br><img src="feature_add.jpg"></img><br><br>
+<br>
+<br>
+<h2>Adding Associations</h2>
+To add an association, hold down shift and left-click the feature you want to associate:
+
+<br><br><img src="association.jpg"></img><br><br>
+then hold the mouse button down and drag the feature until you highlight the associated feature.  You can then release the mouse button, and the association will be complete.
+<br><br><img src="association2.jpg"></img><br><br>
+Changing text in a feature changes the text in all the associations.
+<br>
+Note that by right-clicking an association, you can get a menu option to delete the association.
+<br><br><img src="association_delete.jpg"></img><br><br>
+<h2>Using a Unicode Keyboard</h2>
+
+Using a unicode keyboard allows you to add unicode text, like the kind seen in this image.
+<br><br><img src="unicode.jpg"></img><br><br>
+</body>
+</html>

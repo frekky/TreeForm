@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TreeForm" default="javadoc">
+    <target name="javadoc">
+        <javadoc
+            destdir="C:\Documents and Settings\Donald Derrick\Desktop\TreeForm\doc"
+            access="public" use="true" notree="false" nonavbar="false"
+            noindex="false" splitindex="true" author="true"
+            version="true" nodeprecatedlist="false" nodeprecated="false"
+            packagenames="staticFunctions,userInterface,parser,syntaxTree,enumerators"
+            sourcefiles="TreeFormBundle.java,TreeFormBundle_fr_CA.java"
+            sourcepath="." classpath="." doctitle="TreeFrom"/>
+    </target>
+</project>
