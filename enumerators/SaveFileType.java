@@ -44,5 +44,11 @@ public final class SaveFileType {
 	 * @uml.property name="lATEX" changeability="frozen" 
 	 */
 	public static final SaveFileType LATEX = new SaveFileType();
+	
+	/**
+	 * 
+	 * @uml.property name="SVG" changeability="frozen" 
+	 */
+	public static final SaveFileType SVG = new SaveFileType();
 
 }

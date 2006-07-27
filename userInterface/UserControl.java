@@ -36,8 +36,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.HashMap;
@@ -65,6 +69,17 @@ import syntaxTree.SyntaxFacade;
 import enumerators.ExportPictureType;
 import enumerators.SaveFileType;
 import enumerators.SyntacticViewLayout;
+
+
+import java.io.Writer;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
+import org.apache.batik.svggen.SVGGraphics2D;
+import org.apache.batik.svggen.SVGGraphics2DIOException;
+import org.apache.batik.dom.GenericDOMImplementation;
+import org.w3c.dom.Document;
+import org.w3c.dom.DOMImplementation;
+
 
 /**
  * 
@@ -334,6 +349,8 @@ public class UserControl{
 			System.out.println("Open About");
 			HelpFrame lHelpFrame = new HelpFrame();
 		}
+
+		
 /**
  * 
  * @param pSyntaxFacade The syntaxFacade for the selected InternalFrame
@@ -356,6 +373,61 @@ public class UserControl{
 					XMLParser lXML = new XMLParser();
 					lXML.saveFile(pSyntaxFacade);
 				}
+				if (pSFT == SaveFileType.SVG)
+				{
+					Container lC = mUserFrame.getInternalFrame().getContentPane();
+					Color lColor = lC.getBackground();
+					lC.setBackground(new Color(255,255,255));
+					if(mUserFrame.getObservableClipboard().getValue() != null)
+					{
+						mUserFrame.getObservableClipboard().getValue().setCarat(false);
+						mUserFrame.getObservableClipboard().getValue().repaint();
+					}
+					//PrintUtilities.printComponent(lC);
+					// batik converter.
+
+					DOMImplementation domImpl =
+					GenericDOMImplementation.getDOMImplementation();
+					
+					// Create an instance of org.w3c.dom.Document
+					Document document = domImpl.createDocument(null, "svg", null);
+					
+					// Create an instance of the SVG Generator
+					SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+					
+					// Ask the test to render into the SVG Graphics2D implementation
+					
+					lC.paint(svgGenerator);
+					
+					// Finally, stream out SVG to the standard output using UTF-8
+					// character to byte encoding
+					boolean useCSS = true; // we want to use CSS style attribute
+					
+	
+			        Writer out;
+					try {
+						out = new FileWriter(pFile);
+						//out = new OutputStreamWriter(System.out, "UTF-8");
+						svgGenerator.stream(out, useCSS);
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (SVGGraphics2DIOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					//end
+					lC.setBackground(lColor);
+					if(mUserFrame.getObservableClipboard().getValue() != null)
+					{
+						mUserFrame.getObservableClipboard().getValue().setCarat(true);
+						mUserFrame.getObservableClipboard().getValue().repaint();
+					}
+				}
 			}
 		}
 
@@ -373,7 +445,7 @@ public class UserControl{
 			chooser.setDialogTitle("Save Syntax Tree");
 			chooser.setAcceptAllFileFilterUsed(false);
 			chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-			//chooser.addChoosableFileFilter(new FileFilterLIN());
+			chooser.addChoosableFileFilter(new FileFilterSVG());
 			//chooser.addChoosableFileFilter(new FileFilterLTX());
 			//chooser.addChoosableFileFilter(new FileFilterTXT());
 			chooser.setFileFilter(new FileFilterXML());
@@ -384,14 +456,25 @@ public class UserControl{
 				 SaveFileType lSaveFileType = null;
 				 if (chooser.getFileFilter() instanceof FileFilterXML)
 				 {
-				 	lSaveFileType = SaveFileType.XML;
+				 	 lSaveFileType = SaveFileType.XML;
+				 	 File lFile = chooser.getSelectedFile();
+					 lFile = checkExtension(lFile,".xml");
+					 pSyntaxFacade.setFile(lFile.getPath());
+					 pSyntaxFacade.setName(lFile.getName());
+					 pSyntaxFacade.getUIF().setTitle(lFile.getName());
+					 saveTree(pSyntaxFacade, lFile, lSaveFileType);
 				 }
-				 File lFile = chooser.getSelectedFile();
-				 lFile = checkExtension(lFile,".xml");
-				 pSyntaxFacade.setFile(lFile.getPath());
-				 pSyntaxFacade.setName(lFile.getName());
-				 pSyntaxFacade.getUIF().setTitle(lFile.getName());
-				 saveTree(pSyntaxFacade, lFile, lSaveFileType);
+				 if (chooser.getFileFilter() instanceof FileFilterSVG)
+				 {
+				 	lSaveFileType = SaveFileType.SVG;
+				 	File lFile = chooser.getSelectedFile();
+					 lFile = checkExtension(lFile,".svg");
+					 pSyntaxFacade.setFile(lFile.getPath());
+					 pSyntaxFacade.setName(lFile.getName());
+					 pSyntaxFacade.getUIF().setTitle(lFile.getName());
+					 saveTree(pSyntaxFacade, lFile, lSaveFileType);
+				 }
+				 
 			  }
 		}
 
