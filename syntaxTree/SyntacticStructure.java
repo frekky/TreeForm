@@ -519,28 +519,23 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		super.deleteHead();
 		testXY();
 	}
-public double getChange() {
-		// TODO Auto-generated method stub
+	public double getChange() {
 		return mChange;
 	}
-public void setChange(double change) {
+	public void setChange(double change) {
 		mChange = change;
-		
 	}
-public double getShift() {
-	// TODO Auto-generated method stub
-	return mShift;
-}
-public void setShift(double shift) {
-	mShift = shift;
-	
-}
-public void setButtonX(double x) {
-	mX = x;
-	
-}
-public double getButtonX()
-{
-	return mX;
-}
+	public double getShift() {
+		return mShift;
+	}
+	public void setShift(double shift) {
+		mShift = shift;
+	}
+	public void setButtonX(double x) {
+		mX = x;
+	}
+	public double getButtonX()
+	{
+		return mX;
+	}
 }
