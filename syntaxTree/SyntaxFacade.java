@@ -90,6 +90,7 @@ public class SyntaxFacade {
 	 */
 	private Sentence mSentence;
 	private SyntacticStructure mDefaultAncestor;
+	private double mLeftShift;
 
 
 
@@ -210,16 +211,18 @@ public void displayTree() {
 	{
 		treeLayout(mSentence);
 		getUIF().revalidate();
-		System.out.println("done!");
+		//System.out.println("done!");
 	}
 }
 
 private void treeLayout(Sentence sentence) {
 	SyntacticStructure mR = (SyntacticStructure) mSentence.getChildren().getFirst();
 	mDefaultAncestor = mR;
+	mLeftShift = 0;
 	initializeTree(mR);
 	firstWalk(mR,0);
 	secondWalk(mR,-mR.getPrelim(),0);
+	thirdWalk(mR);
 }
 
 
@@ -247,7 +250,9 @@ private void firstWalk(SyntacticStructure v,int position) {
 		else
 		{
 			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(position-1)));
-			v.setPrelim(w.getPrelim() + 50);
+			v.setPrelim(w.getPrelim() + (w.getButtonWidth()
+					* Sizer.scaleWidth()
+					* getUIF().getScale()));
 			//System.out.println("leaf prelim : " + v.getPrelim());
 		}
 	}
@@ -270,9 +275,9 @@ private void firstWalk(SyntacticStructure v,int position) {
 			SyntacticStructure w = ((SyntacticStructure) 
 					v.getSyntacticParent().getChildren().get(position-1));
 			v.setPrelim(w.getPrelim() 
-					//+ (w.getButtonWidth() * Sizer.scaleWidth()
-					//* getUIF().getScale())
-					+50
+					+ (w.getButtonWidth()
+							* Sizer.scaleWidth()
+							* getUIF().getScale())
 					);
 			v.setMod(v.getPrelim() - midpoint);
 			//System.out.println("node prelim : mod " + v.getPrelim() + " : " + v.getMod());
@@ -306,8 +311,11 @@ private void apportion(SyntacticStructure v, int p)
 			VON = nextLeft(VON);
 			VOP = nextRight(VOP);
 			VOP.setAncestor(v);
-			
-			double shift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) + 50;
+			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(p-1)));
+
+			double shift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) + (w.getButtonWidth()
+					* Sizer.scaleWidth()
+					* getUIF().getScale());
 			if (shift > 0)
 			{
 				moveSubtree(ancestor(VIN,v,mDefaultAncestor),v,shift);
@@ -400,7 +408,10 @@ private SyntacticStructure ancestor(SyntacticStructure vin, SyntacticStructure v
 
 private void secondWalk(SyntacticStructure v, double m, double level) {
 	v.setButtonX(v.getPrelim() + m);
-	//System.out.println(m + " : "+ v.getButtonX());
+	if (v.getButtonX() < mLeftShift)
+	{
+		mLeftShift = v.getButtonX();
+	}
 	v.setButtonY(level * 35);
 	v.setBounds(
 			(int) (v.getButtonX()
@@ -419,6 +430,17 @@ private void secondWalk(SyntacticStructure v, double m, double level) {
 	for(int i = 0;i < v.getChildren().size();i++)
 	{
 		secondWalk((SyntacticStructure) v.getChildren().get(i), m + v.getMod(), level + 1);
+	}
+}
+
+private void thirdWalk(SyntacticStructure v)
+{
+	Rectangle r = v.getBounds();
+	r.x = (int) (r.x - (mLeftShift * Sizer.scaleWidth() * getUIF().getScale()));
+	v.setBounds(r);
+	for(int i = 0;i < v.getChildren().size();i++)
+	{
+		thirdWalk((SyntacticStructure) v.getChildren().get(i));
 	}
 }
 
