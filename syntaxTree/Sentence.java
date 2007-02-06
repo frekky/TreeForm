@@ -19,12 +19,7 @@
 
 package syntaxTree;
 
-import java.util.Collection;
 import java.util.LinkedList;
-
-import javax.swing.JMenuItem;
-
-import userInterface.UserFrame;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * A simple class that I probably shouldn't have made to hold the top of sentences * <br> * In retrospect, I should have just used a composite for this task. * <br> * Ahh, well, live and learn. * <br>
@@ -35,37 +30,7 @@ import userInterface.UserFrame;
 
 public class Sentence implements RepositionTree{
 
-	/**
-	 * 
-	 * @uml.property name="mMoveSubtree"
-	 * @uml.associationEnd 
-	 * @uml.property name="mMoveSubtree" multiplicity="(0 1)"
-	 */
-	private JMenuItem mMoveSubtree;
-
-	private int childCount;
-
-	/**
-	 * 
-	 * @uml.property name="userUI"
-	 * @uml.associationEnd 
-	 * @uml.property name="userUI" multiplicity="(0 1)"
-	 */
-	private UserFrame userUI;
-
-	/**
-	 * 
-	 * @uml.property name="syntacticStructure" 
-	 */
-	private Collection syntacticStructure;
-
 	private String mName;
-
-	/**
-	 * 
-	 * @uml.property name="syntacticStructureCount" 
-	 */
-	private int syntacticStructureCount;
 
 	/**
 	 * 
@@ -74,20 +39,6 @@ public class Sentence implements RepositionTree{
 	 * @uml.property name="children" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticStructure"
 	 */
 	private LinkedList children;
-
-	/**
-	 * 
-	 * @uml.property name="syntacticNote" 
-	 */
-	private Collection syntacticNote;
-
-	/**
-	 * 
-	 * @uml.property name="mDeleteSubtree"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDeleteSubtree" multiplicity="(0 1)"
-	 */
-	private JMenuItem mDeleteSubtree;
 
 	public Sentence() {
 		super();

@@ -38,6 +38,10 @@ public class UserMenuItemUndo extends JMenuItem implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
 	 * @uml.property name="mObservableStack"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableStack" multiplicity="(1 1)"

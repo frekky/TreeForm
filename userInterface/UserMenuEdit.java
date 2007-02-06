@@ -42,6 +42,11 @@ public class UserMenuEdit extends JMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mUserFrame"
 	 * @uml.associationEnd 
 	 * @uml.property name="mUserFrame" multiplicity="(1 1)"

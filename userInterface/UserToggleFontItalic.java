@@ -37,6 +37,11 @@ public class UserToggleFontItalic extends JToggleButton implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableFontItalic"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableFontItalic" multiplicity="(1 1)"
@@ -100,16 +105,9 @@ public class UserToggleFontItalic extends JToggleButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	private boolean mActivation;
+	private  ObservableNew mObservableNew;
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
+	
 	public UserToggleFontItalic(UserFrame pUserFrame, 
 	ImageIcon pEnableIcon,
 	ImageIcon pDisableIcon,
@@ -131,9 +129,8 @@ public class UserToggleFontItalic extends JToggleButton implements Observer{
 	 * 
 	 */
 
-	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontItalic pObservableFontItalic) {
+	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontItalic pObservableFontItalic, ObservableNew pObservableNew) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;
@@ -142,33 +139,37 @@ public class UserToggleFontItalic extends JToggleButton implements Observer{
 		mActiveIconSmall = pActiveIconSmall;
 		mSize = pSize;
 		mObservableFontItalic = pObservableFontItalic;
-		this.disable();
-	}
+		mObservableNew = pObservableNew;
 
-	public void enable()
+		setEnabled(false);
+	}
+	public void setEnabled(boolean b)
 	{
-		super.enable();
-		if (mSize)
+		if(b)
 		{
-			this.setIcon(mEnableIcon);
+			if (mSize)
+			{
+				this.setIcon(mEnableIcon);
+			}
+			else
+			{
+				this.setIcon(mEnableIconSmall);
+			}
 		}
 		else
 		{
-			this.setIcon(mEnableIconSmall);
+			if (mSize)
+			{
+				this.setIcon(mDisableIcon);
+			}
+			else
+			{
+				this.setIcon(mDisableIconSmall);
+			}
 		}
+		super.setEnabled(b);
 	}
-	public void disable()
-	{
-		super.disable();
-		if (mSize)
-		{
-			this.setIcon(mDisableIcon);
-		}
-		else
-		{
-			this.setIcon(mDisableIconSmall);
-		}
-	}
+	
 	public void activate()
 	{
 		mHoldIcon = (ImageIcon) this.getIcon();
@@ -198,6 +199,17 @@ public class UserToggleFontItalic extends JToggleButton implements Observer{
 		if (arg0 == mObservableFontItalic)
 		{
 			this.setSelected(mObservableFontItalic.getValue());
+		}
+		if (arg0 == mObservableNew)
+		{
+			if (mObservableNew.getValue() == 0)
+			  {
+				this.setEnabled(false);
+			  }
+			  else
+			  {
+				this.setEnabled(true);
+			  }
 		}
 	}
 }

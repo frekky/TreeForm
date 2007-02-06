@@ -35,6 +35,11 @@ public class SFPopupMenu extends JPopupMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mAddFeature"
 	 * @uml.associationEnd 
 	 * @uml.property name="mAddFeature" multiplicity="(1 1)"

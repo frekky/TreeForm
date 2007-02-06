@@ -37,6 +37,11 @@ public class UserButtonCopy extends JButton implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableNew"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableNew" multiplicity="(1 1)"
@@ -100,17 +105,7 @@ public class UserButtonCopy extends JButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	private boolean mActivation;
-
 	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
-/**
  * 
  * @param pUserFrame The UserFrame for this instance of TreeForm
  * @param pEnableIcon The large icon for an enabled button
@@ -133,7 +128,6 @@ public class UserButtonCopy extends JButton implements Observer{
 	ImageIcon pDisableIconSmall,
 	ImageIcon pActiveIconSmall, boolean pSize, ObservableNew pObservableNew) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;

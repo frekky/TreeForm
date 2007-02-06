@@ -43,6 +43,11 @@ public class UserObjectBrowser extends JPanel {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mMorph"
 	 * @uml.associationEnd 
 	 * @uml.property name="mMorph" multiplicity="(1 1)"
@@ -64,14 +69,6 @@ public class UserObjectBrowser extends JPanel {
 	 * @uml.property name="mTrace" multiplicity="(1 1)"
 	 */
 	private UserBrowserButton mTrace;
-
-	/**
-	 * 
-	 * @uml.property name="mIndex"
-	 * @uml.associationEnd 
-	 * @uml.property name="mIndex" multiplicity="(0 1)"
-	 */
-	private UserBrowserButton mIndex;
 
 	/**
 	 * 

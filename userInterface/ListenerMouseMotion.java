@@ -27,8 +27,6 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.SwingUtilities;
 
-import syntaxTree.SyntacticStructure;
-
 /**
  * @author Donald Derrick
  * @version 0.1 
@@ -39,14 +37,6 @@ import syntaxTree.SyntacticStructure;
  *  
  */
 public class ListenerMouseMotion implements MouseMotionListener {
-
-	/**
-	 * 
-	 * @uml.property name="mSelected"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSelected" multiplicity="(0 1)"
-	 */
-	private SyntacticStructure mSelected;
 
 	/**
 	 * 

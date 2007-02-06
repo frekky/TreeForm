@@ -39,6 +39,11 @@ public class UserMenuView extends JMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mZoom"
 	 * @uml.associationEnd 
 	 * @uml.property name="mZoom" multiplicity="(1 1)"

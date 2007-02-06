@@ -36,6 +36,11 @@ public class UserMenuFormat extends JMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mFont"
 	 * @uml.associationEnd 
 	 * @uml.property name="mFont" multiplicity="(1 1)"

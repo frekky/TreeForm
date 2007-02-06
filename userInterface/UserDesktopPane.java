@@ -46,6 +46,11 @@ public class UserDesktopPane extends JDesktopPane {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mUserFrame"
 	 * @uml.associationEnd 
 	 * @uml.property name="mUserFrame" multiplicity="(1 1)" inverse="mDesktopPane:userInterface.UserFrame"

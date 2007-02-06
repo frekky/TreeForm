@@ -469,7 +469,7 @@ public class XMLParser implements SaveFile, LoadFile {
 					mInternalFrame.getContentPane().add(lAS);
 					lAS.getSyntacticStructure().testXY();
 				}
-				mSyntaxFacade.redisplayTree();
+				mSyntaxFacade.displayTree();
 				
 			}
 			else

@@ -43,6 +43,11 @@ package userInterface;
 	public class UserMenuWindow extends JMenu {
 
 		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+		/**
 		 * 
 		 * @uml.property name="mUserFrame"
 		 * @uml.associationEnd 
@@ -157,6 +162,10 @@ package userInterface;
 		 */
 		public class ChildMenuItem extends JCheckBoxMenuItem {
 
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 			/**
 			 * 
 			 * @uml.property name="frame"

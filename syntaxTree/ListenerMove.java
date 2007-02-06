@@ -35,29 +35,11 @@ public class ListenerMove implements ActionListener {
 
 	/**
 	 * 
-	 * @uml.property name="mSS"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSS" multiplicity="(1 1)"
-	 */
-	private SyntacticStructure mSS;
-
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mSF;
-
-	/**
-	 * 
 	 * @param pSF The SyntaxFacade holding all these commands
 	 * @param pSS The SyntacticStructure attached to this listener.
 	 */
 	public ListenerMove(SyntaxFacade pSF, SyntacticStructure pSS)
 	{
-		mSF = pSF;
-		mSS = pSS;
 	}
 /**
  * DISABLED

@@ -70,6 +70,10 @@ import userInterface.UserInternalFrame;
  */
 public class EditableComponent extends JComponent {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int mTextHeight;
 	private int mTextWidth;
 
@@ -158,13 +162,13 @@ public class EditableComponent extends JComponent {
 					setHighlightEnd(getHighlightBegin() + 1);
 				}
 				deleteHead();
-				mUserInternalFrame.getSyntaxFacade().redisplayTree();
+				mUserInternalFrame.getSyntaxFacade().displayTree();
 			} else if (location == KeyEvent.VK_BACK_SPACE) {
 				if (getHighlightBegin() == getHighlightEnd()) {
 					setHighlightBegin(getInsertionIndex() - 1);
 				}
 				deleteHead();
-				mUserInternalFrame.getSyntaxFacade().redisplayTree();
+				mUserInternalFrame.getSyntaxFacade().displayTree();
 			}
 
 		}
@@ -192,7 +196,7 @@ public class EditableComponent extends JComponent {
 				setInsertionIndex(getInsertionIndex() + 1);
 				setHighlightBegin(getInsertionIndex());
 				setHighlightEnd(getInsertionIndex());
-				mUserInternalFrame.getSyntaxFacade().redisplayTree();
+				mUserInternalFrame.getSyntaxFacade().displayTree();
 			}
 		}
 	}
@@ -391,7 +395,7 @@ public class EditableComponent extends JComponent {
 				}
 				else
 				{
-					mUserInternalFrame.getSyntaxFacade().redisplayTree(); 
+					mUserInternalFrame.getSyntaxFacade().displayTree(); 
 				}
 				Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 				setCursor(lDefaultCursor);
@@ -924,7 +928,7 @@ private double getZero(double d) {
 				getHighlightBegin(),
 				getHighlightEnd());
 			testXY();
-			mUserInternalFrame.getSyntaxFacade().redisplayTree();
+			mUserInternalFrame.getSyntaxFacade().displayTree();
 		}
 	}
 /**

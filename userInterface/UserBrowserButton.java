@@ -51,6 +51,11 @@ import staticFunctions.Sizer;
  */
 public class UserBrowserButton extends JButton {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Object mButtonType;
 
 	/**

@@ -49,6 +49,11 @@ public class UserGlassPane extends JComponent {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mSSChild"
 	 * @uml.associationEnd 
 	 * @uml.property name="mSSChild" multiplicity="(1 1)"
@@ -258,7 +263,7 @@ public class UserGlassPane extends JComponent {
 		mSSChild.setSyntacticParent(mSS);
 		mUserFrame
 			.getSyntaxFacade()
-			.redisplayTree();
+			.displayTree();
 		mUserFrame.getDesktopPane().getInternalFrame().deactivateGlassPane();
 	}
 }

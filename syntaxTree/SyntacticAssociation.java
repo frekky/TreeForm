@@ -34,6 +34,11 @@ public class SyntacticAssociation extends EditableComponent{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mSyntacticFeature"
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticFeature" multiplicity="(0 1)" inverse="mSyntacticAssociation:syntaxTree.SyntacticFeature"

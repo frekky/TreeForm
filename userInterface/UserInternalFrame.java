@@ -40,16 +40,12 @@ import enumerators.SyntacticViewLayout;
  */
 public class UserInternalFrame extends JInternalFrame{
 
-	private int mMinWidth;
-	private int mMinHeight;
-
 	/**
 	 * 
-	 * @uml.property name="mObservableZoom"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableZoom" multiplicity="(0 1)"
 	 */
-	private ObservableZoom mObservableZoom;
+	private static final long serialVersionUID = 1L;
+	private int mMinWidth;
+	private int mMinHeight;
 
 	/**
 	 * 
@@ -257,7 +253,7 @@ public class UserInternalFrame extends JInternalFrame{
 		lUGP.addMouseListener(lListenerGlassPane);
 		lUGP.addMouseMotionListener(lListenerGlassPane);
 		this.setGlassPane(lUGP);
-		this.getGlassPane().show();
+		this.getGlassPane().setVisible(true);
 	}
 /**
  * turns off the glass pane - needed to continue editing trees.
@@ -266,7 +262,7 @@ public class UserInternalFrame extends JInternalFrame{
 	public void deactivateGlassPane()
 	{
 		this.setGlassPane(new JLabel());
-		this.getGlassPane().hide();		
+		this.getGlassPane().setVisible(false);		
 	}
 /**
  * 

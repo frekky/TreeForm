@@ -26,8 +26,7 @@ package enumerators;
  */
 
 public final class ExportPictureType {
-	private String mName;
-	private ExportPictureType(String pName){mName = pName;}
+	private ExportPictureType(String pName){}
 	public static final ExportPictureType JPG300 = new ExportPictureType("JPG300");
 	public static final ExportPictureType JPG600 = new ExportPictureType("JPG600");
 	public static final ExportPictureType PNG300 = new ExportPictureType("PNG300");

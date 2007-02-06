@@ -35,6 +35,11 @@ public class UserButtonRedo extends JButton implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableStack"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableStack" multiplicity="(1 1)"
@@ -98,16 +103,6 @@ public class UserButtonRedo extends JButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	private boolean mActivation;
-
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
 	/**
 	 * 
 	 * @param pUserFrame The UserFrame for this instance of TreeForm
@@ -129,7 +124,6 @@ public class UserButtonRedo extends JButton implements Observer{
 	ImageIcon pDisableIconSmall,
 	ImageIcon pActiveIconSmall, boolean pSize, ObservableStack pObservableStack) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;

@@ -38,6 +38,11 @@ public class UserToggleFontBold extends JToggleButton implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableFontBold"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableFontBold" multiplicity="(1 1)"
@@ -101,16 +106,8 @@ public class UserToggleFontBold extends JToggleButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	private boolean mActivation;
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
+	private  ObservableNew mObservableNew;
 	/**
 	 * 
 	 * @param pUserFrame The UserFrame for this instance of TreeForm
@@ -123,6 +120,7 @@ public class UserToggleFontBold extends JToggleButton implements Observer{
 	 * @param pSize The size of the button (as dictated by screen resolution)
 	 * @param pObservableFontBold The shared observable used to hold whether a font is
 	 * bold or not.
+	 * @param pObservableNew 
 	 * 
 	 */
 	public UserToggleFontBold(UserFrame pUserFrame, 
@@ -131,9 +129,8 @@ public class UserToggleFontBold extends JToggleButton implements Observer{
 	ImageIcon pActiveIcon, 
 	ImageIcon pEnableIconSmall,
 	ImageIcon pDisableIconSmall,
-	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontBold pObservableFontBold) {
+	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontBold pObservableFontBold, ObservableNew pObservableNew) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;
@@ -142,33 +139,37 @@ public class UserToggleFontBold extends JToggleButton implements Observer{
 		mActiveIconSmall = pActiveIconSmall;
 		mSize = pSize;
 		mObservableFontBold = pObservableFontBold;
-		this.disable();
+		mObservableNew = pObservableNew;
+		setEnabled(false);
 	}
 
-	public void enable()
+	public void setEnabled(boolean b)
 	{
-		super.enable();
-		if (mSize)
+		if(b)
 		{
-			this.setIcon(mEnableIcon);
+			if (mSize)
+			{
+				this.setIcon(mEnableIcon);
+			}
+			else
+			{
+				this.setIcon(mEnableIconSmall);
+			}
 		}
 		else
 		{
-			this.setIcon(mEnableIconSmall);
+			if (mSize)
+			{
+				this.setIcon(mDisableIcon);
+			}
+			else
+			{
+				this.setIcon(mDisableIconSmall);
+			}
 		}
+		super.setEnabled(b);
 	}
-	public void disable()
-	{
-		super.disable();
-		if (mSize)
-		{
-			this.setIcon(mDisableIcon);
-		}
-		else
-		{
-			this.setIcon(mDisableIconSmall);
-		}
-	}
+	
 	public void activate()
 	{
 		mHoldIcon = (ImageIcon) this.getIcon();
@@ -198,6 +199,17 @@ public class UserToggleFontBold extends JToggleButton implements Observer{
 		if (arg0 == mObservableFontBold)
 		{
 			this.setSelected(mObservableFontBold.getValue());
+		}
+		if (arg0 == mObservableNew)
+		{
+			if (mObservableNew.getValue() == 0)
+			  {
+				this.setEnabled(false);
+			  }
+			  else
+			  {
+				this.setEnabled(true);
+			  }
 		}
 	}
 }

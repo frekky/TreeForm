@@ -35,6 +35,11 @@ public class SSPopupMenu extends JPopupMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mSF"
 	 * @uml.associationEnd 
 	 * @uml.property name="mSF" multiplicity="(1 1)"

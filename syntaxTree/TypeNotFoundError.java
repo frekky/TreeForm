@@ -31,6 +31,11 @@ package syntaxTree;
  * but time runs out!
  */
 public class TypeNotFoundError extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String getMessage()
 	{
 		return "Please supply a SyntacticStructureType";

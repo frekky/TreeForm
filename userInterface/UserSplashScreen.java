@@ -51,6 +51,11 @@ import java.awt.*;
 public final class UserSplashScreen extends Frame {
 
   /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+/**
   * @param aImageId must have content, and is used by  
   * <code>Class.getResource</code> to retrieve the splash screen image.
   */
@@ -87,6 +92,7 @@ public final class UserSplashScreen extends Frame {
     }
 
     SplashWindow splashWindow = new SplashWindow(this,mImage);
+    splashWindow.validate();
   }
   
   
@@ -115,7 +121,11 @@ public final class UserSplashScreen extends Frame {
   }
  
   private class SplashWindow extends Window {
-    SplashWindow(Frame aParent, Image aImage) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	SplashWindow(Frame aParent, Image aImage) {
        super(aParent);
        fImage = aImage;
        setSize(fImage.getWidth(null), fImage.getHeight(null));

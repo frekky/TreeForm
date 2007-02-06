@@ -35,6 +35,11 @@ public class SAPopupMenu extends JPopupMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mSF"
 	 * @uml.associationEnd 
 	 * @uml.property name="mSF" multiplicity="(1 1)"
@@ -48,14 +53,6 @@ public class SAPopupMenu extends JPopupMenu {
 	 * @uml.property name="mSA" multiplicity="(1 1)"
 	 */
 	private SyntacticAssociation mSA;
-
-	/**
-	 * 
-	 * @uml.property name="mRepositionSubtree"
-	 * @uml.associationEnd 
-	 * @uml.property name="mRepositionSubtree" multiplicity="(0 1)"
-	 */
-	private JMenuItem mRepositionSubtree;
 
 	/**
 	 * 

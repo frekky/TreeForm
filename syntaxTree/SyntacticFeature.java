@@ -36,6 +36,11 @@ public class SyntacticFeature extends EditableComponent{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mSyntacticAssociation"
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticAssociation" multiplicity="(0 -1)" inverse="mSyntacticFeature:syntaxTree.SyntacticAssociation"
@@ -102,7 +107,7 @@ public class SyntacticFeature extends EditableComponent{
 			((SyntacticAssociation)getSyntacticAssociation().get(i)).setHead(pAT);
 		}
 		getSyntacticFeatureSet().testXY();
-		getUserInternalFrame().getSyntaxFacade().redisplayTree();
+		getUserInternalFrame().getSyntaxFacade().displayTree();
 	}
 /**
  * @param pAT The attributedString to reset.

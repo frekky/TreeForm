@@ -63,7 +63,6 @@ public class ListenerSaveAs implements ActionListener {
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {
-		String lFileName="";
 		SyntaxFacade lSyntaxFacade = mUserFrame.getSyntaxFacade();
 		mUserFrame.getUserControl().saveAsTree(lSyntaxFacade);
 	}

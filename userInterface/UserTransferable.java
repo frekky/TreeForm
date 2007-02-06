@@ -22,7 +22,6 @@ package userInterface;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
@@ -43,8 +42,7 @@ public class UserTransferable implements Transferable {
 	protected static DataFlavor attributedStringFlavor = new DataFlavor(AttributedString.class,"Attributed String");
 	protected static DataFlavor[] mDataFlavors = {
 	   attributedStringFlavor,       // Transfer as an AttributedString object
-	   DataFlavor.stringFlavor,      // Transfer as a String object
-	   DataFlavor.plainTextFlavor,   // Transfer as a stream of Unicode text
+	   DataFlavor.stringFlavor      // Transfer as a String object
 	 };
 	 AttributedString mAT;
 /**
@@ -67,8 +65,7 @@ public class UserTransferable implements Transferable {
  */
 	public boolean isDataFlavorSupported(DataFlavor pFlavor) {
 		if (pFlavor.equals(attributedStringFlavor) || 
-		pFlavor.equals(DataFlavor.stringFlavor) ||
-		pFlavor.equals(DataFlavor.plainTextFlavor)) return true;
+		pFlavor.equals(DataFlavor.stringFlavor)) return true;
 	return false;
 	}
 /**
@@ -93,10 +90,6 @@ public class UserTransferable implements Transferable {
 		   {
 			return lString;
 		   	} 
-		   else if (flavor.equals(DataFlavor.plainTextFlavor))
-		   {
-			 return new ByteArrayInputStream(lString.getBytes("Unicode"));
-		   }
 		   else throw new UnsupportedFlavorException(flavor);
 		   }			
 	}

@@ -53,6 +53,11 @@ public class UserFrame extends JFrame{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableSuperscript"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableSuperscript" multiplicity="(1 1)"
@@ -254,6 +259,7 @@ public class UserFrame extends JFrame{
 		mUserControl = new UserControl(this);
 		mPanelNorth = new JPanel();
 		mPanelCenter = new JPanel();
+		mPanelCenter.validate();
 		mMenuBar = new UserMenuBar(this);
 		// make a pretty picture! (SNAP!)
 		setLayout();
@@ -426,7 +432,7 @@ public class UserFrame extends JFrame{
 	private void resize() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize((int)dim.getWidth(), (int)dim.getHeight()-30);
-		show();
+		this.setVisible(true);
 	}
 /**
  * sets the layout of the JFrame

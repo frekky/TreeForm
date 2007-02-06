@@ -36,6 +36,11 @@ public class UserButtonCut extends JButton implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableNew"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableNew" multiplicity="(1 1)"
@@ -99,16 +104,6 @@ public class UserButtonCut extends JButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	private boolean mActivation;
-
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
 	public UserButtonCut(UserFrame pUserFrame, 
 	ImageIcon pEnableIcon,
 	ImageIcon pDisableIcon,
@@ -132,7 +127,6 @@ public class UserButtonCut extends JButton implements Observer{
 
 	ImageIcon pActiveIconSmall, boolean pSize, ObservableNew pObservableNew) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;

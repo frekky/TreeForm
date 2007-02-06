@@ -20,7 +20,6 @@ package syntaxTree;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import java.awt.geom.Point2D.Float;
@@ -42,6 +41,11 @@ import enumerators.SyntacticLevel;
  */
 
 public class SyntacticStructure extends EditableComponent implements RepositionTree{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
@@ -72,9 +76,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	 */
 	private RepositionTree mParent;
 
-	private Point mPreferredPosition;
-	private int mX;
-	private int mY;
+	private double mPrelim;
+	private double mY;
 
 	/**
 	 * 
@@ -101,6 +104,18 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private SyntacticLevel mSyntacticLevel;
 
 	private boolean mVisibility;
+
+	private double mMod;
+
+	private SyntacticStructure mThread;
+
+	private SyntacticStructure mAncestor;
+
+	private double mChange;
+
+	private double mShift;
+
+	private double mX;
 	
 /**
  * 
@@ -113,6 +128,11 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * This class holds the line drawing facilities for SyntacticStructures.
  */
 	public class SyntacticStructureLines extends JComponent {
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 /**
  * @param pG The Graphics object upon which lines are painted.
  * <br>
@@ -140,13 +160,6 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 			// get the dimension of the butt
 			Float lPoint2D = new Point2D.Float(getButtonWidth(), Sizer.lineLength()+1);
 
-			Float lPoint2DScaled = new Point2D.Float(
-				(int) (lPoint2D.getX()
-					* Sizer.scaleWidth()
-					* getUserInternalFrame().getScale()),
-				(int) (lPoint2D.getY()
-					* Sizer.scaleHeight()
-					* getUserInternalFrame().getScale()));	
 			lGraphics2D.scale(Sizer.scaleWidth() * getUserInternalFrame().getScale(), Sizer.scaleHeight() * getUserInternalFrame().getScale());
 			//set the font		
 			// Set the g2D to antialias.
@@ -225,14 +238,14 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * 
  * @return Returns the button x position (unscaled)
  */
-	public int getButtonX() {
-		return mX;
+	public double getPrelim() {
+		return mPrelim;
 	}
 /**
  * 
  * @return Returns the button y position (unscaled)
  */
-	public int getButtonY() {
+	public double getButtonY() {
 		return mY;
 	}
 /**
@@ -343,17 +356,17 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	}
 /**
  * 
- * @param pX Sets the buttonX position, used in displaying the button
+ * @param midpoint Sets the buttonX position, used in displaying the button
  */
-	public void setButtonX(int pX) {
-		mX = pX;
+	public void setPrelim(double prelim) {
+		mPrelim = prelim;
 	}
 /**
  * 
- * @param pY Sets the buttonY position, used in displaying the button
+ * @param level Sets the buttonY position, used in displaying the button
  */
-	public void setButtonY(int pY) {
-		mY = pY;
+	public void setButtonY(double level) {
+		mY = level;
 	}
 /**
  * 
@@ -361,6 +374,30 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  */
 	public void setChildren(LinkedList children) {
 		this.mChildren = children;
+	}
+	public void setMod(double pMod)
+	{
+		mMod = pMod;
+	}
+	public void setThread(SyntacticStructure pThread)
+	{
+		mThread = pThread;
+	}
+	public void setAncestor(SyntacticStructure pAncestor)
+	{
+		mAncestor = pAncestor;
+	}
+	public double getMod()
+	{
+		return mMod;
+	}
+	public SyntacticStructure getThread()
+	{
+		return mThread;
+	}
+	public SyntacticStructure getAncestor()
+	{
+		return mAncestor;
 	}
 /**
  * 
@@ -482,4 +519,28 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		super.deleteHead();
 		testXY();
 	}
+public double getChange() {
+		// TODO Auto-generated method stub
+		return mChange;
+	}
+public void setChange(double change) {
+		mChange = change;
+		
+	}
+public double getShift() {
+	// TODO Auto-generated method stub
+	return mShift;
+}
+public void setShift(double shift) {
+	mShift = shift;
+	
+}
+public void setButtonX(double x) {
+	mX = x;
+	
+}
+public double getButtonX()
+{
+	return mX;
+}
 }

@@ -60,7 +60,7 @@ public class Start {
  */
 
 	public static void main(String[] args) {
-		Runtime lRuntime = Runtime.getRuntime();
+		//Runtime lRuntime = Runtime.getRuntime();
 		
 		try {
 			UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
@@ -82,6 +82,7 @@ public class Start {
 			mUserSplashScreen = new UserSplashScreen("image/sunset800.jpg");
 			mUserSplashScreen.splash();
 			UserFrame userUI = new UserFrame();
+			userUI.validate();
 			EventQueue.invokeLater( new SplashScreenCloser() );
     
 		pLogger.info("Launch thread now exiting...");

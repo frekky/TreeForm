@@ -20,7 +20,6 @@
 package syntaxTree;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -28,7 +27,6 @@ import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.io.File;
 import java.text.AttributedString;
-import java.util.HashMap;
 import java.util.LinkedList;
 
 import javax.swing.JPopupMenu;
@@ -55,8 +53,8 @@ public class SyntaxFacade {
 
 	private String mPicture;
 	private String mFile;
-	private int mMaxWidth;
-	private int mMaxHeight;
+//	private int mMaxWidth;
+//	private int mMaxHeight;
 
 	/**
 	 * 
@@ -91,6 +89,18 @@ public class SyntaxFacade {
 	 * @uml.property name="mSentence" multiplicity="(0 1)"
 	 */
 	private Sentence mSentence;
+	private SyntacticStructure mR;
+	private SyntacticStructure mDefaultAncestor;
+	private double mMidpoint;
+	private SyntacticStructure VIP;
+	private SyntacticStructure VOP;
+	private SyntacticStructure VIN;
+	private SyntacticStructure VON;
+	private double SIP;
+	private double SOP;
+	private double SIN;
+	private double SON;
+	private double shift;
 
 /**
  * 
@@ -201,53 +211,216 @@ public class SyntaxFacade {
 		} else {
 			getSentence().addChild(lSyntacticStructure);
 		}
-		redisplayTree();
+		displayTree();
 
 	}
-/**
- * 
- * @param pRT RepositionTree interface
- * @param pHM A Hashmap of levels, more below
- * @param pLevel The current leve.
- * <br>
- * Levels represents the position of the syntacticStructure in relation to the top of
- * the tree
- * <br>
- * The HashMap is a collection of SyntacticStructures organized by these levels.
- * It is just another way of loooking at the tree.
- */
-	private void getLevels(RepositionTree pRT, HashMap pHM, int pLevel) {
-		if (pHM.get(new Integer(pLevel)) == null) {
-			pHM.put(new Integer(pLevel), new LinkedList());
+public void displayTree() {
+	if(mSentence.getChildren().size() > 0)
+	{
+		treeLayout(mSentence);
+		getUIF().revalidate();
+	}
+}
+
+private void treeLayout(Sentence sentence) {
+	mR = (SyntacticStructure) mSentence.getChildren().getFirst();
+	//mDefaultAncestor = mR;
+	initializeTree(mR);
+	firstWalk(mR,0);
+	secondWalk(mR,-mR.getPrelim(),0);
+}
+
+
+private void initializeTree(SyntacticStructure v) {
+	v.setMod(0);
+	v.setThread(null);
+	v.setAncestor(v);
+	v.setPrelim(0);
+	v.setShift(0);
+	for (int i = 0; i < v.getChildren().size();i++)
+	{
+		initializeTree((SyntacticStructure) v.getChildren().get(i));
+	}
+}
+
+private void firstWalk(SyntacticStructure v,int position) {
+
+	if (v.getChildren().size() == 0)
+	{
+		if (position !=0)
+		{
+			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(position-1)));
+			v.setPrelim(w.getPrelim() + w.getButtonWidth());
 		}
-		((LinkedList) pHM.get(new Integer(pLevel))).add(pRT);
-		for (int i = 0; i < pRT.getChildren().size(); i++) {
-			getLevels(
-				(RepositionTree) pRT.getChildren().get(i),
-				pHM,
-				pLevel + 1);
+		else
+		{
+			v.setPrelim(0);
 		}
 	}
-/**
- * 
- * @param pRT RepositionTree (SyntacticStructures and Sentences)
- * @param pX (The X position)
- * @param pY (The Y position)
- * <br>
- * This is a function designed to set the buttonX and buttonY position
- * of the tree + pX and +pY pixels.  This is a routine that changes
- * unscaled values of the position of a tree and is used in the redisplayTree method.
- */
-	private void moveTree(RepositionTree pRT, int pX, int pY) {
-		if (pRT instanceof SyntacticStructure) {
-			SyntacticStructure pSS = (SyntacticStructure) pRT;
-			pSS.setButtonX(pSS.getButtonX() + pX);
-			pSS.setButtonY(pSS.getButtonY() + pY);
+	else
+	{
+		mDefaultAncestor = (SyntacticStructure) v.getChildren().getFirst();
+		for (int i = 0; i < v.getChildren().size();i++)
+		{
+			firstWalk((SyntacticStructure) v.getChildren().get(i),i);
+			apportion((SyntacticStructure) v.getChildren().get(i),mDefaultAncestor,i);
 		}
-		for (int i = 0; i < pRT.getChildren().size(); i++) {
-			moveTree((RepositionTree) pRT.getChildren().get(i), pX, pY);
+		executeShifts(v);
+		mMidpoint = 0.5*(((SyntacticStructure) v.getChildren().getFirst()).getPrelim() 
+				- ((SyntacticStructure) v.getChildren().getFirst()).getButtonWidth() 
+				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim()
+				+ ((SyntacticStructure) v.getChildren().getLast()).getButtonWidth()
+				);
+		if (position == 0)
+		{
+			// no left sibling
+			v.setPrelim(mMidpoint);
+		}
+		else
+		{
+			// has a left sibling
+			SyntacticStructure w = ((SyntacticStructure) 
+					v.getSyntacticParent().getChildren().get(position-1));
+			v.setPrelim(w.getPrelim() + w.getButtonWidth());
+			v.setMod(v.getPrelim() - mMidpoint);
 		}
 	}
+}
+
+private void apportion(SyntacticStructure v, SyntacticStructure defaultAncestor, int p) 
+{
+	if (p != 0)
+	{
+		//System.out.println("has a left sibling " + p);
+		VIP = v;
+		VOP = v;
+		VIN = (SyntacticStructure) v.getSyntacticParent().getChildren().get(p-1);
+		VON = (SyntacticStructure) VIP.getSyntacticParent().getChildren().getFirst();
+		SIP = VIP.getMod();
+		SOP = VOP.getMod();
+		SIN = VIN.getMod();
+		SON = VON.getMod();
+
+		while (nextRight(VIN) != null && nextLeft(VIP) != null)
+		{
+			//System.out.println("has a nextright and next left");
+			VIN = nextRight(VIN);
+			VIP = nextLeft(VIP);
+			VON = nextLeft(VON);
+			VOP = nextRight(VOP);
+			VOP.setAncestor(v);
+			SyntacticStructure w = ((SyntacticStructure) 
+					v.getSyntacticParent().getChildren().get(p-1));
+			shift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) + w.getButtonWidth();
+			//System.out.println("shift  " + shift);
+			if (shift > 0)
+			{
+				moveSubtree(ancestor(VIN,v,mDefaultAncestor),v,shift);
+				System.out.println("moveSubtree Called");
+				SIP = SIP + shift;
+				SOP = SOP + shift;
+			}
+			SIN = SIN + VIN.getMod();
+			SIP = SIP + VIP.getMod();
+			SON = SON + VON.getMod();
+			SOP = SOP + VOP.getMod();
+		}
+		if(nextRight(VIN) != null && nextRight(VOP) == null)
+		{
+			VOP.setThread(nextRight(VIN));
+			VOP.setMod(VOP.getMod() + SIN - SOP);
+			//System.out.println(VOP.getMod());
+		}
+		if (nextLeft(VIP) != null && nextLeft(VON) == null)
+		{
+			VON.setThread(nextLeft(VIP));
+			VON.setMod(VON.getMod() + SIP - SON);
+			mDefaultAncestor = v;
+			//System.out.println(VON.getMod());
+		}
+	}
+}
+
+private void moveSubtree(SyntacticStructure wm, SyntacticStructure wp, double shift) {
+	int subtrees = wp.getChildren().size() - wm.getChildren().size();
+	wp.setChange(wp.getChange() - shift/subtrees);
+	wp.setShift(wp.getShift() + shift);
+	wm.setChange(wm.getChange() + shift/subtrees);
+	wp.setPrelim(wp.getPrelim() + shift);
+	wp.setMod(wp.getMod() + shift);
+	//System.out.println(wp.getChildren().size() + " movesubtree");
+}
+
+private SyntacticStructure ancestor(SyntacticStructure vin, SyntacticStructure v, SyntacticStructure defaultAncestor) {
+	if (vin.getSyntacticParent().equals(v.getSyntacticParent()))
+	{
+		return vin.getAncestor();
+	}
+	else
+	{
+		return mDefaultAncestor;
+	}
+}
+
+private SyntacticStructure nextRight(SyntacticStructure v) {
+	if (v.getChildren().size() > 0)
+	{
+		return (SyntacticStructure) v.getChildren().getLast();
+	}
+	else
+	{
+		return v.getThread();
+	}
+}
+
+private SyntacticStructure nextLeft(SyntacticStructure v) {
+	if (v.getChildren().size() > 0)
+	{
+		return (SyntacticStructure) v.getChildren().getFirst();
+	}
+	else
+	{
+		return v.getThread();
+	}
+}
+
+private void executeShifts(SyntacticStructure v) {
+	double shift = 0;
+	double change = 0;
+	for(int i = v.getChildren().size()-1; i >= 0; i--)
+	{
+		SyntacticStructure w = (SyntacticStructure) v.getChildren().get(i);
+		w.setPrelim(w.getPrelim() + shift);
+		w.setMod(w.getMod() + shift);		
+		change = change + w.getChange();
+		shift = shift + w.getShift() + change;
+	}
+}
+
+
+private void secondWalk(SyntacticStructure v, double m, double level) {
+	v.setButtonX(v.getPrelim() + m);
+	v.setButtonY(level * 35);
+	v.setBounds(
+			(int) (v.getButtonX() + 10
+				* Sizer.scaleWidth()
+				* getUIF().getScale()),
+			(int) (v.getButtonY()
+				* Sizer.scaleWidth()
+				* getUIF().getScale()),
+			(int) (v.getButtonWidth()
+				* Sizer.scaleWidth()
+				* getUIF().getScale()),
+			(int) (v.getButtonHeight()
+				* Sizer.scaleWidth()
+				* getUIF().getScale()));
+
+	for(int i = 0;i < v.getChildren().size();i++)
+	{
+		secondWalk((SyntacticStructure) v.getChildren().get(i), m + v.getMod(), level + 1);
+	}
+}
+
 /**
  * 
  * @param pSF SyntacticFeature
@@ -333,461 +506,8 @@ public class SyntaxFacade {
 			moveSubtree((SyntacticStructure) pSS.getChildren().get(i), pX, pY);
 		}
 	}
-/**
- * 
- * @param pRT RepositionTree
- * @param pLeftMost The variable holding the leftmost box text beginning
- * @return The leftmost text beginning of a box.
- * <br>
- * This function is designed to make sure that all text is always visible on the 
- * screen.  This recursive function returns the leftmost position for processing.
- */
-	private int getLeftmostX(RepositionTree pRT, int pLeftMost) {
 
-				int lLeftMost = 0;
-				for (int i = 0; i < pRT.getChildren().size(); i++) {
-					lLeftMost =
-						((SyntacticStructure) pRT.getChildren().get(i))
-							.getButtonX()
-							- (((SyntacticStructure) pRT.getChildren().get(i))
-								.getTextWidth()
-								/ 2);
-					pLeftMost = (pLeftMost < lLeftMost ? pLeftMost : lLeftMost);
-					pLeftMost =
-						getLeftmostX(
-							(RepositionTree) pRT.getChildren().get(i),
-							pLeftMost);
-				}
-				return pLeftMost;
-	}
-/**
- * This is the main public function for redisplaying trees.  It works like this:
- * <br>
- * First it builds a hashmap of the tree containing all the levels of the tree.
- * This information is used for a 98% accurate collision detection system.
- * <br>
- * Then the program resets all the tree positions
- * <br>
- * Next it repositions the Y axis of the tree based on a simple formula.
- * <br>
- * Then it sets a test flag for collision detection.
- * <br>
- * The program then repositions the tree to negate colissions - one at a time.
- * It continues until no position are detected:
- * WARNING - this formula can introduce infinite loops!
- * <br>
- * The program then moves the tree right until it is completely visible on the screen.
- * <br>
- * Teh program then resizes the InternalFrame by getting the minimum size,
- * and setting the bounds based on this information.
- * <br>
- * Next the program sets the preferred size to the bounds, and revalidates.  Revalidation
- * is used to force scrollbars to reappear. Works great (finally)
- *
- */
-	public void redisplayTree() {
-		HashMap lHM = new HashMap();
-		this.getLevels(getSentence(), lHM, 0);
-		this.resetTree(getSentence());
-		this.repositionY(getSentence());
-		boolean lTest = false;
-		while (!lTest) {
-			this.setX(getSentence());
-			lTest = this.repositionX(lHM);
-		}
-		this.moveTree(
-			getSentence(),
-			(- (this.getLeftmostX(getSentence(), 0)) + 5),
-			5);
-		this.displayTree(getSentence());
-		setUIFBounds();
-		
-	}
-/**
- * This is the algorithm for telling the UIF how big it should be.  The
- * goal is to make sure that a viewer can ALWAYS easily scroll around
- * and see the entire tree, no matter how much they zoom.
- * <br>
- * The function grabs the minimum bounds from the UIF, and then
- * checks the new maximum bounds based on leftmost and rightmost positions.
- * <br>
- * The method then chooses the largest of the two, and sets the bounds accordingly.
- * <br>
- */
-public void setUIFBounds() {
-	mMaxHeight = (int) (getBottommostY(getSentence(), 0) * Sizer.scaleHeight() * getUIF().getScale());
-	mMaxHeight = mMaxHeight > mUIF.getMinHeight() ? mMaxHeight : mUIF.getMinHeight();
-	mMaxWidth = (int) (getRightmostX(getSentence(), 0) * Sizer.scaleWidth() * getUIF().getScale());
-	mMaxWidth = mMaxWidth > mUIF.getMinWidth() ? mMaxWidth : mUIF.getMinWidth();
-	mUIF.setBounds(
-		mUIF.getBounds().x,
-		mUIF.getBounds().y,
-		mMaxWidth,
-		mMaxHeight);
-	mUIF.getDesktopPane().setPreferredSize(
-		new Dimension(
-			mUIF.getBounds().x + mMaxWidth,
-			mUIF.getBounds().y + mMaxHeight));
-	mUIF.getDesktopPane().revalidate();
-}
 
-/**
- * @param pRT Retursive SyntacticStructure analysis
- * @param pBottomMost the starting bottommost value.
- * @return Returns the lowest Y position + 20 pixels.
- * <br>
- * The formula just gets tye Y position of each SyntacticStructure and adds the
- * buttonHeight (which is the height of the SyntacticStructure, it's lines,
- * it's feature sets, and it's associations put together.
- * <br>
- */
-private int getBottommostY(RepositionTree pRT, int pBottomMost) {
-	int lBottomMost = 0;
-	for (int i = 0; i < pRT.getChildren().size(); i++) {
-		lBottomMost =
-			((SyntacticStructure) pRT.getChildren().get(i))
-				.getButtonY()
-				+ (((SyntacticStructure) pRT.getChildren().get(i))
-					.getButtonHeight() + 20);
-		pBottomMost = (pBottomMost > lBottomMost ? pBottomMost : lBottomMost);
-		pBottomMost =
-			getBottommostY(
-				(RepositionTree) pRT.getChildren().get(i),
-				pBottomMost);
-	}
-	return pBottomMost;
-}
-
-/**
- * 
- * @param pRT RepositionTree
- * @param pLeftMost The variable holding the rightmost box text beginning
- * @return The leftmost text beginning of a box.
- * <br>
- * This function is designed to make sure that all text is always visible on the 
- * screen.  This recursive function returns the leftmost position for processing.
- */
-private int getRightmostX(RepositionTree pRT, int pRightMost) {
-	int lRightMost = 0;
-	for (int i = 0; i < pRT.getChildren().size(); i++) {
-		lRightMost =
-			((SyntacticStructure) pRT.getChildren().get(i))
-				.getButtonX()
-				+ (((SyntacticStructure) pRT.getChildren().get(i))
-					.getTextWidth()/2) + 20;
-		pRightMost = (pRightMost > lRightMost ? pRightMost : lRightMost);
-		
-		pRightMost =
-			getRightmostX(
-				(RepositionTree) pRT.getChildren().get(i),
-				pRightMost);
-	}
-	return pRightMost;
-}
-
-/**
- * 
- * @param pRT The tree to be displayed - recursively.
- * <br>
- * This function is large, and does a lot (probably too much).
- * Here goes:
- * <br>
- * First, the program sets the base bounds of the syntacticStructure based on the buttonX
- * position minus the textWidth/2
- * <br>
- * Then it scales the bounds appropriately 
- * <br>
- * Then it starts adding in all the Features in all the featureset based on this formula:
- * <br>
- * get the width of the featureSet, which is the total width of the features
- * <br>
- * add the features horizontally.
- * <br>
- * <br>
- * Then the program adds the associations to the screen
- * vertically
- * <br> 
- * Then the function displays the lines below all the features and structures
- * <br>
- * Lastly, the function calls itself recursively for each child of the passed in
- * SyntacticStructure
- * <br>
- */
-	public void displayTree(RepositionTree pRT) {
-		if (pRT instanceof SyntacticStructure) {
-			SyntacticStructure pSS = (SyntacticStructure) pRT;
-
-			pSS.setBounds(
-				(int) ((pSS.getButtonX() - (pSS.getTextWidth() / 2))),
-				(int) (pSS.getButtonY()),
-				(int) (pSS.getTextWidth()),
-				(int) (pSS.getTextHeight()));
-
-			pSS.setBounds(
-				(int) (pSS.getBounds().x
-					* Sizer.scaleWidth()
-					* getUIF().getScale()),
-				(int) (pSS.getBounds().y
-					* Sizer.scaleWidth()
-					* getUIF().getScale()),
-				(int) (pSS.getBounds().width
-					* Sizer.scaleWidth()
-					* getUIF().getScale()),
-				(int) (pSS.getBounds().height
-					* Sizer.scaleWidth()
-					* getUIF().getScale()));
-			int lFeatureHeight = 0;
-			for (int i = 0; i < pSS.getSyntacticFeatureSet().size(); i++) {
-				SyntacticFeatureSet lSFS =
-					(SyntacticFeatureSet) pSS.getSyntacticFeatureSet().get(i);
-				int lFeatureWidth = 0;
-				for (int j = 0; j < lSFS.getSyntacticFeature().size(); j++) {
-					SyntacticFeature lSF =
-						(SyntacticFeature) lSFS.getSyntacticFeature().get(j);
-					lSF.setBounds(
-						pSS.getButtonX()
-							- (lSFS.getWidth() / 2)
-							+ lFeatureWidth,
-						pSS.getButtonY() + pSS.getTextHeight() + lFeatureHeight,
-						lSF.getTextWidth(),
-						lSF.getTextHeight());
-					lSF.setBounds(
-						(int) (lSF.getBounds().x
-							* Sizer.scaleWidth()
-							* getUIF().getScale()),
-						(int) (lSF.getBounds().y
-							* Sizer.scaleWidth()
-							* getUIF().getScale()),
-						(int) (lSF.getBounds().width
-							* Sizer.scaleWidth()
-							* getUIF().getScale()),
-						(int) (lSF.getBounds().height
-							* Sizer.scaleWidth()
-							* getUIF().getScale()));
-
-					lFeatureWidth += lSF.getTextWidth();
-				}
-				lFeatureHeight += lSFS.getHeight();
-			}
-
-			for (int i = 0; i < pSS.getSyntacticAssociation().size(); i++) {
-
-				SyntacticAssociation lSA =
-					(SyntacticAssociation) pSS.getSyntacticAssociation().get(i);
-
-				lSA.setBounds(
-					pSS.getButtonX() - (lSA.getTextWidth() / 2),
-					pSS.getButtonY() + pSS.getTextHeight() + lFeatureHeight,
-					lSA.getTextWidth(),
-					lSA.getTextHeight());
-				lSA.setBounds(
-					(int) (lSA.getBounds().x
-						* Sizer.scaleWidth()
-						* getUIF().getScale()),
-					(int) (lSA.getBounds().y
-						* Sizer.scaleWidth()
-						* getUIF().getScale()),
-					(int) (lSA.getBounds().width
-						* Sizer.scaleWidth()
-						* getUIF().getScale()),
-					(int) (lSA.getBounds().height
-						* Sizer.scaleWidth()
-						* getUIF().getScale()));
-
-				lFeatureHeight += lSA.getTextHeight();
-			}
-
-			pSS.getSyntacticStructureLines().setBounds(
-				(int) ((pSS.getButtonX() - (pSS.getButtonWidth() / 2))),
-				(int) (pSS.getButtonY()
-					+ pSS.getTextHeight()
-					+ 1
-					+ lFeatureHeight),
-				(int) (pSS.getButtonWidth()),
-				(int) (Sizer.lineLength() + 2));
-
-			pSS.getSyntacticStructureLines().setBounds(
-				(int) (pSS.getSyntacticStructureLines().getBounds().x
-					* Sizer.scaleWidth()
-					* getUIF().getScale()),
-				(int) (pSS.getSyntacticStructureLines().getBounds().y
-					* Sizer.scaleWidth()
-					* getUIF().getScale()),
-				(int) (pSS.getSyntacticStructureLines().getBounds().width
-					* Sizer.scaleWidth()
-					* getUIF().getScale()),
-				(int) (pSS.getSyntacticStructureLines().getBounds().height
-					* Sizer.scaleWidth()
-					* getUIF().getScale()));
-		}
-
-		for (int i = 0; i < pRT.getChildren().size(); i++) {
-			displayTree((RepositionTree) pRT.getChildren().get(i));
-		}
-
-	}
-/**
- * 
- * @param pHM The hashmap.
- * @return true if there was no repositioning, otherwise false
- * This function is part of the collision detection system.
- * It calls each repositionling level from the BOTTOM to the TOP level.
- */
-	private boolean repositionX(HashMap pHM) {
-		int i = 0;
-		while (pHM.get(new Integer(i + 1)) != null) {
-			i++;
-		}
-		for (int j = i; j > 0; j--) {
-			if (!repositionUp(pHM, j)) {
-				return false;
-			}
-		}
-		return true;
-	}
-/**
- * 
- * @param pHM The HashMap of all the SyntacticStructures
- * @param pLevel The level of the repositioning
- * @return collision detected or not.
- * <br>
- * Here's how it works:
- * <br>
- * walk through all the planks from 0 to the SECOND last one (no need to care about
- * the last one, since there are no objects in which the LAST item on a level may
- * collide!
- * <br>
- * <br>
- * Create two convenience references for the object to test, and it's closest 
- * neighbour to the right.
- * <br>
- * Then check to see if the buttonX position + the buttonWidth/2 + the MinimumWidth/2
- * is greater than the next buttonX position + it's buttonWidth/2 - it's minimumWidth/2
- * .  If this is the case,the two buttons would be drawn overlapping, and we've
- * detected collision.
- * <br>
- * If collision is detected, find out where the two buttons share a common
- * ancestor.
- * <br>
- * set the minimum width of each of the children of the common ancestor to the 
- * collision distance, and leave the function.
- * <br>
- * The base program will then test for collisions again, and in this way
- * all the collisions get repaired.
- * <br>
- * Stupid, but it works!
- */
-	private boolean repositionUp(HashMap pHM, int pLevel) {
-		for (int i = 0;
-			i < ((LinkedList) pHM.get(new Integer(pLevel))).size() - 1;
-			i++) {
-			SyntacticStructure lSS =
-				((SyntacticStructure) ((LinkedList) pHM
-					.get(new Integer(pLevel)))
-					.get(i));
-			SyntacticStructure lSSNext =
-				((SyntacticStructure) ((LinkedList) pHM
-					.get(new Integer(pLevel)))
-					.get(i + 1));
-			if (lSS.getButtonX()
-				+ ((lSS.getButtonWidth() / 2) + (lSS.getMinWidth() / 2))
-				> lSSNext.getButtonX()
-					+ (lSS.getButtonWidth() / 2)
-					- (lSSNext.getMinWidth() / 2)) {
-				int lMinWidth =
-					(lSS.getButtonX()
-						+ ((lSS.getButtonWidth() / 2) + (lSS.getMinWidth() / 2))
-						- (lSSNext.getButtonX()
-							+ (lSS.getButtonWidth() / 2)
-							- (lSSNext.getMinWidth() / 2)));
-
-				SyntacticStructure lRT =
-					(SyntacticStructure) lSS.getSyntacticParent();
-				SyntacticStructure lRTNext =
-					(SyntacticStructure) lSSNext.getSyntacticParent();
-				while (lRT != lRTNext) {
-					lRT = (SyntacticStructure) lRT.getSyntacticParent();
-					lRTNext = (SyntacticStructure) lRTNext.getSyntacticParent();
-				}
-				for (int j = 0; j < lRT.getChildren().size(); j++) {
-					(
-						(SyntacticStructure) lRT.getChildren().get(
-							j)).setMinWidth(
-						((SyntacticStructure) lRT.getChildren().get(j))
-							.getMinWidth()
-							+ lMinWidth);
-				}
-				return false;
-			}
-		}
-		return true;
-	}
-/**
- * 
- * @param pRT The SyntacticStructure that will get a new buttonX
- * <br>
- * The new buttonX must be equal to the buttonX of the parent - the childwidth/2 of
- * the parent + the minimumWidth/2 of itself + the minimumwidth of all the children
- * to the left.
- * <br>
- * If there is no parent, i.e. this is the top of the tree, just set the position to 0
- * minus the textwidth/2.
- * <br>
- * Do this recursively for each child node.
- */
-	private void setX(RepositionTree pRT) {
-		if (pRT instanceof SyntacticStructure) {
-			SyntacticStructure pSS = ((SyntacticStructure) pRT);
-			if (pSS.getSyntacticParent() != null) {
-				int lLength = 0;
-				int lPosition = 0;
-				SyntacticStructure lParent =
-					(SyntacticStructure) pSS.getSyntacticParent();
-
-				for (int i = 0; i < lParent.getChildren().indexOf(pSS); i++) {
-					lPosition
-						+= ((SyntacticStructure) lParent.getChildren().get(i))
-							.getMinWidth();
-				}
-				pSS.setButtonX(
-					(int) (lParent.getButtonX()
-						- (lParent.getChildWidth() / 2)
-						+ (pSS.getMinWidth() / 2)
-						+ (lPosition)));
-
-			} else {
-				pSS.setButtonX(- (int) ((pSS.getTextWidth() / 2)));
-			}
-		}
-		for (int i = 0; i < pRT.getChildren().size(); i++) {
-			setX((RepositionTree) pRT.getChildren().get(i));
-		}
-	}
-/**
- * 
- * @param pRT RepositionTree
- * <br>
- * Position the buttonY equal to the buttonY of the parent + the buttonHeight
- * of the parent, do this recursively.
- * <br>
- * The topmost node is of course Y = 0;
- */
-	private void repositionY(RepositionTree pRT) {
-		if (pRT instanceof SyntacticStructure) {
-			SyntacticStructure pSS = ((SyntacticStructure) pRT);
-			if (pSS.getSyntacticParent() == null) {
-				pSS.setButtonY(0);
-			} else {
-				SyntacticStructure pSSParent =
-					((SyntacticStructure) pSS.getSyntacticParent());
-				pSS.setButtonY(
-					pSSParent.getButtonY() + pSSParent.getButtonHeight());
-			}
-		}
-		for (int i = 0; i < pRT.getChildren().size(); i++) {
-			repositionY((RepositionTree) pRT.getChildren().get(i));
-		}
-	}
 /**
  * 
  * @param pParent The parent SyntacticStructure 
@@ -810,14 +530,14 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 			if (pParent.getChildren().size() == 0) {
 				pParent.getChildren().add(pChild);
 				pChild.setSyntacticParent(pParent);
-				redisplayTree();
+				displayTree();
 			} else {
 				hideTree(pChild);
-				redisplayTree();
+				displayTree();
 				getUIF().activateGlassPane(pParent, pChild);
 			}
 		} else {
-			redisplayTree();
+			displayTree();
 		}
 	}
 /**
@@ -838,7 +558,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		} else {
 			mSentence.removeChild(pSS);
 		}
-		redisplayTree();
+		displayTree();
 	}
 /**
  * 
@@ -905,7 +625,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 			lSFS.getSyntacticFeature().remove(lSFS);
 		}
 		lSS.testXY();
-		redisplayTree();
+		displayTree();
 	}
 /**
  * 
@@ -924,8 +644,6 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		throws Exception {
 		if (getContainer() instanceof SyntacticStructure) {
 			AbstractFeatureBuilder lAB = null;
-			SyntacticStructure lSyntacticStructure;
-
 			if (pSFT == SyntacticFeatureType.THETA) {
 				lAB = new ThetaBuilder();
 			} else if (pSFT == SyntacticFeatureType.CASE) {
@@ -940,7 +658,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 			SyntacticStructure lSS = ((SyntacticStructure) getContainer());
 			lSS.getSyntacticFeatureSet().add(lSFS);
 			((SyntacticStructure) getContainer()).testXY();
-			redisplayTree();
+			displayTree();
 		}
 	}
 
@@ -959,27 +677,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		getSentence().setName(pString);
 
 	}
-/**
- * 
- * @param pRT The RepositionTree to reset.
- * <br>
- * <br>
- * resets all the X and Y positions to 0, and resets the minimum width
- * so that collision detection will work correctly.
- */
-	private void resetTree(RepositionTree pRT) {
-		for (int i = 0; i < pRT.getChildren().size(); i++) {
-			resetTree((RepositionTree) pRT.getChildren().get(i));
-		}
 
-		if (pRT instanceof SyntacticStructure) {
-			SyntacticStructure pSS = (SyntacticStructure) pRT;
-			pSS.setButtonX(0);
-			pSS.setButtonY(0);
-			pSS.setMinWidth(pSS.getTextWidth());
-
-		}
-	}
 /**
  * 
  * @param pContainer sets the highlight, which includes removing the old
@@ -1041,7 +739,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		if (pSS.getSyntacticParent() instanceof SyntacticStructure) {
 			pSS.getSyntacticParent().getChildren().remove(pSS);
 			hideTree(pSS);
-			redisplayTree();
+			displayTree();
 			getUIF().activateGlassPane(
 				(SyntacticStructure) pSS.getSyntacticParent(),
 				pSS);
@@ -1204,7 +902,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		pSSParent.getSyntacticAssociation().add(lSA);
 		getUIF().getContentPane().add(lSA);
 		lSA.setHead(pFeature.getHead());
-		redisplayTree();
+		displayTree();
 	}
 /**
  * 
@@ -1243,7 +941,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		mSF.getSyntacticFeatureSet().getSyntacticFeature().add(lSF);
 		lSF.setHead(lAttributedString);
 		getUIF().getContentPane().add(lSF);
-		redisplayTree();
+		displayTree();
 	}
 /**
  * @param mSA the association to be deleted.
@@ -1254,7 +952,7 @@ private int getRightmostX(RepositionTree pRT, int pRightMost) {
 		mSA.getSyntacticFeature().getSyntacticAssociation().remove(mSA);
 		getUIF().getContentPane().remove(mSA);
 		lSS.testXY();
-		redisplayTree();
+		displayTree();
 
 	}
 }

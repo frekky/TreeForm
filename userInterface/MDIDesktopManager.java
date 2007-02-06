@@ -39,6 +39,10 @@ import javax.swing.JViewport;
 public class MDIDesktopManager extends DefaultDesktopManager {
 
 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+/**
  * 
  * @uml.property name="pDesktop"
  * @uml.associationEnd 

@@ -38,6 +38,10 @@ public class UserMenuItemPaste extends JMenuItem implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
 	 * @uml.property name="mObservableNew"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableNew" multiplicity="(1 1)"

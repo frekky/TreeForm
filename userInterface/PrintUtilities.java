@@ -67,7 +67,6 @@ public class PrintUtilities implements Printable {
  *
  */  
 	public void print() {
-		  Object lP = null;
 		  PrinterJob lPrintJob = PrinterJob.getPrinterJob();
 		  lPrintJob.setPrintable(this);
 		  if (lPrintJob.printDialog())

@@ -20,7 +20,6 @@
 package userInterface;
 
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 
 import javax.swing.DefaultComboBoxModel;
@@ -44,6 +43,11 @@ import enumerators.SyntacticViewLayout;
  * I'm not sure if that is the right way to do it, but oh well.
  */
 public class UserToolBar extends JToolBar {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
@@ -411,8 +415,6 @@ public class UserToolBar extends JToolBar {
 		mModelFont = new DefaultComboBoxModel();
 		for (int i = 0; i < fontNames.length; i++)
 		{
-			Font lFont = new Font(fontNames[i],Font.PLAIN,10);
-
 			mModelFont.addElement(StringManipulator.lrtrim(fontNames[i]));
 		}
 		mFont.setModel(mModelFont);
@@ -440,10 +442,11 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_SMALL_HIGHLIGHT"),
-		mIconSize, mUserFrame.getObservableFontBold());
+		mIconSize, mUserFrame.getObservableFontBold(),mUserFrame.getObservableNew());
 		mBold.addActionListener(new ListenerBold(mUserFrame));
 		mBold.setToolTipText((String) mUserFrame.getI18n().getObject("BOLD_TOOLTIP"));
 		mUserFrame.getObservableFontBold().addObserver(mBold);
+		mUserFrame.getObservableNew().addObserver(mBold);
 		mBold.setFocusable(false);
 		this.add(mBold);
 		mItalics = new UserToggleFontItalic(mUserFrame,
@@ -453,10 +456,11 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("ITALICS_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("ITALICS_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("ITALICS_ICON_SMALL_HIGHLIGHT"),
-		mIconSize, mUserFrame.getObservableFontItalic());
+		mIconSize, mUserFrame.getObservableFontItalic(), mUserFrame.getObservableNew());
 		mItalics.addActionListener(new ListenerItalics(mUserFrame));
 		mItalics.setToolTipText((String) mUserFrame.getI18n().getObject("ITALICS_TOOLTIP"));
 		mUserFrame.getObservableFontItalic().addObserver(mItalics);
+		mUserFrame.getObservableNew().addObserver(mItalics);
 		mItalics.setFocusable(false);
 		this.add(mItalics);
 		mUnderline = new UserToggleFontUnderline(mUserFrame,
@@ -466,10 +470,11 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDERLINE_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDERLINE_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDERLINE_ICON_SMALL_HIGHLIGHT"),
-		mIconSize, mUserFrame.getObservableFontUnderline());
+		mIconSize, mUserFrame.getObservableFontUnderline(), mUserFrame.getObservableNew());
 		mUnderline.addActionListener(new ListenerUnderline(mUserFrame));
 		mUnderline.setToolTipText((String) mUserFrame.getI18n().getObject("UNDERLINE_TOOLTIP"));
 		mUserFrame.getObservableFontUnderline().addObserver(mUnderline);
+		mUserFrame.getObservableNew().addObserver(mUnderline);
 		mUnderline.setFocusable(false);
 		this.add(mUnderline);
 		
@@ -480,10 +485,11 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("SUBSCRIPT_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("SUBSCRIPT_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("SUBSCRIPT_ICON_SMALL_HIGHLIGHT"),
-		mIconSize, mUserFrame.getObservableSubscript());
+		mIconSize, mUserFrame.getObservableSubscript(), mUserFrame.getObservableNew());
 		mSubscript.addActionListener(new ListenerSubscript(mUserFrame));
 		mSubscript.setToolTipText((String) mUserFrame.getI18n().getObject("SUBSCRIPT_TOOLTIP"));
 		mUserFrame.getObservableSubscript().addObserver(mSubscript);
+		mUserFrame.getObservableNew().addObserver(mSubscript);
 		mSubscript.setFocusable(false);
 		this.add(mSubscript);
 				
@@ -494,10 +500,11 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("SUPERSCRIPT_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("SUPERSCRIPT_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("SUPERSCRIPT_ICON_SMALL_HIGHLIGHT"),
-		mIconSize, mUserFrame.getObservableSuperscript());
+		mIconSize, mUserFrame.getObservableSuperscript(), mUserFrame.getObservableNew());
 		mSuperscript.addActionListener(new ListenerSuperscript(mUserFrame));
 		mSuperscript.setToolTipText((String) mUserFrame.getI18n().getObject("SUPERSCRIPT_TOOLTIP"));
 		mUserFrame.getObservableSuperscript().addObserver(mSuperscript);
+		mUserFrame.getObservableNew().addObserver(mSuperscript);
 		mSuperscript.setFocusable(false);
 		this.add(mSuperscript);
 

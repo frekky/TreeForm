@@ -33,6 +33,11 @@ public class UserMenuBar extends JMenuBar {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mHelp"
 	 * @uml.associationEnd 
 	 * @uml.property name="mHelp" multiplicity="(1 1)"

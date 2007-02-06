@@ -40,6 +40,11 @@ public class UserMenuFile extends JMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mExit"
 	 * @uml.associationEnd 
 	 * @uml.property name="mExit" multiplicity="(1 1)"

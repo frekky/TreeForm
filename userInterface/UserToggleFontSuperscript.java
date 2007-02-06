@@ -38,6 +38,11 @@ public class UserToggleFontSuperscript extends JToggleButton implements Observer
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableFontSuperscript"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableFontSuperscript" multiplicity="(1 1)"
@@ -99,18 +104,9 @@ public class UserToggleFontSuperscript extends JToggleButton implements Observer
 	 * @uml.property name="mEnableIcon" multiplicity="(1 1)"
 	 */
 	private ImageIcon mEnableIcon;
+	private  ObservableNew mObservableNew;
 
 	private boolean mSize;
-	private boolean mActivation;
-
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
 	/**
 	 * 
 	 * @param pUserFrame The UserFrame for this instance of TreeForm
@@ -132,9 +128,8 @@ public class UserToggleFontSuperscript extends JToggleButton implements Observer
 	ImageIcon pActiveIcon, 
 	ImageIcon pEnableIconSmall,
 	ImageIcon pDisableIconSmall,
-	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontSuperscript pObservableFontSuperscript) {
+	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontSuperscript pObservableFontSuperscript, ObservableNew pObservableNew) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;
@@ -143,32 +138,35 @@ public class UserToggleFontSuperscript extends JToggleButton implements Observer
 		mActiveIconSmall = pActiveIconSmall;
 		mSize = pSize;
 		mObservableFontSuperscript = pObservableFontSuperscript;
-		this.disable();
-	}
+		mObservableNew = pObservableNew;
 
-	public void enable()
-	{
-		super.enable();
-		if (mSize)
-		{
-			this.setIcon(mEnableIcon);
-		}
-		else
-		{
-			this.setIcon(mEnableIconSmall);
-		}
+		setEnabled(false);
 	}
-	public void disable()
+	public void setEnabled(boolean b)
 	{
-		super.disable();
-		if (mSize)
+		if(b)
 		{
-			this.setIcon(mDisableIcon);
+			if (mSize)
+			{
+				this.setIcon(mEnableIcon);
+			}
+			else
+			{
+				this.setIcon(mEnableIconSmall);
+			}
 		}
 		else
 		{
-			this.setIcon(mDisableIconSmall);
+			if (mSize)
+			{
+				this.setIcon(mDisableIcon);
+			}
+			else
+			{
+				this.setIcon(mDisableIconSmall);
+			}
 		}
+		super.setEnabled(b);
 	}
 	public void activate()
 	{
@@ -199,6 +197,17 @@ public class UserToggleFontSuperscript extends JToggleButton implements Observer
 		if (arg0 == mObservableFontSuperscript)
 		{
 			this.setSelected(mObservableFontSuperscript.getValue());
+		}
+		if (arg0 == mObservableNew)
+		{
+			if (mObservableNew.getValue() == 0)
+			  {
+				this.setEnabled(false);
+			  }
+			  else
+			  {
+				this.setEnabled(true);
+			  }
 		}
 	}
 }

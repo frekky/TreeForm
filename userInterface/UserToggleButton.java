@@ -35,6 +35,11 @@ public class UserToggleButton extends JToggleButton {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mHoldIcon"
 	 * @uml.associationEnd 
 	 * @uml.property name="mHoldIcon" multiplicity="(0 1)"
@@ -90,16 +95,6 @@ public class UserToggleButton extends JToggleButton {
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	private boolean mActivation;
-
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
 	/**
 	 * 
 	 * @param pUserFrame The UserFrame for this instance of TreeForm
@@ -120,7 +115,6 @@ public class UserToggleButton extends JToggleButton {
 	ImageIcon pDisableIconSmall,
 	ImageIcon pActiveIconSmall, boolean pSize) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;
@@ -133,7 +127,7 @@ public class UserToggleButton extends JToggleButton {
 
 	public void enable()
 	{
-		super.enable();
+		super.setEnabled(true);
 		if (mSize)
 		{
 			this.setIcon(mEnableIcon);
@@ -145,7 +139,7 @@ public class UserToggleButton extends JToggleButton {
 	}
 	public void disable()
 	{
-		super.disable();
+		super.setEnabled(false);
 		if (mSize)
 		{
 			this.setIcon(mDisableIcon);

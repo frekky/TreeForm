@@ -38,6 +38,11 @@ public class UserToggleFontUnderline extends JToggleButton implements Observer{
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mObservableFontUnderline"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableFontUnderline" multiplicity="(1 1)"
@@ -99,18 +104,9 @@ public class UserToggleFontUnderline extends JToggleButton implements Observer{
 	 * @uml.property name="mEnableIcon" multiplicity="(1 1)"
 	 */
 	private ImageIcon mEnableIcon;
+	private  ObservableNew mObservableNew;
 
 	private boolean mSize;
-	private boolean mActivation;
-
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
 	/**
 	 * 
 	 * @param pUserFrame The UserFrame for this instance of TreeForm
@@ -132,9 +128,8 @@ public class UserToggleFontUnderline extends JToggleButton implements Observer{
 	ImageIcon pActiveIcon, 
 	ImageIcon pEnableIconSmall,
 	ImageIcon pDisableIconSmall,
-	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontUnderline pObservableFontUnderline) {
+	ImageIcon pActiveIconSmall, boolean pSize, ObservableFontUnderline pObservableFontUnderline, ObservableNew pObservableNew) {
 		super();
-		mUserFrame = pUserFrame;
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
 		mActiveIcon = pActiveIcon;
@@ -143,33 +138,39 @@ public class UserToggleFontUnderline extends JToggleButton implements Observer{
 		mActiveIconSmall = pActiveIconSmall;
 		mSize = pSize;
 		mObservableFontUnderline = pObservableFontUnderline;
-		this.disable();
+		mObservableNew = pObservableNew;
+
+		setEnabled(false);
 	}
 
-	public void enable()
+	public void setEnabled(boolean b)
 	{
-		super.enable();
-		if (mSize)
+		if(b)
 		{
-			this.setIcon(mEnableIcon);
+			if (mSize)
+			{
+				this.setIcon(mEnableIcon);
+			}
+			else
+			{
+				this.setIcon(mEnableIconSmall);
+			}
 		}
 		else
 		{
-			this.setIcon(mEnableIconSmall);
+			if (mSize)
+			{
+				this.setIcon(mDisableIcon);
+			}
+			else
+			{
+				this.setIcon(mDisableIconSmall);
+			}
 		}
+		super.setEnabled(b);
 	}
-	public void disable()
-	{
-		super.disable();
-		if (mSize)
-		{
-			this.setIcon(mDisableIcon);
-		}
-		else
-		{
-			this.setIcon(mDisableIconSmall);
-		}
-	}
+	
+
 	public void activate()
 	{
 		mHoldIcon = (ImageIcon) this.getIcon();
@@ -199,6 +200,17 @@ public class UserToggleFontUnderline extends JToggleButton implements Observer{
 		if (arg0 == mObservableFontUnderline)
 		{
 			this.setSelected(mObservableFontUnderline.getValue());
+		}
+		if (arg0 == mObservableNew)
+		{
+			if (mObservableNew.getValue() == 0)
+			  {
+				this.setEnabled(false);
+			  }
+			  else
+			  {
+				this.setEnabled(true);
+			  }
 		}
 	}
 }

@@ -35,14 +35,6 @@ import javax.swing.event.MouseInputAdapter;
 public class ListenerGlassPane extends MouseInputAdapter {
 
 	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
-
-	/**
 	 * Constructor
 	 * @param pUserFrame - Passes a copy of the user frame (which currently works
 	 * as the facade for this program 
@@ -54,7 +46,6 @@ public class ListenerGlassPane extends MouseInputAdapter {
 
 
 	public ListenerGlassPane(UserFrame pUserFrame) {
-		mUserFrame = pUserFrame;
 	}
 
 

@@ -21,11 +21,9 @@ package userInterface;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -36,12 +34,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.HashMap;
@@ -60,7 +54,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.text.rtf.RTFEditorKit;
 
 import parser.XMLParser;
 import staticFunctions.Sizer;
@@ -71,14 +64,14 @@ import enumerators.SaveFileType;
 import enumerators.SyntacticViewLayout;
 
 
-import java.io.Writer;
-import java.io.OutputStreamWriter;
-import java.io.IOException;
-import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.svggen.SVGGraphics2DIOException;
-import org.apache.batik.dom.GenericDOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.DOMImplementation;
+//import java.io.Writer;
+//import java.io.OutputStreamWriter;
+//import java.io.IOException;
+//import org.apache.batik.svggen.SVGGraphics2D;
+//import org.apache.batik.svggen.SVGGraphics2DIOException;
+//import org.apache.batik.dom.GenericDOMImplementation;
+//import org.w3c.dom.Document;
+//import org.w3c.dom.DOMImplementation;
 
 
 /**
@@ -277,8 +270,6 @@ public class UserControl{
 			Color lColor = lC.getBackground();
 			lC.setBackground(new Color(255,255,255));
 			JPanel lPanel = (JPanel) lC;
-			Rectangle lBounds= lPanel.getBounds();
-			Dimension lD=lBounds.getSize();
 			int lDetail;
 			if (pEPT == ExportPictureType.JPG600  || pEPT == ExportPictureType.PNG600)
 			{
@@ -348,6 +339,7 @@ public class UserControl{
 		public void openHelp() {
 			System.out.println("Open About");
 			HelpFrame lHelpFrame = new HelpFrame();
+			lHelpFrame.validate();
 		}
 
 		
@@ -375,58 +367,58 @@ public class UserControl{
 				}
 				if (pSFT == SaveFileType.SVG)
 				{
-					Container lC = mUserFrame.getInternalFrame().getContentPane();
-					Color lColor = lC.getBackground();
-					lC.setBackground(new Color(255,255,255));
-					if(mUserFrame.getObservableClipboard().getValue() != null)
-					{
-						mUserFrame.getObservableClipboard().getValue().setCarat(false);
-						mUserFrame.getObservableClipboard().getValue().repaint();
-					}
-					//PrintUtilities.printComponent(lC);
-					// batik converter.
-
-					DOMImplementation domImpl =
-					GenericDOMImplementation.getDOMImplementation();
-					
-					// Create an instance of org.w3c.dom.Document
-					Document document = domImpl.createDocument(null, "svg", null);
-					
-					// Create an instance of the SVG Generator
-					SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-					
-					// Ask the test to render into the SVG Graphics2D implementation
-					
-					lC.paint(svgGenerator);
-					
-					// Finally, stream out SVG to the standard output using UTF-8
-					// character to byte encoding
-					boolean useCSS = true; // we want to use CSS style attribute
-					
-	
-			        Writer out;
-					try {
-						out = new FileWriter(pFile);
-						//out = new OutputStreamWriter(System.out, "UTF-8");
-						svgGenerator.stream(out, useCSS);
-					} catch (UnsupportedEncodingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (SVGGraphics2DIOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					
-					//end
-					lC.setBackground(lColor);
-					if(mUserFrame.getObservableClipboard().getValue() != null)
-					{
-						mUserFrame.getObservableClipboard().getValue().setCarat(true);
-						mUserFrame.getObservableClipboard().getValue().repaint();
-					}
+//					Container lC = mUserFrame.getInternalFrame().getContentPane();
+//					Color lColor = lC.getBackground();
+//					lC.setBackground(new Color(255,255,255));
+//					if(mUserFrame.getObservableClipboard().getValue() != null)
+//					{
+//						mUserFrame.getObservableClipboard().getValue().setCarat(false);
+//						mUserFrame.getObservableClipboard().getValue().repaint();
+//					}
+//					//PrintUtilities.printComponent(lC);
+//					// batik converter.
+//
+//					DOMImplementation domImpl =
+//					GenericDOMImplementation.getDOMImplementation();
+//					
+//					// Create an instance of org.w3c.dom.Document
+//					Document document = domImpl.createDocument(null, "svg", null);
+//					
+//					// Create an instance of the SVG Generator
+//					SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
+//					
+//					// Ask the test to render into the SVG Graphics2D implementation
+//					
+//					lC.paint(svgGenerator);
+//					
+//					// Finally, stream out SVG to the standard output using UTF-8
+//					// character to byte encoding
+//					boolean useCSS = true; // we want to use CSS style attribute
+//					
+//	
+//			        Writer out;
+//					try {
+//						out = new FileWriter(pFile);
+//						//out = new OutputStreamWriter(System.out, "UTF-8");
+//						svgGenerator.stream(out, useCSS);
+//					} catch (UnsupportedEncodingException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					} catch (SVGGraphics2DIOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					} catch (IOException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+//					
+//					//end
+//					lC.setBackground(lColor);
+//					if(mUserFrame.getObservableClipboard().getValue() != null)
+//					{
+//						mUserFrame.getObservableClipboard().getValue().setCarat(true);
+//						mUserFrame.getObservableClipboard().getValue().repaint();
+//					}
 				}
 			}
 		}
@@ -632,7 +624,7 @@ public class UserControl{
 			mUserFrame.getObservableClipboard().getValue().setHighlightBegin(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
 			mUserFrame.getObservableClipboard().getValue().setInsertionIndex(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
 			mUserFrame.getObservableClipboard().getValue().setCarat(true);
-			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().redisplayTree();
+			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().displayTree();
 		}
 /**
  * 
@@ -692,7 +684,6 @@ public class UserControl{
 		public static Object getClipboard() {
 		Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
 		String text = "";
-		RTFEditorKit lRTFE = new RTFEditorKit();
 		if (t != null && t.isDataFlavorSupported(new DataFlavor(AttributedString.class,"Attributed String")))
 		{
 			try {
@@ -729,6 +720,7 @@ public class UserControl{
 		public void openAbout() {
 			System.out.println("Open About");
 			AboutFrame lAboutFrame = new AboutFrame();
+			lAboutFrame.validate();
 		}
 
 /**
@@ -746,8 +738,9 @@ public class UserControl{
 		public void zoom(float pZoom) {
 			UserInternalFrame lUIF = mUserFrame.getDesktopPane().getInternalFrame();
 			lUIF.setScale(pZoom);
-			lUIF.getSyntaxFacade().displayTree(lUIF.getSyntaxFacade().getSentence());
-			lUIF.getSyntaxFacade().setUIFBounds();
+//			lUIF.getSyntaxFacade().displayTree(lUIF.getSyntaxFacade().getSentence());
+			lUIF.getSyntaxFacade().displayTree();
+			//lUIF.getSyntaxFacade().setUIFBounds();
 		}
 /**
  * Selects a new frame.

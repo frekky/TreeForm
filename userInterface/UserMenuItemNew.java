@@ -36,13 +36,9 @@ public class UserMenuItemNew extends JMenuItem{
 
 	/**
 	 * 
-	 * @uml.property name="mObservableNew"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableNew" multiplicity="(0 1)"
 	 */
-	private ObservableNew mObservableNew;
-
-/**
+	private static final long serialVersionUID = 1L;
+	/**
  * 
  * @param pString The Title
  * @param pIcon The icon

@@ -37,6 +37,11 @@ public class UserMenuHelp extends JMenu {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mAbout"
 	 * @uml.associationEnd 
 	 * @uml.property name="mAbout" multiplicity="(1 1)"

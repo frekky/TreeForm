@@ -41,6 +41,11 @@ public class HelpFrame extends JFrame {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 
 	 * @uml.property name="mEditorScrollPane"
 	 * @uml.associationEnd 
 	 * @uml.property name="mEditorScrollPane" multiplicity="(1 1)"
@@ -121,7 +126,7 @@ public class HelpFrame extends JFrame {
 							.height
 							* .2d));
 					lFrame.pack();
-					lFrame.show();
+					lFrame.setVisible(true);
 				}
 			}
 		}
@@ -151,6 +156,6 @@ public class HelpFrame extends JFrame {
 			(int) (Toolkit.getDefaultToolkit().getScreenSize().height * .2d),
 			(int) (Toolkit.getDefaultToolkit().getScreenSize().width * .6d),
 			(int) (Toolkit.getDefaultToolkit().getScreenSize().height * .6d));
-		this.show();
+		this.setVisible(true);
 	}
 }

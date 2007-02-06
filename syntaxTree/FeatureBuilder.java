@@ -23,8 +23,6 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 
-import javax.swing.plaf.ComponentUI;
-
 import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
 /**
@@ -38,14 +36,6 @@ import userInterface.UserInternalFrame;
  * A builder class for the CaseFeatureSet
  */
 public class FeatureBuilder extends AbstractFeatureBuilder {
-
-	/**
-	 * 
-	 * @uml.property name="mUISS"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUISS" multiplicity="(0 1)"
-	 */
-	private ComponentUI mUISS;
 
 	/**
 	 * @param pInternalFrame The internal Frame that this structure will be attached to.

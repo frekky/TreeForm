@@ -65,7 +65,6 @@ public class ListenerSave implements ActionListener {
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {	
-		String lFileName="";
 		SyntaxFacade lSyntaxFacade = mUserFrame.getSyntaxFacade();
 		UserInternalFrame lInternalFrame = mUserFrame.getInternalFrame();
 		mUserFrame.getUserControl().saveTree(lSyntaxFacade,lSyntaxFacade.getFile(), lInternalFrame.getSaveFileType());

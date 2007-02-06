@@ -23,11 +23,9 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 
-import javax.swing.plaf.ComponentUI;
-import enumerators.SyntacticLevel;
-
 import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
+import enumerators.SyntacticLevel;
 
 /**
  * 
@@ -42,14 +40,6 @@ import userInterface.UserInternalFrame;
 public class PhraseBuilder extends AbstractStructureBuilder {
 
 	/**
-	 * 
-	 * @uml.property name="mUISS"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUISS" multiplicity="(0 1)"
-	 */
-	private ComponentUI mUISS;
-
-/**
  * @param pInternalFrame The internal Frame that this structure will be attached to.
  * @return Returns a constructed SyntacticStructure
  * <br>

@@ -40,6 +40,10 @@ public class UserComboZoom extends JComboBox implements Observer {
 
 	/**
 	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * 
 	 * @uml.property name="mObservableZoom"
 	 * @uml.associationEnd 
 	 * @uml.property name="mObservableZoom" multiplicity="(1 1)"
