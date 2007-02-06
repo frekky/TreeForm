@@ -233,6 +233,7 @@ private void initializeTree(SyntacticStructure v) {
 	v.setPrelim(0);
 	v.setChange(0);
 	v.setButtonY(0);
+	v.setButtonX(0);
 	v.setShift(0);
 	for (int i = 0; i < v.getChildren().size();i++)
 	{
@@ -250,10 +251,10 @@ private void firstWalk(SyntacticStructure v,int position) {
 		else
 		{
 			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(position-1)));
-			v.setPrelim(w.getPrelim() + (w.getButtonWidth()
+			v.setPrelim(w.getPrelim() 
+					+ (w.getButtonWidth()
 					* Sizer.scaleWidth()
 					* getUIF().getScale()));
-			//System.out.println("leaf prelim : " + v.getPrelim());
 		}
 	}
 	else
@@ -268,7 +269,6 @@ private void firstWalk(SyntacticStructure v,int position) {
 		double midpoint = 0.5*(((SyntacticStructure) v.getChildren().getFirst()).getPrelim() 
 				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim()
 				);
-		//System.out.println("midpoint : " + midpoint);
 		if (position != 0)
 		{
 			// has a left sibling
@@ -276,17 +276,15 @@ private void firstWalk(SyntacticStructure v,int position) {
 					v.getSyntacticParent().getChildren().get(position-1));
 			v.setPrelim(w.getPrelim() 
 					+ (w.getButtonWidth()
-							* Sizer.scaleWidth()
+					* Sizer.scaleWidth()
 							* getUIF().getScale())
 					);
 			v.setMod(v.getPrelim() - midpoint);
-			//System.out.println("node prelim : mod " + v.getPrelim() + " : " + v.getMod());
 		}
 		else
 		{
 			// no left sibling
 			v.setPrelim(midpoint);
-			//System.out.println("SINGLE node prelim : mod " + v.getPrelim() + " : " + v.getMod());			
 		}
 	}
 }
@@ -305,7 +303,6 @@ private void apportion(SyntacticStructure v, int p)
 		double SON = VON.getMod();
 		while (nextRight(VIN) != null && nextLeft(VIP) != null)
 		{
-			//System.out.println("not null");
 			VIN = nextRight(VIN);
 			VIP = nextLeft(VIP);
 			VON = nextLeft(VON);
@@ -313,11 +310,14 @@ private void apportion(SyntacticStructure v, int p)
 			VOP.setAncestor(v);
 			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(p-1)));
 
-			double shift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) + (w.getButtonWidth()
+			double shift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) 
+			+ (w.getButtonWidth()
 					* Sizer.scaleWidth()
-					* getUIF().getScale());
+					* getUIF().getScale()
+					);
 			if (shift > 0)
 			{
+				System.out.println("move subtree");
 				moveSubtree(ancestor(VIN,v,mDefaultAncestor),v,shift);
 				SIP = SIP + shift;
 				SOP = SOP + shift;
@@ -329,13 +329,11 @@ private void apportion(SyntacticStructure v, int p)
 		}	
 		if(nextRight(VIN) != null && nextRight(VOP) == null)
 		{
-			//System.out.println("right null");
 			VOP.setThread(nextRight(VIN));
 			VOP.setMod(VOP.getMod() + SIN - SOP);
 		}
 		if (nextLeft(VIP) != null && nextLeft(VON) == null)
 		{
-			//System.out.println("left null");
 			VON.setThread(nextLeft(VIP));
 			VON.setMod(VON.getMod() + SIP - SON);
 			mDefaultAncestor = v;
@@ -368,18 +366,12 @@ private SyntacticStructure nextRight(SyntacticStructure v) {
 
 private void moveSubtree(SyntacticStructure wm, SyntacticStructure wp, double shift) {
 	int subtrees = wp.getChildren().size() - wm.getChildren().size();
-	//System.out.println("subtrees : " + subtrees);
-	//System.out.println("WP : " + wp.getHead());
 	wp.setChange(wp.getChange() - shift/subtrees);
-	//System.out.println("change : " + wp.getChange());
 	wp.setShift(wp.getShift() + shift);
-	//System.out.println("shift : " + wp.getShift());
 	wm.setChange(wm.getChange() + shift/subtrees);
-	//System.out.println(wm.getHead() + " wm Change: " + wm.getChange());
 	wp.setPrelim(wp.getPrelim() + shift);
-	//System.out.println("prelim : " + wp.getPrelim());
 	wp.setMod(wp.getMod() + shift);
-	//System.out.println("mod : " + wp.getMod());
+
 }
 
 private void executeShifts(SyntacticStructure v) {
@@ -418,13 +410,13 @@ private void secondWalk(SyntacticStructure v, double m, double level) {
 				* Sizer.scaleWidth()
 				* getUIF().getScale()),
 			(int) (v.getButtonY()
-				* Sizer.scaleWidth()
+				* Sizer.scaleHeight()
 				* getUIF().getScale()),
 			(int) (v.getButtonWidth()
 				* Sizer.scaleWidth()
 				* getUIF().getScale()),
 			(int) (v.getButtonHeight()
-				* Sizer.scaleWidth()
+				* Sizer.scaleHeight()
 				* getUIF().getScale()));
 
 	for(int i = 0;i < v.getChildren().size();i++)
