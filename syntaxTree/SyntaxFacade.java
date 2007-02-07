@@ -267,8 +267,7 @@ private void firstWalk(SyntacticStructure v,int position) {
 		}
 		executeShifts(v);
 		double midpoint = 0.5*(((SyntacticStructure) v.getChildren().getFirst()).getPrelim() 
-				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim()
-				);
+				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim());
 		if (position != 0)
 		{
 			// has a left sibling
@@ -308,16 +307,14 @@ private void apportion(SyntacticStructure v, int p)
 			VON = nextLeft(VON);
 			VOP = nextRight(VOP);
 			VOP.setAncestor(v);
-			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(p-1)));
-
 			double shift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) 
-			+ (w.getButtonWidth()
+			+ (VIN.getButtonWidth()
 					* Sizer.scaleWidth()
 					* getUIF().getScale()
 					);
 			if (shift > 0)
 			{
-				System.out.println("move subtree");
+				//System.out.println("move subtree");
 				moveSubtree(ancestor(VIN,v,mDefaultAncestor),v,shift);
 				SIP = SIP + shift;
 				SOP = SOP + shift;
