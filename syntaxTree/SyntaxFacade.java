@@ -513,7 +513,7 @@ private void secondWalk(SyntacticStructure v, double m, int level) {
 private void thirdWalk(SyntacticStructure v, int level)
 {
 	Rectangle r = v.getBounds();
-	v.setButtonX(v.getButtonX() - mLeftShift + v.getButtonWidth()/2);
+	v.setButtonX(v.getButtonX() - mLeftShift);
 	int tempY = 0;
 	int tempYeven = 0;
 	for (int i = 0; i <level;i++)
@@ -608,9 +608,9 @@ private void fourthWalk(SyntacticStructure v, int level)
 		SyntacticStructure right = (SyntacticStructure) v.getChildren().getLast();
 		v.getSyntacticStructureLines().setBounds(
 			(int) ((left.getButtonX() - (left.getButtonWidth()/2)) * Sizer.scaleWidth() * getUIF().getScale()),
-			(int) ((v.getButtonY() + v.getButtonWidth() - Sizer.lineLength()-4) * Sizer.scaleHeight() * getUIF().getScale()),
+			(int) ((v.getButtonY() + v.getButtonHeight() - Sizer.lineLength()-4) * Sizer.scaleHeight() * getUIF().getScale()),
 			(int) ((right.getButtonX()+right.getButtonWidth()-left.getButtonX()) * Sizer.scaleWidth() * getUIF().getScale()),
-			(int) ((left.getButtonY() + (left.getButtonWidth()/2)-(v.getButtonY()))* Sizer.scaleHeight() * getUIF().getScale()));
+			(int) ((left.getButtonY() + (left.getButtonHeight()/2)-(v.getButtonY()))* Sizer.scaleHeight() * getUIF().getScale()));
 	}
 	for(int i = 0;i < v.getChildren().size();i++)
 	{

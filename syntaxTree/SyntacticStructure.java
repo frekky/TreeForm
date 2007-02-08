@@ -161,6 +161,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 				for (int i = 0; i < getChildren().size(); i++) 
 				{				
 					w = (SyntacticStructure) getChildren().get(i);
+					
 					relativeWidth = (int) (w.getButtonX() - left.getButtonX());	
 					//lGraphics2D.drawLine(x1, y1, x2, y2);
 					if (getSyntacticLevel() == SyntacticLevel.TRIANGLE)
@@ -172,10 +173,9 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 					else
 					{
 					lGraphics2D.drawLine(
-						(int) (width / 2),
+						(int) (width / 2 + getButtonWidth()/2),
 						(int) (1),
-						(int) (relativeWidth+ w.getButtonWidth()/2),
-						//(int) Sizer.lineLength()+1
+						(int) (relativeWidth + w.getButtonWidth()),
 						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+Sizer.lineLength())
 						);
 					}
