@@ -224,14 +224,15 @@ private void treeLayout(Sentence sentence) {
 	SyntacticStructure mR = (SyntacticStructure) mSentence.getChildren().getFirst();
 	mLeftShift = 0;
 	mShift = 0;
-	initializeTree(mR,1);
+	initializeTree(mR,1,0);
 	mVariableHeight = new LinkedList();
 	firstWalk(mR,0);
 	secondWalk(mR,-mR.getPrelim(),0);
 	thirdWalk(mR,0);
+	fourthWalk(mR,0);
 }
 
-private void initializeTree(SyntacticStructure v,int number) {
+private void initializeTree(SyntacticStructure v,int number,int level) {
 	v.setThread(null);
 	v.setAncestor(v);
 	v.setMod(0);
@@ -241,9 +242,10 @@ private void initializeTree(SyntacticStructure v,int number) {
 	v.setButtonX(0);
 	v.setShift(0);
 	v.setNumber(number);
+	v.setLevel(level);
 	for (int i = 0; i < v.getChildren().size();i++)
 	{
-		initializeTree((SyntacticStructure) v.getChildren().get(i),i+1);
+		initializeTree((SyntacticStructure) v.getChildren().get(i),i+1,level+1);
 	}
 }
 
@@ -547,13 +549,13 @@ private void thirdWalk(SyntacticStructure v, int level)
 					* Sizer.scaleWidth()
 					* getUIF().getScale()),
 				(int) (lSF.getBounds().y
-					* Sizer.scaleWidth()
+					* Sizer.scaleHeight()
 					* getUIF().getScale()),
 				(int) (lSF.getBounds().width
 					* Sizer.scaleWidth()
 					* getUIF().getScale()),
 				(int) (lSF.getBounds().height
-					* Sizer.scaleWidth()
+					* Sizer.scaleHeight()
 					* getUIF().getScale()));
 
 			lFeatureWidth += lSF.getTextWidth();
@@ -576,41 +578,17 @@ private void thirdWalk(SyntacticStructure v, int level)
 				* Sizer.scaleWidth()
 				* getUIF().getScale()),
 			(int) (lSA.getBounds().y
-				* Sizer.scaleWidth()
+				* Sizer.scaleHeight()
 				* getUIF().getScale()),
 			(int) (lSA.getBounds().width
 				* Sizer.scaleWidth()
 				* getUIF().getScale()),
 			(int) (lSA.getBounds().height
-				* Sizer.scaleWidth()
+				* Sizer.scaleHeight()
 				* getUIF().getScale()));
 
 		lFeatureHeight += lSA.getTextHeight();
 	}
-
-//	v.getSyntacticStructureLines().setBounds(
-//		(int) ((v.getButtonX() - (v.getButtonWidth() / 2))),
-//		(int) (v.getButtonY()
-//			+ v.getTextHeight()
-//			+ 1
-//			+ lFeatureHeight),
-//		(int) (v.getButtonWidth()),
-//		(int) (Sizer.lineLength() + 2));
-//
-//	v.getSyntacticStructureLines().setBounds(
-//		(int) (v.getSyntacticStructureLines().getBounds().x
-//			* Sizer.scaleWidth()
-//			* getUIF().getScale()),
-//		(int) (v.getSyntacticStructureLines().getBounds().y
-//			* Sizer.scaleWidth()
-//			* getUIF().getScale()),
-//		(int) (v.getSyntacticStructureLines().getBounds().width
-//			* Sizer.scaleWidth()
-//			* getUIF().getScale()),
-//		(int) (v.getSyntacticStructureLines().getBounds().height
-//			* Sizer.scaleWidth()
-//			* getUIF().getScale()));
-
 	
 	for(int i = 0;i < v.getChildren().size();i++)
 	{
@@ -618,6 +596,27 @@ private void thirdWalk(SyntacticStructure v, int level)
 	}
 }
 
+
+private void fourthWalk(SyntacticStructure v, int level)
+
+{
+	
+	//v.getSyntacticStructureLines().setBounds(x, y, width, height);
+	if (v.getChildren().size() > 0)
+	{
+		SyntacticStructure left = (SyntacticStructure) v.getChildren().getFirst();
+		SyntacticStructure right = (SyntacticStructure) v.getChildren().getLast();
+		v.getSyntacticStructureLines().setBounds(
+			(int) ((left.getButtonX() - (left.getButtonWidth()/2)) * Sizer.scaleWidth() * getUIF().getScale()),
+			(int) ((v.getButtonY() + v.getButtonWidth() - Sizer.lineLength()-4) * Sizer.scaleHeight() * getUIF().getScale()),
+			(int) ((right.getButtonX()+right.getButtonWidth()-left.getButtonX()) * Sizer.scaleWidth() * getUIF().getScale()),
+			(int) ((left.getButtonY() + (left.getButtonWidth()/2)-(v.getButtonY()))* Sizer.scaleHeight() * getUIF().getScale()));
+	}
+	for(int i = 0;i < v.getChildren().size();i++)
+	{
+		fourthWalk((SyntacticStructure) v.getChildren().get(i),level+1);
+	}
+}
 /**
  * 
  * @param pSF SyntacticFeature

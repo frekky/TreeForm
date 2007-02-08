@@ -21,8 +21,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Float;
 import java.text.AttributedString;
 import java.util.LinkedList;
 import java.util.Map;
@@ -118,6 +116,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private double mX;
 
 	private int mNumber;
+
+	private int mLevel;
 	
 /**
  * 
@@ -129,76 +129,60 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * <br>
  * This class holds the line drawing facilities for SyntacticStructures.
  */
-	public class SyntacticStructureLines extends JComponent {
-/**
-	 * 
-	 */
+	public class SyntacticStructureLines extends JComponent 
+{
+
 	private static final long serialVersionUID = 1L;
 
-/**
- * @param pG The Graphics object upon which lines are painted.
- * <br>
- * <br>
- * This class draws the Lines under each Syntax Node.
- * <br>
- * First it casts graphics into a usable Graphics2D object
- * <br>
- * Then it creates a point with the base height and width of the component.
- * <br>
- * Next a scaled point with the scaled height and width of the component.
- * <br>
- * Then the scale, rendering hints, and antialiasing rules are defined.
- * <br>
- * Next, IF the SyntacticStructure is a triangle, a triangle the width of underlying
- * text is drawn.
- * <br>
- * Otherwise lines are drawn so that they appear midway between the text of underlying
- * nodes.
- * <br>
- */		
-		public void paint(Graphics pG) {
-			Graphics lGraphics = pG;
-			Graphics2D lGraphics2D = (Graphics2D) lGraphics;
-			// get the dimension of the butt
-			Float lPoint2D = new Point2D.Float(getButtonWidth(), Sizer.lineLength()+1);
+	public void paint(Graphics pG) {
+		Graphics lGraphics = pG;
+		Graphics2D lGraphics2D = (Graphics2D) lGraphics;
+		// get the dimension of the butt
 
-			lGraphics2D.scale(Sizer.scaleWidth() * getUserInternalFrame().getScale(), Sizer.scaleHeight() * getUserInternalFrame().getScale());
-			//set the font		
-			// Set the g2D to antialias.
-			lGraphics2D.setColor(Color.BLACK);
-			lGraphics2D.setRenderingHint(
-				RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
-			lGraphics2D.setRenderingHint(
-				RenderingHints.KEY_RENDERING,
-				RenderingHints.VALUE_RENDER_QUALITY);
-		
-			if (getSyntacticLevel() == SyntacticLevel.TRIANGLE)
+		lGraphics2D.scale(Sizer.scaleWidth() * getUserInternalFrame().getScale(), Sizer.scaleHeight() * getUserInternalFrame().getScale());
+		//set the font		
+		// Set the g2D to antialias.
+		lGraphics2D.setColor(Color.BLACK);
+		lGraphics2D.setRenderingHint(
+			RenderingHints.KEY_ANTIALIASING,
+			RenderingHints.VALUE_ANTIALIAS_ON);
+		lGraphics2D.setRenderingHint(
+			RenderingHints.KEY_RENDERING,
+			RenderingHints.VALUE_RENDER_QUALITY);
+
+			// draw the lines according to the directions!
+			if (getChildren().size() > 0)
 			{
-				lGraphics2D.drawLine((int) (lPoint2D.getX() / 2),
-				(int) (1),2,(int) Sizer.lineLength());
-				lGraphics2D.drawLine((int) (lPoint2D.getX() / 2),
-				(int) (1),(int) lPoint2D.getX()-2,(int) Sizer.lineLength());
-				lGraphics2D.drawLine(2,(int) Sizer.lineLength(),(int) lPoint2D.getX()-2,(int) Sizer.lineLength());
-			}
-			else
-			{
-				// draw the lines according to the directions!
-				int lRelativeLength = 0;
-				for (int i = 0; i < getChildren().size(); i++) {
+				SyntacticStructure left = (SyntacticStructure) getChildren().getFirst();
+				SyntacticStructure right = (SyntacticStructure) getChildren().getLast();
+				SyntacticStructure w = (SyntacticStructure) getChildren().getFirst();
+				int width = (int) (right.getButtonX() + right.getButtonWidth()-left.getButtonX());
+				int relativeWidth = 0;
+				for (int i = 0; i < getChildren().size(); i++) 
+				{				
+					w = (SyntacticStructure) getChildren().get(i);
+					relativeWidth = (int) (w.getButtonX() - left.getButtonX());	
+					//lGraphics2D.drawLine(x1, y1, x2, y2);
+					if (getSyntacticLevel() == SyntacticLevel.TRIANGLE)
+					{
+						lGraphics2D.drawLine(width/2, 1, relativeWidth, Sizer.lineLength()+1);
+						lGraphics2D.drawLine(width/2, 1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
+						lGraphics2D.drawLine(relativeWidth, Sizer.lineLength()+1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
+					}
+					else
+					{
 					lGraphics2D.drawLine(
-						(int) (lPoint2D.getX() / 2),
+						(int) (width / 2),
 						(int) (1),
-						(int) (lRelativeLength
-							+ (((SyntacticStructure) getChildren().get(i))
-								.getMinWidth()
-								/ 2)  + ((lPoint2D.getX() - getChildWidth())/2)),
-						(int) Sizer.lineLength()+1);
-					lRelativeLength += ((SyntacticStructure) getChildren().get(i))
-					.getMinWidth();
+						(int) (relativeWidth+ w.getButtonWidth()/2),
+						//(int) Sizer.lineLength()+1
+						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+Sizer.lineLength())
+						);
+					}
 				}
 			}
 		}
+
 	}
 /**
  * 
@@ -547,5 +531,12 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public int getNumber()
 	{
 		return mNumber;
+	}
+	public void setLevel(int level) {
+		mLevel = level;
+	}
+	public int getLevel()
+	{
+		return mLevel;
 	}
 }
