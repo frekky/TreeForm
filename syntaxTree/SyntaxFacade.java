@@ -498,8 +498,95 @@ private void secondWalk(SyntacticStructure v, double m, double level) {
 private void thirdWalk(SyntacticStructure v)
 {
 	Rectangle r = v.getBounds();
+	v.setButtonX(v.getButtonX() - mLeftShift + v.getButtonWidth()/2);
 	r.x = (int) (r.x - (mLeftShift * Sizer.scaleWidth() * getUIF().getScale()));
 	v.setBounds(r);
+	int lFeatureHeight = 0;
+	
+	for (int i = 0; i < v.getSyntacticFeatureSet().size(); i++) {
+		SyntacticFeatureSet lSFS =
+			(SyntacticFeatureSet) v.getSyntacticFeatureSet().get(i);
+		int lFeatureWidth = 0;
+		for (int j = 0; j < lSFS.getSyntacticFeature().size(); j++) {
+			SyntacticFeature lSF =
+				(SyntacticFeature) lSFS.getSyntacticFeature().get(j);
+			lSF.setBounds(
+				((int)v.getButtonX()
+					- (lSFS.getWidth() / 2)
+					+ lFeatureWidth),
+				((int)v.getButtonY() + v.getTextHeight() + lFeatureHeight),
+				lSF.getTextWidth(),
+				lSF.getTextHeight());
+			lSF.setBounds(
+				(int) (lSF.getBounds().x
+					* Sizer.scaleWidth()
+					* getUIF().getScale()),
+				(int) (lSF.getBounds().y
+					* Sizer.scaleWidth()
+					* getUIF().getScale()),
+				(int) (lSF.getBounds().width
+					* Sizer.scaleWidth()
+					* getUIF().getScale()),
+				(int) (lSF.getBounds().height
+					* Sizer.scaleWidth()
+					* getUIF().getScale()));
+
+			lFeatureWidth += lSF.getTextWidth();
+		}
+		lFeatureHeight += lSFS.getHeight();
+	}
+
+	for (int i = 0; i < v.getSyntacticAssociation().size(); i++) {
+
+		SyntacticAssociation lSA =
+			(SyntacticAssociation) v.getSyntacticAssociation().get(i);
+
+		lSA.setBounds(
+			((int) v.getButtonX() - (lSA.getTextWidth() / 2)),
+			((int)v.getButtonY() + v.getTextHeight() + lFeatureHeight),
+			lSA.getTextWidth(),
+			lSA.getTextHeight());
+		lSA.setBounds(
+			(int) (lSA.getBounds().x
+				* Sizer.scaleWidth()
+				* getUIF().getScale()),
+			(int) (lSA.getBounds().y
+				* Sizer.scaleWidth()
+				* getUIF().getScale()),
+			(int) (lSA.getBounds().width
+				* Sizer.scaleWidth()
+				* getUIF().getScale()),
+			(int) (lSA.getBounds().height
+				* Sizer.scaleWidth()
+				* getUIF().getScale()));
+
+		lFeatureHeight += lSA.getTextHeight();
+	}
+
+//	v.getSyntacticStructureLines().setBounds(
+//		(int) ((v.getButtonX() - (v.getButtonWidth() / 2))),
+//		(int) (v.getButtonY()
+//			+ v.getTextHeight()
+//			+ 1
+//			+ lFeatureHeight),
+//		(int) (v.getButtonWidth()),
+//		(int) (Sizer.lineLength() + 2));
+//
+//	v.getSyntacticStructureLines().setBounds(
+//		(int) (v.getSyntacticStructureLines().getBounds().x
+//			* Sizer.scaleWidth()
+//			* getUIF().getScale()),
+//		(int) (v.getSyntacticStructureLines().getBounds().y
+//			* Sizer.scaleWidth()
+//			* getUIF().getScale()),
+//		(int) (v.getSyntacticStructureLines().getBounds().width
+//			* Sizer.scaleWidth()
+//			* getUIF().getScale()),
+//		(int) (v.getSyntacticStructureLines().getBounds().height
+//			* Sizer.scaleWidth()
+//			* getUIF().getScale()));
+
+	
 	for(int i = 0;i < v.getChildren().size();i++)
 	{
 		thirdWalk((SyntacticStructure) v.getChildren().get(i));
@@ -1041,36 +1128,36 @@ private void thirdWalk(SyntacticStructure v)
 
 	}
 
-	private String printText(SyntacticStructure v) {
-		if (v != null)
-		{
-		AttributedString as = v.getHead();
-		AttributedCharacterIterator iter = as.getIterator();
-		int j = 0;
-		String s = "";
-		if (iter.first() != AttributedCharacterIterator.DONE)
-		{
-			j = 1;
-			while (iter.next() != AttributedCharacterIterator.DONE)
-			{
-				j++;
-			}
-		}
-		for (int i = 0; i < j;i++)
-		{
-			if(i == 0)
-			{
-				s = s + iter.first();
-			}
-			else
-				s = s + iter.next();
-		}
-		return s;
-		}
-		else
-		{
-			return "null";
-		}
-	}
+//	private String printText(SyntacticStructure v) {
+//		if (v != null)
+//		{
+//		AttributedString as = v.getHead();
+//		AttributedCharacterIterator iter = as.getIterator();
+//		int j = 0;
+//		String s = "";
+//		if (iter.first() != AttributedCharacterIterator.DONE)
+//		{
+//			j = 1;
+//			while (iter.next() != AttributedCharacterIterator.DONE)
+//			{
+//				j++;
+//			}
+//		}
+//		for (int i = 0; i < j;i++)
+//		{
+//			if(i == 0)
+//			{
+//				s = s + iter.first();
+//			}
+//			else
+//				s = s + iter.next();
+//		}
+//		return s;
+//		}
+//		else
+//		{
+//			return "null";
+//		}
+//	}
 
 }
