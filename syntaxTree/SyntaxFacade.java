@@ -26,7 +26,6 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.io.File;
-import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.LinkedList;
 
@@ -95,6 +94,7 @@ public class SyntaxFacade {
 	private double mShift;
 	private double mChange;
 	private int subtrees;
+	private LinkedList mVariableHeight;
 
 
 
@@ -225,9 +225,10 @@ private void treeLayout(Sentence sentence) {
 	mLeftShift = 0;
 	mShift = 0;
 	initializeTree(mR,1);
+	mVariableHeight = new LinkedList();
 	firstWalk(mR,0);
 	secondWalk(mR,-mR.getPrelim(),0);
-	thirdWalk(mR);
+	thirdWalk(mR,0);
 }
 
 private void initializeTree(SyntacticStructure v,int number) {
@@ -466,13 +467,25 @@ private SyntacticStructure ancestor(SyntacticStructure vin, SyntacticStructure v
 	}
 }
 
-private void secondWalk(SyntacticStructure v, double m, double level) {
+private void secondWalk(SyntacticStructure v, double m, int level) {
 	v.setButtonX(v.getPrelim() + m);
 	//System.out.println("prelim position of " + printText(v) + " is " + v.getPrelim());
 	//System.out.println("final position of " + printText(v) + " is " + v.getButtonX());
 	if (v.getButtonX() < mLeftShift)
 	{
 		mLeftShift = v.getButtonX();
+	}
+	if (mVariableHeight.size() <= level)
+	{
+		mVariableHeight.add(new Integer(v.getButtonHeight()));
+	}
+	else
+	{
+		if (((Integer)mVariableHeight.get(level)).intValue() < v.getButtonHeight())
+		{
+			mVariableHeight.remove(level);
+			mVariableHeight.add(new Integer(v.getButtonHeight()));
+		}	
 	}
 	v.setButtonY(level * 35);
 	v.setBounds(
@@ -495,11 +508,23 @@ private void secondWalk(SyntacticStructure v, double m, double level) {
 	}
 }
 
-private void thirdWalk(SyntacticStructure v)
+private void thirdWalk(SyntacticStructure v, int level)
 {
 	Rectangle r = v.getBounds();
 	v.setButtonX(v.getButtonX() - mLeftShift + v.getButtonWidth()/2);
+	int tempY = 0;
+	int tempYeven = 0;
+	for (int i = 0; i <level;i++)
+	{
+		tempY += ((Integer) mVariableHeight.get(i)).intValue();
+	}
+	tempYeven = (((Integer) mVariableHeight.get(level)).intValue() - v.getButtonHeight())/2;
+	tempY += tempYeven;
+	v.setButtonY(tempY);
+	tempY = (int) (tempY * Sizer.scaleHeight() * getUIF().getScale());
+	r.y = tempY;
 	r.x = (int) (r.x - (mLeftShift * Sizer.scaleWidth() * getUIF().getScale()));
+
 	v.setBounds(r);
 	int lFeatureHeight = 0;
 	
@@ -589,7 +614,7 @@ private void thirdWalk(SyntacticStructure v)
 	
 	for(int i = 0;i < v.getChildren().size();i++)
 	{
-		thirdWalk((SyntacticStructure) v.getChildren().get(i));
+		thirdWalk((SyntacticStructure) v.getChildren().get(i),level+1);
 	}
 }
 
