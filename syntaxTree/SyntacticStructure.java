@@ -116,6 +116,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private double mShift;
 
 	private double mX;
+
+	private int mNumber;
 	
 /**
  * 
@@ -537,5 +539,13 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public double getButtonX()
 	{
 		return mX;
+	}
+	public void setNumber(int number) {
+		mNumber = number;
+		
+	}
+	public int getNumber()
+	{
+		return mNumber;
 	}
 }
