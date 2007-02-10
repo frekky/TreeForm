@@ -140,50 +140,32 @@ public class UserGlassPane extends JComponent {
 		lGraphics2D.setRenderingHint(
 			RenderingHints.KEY_RENDERING,
 			RenderingHints.VALUE_RENDER_QUALITY);
+		lGraphics2D.scale(
+				Sizer.scaleWidth()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
+				Sizer.scaleHeight()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
 		mPositions = new HashMap();
 		Rectangle lRectangle = mSS.getSyntacticStructureLines().getBounds();
 		mPoint =
 			new Point2D
 				.Float(
-					lRectangle.x
-						/ (Sizer.scaleWidth()
-							* mUserFrame
-								.getDesktopPane()
-								.getInternalFrame()
-								.getScale())
-						,
-							(lRectangle.y
-								/ (Sizer.scaleHeight()
-									* mUserFrame
-										.getDesktopPane()
-										.getInternalFrame()
-										.getScale()))
-								+ Sizer.lineLength());
-		lGraphics2D.scale(
-			Sizer.scaleWidth()
-				* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
-			Sizer.scaleHeight()
-				* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-				
-		int lRelativeLength = 0;
-		drawArc(lGraphics2D, (int) ((mSS.getButtonWidth() - mSS.getChildWidth())/2),0);	
+				lRectangle.x / (Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()),
+				(lRectangle.y + lRectangle.height/6)/ (Sizer.scaleHeight() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
+		SyntacticStructure left = (SyntacticStructure) mSS.getChildren().getFirst();
+		SyntacticStructure right = (SyntacticStructure) mSS.getChildren().getLast();
+		int lI = 0;
 		for (int i = 0; i < mSS.getChildren().size(); i++)
 		{	
-			int lI = (lRelativeLength
-						+ (((SyntacticStructure) mSS.getChildren().get(i))
-							.getMinWidth()
-							/ 2)  + ((mSS.getButtonWidth() - mSS.getChildWidth())/2));					
-			int lJ = (lRelativeLength
-									+ (((SyntacticStructure) mSS.getChildren().get(i))
-										.getMinWidth()
-										)  + ((mSS.getButtonWidth() - mSS.getChildWidth())/2));	
+			SyntacticStructure w = (SyntacticStructure) mSS.getChildren().get(i);
+			lI = (int) (w.getButtonX()-left.getButtonX());
+			drawArc(lGraphics2D, lI,i);
 			mPositions.put(new Integer(i),new Float((lI + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
-			drawArc(lGraphics2D, (int) (lJ),i+1);	
-			lRelativeLength += ((SyntacticStructure) mSS.getChildren().get(i)).getMinWidth();
 		}
-		
+		lI = (int) (right.getButtonX()+right.getButtonWidth()-left.getButtonX());
+		drawArc(lGraphics2D, lI,mSS.getChildren().size());
+		mPositions.put(new Integer(mSS.getChildren().size()),new Float((lI + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
 		mMaxPosition = mSS.getChildren().size();
-		mPositions.put(new Integer(mMaxPosition),new Float((lRelativeLength + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
 	}
 /**
  * 

@@ -105,6 +105,7 @@ public class EditableComponent extends JComponent {
 	private int mHighlightEnd;
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
+	private static final Color HIGHLIGHT_COLOR = new Color(0, 100, 255, 50);
 /**
  * 
  * @author Donald Derrick
@@ -532,7 +533,7 @@ public class EditableComponent extends JComponent {
 		// highlighting
 		this.setSize((int) lPoint2DScaled.getX(), (int) lPoint2DScaled.getY());
 		if (this.getOver()) {
-			lGraphics2D.setColor(new Color(0, 100, 255, 20));
+			lGraphics2D.setColor(HIGHLIGHT_COLOR);
 			lGraphics2D.fillRect(
 				0,
 				0,

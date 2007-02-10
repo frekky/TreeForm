@@ -26,7 +26,6 @@ import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.io.File;
-import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.LinkedList;
 
@@ -1162,36 +1161,36 @@ private void fourthWalk(SyntacticStructure v, int level)
 
 	}
 
-	private String printText(SyntacticStructure v) {
-		if (v != null)
-		{
-		AttributedString as = v.getHead();
-		AttributedCharacterIterator iter = as.getIterator();
-		int j = 0;
-		String s = "";
-		if (iter.first() != AttributedCharacterIterator.DONE)
-		{
-			j = 1;
-			while (iter.next() != AttributedCharacterIterator.DONE)
-			{
-				j++;
-			}
-		}
-		for (int i = 0; i < j;i++)
-		{
-			if(i == 0)
-			{
-				s = s + iter.first();
-			}
-			else
-				s = s + iter.next();
-		}
-		return s;
-		}
-		else
-		{
-			return "null";
-		}
-	}
+//	private String printText(SyntacticStructure v) {
+//		if (v != null)
+//		{
+//		AttributedString as = v.getHead();
+//		AttributedCharacterIterator iter = as.getIterator();
+//		int j = 0;
+//		String s = "";
+//		if (iter.first() != AttributedCharacterIterator.DONE)
+//		{
+//			j = 1;
+//			while (iter.next() != AttributedCharacterIterator.DONE)
+//			{
+//				j++;
+//			}
+//		}
+//		for (int i = 0; i < j;i++)
+//		{
+//			if(i == 0)
+//			{
+//				s = s + iter.first();
+//			}
+//			else
+//				s = s + iter.next();
+//		}
+//		return s;
+//		}
+//		else
+//		{
+//			return "null";
+//		}
+//	}
 
 }
