@@ -138,7 +138,6 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		Graphics lGraphics = pG;
 		Graphics2D lGraphics2D = (Graphics2D) lGraphics;
 		// get the dimension of the butt
-
 		lGraphics2D.scale(Sizer.scaleWidth() * getUserInternalFrame().getScale(), Sizer.scaleHeight() * getUserInternalFrame().getScale());
 		//set the font		
 		// Set the g2D to antialias.
@@ -154,31 +153,34 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 			if (getChildren().size() > 0)
 			{
 				SyntacticStructure left = (SyntacticStructure) getChildren().getFirst();
-				SyntacticStructure right = (SyntacticStructure) getChildren().getLast();
+				//SyntacticStructure right = (SyntacticStructure) getChildren().getLast();
 				SyntacticStructure w = (SyntacticStructure) getChildren().getFirst();
-				int width = (int) (right.getButtonX() + right.getButtonWidth()-left.getButtonX());
+				//int width = (int) (right.getButtonX() + right.getButtonWidth()-left.getButtonX());
+				int halfway = (int) (getButtonX() - left.getButtonX() + getButtonWidth()/2);
 				int relativeWidth = 0;
 				for (int i = 0; i < getChildren().size(); i++) 
 				{				
 					w = (SyntacticStructure) getChildren().get(i);
 					
 					relativeWidth = (int) (w.getButtonX() - left.getButtonX());	
+					//System.out.println("width = " + halfway + " : relativeWidth = " + relativeWidth);
 					//lGraphics2D.drawLine(x1, y1, x2, y2);
 					if (getSyntacticLevel() == SyntacticLevel.TRIANGLE)
 					{
-						lGraphics2D.drawLine(width/2, 1, relativeWidth, Sizer.lineLength()+1);
-						lGraphics2D.drawLine(width/2, 1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
+						lGraphics2D.drawLine(halfway, 1, relativeWidth, Sizer.lineLength()+1);
+						lGraphics2D.drawLine(halfway, 1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
 						lGraphics2D.drawLine(relativeWidth, Sizer.lineLength()+1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
 					}
 					else
 					{
 					lGraphics2D.drawLine(
-						(int) (width / 2 + getButtonWidth()/2),
+						(int) (halfway),
 						(int) (1),
-						(int) (relativeWidth + w.getButtonWidth()),
+						(int) (relativeWidth + w.getButtonWidth()/2),
 						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+Sizer.lineLength())
 						);
 					}
+					//System.out.println("width = " + halfway + " : relativeWidth = " + relativeWidth);
 				}
 			}
 		}
