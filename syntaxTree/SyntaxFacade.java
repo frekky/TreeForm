@@ -277,7 +277,10 @@ private void firstWalk(SyntacticStructure v,int position) {
 		}
 		executeShifts(v);
 		double midpoint = 0.5*(((SyntacticStructure) v.getChildren().getFirst()).getPrelim() 
-				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim() );
+				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim()
+				- v.getButtonWidth()
+				+ ((SyntacticStructure) v.getChildren().getLast()).getButtonWidth()
+				);
 		//System.out.println("midpoint = " + midpoint);
 		if (position != 0)
 		{
@@ -435,11 +438,13 @@ private void moveSubtree(SyntacticStructure wm, SyntacticStructure wp) {
 
 private void executeShifts(SyntacticStructure v) {
 	mShift = 0;
+	//mShift = v.getButtonWidth()/2;
 	mChange = 0;
 	//System.out.println("begin execute shifts");
 	for(int i = v.getChildren().size()-1; i >= 0; i--)
 	{
 		SyntacticStructure w = (SyntacticStructure) v.getChildren().get(i);
+		
 		w.setPrelim(w.getPrelim() + mShift);
 		w.setMod(w.getMod() + mShift);
 		mChange = mChange + w.getChange();
