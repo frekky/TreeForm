@@ -61,7 +61,7 @@ public class BinaryBuilder extends AbstractStructureBuilder {
 		pInternalFrame.getContentPane().add(lSyntacticStructureTop.getSyntacticStructureLines());
 		
 		SyntacticStructure lSyntacticStructureLeft = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
-		lAttributedString = new AttributedString("Ø");
+		lAttributedString = new AttributedString("âˆ…");
 		lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());		
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureLeft.setHead(lAttributedString);

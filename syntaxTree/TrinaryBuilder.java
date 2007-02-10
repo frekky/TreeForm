@@ -61,7 +61,7 @@ public class TrinaryBuilder extends AbstractStructureBuilder {
 
 		
 		SyntacticStructure lSyntacticStructureLeft = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
-		lAttributedString = new AttributedString("Ø");
+		lAttributedString = new AttributedString("âˆ…");
 		lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureLeft.setHead(lAttributedString);
@@ -71,7 +71,7 @@ public class TrinaryBuilder extends AbstractStructureBuilder {
 
 		
 		SyntacticStructure lSyntacticStructureCenter = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
-		lAttributedString = new AttributedString("Ø");
+		lAttributedString = new AttributedString("âˆ…");
 		lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureCenter.setHead(lAttributedString);
