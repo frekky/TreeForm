@@ -158,7 +158,16 @@ public class UserGlassPane extends JComponent {
 		for (int i = 0; i < mSS.getChildren().size(); i++)
 		{	
 			SyntacticStructure w = (SyntacticStructure) mSS.getChildren().get(i);
-			lI = (int) (w.getButtonX()-left.getButtonX());
+			SyntacticStructure w1 = null;
+			if(i == 0)
+			{
+				lI = 0;
+			}
+			else
+			{
+				w1 = (SyntacticStructure) mSS.getChildren().get(i-1);
+				lI = (int) (((w.getButtonX() + w.getButtonWidth() - w1.getButtonX())/2) + w1.getButtonX() -left.getButtonX());
+			}
 			drawArc(lGraphics2D, lI,i);
 			mPositions.put(new Integer(i),new Float((lI + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
 		}
