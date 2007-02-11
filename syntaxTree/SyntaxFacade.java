@@ -20,6 +20,7 @@
 package syntaxTree;
 
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -93,6 +94,8 @@ public class SyntaxFacade {
 	private double mChange;
 	private int subtrees;
 	private LinkedList mVariableHeight;
+	private double mRightShift;
+	private double mBottomShift;
 
 
 
@@ -221,6 +224,8 @@ public void displayTree() {
 private void treeLayout(Sentence sentence) {
 	SyntacticStructure mR = (SyntacticStructure) mSentence.getChildren().getFirst();
 	mLeftShift = 0;
+	mRightShift = 0;
+	mBottomShift = 0;
 	mShift = 0;
 	initializeTree(mR,1,0);
 	mVariableHeight = new LinkedList();
@@ -229,6 +234,27 @@ private void treeLayout(Sentence sentence) {
 	mLeftShift -= 12;
 	thirdWalk(mR,0);
 	fourthWalk(mR,0);
+	resizeUIF();
+}
+
+private void resizeUIF() {
+	mRightShift = mRightShift * Sizer.scaleWidth() * getUIF().getScale();
+	mBottomShift = mBottomShift * Sizer.scaleHeight() * getUIF().getScale();
+	if (getUIF().getMinWidth() > mRightShift )
+	{
+		mRightShift = getUIF().getMinWidth();
+	}
+	if (getUIF().getMinHeight() > mBottomShift )
+	{
+		mBottomShift = getUIF().getMinHeight();
+	}
+	getUIF().setBounds(0,0,(int)mRightShift,(int)mBottomShift);
+	
+	getUIF().getDesktopPane().setPreferredSize(
+			new Dimension(
+				getUIF().getBounds().x + (int)mRightShift,
+				getUIF().getBounds().y + (int)mBottomShift));
+		getUIF().getDesktopPane().revalidate();
 }
 
 private void initializeTree(SyntacticStructure v,int number,int level) {
@@ -536,7 +562,14 @@ private void thirdWalk(SyntacticStructure v, int level)
 
 	v.setBounds(r);
 	int lFeatureHeight = 0;
-	
+	if (v.getButtonX() + v.getButtonWidth() > mRightShift)
+	{
+		mRightShift = v.getButtonX() + v.getButtonWidth();
+	}
+	if (v.getButtonY() + v.getButtonHeight() > mBottomShift)
+	{
+		mBottomShift = v.getButtonY() + v.getButtonHeight();
+	}
 	for (int i = 0; i < v.getSyntacticFeatureSet().size(); i++) {
 		SyntacticFeatureSet lSFS =
 			(SyntacticFeatureSet) v.getSyntacticFeatureSet().get(i);
