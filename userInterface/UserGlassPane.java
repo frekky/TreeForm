@@ -155,6 +155,7 @@ public class UserGlassPane extends JComponent {
 		SyntacticStructure left = (SyntacticStructure) mSS.getChildren().getFirst();
 		SyntacticStructure right = (SyntacticStructure) mSS.getChildren().getLast();
 		int lI = 0;
+		int lJ = 0;
 		for (int i = 0; i < mSS.getChildren().size(); i++)
 		{	
 			SyntacticStructure w = (SyntacticStructure) mSS.getChildren().get(i);
@@ -168,9 +169,11 @@ public class UserGlassPane extends JComponent {
 				w1 = (SyntacticStructure) mSS.getChildren().get(i-1);
 				lI = (int) (((w.getButtonX() + w.getButtonWidth() - w1.getButtonX())/2) + w1.getButtonX() -left.getButtonX());
 			}
+			lJ = lI + w.getButtonWidth()/2;
 			drawArc(lGraphics2D, lI,i);
-			mPositions.put(new Integer(i),new Float((lI + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
+			mPositions.put(new Integer(i),new Float((lJ + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
 		}
+		
 		lI = (int) (right.getButtonX()+right.getButtonWidth()-left.getButtonX());
 		drawArc(lGraphics2D, lI,mSS.getChildren().size());
 		mPositions.put(new Integer(mSS.getChildren().size()),new Float((lI + mPoint.x) * Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));

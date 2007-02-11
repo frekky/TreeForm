@@ -226,6 +226,7 @@ private void treeLayout(Sentence sentence) {
 	mVariableHeight = new LinkedList();
 	firstWalk(mR,0);
 	secondWalk(mR,-mR.getPrelim(),0);
+	mLeftShift -= 12;
 	thirdWalk(mR,0);
 	fourthWalk(mR,0);
 }
