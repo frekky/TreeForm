@@ -19,7 +19,6 @@ import java.awt.Rectangle;
 import java.awt.TexturePaint;
 import java.awt.image.BufferedImage;
 
-import javax.swing.ButtonModel;
 import javax.swing.CellRendererPane;
 import javax.swing.DefaultButtonModel;
 import javax.swing.Icon;
@@ -37,6 +36,11 @@ import com.birosoft.liquid.skin.SkinSimpleButtonIndexModel;
 
 public class LiquidComboBoxButton extends JButton
 {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
@@ -125,7 +129,12 @@ public class LiquidComboBoxButton extends JButton
         super("");
         DefaultButtonModel model = new DefaultButtonModel()
         {
-            public void setArmed(boolean armed)
+            /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void setArmed(boolean armed)
             {
                 super.setArmed(isPressed() ? true : armed);
             }
@@ -206,13 +215,8 @@ public class LiquidComboBoxButton extends JButton
         // Paint the button as usual
         if (iconOnly)
         {
-            // Branch for editable Combo Boxes
-            ButtonModel model = getModel();
-            
-            boolean selected = model.isArmed() && model.isPressed() | model.isSelected();
             getSkinCombo().draw(g, index, getWidth(), getHeight());            
             
-            int amnt = getWidth() - getSkinArrow().getHsize();            
             int middle = (getHeight() - getSkinArrow().getVsize()) / 2;            
             getSkinArrow().draw(g, index, getWidth() - getSkinArrow().getHsize()-6, middle,   getSkinArrow().getHsize(), getSkinArrow().getVsize());
             
@@ -220,10 +224,6 @@ public class LiquidComboBoxButton extends JButton
             
         } else
         {
-            // Branch for non editable Combo Boxes
-            ButtonModel model = getModel();
-            
-            boolean selected = model.isArmed() && model.isPressed() | model.isSelected();
             getSkinCombo().draw(g, index, getWidth(), getHeight());
             
             int middle = (getHeight() - getSkinArrow().getVsize()) / 2;
@@ -234,7 +234,6 @@ public class LiquidComboBoxButton extends JButton
         Insets insets = new Insets(0, 12, 2, 2);
         
         int width = getWidth() - (insets.left + insets.right);
-        int widthFocus = width; //- (skin.getHsize()-skin.getOffset());
         int height = getHeight() - (insets.top + insets.bottom);
         
         if (height <= 0 || width <= 0)
@@ -244,12 +243,7 @@ public class LiquidComboBoxButton extends JButton
         
         int left = insets.left;
         int top = insets.top;
-        int right = left + (width - 1);
-        int bottom = top + (height - 1);
-        
         int iconWidth = LiquidComboBoxUI.comboBoxButtonSize;
-        int iconLeft = (leftToRight) ? right : left;
-        
         // Let the renderer paint
         Component c = null;
         boolean mustResetOpaque = false;

@@ -31,7 +31,7 @@
  *   but WITHOUT ANY WARRANTY; without even the implied warranty of             *
  *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                       *
  *   See the GNU Lesser General Public License for more details.                *
- *                                                                              *
+ *                                                                               *
  *   You should have received a copy of the GNU General Public License along    *
  *   with this program; if not, write to the Free Software Foundation, Inc.,    *
  *   59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.                    *
@@ -79,7 +79,11 @@ import java.util.HashMap;
  * @author Taoufik Romdhane, Stefan Krause
  */
 public class LiquidLookAndFeel extends BasicLookAndFeel {
-    protected static UIDefaults uiDefaults;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected static UIDefaults uiDefaults;
     protected static boolean defaultRowBackgroundMode = true;
 
 	/**
@@ -254,15 +258,11 @@ public class LiquidLookAndFeel extends BasicLookAndFeel {
 			"increment", "KP_UP", "increment", "DOWN", "decrement", "KP_DOWN",
 			"decrement", });
 
-    private boolean windowslfforfilechooser = false;
-
     /**
      * This constructor installs the Liquid Look and Feel with the default color
      * theme.
      */
     public LiquidLookAndFeel() {
-        windowslfforfilechooser = false;
-
         if (!isInstalled) {
             isInstalled = true;
 

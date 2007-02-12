@@ -26,7 +26,12 @@ import javax.swing.plaf.UIResource;
 public class LiquidInternalFrameBorder extends AbstractBorder implements UIResource
 {
     
-    /** indicates whether the internal frame is active */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/** indicates whether the internal frame is active */
     boolean isActive;
     
     boolean  isPalette = false;
@@ -46,8 +51,6 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
     {
         int frameTitleHeight = isPalette ? UIManager.getInt("InternalFrame.paletteTitleHeight") : UIManager.getInt("InternalFrame.frameTitleHeight");
 
-        int index=isActive ? 0 : 1;
-        
         drawLeftTop(g, isActive, 4, frameTitleHeight);
         
         g.translate(0, frameTitleHeight);

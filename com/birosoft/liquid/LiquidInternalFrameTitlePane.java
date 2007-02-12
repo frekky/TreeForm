@@ -40,7 +40,12 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
  */
 public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane implements LayoutManager
 {
-    protected boolean isPalette = false;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected boolean isPalette = false;
 
 	/**
 	 * 
@@ -70,11 +75,6 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
      * The frame's title height, read from the UIDefaults table.
      */
     protected int frameTitleHeight;
-    
-    /**
-     * The buttons width, calculated at runtime.
-     */
-    private int buttonsWidth;
     
     /**
      * Installs some default values.
@@ -138,7 +138,6 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         int width = getWidth();
         int height = getHeight();
         
-        Color foreground = LiquidLookAndFeel.getWindowTitleInactiveForeground();
         drawLiquidCaption(g, isSelected, width, height);
         int titleLength = 0;
         int xOffset = leftToRight ? 2 : width - 2;
@@ -535,8 +534,6 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             if (!leftToRight)
                 x += buttonWidth;
         }
-        
-        buttonsWidth = leftToRight ? w - x : x;
     }
     
     public void activate()

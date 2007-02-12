@@ -2,7 +2,7 @@
  *        Liquid Look and Feel                                                   *
  *                                                                             *
  *  Author, Miroslav Lazarevic                                                 *
- *                                                                             *
+ *                                                                              *
  *   For licensing information and credits, please refer to the                *
  *   comment in file com.birosoft.liquid.LiquidLookAndFeel                     *
  *                                                                             *

@@ -33,6 +33,11 @@ public class LiquidComboBoxEditor extends BasicComboBoxEditor
         editor.setBorder( new AbstractBorder()
         {
             /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			/**
              * @see javax.swing.border.Border#getBorderInsets(java.awt.Component)
              */
             public Insets getBorderInsets(Component c)

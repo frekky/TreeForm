@@ -5,8 +5,8 @@
  *                                                                              *
  *   For licensing information and credits, please refer to the                 *
  *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
- *                                                                              *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *                                                                               *
+ * * * *  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid;
 
 import com.birosoft.liquid.skin.Skin;
@@ -28,7 +28,12 @@ import javax.swing.plaf.UIResource;
  * @author Taoufik Romdhane
  */
 public class LiquidCheckBoxIcon implements Icon, UIResource, Serializable {
-    protected static Skin skin;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected static Skin skin;
 
 	/**
 	 * 

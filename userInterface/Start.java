@@ -32,7 +32,7 @@ import sun.misc.Launcher;
  * @author Donald Derrick
  * @version 0.1 
  * <br>
- * © 2004 Donald Derrick
+ * ï¿½ 2004 Donald Derrick
  * This program may be used Royalty Free but it may not be distributed, in any format
  * without permission of the author.  As an alpha version this code is not in a 
  * suitable state for open source placement.

@@ -21,7 +21,12 @@ import javax.swing.JComponent;
 public class LiquidDesktopManager extends DefaultDesktopManager
 {
     
-    public void beginDraggingFrame(JComponent f)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void beginDraggingFrame(JComponent f)
     {
     }
     

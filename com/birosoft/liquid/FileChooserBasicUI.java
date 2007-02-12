@@ -1,7 +1,7 @@
 /*
  *
  * This is an almost unchanged version of MetalFileChooserUI.
- *
+ * 
  *
  * @(#)BasicFileChooserUI.java  1.45 02/04/11
  *
@@ -100,7 +100,6 @@ import javax.swing.text.Position;
 
 public class FileChooserBasicUI extends BasicFileChooserUI {
     private static final Dimension hstrut5 = new Dimension(5, 1);
-    private static final Dimension hstrut11 = new Dimension(11, 1);
     private static final Dimension vstrut5 = new Dimension(1, 5);
     private static final Insets shrinkwrap = new Insets(2, 2, 2, 2);
 
@@ -573,7 +572,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
         fileNamePanel.add(fileNameLabel);
 
         fileNameTextField = new JTextField() {
-                    public Dimension getMaximumSize() {
+                    /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+					public Dimension getMaximumSize() {
                         return new Dimension(Short.MAX_VALUE,
                             super.getPreferredSize().height);
                     }
@@ -713,6 +717,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
     protected void installListeners(JFileChooser fc) {
         super.installListeners(fc);
 		AbstractAction escAction = new AbstractAction() {
+						/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 						public void actionPerformed(ActionEvent e) {
 							if (editFile != null) {
 								cancelEdit();
@@ -738,7 +747,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
         JPanel p = new JPanel(new BorderLayout());
         final JFileChooser fileChooser = fc;
         list = new JList() {
-                    public int getNextMatch(String prefix, int startIndex,
+                    /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+					public int getNextMatch(String prefix, int startIndex,
                         Position.Bias bias) {
                         ListModel model = getModel();
                         int max = model.getSize();
@@ -807,7 +821,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
         DetailsTableModel detailsTableModel = new DetailsTableModel(chooser);
 
         detailsTable = new JTable(detailsTableModel) {
-                    // Handle Escape key events here
+                    /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+					// Handle Escape key events here
                     protected boolean processKeyBinding(KeyStroke ks,
                         KeyEvent e, int condition, boolean pressed) {
                         if ((e.getKeyCode() == KeyEvent.VK_ESCAPE) &&
@@ -853,7 +872,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
         final JTextField tf = new JTextField();
         tf.addFocusListener(editorFocusListener);
         columns[COLUMN_FILENAME].setCellEditor(new DefaultCellEditor(tf) {
-                public boolean isCellEditable(EventObject e) {
+                /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+				public boolean isCellEditable(EventObject e) {
                     if (e instanceof MouseEvent) {
                         MouseEvent me = (MouseEvent) e;
                         int index = detailsTable.rowAtPoint(me.getPoint());
@@ -881,7 +905,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
             });
 
         JList fakeList = new JList(detailsTableModel.listModel) {
-                JTable table = detailsTable;
+                /**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+				JTable table = detailsTable;
 
                 public int locationToIndex(Point location) {
                     return table.rowAtPoint(location);
@@ -1103,6 +1131,7 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
                 editCell.addActionListener(new EditActionListener());
                 editCell.addFocusListener(editorFocusListener);
                 editCell.setNextFocusableComponent(list);
+                
             }
 
             list.add(editCell);
@@ -1655,7 +1684,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
 
     class DetailsTableModel extends AbstractTableModel
         implements ListDataListener {
-        String[] columnNames = {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		String[] columnNames = {
             fileNameHeaderText, fileSizeHeaderText, fileTypeHeaderText,
             fileDateHeaderText, fileAttrHeaderText
         };
@@ -1836,7 +1869,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
     }
 
     class DetailsTableCellRenderer extends DefaultTableCellRenderer {
-        JFileChooser chooser;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		JFileChooser chooser;
         DateFormat df;
 
         DetailsTableCellRenderer(JFileChooser chooser) {
@@ -1927,7 +1964,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
     }
 
     protected class FileRenderer extends DefaultListCellRenderer {
-        public Component getListCellRendererComponent(JList list, Object value,
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public Component getListCellRendererComponent(JList list, Object value,
             int index, boolean isSelected, boolean cellHasFocus) {
             super.getListCellRendererComponent(list, value, index, isSelected,
                 cellHasFocus);
@@ -1952,7 +1994,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
     // Renderer for DirectoryComboBox
     //
     class DirectoryComboBoxRenderer extends DefaultListCellRenderer {
-        IndentIcon ii = new IndentIcon();
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		IndentIcon ii = new IndentIcon();
 
         public Component getListCellRendererComponent(JList list, Object value,
             int index, boolean isSelected, boolean cellHasFocus) {
@@ -2003,7 +2049,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
      */
     protected class DirectoryComboBoxModel extends AbstractListModel
         implements ComboBoxModel {
-        Vector directories = new Vector();
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		Vector directories = new Vector();
         int[] depths = null;
         File selectedDirectory = null;
         JFileChooser chooser = getFileChooser();
@@ -2136,7 +2186,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
      * Render different type sizes and styles.
      */
     public class FilterComboBoxRenderer extends DefaultListCellRenderer {
-        public Component getListCellRendererComponent(JList list, Object value,
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public Component getListCellRendererComponent(JList list, Object value,
             int index, boolean isSelected, boolean cellHasFocus) {
             super.getListCellRendererComponent(list, value, index, isSelected,
                 cellHasFocus);
@@ -2154,7 +2209,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
      */
     protected class FilterComboBoxModel extends AbstractListModel
         implements ComboBoxModel, PropertyChangeListener {
-        protected FileFilter[] filters;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		protected FileFilter[] filters;
 
         protected FilterComboBoxModel() {
             super();
@@ -2230,7 +2289,12 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
      * Acts when DirectoryComboBox has changed the selected item.
      */
     protected class DirectoryComboBoxAction extends AbstractAction {
-        protected DirectoryComboBoxAction() {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		protected DirectoryComboBoxAction() {
             super("DirectoryComboBoxAction");
         }
 
@@ -2323,7 +2387,11 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
     }
 
     private class AlignedLabel extends JLabel {
-        private AlignedLabel[] group;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		private AlignedLabel[] group;
         private int maxWidth = 0;
 
         AlignedLabel(String text) {
