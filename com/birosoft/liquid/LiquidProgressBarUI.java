@@ -68,9 +68,6 @@ public class LiquidProgressBarUI extends BasicProgressBarUI {
         int barRectWidth = progressBar.getWidth() - (b.right + b.left);
         int barRectHeight = progressBar.getHeight() - (b.top + b.bottom);
         
-        int cellLength = getCellLength();
-        int cellSpacing = getCellSpacing();
-        
         Graphics2D g2 = (Graphics2D) g;
         
         if (progressBar.getOrientation() == JProgressBar.HORIZONTAL) {

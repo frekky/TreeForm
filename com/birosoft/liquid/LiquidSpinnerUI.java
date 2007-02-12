@@ -56,8 +56,6 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
             true);
     private static final ArrowButtonHandler previousButtonHandler = new ArrowButtonHandler("decrement",
             false);
-    private static final Dimension zeroSize = new Dimension(0, 0);
-
     public static ComponentUI createUI(JComponent c) {
         return new LiquidSpinnerUI();
     }
@@ -134,7 +132,11 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
      */
     private static class ArrowButtonHandler extends AbstractAction
         implements MouseListener {
-        final javax.swing.Timer autoRepeatTimer;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		final javax.swing.Timer autoRepeatTimer;
         final boolean isNext;
         JSpinner spinner = null;
 

@@ -22,6 +22,11 @@ import javax.swing.plaf.ButtonUI;
 public class SpecialUIButton extends JButton {
     
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SpecialUIButton() {
 		
 		// TODO Auto-generated constructor stub

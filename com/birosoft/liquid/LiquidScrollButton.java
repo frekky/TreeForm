@@ -25,10 +25,11 @@ import com.birosoft.liquid.skin.SkinSimpleButtonIndexModel;
  */
 public class LiquidScrollButton extends BasicArrowButton
 {
-    private boolean isFreeStanding = false;
-    private int buttonWidth;
-    
-    /** one of the four skins for the button */
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/** one of the four skins for the button */
     private static Skin skinUp= new Skin("scrollbuttonsup.png", 4, 0);
     /** one of the four skins for the button */
     private static Skin skinDown= new Skin("scrollbuttonsdown.png", 4, 0);
@@ -63,8 +64,6 @@ public class LiquidScrollButton extends BasicArrowButton
     public LiquidScrollButton(int orientation,int width, boolean freeStanding)
     {
         super(orientation);
-        buttonWidth = width;
-        isFreeStanding = freeStanding;
         setBorder(null);
         setRolloverEnabled(true);
         setMargin(new Insets(0, 0, 0, 0));
@@ -90,7 +89,6 @@ public class LiquidScrollButton extends BasicArrowButton
     
     public void setFreeStanding( boolean freeStanding )
     {
-        isFreeStanding = freeStanding;
     }
     
     /**

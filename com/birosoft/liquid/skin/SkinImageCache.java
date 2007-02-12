@@ -46,12 +46,6 @@ public class SkinImageCache
 
 	/**
 	 * 
-	 * @uml.property name="iconMap"
-	 */
-	private HashMap iconMap;
-
-	/**
-	 * 
 	 * @uml.property name="bufferedMap"
 	 * @uml.associationEnd 
 	 * @uml.property name="bufferedMap" multiplicity="(0 1)" qualifier="fileName:java.lang.String
@@ -70,7 +64,6 @@ public class SkinImageCache
     protected SkinImageCache()
     {
         map = new HashMap();
-        iconMap = new HashMap();
         bufferedMap = new HashMap();
     }
     

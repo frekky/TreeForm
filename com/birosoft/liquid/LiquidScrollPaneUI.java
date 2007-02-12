@@ -66,7 +66,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
             if (scrollpane.isWheelScrollingEnabled() && e.getScrollAmount() != 0)
             {
                 JScrollBar toScroll = scrollpane.getVerticalScrollBar();
-                int direction = 0;
+                
                 int length = toScroll.getHeight();
                 // find which scrollbar to scroll, or return if none
                 if (toScroll == null || !toScroll.isVisible() || e.getModifiers() == MouseWheelEvent.ALT_MASK)
@@ -78,7 +78,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
                     }
                     length = toScroll.getWidth();
                 }
-                direction = e.getWheelRotation() < 0 ? -1 : 1;
+           
                 if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL)
                 {
                     int newValue = toScroll.getValue()+e.getWheelRotation()*length/(toScroll.getUnitIncrement()*2);

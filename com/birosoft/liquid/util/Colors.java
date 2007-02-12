@@ -254,6 +254,6 @@ public class Colors {
         Panel p = new Panel(Colors.getImage());
         f.setSize(300, 205);
         f.getContentPane().add(p);
-        f.show();
+        f.setVisible(true);
     }
 }

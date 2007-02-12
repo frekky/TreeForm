@@ -10,7 +10,6 @@
 
 package com.birosoft.liquid;
 
-import java.awt.BasicStroke;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -26,9 +25,6 @@ public class LiquidRadioButtonUI extends BasicRadioButtonUI
 {
     /** the only instance of the radiobuttonUI */
     private static final LiquidRadioButtonUI metouiaRadioButtonUI = new LiquidRadioButtonUI();
-    /* the only instance of the stroke for the focus */
-    private static BasicStroke focusStroke = new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1.0f, new float[]
-    { 1.0f, 1.0f }, 0.0f);
     /* the only instance of the radiobutton icon*/
     private static LiquidRadioButtonIcon skinnedIcon;
     

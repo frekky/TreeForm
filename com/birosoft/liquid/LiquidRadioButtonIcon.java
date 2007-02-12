@@ -17,7 +17,11 @@ import com.birosoft.liquid.skin.Skin;
  */
 class LiquidRadioButtonIcon extends LiquidCheckBoxIcon
 {
-    static Skin skin;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	static Skin skin;
 
 	/**
 	 * 

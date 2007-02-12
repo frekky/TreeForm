@@ -356,7 +356,6 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
 
     protected int getTabLabelShiftX(int tabPlacement, int tabIndex,
         boolean isSelected) {
-        Rectangle tabRect = rects[tabIndex];
         int nudge = 0;
 
         switch (tabPlacement) {

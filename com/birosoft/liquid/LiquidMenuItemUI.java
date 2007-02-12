@@ -75,9 +75,6 @@ public class LiquidMenuItemUI extends MenuItemUI {
     protected static int defaultTextIconGap;
     protected static int defaultIconGap;
 
-    /* diagnostic aids -- should be false for production builds. */
-    private static final boolean TRACE = false; // trace creates and disposes
-    private static final boolean VERBOSE = false; // show reuse hits/misses
     private static final boolean DEBUG = false; // show bad params, misc.
 
     /* Client Property keys for text and accelerator text widths */
@@ -549,27 +546,6 @@ public class LiquidMenuItemUI extends MenuItemUI {
         menuItem.doClick(0);
     }
 
-    /**
-     * This is to see if the menu item in question is part of the
-     * system menu on an internal frame.
-     * The Strings that are being checked can be found in
-     * MetalInternalFrameTitlePaneUI.java,
-     * WindowsInternalFrameTitlePaneUI.java, and
-     * MotifInternalFrameTitlePaneUI.java.
-     *
-     * @since 1.4
-     */
-    private boolean isInternalFrameSystemMenu() {
-        String actionCommand = menuItem.getActionCommand();
-
-        if ((actionCommand == "Close") || (actionCommand == "Minimize") ||
-                (actionCommand == "Restore") || (actionCommand == "Maximize")) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public static ComponentUI createUI(JComponent c) {
         return new LiquidMenuItemUI();
     }
@@ -791,8 +767,6 @@ public class LiquidMenuItemUI extends MenuItemUI {
         JMenuItem b = (JMenuItem) c;
         ButtonModel model = b.getModel();
 
-        Icon bicon = b.getIcon();
-
         JComponent p = (JComponent) b.getParent();
         Integer maxValueInt = (Integer) p.getClientProperty(LiquidMenuItemUI.MAX_ICON_WIDTH);
         int maxValue = (maxValueInt == null) ? 16 : maxValueInt.intValue();
@@ -844,7 +818,6 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
         // layout the text and icon
         Icon ic = b.getIcon();
-        Icon iCheck = checkIcon;
         Icon paintIcon = ic;
 
         if (useCheckAndArrow()) {
@@ -1284,7 +1257,6 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
         public void menuDragMouseReleased(MenuDragMouseEvent e) {
             MenuSelectionManager manager = e.getMenuSelectionManager();
-            MenuElement[] path = e.getPath();
             Point p = e.getPoint();
 
             if ((p.x >= 0) && (p.x < menuItem.getWidth()) && (p.y >= 0) &&
@@ -1361,7 +1333,12 @@ public class LiquidMenuItemUI extends MenuItemUI {
     }
 
     private static class ClickAction extends AbstractAction {
-        public void actionPerformed(ActionEvent e) {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
+		public void actionPerformed(ActionEvent e) {
             JMenuItem mi = (JMenuItem) e.getSource();
             MenuSelectionManager.defaultManager().clearSelectedPath();
             mi.doClick();

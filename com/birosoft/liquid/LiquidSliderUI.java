@@ -127,14 +127,7 @@ public class LiquidSliderUI extends BasicSliderUI {
 
     public void paintTicks(Graphics g) {
         Rectangle tickBounds = tickRect;
-        int i;
-        int maj;
-        int min;
-        int max;
-        int w = tickBounds.width;
-        int h = tickBounds.height;
-        int centerEffect;
-        int tickHeight;
+      
         boolean leftToRight = slider.getComponentOrientation().isLeftToRight();
 
         g.setColor(new Color(0, 0, 0, 0));
@@ -142,8 +135,6 @@ public class LiquidSliderUI extends BasicSliderUI {
             tickBounds.height);
         g.setColor(Color.black);
 
-        maj = slider.getMajorTickSpacing();
-        min = slider.getMinorTickSpacing();
 
         if (slider.getOrientation() == JSlider.HORIZONTAL) {
             g.translate(0, tickBounds.y);
@@ -218,8 +209,6 @@ public class LiquidSliderUI extends BasicSliderUI {
     }
 
     public void paintTrack(Graphics g) {
-        Color trackColor = Color.red;
-
         boolean leftToRight = slider.getComponentOrientation().isLeftToRight();
 
         g.translate(trackRect.x, trackRect.y);

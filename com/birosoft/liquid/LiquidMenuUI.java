@@ -22,7 +22,6 @@ import java.beans.PropertyChangeListener;
 import javax.swing.AbstractAction;
 import javax.swing.AbstractButton;
 import javax.swing.ActionMap;
-import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -81,20 +80,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
     
     private int lastMnemonic = 0;
 
-	/**
-	 * Uses as the parent of the windowInputMap when selected.
-	 * 
-	 * @uml.property name="selectedWindowInputMap"
-	 * @uml.associationEnd 
-	 * @uml.property name="selectedWindowInputMap" multiplicity="(0 1)"
-	 */
-	private InputMap selectedWindowInputMap;
-
-    
-    /* diagnostic aids -- should be false for production builds. */
-    private static final boolean TRACE = false; // trace creates and disposes
-    private static final boolean VERBOSE = false; // show reuse hits/misses
-    private static final boolean DEBUG = false; // show bad params, misc.
+	private static final boolean DEBUG = false; // show bad params, misc.
     
     private static boolean crossMenuMnemonic = true;
     
@@ -106,7 +92,6 @@ public class LiquidMenuUI extends LiquidMenuItemUI
     public void installUI(JComponent c)
     {
         super.installUI(c);
-        JMenu m=(JMenu)c;
     }
     
     
@@ -295,7 +280,11 @@ public class LiquidMenuUI extends LiquidMenuItemUI
     
     private static class PostAction extends AbstractAction
     {
-        JMenu menu;
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		JMenu menu;
         boolean force = false;
         
         PostAction(JMenu menu, boolean shouldForce)

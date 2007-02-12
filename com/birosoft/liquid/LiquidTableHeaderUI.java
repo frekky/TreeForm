@@ -346,8 +346,6 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
     }
 
     private Dimension createHeaderSize(long width) {
-        TableColumnModel columnModel = header.getColumnModel();
-
         // None of the callers include the intercell spacing, do it here.
         if (width > Integer.MAX_VALUE) {
             width = Integer.MAX_VALUE;
@@ -506,7 +504,6 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
             }
 
             Point p = e.getPoint();
-            TableColumnModel columnModel = header.getColumnModel();
             int index = header.columnAtPoint(p);
 
             if (index != columnSelected) {
