@@ -10,6 +10,10 @@
  */
 package com.birosoft.liquid;
 
+import com.birosoft.liquid.skin.Skin;
+import com.birosoft.liquid.skin.SkinMenuItem;
+import com.birosoft.liquid.util.Colors;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -24,6 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -56,10 +61,6 @@ import javax.swing.plaf.UIResource;
 import javax.swing.plaf.basic.BasicGraphicsUtils;
 import javax.swing.plaf.basic.BasicHTML;
 import javax.swing.text.View;
-
-import com.birosoft.liquid.skin.Skin;
-import com.birosoft.liquid.skin.SkinMenuItem;
-import com.birosoft.liquid.util.Colors;
 
 
 /**
@@ -94,15 +95,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
     static Rectangle arrowIconRect = new Rectangle();
     static Rectangle viewRect = new Rectangle(Short.MAX_VALUE, Short.MAX_VALUE);
     static Rectangle r = new Rectangle();
-
-	/**
-	 * 
-	 * @uml.property name="menuItem"
-	 * @uml.associationEnd 
-	 * @uml.property name="menuItem" multiplicity="(0 1)"
-	 */
-	protected JMenuItem menuItem = null;
-
+    protected JMenuItem menuItem = null;
     protected Color selectionBackground;
     protected Color selectionForeground;
     protected Color disabledForeground;
@@ -110,67 +103,17 @@ public class LiquidMenuItemUI extends MenuItemUI {
     protected Color acceleratorSelectionForeground;
     private String acceleratorDelimiter;
     protected Font acceleratorFont;
-
-	/**
-	 * 
-	 * @uml.property name="mouseInputListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="mouseInputListener" multiplicity="(0 1)"
-	 */
-	protected MouseInputListener mouseInputListener;
-
-	/**
-	 * 
-	 * @uml.property name="menuDragMouseListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="menuDragMouseListener" multiplicity="(0 1)"
-	 */
-	protected MenuDragMouseListener menuDragMouseListener;
-
-	/**
-	 * 
-	 * @uml.property name="menuKeyListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="menuKeyListener" multiplicity="(0 1)"
-	 */
-	protected MenuKeyListener menuKeyListener;
-
+    protected MouseInputListener mouseInputListener;
+    protected MenuDragMouseListener menuDragMouseListener;
+    protected MenuKeyListener menuKeyListener;
     private PropertyChangeListener propertyChangeListener;
-
-	/**
-	 * 
-	 * @uml.property name="arrowIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="arrowIcon" multiplicity="(0 1)"
-	 */
-	protected Icon arrowIcon = null;
-
-	/**
-	 * 
-	 * @uml.property name="selArrowIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="selArrowIcon" multiplicity="(0 1)"
-	 */
-	protected Icon selArrowIcon = null;
-
-	/**
-	 * 
-	 * @uml.property name="checkIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="checkIcon" multiplicity="(0 1)"
-	 */
-	protected Icon checkIcon = null;
-
+    protected Icon arrowIcon = null;
+    protected Icon selArrowIcon = null;
+    protected Icon checkIcon = null;
     protected boolean oldBorderPainted;
 
-	/**
-	 * Used for accelerator binding, lazily created.
-	 * 
-	 * @uml.property name="windowInputMap"
-	 * @uml.associationEnd 
-	 * @uml.property name="windowInputMap" multiplicity="(0 1)"
-	 */
-	InputMap windowInputMap;
+    /** Used for accelerator binding, lazily created. */
+    InputMap windowInputMap;
 
     public void installUI(JComponent c) {
         menuItem = (JMenuItem) c;
@@ -654,8 +597,8 @@ public class LiquidMenuItemUI extends MenuItemUI {
         }
 
         Font font = b.getFont();
-        FontMetrics fm = b.getToolkit().getFontMetrics(font);
-        FontMetrics fmAccel = b.getToolkit().getFontMetrics(acceleratorFont);
+        FontMetrics fm = b.getFontMetrics(font);
+        FontMetrics fmAccel = b.getFontMetrics(acceleratorFont);
 
         resetRects();
 
@@ -1368,3 +1311,4 @@ public class LiquidMenuItemUI extends MenuItemUI {
         }
     }
 }
+

@@ -1130,7 +1130,7 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
                 editCell = new JTextField();
                 editCell.addActionListener(new EditActionListener());
                 editCell.addFocusListener(editorFocusListener);
-                editCell.setNextFocusableComponent(list);
+                //editCell.setNextFocusableComponent(list);
                 
             }
 

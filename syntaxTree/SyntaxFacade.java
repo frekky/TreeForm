@@ -240,15 +240,15 @@ private void treeLayout(Sentence sentence) {
 private void resizeUIF() {
 	mRightShift = mRightShift * Sizer.scaleWidth() * getUIF().getScale();
 	mBottomShift = mBottomShift * Sizer.scaleHeight() * getUIF().getScale();
-	if (getUIF().getMinWidth() > mRightShift )
+	if (getUIF().getMinWidth() > mRightShift -10 )
 	{
-		mRightShift = getUIF().getMinWidth();
+		mRightShift = getUIF().getMinWidth()-10;
 	}
-	if (getUIF().getMinHeight() > mBottomShift )
+	if (getUIF().getMinHeight() > mBottomShift -10 )
 	{
-		mBottomShift = getUIF().getMinHeight();
+		mBottomShift = getUIF().getMinHeight()-10;
 	}
-	getUIF().setBounds(0,0,(int)mRightShift,(int)mBottomShift);
+	getUIF().setBounds(0,0,(int)mRightShift+10,(int)mBottomShift+10);
 	
 	getUIF().getDesktopPane().setPreferredSize(
 			new Dimension(
