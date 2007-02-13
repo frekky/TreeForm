@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.FileDialog;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -108,20 +109,20 @@ public class UserControl{
  *
  */
 
-	public void loadSentence() {
-		JFileChooser lChooser = new JFileChooser();
-		lChooser.setDialogTitle("Load Syntax Tree");
-		lChooser.setAcceptAllFileFilterUsed(false);
-		lChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-		lChooser.setFileFilter(new FileFilterXML());
-		int lI = lChooser.showOpenDialog(mUserFrame);
-		if(lI == JFileChooser.APPROVE_OPTION) 
-			{
-				XMLParser lXMLP = new XMLParser();
-				lXMLP.loadFile(mUserFrame, lChooser.getSelectedFile());
-				mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
-			}
+public void loadSentence() {
+		
+		FileDialog fileDialog = new FileDialog(mUserFrame,"Load Syntax Tree");
+		FileFilterXML fileFilterXML = new FileFilterXML();
+		fileDialog.setFilenameFilter(fileFilterXML);
+		fileDialog.setVisible(true);
+		
+		if(fileDialog.getFile() != null)
+		{
+			XMLParser lXMLP = new XMLParser();
+			lXMLP.loadFile(mUserFrame, new File(fileDialog.getDirectory() + fileDialog.getFile()));
+			mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
 		}
+	}
 /**
  * Prints the tree.  First this method sets the background to white,
  * then sends the selected InternalFrame to the PrintUtilities object.
@@ -432,42 +433,32 @@ public class UserControl{
  * <br>
  * This method calls the XMLParser object and saves a copy of the tree.
  **/
-		public void saveAsTree(SyntaxFacade pSyntaxFacade) {
-			JFileChooser chooser = new JFileChooser();			 
-			chooser.setDialogTitle("Save Syntax Tree");
-			chooser.setAcceptAllFileFilterUsed(false);
-			chooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-			chooser.addChoosableFileFilter(new FileFilterSVG());
-			//chooser.addChoosableFileFilter(new FileFilterLTX());
-			//chooser.addChoosableFileFilter(new FileFilterTXT());
-			chooser.setFileFilter(new FileFilterXML());
-			chooser.setSelectedFile(pSyntaxFacade.getFile());
-			int returnVal = chooser.showSaveDialog(mUserFrame);
-			if(returnVal == JFileChooser.APPROVE_OPTION) {
-				 pSyntaxFacade.setName(chooser.getSelectedFile().getName());
-				 SaveFileType lSaveFileType = null;
-				 if (chooser.getFileFilter() instanceof FileFilterXML)
-				 {
-				 	 lSaveFileType = SaveFileType.XML;
-				 	 File lFile = chooser.getSelectedFile();
-					 lFile = checkExtension(lFile,".xml");
-					 pSyntaxFacade.setFile(lFile.getPath());
-					 pSyntaxFacade.setName(lFile.getName());
-					 pSyntaxFacade.getUIF().setTitle(lFile.getName());
-					 saveTree(pSyntaxFacade, lFile, lSaveFileType);
-				 }
-				 if (chooser.getFileFilter() instanceof FileFilterSVG)
-				 {
-				 	lSaveFileType = SaveFileType.SVG;
-				 	File lFile = chooser.getSelectedFile();
-					 lFile = checkExtension(lFile,".svg");
-					 pSyntaxFacade.setFile(lFile.getPath());
-					 pSyntaxFacade.setName(lFile.getName());
-					 pSyntaxFacade.getUIF().setTitle(lFile.getName());
-					 saveTree(pSyntaxFacade, lFile, lSaveFileType);
-				 }
-				 
-			  }
+	public void saveAsTree(SyntaxFacade pSyntaxFacade) {
+			
+			FileDialog fileDialog = new FileDialog(mUserFrame,"Save Syntax Tree");
+			FileFilterXML fileFilterXML = new FileFilterXML();
+			fileDialog.setFilenameFilter(fileFilterXML);
+			//FileFilterSVG fileFilterSVG = new FileFilterSVG();
+			//fileDialog.setFilenameFilter(fileFilterSVG);
+			fileDialog.setMode(FileDialog.SAVE);
+			fileDialog.setFile(pSyntaxFacade.getFile().getName());
+			fileDialog.setVisible(true);
+			
+			if(fileDialog.getFile() != null)
+			{
+			//	XMLParser lXMLP = new XMLParser();
+			//	lXMLP.loadFile(mUserFrame, new File(fileDialog.getFile()));
+			//	mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
+				 pSyntaxFacade.setName(fileDialog.getFile());
+				 SaveFileType lSaveFileType = SaveFileType.XML;
+			 	 File lFile = new File(fileDialog.getDirectory() + fileDialog.getFile());
+			 	 System.out.println("XML = "+fileDialog.getDirectory() + fileDialog.getFile());
+				 lFile = checkExtension(lFile,".xml");
+				 pSyntaxFacade.setFile(lFile.getPath());
+				 pSyntaxFacade.setName(lFile.getName());
+				 pSyntaxFacade.getUIF().setTitle(lFile.getName());
+				 saveTree(pSyntaxFacade, lFile, lSaveFileType);
+			}
 		}
 
 /**
