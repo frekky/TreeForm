@@ -223,6 +223,7 @@ public void displayTree() {
 
 private void treeLayout(Sentence sentence) {
 	SyntacticStructure mR = (SyntacticStructure) mSentence.getChildren().getFirst();
+	
 	mLeftShift = 0;
 	mRightShift = 0;
 	mBottomShift = 0;
@@ -240,20 +241,20 @@ private void treeLayout(Sentence sentence) {
 private void resizeUIF() {
 	mRightShift = mRightShift * Sizer.scaleWidth() * getUIF().getScale();
 	mBottomShift = mBottomShift * Sizer.scaleHeight() * getUIF().getScale();
-	if (getUIF().getMinWidth() > mRightShift -10 )
+	if (mRightShift < getUIF().getMinWidth()-25)
 	{
-		mRightShift = getUIF().getMinWidth()-10;
+		mRightShift = getUIF().getMinWidth()-25;
 	}
-	if (getUIF().getMinHeight() > mBottomShift -10 )
+	if (mBottomShift < getUIF().getMinHeight() -25)
 	{
-		mBottomShift = getUIF().getMinHeight()-10;
+		mBottomShift = getUIF().getMinHeight()-25;
 	}
-	getUIF().setBounds(0,0,(int)mRightShift+10,(int)mBottomShift+10);
+	getUIF().setBounds(0,0,(int)mRightShift+25,(int)mBottomShift+25);
 	
 	getUIF().getDesktopPane().setPreferredSize(
 			new Dimension(
-				getUIF().getBounds().x + (int)mRightShift,
-				getUIF().getBounds().y + (int)mBottomShift));
+				getUIF().getBounds().x + (int)mRightShift +25,
+				getUIF().getBounds().y + (int)mBottomShift+25));
 		getUIF().getDesktopPane().revalidate();
 }
 

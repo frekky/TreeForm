@@ -79,7 +79,7 @@ public final class Sizer {
  */
 	public static float scaleWidth()
 	{
-		return (float)(Toolkit.getDefaultToolkit().getScreenSize().width)/800;
+		return (float)(Toolkit.getDefaultToolkit().getScreenSize().height)/600;
 	}
 /**
  * 
