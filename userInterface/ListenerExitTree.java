@@ -66,7 +66,7 @@ public class ListenerExitTree implements ActionListener {
 	public void actionPerformed(ActionEvent pAE) {
 		if (mUserFrame.getObservableNew().getValue() != 0)
 		{
-			int I = JOptionPane.showConfirmDialog(null,"Clicking NO exit the program without saving any trees.","Save trees first?",JOptionPane.YES_NO_OPTION);
+			int I = JOptionPane.showConfirmDialog(null,"Clicking NO will exit the program without saving any trees.","Save trees first?",JOptionPane.YES_NO_OPTION);
 			if (I == JOptionPane.YES_OPTION)
 			{
 				mUserFrame.getUserControl().saveAllTrees(mUserFrame.getDesktopPane());

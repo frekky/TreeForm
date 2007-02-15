@@ -368,58 +368,7 @@ public void loadSentence() {
 				}
 				if (pSFT == SaveFileType.SVG)
 				{
-//					Container lC = mUserFrame.getInternalFrame().getContentPane();
-//					Color lColor = lC.getBackground();
-//					lC.setBackground(new Color(255,255,255));
-//					if(mUserFrame.getObservableClipboard().getValue() != null)
-//					{
-//						mUserFrame.getObservableClipboard().getValue().setCarat(false);
-//						mUserFrame.getObservableClipboard().getValue().repaint();
-//					}
-//					//PrintUtilities.printComponent(lC);
-//					// batik converter.
-//
-//					DOMImplementation domImpl =
-//					GenericDOMImplementation.getDOMImplementation();
-//					
-//					// Create an instance of org.w3c.dom.Document
-//					Document document = domImpl.createDocument(null, "svg", null);
-//					
-//					// Create an instance of the SVG Generator
-//					SVGGraphics2D svgGenerator = new SVGGraphics2D(document);
-//					
-//					// Ask the test to render into the SVG Graphics2D implementation
-//					
-//					lC.paint(svgGenerator);
-//					
-//					// Finally, stream out SVG to the standard output using UTF-8
-//					// character to byte encoding
-//					boolean useCSS = true; // we want to use CSS style attribute
-//					
-//	
-//			        Writer out;
-//					try {
-//						out = new FileWriter(pFile);
-//						//out = new OutputStreamWriter(System.out, "UTF-8");
-//						svgGenerator.stream(out, useCSS);
-//					} catch (UnsupportedEncodingException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (SVGGraphics2DIOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					} catch (IOException e) {
-//						// TODO Auto-generated catch block
-//						e.printStackTrace();
-//					}
-//					
-//					//end
-//					lC.setBackground(lColor);
-//					if(mUserFrame.getObservableClipboard().getValue() != null)
-//					{
-//						mUserFrame.getObservableClipboard().getValue().setCarat(true);
-//						mUserFrame.getObservableClipboard().getValue().repaint();
-//					}
+//get rid.
 				}
 			}
 		}

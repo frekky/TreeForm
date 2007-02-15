@@ -102,7 +102,7 @@ public final class Sizer {
 		}
 		else
 		{
-			return (float) width/600;
+			return (float) width/800;
 		}	
 	}
 		public static boolean iconSize() {
