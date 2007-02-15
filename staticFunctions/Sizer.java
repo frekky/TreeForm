@@ -79,7 +79,7 @@ public final class Sizer {
  */
 	public static float scaleWidth()
 	{
-		return (float)(Toolkit.getDefaultToolkit().getScreenSize().height)/600;
+		return scale();
 	}
 /**
  * 
@@ -87,12 +87,25 @@ public final class Sizer {
  */
 	public static float scaleHeight()
 	{
-		return (float)(Toolkit.getDefaultToolkit().getScreenSize().height)/600;
+		return scale();
 	}
 /**
  * @return the recommended icon size based on screen width.
  */
-	public static boolean iconSize() {
+	private static float scale()
+	{
+		float height = Toolkit.getDefaultToolkit().getScreenSize().height;
+		float width = Toolkit.getDefaultToolkit().getScreenSize().width;
+		if(height < width)
+		{
+			return (float) height/600;
+		}
+		else
+		{
+			return (float) width/600;
+		}	
+	}
+		public static boolean iconSize() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		if (dim.width < 1280)
 		{
