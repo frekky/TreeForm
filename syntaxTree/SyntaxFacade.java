@@ -250,9 +250,9 @@ public void displayTree() {
 	if(mSentence.getChildren().size() > 0)
 	{
 		treeLayout(mSentence);
-		getUIF().revalidate();
 		//System.out.println("done!");
 	}
+	getUIF().repaint();
 }
 
 private void treeLayout(Sentence sentence) {
@@ -1253,6 +1253,11 @@ private void fourthWalk(SyntacticStructure v, int level)
 	}
 	
 	public void undo() {
+		if(mDocPosition == mDocMaxPosition)
+		{
+			addUndo();
+			mDocPosition--;
+		}
 		if(mDocPosition > mDocMinPosition)
 		{
 			mDocPosition--;
@@ -1265,6 +1270,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 		{
 			deleteSubtree((SyntacticStructure) mSentence.getChildren().get(0));
 			resetClipboard((SyntacticStructure) mSentence.getChildren().get(0));
+			//displayTree();
 		}
 		getParser().loadFile(((Document)mDocs.get(mDocPosition % mDocMax)),getUIF());
 	}
