@@ -167,31 +167,9 @@ public class XMLParser implements SaveFile, LoadFile {
  * <br>
  * Then add the details (saveHead), and save to a file (using an XSLT tranform)
  */
-	public void saveFile(SyntaxFacade pSyntaxFacade) {
+	public void saveFileToDisk(SyntaxFacade pSyntaxFacade) {
 		
-		mFactory = DocumentBuilderFactory.newInstance();
-		mFactory.setNamespaceAware(true);
-		try {
-			mBuilder = mFactory.newDocumentBuilder();
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		}
-		mImpl = mBuilder.getDOMImplementation();
-		mDoc = mImpl.createDocument(null,"sentence",null);
-		
-		
-		mRoot = mDoc.getDocumentElement();
-		
-		Attr lName = mDoc.createAttribute("name");
-		lName.setValue(pSyntaxFacade.getName());
-		mRoot.setAttributeNode(lName);
-		lName = mDoc.createAttribute("file");
-		lName.setValue(pSyntaxFacade.getFile().getPath());
-		mRoot.setAttributeNode(lName);
-		lName = mDoc.createAttribute("type");
-		lName.setValue("TreeForm");
-		mRoot.setAttributeNode(lName);
-		saveHead((SyntacticStructure) pSyntaxFacade.getSentence().getChildren().get(0),mRoot);
+		mDoc = saveFile(pSyntaxFacade);
 		TransformerFactory xformFactory 
 		   = TransformerFactory.newInstance();  
 		  Transformer idTransform = null;
@@ -207,6 +185,33 @@ public class XMLParser implements SaveFile, LoadFile {
 		} catch (TransformerException e2) {
 			e2.printStackTrace();
 		}
+	}
+	public Document saveFile(SyntaxFacade pSyntaxFacade)
+	{
+		mFactory = DocumentBuilderFactory.newInstance();
+		mFactory.setNamespaceAware(true);
+		try {
+			mBuilder = mFactory.newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
+		mImpl = mBuilder.getDOMImplementation();
+		mDoc = mImpl.createDocument(null,"sentence",null);
+		mRoot = mDoc.getDocumentElement();
+		Attr lName = mDoc.createAttribute("name");
+		lName.setValue(pSyntaxFacade.getName());
+		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("file");
+		lName.setValue(pSyntaxFacade.getFile().getPath());
+		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("type");
+		lName.setValue("TreeForm");
+		mRoot.setAttributeNode(lName);
+		for(int i = 0;i < pSyntaxFacade.getSentence().getChildren().size();i++)
+		{
+			saveHead((SyntacticStructure) pSyntaxFacade.getSentence().getChildren().get(0),mRoot);
+		}
+		return mDoc;
 	}
 /**
  * 
@@ -441,38 +446,22 @@ public class XMLParser implements SaveFile, LoadFile {
  * the heads of the features, and THEN redisplay the tree so the user can see
  * the loaded file.
  */
-	public void loadFile(UserFrame pUserFrame, File pFile) 
+	public void loadFileFromDisk(UserFrame pUserFrame, File pFile) 
 	{
 		mUserFrame = pUserFrame;
 		mFactory = DocumentBuilderFactory.newInstance();
-		mMap = new HashMap();
 		try {
 			mBuilder = mFactory.newDocumentBuilder();
-			mDoc = mBuilder.parse( pFile);			
-			mRoot = mDoc.getDocumentElement();			
+			mDoc = mBuilder.parse(pFile);	
+			mRoot = mDoc.getDocumentElement();
 			String lString = mRoot.getAttribute("type");
 			if (lString.equals("TreeForm"))
 			{			
 				mUserFrame.getDesktopPane().addInternalFrame();
 				mInternalFrame = mUserFrame.getDesktopPane().getInternalFrame();
-				mSyntaxFacade = pUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade();
-				loadATDetails(mRoot.getChildNodes().item(0),(RepositionTree)mSyntaxFacade.getSentence());
-				mSyntaxFacade.setName(mRoot.getAttribute("name"));
-				mSyntaxFacade.setFile(mRoot.getAttribute("file"));
-				mInternalFrame.setTitle(mRoot.getAttribute("name"));
-				Set lKey = mMap.keySet();
-				Iterator lIterator = lKey.iterator();
-				while (lIterator.hasNext())
-				{
-					SyntacticAssociation lAS = (SyntacticAssociation) mMap.get(lIterator.next());
-					lAS.setHead(lAS.getSyntacticFeature().getHead());
-					mInternalFrame.getContentPane().add(lAS);
-					lAS.getSyntacticStructure().testXY();
-				}
-				mSyntaxFacade.displayTree();
-				
+				loadFile(mDoc,mInternalFrame);
 			}
-			else
+		else
 			{
 				JOptionPane.showMessageDialog(null,"Not a treeform file","This is NOT a treeform file!",JOptionPane.ERROR_MESSAGE);
 			}
@@ -484,6 +473,36 @@ public class XMLParser implements SaveFile, LoadFile {
 			e.printStackTrace();
 		}
 		
+	}
+public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
+		
+		mInternalFrame = userInternalFrame;
+		mUserFrame = mInternalFrame.getUserFrame();
+		mFactory = DocumentBuilderFactory.newInstance();
+		try {
+			mBuilder = mFactory.newDocumentBuilder();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		mDoc = doc;
+		mRoot = mDoc.getDocumentElement();		
+		mSyntaxFacade = mInternalFrame.getSyntaxFacade();
+		mMap = new HashMap();
+		loadATDetails(mRoot.getChildNodes().item(0),(RepositionTree)mSyntaxFacade.getSentence());
+		mSyntaxFacade.setName(mRoot.getAttribute("name"));
+		mSyntaxFacade.setFile(mRoot.getAttribute("file"));
+		mInternalFrame.setTitle(mRoot.getAttribute("name"));
+		Set lKey = mMap.keySet();
+		Iterator lIterator = lKey.iterator();
+		while (lIterator.hasNext())
+		{
+			SyntacticAssociation lAS = (SyntacticAssociation) mMap.get(lIterator.next());
+			lAS.setHead(lAS.getSyntacticFeature().getHead());
+			mInternalFrame.getContentPane().add(lAS);
+			lAS.getSyntacticStructure().testXY();
+		}
+		mSyntaxFacade.displayTree();
 	}
 /**
  * 
@@ -499,36 +518,38 @@ public class XMLParser implements SaveFile, LoadFile {
 	private void loadATDetails(Node pRoot, RepositionTree pSS) {
 		
 		Element lElement = (Element) pRoot;
-		if (lElement.getNodeName().equals("syntacticstructure"))
+		if(lElement != null)
 		{
-			NodeList lNodeList = pRoot.getChildNodes();
-			SyntacticStructure lSS = new SyntacticStructure(mInternalFrame,pSS);
-			lSS.setSyntacticLevel(getSyntacticLevel(lElement.getAttribute("syntacticlevel")));
-			lSS.setHead(loadHead(lElement));
-			if (pSS instanceof Sentence)
+			if (lElement.getNodeName().equals("syntacticstructure"))
 			{
-				lSS.setSyntacticParent(null);
+				NodeList lNodeList = pRoot.getChildNodes();
+				SyntacticStructure lSS = new SyntacticStructure(mInternalFrame,pSS);
+				lSS.setSyntacticLevel(getSyntacticLevel(lElement.getAttribute("syntacticlevel")));
+				lSS.setHead(loadHead(lElement));
+				if (pSS instanceof Sentence)
+				{
+					lSS.setSyntacticParent(null);
+				}
+				if (pSS != null)
+				{
+					pSS.getChildren().add(lSS);
+				}
+				mInternalFrame.getContentPane().add(lSS);
+				mInternalFrame.getContentPane().add(lSS.getSyntacticStructureLines());
+				for (int i = 0; i < lNodeList.getLength(); i++)
+				{
+					loadATDetails(lNodeList.item(i),lSS);
+				}
 			}
-			if (pSS != null)
+			else if (lElement.getNodeName().equals("syntacticfeaturesets"))
 			{
-				pSS.getChildren().add(lSS);
+				loadFeatureSets(lElement, pSS);
 			}
-			mInternalFrame.getContentPane().add(lSS);
-			mInternalFrame.getContentPane().add(lSS.getSyntacticStructureLines());
-			for (int i = 0; i < lNodeList.getLength(); i++)
+			else if (lElement.getNodeName().equals("syntacticassociations"))
 			{
-				loadATDetails(lNodeList.item(i),lSS);
+				loadAssociations(lElement, pSS);
 			}
 		}
-		else if (lElement.getNodeName().equals("syntacticfeaturesets"))
-		{
-			loadFeatureSets(lElement, pSS);
-		}
-		else if (lElement.getNodeName().equals("syntacticassociations"))
-		{
-			loadAssociations(lElement, pSS);
-		}
-		
 	}
 /**
  * 

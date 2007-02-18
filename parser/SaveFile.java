@@ -29,5 +29,5 @@ import syntaxTree.SyntaxFacade;
  */
 
 public interface SaveFile {
-	public void saveFile(SyntaxFacade syntaxFacade);
+	public void saveFileToDisk(SyntaxFacade syntaxFacade);
 }

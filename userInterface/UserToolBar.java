@@ -386,8 +386,8 @@ public class UserToolBar extends JToolBar {
 		mIconSize, mUserFrame.getObservableStack());
 		mUndo.addActionListener(new ListenerUndo(mUserFrame));
 		mUndo.setToolTipText((String) mUserFrame.getI18n().getObject("UNDO_TOOLTIP"));
-		mUndo.setEnabled(false);
-		mUndo.setFocusable(false);
+		mUndo.setEnabled(true);
+		mUndo.setFocusable(true);
 		mUserFrame.getObservableStack().addObserver(mUndo);	
 		this.add(mUndo);
 		mRedo = new UserButtonRedo(mUserFrame,
@@ -400,8 +400,8 @@ public class UserToolBar extends JToolBar {
 		mIconSize,mUserFrame.getObservableStack());
 		mRedo.addActionListener(new ListenerRedo(mUserFrame));
 		mRedo.setToolTipText((String) mUserFrame.getI18n().getObject("REDO_TOOLTIP"));
-		mRedo.setEnabled(false);
-		mRedo.setFocusable(false);
+		mRedo.setEnabled(true);
+		mRedo.setFocusable(true);
 		mUserFrame.getObservableStack().addObserver(mRedo);	
 		this.add(mRedo);
 	}

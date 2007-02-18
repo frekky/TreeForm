@@ -109,6 +109,10 @@ public class SyntacticFeature extends EditableComponent{
 		getSyntacticFeatureSet().testXY();
 		getUserInternalFrame().getSyntaxFacade().displayTree();
 	}
+	public void setHeadWithoutUpdate(AttributedString pAT)
+	{
+		super.setHead(pAT);
+	}
 /**
  * @param pAT The attributedString to reset.
  * 

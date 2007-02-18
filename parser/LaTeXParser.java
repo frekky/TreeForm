@@ -29,6 +29,6 @@ import syntaxTree.SyntaxFacade;
  */
 
 public class LaTeXParser implements SaveFile {
-	public void saveFile(SyntaxFacade pSyntaxFacade) {
+	public void saveFileToDisk(SyntaxFacade pSyntaxFacade) {
 	}
 }

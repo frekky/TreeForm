@@ -109,7 +109,7 @@ public class UserControl{
  *
  */
 
-public void loadSentence() {
+public void loadTree() {
 		
 		FileDialog fileDialog = new FileDialog(mUserFrame,"Load Syntax Tree");
 		FileFilterXML fileFilterXML = new FileFilterXML();
@@ -119,7 +119,7 @@ public void loadSentence() {
 		if(fileDialog.getFile() != null)
 		{
 			XMLParser lXMLP = new XMLParser();
-			lXMLP.loadFile(mUserFrame, new File(fileDialog.getDirectory() + fileDialog.getFile()));
+			lXMLP.loadFileFromDisk(mUserFrame, new File(fileDialog.getDirectory() + fileDialog.getFile()));
 			mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
 		}
 	}
@@ -364,7 +364,7 @@ public void loadSentence() {
 				if (pSFT == SaveFileType.XML)
 				{
 					XMLParser lXML = new XMLParser();
-					lXML.saveFile(pSyntaxFacade);
+					lXML.saveFileToDisk(pSyntaxFacade);
 				}
 				if (pSFT == SaveFileType.SVG)
 				{
@@ -401,7 +401,7 @@ public void loadSentence() {
 				 pSyntaxFacade.setName(fileDialog.getFile());
 				 SaveFileType lSaveFileType = SaveFileType.XML;
 			 	 File lFile = new File(fileDialog.getDirectory() + fileDialog.getFile());
-			 	 System.out.println("XML = "+fileDialog.getDirectory() + fileDialog.getFile());
+			 	 //System.out.println("XML = "+fileDialog.getDirectory() + fileDialog.getFile());
 				 lFile = checkExtension(lFile,".xml");
 				 pSyntaxFacade.setFile(lFile.getPath());
 				 pSyntaxFacade.setName(lFile.getName());
@@ -511,14 +511,13 @@ public void loadSentence() {
  */
 		public void redo() {
 
-			System.out.println("Redo Command");
+			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().redo();
 		}
 /**
  * Undo
  */
 		public void undo() {
-
-			System.out.println("Undo Command");
+			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().undo();
 		}
 /**
  * Copies selected text to clipboard

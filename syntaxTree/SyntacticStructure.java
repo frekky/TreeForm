@@ -118,6 +118,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private int mNumber;
 
 	private int mLevel;
+
+	private int mPreorder;
 	
 /**
  * 
@@ -201,6 +203,9 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		mParent = pParent;
 		setSyntacticStructureLines(new SyntacticStructureLines());
 	}
+
+	
+	
 /**
  * 
  * @return Returns the Button Height - which is the TOTAL height of the structure,
@@ -540,5 +545,15 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public int getLevel()
 	{
 		return mLevel;
+	}
+
+
+
+	public void setPreorder(int preorder) {
+		mPreorder = preorder;
+	}
+	public int getPreorder()
+	{
+		return mPreorder;
 	}
 }

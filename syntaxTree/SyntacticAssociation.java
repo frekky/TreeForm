@@ -103,4 +103,8 @@ public class SyntacticAssociation extends EditableComponent{
 		}
 		getSyntacticStructure().testXY();
 	}
+	public void setHeadWithoutUpdate(AttributedString pAS)
+	{
+		super.setHead(pAS);
+	}
 }

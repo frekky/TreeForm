@@ -60,7 +60,7 @@ public class ListenerLoad implements ActionListener {
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getUserControl().loadSentence();
+		mUserFrame.getUserControl().loadTree();
 
 	}
 

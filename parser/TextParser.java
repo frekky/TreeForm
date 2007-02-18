@@ -30,7 +30,7 @@ import syntaxTree.SyntaxFacade;
 
 public class TextParser implements SaveFile {
 
-	public void saveFile(SyntaxFacade pSyntaxFacade) {
+	public void saveFileToDisk(SyntaxFacade pSyntaxFacade) {
 
 		
 	}

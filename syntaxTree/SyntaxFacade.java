@@ -31,6 +31,8 @@ import java.text.AttributedString;
 import java.util.LinkedList;
 
 import javax.swing.JPopupMenu;
+import org.w3c.dom.Document;
+import parser.XMLParser;
 
 import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
@@ -94,22 +96,35 @@ public class SyntaxFacade {
 	private double mChange;
 	private int subtrees;
 	private LinkedList mVariableHeight;
+	private LinkedList mDocs;
+	private int mDocPosition = 0;
+	private int mDocMaxPosition = 0;
+	private static final int mDocMax = 100;
 	private double mRightShift;
 	private double mBottomShift;
-
-
-
-
-/**
+	private int mPreorder;
+	private XMLParser mParser;
+	private int mDocMinPosition = 0;
+	/**
  * 
  * @param pUIF The InternalFrame associated with this facade
  */
 	public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
+		setParser(new XMLParser());
 		setUIF(pUIF);
-
+		setFile("");
+		setName(getUIF().getTitle());
+		mDocs = new LinkedList();
 	}
 
+private void setParser(XMLParser parser) {
+		mParser = parser;
+	}
+private XMLParser getParser()
+{
+	return mParser;
+}
 /**
  * 
  * @param pSST The SyntacticStructureType used to decide which builder to use.
@@ -138,6 +153,7 @@ public class SyntaxFacade {
 		SyntacticStructureType pSST,
 		UserInternalFrame pUIF)
 		throws Exception {
+		addUndo();
 		AbstractStructureBuilder lAB = null;
 		SyntacticStructure lSyntacticStructure;
 
@@ -212,6 +228,24 @@ public class SyntaxFacade {
 		displayTree();
 
 	}
+private void addUndo() {
+	//System.out.println(mDoc.getDocumentElement().getAttribute("name"));
+	System.out.println(mSentence.getChildren().size());
+	//if (mSentence.getChildren().size() > 0)
+	//{
+		Document mDoc = getParser().saveFile(this);
+		System.out.println("type = " + mDoc.getDocumentElement().getAttribute("type"));
+		mDocs.add(mDocMaxPosition % mDocMax,mDoc);
+		mDocPosition++;
+		mDocMaxPosition = mDocPosition;
+		mDocMinPosition  = mDocPosition - mDocMax;
+		if (mDocMinPosition < 0)
+		{
+			mDocMinPosition = 0;
+		}
+	//}
+}
+
 public void displayTree() {
 	if(mSentence.getChildren().size() > 0)
 	{
@@ -223,11 +257,11 @@ public void displayTree() {
 
 private void treeLayout(Sentence sentence) {
 	SyntacticStructure mR = (SyntacticStructure) mSentence.getChildren().getFirst();
-	
 	mLeftShift = 0;
 	mRightShift = 0;
 	mBottomShift = 0;
 	mShift = 0;
+	mPreorder = 0;
 	initializeTree(mR,1,0);
 	mVariableHeight = new LinkedList();
 	firstWalk(mR,0);
@@ -269,6 +303,8 @@ private void initializeTree(SyntacticStructure v,int number,int level) {
 	v.setShift(0);
 	v.setNumber(number);
 	v.setLevel(level);
+	v.setPreorder(mPreorder);
+	mPreorder++;
 	for (int i = 0; i < v.getChildren().size();i++)
 	{
 		initializeTree((SyntacticStructure) v.getChildren().get(i),i+1,level+1);
@@ -765,6 +801,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public void moveSyntacticStructure(
 		SyntacticStructure pParent,
 		SyntacticStructure pChild) {
+		addUndo();
 		if (pChild.getSyntacticParent() != null) {
 			pChild.getSyntacticParent().getChildren().remove(pChild);
 			if (pParent.getChildren().size() == 0) {
@@ -791,15 +828,21 @@ private void fourthWalk(SyntacticStructure v, int level)
  * remove the child from the sentence.
  */
 	public void deleteSyntacticStructure(SyntacticStructure pSS) {
+		addUndo();
 		deleteSubtree(pSS);
+		resetClipboard(pSS);
+		displayTree();
+	}
+	
+	private void resetClipboard(SyntacticStructure pSS) {
 		getUIF().getObservableClipboard().setValue(pSS.getSyntacticParent());
 		if (pSS.getSyntacticParent() != null) {
 			pSS.getSyntacticParent().getChildren().remove(pSS);
 		} else {
 			mSentence.removeChild(pSS);
-		}
-		displayTree();
+		}	
 	}
+
 /**
  * 
  * @param pSS The SyntacticStructure to delete.
@@ -848,6 +891,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * from a SyntacticStructure and from the InternalFrame.
  */
 	public void deleteSyntacticFeature(SyntacticFeature pSF) {
+		addUndo();
 		SyntacticFeatureSet lSFS = pSF.getSyntacticFeatureSet();
 		LinkedList lSAS = pSF.getSyntacticAssociation();
 		SyntacticStructure lSS = lSFS.getSyntacticStructure();
@@ -882,6 +926,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 		SyntacticFeatureType pSFT,
 		UserInternalFrame pUIF)
 		throws Exception {
+		addUndo();
 		if (getContainer() instanceof SyntacticStructure) {
 			AbstractFeatureBuilder lAB = null;
 			if (pSFT == SyntacticFeatureType.THETA) {
@@ -977,6 +1022,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  */
 	public void repositionSyntacticStructure(SyntacticStructure pSS) {
 		if (pSS.getSyntacticParent() instanceof SyntacticStructure) {
+			addUndo();
 			pSS.getSyntacticParent().getChildren().remove(pSS);
 			hideTree(pSS);
 			displayTree();
@@ -1020,8 +1066,8 @@ private void fourthWalk(SyntacticStructure v, int level)
  * 
  * @param mUIF Accessor
  */
-	private void setUIF(UserInternalFrame mUIF) {
-		this.mUIF = mUIF;
+	private void setUIF(UserInternalFrame pUIF) {
+		mUIF = pUIF;
 	}
 /**
  * 
@@ -1152,6 +1198,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * there will be no memory leaks here.
  */
 	public void deleteSyntacticFeatureSet(SyntacticFeature mSF) {
+		addUndo();
 		while (mSF.getSyntacticFeatureSet().getSyntacticFeature().size()
 			!= 0) {
 			deleteSyntacticFeature(
@@ -1173,6 +1220,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * to understand this program!)
  */
 	public void addSyntacticFeature(SyntacticFeature mSF) {
+		addUndo();
 		SyntacticFeature lSF = new SyntacticFeature(getUIF());
 		AttributedString lAttributedString = new AttributedString("Feature");
 		Font lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize() - 2);
@@ -1187,45 +1235,38 @@ private void fourthWalk(SyntacticStructure v, int level)
  * @param mSA the association to be deleted.
  */
 	public void deleteSyntacticAssociation(SyntacticAssociation mSA) {
+		addUndo();
 		SyntacticStructure lSS = mSA.getSyntacticStructure();
 		mSA.getSyntacticStructure().getSyntacticAssociation().remove(mSA);
 		mSA.getSyntacticFeature().getSyntacticAssociation().remove(mSA);
 		getUIF().getContentPane().remove(mSA);
 		lSS.testXY();
 		displayTree();
-
 	}
 
-//	private String printText(SyntacticStructure v) {
-//		if (v != null)
-//		{
-//		AttributedString as = v.getHead();
-//		AttributedCharacterIterator iter = as.getIterator();
-//		int j = 0;
-//		String s = "";
-//		if (iter.first() != AttributedCharacterIterator.DONE)
-//		{
-//			j = 1;
-//			while (iter.next() != AttributedCharacterIterator.DONE)
-//			{
-//				j++;
-//			}
-//		}
-//		for (int i = 0; i < j;i++)
-//		{
-//			if(i == 0)
-//			{
-//				s = s + iter.first();
-//			}
-//			else
-//				s = s + iter.next();
-//		}
-//		return s;
-//		}
-//		else
-//		{
-//			return "null";
-//		}
-//	}
-
+	public void redo() {
+		if (mDocPosition < mDocMaxPosition-1)
+		{
+			mDocPosition++;
+			changeStack();
+		}
+	}
+	
+	public void undo() {
+		if(mDocPosition > mDocMinPosition)
+		{
+			mDocPosition--;
+			changeStack();
+		}
+	}	
+	public void changeStack()
+	{
+		if (mSentence.getChildren().size() > 0)
+		{
+			deleteSubtree((SyntacticStructure) mSentence.getChildren().get(0));
+			resetClipboard((SyntacticStructure) mSentence.getChildren().get(0));
+		}
+		getParser().loadFile(((Document)mDocs.get(mDocPosition % mDocMax)),getUIF());
+	}
+	
 }
