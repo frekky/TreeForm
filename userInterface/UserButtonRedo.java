@@ -103,6 +103,8 @@ public class UserButtonRedo extends JButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
+
+	private ObservableNew mObservableNew;
 	/**
 	 * 
 	 * @param pUserFrame The UserFrame for this instance of TreeForm
@@ -122,7 +124,7 @@ public class UserButtonRedo extends JButton implements Observer{
 	ImageIcon pActiveIcon, 
 	ImageIcon pEnableIconSmall,
 	ImageIcon pDisableIconSmall,
-	ImageIcon pActiveIconSmall, boolean pSize, ObservableStack pObservableStack) {
+	ImageIcon pActiveIconSmall, boolean pSize, ObservableStack pObservableStack, ObservableNew pObservableNew) {
 		super();
 		mEnableIcon = pEnableIcon;
 		mDisableIcon = pDisableIcon;
@@ -132,6 +134,7 @@ public class UserButtonRedo extends JButton implements Observer{
 		mActiveIconSmall = pActiveIconSmall;
 		mSize = pSize;
 		mObservableStack = pObservableStack;
+		mObservableNew = pObservableNew;
 		setIcons();
 	}
 	/**
@@ -196,6 +199,18 @@ public class UserButtonRedo extends JButton implements Observer{
 			this.setEnabled(true);
 		  }
 	   }
+		if (pObservable == mObservableNew)
+		{
+			if (mObservableNew.getValue() == 0)
+			  {
+				this.setEnabled(false);
+			  }
+			  else
+			  {
+				this.setEnabled(true);
+			  }
+		}
 		
 	}
+	
 }

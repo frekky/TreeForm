@@ -383,12 +383,13 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDO_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDO_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDO_ICON_SMALL_HIGHLIGHT"),
-		mIconSize, mUserFrame.getObservableStack());
+		mIconSize, mUserFrame.getObservableStack(), mUserFrame.getObservableNew());
 		mUndo.addActionListener(new ListenerUndo(mUserFrame));
 		mUndo.setToolTipText((String) mUserFrame.getI18n().getObject("UNDO_TOOLTIP"));
-		mUndo.setEnabled(true);
-		mUndo.setFocusable(true);
-		mUserFrame.getObservableStack().addObserver(mUndo);	
+		mUndo.setEnabled(false);
+		mUndo.setFocusable(false);
+		mUserFrame.getObservableStack().addObserver(mUndo);
+		mUserFrame.getObservableNew().addObserver(mUndo);
 		this.add(mUndo);
 		mRedo = new UserButtonRedo(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_LARGE"),
@@ -397,12 +398,13 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_SMALL"),
 		(ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_SMALL_HIGHLIGHT"),
-		mIconSize,mUserFrame.getObservableStack());
+		mIconSize,mUserFrame.getObservableStack(), mUserFrame.getObservableNew());
 		mRedo.addActionListener(new ListenerRedo(mUserFrame));
 		mRedo.setToolTipText((String) mUserFrame.getI18n().getObject("REDO_TOOLTIP"));
-		mRedo.setEnabled(true);
-		mRedo.setFocusable(true);
+		mRedo.setEnabled(false);
+		mRedo.setFocusable(false);
 		mUserFrame.getObservableStack().addObserver(mRedo);	
+		mUserFrame.getObservableNew().addObserver(mRedo);
 		this.add(mRedo);
 	}
 /**
