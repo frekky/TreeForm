@@ -47,6 +47,7 @@ public class UserMenuItemUndo extends JMenuItem implements Observer{
 	 * @uml.property name="mObservableStack" multiplicity="(1 1)"
 	 */
 	private ObservableStack mObservableStack;
+	private ObservableNew mObservableNew;
 
 /**
  * 
@@ -54,9 +55,10 @@ public class UserMenuItemUndo extends JMenuItem implements Observer{
  * @param pIcon The Icon
  * @param pObservableStack The Observer containing the stack of actions.
  */
-	public UserMenuItemUndo(String pString, Icon pIcon, ObservableStack pObservableStack) {
+	public UserMenuItemUndo(String pString, Icon pIcon, ObservableStack pObservableStack, ObservableNew pObservableNew) {
 		super(pString, pIcon);
 		mObservableStack = pObservableStack;
+		mObservableNew = pObservableNew;
 	}
 
 /**
@@ -74,5 +76,16 @@ public class UserMenuItemUndo extends JMenuItem implements Observer{
 			this.setEnabled(true);
 		  }	
 	   }
+		if (pObservable == mObservableNew)
+		{
+			if (mObservableNew.getValue() == 0)
+			  {
+				this.setEnabled(false);
+			  }
+			  else
+			  {
+				this.setEnabled(true);
+			  }
+		}
 	}
 }

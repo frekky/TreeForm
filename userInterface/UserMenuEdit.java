@@ -126,15 +126,16 @@ public class UserMenuEdit extends JMenu {
 	public UserMenuEdit(String pString, UserFrame pUserFrame) {
 		super(pString);
 		mUserFrame = pUserFrame;
-		mUndo = new UserMenuItemUndo((String) mUserFrame.getI18n().getObject("UNDO_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("UNDO_ICON_SMALL"),mUserFrame.getObservableStack());
+		mUndo = new UserMenuItemUndo((String) mUserFrame.getI18n().getObject("UNDO_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("UNDO_ICON_SMALL"),mUserFrame.getObservableStack(),mUserFrame.getObservableNew());
 		mUndo.addActionListener(new ListenerUndo(mUserFrame));
 		mUndo.setMnemonic('U');
 		mUndo.setAccelerator(KeyStroke.getKeyStroke(
 							   KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
 		mUndo.setEnabled(false);
 		mUserFrame.getObservableStack().addObserver(mUndo);	
+		mUserFrame.getObservableNew().addObserver(mUndo);
 		this.add(mUndo);		
-		mRedo = new UserMenuItemRedo((String) mUserFrame.getI18n().getObject("REDO_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_SMALL"),mUserFrame.getObservableStack());
+		mRedo = new UserMenuItemRedo((String) mUserFrame.getI18n().getObject("REDO_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_SMALL"),mUserFrame.getObservableStack(), mUserFrame.getObservableNew());
 		mRedo.addActionListener(new ListenerRedo(mUserFrame));
 		mRedo.setMnemonic('R');
 		mRedo.setAccelerator(KeyStroke.getKeyStroke(
@@ -142,6 +143,7 @@ public class UserMenuEdit extends JMenu {
 		
 		mRedo.setEnabled(false);
 		mUserFrame.getObservableStack().addObserver(mRedo);	
+		mUserFrame.getObservableNew().addObserver(mRedo);
 		this.add(mRedo);
 		
 		this.addSeparator();
