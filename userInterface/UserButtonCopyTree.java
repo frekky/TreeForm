@@ -35,7 +35,7 @@ import javax.swing.JButton;
  * To change the template for this generated type comment go to
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
-public class UserButtonDelete extends JButton implements Observer{
+public class UserButtonCopyTree extends JButton implements Observer{
 
 	/**
 	 * 
@@ -107,7 +107,7 @@ public class UserButtonDelete extends JButton implements Observer{
 	private ImageIcon mEnableIcon;
 
 	private boolean mSize;
-	public UserButtonDelete(UserFrame pUserFrame, 
+	public UserButtonCopyTree(UserFrame pUserFrame, 
 	ImageIcon pEnableIcon,
 	ImageIcon pDisableIcon,
 	ImageIcon pActiveIcon, 

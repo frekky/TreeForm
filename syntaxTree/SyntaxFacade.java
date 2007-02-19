@@ -275,20 +275,21 @@ private void treeLayout(Sentence sentence) {
 private void resizeUIF() {
 	mRightShift = mRightShift * Sizer.scaleWidth() * getUIF().getScale();
 	mBottomShift = mBottomShift * Sizer.scaleHeight() * getUIF().getScale();
+	double lRightShift = mRightShift;
+	double lBottomShift = mBottomShift;
 	if (mRightShift < getUIF().getMinWidth()-25)
 	{
-		mRightShift = getUIF().getMinWidth()-25;
+		lRightShift = getUIF().getMinWidth()-25;
 	}
 	if (mBottomShift < getUIF().getMinHeight() -25)
 	{
-		mBottomShift = getUIF().getMinHeight()-25;
+		lBottomShift = getUIF().getMinHeight()-25;
 	}
-	getUIF().setBounds(0,0,(int)mRightShift+25,(int)mBottomShift+25);
-	
+	getUIF().setBounds(0,0,(int)lRightShift+25,(int)lBottomShift+25);
 	getUIF().getDesktopPane().setPreferredSize(
 			new Dimension(
-				getUIF().getBounds().x + (int)mRightShift +25,
-				getUIF().getBounds().y + (int)mBottomShift+25));
+				getUIF().getBounds().x + (int)lRightShift +25,
+				getUIF().getBounds().y + (int)lBottomShift+25));
 		getUIF().getDesktopPane().revalidate();
 }
 
@@ -1274,5 +1275,12 @@ private void fourthWalk(SyntacticStructure v, int level)
 		}
 		getParser().loadFile(((Document)mDocs.get(mDocPosition % mDocMax)),getUIF());
 	}
-	
+	public double getBottomShift()
+	{
+		return mBottomShift;
+	}
+	public double getRightShift()
+	{
+		return mRightShift;
+	}
 }

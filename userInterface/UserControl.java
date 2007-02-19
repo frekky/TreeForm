@@ -267,11 +267,8 @@ public void loadTree() {
  * the new component size.
  */
 		private void exportTree(SyntaxFacade pSyntaxFacade, File pFile, ExportPictureType pEPT) {
-			Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
-			Color lColor = lC.getBackground();
-			lC.setBackground(new Color(255,255,255));
-			JPanel lPanel = (JPanel) lC;
 			int lDetail;
+			String lType;
 			if (pEPT == ExportPictureType.JPG600  || pEPT == ExportPictureType.PNG600)
 			{
 				lDetail = 600;
@@ -280,58 +277,89 @@ public void loadTree() {
 			{
 				lDetail = 300;
 			}
-			try
+			if (pEPT == ExportPictureType.JPG300 || pEPT == ExportPictureType.JPG600)
 			{
-				BufferedImage lImg = new				
-				BufferedImage(new Float(lPanel.getWidth() * (lDetail/72/ Sizer.scaleWidth())).intValue(),new Float(lPanel.getHeight() * (lDetail/72/Sizer.scaleHeight())).intValue(), BufferedImage.TYPE_INT_RGB);
-				Graphics lGraphics= lImg.getGraphics();		
-				Graphics2D lG2D = ((Graphics2D)lGraphics);
-				AffineTransform lAT = new AffineTransform();
-				lAT.setToScale(lDetail/72/Sizer.scaleWidth(),lDetail/72/Sizer.scaleHeight());
-				lG2D.setTransform(lAT);
-				lPanel.print(lG2D);
-				OutputStream lOut;
-				if (pEPT == ExportPictureType.JPG300 || pEPT == ExportPictureType.JPG600)
-				{
-					try {
-						lOut = new FileOutputStream(pFile);
-						Iterator writers = ImageIO.getImageWritersBySuffix("jpeg");	
-						ImageWriter writer = (ImageWriter) writers.next();
-						ImageOutputStream ios = ImageIO.createImageOutputStream(lOut);
-						writer.setOutput(ios);
-						ImageWriteParam param = writer.getDefaultWriteParam();
-						param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-						param.setCompressionQuality(1.0F);
-						writer.write(null, new IIOImage(lImg, null, null), param);
-						ios.close();
-						writer.dispose();
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}	
-				else if (pEPT == ExportPictureType.PNG300 || pEPT == ExportPictureType.PNG600)
-				{
-					try {
-						ImageIO.write(lImg, "png", pFile);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}		
-				}
-				else
-				{
-				 JOptionPane.showMessageDialog(null,"You have not chosen a valid file type","I have no idea how you got here!",JOptionPane.ERROR_MESSAGE);
-				}
+				lType = "jpg";
+				System.out.println("jpg");
 			}
-			catch (OutOfMemoryError pOME)
+			else
 			{
-				JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
+				lType = "png";
+				System.out.println("png");
 			}
-			lC.setBackground(lColor);
-
-			
+			BufferedImage lImg = createGraphicData(lDetail,pFile);
+			if(lImg != null)
+			{
+				writeGraphicsFile(lType,pFile,lImg);
+			}
 		}
+		
+	private BufferedImage createGraphicData(int lDetail, File pFile)
+	{
+		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
+		Color lColor = lC.getBackground();
+		lC.setBackground(new Color(255,255,255));
+		JPanel lPanel = (JPanel) lC;
+		
+		try
+		{
+			BufferedImage lImg = new				
+			BufferedImage(new Float(lPanel.getWidth() * (lDetail/72/ Sizer.scaleWidth())).intValue(),new Float(lPanel.getHeight() * (lDetail/72/Sizer.scaleHeight())).intValue(), BufferedImage.TYPE_INT_RGB);
+			Graphics lGraphics= lImg.getGraphics();		
+			Graphics2D lG2D = ((Graphics2D)lGraphics);
+			AffineTransform lAT = new AffineTransform();
+			lAT.setToScale(lDetail/72/Sizer.scaleWidth(),lDetail/72/Sizer.scaleHeight());
+			lG2D.setTransform(lAT);
+			lPanel.print(lG2D);
+			lC.setBackground(lColor);
+			return lImg;
+		}
+		catch (OutOfMemoryError pOME)
+		{
+			JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
+		}
+		lC.setBackground(lColor);
+		return null;
+	}
+	public void writeGraphicsFile(String lType, File pFile, BufferedImage lImg)
+	{
+		if (lType.equals("jpg"))
+		{
+			try {
+				OutputStream lOut;
+				lOut = new FileOutputStream(pFile);
+				Iterator writers = ImageIO.getImageWritersBySuffix("jpeg");	
+				ImageWriter writer = (ImageWriter) writers.next();
+				// this is the magic bullet - it needs to output to an object
+				// not a file
+				ImageOutputStream ios = ImageIO.createImageOutputStream(lOut);
+				writer.setOutput(ios);
+				ImageWriteParam param = writer.getDefaultWriteParam();
+				param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+				param.setCompressionQuality(1.0F);
+				writer.write(null, new IIOImage(lImg, null, null), param);
+				//writer.write
+				ios.close();
+				writer.dispose();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}	
+		else if (lType.equals("png"))
+		{
+			try {
+				ImageIO.write(lImg, "png", pFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}		
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null,"You have not chosen a valid file type","I have no idea how you got here!",JOptionPane.ERROR_MESSAGE);
+		}
+	}
 /**
  * Open the help screen
  *
@@ -525,6 +553,7 @@ public void loadTree() {
 		public void copy() {
 			setClipboard(mUserFrame.getObservableClipboard().getValue().getClip());
 		}
+		
 /**
  * copies selected text to clipboard (doesn't cut!)
  */
@@ -691,8 +720,30 @@ public void loadTree() {
 /**
  * Delete selected items.
  */
-	public void delete() {
-		JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
+	public void copyTree() {
+		SyntaxFacade lSF = mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade();
+
+		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
+		Color lColor = lC.getBackground();
+		lC.setBackground(new Color(255,255,255));
+		JPanel lPanel = (JPanel) lC;		
+		try
+		{
+			BufferedImage lImg = new BufferedImage(
+					(int)lSF.getRightShift()
+					,(int)lSF.getBottomShift(), BufferedImage.TYPE_INT_RGB);
+			Graphics lGraphics= lImg.getGraphics();		
+			Graphics2D lG2D = ((Graphics2D)lGraphics);
+			lPanel.print(lG2D);
+			lC.setBackground(lColor);
+			UserTransferableGraphics t = new UserTransferableGraphics(lImg);
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);
+		}
+		catch (OutOfMemoryError pOME)
+		{
+			JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
+		}
+		lC.setBackground(lColor);
 	}	
 }
 

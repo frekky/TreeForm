@@ -214,7 +214,7 @@ public class UserToolBar extends JToolBar {
 	 * @uml.associationEnd 
 	 * @uml.property name="mDelete" multiplicity="(1 1)"
 	 */
-	private UserButtonDelete mDelete;
+	private UserButtonCopyTree mCopyTree;
 
 	/**
 	 * 
@@ -671,20 +671,20 @@ public class UserToolBar extends JToolBar {
 		mUserFrame.getObservableNew().addObserver(mPaste);
 
 		this.add(mPaste);
-		mDelete = new UserButtonDelete(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_SMALL_HIGHLIGHT"),
+		mCopyTree = new UserButtonCopyTree(mUserFrame,
+		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_LARGE"),
+		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_LARGE_GREY"),
+		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_LARGE_HIGHLIGHT"),
+		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL"),
+		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL_GREY"),
+		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL_HIGHLIGHT"),
 		mIconSize,mUserFrame.getObservableNew());
-		mDelete.addActionListener(new ListenerDeleteSubtree(mUserFrame));
-		mDelete.setToolTipText((String) mUserFrame.getI18n().getObject("DELETE_TOOLTIP"));
-		mDelete.setEnabled(false);
-		mDelete.setFocusable(false);
-		mUserFrame.getObservableNew().addObserver(mDelete);
-		this.add(mDelete);
+		mCopyTree.addActionListener(new ListenerDeleteSubtree(mUserFrame));
+		mCopyTree.setToolTipText((String) mUserFrame.getI18n().getObject("COPY_TREE_TOOLTIP"));
+		mCopyTree.setEnabled(false);
+		mCopyTree.setFocusable(false);
+		mUserFrame.getObservableNew().addObserver(mCopyTree);
+		this.add(mCopyTree);
 	}
 /**
  * add print options, fully i18n
@@ -886,7 +886,7 @@ public class UserToolBar extends JToolBar {
 	 * 
 	 * @return Accessors
 	 */
-		protected UserButtonDelete getDelete(){return mDelete;}
+		protected UserButtonCopyTree getDelete(){return mCopyTree;}
 	/**
 	 * 
 	 * @return Accessors

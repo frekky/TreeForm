@@ -62,7 +62,7 @@ public class ListenerDeleteSubtree implements ActionListener {
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getUserControl().delete();
+		mUserFrame.getUserControl().copyTree();
 	}
 
 }

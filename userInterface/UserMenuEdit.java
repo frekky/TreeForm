@@ -67,7 +67,7 @@ public class UserMenuEdit extends JMenu {
 	 * @uml.associationEnd 
 	 * @uml.property name="mDeleteSubtree" multiplicity="(1 1)"
 	 */
-	private UserMenuItemDeleteSubtree mDeleteSubtree;
+	private UserMenuItemDeleteSubtree mCopyTree;
 
 	/**
 	 * 
@@ -175,17 +175,18 @@ public class UserMenuEdit extends JMenu {
 
 		this.addSeparator();
 		
-		mDelete = new UserMenuItemDelete((String) mUserFrame.getI18n().getObject("DELETE_LABEL"),mUserFrame.getObservableNew());
-		mDelete.addActionListener(new ListenerDeleteSubtree(mUserFrame));
-		mDelete.setEnabled(false);
-		mUserFrame.getObservableNew().addObserver(mDelete);	
+//		mDelete = new UserMenuItemDelete((String) mUserFrame.getI18n().getObject("COPY_TREE_LABEL"),mUserFrame.getObservableNew());
+//		mDelete.addActionListener(new ListenerDeleteSubtree(mUserFrame));
+//		mDelete.setEnabled(false);
+//		mUserFrame.getObservableNew().addObserver(mDelete);	
 		
-		this.add(mDelete);
-		mDeleteSubtree = new UserMenuItemDeleteSubtree((String) mUserFrame.getI18n().getObject("DELETESUBTREE_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("DELETE_ICON_SMALL"),mUserFrame.getObservableNew());
-		mDeleteSubtree.addActionListener(new ListenerDeleteSubtree(mUserFrame));
-		mDeleteSubtree.setEnabled(false);
-		mUserFrame.getObservableNew().addObserver(mDeleteSubtree);	
-		this.add(mDeleteSubtree);
+//		this.add(mDelete);
+		
+		mCopyTree = new UserMenuItemDeleteSubtree((String) mUserFrame.getI18n().getObject("COPY_TREE_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL"),mUserFrame.getObservableNew());
+		mCopyTree.addActionListener(new ListenerDeleteSubtree(mUserFrame));
+		mCopyTree.setEnabled(false);
+		mUserFrame.getObservableNew().addObserver(mCopyTree);	
+		this.add(mCopyTree);
 		mSelectAll = new UserMenuItemSelectAll((String) mUserFrame.getI18n().getObject("SELECTALL_LABEL"),mUserFrame.getObservableNew());
 		mSelectAll.addActionListener(new ListenerSelectAll(mUserFrame));
 		mSelectAll.setMnemonic('A');
@@ -209,7 +210,7 @@ public class UserMenuEdit extends JMenu {
  */
 	protected JMenuItem getDeleteSubtree()
 	{
-		return mDeleteSubtree;
+		return mCopyTree;
 	}
 /**
  * 
