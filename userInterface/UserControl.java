@@ -742,7 +742,6 @@ public void loadTree() {
 			lAT.setToScale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
 			lG2D.setTransform(lAT);
 			lPanel.print(lG2D);
-			lC.setBackground(lColor);
 			UserTransferableGraphics t = new UserTransferableGraphics(lImg);
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);
 		}
@@ -751,6 +750,11 @@ public void loadTree() {
 			JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
 		}
 		lC.setBackground(lColor);
+		if(mUserFrame.getObservableClipboard().getValue() != null)
+		{
+			mUserFrame.getObservableClipboard().getValue().setCarat(true);
+			mUserFrame.getObservableClipboard().getValue().repaint();
+		}
 	}	
 }
 
