@@ -420,12 +420,12 @@ public class EditableComponent extends JComponent {
 						(Component) pME.getSource(),
 						pME.getPoint(),
 						mUserInternalFrame.getContentPane());
-				SyntacticStructure lSSParent = mUserInternalFrame.getSyntaxFacade().getUnder(containerPoint, pME.getSource());
-				if (lSSParent != null)
+				SyntacticStructure lSSEnd = mUserInternalFrame.getSyntaxFacade().getUnder(containerPoint, pME.getSource());
+				if (lSSEnd != null)
 				{
 					if (pME.getSource() instanceof SyntacticStructure)
 					{
-						mUserInternalFrame.getSyntaxFacade().addTrace(lSSParent, (SyntacticStructure) pME.getSource());
+						mUserInternalFrame.getSyntaxFacade().addTrace(lSSEnd, (SyntacticStructure) pME.getSource());
 					}
 				}
 				mUserInternalFrame.getSyntaxFacade().displayTree(); 

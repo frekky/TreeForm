@@ -120,6 +120,10 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private int mLevel;
 
 	private int mPreorder;
+
+	private LinkedList mStartTrace;
+
+	private LinkedList mEndTrace;
 	
 /**
  * 
@@ -200,11 +204,12 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		mChildren =  new LinkedList();
 		mSyntacticAssociation = new LinkedList();
 		mSyntacticFeatureSet= new LinkedList();
+		mStartTrace = new LinkedList();
+		mEndTrace = new LinkedList();
 		mParent = pParent;
 		setSyntacticStructureLines(new SyntacticStructureLines());
 	}
 
-	
 	
 /**
  * 
@@ -555,5 +560,14 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public int getPreorder()
 	{
 		return mPreorder;
+	}
+	
+	public LinkedList getEndTrace()
+	{
+		return mEndTrace;
+	}
+	public LinkedList getStartTrace()
+	{
+		return mStartTrace;
 	}
 }

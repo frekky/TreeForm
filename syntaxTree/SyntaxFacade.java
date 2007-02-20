@@ -849,6 +849,11 @@ private void fourthWalk(SyntacticStructure v, int level)
  * This function is recursive.
  */
 	public void deleteSubtree(SyntacticStructure pSS) {
+		for (int j = 0 ;j<pSS.getStartTrace().size();j++)
+		{
+			SyntacticStructure w = (SyntacticStructure) pSS.getStartTrace().get(j);
+			w.getEndTrace().remove(pSS);
+		}
 		getUIF().remove(pSS.getSyntacticStructureLines());
 		getUIF().remove(pSS);
 		for (int j = 0; j < pSS.getSyntacticFeatureSet().size(); j++) {
@@ -1277,7 +1282,8 @@ private void fourthWalk(SyntacticStructure v, int level)
 		return mRightShift;
 	}
 
-	public void addTrace(SyntacticStructure parent, SyntacticStructure structure) {
-		System.out.println("Damn, I'm good!");		
+	public void addTrace(SyntacticStructure end, SyntacticStructure start) {
+		start.getStartTrace().add(end);
+		end.getEndTrace().add(start);
 	}
 }
