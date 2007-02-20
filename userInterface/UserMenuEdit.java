@@ -183,7 +183,7 @@ public class UserMenuEdit extends JMenu {
 //		this.add(mDelete);
 		
 		mCopyTree = new UserMenuItemDeleteSubtree((String) mUserFrame.getI18n().getObject("COPY_TREE_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL"),mUserFrame.getObservableNew());
-		mCopyTree.addActionListener(new ListenerDeleteSubtree(mUserFrame));
+		mCopyTree.addActionListener(new ListenerCopyTree(mUserFrame));
 		mCopyTree.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mCopyTree);	
 		this.add(mCopyTree);

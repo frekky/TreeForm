@@ -31,7 +31,7 @@ import java.awt.event.ActionListener;
  * GUI interaction in TreeFrom
  *  
  */
-public class ListenerDeleteSubtree implements ActionListener {
+public class ListenerCopyTree implements ActionListener {
 
 	/**
 	 * Constructor
@@ -48,7 +48,7 @@ public class ListenerDeleteSubtree implements ActionListener {
 	 */
 	private UserFrame mUserFrame;
 
-	public ListenerDeleteSubtree(UserFrame pUserFrame) {
+	public ListenerCopyTree(UserFrame pUserFrame) {
 		super();
 		mUserFrame = pUserFrame;
 	}

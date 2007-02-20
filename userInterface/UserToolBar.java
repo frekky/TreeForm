@@ -679,7 +679,7 @@ public class UserToolBar extends JToolBar {
 		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL_GREY"),
 		(ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL_HIGHLIGHT"),
 		mIconSize,mUserFrame.getObservableNew());
-		mCopyTree.addActionListener(new ListenerDeleteSubtree(mUserFrame));
+		mCopyTree.addActionListener(new ListenerCopyTree(mUserFrame));
 		mCopyTree.setToolTipText((String) mUserFrame.getI18n().getObject("COPY_TREE_TOOLTIP"));
 		mCopyTree.setEnabled(false);
 		mCopyTree.setFocusable(false);

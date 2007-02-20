@@ -62,13 +62,6 @@ public class UserObjectBrowser extends JPanel {
 	 */
 	private UserBrowserButton mFeature;
 
-	/**
-	 * 
-	 * @uml.property name="mTrace"
-	 * @uml.associationEnd 
-	 * @uml.property name="mTrace" multiplicity="(1 1)"
-	 */
-	private UserBrowserButton mTrace;
 
 	/**
 	 * 
@@ -276,14 +269,6 @@ public class UserObjectBrowser extends JPanel {
 		mTheta.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		this.add(mTheta);
 
-		mTrace = new UserBrowserButton(mUserFrame,SyntacticFeatureType.TRACE);
-		mUIObject = (ButtonUI) ButtonUITrace.createUI(mTrace);
-		mTrace.setUI(mUIObject);
-		mTrace.setPreferredSize(Sizer.scaledButtonSize());
-		mTrace.setLabel();
-		mTrace.addMouseListener(new ListenerMouse(mUserFrame));
-		mTrace.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
-		this.add(mTrace);
 
 		mFeature = new UserBrowserButton(mUserFrame,SyntacticFeatureType.FEATURE);
 		mUIObject = (ButtonUI) ButtonUIFeature.createUI(mFeature);
