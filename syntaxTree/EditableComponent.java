@@ -214,6 +214,7 @@ public class EditableComponent extends JComponent {
 	private class HitTestMouseListener implements MouseInputListener {
 
 		private boolean mMove;
+		private boolean mTrace;
 /**
  * If the mouse is clicked, set the highlight start, end, and insertion index to
  * the location of the pointtest.  Then set the ObservableClipboard value and index
@@ -275,13 +276,22 @@ public class EditableComponent extends JComponent {
  * <br>
  */
 		public void mousePressed(MouseEvent e) {
-			if (((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0
-				)) {
+			if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0)
+			{
 				mMove = true;
 				Cursor lMoveCursor = new Cursor(Cursor.MOVE_CURSOR);
-			   setCursor(lMoveCursor);
-			} else {
-				if ((e.getModifiersEx() & InputEvent.BUTTON3_DOWN_MASK) != 0) {
+				setCursor(lMoveCursor);
+			}
+			else if ((e.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0)
+			{
+				mTrace = true;
+				Cursor lMoveCursor = new Cursor(Cursor.MOVE_CURSOR);
+				setCursor(lMoveCursor);
+			}
+			else 
+			{
+				if ((e.getModifiersEx() & InputEvent.BUTTON3_DOWN_MASK) != 0) 
+				{
 					getUserInternalFrame().getSyntaxFacade().getPopupMenu(
 						e.getSource()).show(
 						e.getComponent(),
@@ -376,7 +386,8 @@ public class EditableComponent extends JComponent {
  * <br>
  */
 		public void mouseReleased(MouseEvent pME) {
-			if (mMove) {
+			if (mMove) 
+			{
 				Point containerPoint =
 					SwingUtilities.convertPoint(
 						(Component) pME.getSource(),
@@ -387,11 +398,11 @@ public class EditableComponent extends JComponent {
 				{
 					if (pME.getSource() instanceof SyntacticStructure)
 					{
-					mUserInternalFrame.getSyntaxFacade().moveSyntacticStructure(lSSParent, (SyntacticStructure) pME.getSource());
+						mUserInternalFrame.getSyntaxFacade().moveSyntacticStructure(lSSParent, (SyntacticStructure) pME.getSource());
 					}
 					else if (pME.getSource() instanceof SyntacticFeature)
 					{
-					mUserInternalFrame.getSyntaxFacade().associateSyntacticFeature(lSSParent, (SyntacticFeature) pME.getSource());
+						mUserInternalFrame.getSyntaxFacade().associateSyntacticFeature(lSSParent, (SyntacticFeature) pME.getSource());
 					}
 				}
 				else
@@ -401,7 +412,29 @@ public class EditableComponent extends JComponent {
 				Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 				setCursor(lDefaultCursor);
 				mMove = false;
-			} else {
+			} 
+			else if (mTrace)
+			{
+				Point containerPoint =
+					SwingUtilities.convertPoint(
+						(Component) pME.getSource(),
+						pME.getPoint(),
+						mUserInternalFrame.getContentPane());
+				SyntacticStructure lSSParent = mUserInternalFrame.getSyntaxFacade().getUnder(containerPoint, pME.getSource());
+				if (lSSParent != null)
+				{
+					if (pME.getSource() instanceof SyntacticStructure)
+					{
+						mUserInternalFrame.getSyntaxFacade().addTrace(lSSParent, (SyntacticStructure) pME.getSource());
+					}
+				}
+				mUserInternalFrame.getSyntaxFacade().displayTree(); 
+				Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+				setCursor(lDefaultCursor);
+				mMove = false;
+			}
+			else 
+			{
 				setHighlightEnd(pointTest(pME));
 				repaint();
 			}
@@ -419,12 +452,11 @@ public class EditableComponent extends JComponent {
  * so reset the highlightEnd position based on the results of a pointTest.
  */
 		public void mouseDragged(MouseEvent pME) {
-			if ((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0
-			) {
+			if ((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0)
+			{
 				if (pME.getSource() instanceof SyntacticStructure)
 				{
-				
-				mUserInternalFrame.getSyntaxFacade().translateSyntacticStructure(
+					mUserInternalFrame.getSyntaxFacade().translateSyntacticStructure(
 					(SyntacticStructure) pME.getSource(),
 					pME);
 				}
@@ -434,7 +466,15 @@ public class EditableComponent extends JComponent {
 					(SyntacticFeature) pME.getSource(),
 					pME);
 				}
-			} else {
+			}
+			else if (((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0))
+			{
+				mUserInternalFrame.getSyntaxFacade().translateSyntacticStructure(
+						(SyntacticStructure) pME.getSource(),
+						pME);
+			}
+			else 
+			{
 				setOver(false);
 				setCarat(false);
 				setHighlightEnd(pointTest(pME));

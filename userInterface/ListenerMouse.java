@@ -22,7 +22,6 @@ package userInterface;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -82,16 +81,18 @@ public class ListenerMouse implements MouseListener {
 	 */
 
 	public void mousePressed(MouseEvent pME) {
-		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-		lUBB.setPressedX(pME.getX());
-		lUBB.setPressedY(
-			pME.getY()
-				- ((Integer) Toolkit
-					.getDefaultToolkit()
-					.getDesktopProperty("win.frame.captionHeight"))
-					.intValue()
-				);
-		lUBB.setPressedY(pME.getY());
+//		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+//		lUBB.setPressedX(pME.getX());
+//		lUBB.setPressedY(
+//			pME.getY()
+//				- ((Integer) Toolkit
+//					.getDefaultToolkit()
+//					.getDesktopProperty("awt.frame.captionHeight"))
+//					.intValue()
+//				);
+		
+		//lUBB.setPressedY(pME.getY());
+		
 	}
 
 	/**

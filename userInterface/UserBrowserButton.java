@@ -105,9 +105,7 @@ public class UserBrowserButton extends JButton {
 	 */
 	private JButton mCopy;
 
-	private int mPressedX;
-	private int mPressedY;
-/**
+	/**
  * 
  * @param pUserFrame The UserFrame, which is the main class/facade for each instance
  * of TreeForm
@@ -153,14 +151,13 @@ public class UserBrowserButton extends JButton {
  * properly underneath the mouse.
  */
 	public void setPressedX(int pPressedX) {
-		mPressedX = pPressedX;
 	}
 /**
  * 
  * @return Returns the original mouse position X relative to the button.
  */
 	public int getPressedX() {
-		return mPressedX;
+		return this.getWidth()/2;
 	}
 /**
  * 
@@ -168,14 +165,13 @@ public class UserBrowserButton extends JButton {
  * properly underneat the mouse.
  */
 	public void setPressedY(int pPressedY) {
-		mPressedY = pPressedY;
 	}
 /**
  * 
  * @return Returns the original mouse position Y relative to the button.
  */
 	public int getPressedY() {
-		return mPressedY;
+		return 0;
 	}
 /**
  * 

@@ -226,31 +226,24 @@ private XMLParser getParser()
 			getSentence().addChild(lSyntacticStructure);
 		}
 		displayTree();
-
 	}
+	
 private void addUndo() {
-	//System.out.println(mDoc.getDocumentElement().getAttribute("name"));
-	System.out.println(mSentence.getChildren().size());
-	//if (mSentence.getChildren().size() > 0)
-	//{
-		Document mDoc = getParser().saveFile(this);
-		System.out.println("type = " + mDoc.getDocumentElement().getAttribute("type"));
-		mDocs.add(mDocMaxPosition % mDocMax,mDoc);
-		mDocPosition++;
-		mDocMaxPosition = mDocPosition;
-		mDocMinPosition  = mDocPosition - mDocMax;
-		if (mDocMinPosition < 0)
-		{
-			mDocMinPosition = 0;
-		}
-	//}
+	Document mDoc = getParser().saveFile(this);
+	mDocs.add(mDocMaxPosition % mDocMax,mDoc);
+	mDocPosition++;
+	mDocMaxPosition = mDocPosition;
+	mDocMinPosition  = mDocPosition - mDocMax;
+	if (mDocMinPosition < 0)
+	{
+		mDocMinPosition = 0;
+	}
 }
 
 public void displayTree() {
 	if(mSentence.getChildren().size() > 0)
 	{
 		treeLayout(mSentence);
-		//System.out.println("done!");
 	}
 	getUIF().repaint();
 }
@@ -1282,5 +1275,9 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public double getRightShift()
 	{
 		return mRightShift;
+	}
+
+	public void addTrace(SyntacticStructure parent, SyntacticStructure structure) {
+		System.out.println("Damn, I'm good!");		
 	}
 }
