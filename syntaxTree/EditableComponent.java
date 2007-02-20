@@ -456,7 +456,7 @@ public class EditableComponent extends JComponent {
 			{
 				if (pME.getSource() instanceof SyntacticStructure)
 				{
-					mUserInternalFrame.getSyntaxFacade().translateSyntacticStructure(
+					mUserInternalFrame.getSyntaxFacade().translateSyntacticSubtree(
 					(SyntacticStructure) pME.getSource(),
 					pME);
 				}

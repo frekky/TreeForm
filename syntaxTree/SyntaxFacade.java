@@ -718,9 +718,10 @@ private void fourthWalk(SyntacticStructure v, int level)
  * <br>
  * This command is the public method for moving a SyntacticStructure.  It provides the 
  */
-	public void translateSyntacticStructure(
+	public void translateSyntacticSubtree(
 		SyntacticStructure pSS,
-		MouseEvent pME) {
+		MouseEvent pME) 
+	{
 		int lX = pME.getX() - pSS.getBounds().width / 2;
 		int lY = pME.getY() - pSS.getBounds().height / 2;
 		translateSubtree(pSS, lX, lY);
@@ -1285,5 +1286,18 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public void addTrace(SyntacticStructure end, SyntacticStructure start) {
 		start.getStartTrace().add(end);
 		end.getEndTrace().add(start);
+	}
+
+	public void translateSyntacticStructure(SyntacticStructure pSS, MouseEvent pME) {
+		int lX = pME.getX() - pSS.getBounds().width / 2;
+		int lY = pME.getY() - pSS.getBounds().height / 2;
+		Rectangle lBounds = pSS.getBounds();
+		pSS.setBounds(
+			lBounds.x + lX,
+			lBounds.y + lY,
+			lBounds.width,
+			lBounds.height);
+		getUIF().repaint();
+		
 	}
 }
