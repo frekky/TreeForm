@@ -124,6 +124,18 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private LinkedList mStartTrace;
 
 	private LinkedList mEndTrace;
+
+	private int mPadBottom;
+
+	private int mAbsoluteOrder;
+
+	private int mPadStartLeft;
+
+	private int mPadLeft;
+
+	private int mPadStartRight;
+
+	private int mPadRight;
 	
 /**
  * 
@@ -570,4 +582,72 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	{
 		return mStartTrace;
 	}
+
+
+	public int getPadBottom() {
+		// TODO Auto-generated method stub
+		return mPadBottom;
+	}
+
+
+	public void setPadBottom(int padBottom) {
+		mPadBottom = padBottom;
+	}
+
+
+	public void setAbsoluteOrder(int i) {
+		mAbsoluteOrder = i;
+		
+	}
+	public int getAbsoluteOrder(int i)
+	{
+		return mAbsoluteOrder;
+	}
+
+
+	public int getPadStartLeft() {
+		// TODO Auto-generated method stub
+		return mPadStartLeft;
+	}
+
+
+	public void setPadStartLeft(int i) {
+		mPadStartLeft = i;
+		
+	}
+
+
+	public int getPadLeft() {
+		// TODO Auto-generated method stub
+		return mPadLeft;
+	}
+
+
+	public void setPadLeft(int i) {
+		mPadLeft = i;
+		
+	}
+
+
+	public int getPadStartRight() {
+		return mPadStartRight;
+	}
+
+
+	public void setPadStartRight(int i) {
+		mPadStartRight = i;
+		
+	}
+
+
+	public int getPadRight() {
+		return mPadRight;
+	}
+
+
+	public void setPadRight(int i) {
+		mPadRight = i;
+		
+	}
+
 }
