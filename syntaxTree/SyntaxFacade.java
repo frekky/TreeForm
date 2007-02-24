@@ -106,10 +106,12 @@ public class SyntaxFacade {
 	private XMLParser mParser;
 	private int mDocMinPosition = 0;
 	private LinkedList mLinkedArray;
-	private SyntacticStructure UAStart;
-	private SyntacticStructure UAEnd;
+	private SyntacticStructure uAStart;
+	private SyntacticStructure uAEnd;
 	private SyntacticStructure mStart;
 	private SyntacticStructure mEnd;
+	private SyntacticStructure lDStart;
+	private SyntacticStructure lDEnd;
 	/**
  * 
  * @param pUIF The InternalFrame associated with this facade
@@ -290,33 +292,67 @@ private void initializeStart(SyntacticStructure start, SyntacticStructure end)
 {
 	mStart = start;
 	mEnd = end;
-	UAStart = start;
-	UAEnd = end;
-//	System.out.println("UA Start level = " + UAStart.getLevel());
-//	System.out.println("UA End level = " + UAEnd.getLevel());
+	uAStart = start;
+	uAEnd = end;
+	lDStart = start;
+	lDEnd = end;
+	boolean left = true;
 	synchronizeLevel();
-//	System.out.println("UA Start level = " + UAStart.getLevel());
-//	System.out.println("UA End level = " + UAEnd.getLevel());
-	if (UAStart.equals(UAEnd))
+	if (uAStart.equals(uAEnd))
 	{
 		System.out.println("no uncommon ancestors");
-		System.out.println("common ancestor = " + UAStart.getPreorder());
-		boolean left = checkInsideDirection(start,end,start.getLevel(), end.getLevel());
+		System.out.println("common ancestor = " + uAStart.getPreorder());
+		left = checkInsideDirection(start,end,start.getLevel(), end.getLevel());
 		System.out.println("inside left = " + left);
-		boolean done = goToLowestLevel(mStart,mEnd, start.getLevel(), end.getLevel(), left);
-		System.out.println("done = " + done);
 	}
 	else
 	{	
 		System.out.println("uncommon ancestors exist");
-		getHighestUncommonAncestors(UAStart,UAEnd);
-		System.out.println("UA Start preorder = " + UAStart.getPreorder());
-		System.out.println(" UA End preorder = " + UAEnd.getPreorder());
-		boolean left = checkOutsideDirection(UAStart,UAEnd);
+		getHighestUncommonAncestors(uAStart,uAEnd);
+		System.out.println("UA Start preorder = " + uAStart.getPreorder());
+		System.out.println(" UA End preorder = " + uAEnd.getPreorder());
+		left = checkOutsideDirection(uAStart,uAEnd);
 		System.out.println("outside left = " + left);
-		//goToLowestLevel(mStart,mEnd,start.getLevel()-end.getLevel(),left);
 	}
-
+	boolean done = goToLowestLevel(start.getLevel(),end.getLevel(),left);
+	System.out.println("start down at level = " + lDStart.getPreorder());
+	System.out.println("end down at level = " + lDEnd.getPreorder());
+	if (!done)
+	{
+		if (uAStart.equals(uAEnd))
+		{
+			
+		}
+		else
+		{
+			lDStart = getLower(lDStart, lDStart.getNumber(), lDStart.getLevel(), lDStart.getLevel()+1, left);
+			lDEnd = getLower(lDEnd, lDEnd.getNumber(),lDEnd.getLevel(),lDEnd.getLevel()+1,!left);
+	
+			while (!(lDStart == null || lDEnd == null 
+					|| (left && lDStart.getAbsoluteOrder() > lDEnd.getAbsoluteOrder())
+					|| (!left && lDStart.getAbsoluteOrder() < lDEnd.getAbsoluteOrder())))
+			{
+				//System.out.println(lDStart + " : " + lDEnd);
+				if (left)
+				{
+					lDStart.setPadRight(lDStart.getPadRight()+1);
+					lDEnd.setPadLeft(lDEnd.getPadLeft()+1);
+				}
+				else
+				{
+					lDStart.setPadLeft(lDStart.getPadLeft()+1);
+					lDEnd.setPadRight(lDEnd.getPadRight()+1);
+				}
+				System.out.println("start down = " + lDStart.getPreorder());
+				System.out.println("end down = " + lDEnd.getPreorder());
+				mStart = lDStart;
+				mEnd = lDEnd;
+				lDStart = getLower(lDStart, lDStart.getNumber(), lDStart.getLevel(), lDStart.getLevel()+1, left);
+				lDEnd = getLower(lDEnd, lDEnd.getNumber(),lDEnd.getLevel(),lDEnd.getLevel()+1,!left);
+				System.out.println("");
+			}
+		}
+	}
 	boolean children = checkForChildren(start);
 	System.out.println("children = " + children);
 	if (children)
@@ -332,62 +368,62 @@ private void initializeStart(SyntacticStructure start, SyntacticStructure end)
 }
 
 
-private boolean goToLowestLevel(SyntacticStructure start, SyntacticStructure end, int startLevel, int endLevel, boolean left) {
+private boolean goToLowestLevel(int startLevel, int endLevel, boolean left) {
 	if (startLevel < endLevel)
 	{
 		if (left)
 		{
 			// we adjust the buffer on ourselves
-			start.setPadStartLeft(start.getPadStartLeft()+1);
-			System.out.println("start level = " + start.getLevel());
-			System.out.println("start = " + start.getPreorder());
+			lDStart.setPadStartLeft(lDStart.getPadStartLeft()+1);
+			System.out.println("start level = " + lDStart.getLevel());
+			System.out.println("start = " + lDStart.getPreorder());
 			for(int j = startLevel; j < endLevel - 1; j++)
 			{
-				start = getLower(start,start.getNumber(),start.getLevel(),start.getLevel()+1,left);
-				start.setPadLeft(start.getPadLeft()+1);
-				System.out.println("start level middle = " + start.getLevel());
-				System.out.println("start = " + start.getPreorder());
+				lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,left);
+				lDStart.setPadLeft(lDStart.getPadLeft()+1);
+				System.out.println("start level middle = " + lDStart.getLevel());
+				System.out.println("start = " + lDStart.getPreorder());
 			}
 			System.out.println("going in bottom");
-			start = getLower(start,start.getNumber(),start.getLevel(),start.getLevel()+1,left);
-			System.out.println("start level bottom = " + start.getLevel());
-			System.out.println("start = " + start.getPreorder());
-			if (start.equals(end))
+			lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,left);
+			System.out.println("start level bottom = " + lDStart.getLevel());
+			System.out.println("start = " + lDStart.getPreorder());
+			if (lDStart.equals(lDEnd))
 			{
-				start.setPadStartLeft(start.getPadStartLeft()+1);
+				lDStart.setPadStartLeft(lDStart.getPadStartLeft()+1);
 				return true;
 			}
 			else
 			{
-				start.setPadLeft(start.getPadLeft()+1);
+				lDStart.setPadLeft(lDStart.getPadLeft()+1);
 				return false;
 			}
 		}
 		else
 		{
 //			 we adjust the buffer on ourselves
-			start.setPadStartRight(start.getPadStartRight()+1);
-			System.out.println("start level = " + start.getLevel());
-			System.out.println("start = " + start.getPreorder());
+			lDStart.setPadStartRight(lDStart.getPadStartRight()+1);
+			System.out.println("start level = " + lDStart.getLevel());
+			System.out.println("start = " + lDStart.getPreorder());
 			for(int j = startLevel; j < endLevel - 1; j++)
 			{
-				start = getLower(start,start.getNumber(),start.getLevel(),start.getLevel()+1,left);
-				start.setPadRight(start.getPadRight()+1);
-				System.out.println("start level middle = " + start.getLevel());
-				System.out.println("start = " + start.getPreorder());
+				lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,left);
+				lDStart.setPadRight(lDStart.getPadRight()+1);
+				System.out.println("start level middle = " + lDStart.getLevel());
+				System.out.println("start = " + lDStart.getPreorder());
 			}
 			System.out.println("going in bottom");
-			start = getLower(start,start.getNumber(),start.getLevel(),start.getLevel()+1,left);
-			System.out.println("start level bottom = " + start.getLevel());
-			System.out.println("start = " + start.getPreorder());
-			if (start.equals(end))
+			lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,left);
+			System.out.println("start level bottom = " + lDStart.getLevel());
+			System.out.println("start = " + lDStart.getPreorder());
+			if (lDStart.equals(lDEnd))
 			{
-				start.setPadStartRight(start.getPadStartRight()+1);
+				lDStart.setPadStartRight(lDStart.getPadStartRight()+1);
 				return true;
 			}
 			else
 			{
-				start.setPadRight(start.getPadRight()+1);
+				lDStart.setPadRight(lDStart.getPadRight()+1);
 				return false;
 			}
 		}
@@ -398,56 +434,56 @@ private boolean goToLowestLevel(SyntacticStructure start, SyntacticStructure end
 		if (left)
 		{
 			// we adjust the buffer on ourselves
-			end.setPadStartLeft(end.getPadStartLeft()+1);
-			System.out.println("end level = " + end.getLevel());
-			System.out.println("end = " + end.getPreorder());
+			lDEnd.setPadStartLeft(lDEnd.getPadStartLeft()+1);
+			System.out.println("end level = " + lDEnd.getLevel());
+			System.out.println("end = " + lDEnd.getPreorder());
 			for(int j = endLevel; j < startLevel - 1; j++)
 			{
-				end = getLower(end,end.getNumber(),end.getLevel(),end.getLevel()+1,left);
-				end.setPadLeft(end.getPadLeft()+1);
-				System.out.println("end level middle = " + end.getLevel());
-				System.out.println("end = " + end.getPreorder());
+				lDEnd = getLower(lDEnd,lDEnd.getNumber(),lDEnd.getLevel(),lDEnd.getLevel()+1,!left);
+				lDEnd.setPadLeft(lDEnd.getPadLeft()+1);
+				System.out.println("end level middle = " + lDEnd.getLevel());
+				System.out.println("end = " + lDEnd.getPreorder());
 			}
 			System.out.println("going in bottom");
-			end = getLower(end,end.getNumber(),end.getLevel(),end.getLevel()+1,left);
-			System.out.println("end level bottom = " + end.getLevel());
-			System.out.println("end = " + end.getPreorder());
-			if (start.equals(end))
+			lDEnd = getLower(lDEnd,lDEnd.getNumber(),lDEnd.getLevel(),lDEnd.getLevel()+1,!left);
+			System.out.println("end level bottom = " + lDEnd.getLevel());
+			System.out.println("end = " + lDEnd.getPreorder());
+			if (lDStart.equals(lDEnd))
 			{
-				end.setPadStartLeft(end.getPadStartLeft()+1);
+				lDEnd.setPadStartLeft(lDEnd.getPadStartLeft()+1);
 				return true;
 			}
 			else
 			{
-				end.setPadLeft(end.getPadLeft()+1);
+				lDEnd.setPadLeft(lDEnd.getPadLeft()+1);
 				return false;
 			}
 		}
 		else
 		{
 //			 we adjust the buffer on ourselves
-			end.setPadStartRight(end.getPadStartRight()+1);
-			System.out.println("end level = " + end.getLevel());
-			System.out.println("end = " + end.getPreorder());
+			lDEnd.setPadStartRight(lDEnd.getPadStartRight()+1);
+			System.out.println("end level = " + lDEnd.getLevel());
+			System.out.println("end = " + lDEnd.getPreorder());
 			for(int j = endLevel; j < startLevel - 1; j++)
 			{
-				end = getLower(end,end.getNumber(),end.getLevel(),end.getLevel()+1,left);
-				end.setPadRight(end.getPadRight()+1);
-				System.out.println("end level middle = " + end.getLevel());
-				System.out.println("end = " + end.getPreorder());
+				lDEnd = getLower(lDEnd,lDEnd.getNumber(),lDEnd.getLevel(),lDEnd.getLevel()+1,!left);
+				lDEnd.setPadRight(lDEnd.getPadRight()+1);
+				System.out.println("end level middle = " + lDEnd.getLevel());
+				System.out.println("end = " + lDEnd.getPreorder());
 			}
 			System.out.println("going in bottom");
-			end = getLower(end,end.getNumber(),end.getLevel(),end.getLevel()+1,left);
-			System.out.println("end level bottom = " + end.getLevel());
-			System.out.println("end = " + end.getPreorder());
-			if (start.equals(end))
+			lDEnd = getLower(lDEnd,lDEnd.getNumber(),lDEnd.getLevel(),lDEnd.getLevel()+1,!left);
+			System.out.println("end level bottom = " + lDEnd.getLevel());
+			System.out.println("end = " + lDEnd.getPreorder());
+			if (lDStart.equals(lDEnd))
 			{
-				end.setPadStartRight(end.getPadStartRight()+1);
+				lDEnd.setPadStartRight(lDEnd.getPadStartRight()+1);
 				return true;
 			}
 			else
 			{
-				end.setPadRight(end.getPadRight()+1);
+				lDEnd.setPadRight(lDEnd.getPadRight()+1);
 				return false;
 			}
 		}
@@ -455,6 +491,11 @@ private boolean goToLowestLevel(SyntacticStructure start, SyntacticStructure end
 }
 
 private SyntacticStructure getLower(SyntacticStructure start, int number, int previousLevel, int level, boolean left) {
+	if (level>= mLinkedArray.size())
+	{
+		// One cannot find what does not exist!
+		return null;
+	}
 	System.out.println("testing = " + start.getPreorder());
 	System.out.println("start level = " + start.getLevel());
 	System.out.println("level = " + level);
@@ -467,12 +508,13 @@ private SyntacticStructure getLower(SyntacticStructure start, int number, int pr
 		}
 		else
 		{
-			SyntacticStructure up = (SyntacticStructure) start.getSyntacticParent();
-			System.out.println("we cannot take the easy route");
-			System.out.println("up = " + up.getPreorder());
-			if (!(number == up.getChildren().size() && previousLevel == start.getLevel()+1) && start.getLevel() < level - 1 && start.getChildren().size() > 0)
+			RepositionTree up = start.getSyntacticParent();
+			//System.out.println("we cannot take the easy route");
+			//System.out.println("up = " + up.getPreorder());
+			if (!(number == start.getChildren().size() && previousLevel == start.getLevel()+1) && start.getLevel() < level - 1 && start.getChildren().size() > 0)
 			{
-				System.out.print("going down");
+				System.out.println("going down on the left");
+				System.out.println("number = " + number + " and children of parent = " + up.getChildren().size());
 				return getLower((SyntacticStructure) start.getChildren().getFirst(), start.getLevel(),start.getNumber(),level,left);
 			}
 			else if (start.getNumber() < up.getChildren().size())
@@ -482,7 +524,14 @@ private SyntacticStructure getLower(SyntacticStructure start, int number, int pr
 			}
 			else
 			{
-				return getLower(up,start.getNumber(),start.getLevel(),level,left);
+				if (up instanceof SyntacticStructure)
+				{
+					return getLower((SyntacticStructure) up,start.getNumber(),start.getLevel(),level,left);
+				}
+				else
+				{
+					return null;
+				}
 			}
 		}
 	}
@@ -495,12 +544,12 @@ private SyntacticStructure getLower(SyntacticStructure start, int number, int pr
 		}
 		else
 		{
-			SyntacticStructure up = (SyntacticStructure) start.getSyntacticParent();
+			RepositionTree up = start.getSyntacticParent();
 			System.out.println("we cannot take the easy route");
-			System.out.println("up = " + up.getPreorder());
-			if (!(number == 1 && previousLevel == start.getLevel()+1) && start.getLevel() < level - 1 && start.getChildren().size() > 0)
+
+			if (!(start.getNumber() == 1 && previousLevel == start.getLevel()+1) && start.getLevel() < level - 1 && start.getChildren().size() > 0)
 			{
-				System.out.print("going down");
+				System.out.print("going down on the right");
 				return getLower((SyntacticStructure) start.getChildren().getLast(), start.getLevel(),start.getNumber(),level,left);
 			}
 			else if (start.getNumber() > 1)
@@ -510,7 +559,14 @@ private SyntacticStructure getLower(SyntacticStructure start, int number, int pr
 			}
 			else
 			{
-				return getLower(up,start.getNumber(),start.getLevel(),level,left);
+				if (up instanceof SyntacticStructure)
+				{
+					return getLower((SyntacticStructure) up,start.getNumber(),start.getLevel(),level,left);
+				}
+				else
+				{
+					return null;
+				}
 			}
 		}
 	}
@@ -569,25 +625,25 @@ private void getHighestUncommonAncestors(SyntacticStructure start, SyntacticStru
 }
 
 private void synchronizeLevel() {
-	int difference = UAStart.getLevel()-UAEnd.getLevel();
+	int difference = uAStart.getLevel()-uAEnd.getLevel();
 	if(difference != 0)
 	{
 		if (difference < 0)
 		{
 			for(int i = difference; i < 0; i++)
 			{
-				UAEnd = (SyntacticStructure) UAEnd.getSyntacticParent();
+				uAEnd = (SyntacticStructure) uAEnd.getSyntacticParent();
 			}
 		}
 		else
 		{
 			for(int i = difference; i > 0; i--)
 			{
-				UAStart = (SyntacticStructure) UAStart.getSyntacticParent();
+				uAStart = (SyntacticStructure) uAStart.getSyntacticParent();
 			}
 		}
 	}
-	System.out.println(UAStart.getLevel() + " : " + UAEnd.getLevel());
+	System.out.println(uAStart.getLevel() + " : " + uAEnd.getLevel());
 }
 
 private boolean checkForChildren(SyntacticStructure start) {

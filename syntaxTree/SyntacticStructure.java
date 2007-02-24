@@ -599,7 +599,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		mAbsoluteOrder = i;
 		
 	}
-	public int getAbsoluteOrder(int i)
+	public int getAbsoluteOrder()
 	{
 		return mAbsoluteOrder;
 	}
