@@ -136,6 +136,16 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private int mPadStartRight;
 
 	private int mPadRight;
+
+	private int mPadStartLeftCount;
+
+	private int mPadStartRightCount;
+
+	private int mPadRightCount;
+
+	private int mPadLeftCount;
+
+	private int mPadBottomCount;
 	
 /**
  * 
@@ -650,4 +660,56 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		
 	}
 
+
+	public int getPadStartLeftCount() {
+		// TODO Auto-generated method stub
+		return mPadStartLeftCount;
+	}
+
+
+	public void setPadStartLeftCount(int i) {
+		mPadStartLeftCount = i;
+		
+	}
+
+
+	public void setPadStartRightCount(int i) {
+		mPadStartRightCount = i;
+		
+	}
+
+
+	public void setPadRightCount(int i) {
+		mPadRightCount = i;
+		
+	}
+
+
+	public void setPadLeftCount(int i) {
+		mPadLeftCount = i;
+		
+	}
+
+
+	public void setPadBottomCount(int i) {
+		mPadBottomCount = i;
+		
+	}
+
+	public int getPadStartRightCount() {
+		// TODO Auto-generated method stub
+		return mPadStartRightCount;
+	}
+	
+	public int getPadRightCount() {
+		return mPadRightCount;
+	}
+	
+	public int getPadLeftCount() {
+		return mPadLeftCount;
+	}
+	
+	public int getPadBottomCount() {
+		return mPadBottomCount;
+	}
 }
