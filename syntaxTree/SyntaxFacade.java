@@ -97,6 +97,7 @@ public class SyntaxFacade {
 	private double mChange;
 	private int subtrees;
 	private LinkedList mVariableHeight;
+	private LinkedList mLinkedArray;
 	private LinkedList mDocs;
 	private int mDocPosition = 0;
 	private int mDocMaxPosition = 0;
@@ -106,7 +107,6 @@ public class SyntaxFacade {
 	private int mPreorder;
 	private XMLParser mParser;
 	private int mDocMinPosition = 0;
-	private LinkedList mLinkedArray;
 	private SyntacticStructure uAStart;
 	private SyntacticStructure uAEnd;
 	private SyntacticStructure mStart;
@@ -1735,5 +1735,17 @@ private void fourthWalk(SyntacticStructure v, int level)
 			lBounds.height);
 		//getUIF().repaint();
 		
+	}
+	public LinkedList getVariableHeight()
+	{
+		return mVariableHeight;
+	}
+	public LinkedList getLinkedArray()
+	{
+		return mLinkedArray;
+	}
+	public double getLeftShift()
+	{
+		return mLeftShift;
 	}
 }
