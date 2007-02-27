@@ -20,7 +20,6 @@ package userInterface;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -343,7 +342,7 @@ public class UserInternalFrame extends JInternalFrame {
 			if (left) {
 				contentGraphics.fillArc((int) start.getButtonX()
 						- start.getPadStartLeftCount() * padWidth, (int) start
-						.getButtonY()
+						.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
 						+ start.getPadStartLeftCount() * padLength, circle,
 						circle, 0, 360);
 
@@ -352,26 +351,29 @@ public class UserInternalFrame extends JInternalFrame {
 								(int) start.getButtonX()
 										- start.getPadStartLeftCount()
 										* padWidth,
-								(int) start.getButtonY()
-										+ (start.getPadStartLeftCount() * padLength)
-										+ 2,
+										(int) start
+										.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+										+ start.getPadStartLeftCount() * padLength,
 								(int) start.getButtonX()
 										- (start.getPadStartLeftCount() * padWidth)
 										- 4,
-								(int) start.getButtonY()
-										+ (start.getPadStartLeftCount() * padLength)
-										+ 2);
+										(int) start
+										.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+										+ start.getPadStartLeftCount() * padLength);
 				setWidthStart(start, left);
 				mRightmostStart = (int) start.getButtonX()
 						- start.getPadStartLeftCount() * padWidth - 4;
-				mHeightStart = (int) start.getButtonY()
-						+ (start.getPadStartLeftCount() * padLength) + 2;
+				mHeightStart = (int) start
+				.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+				+ start.getPadStartLeftCount() * padLength;
 				start.setPadStartLeftCount(start.getPadStartLeftCount() + 1);
 			} else {
 				contentGraphics.fillArc((int) start.getButtonX()
 						+ start.getButtonWidth() + start.getPadStartRightCount()
-						* padWidth, (int) start.getButtonY()
-						+ start.getPadStartRightCount() * padLength, circle,
+						* padWidth-4,
+						(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
+						+ start.getPadStartRightCount() * padLength,
+						circle,
 						circle, 0, 360);
 
 				contentGraphics
@@ -379,22 +381,20 @@ public class UserInternalFrame extends JInternalFrame {
 								(int) start.getButtonX()
 										+ start.getButtonWidth()
 										+ (start.getPadStartRightCount() * padWidth)
-										+ 4,
-								(int) start.getButtonY()
-										+ start.getPadStartRightCount()
-										* padLength + 2,
+										,
+										(int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+										+ start.getPadStartRightCount() * padLength,
 								(int) start.getButtonX()
 										+ start.getButtonWidth()
 										+ (start.getPadStartRightCount() * padWidth)
-										+ 8, (int) start.getButtonY()
-										+ start.getPadStartRightCount()
-										* padLength + 2);
+										+ 4, (int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+										+ start.getPadStartRightCount() * padLength);
 				setWidthStart(start, left);
 				mLeftmostStart = (int) start.getButtonX()
 						+ start.getButtonWidth()
-						+ (start.getPadStartRightCount() * padWidth) + 8;
-				mHeightStart = (int) start.getButtonY()
-						+ (start.getPadStartRightCount() * padLength) + 2;
+						+ (start.getPadStartRightCount() * padWidth) + 4;
+				mHeightStart = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+				+ start.getPadStartRightCount() * padLength);
 				start.setPadStartRightCount(start.getPadStartRightCount() + 1);
 			}
 			mHeightStartLast = mHeightStart;
@@ -473,35 +473,40 @@ public class UserInternalFrame extends JInternalFrame {
 				GeneralPath polly = new GeneralPath();
 				polly.moveTo((float) end.getButtonX()
 						- end.getPadStartLeftCount() * padWidth + 3,
-						(float) end.getButtonY()
-								+ end.getPadStartLeftCount() * padLength
-								+ 2.25f);
+						(float) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartLeftCount() * padLength
+								+ 0.25f);
 				polly.lineTo((float) end.getButtonX()
 						- end.getPadStartLeftCount() * padWidth,
-						(float) end.getButtonY()
-								+ (end.getPadStartLeftCount() * padLength)
-								+ 5.25f);
+						(float) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartLeftCount() * padLength
+								+ 3.25f);
 				polly.lineTo((float) end.getButtonX()
 						- end.getPadStartLeftCount() * padWidth,
-						(float) end.getButtonY()
-								+ (end.getPadStartLeftCount() * padLength)
-								- 0.75f);
+						(float) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartLeftCount() * padLength
+								- 2.75f);
 				polly.closePath();
 				contentGraphics.fill(polly);
 				
 				contentGraphics.drawLine((int) end.getButtonX()
-						- end.getPadStartLeftCount() * padWidth, (int) end
-						.getButtonY()
-						+ end.getPadStartLeftCount() * padLength + 2, (int) end
+						- end.getPadStartLeftCount() * padWidth, 	 (int) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartLeftCount() * padLength, (int) end
 						.getButtonX()
 						- (end.getPadStartLeftCount() * padWidth) - 4,
-						(int) end.getButtonY() + end.getPadStartLeftCount()
-								* padLength + 2);
+						 (int) end
+							.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+							+ end.getPadStartLeftCount() * padLength);
 				setWidthEnd(end, left);
 				mRightmostEnd = (int) end.getButtonX()
 						- end.getPadStartLeftCount() * padWidth - 4;
-				mHeightEnd = (int) end.getButtonY()
-						+ (end.getPadStartLeftCount() * padLength) + 2;
+				mHeightEnd = (int) end
+				.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+				+ end.getPadStartLeftCount() * padLength;
 				end.setPadStartLeftCount(end.getPadStartLeftCount() + 1);
 				// System.out.println("draw left");
 			} else {
@@ -509,39 +514,45 @@ public class UserInternalFrame extends JInternalFrame {
 				GeneralPath polly = new GeneralPath();
 				polly.moveTo((float) end.getButtonX()
 						+ end.getButtonWidth()
-						+ (end.getPadStartRightCount() * padWidth) + 2,
-						(float) end.getButtonY()
-								+ end.getPadStartRightCount() * padLength
-								+ 2.25f);
+						+ (end.getPadStartRightCount() * padWidth) -4 ,
+						(float) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartRightCount() * padLength
+								+ 0.25f);
 				polly.lineTo((float) end.getButtonX()
 						+ end.getButtonWidth()
-						+ (end.getPadStartRightCount() * padWidth) + 6,
-						(float) end.getButtonY()
-								+ (end.getPadStartRightCount() * padLength)
-								+ 5.25f);
+						+ (end.getPadStartRightCount() * padWidth),
+						(float) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartRightCount() * padLength
+								+ 3.25f);
 				polly.lineTo((float) end.getButtonX()
 						+ end.getButtonWidth()
-						+ (end.getPadStartRightCount() * padWidth) + 6,
-						(float) end.getButtonY()
-								+ (end.getPadStartRightCount() * padLength)
-								- 0.75f);
+						+ (end.getPadStartRightCount() * padWidth),
+						(float) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartRightCount() * padLength
+								- 2.75f);
 				polly.closePath();
 				contentGraphics.fill(polly);
 				
 				contentGraphics.drawLine((int) end.getButtonX()
 						+ end.getButtonWidth()
-						+ (end.getPadStartRightCount() * padWidth) + 4,
-						(int) end.getButtonY() + end.getPadStartRightCount()
-								* padLength + 2, (int) end.getButtonX()
+						+ (end.getPadStartRightCount() * padWidth) ,
+						(int) end
+						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+						+ end.getPadStartRightCount() * padLength, (int) end.getButtonX()
 								+ end.getButtonWidth()
-								+ (end.getPadStartRightCount() * padWidth) + 8,
-						(int) end.getButtonY() + end.getPadStartRightCount()
-								* padLength + 2);
+								+ (end.getPadStartRightCount() * padWidth) + 4,
+								(int) end
+								.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+								+ end.getPadStartRightCount() * padLength);
 				setWidthEnd(end, left);
 				mLeftmostEnd = (int) end.getButtonX() + end.getButtonWidth()
-						+ (end.getPadStartRightCount() * padWidth) + 8;
-				mHeightEnd = (int) end.getButtonY()
-						+ (end.getPadStartRightCount() * padLength) + 2;
+						+ (end.getPadStartRightCount() * padWidth) + 4;
+				mHeightEnd = (int) end
+				.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+				+ end.getPadStartRightCount() * padLength;
 				end.setPadStartRightCount(end.getPadStartRightCount() + 1);
 			}
 			mHeightEndLast = mHeightEnd;
