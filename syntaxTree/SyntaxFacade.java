@@ -697,8 +697,8 @@ private void initializeTree(SyntacticStructure v,int number,int level) {
 	{
 		mLinkedArray.add(new LinkedList());
 	}
-	((LinkedList) mLinkedArray.get(level)).add(v);
 	v.setAbsoluteOrder(((LinkedList) mLinkedArray.get(level)).size());
+	((LinkedList) mLinkedArray.get(level)).add(v);
 	for (int i = 0; i < v.getChildren().size();i++)
 	{
 		initializeTree((SyntacticStructure) v.getChildren().get(i),i+1,level+1);

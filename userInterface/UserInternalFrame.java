@@ -151,6 +151,7 @@ public class UserInternalFrame extends JInternalFrame{
 		{
 			super.paint(G);
 			displayMovement(G);
+			System.out.println("");
 		}
 		private void displayMovement(Graphics G) {
 			if (getSyntaxFacade().getSentence().getChildren().size()>0)
@@ -322,9 +323,11 @@ public class UserInternalFrame extends JInternalFrame{
 				}
 				else
 				{
-					mRightmostStart = (int) getSyntaxFacade().getRightShift();
+					mRightmostStart = (int) (getSyntaxFacade().getRightShift()/ Sizer.scaleWidth()/getScale());
 				}
 			}
+			System.out.println("rightmost start = " + mRightmostStart);
+			System.out.println("letmost start = " + mLeftmostStart);
 		}
 		private void setWidthEnd(SyntacticStructure start, boolean left) {
 			if (left)
@@ -350,9 +353,11 @@ public class UserInternalFrame extends JInternalFrame{
 				}
 				else
 				{
-					mRightmostEnd = (int) getSyntaxFacade().getRightShift();
+					mRightmostEnd = (int) (getSyntaxFacade().getRightShift()/ Sizer.scaleWidth()/getScale());
 				}
 			}
+			System.out.println("rightmost end = " + mRightmostEnd);
+			System.out.println("letmost end = " + mLeftmostEnd);
 		}
 		private void drawEnd(SyntacticStructure end, boolean left, Graphics2D contentGraphics) {
 			if (left)
@@ -531,7 +536,7 @@ public class UserInternalFrame extends JInternalFrame{
 					}
 				}
 			}
-			System.out.println(uAStart.getLevel() + " : " + uAEnd.getLevel());
+			//System.out.println(uAStart.getLevel() + " : " + uAEnd.getLevel());
 		}		
 		private boolean checkOutsideDirection(SyntacticStructure UAStart, SyntacticStructure UAEnd) {
 			if(UAStart.getPreorder() < UAEnd.getPreorder())
