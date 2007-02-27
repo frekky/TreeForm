@@ -448,8 +448,8 @@ public class UserInternalFrame extends JInternalFrame {
 							.getAbsoluteOrder() + 1);
 					mRightmostStart = (int) (w.getButtonX());
 				} else {
-					mRightmostStart = (int) (getSyntaxFacade().getRightShift()
-							/ Sizer.scaleWidth() / getScale());
+					mRightmostStart = (int) ((getSyntaxFacade().getRightShift()
+							/ Sizer.scaleWidth() / getScale())+1);
 				}
 			}
 			mHeightStart = (int) lDStart.getButtonY()
@@ -477,8 +477,8 @@ public class UserInternalFrame extends JInternalFrame {
 							.getAbsoluteOrder() + 1);
 					mRightmostEnd = (int) (w.getButtonX());
 				} else {
-					mRightmostEnd = (int) (getSyntaxFacade().getRightShift()
-							/ Sizer.scaleWidth() / getScale());
+					mRightmostEnd = (int) ((getSyntaxFacade().getRightShift()
+							/ Sizer.scaleWidth() / getScale())+1);
 				}
 			}
 			mHeightEnd = (int) lDEnd.getButtonY() + lDEnd.getButtonHeight();
@@ -502,7 +502,7 @@ public class UserInternalFrame extends JInternalFrame {
 								* padLength + 2);
 				setWidthEnd(end, left);
 				mRightmostEnd = (int) end.getButtonX()
-				- end.getPadStartLeftCount() * padWidth;
+				- end.getPadStartLeftCount() * padWidth - 4;
 				mHeightEnd = (int) end.getButtonY()
 						+ (end.getPadStartLeftCount() * padLength) + 2;
 				end.setPadStartLeftCount(end.getPadStartLeftCount() + 1);
@@ -543,32 +543,32 @@ public class UserInternalFrame extends JInternalFrame {
 					for (int j = startLevel; j < endLevel - 1; j++) {
 						lDStart = getSyntaxFacade().getLower(lDStart,
 								lDStart.getNumber(), lDStart.getLevel(),
-								lDStart.getLevel() + 1, !left);
-						setWidthStart(lDStart, !left);
+								lDStart.getLevel() + 1, left);
+						setWidthStart(lDStart, left);
 
-						drawLinesStart(contentGraphics, !left, false);
+						drawLinesStart(contentGraphics, left, false);
 					}
 					lDStart = getSyntaxFacade().getLower(lDStart,
 							lDStart.getNumber(), lDStart.getLevel(),
-							lDStart.getLevel() + 1, !left);
-					setWidthStart(lDStart, !left);
+							lDStart.getLevel() + 1, left);
+					setWidthStart(lDStart, left);
 
-					drawLinesStart(contentGraphics, !left, false);
+					drawLinesStart(contentGraphics, left, false);
 				} else {
 					for (int j = startLevel; j < endLevel - 1; j++) {
 						lDStart = getSyntaxFacade().getLower(lDStart,
 								lDStart.getNumber(), lDStart.getLevel(),
-								lDStart.getLevel() + 1, !left);
-						setWidthStart(lDStart, !left);
+								lDStart.getLevel() + 1, left);
+						setWidthStart(lDStart, left);
 
-						drawLinesStart(contentGraphics, !left, false);
+						drawLinesStart(contentGraphics, left, false);
 					}
 					lDStart = getSyntaxFacade().getLower(lDStart,
 							lDStart.getNumber(), lDStart.getLevel(),
-							lDStart.getLevel() + 1, !left);
-					setWidthStart(lDStart, !left);
+							lDStart.getLevel() + 1, left);
+					setWidthStart(lDStart, left);
 
-					drawLinesStart(contentGraphics, !left, false);
+					drawLinesStart(contentGraphics, left, false);
 				}
 			} else {
 				if (left) {
@@ -602,9 +602,13 @@ public class UserInternalFrame extends JInternalFrame {
 					drawLinesEnd(contentGraphics, left, false);
 				}
 			}
+			System.out.println("start = " + lDStart.getPreorder());
+			System.out.println("end = " + lDEnd.getPreorder());
 			if (lDStart.equals(lDEnd)) {
+				System.out.println("true");
 				return true;
 			} else {
+				System.out.println("false");
 				return false;
 			}
 		}
