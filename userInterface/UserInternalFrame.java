@@ -548,12 +548,7 @@ public class UserInternalFrame extends JInternalFrame {
 
 						drawLinesStart(contentGraphics, left, false);
 					}
-					lDStart = getSyntaxFacade().getLower(lDStart,
-							lDStart.getNumber(), lDStart.getLevel(),
-							lDStart.getLevel() + 1, left);
-					setWidthStart(lDStart, left);
-
-					drawLinesStart(contentGraphics, left, false);
+					
 				} else {
 					for (int j = startLevel; j < endLevel - 1; j++) {
 						lDStart = getSyntaxFacade().getLower(lDStart,
@@ -563,13 +558,13 @@ public class UserInternalFrame extends JInternalFrame {
 
 						drawLinesStart(contentGraphics, left, false);
 					}
-					lDStart = getSyntaxFacade().getLower(lDStart,
-							lDStart.getNumber(), lDStart.getLevel(),
-							lDStart.getLevel() + 1, left);
-					setWidthStart(lDStart, left);
-
-					drawLinesStart(contentGraphics, left, false);
 				}
+				lDStart = getSyntaxFacade().getLower(lDStart,
+						lDStart.getNumber(), lDStart.getLevel(),
+						lDStart.getLevel() + 1, left);
+				setWidthStart(lDStart, left);
+				if (!lDStart.equals(lDEnd))
+				drawLinesStart(contentGraphics, left, false);
 			} else {
 				if (left) {
 					for (int j = endLevel; j < startLevel - 1; j++) {
@@ -580,12 +575,7 @@ public class UserInternalFrame extends JInternalFrame {
 
 						drawLinesEnd(contentGraphics, left, false);
 					}
-					lDEnd = getSyntaxFacade().getLower(lDEnd,
-							lDEnd.getNumber(), lDEnd.getLevel(),
-							lDEnd.getLevel() + 1, left);
-					setWidthEnd(lDEnd, left);
-
-					drawLinesEnd(contentGraphics, left, false);
+					
 				} else {
 					for (int j = endLevel; j < startLevel - 1; j++) {
 						lDEnd = getSyntaxFacade().getLower(lDEnd,
@@ -595,12 +585,13 @@ public class UserInternalFrame extends JInternalFrame {
 
 						drawLinesEnd(contentGraphics, left, false);
 					}
-					lDEnd = getSyntaxFacade().getLower(lDEnd,
-							lDEnd.getNumber(), lDEnd.getLevel(),
-							lDEnd.getLevel() + 1, left);
-					setWidthEnd(lDEnd, left);
-					drawLinesEnd(contentGraphics, left, false);
 				}
+				lDEnd = getSyntaxFacade().getLower(lDEnd,
+						lDEnd.getNumber(), lDEnd.getLevel(),
+						lDEnd.getLevel() + 1, left);
+				setWidthEnd(lDEnd, left);
+				if (!lDStart.equals(lDEnd))
+				drawLinesEnd(contentGraphics, left, false);
 			}
 			System.out.println("start = " + lDStart.getPreorder());
 			System.out.println("end = " + lDEnd.getPreorder());
