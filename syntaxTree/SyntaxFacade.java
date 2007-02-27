@@ -1682,6 +1682,16 @@ private void fourthWalk(SyntacticStructure v, int level)
 	}
 
 	public void addTrace(SyntacticStructure end, SyntacticStructure start) {
+		if(start.getStartTrace().size() > 0)
+		{
+			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().remove();
+			start.getStartTrace().remove();
+		}
+		if(end.getEndTrace().size() > 0)
+		{
+			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().remove();
+			end.getEndTrace().remove();
+		}
 		start.getStartTrace().add(end);
 		end.getEndTrace().add(start);
 		//System.out.println("please work");
