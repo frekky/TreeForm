@@ -75,7 +75,7 @@ public class SyntaxFacade {
 	private double mShift;
 	private double mChange;
 	private int subtrees;
-	private LinkedList mVariableHeight;
+	private LinkedList mHeight;
 	private LinkedList mLinkedArray;
 	private LinkedList mDocs;
 	private int mDocPosition = 0;
@@ -92,6 +92,7 @@ public class SyntaxFacade {
 	private SyntacticStructure mEnd;
 	private SyntacticStructure lDStart;
 	private SyntacticStructure lDEnd;
+	private LinkedList mHeightPad;
 	public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
 		setParser(new XMLParser());
@@ -237,10 +238,11 @@ private void treeLayout(Sentence sentence) {
 	mBottomShift = 0;
 	mShift = 0;
 	mPreorder = 0;
-	mVariableHeight = new LinkedList();
+	mHeight = new LinkedList();
+	mHeightPad = new LinkedList();
 	mLinkedArray = new LinkedList();
 	initializeTree(mR,1,0);
-	initializeBuffers(mR);
+	initializeTrace(mR);
 	firstWalk(mR,0);
 	secondWalk(mR,-mR.getPrelim(),0);
 	mLeftShift -= 12;
@@ -251,21 +253,21 @@ private void treeLayout(Sentence sentence) {
 
 
 
-private void initializeBuffers(SyntacticStructure start) 
+private void initializeTrace(SyntacticStructure start) 
 {
 	for(int i = 0; i < start.getStartTrace().size();i++)
 	{
 		SyntacticStructure end = (SyntacticStructure) start.getStartTrace().get(i);
-		initializeStart(start,end);
+		initializeTraceRecursive(start,end);
 	}
 	for(int i = 0; i < start.getChildren().size();i++)
 	{
 		SyntacticStructure w = (SyntacticStructure) start.getChildren().get(i);
-		initializeBuffers(w);
+		initializeTrace(w);
 	}
 }
 
-private void initializeStart(SyntacticStructure start, SyntacticStructure end)
+private void initializeTraceRecursive(SyntacticStructure start, SyntacticStructure end)
 {
 	mStart = start;
 	mEnd = end;
@@ -292,20 +294,20 @@ private void initializeStart(SyntacticStructure start, SyntacticStructure end)
 		left = checkOutsideDirection(uAStart,uAEnd);
 		//System.out.println("outside left = " + left);
 	}
-	boolean done = goToLowestLevel(start.getLevel(),end.getLevel(),left);
+	boolean right;
+	if (common)
+	{
+		right = left;
+	}
+	else
+	{
+		right = !left;
+	}
+	boolean done = goToLowestLevel(start.getLevel(),end.getLevel(),left,right);
 	//System.out.println("start down at level = " + lDStart.getPreorder());
 	//System.out.println("end down at level = " + lDEnd.getPreorder());
 	if (!done)
-	{
-		boolean right;
-		if (common)
-		{
-			right = left;
-		}
-		else
-		{
-			right = !left;
-		}
+	{	
 		mStart = lDStart;
 		mEnd = lDEnd;
 		lDStart = getLower(lDStart, lDStart.getNumber(), lDStart.getLevel(), lDStart.getLevel()+1, right);
@@ -352,30 +354,30 @@ private void initializeStart(SyntacticStructure start, SyntacticStructure end)
 }
 
 
-private boolean goToLowestLevel(int startLevel, int endLevel, boolean left) {
+private boolean goToLowestLevel(int startLevel, int endLevel, boolean left, boolean right) {
 	if (startLevel < endLevel)
 	{
-		if (left)
+		if (right)
 		{
 			lDStart.setPadStartLeft(lDStart.getPadStartLeft()+1);
-			setPad(lDStart,left);
+			setPad(lDStart,right);
 			//System.out.println("start level = " + lDStart.getLevel());
 			//System.out.println("start = " + lDStart.getPreorder());
 			for(int j = startLevel; j < endLevel - 1; j++)
 			{
-				lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,!left);
-				setPad(lDStart,left);
+				lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,right);
+				setPad(lDStart,right);
 				//System.out.println("start level middle = " + lDStart.getLevel());
 				//System.out.println("start = " + lDStart.getPreorder());
 			}
 			//System.out.println("going in bottom");
-			lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,!left);
+			lDStart = getLower(lDStart,lDStart.getNumber(),lDStart.getLevel(),lDStart.getLevel()+1,right);
 			//System.out.println("start level bottom = " + lDStart.getLevel());
 			//System.out.println("start = " + lDStart.getPreorder());
-			setPad(lDStart,left);
+			setPad(lDStart,right);
 			if (lDStart.equals(lDEnd))
 			{
-				lDStart.setPadStartLeft(lDStart.getPadStartLeft()+1);
+				setPadStart(lDStart,right);
 				return true;
 			}
 			else
@@ -404,7 +406,7 @@ private boolean goToLowestLevel(int startLevel, int endLevel, boolean left) {
 			setPad(lDStart,left);
 			if (lDStart.equals(lDEnd))
 			{
-				lDStart.setPadStartRight(lDStart.getPadStartRight()+1);
+				setPadStart(lDStart,left);
 				return true;
 			}
 			else
@@ -437,7 +439,7 @@ private boolean goToLowestLevel(int startLevel, int endLevel, boolean left) {
 			setPad(lDEnd,left);
 			if (lDStart.equals(lDEnd))
 			{
-				lDEnd.setPadStartLeft(lDEnd.getPadStartLeft()+1);
+				setPadStart(lDEnd,left);
 				return true;
 			}
 			else
@@ -466,7 +468,7 @@ private boolean goToLowestLevel(int startLevel, int endLevel, boolean left) {
 			setPad(lDEnd,left);
 			if (lDStart.equals(lDEnd))
 			{
-				lDEnd.setPadStartRight(lDEnd.getPadStartRight()+1);
+				setPadStart(lDEnd,left);
 				return true;
 			}
 			else
@@ -494,7 +496,24 @@ private void setPad(SyntacticStructure w, boolean left) {
 	{
 		w.setPadRight(w.getPadRight()+1);
 	}
-	
+	w.setPadBottom(w.getPadBottom()+1);
+}
+private void setPadStart(SyntacticStructure w, boolean left) {
+	if (left)
+	{
+		w.setPadStartLeft(w.getPadStartLeft()+1);
+		w.setPadBottom(w.getPadBottom()+1);
+		if (w.getAbsoluteOrder() > 0)
+		{
+			w = (SyntacticStructure) ((LinkedList) getLinkedArray().get(w.getLevel())).get(w.getAbsoluteOrder()-1);
+			w.setPadStartRight(w.getPadStartRight()+1);
+		}
+	}
+	else
+	{
+		w.setPadStartRight(w.getPadStartRight()+1);
+	}
+	w.setPadBottom(w.getPadBottom()+1);
 }
 
 public SyntacticStructure getLower(SyntacticStructure start, int number, int previousLevel, int level, boolean left) {
@@ -719,6 +738,10 @@ private void firstWalk(SyntacticStructure v,int position) {
 		{
 			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(position-1)));
 			v.setPrelim(w.getPrelim() + w.getButtonWidth());
+			if (!v.getSyntacticParent().getChildren().getLast().equals(v))
+			{
+				v.setPrelim(v.getPrelim() + v.getPadRight() * 4 + v.getPadStartRight() * 8);
+			}
 			//System.out.println("v = " + printText(v));
 			//System.out.println("v prelim = " + v.getPrelim());
 		}
@@ -797,6 +820,7 @@ private void apportion(SyntacticStructure v, int p)
 			//System.out.println("VOP ancestor = "+printText(v));
 			mShift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) 
 			+ VIN.getButtonWidth();
+			mShift = mShift + VIN.getPadRight() * 4 + VIN.getPadStartRight() * 8;
 			//System.out.println("VIN prelim = " + VIN.getPrelim() + " SIN = " + SIN);
 			//System.out.println("VIP prelim = " + VIP.getPrelim() + " SIP = " + SIP);
 			//System.out.println("VIN buttonWidth = " + VIN.getButtonWidth());
@@ -938,21 +962,50 @@ private void secondWalk(SyntacticStructure v, double m, int level) {
 	{
 		mLeftShift = v.getButtonX();
 	}
-	if (mVariableHeight.size() <= level)
+	if (mHeight.size() <= level)
 	{
-		mVariableHeight.add(new Integer(v.getButtonHeight()));
+		mHeight.add(new Integer(v.getButtonHeight()));
 		//System.out.println("level = " + level + " button height = " + v.getButtonHeight());
 	}
 	else
 	{
-		if (((Integer)mVariableHeight.get(level)).intValue() < v.getButtonHeight())
+		if (((Integer)mHeight.get(level)).intValue() < v.getButtonHeight())
 		{
-			mVariableHeight.remove(level);
-			mVariableHeight.add(level,new Integer(v.getButtonHeight()));
+			mHeight.remove(level);
+			mHeight.add(level,new Integer(v.getButtonHeight()));
 			//System.out.println("level = " + level + " button height = " + v.getButtonHeight());
 		}	
 	}
-	v.setButtonY(level * 35);
+	if(mHeightPad.size() <= level)
+	{
+		mHeightPad.add(new Integer(v.getPadBottom()));
+	}
+	else
+	{
+		if (((Integer)mHeightPad.get(level)).intValue() < v.getPadBottom())
+		{
+			mHeightPad.remove(level);
+			mHeightPad.add(level,new Integer(v.getPadBottom()));
+		}
+	}
+	
+	for(int i = 0;i < v.getChildren().size();i++)
+	{
+		secondWalk((SyntacticStructure) v.getChildren().get(i), m + v.getMod(), level + 1);
+	}
+}
+
+private void thirdWalk(SyntacticStructure v, int level)
+{
+	int tempY = 0;
+	for (int i = 0; i <level;i++)
+	{
+		tempY += ((Integer) mHeight.get(i)).intValue();
+		tempY += ((Integer) mHeightPad.get(i)).intValue() * 3;
+	}
+	tempY = tempY + (((Integer) mHeight.get(level)).intValue()-v.getButtonHeight())/2;
+	v.setButtonY(tempY);
+	v.setButtonX(v.getButtonX() - (mLeftShift));
 	v.setBounds(
 			(int) (v.getButtonX()
 				* Sizer.scaleWidth()
@@ -963,35 +1016,9 @@ private void secondWalk(SyntacticStructure v, double m, int level) {
 			(int) (v.getButtonWidth()
 				* Sizer.scaleWidth()
 				* getUIF().getScale()),
-			(int) (v.getButtonHeight()
+			(int) ((v.getButtonHeight() + ((Integer) mHeightPad.get(level)).intValue() * 3)
 				* Sizer.scaleHeight()
 				* getUIF().getScale()));
-
-	for(int i = 0;i < v.getChildren().size();i++)
-	{
-		secondWalk((SyntacticStructure) v.getChildren().get(i), m + v.getMod(), level + 1);
-	}
-}
-
-private void thirdWalk(SyntacticStructure v, int level)
-{
-	Rectangle r = v.getBounds();
-	v.setButtonX(v.getButtonX() - mLeftShift);
-	int tempY = 0;
-	//int tempYeven = 0;
-	for (int i = 0; i <level;i++)
-	{
-		tempY += ((Integer) mVariableHeight.get(i)).intValue();
-	}
-	tempY = tempY + (((Integer) mVariableHeight.get(level)).intValue()-v.getButtonHeight())/2;
-	//System.out.println("button height = " + v.getButtonHeight() + " and max height = " + ((Integer) mVariableHeight.get(level)).intValue());
-	//System.out.println("difference = " + (((Integer) mVariableHeight.get(level)).intValue()-v.getButtonHeight())/2 + " level " + level);
-	v.setButtonY(tempY);
-	tempY = (int) (tempY * Sizer.scaleHeight() * getUIF().getScale());
-	r.y = tempY;
-	r.x = (int) (r.x - (mLeftShift * Sizer.scaleWidth() * getUIF().getScale()));
-
-	v.setBounds(r);
 	int lFeatureHeight = 0;
 	if (v.getButtonX() + v.getButtonWidth() > mRightShift)
 	{
@@ -1711,7 +1738,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 	}
 	public LinkedList getVariableHeight()
 	{
-		return mVariableHeight;
+		return mHeight;
 	}
 	public LinkedList getLinkedArray()
 	{

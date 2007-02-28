@@ -568,29 +568,29 @@ public class UserInternalFrame extends JInternalFrame {
 					for (int j = startLevel; j < endLevel - 1; j++) {
 						lDStart = getSyntaxFacade().getLower(lDStart,
 								lDStart.getNumber(), lDStart.getLevel(),
-								lDStart.getLevel() + 1, left);
-						setWidthStart(lDStart, left);
-						drawOverStart(contentGraphics, left);
-						drawLinesStart(contentGraphics, left, false);
+								lDStart.getLevel() + 1, right);
+						setWidthStart(lDStart, right);
+						drawOverStart(contentGraphics, right);
+						drawLinesStart(contentGraphics, right, false);
 					}
 
 				} else {
 					for (int j = startLevel; j < endLevel - 1; j++) {
 						lDStart = getSyntaxFacade().getLower(lDStart,
 								lDStart.getNumber(), lDStart.getLevel(),
-								lDStart.getLevel() + 1, left);
-						setWidthStart(lDStart, left);
-						drawOverStart(contentGraphics, left);
-						drawLinesStart(contentGraphics, left, false);
+								lDStart.getLevel() + 1, right);
+						setWidthStart(lDStart, right);
+						drawOverStart(contentGraphics, right);
+						drawLinesStart(contentGraphics, right, false);
 					}
 				}
 				lDStart = getSyntaxFacade().getLower(lDStart,
 						lDStart.getNumber(), lDStart.getLevel(),
-						lDStart.getLevel() + 1, left);
-				setWidthStart(lDStart, left);
+						lDStart.getLevel() + 1, right);
+				setWidthStart(lDStart, right);
 				if (!lDStart.equals(lDEnd)) {
-					drawOverStart(contentGraphics, left);
-					drawLinesStart(contentGraphics, left, false);
+					drawOverStart(contentGraphics, right);
+					drawLinesStart(contentGraphics, right, false);
 				}
 			} else {
 				if (left) {
@@ -629,28 +629,28 @@ public class UserInternalFrame extends JInternalFrame {
 			}
 			System.out.println("lDStart = " + lDStart.getPreorder());
 			System.out.println("lDEnd = " + lDEnd.getPreorder());
-			if (left) {
-				if (lDStart.getAbsoluteOrder() > 0) {
-					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
-							.getLinkedArray().get(lDStart.getLevel()))
-							.get(lDStart.getAbsoluteOrder()-1);
-					if(w.equals(lDEnd))
-					{
-						return true;
-					}
-				}
-			} else {
-				if (lDStart.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
-						.getLinkedArray().get(lDStart.getLevel())).size() - 1) {
-					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
-							.getLinkedArray().get(lDStart.getLevel()))
-							.get(lDStart.getAbsoluteOrder()+1);
-					if(w.equals(lDEnd))
-					{
-						return true;
-					}
-				}
-			}
+//			if (left) {
+//				if (lDStart.getAbsoluteOrder() > 0) {
+//					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
+//							.getLinkedArray().get(lDStart.getLevel()))
+//							.get(lDStart.getAbsoluteOrder()-1);
+//					if(w.equals(lDEnd))
+//					{
+//						return true;
+//					}
+//				}
+//			} else {
+//				if (lDStart.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
+//						.getLinkedArray().get(lDStart.getLevel())).size() - 1) {
+//					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
+//							.getLinkedArray().get(lDStart.getLevel()))
+//							.get(lDStart.getAbsoluteOrder()+1);
+//					if(w.equals(lDEnd))
+//					{
+//						return true;
+//					}
+//				}
+//			}
 			return false;
 		}
 
