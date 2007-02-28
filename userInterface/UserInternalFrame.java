@@ -256,6 +256,7 @@ public class UserInternalFrame extends JInternalFrame {
 			setPrecedingEnd();
 			boolean done = goToLowestLevel(start.getLevel(), end.getLevel(),
 					left,right, contentGraphics);
+			System.out.println("done = " + done);
 			if (!done) {
 
 				lDStart = getSyntaxFacade().getLower(lDStart,
@@ -272,8 +273,8 @@ public class UserInternalFrame extends JInternalFrame {
 					setPrecedingEnd();
 					testWidthStart(lDStart, left);
 					testWidthEnd(lDEnd, right);
-					drawLinesStart(contentGraphics, left, false);
-					drawLinesEnd(contentGraphics, right, false);
+					drawLinesStart(contentGraphics, left, false,false);
+					drawLinesEnd(contentGraphics, right, false,false);
 					lDStart = getSyntaxFacade().getLower(lDStart,
 							lDStart.getNumber(), lDStart.getLevel(),
 							lDStart.getLevel() + 1, right);
@@ -299,6 +300,11 @@ public class UserInternalFrame extends JInternalFrame {
 
 		private void drawEasy(Graphics2D contentGraphics, boolean left) 
 		{
+			System.out.println("start x =" + mStartX);
+			System.out.println("start y =" + mStartY);
+			System.out.println("end x =" + mEndX);
+			System.out.println("end y =" + mEndY);
+			System.out.println("DRAW EASY");
 			if (lDStart.equals(mStart)) {
 				contentGraphics.drawLine(mEndX, mEndY,
 						mStartX, mEndY);
@@ -338,7 +344,7 @@ public class UserInternalFrame extends JInternalFrame {
 										+ start.getPadStartLeftCount() * padLength);
 				testWidthStart(start, left);
 				mStartX = (int) start.getButtonX()
-						- start.getPadStartLeftCount() * padWidth - 4;
+						- (start.getPadStartLeftCount() * padWidth) - 4;
 				mStartY = (int) start
 				.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 				+ start.getPadStartLeftCount() * padLength;
@@ -484,17 +490,17 @@ public class UserInternalFrame extends JInternalFrame {
 				contentGraphics.fill(polly);
 				
 				contentGraphics.drawLine((int) end.getButtonX()
-						- end.getPadStartLeftCount() * padWidth, 	 (int) end
+						- (end.getPadStartLeftCount() * padWidth) -4, 	 (int) end
 						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 						+ end.getPadStartLeftCount() * padLength, (int) end
 						.getButtonX()
-						- (end.getPadStartLeftCount() * padWidth) - 4,
+						- (end.getPadStartLeftCount() * padWidth),
 						 (int) end
 							.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 							+ end.getPadStartLeftCount() * padLength);
 				testWidthEnd(end, left);
 				mEndX = (int) end.getButtonX()
-						- end.getPadStartLeftCount() * padWidth - 4;
+						- (end.getPadStartLeftCount() * padWidth) -4;
 				mEndY = (int) end
 				.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 				+ end.getPadStartLeftCount() * padLength;
@@ -555,7 +561,7 @@ public class UserInternalFrame extends JInternalFrame {
 			if (startLevel < endLevel) {
 				testWidthStart(lDStart, right);
 				//drawOverStart(contentGraphics, right);
-				drawLinesStart(contentGraphics, right, false);
+				drawLinesStart(contentGraphics, right, false,true);
 				for (int j = startLevel; j < endLevel - 1; j++) {
 					
 					setPrecedingStart();
@@ -564,7 +570,7 @@ public class UserInternalFrame extends JInternalFrame {
 							lDStart.getLevel() + 1, right);
 					testWidthStart(lDStart, right);
 					//drawOverStart(contentGraphics, right);
-					drawLinesStart(contentGraphics, right, false);
+					drawLinesStart(contentGraphics, right, false,false);
 				}
 				setPrecedingStart();
 				lDStart = getSyntaxFacade().getLower(lDStart,
@@ -573,12 +579,12 @@ public class UserInternalFrame extends JInternalFrame {
 				testWidthStart(lDStart, right);
 				if (!lDStart.equals(lDEnd)) {
 					//drawOverStart(contentGraphics, right);
-					drawLinesStart(contentGraphics, right, false);
+					drawLinesStart(contentGraphics, right, false,false);
 				}
 			} else {
 				testWidthEnd(lDEnd, left);
 				//drawOverEnd(contentGraphics, left);
-				drawLinesEnd(contentGraphics, left, false);
+				drawLinesEnd(contentGraphics, left, false,true);
 				for (int j = endLevel; j < startLevel - 1; j++) {
 					setPrecedingEnd();
 					lDEnd = getSyntaxFacade().getLower(lDEnd,
@@ -586,7 +592,7 @@ public class UserInternalFrame extends JInternalFrame {
 							lDEnd.getLevel() + 1, left);
 					testWidthEnd(lDEnd, left);
 					//drawOverEnd(contentGraphics, left);
-					drawLinesEnd(contentGraphics, left, false);
+					drawLinesEnd(contentGraphics, left, false,false);
 				}
 				setPrecedingEnd();
 				lDEnd = getSyntaxFacade().getLower(lDEnd, lDEnd.getNumber(),
@@ -594,7 +600,7 @@ public class UserInternalFrame extends JInternalFrame {
 				testWidthEnd(lDEnd, left);
 				if (!lDStart.equals(lDEnd)) {
 					//drawOverEnd(contentGraphics, left);
-					drawLinesEnd(contentGraphics, left, false);
+					drawLinesEnd(contentGraphics, left, false,false);
 				}
 			}
 			if (lDStart.equals(lDEnd)) {
@@ -612,68 +618,124 @@ public class UserInternalFrame extends JInternalFrame {
 				}
 			}
 			int pad = ((Integer) getSyntaxFacade().getHeightPad().get(start.getLevel())).intValue();
-			pad = (int) (start.getButtonY() + start.getTextHeight() + (pad * 3) - (start.getPadBottomCount() * 3));
+			pad = (int) (start.getButtonY() + start.getTextHeight() + (start.getPadBottom() * 3) - (start.getPadBottomCount() * 3));
 			start.setPadBottomCount(start.getPadBottomCount()+1);
 			return pad;
 		}
 
 		private int getX(SyntacticStructure start, boolean left) {
-			int pad = (int) (start.getButtonX() + start.getButtonWidth());
+			int pad = 0;
 			if (left)
 			{
+				pad = (int) (start.getButtonX());
 				if (start.getAbsoluteOrder() > 0)
 				{
 					start = (SyntacticStructure) ((LinkedList) getSyntaxFacade().getLinkedArray().get(start.getLevel())).get(start.getAbsoluteOrder()-1);
+					pad = pad - (start.getPadRightCount() * 4); 
 				}
 			}
-			pad = pad + (start.getPadRight() * 4) + (start.getPadStartRight() * 8) - (start.getPadRightCount() * 4); 
+			else
+			{
+				pad = (int) (start.getButtonX() + start.getButtonWidth());
+				pad = pad + (start.getPadRight() * 4) + (start.getPadStartRight() * 8) - (start.getPadRightCount() * 4); 
+			}
+			
 			start.setPadRightCount(start.getPadRightCount()+1);
 			return pad;
 		}
 
 
 		private void drawLinesStart(Graphics2D contentGraphics, boolean left,
-				boolean override) {
+				boolean override, boolean first) {
 
-			if (mRightmostStartPreceding <= mLeftmostStart
-					|| mLeftmostStartPreceding >= mRightmostStart 
-					|| override) 
+			if (mRightmostStartPreceding <= mLeftmostStart) 
 			{
-			
 				int mX = getX(lDStart,left);
 				int mY = getY(lDStart,left);
 				System.out.println("x =" + mX);
 				System.out.println("y =" + mY);
 				System.out.println("start x =" + mStartX);
 				System.out.println("start y =" + mStartY);
-				System.out.println();
+				System.out.println("START 1");
+				if (!first)
+				{
 				contentGraphics.drawLine(mStartX,
 						mStartY, mX, mStartY);
+					mStartX = mX;
+				}
 				contentGraphics.drawLine(mX, mStartY,
 						mX, mY);
+				mStartY = mY;
+			}
+			else if (mLeftmostStartPreceding >= mRightmostStart)
+			{
+				int mX = getX(lDStart,left);
+				int mY = getY(lDStart,left);
+				System.out.println("x =" + mX);
+				System.out.println("y =" + mY);
+				System.out.println("start x =" + mStartX);
+				System.out.println("start y =" + mStartY);
+				System.out.println("START 2");
+				if (!first)
+				{
+				contentGraphics.drawLine(mStartX,
+						mY, mX, mY);
 				mStartX = mX;
+				}
+				contentGraphics.drawLine(mStartX, mStartY,
+						mStartX, mY);
 				mStartY = mY;
 			}
 		}
 		private void drawLinesEnd(Graphics2D contentGraphics, boolean left,
-				boolean override) {
+				boolean override, boolean first) {
 
-			if (mRightmostEndPreceding <= mLeftmostEnd 
-					|| mLeftmostEndPreceding >= mRightmostEnd
-					|| override) {
+			if (mRightmostEndPreceding <= mLeftmostEnd) {
 				int	mX = getX(lDEnd,left);
 				int	mY = getY(lDEnd,left);
 				System.out.println("x =" + mX);
 				System.out.println("y =" + mY);
 				System.out.println("end x =" + mEndX);
 				System.out.println("end y =" + mEndY);
-				System.out.println();
-					contentGraphics.drawLine(mEndX,
+				System.out.println("END 1");
+				
+				if (!first)
+				{
+				contentGraphics.drawLine(mEndX,
 							mEndY, mX, mEndY);
-					contentGraphics.drawLine(mX, mEndY,
-							mX, mY);
 				mEndX = mX;
+				}
+				else
+				{
+					mX -= 4;
+				}
+				contentGraphics.drawLine(mX, mEndY,
+							mX, mY);
 				mEndY = mY;
+			}
+			else if (mLeftmostEndPreceding >= mRightmostEnd)
+			{
+				int	mX = getX(lDEnd,left);
+				int	mY = getY(lDEnd,left);
+				System.out.println("x =" + mX);
+				System.out.println("y =" + mY);
+				System.out.println("end x =" + mEndX);
+				System.out.println("end y =" + mEndY);
+				System.out.println("END 2");
+				if (!first)
+				{
+				contentGraphics.drawLine(mEndX,
+							mY, mX, mY);
+				mEndX = mX;
+				}
+				else
+				{
+					System.out.println("first X");
+				}
+				contentGraphics.drawLine(mEndX, mEndY,
+							mEndX, mY);
+				mEndY = mY;
+				
 			}
 		}
 
