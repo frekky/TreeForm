@@ -74,7 +74,6 @@ import enumerators.SyntacticViewLayout;
 //import org.w3c.dom.Document;
 //import org.w3c.dom.DOMImplementation;
 
-
 /**
  * 
  * @author Donald Derrick
@@ -730,7 +729,7 @@ public void loadTree() {
 		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
 		Color lColor = lC.getBackground();
 		lC.setBackground(new Color(255,255,255));
-		JPanel lPanel = (JPanel) lC;		
+		JPanel lPanel = (JPanel) lC;
 		try
 		{
 			int scaleWidth = (int) (lSF.getRightShift() * (300/72/Sizer.scaleWidth()));

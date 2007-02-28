@@ -609,6 +609,7 @@ public boolean checkInsideDirection(SyntacticStructure start, SyntacticStructure
 	}
 	else if (difference > 0)
 	{
+		
 		return checkInsideDirectionRecursive(end,start);
 	}
 	return true;
@@ -708,6 +709,7 @@ private void initializeTree(SyntacticStructure v,int number,int level) {
 	v.setPadRight(0);
 	v.setPadStartLeft(0);
 	v.setPadStartRight(0);
+	v.setPad(false);
 	v.setNumber(number);
 	v.setLevel(level);
 	v.setPreorder(mPreorder);
@@ -741,6 +743,7 @@ private void firstWalk(SyntacticStructure v,int position) {
 			if (!v.getSyntacticParent().getChildren().getLast().equals(v))
 			{
 				v.setPrelim(v.getPrelim() + v.getPadRight() * 4 + v.getPadStartRight() * 8);
+				v.setPad(true);
 			}
 			//System.out.println("v = " + printText(v));
 			//System.out.println("v prelim = " + v.getPrelim());
@@ -827,6 +830,7 @@ private void apportion(SyntacticStructure v, int p)
 			//System.out.println("shift = " + mShift);
 			if (mShift > 0)
 			{
+				VIN.setPad(true);
 				moveSubtree(ancestor(VIN,v),v);
 				SIP = SIP + mShift;
 				SOP = SOP + mShift;
@@ -1747,5 +1751,9 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public double getLeftShift()
 	{
 		return mLeftShift;
+	}
+	public LinkedList getHeightPad()
+	{
+		return mHeightPad;
 	}
 }

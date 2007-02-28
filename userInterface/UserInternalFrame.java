@@ -159,17 +159,7 @@ public class UserInternalFrame extends JInternalFrame {
 
 		private int mHeightEnd;
 
-		private int mLeftmostStartLast;
-
-		private int mRightmostStartLast;
-
-		private int mHeightStartLast;
-
-		private int mLeftmostEndLast;
-
-		private int mRightmostEndLast;
-
-		private int mHeightEndLast;
+		
 
 		private int mLeftmostStartPreceding;
 
@@ -183,10 +173,18 @@ public class UserInternalFrame extends JInternalFrame {
 
 		private int mHeightEndPreceding;
 
+		private int mStartX;
+
+		private int mStartY;
+
+		private int mEndX;
+
+		private int mEndY;
+
 		public void paint(Graphics G) {
 			super.paint(G);
 			displayMovement(G);
-			System.out.println("");
+			//System.out.println("");
 		}
 
 		private void displayMovement(Graphics G) {
@@ -261,12 +259,16 @@ public class UserInternalFrame extends JInternalFrame {
 				right = !left;
 			}
 			drawStart(start, left, contentGraphics);
+			testWidthStart(start, left);
+			setPrecedingStart();
 			drawEnd(end, right, contentGraphics);
+			testWidthEnd(end,right);
+			setPrecedingEnd();
+			
 			boolean done = goToLowestLevel(start.getLevel(), end.getLevel(),
 					left,right, contentGraphics);
 			if (!done) {
-				mStart = lDStart;
-				mEnd = lDEnd;
+
 				lDStart = getSyntaxFacade().getLower(lDStart,
 						lDStart.getNumber(), lDStart.getLevel(),
 						lDStart.getLevel() + 1, right);
@@ -277,11 +279,11 @@ public class UserInternalFrame extends JInternalFrame {
 						|| (left && lDStart.getAbsoluteOrder() < lDEnd
 								.getAbsoluteOrder()) || (!left && lDStart
 						.getAbsoluteOrder() > lDEnd.getAbsoluteOrder()))) {
-					setWidthStart(lDStart, left);
-					setWidthEnd(lDEnd, right);
-					drawOverStart(contentGraphics, left);
+					testWidthStart(lDStart, left);
+					testWidthEnd(lDEnd, right);
+					//drawOverStart(contentGraphics, left);
 					drawLinesStart(contentGraphics, left, false);
-					drawOverEnd(contentGraphics, right);
+					//drawOverEnd(contentGraphics, right);
 					drawLinesEnd(contentGraphics, right, false);
 					mStart = lDStart;
 					mEnd = lDEnd;
@@ -292,48 +294,33 @@ public class UserInternalFrame extends JInternalFrame {
 							lDEnd.getNumber(), lDEnd.getLevel(),
 							lDEnd.getLevel() + 1, left);
 				}
-				drawOverStart(contentGraphics, left);
+				//drawOverStart(contentGraphics, left);
 				drawLinesStart(contentGraphics, left, true);
-				drawOverEnd(contentGraphics, right);
+				//drawOverEnd(contentGraphics, right);
 				drawLinesEnd(contentGraphics, right, true);
 			} else {
 				if (start.getLevel() - end.getLevel() < 0) {
-					drawOverStart(contentGraphics, left);
+					//drawOverStart(contentGraphics, left);
 				} else {
-					drawOverEnd(contentGraphics, right);
+					//drawOverEnd(contentGraphics, right);
 				}
 				drawEasy(contentGraphics, left);
 			}
 		}
 
-		private void drawEasy(Graphics2D contentGraphics, boolean left) {
-			if (!left) {
-				if (lDStart.equals(mStart)) {
-					contentGraphics.drawLine(mLeftmostEndLast, mHeightEndLast,
-							mLeftmostStart, mHeightEndLast);
-					contentGraphics.drawLine(mLeftmostStart, mHeightEndLast,
-							mLeftmostStart, mHeightStart);
-				}
-				if (lDEnd.equals(mEnd)) {
-
-					contentGraphics.drawLine(mLeftmostStartLast,
-							mHeightStartLast, mLeftmostEnd, mHeightStartLast);
-					contentGraphics.drawLine(mLeftmostEnd, mHeightStartLast,
-							mLeftmostEnd, mHeightEnd);
-				}
-			} else {
-				if (lDStart.equals(mStart)) {
-					contentGraphics.drawLine(mRightmostEndLast, mHeightEndLast,
-							mRightmostStart, mHeightEndLast);
-					contentGraphics.drawLine(mRightmostStart, mHeightEndLast,
-							mRightmostStart, mHeightStart);
-				}
-				if (lDEnd.equals(mEnd)) {
-					contentGraphics.drawLine(mRightmostStartLast,
-							mHeightStartLast, mRightmostEnd, mHeightStartLast);
-					contentGraphics.drawLine(mRightmostEnd, mHeightStartLast,
-							mRightmostEnd, mHeightEnd);
-				}
+		private void drawEasy(Graphics2D contentGraphics, boolean left) 
+		{
+			if (lDStart.equals(mStart)) {
+				contentGraphics.drawLine(mEndX, mEndY,
+						mStartX, mEndY);
+				contentGraphics.drawLine(mStartX, mEndY,
+						mStartX, mStartY);
+			}
+			if (lDEnd.equals(mEnd)) {
+				contentGraphics.drawLine(mStartX,
+						mStartY, mEndX, mStartY);
+				contentGraphics.drawLine(mEndX, mStartY,
+						mEndX, mEndY);
 			}
 		}
 
@@ -360,10 +347,10 @@ public class UserInternalFrame extends JInternalFrame {
 										(int) start
 										.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 										+ start.getPadStartLeftCount() * padLength);
-				setWidthStart(start, left);
-				mRightmostStart = (int) start.getButtonX()
+				testWidthStart(start, left);
+				mStartX = (int) start.getButtonX()
 						- start.getPadStartLeftCount() * padWidth - 4;
-				mHeightStart = (int) start
+				mStartY = (int) start
 				.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 				+ start.getPadStartLeftCount() * padLength;
 				start.setPadStartLeftCount(start.getPadStartLeftCount() + 1);
@@ -389,23 +376,17 @@ public class UserInternalFrame extends JInternalFrame {
 										+ (start.getPadStartRightCount() * padWidth)
 										+ 4, (int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 										+ start.getPadStartRightCount() * padLength);
-				setWidthStart(start, left);
-				mLeftmostStart = (int) start.getButtonX()
+				testWidthStart(start, left);
+				mStartX = (int) start.getButtonX()
 						+ start.getButtonWidth()
 						+ (start.getPadStartRightCount() * padWidth) + 4;
-				mHeightStart = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+				mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 				+ start.getPadStartRightCount() * padLength);
 				start.setPadStartRightCount(start.getPadStartRightCount() + 1);
 			}
-			mHeightStartLast = mHeightStart;
-			mRightmostStartLast = mRightmostStart;
-			mLeftmostStartLast = mLeftmostStart;
 		}
 
-		private void setWidthStart(SyntacticStructure start, boolean left) {
-			mLeftmostStartPreceding = mLeftmostStart;
-			mRightmostStartPreceding = mRightmostStart;
-			mHeightStartPreceding = mHeightStart;
+		private void testWidthStart(SyntacticStructure start, boolean left) {
 			if (left) {
 				mRightmostStart = (int) start.getButtonX();
 				if (start.getAbsoluteOrder() > 0) {
@@ -413,12 +394,20 @@ public class UserInternalFrame extends JInternalFrame {
 							.getLinkedArray().get(start.getLevel())).get(start
 							.getAbsoluteOrder() - 1);
 					mLeftmostStart = (int) (w.getButtonX() + w.getButtonWidth());
+					if (w.getPad())
+					{
+						mLeftmostStart += w.getPadRight() * 4 + w.getPadStartRight() * 8;
+					}
 				} else {
 					mLeftmostStart = (int) getSyntaxFacade().getLeftShift();
 				}
 			} else {
 				mLeftmostStart = (int) start.getButtonX()
 						+ start.getButtonWidth();
+				if (start.getPad())
+				{
+					mLeftmostStart += start.getPadRight() * 4 + start.getPadStartRight() * 8;
+				}
 				if (start.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).size() - 1) {
 					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
@@ -430,15 +419,9 @@ public class UserInternalFrame extends JInternalFrame {
 							/ Sizer.scaleWidth() / getScale()) + 1);
 				}
 			}
-			mHeightStart = (int) lDStart.getButtonY()
-					+ lDStart.getButtonHeight();
-			System.out.println(mHeightStart);
 		}
 
-		private void setWidthEnd(SyntacticStructure start, boolean left) {
-			mLeftmostEndPreceding = mLeftmostEnd;
-			mRightmostEndPreceding = mRightmostEnd;
-			mHeightEndPreceding = mHeightEnd;
+		private void testWidthEnd(SyntacticStructure start, boolean left) {
 			if (left) {
 				mRightmostEnd = (int) start.getButtonX();
 				if (start.getAbsoluteOrder() > 0) {
@@ -446,12 +429,20 @@ public class UserInternalFrame extends JInternalFrame {
 							.getLinkedArray().get(start.getLevel())).get(start
 							.getAbsoluteOrder() - 1);
 					mLeftmostEnd = (int) (w.getButtonX() + w.getButtonWidth());
+					if (w.getPad())
+					{
+						mLeftmostEnd += w.getPadRight() * 4 + w.getPadStartRight() * 8;
+					}
 				} else {
 					mLeftmostEnd = (int) getSyntaxFacade().getLeftShift();
 				}
 			} else {
 				mLeftmostEnd = (int) start.getButtonX()
 						+ start.getButtonWidth();
+				if (start.getPad())
+				{
+					mLeftmostEnd += start.getPadRight() * 4 + start.getPadStartRight() * 8;
+				}
 				if (start.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).size() - 1) {
 					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
@@ -463,7 +454,16 @@ public class UserInternalFrame extends JInternalFrame {
 							/ Sizer.scaleWidth() / getScale()) + 1);
 				}
 			}
-			mHeightEnd = (int) lDEnd.getButtonY() + lDEnd.getButtonHeight();
+		}
+		private void setPrecedingStart()
+		{
+			mLeftmostStartPreceding = mLeftmostStart;
+			mRightmostStartPreceding = mRightmostStart;
+		}
+		private void setPrecedingEnd()
+		{
+			mLeftmostEndPreceding = mLeftmostEnd;
+			mRightmostEndPreceding = mRightmostEnd;
 		}
 
 		private void drawEnd(SyntacticStructure end, boolean left,
@@ -501,10 +501,10 @@ public class UserInternalFrame extends JInternalFrame {
 						 (int) end
 							.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 							+ end.getPadStartLeftCount() * padLength);
-				setWidthEnd(end, left);
-				mRightmostEnd = (int) end.getButtonX()
+				testWidthEnd(end, left);
+				mEndX = (int) end.getButtonX()
 						- end.getPadStartLeftCount() * padWidth - 4;
-				mHeightEnd = (int) end
+				mEndY = (int) end
 				.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 				+ end.getPadStartLeftCount() * padLength;
 				end.setPadStartLeftCount(end.getPadStartLeftCount() + 1);
@@ -547,231 +547,134 @@ public class UserInternalFrame extends JInternalFrame {
 								(int) end
 								.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 								+ end.getPadStartRightCount() * padLength);
-				setWidthEnd(end, left);
-				mLeftmostEnd = (int) end.getButtonX() + end.getButtonWidth()
+				testWidthEnd(end, left);
+				mEndX = (int) end.getButtonX() + end.getButtonWidth()
 						+ (end.getPadStartRightCount() * padWidth) + 4;
-				mHeightEnd = (int) end
+				mEndY = (int) end
 				.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 				+ end.getPadStartRightCount() * padLength;
 				end.setPadStartRightCount(end.getPadStartRightCount() + 1);
 			}
-			mHeightEndLast = mHeightEnd;
-			mRightmostEndLast = mRightmostEnd;
-			mLeftmostEndLast = mLeftmostEnd;
+			
 		}
 
 		private boolean goToLowestLevel(int startLevel, int endLevel,
 				boolean left, boolean right, Graphics2D contentGraphics) {
 
 			if (startLevel < endLevel) {
-				if (right) {
-					for (int j = startLevel; j < endLevel - 1; j++) {
-						lDStart = getSyntaxFacade().getLower(lDStart,
-								lDStart.getNumber(), lDStart.getLevel(),
-								lDStart.getLevel() + 1, right);
-						setWidthStart(lDStart, right);
-						drawOverStart(contentGraphics, right);
-						drawLinesStart(contentGraphics, right, false);
-					}
-
-				} else {
-					for (int j = startLevel; j < endLevel - 1; j++) {
-						lDStart = getSyntaxFacade().getLower(lDStart,
-								lDStart.getNumber(), lDStart.getLevel(),
-								lDStart.getLevel() + 1, right);
-						setWidthStart(lDStart, right);
-						drawOverStart(contentGraphics, right);
-						drawLinesStart(contentGraphics, right, false);
-					}
+				testWidthStart(lDStart, right);
+				//drawOverStart(contentGraphics, right);
+				drawLinesStart(contentGraphics, right, false);
+				for (int j = startLevel; j < endLevel - 1; j++) {
+					mStart = lDStart;
+					lDStart = getSyntaxFacade().getLower(lDStart,
+							lDStart.getNumber(), lDStart.getLevel(),
+							lDStart.getLevel() + 1, right);
+					testWidthStart(lDStart, right);
+					//drawOverStart(contentGraphics, right);
+					drawLinesStart(contentGraphics, right, false);
 				}
+				mStart = lDStart;
 				lDStart = getSyntaxFacade().getLower(lDStart,
 						lDStart.getNumber(), lDStart.getLevel(),
 						lDStart.getLevel() + 1, right);
-				setWidthStart(lDStart, right);
+				testWidthStart(lDStart, right);
 				if (!lDStart.equals(lDEnd)) {
-					drawOverStart(contentGraphics, right);
+					//drawOverStart(contentGraphics, right);
 					drawLinesStart(contentGraphics, right, false);
 				}
 			} else {
-				if (left) {
-					for (int j = endLevel; j < startLevel - 1; j++) {
-						lDEnd = getSyntaxFacade().getLower(lDEnd,
-								lDEnd.getNumber(), lDEnd.getLevel(),
-								lDEnd.getLevel() + 1, left);
-						setWidthEnd(lDEnd, left);
-						drawOverEnd(contentGraphics, left);
-						drawLinesEnd(contentGraphics, left, false);
-					}
-
-				} else {
-					for (int j = endLevel; j < startLevel - 1; j++) {
-						lDEnd = getSyntaxFacade().getLower(lDEnd,
-								lDEnd.getNumber(), lDEnd.getLevel(),
-								lDEnd.getLevel() + 1, left);
-						setWidthEnd(lDEnd, left);
-						drawOverEnd(contentGraphics, left);
-						drawLinesEnd(contentGraphics, left, false);
-					}
+				testWidthEnd(lDEnd, left);
+				//drawOverEnd(contentGraphics, left);
+				drawLinesEnd(contentGraphics, left, false);
+				for (int j = endLevel; j < startLevel - 1; j++) {
+					mEnd = lDEnd;
+					lDEnd = getSyntaxFacade().getLower(lDEnd,
+							lDEnd.getNumber(), lDEnd.getLevel(),
+							lDEnd.getLevel() + 1, left);
+					testWidthEnd(lDEnd, left);
+					//drawOverEnd(contentGraphics, left);
+					drawLinesEnd(contentGraphics, left, false);
 				}
+				mEnd = lDEnd;
 				lDEnd = getSyntaxFacade().getLower(lDEnd, lDEnd.getNumber(),
 						lDEnd.getLevel(), lDEnd.getLevel() + 1, left);
-				setWidthEnd(lDEnd, left);
+				testWidthEnd(lDEnd, left);
 				if (!lDStart.equals(lDEnd)) {
-					drawOverEnd(contentGraphics, left);
+					//drawOverEnd(contentGraphics, left);
 					drawLinesEnd(contentGraphics, left, false);
 				}
 			}
-			// System.out.println("start = " + lDStart.getPreorder());
-			// System.out.println("end = " + lDEnd.getPreorder());
 			if (lDStart.equals(lDEnd)) {
-				// System.out.println("true");
 				return true;
 			}
-			System.out.println("lDStart = " + lDStart.getPreorder());
-			System.out.println("lDEnd = " + lDEnd.getPreorder());
-//			if (left) {
-//				if (lDStart.getAbsoluteOrder() > 0) {
-//					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
-//							.getLinkedArray().get(lDStart.getLevel()))
-//							.get(lDStart.getAbsoluteOrder()-1);
-//					if(w.equals(lDEnd))
-//					{
-//						return true;
-//					}
-//				}
-//			} else {
-//				if (lDStart.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
-//						.getLinkedArray().get(lDStart.getLevel())).size() - 1) {
-//					SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
-//							.getLinkedArray().get(lDStart.getLevel()))
-//							.get(lDStart.getAbsoluteOrder()+1);
-//					if(w.equals(lDEnd))
-//					{
-//						return true;
-//					}
-//				}
-//			}
 			return false;
 		}
 
-		private void drawOverStart(Graphics2D contentGraphics, boolean left) {
-			// System.out.println("mRightmostStart = " + mRightmostStart);
-			// System.out.println("mRightmostStartPreceding = " +
-			// mRightmostStartPreceding);
-			// System.out.println("mLeftmostStart = " + mLeftmostStart);
-			// System.out.println("mLeftmostStartPreceding = " +
-			// mLeftmostStartPreceding);
-			// System.out.println("left = " + left);
-			// System.out.println("");
-			if (left) {
-				if (mRightmostStart > mRightmostStartPreceding) {
-					contentGraphics.drawLine(mRightmostStartLast,
-							mHeightStartLast, mRightmostStartPreceding,
-							mHeightStartLast);
-					contentGraphics.drawLine(mRightmostStartPreceding,
-							mHeightStartLast, mRightmostStartPreceding,
-							mHeightStartPreceding);
-					mRightmostStartLast = mRightmostStartPreceding;
-					mLeftmostStartLast = mLeftmostStartPreceding;
-					mHeightStartLast = mHeightStartPreceding;
-				}
-			} else {
-				if (mLeftmostStart < mLeftmostStartPreceding) {
-					contentGraphics.drawLine(mLeftmostStartLast,
-							mHeightStartLast, mLeftmostStartPreceding,
-							mHeightStartLast);
-					contentGraphics.drawLine(mLeftmostStartPreceding,
-							mHeightStartLast, mLeftmostStartPreceding,
-							mHeightStartPreceding);
-					mRightmostStartLast = mRightmostStartPreceding;
-					mLeftmostStartLast = mLeftmostStartPreceding;
-					mHeightStartLast = mHeightStartPreceding;
+		private int getY(SyntacticStructure start, boolean left) {
+			if (left)
+			{
+				if (start.getAbsoluteOrder() > 0)
+				{
+					start = (SyntacticStructure) ((LinkedList) getSyntaxFacade().getLinkedArray().get(start.getLevel())).get(start.getAbsoluteOrder()-1);
 				}
 			}
+			int pad = ((Integer) getSyntaxFacade().getHeightPad().get(start.getLevel())).intValue();
+			pad = start.getTextHeight() + (pad * 3) - (start.getPadBottomCount() * 3);
+			start.setPadBottomCount(start.getPadBottomCount()+1);
+			return pad;
 		}
+
+		private int getX(SyntacticStructure start, boolean left) {
+			int pad = (int) (start.getButtonX() + start.getButtonWidth());
+			if (left)
+			{
+				if (start.getAbsoluteOrder() > 0)
+				{
+					start = (SyntacticStructure) ((LinkedList) getSyntaxFacade().getLinkedArray().get(start.getLevel())).get(start.getAbsoluteOrder()-1);
+				}
+			}
+			pad = pad  + (start.getPadRight() * 4) + (start.getPadStartRight() * 8) - (start.getPadRightCount() * 4); 
+			start.setPadRightCount(start.getPadRightCount()+1);
+			return pad;
+		}
+
 
 		private void drawLinesStart(Graphics2D contentGraphics, boolean left,
 				boolean override) {
 
-			if (mLeftmostStart >= mRightmostStart || override) {
-				if (left) {
-
-					contentGraphics
-							.drawLine(mRightmostStartLast, mHeightStartLast,
-									mRightmostStart, mHeightStartLast);
-					contentGraphics.drawLine(mRightmostStart, mHeightStartLast,
-							mRightmostStart, mHeightStart);
-					mLeftmostStartLast = mLeftmostStart;
-					mRightmostStartLast = mRightmostStart;
-					mHeightStartLast = mHeightStart;
-
-				} else {
-					contentGraphics.drawLine(mLeftmostStartLast,
-							mHeightStartLast, mLeftmostStart, mHeightStartLast);
-					contentGraphics.drawLine(mLeftmostStart, mHeightStartLast,
-							mLeftmostStart, mHeightStart);
-					mLeftmostStartLast = mLeftmostStart;
-					mRightmostStartLast = mRightmostStart;
-					mHeightStartLast = mHeightStart;
-				}
+			if (mRightmostStartPreceding <= mLeftmostStart
+					|| mLeftmostStartPreceding >= mRightmostStart 
+					|| override) 
+			{
+			int mX = 0;
+			int mY = 0;
+				mX = getX(lDStart,left);
+				mY = getY(lDStart,left);
+				contentGraphics.drawLine(mStartX,
+						mStartY, mX, mStartY);
+				contentGraphics.drawLine(mX, mStartY,
+						mStartX, mY);
+				mStartX = mX;
+				mStartY = mY;
 			}
 		}
-
-		private void drawOverEnd(Graphics2D contentGraphics, boolean left) {
-			// System.out.println("mRightmostEnd = " + mRightmostEnd);
-			// System.out.println("mRightmostEndPreceding = " +
-			// mRightmostEndPreceding);
-			// System.out.println("mLeftmostEnd = " + mLeftmostEnd);
-			// System.out.println("mLeftmostEndPreceding = " +
-			// mLeftmostEndPreceding);
-			// System.out.println("left = " + left);
-			// System.out.println("");
-			if (left) {
-				if (mRightmostEnd > mRightmostEndPreceding) {
-					contentGraphics.drawLine(mRightmostEndLast, mHeightEndLast,
-							mRightmostEndPreceding, mHeightEndLast);
-					contentGraphics.drawLine(mRightmostEndPreceding,
-							mHeightEndLast, mRightmostEndPreceding,
-							mHeightEndPreceding);
-					mRightmostEndLast = mRightmostEndPreceding;
-					mLeftmostEndLast = mLeftmostEndPreceding;
-					mHeightEndLast = mHeightEndPreceding;
-				}
-			} else {
-				if (mLeftmostEnd < mLeftmostEndPreceding) {
-					contentGraphics.drawLine(mLeftmostEndLast, mHeightEndLast,
-							mLeftmostEndPreceding, mHeightEndLast);
-					contentGraphics.drawLine(mLeftmostEndPreceding,
-							mHeightEndLast, mLeftmostEndPreceding,
-							mHeightEndPreceding);
-					mRightmostEndLast = mRightmostEndPreceding;
-					mLeftmostEndLast = mLeftmostEndPreceding;
-					mHeightEndLast = mHeightEndPreceding;
-				}
-			}
-		}
-
 		private void drawLinesEnd(Graphics2D contentGraphics, boolean left,
 				boolean override) {
 
-			if (mLeftmostEnd >= mRightmostEnd || override) {
-				if (left) {
-					contentGraphics.drawLine(mRightmostEndLast, mHeightEndLast,
-							mRightmostEnd, mHeightEndLast);
-					contentGraphics.drawLine(mRightmostEnd, mHeightEndLast,
-							mRightmostEnd, mHeightEnd);
-					mLeftmostEndLast = mLeftmostEnd;
-					mRightmostEndLast = mRightmostEnd;
-					mHeightEndLast = mHeightEnd;
-				} else {
-					contentGraphics.drawLine(mLeftmostEndLast, mHeightEndLast,
-							mLeftmostEnd, mHeightEndLast);
-					contentGraphics.drawLine(mLeftmostEnd, mHeightEndLast,
-							mLeftmostEnd, mHeightEnd);
-					mLeftmostEndLast = mLeftmostEnd;
-					mRightmostEndLast = mRightmostEnd;
-					mHeightEndLast = mHeightEnd;
-				}
+			if (mRightmostEndPreceding <= mLeftmostEnd 
+					|| mLeftmostEndPreceding >= mRightmostEnd
+					|| override) {
+				int mX = 0;
+				int mY = 0;
+					mX = getX(lDEnd,left);
+					mY = getY(lDEnd,left);
+					contentGraphics.drawLine(mEndX,
+							mEndY, mX, mEndY);
+					contentGraphics.drawLine(mX, mEndY,
+							mEndX, mY);
+				mStartX = mX;
+				mStartY = mY;
 			}
 		}
 

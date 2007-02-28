@@ -146,6 +146,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	private int mPadLeftCount;
 
 	private int mPadBottomCount;
+
+	private boolean mPad;
 	
 /**
  * 
@@ -711,5 +713,14 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	
 	public int getPadBottomCount() {
 		return mPadBottomCount;
+	}
+
+	public void setPad(boolean b) {
+		mPad = b;
+	}
+	
+	public boolean getPad()
+	{
+		return mPad;
 	}
 }
