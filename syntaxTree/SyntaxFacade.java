@@ -687,6 +687,7 @@ private void resizeUIF() {
 	{
 		lBottomShift = getUIF().getMinHeight()-25;
 	}
+	getUIF().getTrace().setBounds(0,0,(int)lRightShift+25,(int)lBottomShift+25);
 	getUIF().setBounds(0,0,(int)lRightShift+25,(int)lBottomShift+25);
 	getUIF().getDesktopPane().setPreferredSize(
 			new Dimension(
