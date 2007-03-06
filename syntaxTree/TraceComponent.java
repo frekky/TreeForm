@@ -21,17 +21,17 @@ public class TraceComponent extends JComponent {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private SyntacticStructure mStart;
+	private SyntacticStructure previousStart;
 
-	private SyntacticStructure mEnd;
+	private SyntacticStructure previousEnd;
 
-	private SyntacticStructure uAStart;
+	private SyntacticStructure ancestorStart;
 
-	private SyntacticStructure uAEnd;
+	private SyntacticStructure ancestorEnd;
 
-	private SyntacticStructure lDStart;
+	private SyntacticStructure currentStart;
 
-	private SyntacticStructure lDEnd;
+	private SyntacticStructure currentEnd;
 
 	static final int padWidth = 6;
 
@@ -78,6 +78,10 @@ public class TraceComponent extends JComponent {
 	private SyntacticStructure prevStart;
 
 	private SyntacticStructure prevEnd;
+
+	private SyntacticStructure nextStart;
+	
+	private SyntacticStructure nextEnd;
 
 	private static final float triangleLength = 3;
 
@@ -146,25 +150,25 @@ public class TraceComponent extends JComponent {
 
 	private void drawMovement(SyntacticStructure start,
 			SyntacticStructure end, Graphics2D contentGraphics) {
-		mStart = start;
-		mEnd = end;
-		uAStart = start;
-		uAEnd = end;
-		lDStart = start;
-		lDEnd = end;
-		prevStart = lDStart;
-		prevEnd = lDEnd;
+		previousStart = start;
+		previousEnd = end;
+		ancestorStart = start;
+		ancestorEnd = end;
+		currentStart = start;
+		currentEnd = end;
+		prevStart = currentStart;
+		prevEnd = currentEnd;
 		boolean left = true;
 		boolean right = true;
 		synchronizeLevel();
-		boolean common = uAStart.equals(uAEnd);
+		boolean common = ancestorStart.equals(ancestorEnd);
 		if (common) {
 			left = getSyntaxFacade().checkInsideDirection(start, end,
 					start.getLevel(), end.getLevel());
 			right = left;
 		} else {
-			getHighestUncommonAncestors(uAStart, uAEnd);
-			left = checkOutsideDirection(uAStart, uAEnd);
+			getHighestUncommonAncestors(ancestorStart, ancestorEnd);
+			left = checkOutsideDirection(ancestorStart, ancestorEnd);
 			right = !left;
 		}
 		drawStart(start, left, contentGraphics);
@@ -182,29 +186,29 @@ public class TraceComponent extends JComponent {
 		boolean done = goToLowestLevel(start.getLevel(), end.getLevel(),
 				left,right, contentGraphics);
 		if (!done) {
-			while (!(lDStart == null
-					|| lDEnd == null
-					|| (left && lDStart.getAbsoluteOrder() < lDEnd
-							.getAbsoluteOrder()) || (!left && lDStart
-					.getAbsoluteOrder() > lDEnd.getAbsoluteOrder()))) {
+			while (!(currentStart == null
+					|| currentEnd == null
+					|| (left && currentStart.getAbsoluteOrder() < currentEnd
+							.getAbsoluteOrder()) || (!left && currentStart
+					.getAbsoluteOrder() > currentEnd.getAbsoluteOrder()))) {
 				setPrecedingStart();
 				setPrecedingEnd();
-				testWidthStart(lDStart, right);
-				testWidthEnd(lDEnd, left);
-				System.out.println("start = " + lDStart.getPreorder());
-				System.out.println("end = " + lDEnd.getPreorder());
+				testWidthStart(currentStart, right);
+				testWidthEnd(currentEnd, left);
+				System.out.println("start = " + currentStart.getPreorder());
+				System.out.println("end = " + currentEnd.getPreorder());
 				drawLines(contentGraphics,true, firstStart, right);
 				drawLines(contentGraphics,false, firstEnd, left);
 				firstStart = false;
 				firstEnd = false;
-				prevStart = lDStart;
-				prevEnd = lDEnd;
-				lDStart = getSyntaxFacade().getLower(lDStart,
-						lDStart.getNumber(), lDStart.getLevel(),
-						lDStart.getLevel() + 1, right);
-				lDEnd = getSyntaxFacade().getLower(lDEnd,
-						lDEnd.getNumber(), lDEnd.getLevel(),
-						lDEnd.getLevel() + 1, left);
+				prevStart = currentStart;
+				prevEnd = currentEnd;
+				currentStart = getSyntaxFacade().getLower(currentStart,
+						currentStart.getNumber(), currentStart.getLevel(),
+						currentStart.getLevel() + 1, right);
+				currentEnd = getSyntaxFacade().getLower(currentEnd,
+						currentEnd.getNumber(), currentEnd.getLevel(),
+						currentEnd.getLevel() + 1, left);
 			}
 			drawBottom(contentGraphics, left, right);
 		}
@@ -383,13 +387,13 @@ public class TraceComponent extends JComponent {
 	}
 	private void setPrecedingStart()
 	{
-		mStart = lDStart;
+		previousStart = currentStart;
 		mLeftmostStartPreceding = mLeftmostStart;
 		mRightmostStartPreceding = mRightmostStart;
 	}
 	private void setPrecedingEnd()
 	{
-		mEnd = lDEnd;
+		previousEnd = currentEnd;
 		mLeftmostEndPreceding = mLeftmostEnd;
 		mRightmostEndPreceding = mRightmostEnd;
 	}
@@ -499,48 +503,48 @@ public class TraceComponent extends JComponent {
 			boolean left, boolean right, Graphics2D contentGraphics) {
 		boolean done = false;
 		if (startLevel < endLevel) {
-			testWidthStart(lDStart,left);
+			testWidthStart(currentStart,left);
 			setPrecedingStart();
 			setStart();
 			drawLines(contentGraphics, true, true, left);
 			for (int j = startLevel; j < endLevel; j++) {
 				setPrecedingStart();
-				prevStart = lDStart;
-				lDStart = getSyntaxFacade().getLower(lDStart,
-						lDStart.getNumber(), lDStart.getLevel(),
-						lDStart.getLevel() + 1, left);
-				if (lDStart == null)
+				prevStart = currentStart;
+				currentStart = getSyntaxFacade().getLower(currentStart,
+						currentStart.getNumber(), currentStart.getLevel(),
+						currentStart.getLevel() + 1, left);
+				if (currentStart == null)
 				{
-					lDStart = lDEnd;
+					currentStart = currentEnd;
 					j = endLevel;
 				}
 				else
 				{
-					testWidthStart(lDStart, left);
+					testWidthStart(currentStart, left);
 				}
 				done = drawDone(contentGraphics, left);
 			}
 		} else if (endLevel < startLevel){
-			testWidthEnd(lDEnd, right);
+			testWidthEnd(currentEnd, right);
 			setPrecedingEnd();
 			setEnd();
 			drawLines(contentGraphics, false, true, right);
 			for (int j = endLevel; j < startLevel; j++) {
 				setPrecedingEnd();
-				prevEnd = lDEnd;
-				lDEnd = getSyntaxFacade().getLower(lDEnd,
-						lDEnd.getNumber(), lDEnd.getLevel(),
-						lDEnd.getLevel() + 1, right);
+				prevEnd = currentEnd;
+				currentEnd = getSyntaxFacade().getLower(currentEnd,
+						currentEnd.getNumber(), currentEnd.getLevel(),
+						currentEnd.getLevel() + 1, right);
 //				System.out.println("end down = " + lDEnd.getPreorder());
 //				System.out.println("left = " + right);
-				if (lDEnd == null)
+				if (currentEnd == null)
 				{
-					lDEnd = lDStart;
+					currentEnd = currentStart;
 					j = startLevel;
 				}
 				else
 				{
-					testWidthEnd(lDEnd, right);
+					testWidthEnd(currentEnd, right);
 				}
 				done = drawDone(contentGraphics, right);
 			}
@@ -646,11 +650,13 @@ public class TraceComponent extends JComponent {
 
 		if (start)
 		{
-		//System.out.println("this is start");
+			nextStart = getSyntaxFacade().getLower(currentStart,
+					currentStart.getNumber(), currentStart.getLevel(),
+					currentStart.getLevel() + 1, left);
 		if (mLeftmostStartPreceding >= mRightmostStart || mLeftmostStart >= mRightmostStartPreceding )
 			{
-				int mX = getX(lDStart,left);
-				int mY = getY(lDStart,left);
+				int mX = getX(currentStart,left);
+				int mY = getY(currentStart,left);
 			if (!first)
 				{
 				contentGraphics.drawLine(mStartX,
@@ -673,8 +679,8 @@ public class TraceComponent extends JComponent {
 			//System.out.println("This is end");
 			if (mLeftmostEndPreceding >= mRightmostEnd || mLeftmostEnd >= mRightmostEndPreceding)
 			{
-				int	mX = getX(lDEnd,left);
-				int	mY = getY(lDEnd,left);
+				int	mX = getX(currentEnd,left);
+				int	mY = getY(currentEnd,left);
 				if (!first)
 				{
 				contentGraphics.drawLine(mEndX,
@@ -697,35 +703,35 @@ public class TraceComponent extends JComponent {
 	private boolean drawDone(Graphics2D contentGraphics, boolean left)
 	{
 		boolean testStart = false;
-		if (lDStart.getLevel() == lDEnd.getLevel())
+		if (currentStart.getLevel() == currentEnd.getLevel())
 		{
 			//System.out.println("same level = " + lDStart.getLevel());
 			LinkedList hold = (LinkedList) 
-					getSyntaxFacade().getLinkedArray().get(lDStart.getLevel());
-			if (lDStart.equals(lDEnd))
+					getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
+			if (currentStart.equals(currentEnd))
 				testStart = true;
-			if (lDEnd.getAbsoluteOrder() < hold.size() -1 && !left)
+			if (currentEnd.getAbsoluteOrder() < hold.size() -1 && !left)
 			{
 				//System.out.println(((SyntacticStructure)hold.get(lDEnd.getAbsoluteOrder() +1)).getPreorder());
-				if(lDStart.equals(hold.get(lDEnd.getAbsoluteOrder() +1)))
+				if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() +1)))
 					testStart = true;
 			}
-			if (lDEnd.getAbsoluteOrder() > 0 && left)
+			if (currentEnd.getAbsoluteOrder() > 0 && left)
 			{
 				//System.out.println(((SyntacticStructure)hold.get(lDEnd.getAbsoluteOrder() -1)).getPreorder());
-				if(lDStart.equals(hold.get(lDEnd.getAbsoluteOrder() -1)))
+				if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() -1)))
 					testStart = true;
 			}	
 			if(testStart)
 			{
-				if (lDEnd == mEnd)
+				if (currentEnd == previousEnd)
 				{	
 					contentGraphics.drawLine(mStartX,
 							mStartY, mEndX, mStartY);
 					contentGraphics.drawLine(mEndX, mStartY,
 							mEndX, mEndY);
 				}
-				else if(lDStart == mStart)
+				else if(currentStart == previousStart)
 				{
 					contentGraphics.drawLine(mEndX, mEndY,
 							mStartX, mEndY);
@@ -746,15 +752,15 @@ public class TraceComponent extends JComponent {
 	}
 
 	private void synchronizeLevel() {
-		int difference = uAStart.getLevel() - uAEnd.getLevel();
+		int difference = ancestorStart.getLevel() - ancestorEnd.getLevel();
 		if (difference != 0) {
 			if (difference < 0) {
 				for (int i = difference; i < 0; i++) {
-					uAEnd = (SyntacticStructure) uAEnd.getSyntacticParent();
+					ancestorEnd = (SyntacticStructure) ancestorEnd.getSyntacticParent();
 				}
 			} else {
 				for (int i = difference; i > 0; i--) {
-					uAStart = (SyntacticStructure) uAStart
+					ancestorStart = (SyntacticStructure) ancestorStart
 							.getSyntacticParent();
 				}
 			}
