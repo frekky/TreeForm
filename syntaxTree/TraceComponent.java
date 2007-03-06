@@ -67,13 +67,13 @@ public class TraceComponent extends JComponent {
 
 	private SyntaxFacade mSyntaxFacade;
 
-	private int mLeftmostStartLast;
+	private int mLeftmostStartNext;
 
-	private int mRightmostStartLast;
+	private int mRightmostStartNext;
 
-	private int mLeftmostEndLast;
+	private int mLeftmostEndNext;
 
-	private int mRightmostEndLast;
+	private int mRightmostEndNext;
 
 	private SyntacticStructure prevStart;
 
@@ -193,7 +193,7 @@ public class TraceComponent extends JComponent {
 					.getAbsoluteOrder() > currentEnd.getAbsoluteOrder()))) {
 				setPrecedingStart();
 				setPrecedingEnd();
-				testWidthStart(currentStart, right);
+				testWidthStart(currentStart, right,false);
 				testWidthEnd(currentEnd, left);
 				System.out.println("start = " + currentStart.getPreorder());
 				System.out.println("end = " + currentEnd.getPreorder());
@@ -264,7 +264,7 @@ public class TraceComponent extends JComponent {
 									(int) start
 									.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 									+ start.getPadStartLeftCount() * padLength);
-			testWidthStart(start, left);
+			testWidthStart(start, left,false);
 			mStartX = (int) start.getButtonX() - padEdge
 					- (start.getPadStartLeftCount() * padWidth) - lineLength;
 			mStartY = (int) start
@@ -293,7 +293,7 @@ public class TraceComponent extends JComponent {
 									+ (start.getPadStartRightCount() * padWidth)
 									+ lineLength, (int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 									+ start.getPadStartRightCount() * padLength);
-			testWidthStart(start, left);
+			testWidthStart(start, left,false);
 			mStartX = (int) start.getButtonX() + padEdge
 					+ start.getButtonWidth()
 					+ (start.getPadStartRightCount() * padWidth) + lineLength;
@@ -303,15 +303,15 @@ public class TraceComponent extends JComponent {
 		}
 	}
 
-	private void testWidthStart(SyntacticStructure start, boolean left) {
+	private void testWidthStart(SyntacticStructure start, boolean left,boolean next) {
 		if (left) {
 			mRightmostStart = (int) start.getButtonX();
-			System.out.println("rightmost start preorder = " + start.getPreorder());
+			//System.out.println("rightmost start preorder = " + start.getPreorder());
 			if (start.getAbsoluteOrder() > 0) {
 				SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() - 1);
-				System.out.println("leftmost start preorder = " + w.getPreorder());
+				//System.out.println("leftmost start preorder = " + w.getPreorder());
 				mLeftmostStart = (int) (w.getButtonX() + w.getButtonWidth());
 				if (w.getPadRight() > 0)
 				{
@@ -323,7 +323,7 @@ public class TraceComponent extends JComponent {
 		} else {
 			mLeftmostStart = (int) start.getButtonX()
 					+ start.getButtonWidth();
-			System.out.println("leftmost start preorder = " + start.getPreorder());
+			//System.out.println("leftmost start preorder = " + start.getPreorder());
 			if (start.getPadRight() > 0)
 			{
 				mLeftmostStart += getSyntaxFacade().getPad(start);
@@ -333,27 +333,26 @@ public class TraceComponent extends JComponent {
 				SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() + 1);
-				System.out.println("rightmost start preorder = " + w.getPreorder());
+				//System.out.println("rightmost start preorder = " + w.getPreorder());
 				mRightmostStart = (int) (w.getButtonX());
 			} else {
 				mRightmostStart = (int) ((getSyntaxFacade().getRightShift() + getSyntaxFacade().getPad(start)
 						/ Sizer.scaleWidth() / getUserInternalFrame().getScale()) + 1);
 			}
 		}
-		System.out.println("Rightmost Start = " + mRightmostStart);
-		System.out.println("Leftmost Start = " + mLeftmostStart);
-		
+		//System.out.println("Rightmost Start = " + mRightmostStart);
+		//System.out.println("Leftmost Start = " + mLeftmostStart);		
 	}
 
 	private void testWidthEnd(SyntacticStructure start, boolean left) {
 		if (left) {
-			System.out.println("rightmost end preorder = " + start.getPreorder());
+			//System.out.println("rightmost end preorder = " + start.getPreorder());
 			mRightmostEnd = (int) start.getButtonX();
 			if (start.getAbsoluteOrder() > 0) {
 				SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() - 1);
-				System.out.println("leftmost end preorder = " + w.getPreorder());
+				//System.out.println("leftmost end preorder = " + w.getPreorder());
 				mLeftmostEnd = (int) (w.getButtonX() + w.getButtonWidth());
 				if (w.getPadRight() > 0)
 				{
@@ -363,7 +362,7 @@ public class TraceComponent extends JComponent {
 				mLeftmostEnd = (int) getSyntaxFacade().getLeftShift();
 			}
 		} else {
-			System.out.println("leftmost end preorder = " + start.getPreorder());
+			//System.out.println("leftmost end preorder = " + start.getPreorder());
 			mLeftmostEnd = (int) start.getButtonX()
 					+ start.getButtonWidth();
 			if (start.getPadRight() > 0)
@@ -375,15 +374,15 @@ public class TraceComponent extends JComponent {
 				SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() + 1);
-				System.out.println("rightmost end preorder = " + w.getPreorder());
+				//System.out.println("rightmost end preorder = " + w.getPreorder());
 				mRightmostEnd = (int) (w.getButtonX());
 			} else {
 				mRightmostEnd = (int) ((getSyntaxFacade().getRightShift() + getSyntaxFacade().getPad(start)
 						/ Sizer.scaleWidth() / getUserInternalFrame().getScale()) + 1);
 			}
 		}
-		System.out.println("Rightmost End = " + mRightmostEnd);
-		System.out.println("Leftmost End = " + mLeftmostEnd);
+		//System.out.println("Rightmost End = " + mRightmostEnd);
+		//System.out.println("Leftmost End = " + mLeftmostEnd);
 	}
 	private void setPrecedingStart()
 	{
@@ -397,16 +396,7 @@ public class TraceComponent extends JComponent {
 		mLeftmostEndPreceding = mLeftmostEnd;
 		mRightmostEndPreceding = mRightmostEnd;
 	}
-	private void setStart()
-	{
-		mLeftmostStartLast = mLeftmostStartPreceding;
-		mRightmostStartLast = mRightmostStartPreceding;
-	}
-	private void setEnd()
-	{
-		mLeftmostEndLast = mLeftmostEndPreceding;
-		mRightmostEndLast = mRightmostEndPreceding;
-	}
+
 	private void drawEnd(SyntacticStructure end, boolean left,
 			Graphics2D contentGraphics) {
 		if (left) {
@@ -503,9 +493,8 @@ public class TraceComponent extends JComponent {
 			boolean left, boolean right, Graphics2D contentGraphics) {
 		boolean done = false;
 		if (startLevel < endLevel) {
-			testWidthStart(currentStart,left);
+			testWidthStart(currentStart,left,false);
 			setPrecedingStart();
-			setStart();
 			drawLines(contentGraphics, true, true, left);
 			for (int j = startLevel; j < endLevel; j++) {
 				setPrecedingStart();
@@ -520,14 +509,13 @@ public class TraceComponent extends JComponent {
 				}
 				else
 				{
-					testWidthStart(currentStart, left);
+					testWidthStart(currentStart, left,false);
 				}
 				done = drawDone(contentGraphics, left);
 			}
 		} else if (endLevel < startLevel){
 			testWidthEnd(currentEnd, right);
 			setPrecedingEnd();
-			setEnd();
 			drawLines(contentGraphics, false, true, right);
 			for (int j = endLevel; j < startLevel; j++) {
 				setPrecedingEnd();
@@ -653,6 +641,9 @@ public class TraceComponent extends JComponent {
 			nextStart = getSyntaxFacade().getLower(currentStart,
 					currentStart.getNumber(), currentStart.getLevel(),
 					currentStart.getLevel() + 1, left);
+			nextEnd = getSyntaxFacade().getLower(currentEnd,
+					currentEnd.getNumber(), currentEnd.getLevel(),
+					currentEnd.getLevel() + 1, left);
 		if (mLeftmostStartPreceding >= mRightmostStart || mLeftmostStart >= mRightmostStartPreceding )
 			{
 				int mX = getX(currentStart,left);
@@ -671,7 +662,6 @@ public class TraceComponent extends JComponent {
 						mStartX, mY);
 				}
 			mStartY = mY;	
-			setStart();
 			}
 		}
 		else
@@ -695,7 +685,6 @@ public class TraceComponent extends JComponent {
 							mY, mEndX, mEndY);
 				}
 				mEndY = mY;
-				setEnd();
 			}
 		}
 
