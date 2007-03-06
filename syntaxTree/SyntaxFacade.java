@@ -415,7 +415,7 @@ private boolean goToLowestLevel(int startLevel, int endLevel, boolean left, bool
 			}
 		}
 	}
-	else
+	else if (startLevel > endLevel)
 	// end is lower, walk it up.
 	{
 		if (left)
@@ -477,6 +477,7 @@ private boolean goToLowestLevel(int startLevel, int endLevel, boolean left, bool
 			}
 		}
 	}
+	return false;
 }
 
 private void setPad(SyntacticStructure w, boolean left) {
@@ -539,11 +540,11 @@ public SyntacticStructure getLower(SyntacticStructure start, int number, int pre
 			//System.out.println("up = " + up.getPreorder());
 			if (!(number == start.getChildren().size() && previousLevel == start.getLevel()+1) && start.getLevel() < level - 1 && start.getChildren().size() > 0)
 			{
-				//System.out.println("going down on the left");
+			//	System.out.println("going down on the left");
 				//System.out.println("number = " + number + " and children of parent = " + up.getChildren().size());
 				return getLower((SyntacticStructure) start.getChildren().getFirst(), start.getLevel(),start.getNumber(),level,left);
 			}
-			else if (start.getNumber() < up.getChildren().size())
+			else if (up instanceof SyntacticStructure && start.getNumber() < up.getChildren().size())
 			{
 				// having explored everything below, now move left
 				return getLower((SyntacticStructure) up.getChildren().get(start.getNumber()),start.getNumber(),start.getLevel(),level,left);
@@ -575,12 +576,12 @@ public SyntacticStructure getLower(SyntacticStructure start, int number, int pre
 
 			if (!(number == 1 && previousLevel == start.getLevel()+1) && start.getLevel() < level - 1 && start.getChildren().size() > 0)
 			{
-				//System.out.print("going down on the right");
+			//	System.out.print("going down on the right");
 				return getLower((SyntacticStructure) start.getChildren().getLast(), start.getLevel(),start.getNumber(),level,left);
 			}
 			else if (start.getNumber() > 1)
 			{
-				// having explored everything below, now move left
+				//having explored everything below, now move left
 				return getLower((SyntacticStructure) up.getChildren().get(start.getNumber()-2),start.getNumber(),start.getLevel(),level,left);
 			}
 			else
@@ -743,7 +744,7 @@ private void firstWalk(SyntacticStructure v,int position) {
 			v.setPrelim(w.getPrelim() + w.getButtonWidth());
 			if (!v.getSyntacticParent().getChildren().getLast().equals(v))
 			{
-				v.setPrelim(v.getPrelim() + v.getPadRight() * 4 + v.getPadStartRight() * 8);
+				v.setPrelim(v.getPrelim() + getPad(w));
 				v.setPad(true);
 			}
 			//System.out.println("v = " + printText(v));
@@ -772,6 +773,11 @@ private void firstWalk(SyntacticStructure v,int position) {
 			SyntacticStructure w = ((SyntacticStructure) 
 					v.getSyntacticParent().getChildren().get(position-1));
 			v.setPrelim(w.getPrelim() + w.getButtonWidth());
+			if (!v.getSyntacticParent().getChildren().getLast().equals(v))
+			{
+				v.setPrelim(v.getPrelim() + getPad(w));
+				v.setPad(true);
+			}
 			v.setMod(v.getPrelim() - midpoint);
 			//System.out.println("v = " + printText(v));
 			//System.out.println("v prelim = " + v.getPrelim());
@@ -786,6 +792,18 @@ private void firstWalk(SyntacticStructure v,int position) {
 		}
 	}
 	//System.out.println("end firstwalk");
+}
+
+double getPad(SyntacticStructure start) {
+	if (start.getPadStartRight() > 0)
+	{
+	return TraceComponent.padEdge
+	+ (start.getPadStartRight() * TraceComponent.padWidth * 2);
+	}
+	else
+	{
+		return 0;
+	}
 }
 
 private void apportion(SyntacticStructure v, int p) 
@@ -824,7 +842,7 @@ private void apportion(SyntacticStructure v, int p)
 			//System.out.println("VOP ancestor = "+printText(v));
 			mShift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) 
 			+ VIN.getButtonWidth();
-			mShift = mShift + VIN.getPadRight() * 4 + VIN.getPadStartRight() * 8;
+			mShift = mShift + getPad(VIN);
 			//System.out.println("VIN prelim = " + VIN.getPrelim() + " SIN = " + SIN);
 			//System.out.println("VIP prelim = " + VIP.getPrelim() + " SIP = " + SIP);
 			//System.out.println("VIN buttonWidth = " + VIN.getButtonWidth());
@@ -1006,7 +1024,7 @@ private void thirdWalk(SyntacticStructure v, int level)
 	for (int i = 0; i <level;i++)
 	{
 		tempY += ((Integer) mHeight.get(i)).intValue();
-		tempY += ((Integer) mHeightPad.get(i)).intValue() * 3;
+		//tempY += ((Integer) mHeightPad.get(i)).intValue() * 3;
 	}
 	tempY = tempY + (((Integer) mHeight.get(level)).intValue()-v.getButtonHeight())/2;
 	v.setButtonY(tempY);
