@@ -194,7 +194,7 @@ public class TraceComponent extends JComponent {
 				setPrecedingStart();
 				setPrecedingEnd();
 				testWidthStart(currentStart, right,false);
-				testWidthEnd(currentEnd, left);
+				testWidthEnd(currentEnd, left,false);
 				System.out.println("start = " + currentStart.getPreorder());
 				System.out.println("end = " + currentEnd.getPreorder());
 				drawLines(contentGraphics,true, firstStart, right);
@@ -304,29 +304,31 @@ public class TraceComponent extends JComponent {
 	}
 
 	private void testWidthStart(SyntacticStructure start, boolean left,boolean next) {
+		int rs;
+		int ls;
 		if (left) {
-			mRightmostStart = (int) start.getButtonX();
+			rs = (int) start.getButtonX();
 			//System.out.println("rightmost start preorder = " + start.getPreorder());
 			if (start.getAbsoluteOrder() > 0) {
 				SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() - 1);
 				//System.out.println("leftmost start preorder = " + w.getPreorder());
-				mLeftmostStart = (int) (w.getButtonX() + w.getButtonWidth());
+				ls = (int) (w.getButtonX() + w.getButtonWidth());
 				if (w.getPadRight() > 0)
 				{
-					mLeftmostStart += getSyntaxFacade().getPad(w);
+					ls += getSyntaxFacade().getPad(w);
 				}
 			} else {
-				mLeftmostStart = (int) getSyntaxFacade().getLeftShift();
+				ls = (int) getSyntaxFacade().getLeftShift();
 			}
 		} else {
-			mLeftmostStart = (int) start.getButtonX()
+			ls = (int) start.getButtonX()
 					+ start.getButtonWidth();
 			//System.out.println("leftmost start preorder = " + start.getPreorder());
 			if (start.getPadRight() > 0)
 			{
-				mLeftmostStart += getSyntaxFacade().getPad(start);
+				ls += getSyntaxFacade().getPad(start);
 			}
 			if (start.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
 					.getLinkedArray().get(start.getLevel())).size() - 1) {
@@ -334,40 +336,52 @@ public class TraceComponent extends JComponent {
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() + 1);
 				//System.out.println("rightmost start preorder = " + w.getPreorder());
-				mRightmostStart = (int) (w.getButtonX());
+				rs = (int) (w.getButtonX());
 			} else {
-				mRightmostStart = (int) ((getSyntaxFacade().getRightShift() + getSyntaxFacade().getPad(start)
+				rs = (int) ((getSyntaxFacade().getRightShift() + getSyntaxFacade().getPad(start)
 						/ Sizer.scaleWidth() / getUserInternalFrame().getScale()) + 1);
 			}
+		}
+		if (next)
+		{
+			mRightmostStartNext = rs;
+			mLeftmostStartNext = ls;
+		}
+		else
+		{
+			mRightmostStart = rs;
+			mLeftmostStart = ls;
 		}
 		//System.out.println("Rightmost Start = " + mRightmostStart);
 		//System.out.println("Leftmost Start = " + mLeftmostStart);		
 	}
 
-	private void testWidthEnd(SyntacticStructure start, boolean left) {
+	private void testWidthEnd(SyntacticStructure start, boolean left, boolean next) {
+		int re;
+		int le;
 		if (left) {
 			//System.out.println("rightmost end preorder = " + start.getPreorder());
-			mRightmostEnd = (int) start.getButtonX();
+			re = (int) start.getButtonX();
 			if (start.getAbsoluteOrder() > 0) {
 				SyntacticStructure w = (SyntacticStructure) ((LinkedList) getSyntaxFacade()
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() - 1);
 				//System.out.println("leftmost end preorder = " + w.getPreorder());
-				mLeftmostEnd = (int) (w.getButtonX() + w.getButtonWidth());
+				le = (int) (w.getButtonX() + w.getButtonWidth());
 				if (w.getPadRight() > 0)
 				{
-					mLeftmostEnd += getSyntaxFacade().getPad(w);
+					le += getSyntaxFacade().getPad(w);
 				}
 			} else {
-				mLeftmostEnd = (int) getSyntaxFacade().getLeftShift();
+				le = (int) getSyntaxFacade().getLeftShift();
 			}
 		} else {
 			//System.out.println("leftmost end preorder = " + start.getPreorder());
-			mLeftmostEnd = (int) start.getButtonX()
+			le = (int) start.getButtonX()
 					+ start.getButtonWidth();
 			if (start.getPadRight() > 0)
 			{
-				mLeftmostEnd += getSyntaxFacade().getPad(start);
+				le += getSyntaxFacade().getPad(start);
 			}
 			if (start.getAbsoluteOrder() < ((LinkedList) getSyntaxFacade()
 					.getLinkedArray().get(start.getLevel())).size() - 1) {
@@ -375,11 +389,21 @@ public class TraceComponent extends JComponent {
 						.getLinkedArray().get(start.getLevel())).get(start
 						.getAbsoluteOrder() + 1);
 				//System.out.println("rightmost end preorder = " + w.getPreorder());
-				mRightmostEnd = (int) (w.getButtonX());
+				re = (int) (w.getButtonX());
 			} else {
-				mRightmostEnd = (int) ((getSyntaxFacade().getRightShift() + getSyntaxFacade().getPad(start)
+				re = (int) ((getSyntaxFacade().getRightShift() + getSyntaxFacade().getPad(start)
 						/ Sizer.scaleWidth() / getUserInternalFrame().getScale()) + 1);
 			}
+		}
+		if (next)
+		{
+			mRightmostEndNext = re;
+			mLeftmostEndNext = le;
+		}
+		else
+		{
+			mRightmostEnd = re;
+			mLeftmostEnd = le;
 		}
 		//System.out.println("Rightmost End = " + mRightmostEnd);
 		//System.out.println("Leftmost End = " + mLeftmostEnd);
@@ -432,7 +456,7 @@ public class TraceComponent extends JComponent {
 					 (int) end
 						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 						+ end.getPadStartLeftCount() * padLength);
-			testWidthEnd(end, left);
+			testWidthEnd(end, left,false);
 			mEndX = (int) end.getButtonX() - padEdge
 					- (end.getPadStartLeftCount() * padWidth) - lineLength;
 			mEndY = (int) end
@@ -478,7 +502,7 @@ public class TraceComponent extends JComponent {
 							(int) end
 							.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 							+ end.getPadStartRightCount() * padLength);
-			testWidthEnd(end, left);
+			testWidthEnd(end, left, false);
 			mEndX = (int) end.getButtonX() + padEdge + end.getButtonWidth()
 					+ (end.getPadStartRightCount() * padWidth) + lineLength;
 			mEndY = (int) end
@@ -514,7 +538,7 @@ public class TraceComponent extends JComponent {
 				done = drawDone(contentGraphics, left);
 			}
 		} else if (endLevel < startLevel){
-			testWidthEnd(currentEnd, right);
+			testWidthEnd(currentEnd, right,false);
 			setPrecedingEnd();
 			drawLines(contentGraphics, false, true, right);
 			for (int j = endLevel; j < startLevel; j++) {
@@ -532,7 +556,7 @@ public class TraceComponent extends JComponent {
 				}
 				else
 				{
-					testWidthEnd(currentEnd, right);
+					testWidthEnd(currentEnd, right,false);
 				}
 				done = drawDone(contentGraphics, right);
 			}
