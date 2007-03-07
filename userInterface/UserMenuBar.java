@@ -105,9 +105,9 @@ public class UserMenuBar extends JMenuBar {
 		mEdit = new UserMenuEdit((String) mUserFrame.getI18n().getObject("EDIT_LABEL"),mUserFrame);
 		mEdit.setMnemonic('E');
 		this.add(mEdit);
-		mView = new UserMenuView((String) mUserFrame.getI18n().getObject("VIEW_LABEL"),mUserFrame);
-		mView.setMnemonic('V');
-		this.add(mView);
+//		mView = new UserMenuView((String) mUserFrame.getI18n().getObject("VIEW_LABEL"),mUserFrame);
+//		mView.setMnemonic('V');
+//		this.add(mView);
 		mFormat = new UserMenuFormat((String) mUserFrame.getI18n().getObject("FORMAT_LABEL"),mUserFrame);
 		mFormat.setMnemonic('F');
 		this.add(mFormat);

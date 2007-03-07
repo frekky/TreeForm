@@ -559,72 +559,72 @@ public class UserToolBar extends JToolBar {
 		mZoom.addActionListener(new ListenerZoom(mUserFrame));
 		mUserFrame.getObservableZoom().addObserver(mZoom);
 		this.add(mZoom);	
-		
-		mLogicalForm = new UserButton(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_SMALL_HIGHLIGHT"),
-		mIconSize);
-		mLogicalForm.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.L_STRUCTURE));
-		mLogicalForm.setToolTipText((String) mUserFrame.getI18n().getObject("LOGICALFORM_TOOLTIP"));
-		mLogicalForm.setFocusable(false);
-		this.add(mLogicalForm);
-		mSurfaceStructure = new UserButton(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_SMALL_HIGHLIGHT"),
-		mIconSize);
-		mSurfaceStructure.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.S_STRUCTURE));
-		mSurfaceStructure.setToolTipText((String) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_TOOLTIP"));
-		mSurfaceStructure.setFocusable(false);
-		this.add(mSurfaceStructure);
-		mDStructure = new UserButton(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_SMALL_HIGHLIGHT"),
-		mIconSize);
-		mDStructure.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.D_STRUCTURE));
-		mDStructure.setToolTipText((String) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_TOOLTIP"));
-		mDStructure.setFocusable(false);
-		this.add(mDStructure);	
-		mLabelledBracket = new UserButton(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_SMALL_HIGHLIGHT"),
-		mIconSize);
-		mLabelledBracket.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.LABELLED_BRACKET));
-		mLabelledBracket.setToolTipText((String) mUserFrame.getI18n().getObject("LABELLEDBRACKET_TOOLTIP"));
-		mLabelledBracket.setFocusable(false);
-		this.add(mLabelledBracket);		
+//		
+//		mLogicalForm = new UserButton(mUserFrame,
+//		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_LARGE"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_LARGE_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_LARGE_HIGHLIGHT"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_SMALL"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_SMALL_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LOGICALFORM_ICON_SMALL_HIGHLIGHT"),
+//		mIconSize);
+//		mLogicalForm.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.L_STRUCTURE));
+//		mLogicalForm.setToolTipText((String) mUserFrame.getI18n().getObject("LOGICALFORM_TOOLTIP"));
+//		mLogicalForm.setFocusable(false);
+//		this.add(mLogicalForm);
+//		mSurfaceStructure = new UserButton(mUserFrame,
+//		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_LARGE"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_LARGE_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_LARGE_HIGHLIGHT"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_SMALL"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_SMALL_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_ICON_SMALL_HIGHLIGHT"),
+//		mIconSize);
+//		mSurfaceStructure.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.S_STRUCTURE));
+//		mSurfaceStructure.setToolTipText((String) mUserFrame.getI18n().getObject("SURFACESTRUCTURE_TOOLTIP"));
+//		mSurfaceStructure.setFocusable(false);
+//		this.add(mSurfaceStructure);
+//		mDStructure = new UserButton(mUserFrame,
+//		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_LARGE"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_LARGE_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_LARGE_HIGHLIGHT"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_SMALL"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_SMALL_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_ICON_SMALL_HIGHLIGHT"),
+//		mIconSize);
+//		mDStructure.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.D_STRUCTURE));
+//		mDStructure.setToolTipText((String) mUserFrame.getI18n().getObject("DEEPSTRUCTURE_TOOLTIP"));
+//		mDStructure.setFocusable(false);
+//		this.add(mDStructure);	
+//		mLabelledBracket = new UserButton(mUserFrame,
+//		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_LARGE"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_LARGE_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_LARGE_HIGHLIGHT"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_SMALL"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_SMALL_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("LABELLEDBRACKET_ICON_SMALL_HIGHLIGHT"),
+//		mIconSize);
+//		mLabelledBracket.addActionListener(new ListenerChangeViewLayout(mUserFrame, SyntacticViewLayout.LABELLED_BRACKET));
+//		mLabelledBracket.setToolTipText((String) mUserFrame.getI18n().getObject("LABELLEDBRACKET_TOOLTIP"));
+//		mLabelledBracket.setFocusable(false);
+//		this.add(mLabelledBracket);		
 	}
 /**
  * add cut and paste options, fully i18n
  */
 	private void addCutAndPaste() {
-		mProperties = new UserButton(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_HIGHLIGHT"),
-		mIconSize);
-		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
-		mProperties.setToolTipText((String) mUserFrame.getI18n().getObject("PROPERTIES_TOOLTIP"));
-		mProperties.setFocusable(false);
-		this.add(mProperties);
+//		mProperties = new UserButton(mUserFrame,
+//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_HIGHLIGHT"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_HIGHLIGHT"),
+//		mIconSize);
+//		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
+//		mProperties.setToolTipText((String) mUserFrame.getI18n().getObject("PROPERTIES_TOOLTIP"));
+//		mProperties.setFocusable(false);
+//		this.add(mProperties);
 		mCut = (new UserButtonCut(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("CUT_ICON_LARGE"),
 		(ImageIcon) mUserFrame.getI18n().getObject("CUT_ICON_LARGE_GREY"),

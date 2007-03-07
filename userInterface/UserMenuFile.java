@@ -234,12 +234,12 @@ public class UserMenuFile extends JMenu {
 		
 		this.addSeparator();
 		
-		mProperties = new JMenuItem((String) mUserFrame.getI18n().getObject("PROPERTIES_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"));
-		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
-		mProperties.setMnemonic('P');
-		this.add(mProperties);	
-		
-		this.addSeparator();
+//		mProperties = new JMenuItem((String) mUserFrame.getI18n().getObject("PROPERTIES_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"));
+//		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
+//		mProperties.setMnemonic('P');
+//		this.add(mProperties);	
+//		
+//		this.addSeparator();
 		
 		mExit = new JMenuItem((String) mUserFrame.getI18n().getObject("EXIT_LABEL"));
 		mExit.addActionListener(new ListenerExitTree(mUserFrame));
