@@ -175,71 +175,90 @@ public class TraceComponent extends JComponent {
 		drawEnd(end, right, contentGraphics);
 		boolean firstEnd = true;
 		boolean firstStart = true;
-		if (start.getLevel()<end.getLevel())
+		testWidthStart(currentStart, right,false);
+		testWidthEnd(currentEnd, left,false);
+		setPrecedingStart();
+		setPrecedingEnd();
+		boolean done = drawDone(contentGraphics, left, right);
+		System.out.println("about to walk down " + done);
+		while (!done)
 		{
-			firstEnd = false;
-		}
-		if (end.getLevel()<start.getLevel())
-		{
-			firstStart = false;
-		}
-		boolean done = goToLowestLevel(start.getLevel(), end.getLevel(),
-				left,right, contentGraphics);
-		if (!done) {
-			while (!(currentStart == null
-					|| currentEnd == null
-					|| (left && currentStart.getAbsoluteOrder() < currentEnd
-							.getAbsoluteOrder()) || (!left && currentStart
-					.getAbsoluteOrder() > currentEnd.getAbsoluteOrder()))) {
+			int startLevel = currentStart.getLevel();
+			int endLevel = currentEnd.getLevel();
+			if (endLevel >= startLevel)
+			{
+				//System.out.println("start down");
 				setPrecedingStart();
-				setPrecedingEnd();
-				testWidthStart(currentStart, right,false);
-				testWidthEnd(currentEnd, left,false);
-				System.out.println("start = " + currentStart.getPreorder());
-				System.out.println("end = " + currentEnd.getPreorder());
-				drawLines(contentGraphics,true, firstStart, right);
-				drawLines(contentGraphics,false, firstEnd, left);
+				testWidthStart(currentStart, left,false);
+				drawLines(contentGraphics,true, firstStart, left);
 				firstStart = false;
-				firstEnd = false;
 				prevStart = currentStart;
-				prevEnd = currentEnd;
 				currentStart = getSyntaxFacade().getLower(currentStart,
 						currentStart.getNumber(), currentStart.getLevel(),
-						currentStart.getLevel() + 1, right);
+						currentStart.getLevel() + 1, left);
+				System.out.println("current start = " + currentStart.getPreorder());
+				System.out.println("previous start = " + prevStart.getPreorder());
+				System.out.println();
+			}	
+			if (startLevel >= endLevel)
+			{
+				//System.out.println("end down");
+				setPrecedingEnd();
+				testWidthEnd(currentEnd, right,false);
+				drawLines(contentGraphics,false, firstEnd, right);
+				firstEnd = false;
+				prevEnd = currentEnd;
 				currentEnd = getSyntaxFacade().getLower(currentEnd,
 						currentEnd.getNumber(), currentEnd.getLevel(),
-						currentEnd.getLevel() + 1, left);
+						currentEnd.getLevel() + 1, right);
+				System.out.println("current end = " + currentEnd.getPreorder());
+				System.out.println("previous end = " + prevEnd.getPreorder());
+				System.out.println();
 			}
-			drawBottom(contentGraphics, left, right);
+		//	System.out.println("current start = " + currentStart.getPreorder());
+		//	System.out.println("current end = " + currentEnd.getPreorder());
+			done = drawDone(contentGraphics, left,right);
+			if (startLevel == endLevel && !done)
+			{
+				done = drawBottom(contentGraphics,left,right);
+			}
 		}
-		System.out.println();
 	}
 
 
 
-	private void drawBottom(Graphics2D contentGraphics, boolean left, boolean right) {
-		int mX = getX(prevStart,left);
-		int mY = getY(prevStart,left);
-		int mX2 = getX(prevEnd,right);
-		int mY2 = getY(prevEnd,right);
-		if (mY > mY2)
+	private boolean drawBottom(Graphics2D contentGraphics, boolean left, boolean right) {
+		if((currentStart == null
+				|| currentEnd == null
+				|| (left && currentStart.getAbsoluteOrder() < currentEnd
+						.getAbsoluteOrder()) || (!left && currentStart
+				.getAbsoluteOrder() > currentEnd.getAbsoluteOrder())))
 		{
-			mY2=mY;
+			int mX = getX(prevStart,left);
+			int mY = getY(prevStart,left);
+			int mX2 = getX(prevEnd,right);
+			int mY2 = getY(prevEnd,right);
+			if (mY > mY2)
+			{
+				mY2=mY;
+			}
+			else
+			{
+				mY=mY2;
+			}
+			contentGraphics.drawLine(mStartX,
+					mEndY, mX, mEndY);
+			contentGraphics.drawLine(mX, mStartY,
+					mX, mY);				
+			
+			contentGraphics.drawLine(mEndX,
+						mEndY, mX2, mEndY);
+			contentGraphics.drawLine(mX2, mEndY,
+						mX2, mY2);
+			contentGraphics.drawLine(mX,mY,mX2,mY2);
+			return true;
 		}
-		else
-		{
-			mY=mY2;
-		}
-		contentGraphics.drawLine(mStartX,
-				mEndY, mX, mEndY);
-		contentGraphics.drawLine(mX, mStartY,
-				mX, mY);				
-		
-		contentGraphics.drawLine(mEndX,
-					mEndY, mX2, mEndY);
-		contentGraphics.drawLine(mX2, mEndY,
-					mX2, mY2);
-		contentGraphics.drawLine(mX,mY,mX2,mY2);
+		return false;
 	}
 	private void drawStart(SyntacticStructure start, boolean left,
 			Graphics2D contentGraphics) {
@@ -513,62 +532,7 @@ public class TraceComponent extends JComponent {
 		
 	}
 
-	private boolean goToLowestLevel(int startLevel, int endLevel,
-			boolean left, boolean right, Graphics2D contentGraphics) {
-		boolean done = false;
-		if (startLevel < endLevel) {
-			testWidthStart(currentStart,left,false);
-			setPrecedingStart();
-			drawLines(contentGraphics, true, true, left);
-			for (int j = startLevel; j < endLevel; j++) {
-				setPrecedingStart();
-				prevStart = currentStart;
-				currentStart = getSyntaxFacade().getLower(currentStart,
-						currentStart.getNumber(), currentStart.getLevel(),
-						currentStart.getLevel() + 1, left);
-				if (currentStart == null)
-				{
-					currentStart = currentEnd;
-					j = endLevel;
-				}
-				else
-				{
-					testWidthStart(currentStart, left,false);
-				}
-				done = drawDone(contentGraphics, left);
-			}
-		} else if (endLevel < startLevel){
-			testWidthEnd(currentEnd, right,false);
-			setPrecedingEnd();
-			drawLines(contentGraphics, false, true, right);
-			for (int j = endLevel; j < startLevel; j++) {
-				setPrecedingEnd();
-				prevEnd = currentEnd;
-				currentEnd = getSyntaxFacade().getLower(currentEnd,
-						currentEnd.getNumber(), currentEnd.getLevel(),
-						currentEnd.getLevel() + 1, right);
-//				System.out.println("end down = " + lDEnd.getPreorder());
-//				System.out.println("left = " + right);
-				if (currentEnd == null)
-				{
-					currentEnd = currentStart;
-					j = startLevel;
-				}
-				else
-				{
-					testWidthEnd(currentEnd, right,false);
-				}
-				done = drawDone(contentGraphics, right);
-			}
-		}
-		else
-		{
-			
-			done = drawDone(contentGraphics, left);
-			done = drawDone(contentGraphics,right);
-		}
-		return done;
-	}
+
 
 	private int getY(SyntacticStructure start, boolean left) {
 		if (left)
@@ -607,91 +571,57 @@ public class TraceComponent extends JComponent {
 
 
 	private void drawLines(Graphics2D contentGraphics,boolean start, boolean first, boolean left) {
-//		System.out.println("rightmost start preceding = " + mRightmostStartPreceding);
-//		System.out.println("rightmost start last = " + mRightmostStartLast);
-//		System.out.println("rightmost start = " + mRightmostStart);
-//		System.out.println("leftmost start preceding = " + mLeftmostStartPreceding);
-//		System.out.println("leftmost start last = " + mLeftmostStartLast);
-//		System.out.println("leftmost start = " + mLeftmostStart);
-//		System.out.println("start x = " + mStartX);
-//		
-//		System.out.println("");
-//		System.out.println("rightmost end preceding = " + mRightmostEndPreceding);
-//		System.out.println("rightmost end last = " + mRightmostEndLast);
-//		System.out.println("rightmost end = " + mRightmostEnd);
-//		System.out.println("leftmost end preceding = " + mLeftmostEndPreceding);
-//		System.out.println("leftmost end last = " + mLeftmostEndLast);
-//		System.out.println("leftmost end = " + mLeftmostEnd);	
-//		System.out.println("end x = " + mEndX);
-//		System.out.println("");
-//		if (start)
-//		{
-//			if((mLeftmostStart > mStartX || mRightmostStart < mStartX)  && mLeftmostStart >= mRightmostStartPreceding )
-//			{
-//				int mX = getX(prevStart,left);
-//				int mY = getY(prevStart,left);
-//			
-//				contentGraphics.drawLine(mStartX,
-//						mEndY, mX, mEndY);
-//				contentGraphics.drawLine(mX, mStartY,
-//						mX, mY);
-//				mStartX = mX;	
-//				mStartY = mY;	
-//				setStart();
-//				
-//			}
-//		}
-//		else
-//		{
-//			if((mLeftmostEnd > mEndX || mRightmostEnd < mEndX)  && mLeftmostEnd >= mRightmostEndPreceding )
-//			{
-//				int	mX = getX(prevEnd,left);
-//				int	mY = getY(prevEnd,left);
-//
-//				contentGraphics.drawLine(mEndX,
-//							mEndY, mX, mEndY);
-//				contentGraphics.drawLine(mX, mEndY,
-//							mX, mY);
-//				mEndX = mX;
-//				mEndY = mY;
-//				setEnd();
-//				
-//			}
-//		}
-
 
 		if (start)
 		{
-			nextStart = getSyntaxFacade().getLower(currentStart,
-					currentStart.getNumber(), currentStart.getLevel(),
-					currentStart.getLevel() + 1, left);
-			nextEnd = getSyntaxFacade().getLower(currentEnd,
-					currentEnd.getNumber(), currentEnd.getLevel(),
-					currentEnd.getLevel() + 1, left);
-		if (mLeftmostStartPreceding >= mRightmostStart || mLeftmostStart >= mRightmostStartPreceding )
+			if (mLeftmostStartPreceding >= mRightmostStart 
+					|| mLeftmostStart >= mRightmostStartPreceding 
+					)
 			{
 				int mX = getX(currentStart,left);
 				int mY = getY(currentStart,left);
-			if (!first)
+				if (!first)
 				{
-				contentGraphics.drawLine(mStartX,
-						mY, mX, mY);
-				contentGraphics.drawLine(mStartX, mStartY,
-						mStartX, mY);
-				mStartX = mX;	
+					contentGraphics.drawLine(mStartX,
+							mY, mX, mY);
+					contentGraphics.drawLine(mStartX, mStartY,
+							mStartX, mY);
+					mStartX = mX;	
 				}
+				else
+				{
+					contentGraphics.drawLine(mStartX, mStartY,
+						mStartX, mY);
+				}
+				mStartY = mY;	
+			}
 			else
+			{
+				nextStart = getSyntaxFacade().getLower(currentStart,
+						currentStart.getNumber(), currentStart.getLevel(),
+						currentStart.getLevel() + 1, left);
+				if (nextStart != null)
 				{
-				contentGraphics.drawLine(mStartX, mStartY,
-						mStartX, mY);
+					testWidthStart(nextStart,left,true);
+					if(mRightmostStartNext >= mRightmostStart && mStartX > mRightmostStart)
+					{
+						int mX = getX(currentStart,left);
+						int mY = getY(currentStart,left);
+						contentGraphics.drawLine(mStartX,
+								mEndY, mX, mEndY);
+						contentGraphics.drawLine(mX, mStartY,
+								mX, mY);
+						mStartX = mX;	
+						mStartY = mY;	
+					}
 				}
-			mStartY = mY;	
 			}
 		}
 		else
 		{
-			//System.out.println("This is end");
-			if (mLeftmostEndPreceding >= mRightmostEnd || mLeftmostEnd >= mRightmostEndPreceding)
+			if (mLeftmostEndPreceding >= mRightmostEnd 
+					|| mLeftmostEnd >= mRightmostEndPreceding
+					)
 			{
 				int	mX = getX(currentEnd,left);
 				int	mY = getY(currentEnd,left);
@@ -710,33 +640,61 @@ public class TraceComponent extends JComponent {
 				}
 				mEndY = mY;
 			}
+			else
+			{
+				nextEnd = getSyntaxFacade().getLower(currentEnd,
+						currentEnd.getNumber(), currentEnd.getLevel(),
+						currentEnd.getLevel() + 1, left);
+				if (nextEnd !=null)
+				{
+					testWidthEnd(nextEnd,left,true);
+					if(mRightmostEndNext >= mRightmostEnd && mEndX > mRightmostEnd)
+					{
+						int	mX = getX(currentEnd,left);
+						int	mY = getY(currentEnd,left);
+		
+						contentGraphics.drawLine(mEndX,
+									mEndY, mX, mEndY);
+						contentGraphics.drawLine(mX, mEndY,
+									mX, mY);
+						mEndX = mX;
+						mEndY = mY;
+					}
+				}
+			}
 		}
-
 	}
-	private boolean drawDone(Graphics2D contentGraphics, boolean left)
+	private boolean drawDone(Graphics2D contentGraphics, boolean left,boolean right)
 	{
 		boolean testStart = false;
+		
 		if (currentStart.getLevel() == currentEnd.getLevel())
 		{
-			//System.out.println("same level = " + lDStart.getLevel());
 			LinkedList hold = (LinkedList) 
-					getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
+				getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
+			System.out.println("current end order = " + currentEnd.getAbsoluteOrder());
+			System.out.println("hold size = " + hold.size());
+			System.out.println("left = " + left);
 			if (currentStart.equals(currentEnd))
 				testStart = true;
-			if (currentEnd.getAbsoluteOrder() < hold.size() -1 && !left)
+			if (currentEnd.getAbsoluteOrder() < hold.size() -1 && 
+				(currentEnd.equals(currentEnd.getSyntacticParent().getChildren().getLast())
+				|| currentEnd.getSyntacticParent().equals(currentStart.getSyntacticParent())))
+				
 			{
-				//System.out.println(((SyntacticStructure)hold.get(lDEnd.getAbsoluteOrder() +1)).getPreorder());
 				if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() +1)))
 					testStart = true;
 			}
-			if (currentEnd.getAbsoluteOrder() > 0 && left)
+			if (currentEnd.getAbsoluteOrder() > 0
+					&& (currentEnd.equals(currentEnd.getSyntacticParent().getChildren().getFirst())
+					|| currentEnd.getSyntacticParent().equals(currentStart.getSyntacticParent())))
 			{
-				//System.out.println(((SyntacticStructure)hold.get(lDEnd.getAbsoluteOrder() -1)).getPreorder());
 				if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() -1)))
 					testStart = true;
 			}	
 			if(testStart)
 			{
+				System.out.println("the easy way!");
 				if (currentEnd == previousEnd)
 				{	
 					contentGraphics.drawLine(mStartX,
