@@ -601,7 +601,8 @@ public class TraceComponent extends JComponent {
 				if (nextStart != null)
 				{
 					testWidthStart(nextStart,left,true);
-					if(mRightmostStartNext >= mRightmostStart && mStartX > mRightmostStart)
+					if((mRightmostStartNext >= mRightmostStart && mStartX > mRightmostStart)
+							|| (mLeftmostStartNext <= mLeftmostStart && mStartX < mLeftmostStart))
 					{
 						int mX = getX(currentStart,left);
 						int mY = getY(currentStart,left);
@@ -646,7 +647,8 @@ public class TraceComponent extends JComponent {
 				if (nextEnd !=null)
 				{
 					testWidthEnd(nextEnd,left,true);
-					if(mRightmostEndNext >= mRightmostEnd && mEndX > mRightmostEnd)
+					if((mRightmostEndNext >= mRightmostEnd && mEndX > mRightmostEnd)
+							|| (mLeftmostEndNext <= mLeftmostEnd && mEndX < mLeftmostEnd))
 					{
 						int	mX = getX(currentEnd,left);
 						int	mY = getY(currentEnd,left);
