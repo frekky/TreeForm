@@ -196,9 +196,9 @@ public class TraceComponent extends JComponent {
 				currentStart = getSyntaxFacade().getLower(currentStart,
 						currentStart.getNumber(), currentStart.getLevel(),
 						currentStart.getLevel() + 1, left);
-				System.out.println("current start = " + currentStart.getPreorder());
-				System.out.println("previous start = " + prevStart.getPreorder());
-				System.out.println();
+				//System.out.println("current start = " + currentStart.getPreorder());
+				//System.out.println("previous start = " + prevStart.getPreorder());
+				//System.out.println();
 			}	
 			if (startLevel >= endLevel)
 			{
@@ -211,9 +211,9 @@ public class TraceComponent extends JComponent {
 				currentEnd = getSyntaxFacade().getLower(currentEnd,
 						currentEnd.getNumber(), currentEnd.getLevel(),
 						currentEnd.getLevel() + 1, right);
-				System.out.println("current end = " + currentEnd.getPreorder());
-				System.out.println("previous end = " + prevEnd.getPreorder());
-				System.out.println();
+				//System.out.println("current end = " + currentEnd.getPreorder());
+				//System.out.println("previous end = " + prevEnd.getPreorder());
+				//System.out.println();
 			}
 		//	System.out.println("current start = " + currentStart.getPreorder());
 		//	System.out.println("current end = " + currentEnd.getPreorder());
@@ -224,8 +224,6 @@ public class TraceComponent extends JComponent {
 			}
 		}
 	}
-
-
 
 	private boolean drawBottom(Graphics2D contentGraphics, boolean left, boolean right) {
 		if((currentStart == null
@@ -608,7 +606,7 @@ public class TraceComponent extends JComponent {
 						int mX = getX(currentStart,left);
 						int mY = getY(currentStart,left);
 						contentGraphics.drawLine(mStartX,
-								mEndY, mX, mEndY);
+								mStartY, mX, mStartY);
 						contentGraphics.drawLine(mX, mStartY,
 								mX, mY);
 						mStartX = mX;	
@@ -667,48 +665,50 @@ public class TraceComponent extends JComponent {
 	private boolean drawDone(Graphics2D contentGraphics, boolean left,boolean right)
 	{
 		boolean testStart = false;
-		
-		if (currentStart.getLevel() == currentEnd.getLevel())
+		if (currentStart !=null && currentEnd !=null)
 		{
-			LinkedList hold = (LinkedList) 
-				getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
-			System.out.println("current end order = " + currentEnd.getAbsoluteOrder());
-			System.out.println("hold size = " + hold.size());
-			System.out.println("left = " + left);
-			if (currentStart.equals(currentEnd))
-				testStart = true;
-			if (currentEnd.getAbsoluteOrder() < hold.size() -1 && 
-				(currentEnd.equals(currentEnd.getSyntacticParent().getChildren().getLast())
-				|| currentEnd.getSyntacticParent().equals(currentStart.getSyntacticParent())))
-				
+			if (currentStart.getLevel() == currentEnd.getLevel())
 			{
-				if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() +1)))
+				LinkedList hold = (LinkedList) 
+					getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
+				System.out.println("current end order = " + currentEnd.getAbsoluteOrder());
+				System.out.println("hold size = " + hold.size());
+				System.out.println("left = " + left);
+				if (currentStart.equals(currentEnd))
 					testStart = true;
-			}
-			if (currentEnd.getAbsoluteOrder() > 0
-					&& (currentEnd.equals(currentEnd.getSyntacticParent().getChildren().getFirst())
+				if (currentEnd.getAbsoluteOrder() < hold.size() -1 && 
+					(currentEnd.equals(currentEnd.getSyntacticParent().getChildren().getLast())
 					|| currentEnd.getSyntacticParent().equals(currentStart.getSyntacticParent())))
-			{
-				if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() -1)))
-					testStart = true;
-			}	
-			if(testStart)
-			{
-				System.out.println("the easy way!");
-				if (currentEnd == previousEnd)
-				{	
-					contentGraphics.drawLine(mStartX,
-							mStartY, mEndX, mStartY);
-					contentGraphics.drawLine(mEndX, mStartY,
-							mEndX, mEndY);
-				}
-				else if(currentStart == previousStart)
+					
 				{
-					contentGraphics.drawLine(mEndX, mEndY,
-							mStartX, mEndY);
-					contentGraphics.drawLine(mStartX, mEndY,
-							mStartX, mStartY);
-				}		
+					if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() +1)))
+						testStart = true;
+				}
+				if (currentEnd.getAbsoluteOrder() > 0
+						&& (currentEnd.equals(currentEnd.getSyntacticParent().getChildren().getFirst())
+						|| currentEnd.getSyntacticParent().equals(currentStart.getSyntacticParent())))
+				{
+					if(currentStart.equals(hold.get(currentEnd.getAbsoluteOrder() -1)))
+						testStart = true;
+				}	
+				if(testStart)
+				{
+					System.out.println("the easy way!");
+					if (currentEnd == previousEnd)
+					{	
+						contentGraphics.drawLine(mStartX,
+								mStartY, mEndX, mStartY);
+						contentGraphics.drawLine(mEndX, mStartY,
+								mEndX, mEndY);
+					}
+					else if(currentStart == previousStart)
+					{
+						contentGraphics.drawLine(mEndX, mEndY,
+								mStartX, mEndY);
+						contentGraphics.drawLine(mStartX, mEndY,
+								mStartX, mStartY);
+					}		
+				}
 			}
 		}
 		return testStart;
