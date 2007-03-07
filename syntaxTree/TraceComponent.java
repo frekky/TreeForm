@@ -779,21 +779,32 @@ public class TraceComponent extends JComponent {
 				}	
 				if(testStart)
 				{
-					//System.out.println("the easy way!");
-					if (true)
-					{	
-						contentGraphics.drawLine(mEndX, mEndY,
-								mStartX, mEndY);
-						contentGraphics.drawLine(mStartX, mEndY,
-								mStartX, mStartY);	
+					if (firstStart.getChildren().size() > 0 && firstEnd.getChildren().size() > 0)
+					{
+						if (!(mStartX > firstStart.getButtonX() && mStartX < (firstStart.getButtonX() + firstStart.getButtonWidth()))
+						&& !(mEndX > firstEnd.getButtonX() && mEndX < (firstEnd.getButtonX() + firstEnd.getButtonWidth()))		
+						)
+						{	
+							contentGraphics.drawLine(mEndX, mEndY,
+									mStartX, mEndY);
+							contentGraphics.drawLine(mStartX, mEndY,
+									mStartX, mStartY);	
+						}
+						else 
+						{
+							contentGraphics.drawLine(mStartX,
+									mStartY, mEndX, mStartY);
+							contentGraphics.drawLine(mEndX, mStartY,
+									mEndX, mEndY);
+						}
 					}
-					else 
+					else
 					{
 						contentGraphics.drawLine(mStartX,
 								mStartY, mEndX, mStartY);
 						contentGraphics.drawLine(mEndX, mStartY,
-								mEndX, mEndY);
-					}		
+								mEndX, mEndY);	
+					}
 				}
 			}
 		}
