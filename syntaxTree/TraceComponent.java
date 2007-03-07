@@ -87,6 +87,8 @@ public class TraceComponent extends JComponent {
 
 	private boolean firstLineStart;
 
+	private LinkedList mLinkedArray;
+
 	private static final float triangleLength = 3;
 
 	static final int lineLength = 4;
@@ -120,6 +122,7 @@ public class TraceComponent extends JComponent {
 					RenderingHints.VALUE_RENDER_QUALITY);
 			lGraphics2D.setStroke(new BasicStroke(.5F));
 			resetCounters(mR);
+			mLinkedArray = getSyntaxFacade().getLinkedArray();
 			displayMovementRecursive(mR, lGraphics2D);
 		}
 	}
@@ -187,10 +190,8 @@ public class TraceComponent extends JComponent {
 		//System.out.println("about to walk down " + done);
 		while (!done)
 		{
-			//System.out.println("oh, shit");
 			int startLevel = currentStart.getLevel();
 			int endLevel = currentEnd.getLevel();
-			//System.out.println(startLevel + " : " + endLevel);
 			if (endLevel >= startLevel)
 			{
 				setPrecedingStart();
@@ -198,9 +199,20 @@ public class TraceComponent extends JComponent {
 				drawLines(contentGraphics,true, firstLineStart, left);
 				firstLineStart = false;
 				prevStart = currentStart;
+				
 				currentStart = getSyntaxFacade().getLower(currentStart,
 						currentStart.getNumber(), currentStart.getLevel(),
 						currentStart.getLevel() + 1, left);
+				if (currentStart == null)
+				{
+					//System.out.println("step one");
+					if (mLinkedArray.size() > prevStart.getLevel()+1)
+					{
+						//System.out.println("step two");
+						currentStart = (SyntacticStructure) ((LinkedList) 
+							mLinkedArray.get(prevStart.getLevel()+1)).get(0);
+					}
+				}
 			}	
 			if (startLevel >= endLevel)
 			{
@@ -212,10 +224,19 @@ public class TraceComponent extends JComponent {
 				currentEnd = getSyntaxFacade().getLower(currentEnd,
 						currentEnd.getNumber(), currentEnd.getLevel(),
 						currentEnd.getLevel() + 1, right);
+				if (currentEnd == null)
+				{
+					//System.out.println("step one");
+					if (mLinkedArray.size() > prevEnd.getLevel()+1)
+					{
+						//System.out.println("step two");
+						currentEnd = (SyntacticStructure) ((LinkedList) 
+							mLinkedArray.get(prevEnd.getLevel()+1)).get(0);
+					}
+				}
 			}
-			//startLevel = currentStart.getLevel();
-			//endLevel = currentEnd.getLevel();
-			//System.out.println(startLevel + " : " + endLevel);
+			//System.out.println("current Start = " + currentStart.getPreorder());
+			//System.out.println("current End = " + currentEnd.getPreorder());
 			done = drawDone(contentGraphics, left,right);
 			if (startLevel == endLevel && !done)
 			{
@@ -737,8 +758,8 @@ public class TraceComponent extends JComponent {
 			{
 				LinkedList hold = (LinkedList) 
 					getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
-				System.out.println("current start = " + currentStart.getPreorder());
-				System.out.println("current end = " + currentEnd.getPreorder());
+				//System.out.println("current start = " + currentStart.getPreorder());
+				//System.out.println("current end = " + currentEnd.getPreorder());
 				if (currentStart.equals(currentEnd))
 					testStart = true;
 				if (currentEnd.getAbsoluteOrder() < hold.size() -1 && 
