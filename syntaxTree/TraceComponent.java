@@ -21,9 +21,9 @@ public class TraceComponent extends JComponent {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private SyntacticStructure previousStart;
+	private SyntacticStructure firstStart;
 
-	private SyntacticStructure previousEnd;
+	private SyntacticStructure firstEnd;
 
 	private SyntacticStructure ancestorStart;
 
@@ -82,6 +82,10 @@ public class TraceComponent extends JComponent {
 	private SyntacticStructure nextStart;
 	
 	private SyntacticStructure nextEnd;
+
+	private boolean firstLineEnd;
+
+	private boolean firstLineStart;
 
 	private static final float triangleLength = 3;
 
@@ -150,8 +154,8 @@ public class TraceComponent extends JComponent {
 
 	private void drawMovement(SyntacticStructure start,
 			SyntacticStructure end, Graphics2D contentGraphics) {
-		previousStart = start;
-		previousEnd = end;
+		firstStart = start;
+		firstEnd = end;
 		ancestorStart = start;
 		ancestorEnd = end;
 		currentStart = start;
@@ -173,8 +177,8 @@ public class TraceComponent extends JComponent {
 		}
 		drawStart(start, left, contentGraphics);
 		drawEnd(end, right, contentGraphics);
-		boolean firstEnd = true;
-		boolean firstStart = true;
+		firstLineEnd = true;
+		firstLineStart = true;
 		testWidthStart(currentStart, right,false);
 		testWidthEnd(currentEnd, left,false);
 		setPrecedingStart();
@@ -183,14 +187,16 @@ public class TraceComponent extends JComponent {
 		//System.out.println("about to walk down " + done);
 		while (!done)
 		{
+			//System.out.println("oh, shit");
 			int startLevel = currentStart.getLevel();
 			int endLevel = currentEnd.getLevel();
+			//System.out.println(startLevel + " : " + endLevel);
 			if (endLevel >= startLevel)
 			{
 				setPrecedingStart();
 				testWidthStart(currentStart, left,false);
-				drawLines(contentGraphics,true, firstStart, left);
-				firstStart = false;
+				drawLines(contentGraphics,true, firstLineStart, left);
+				firstLineStart = false;
 				prevStart = currentStart;
 				currentStart = getSyntaxFacade().getLower(currentStart,
 						currentStart.getNumber(), currentStart.getLevel(),
@@ -200,15 +206,16 @@ public class TraceComponent extends JComponent {
 			{
 				setPrecedingEnd();
 				testWidthEnd(currentEnd, right,false);
-				drawLines(contentGraphics,false, firstEnd, right);
-				firstEnd = false;
+				drawLines(contentGraphics,false, firstLineEnd, right);
+				firstLineEnd = false;
 				prevEnd = currentEnd;
 				currentEnd = getSyntaxFacade().getLower(currentEnd,
 						currentEnd.getNumber(), currentEnd.getLevel(),
 						currentEnd.getLevel() + 1, right);
 			}
-		//	System.out.println("current start = " + currentStart.getPreorder());
-		//	System.out.println("current end = " + currentEnd.getPreorder());
+			//startLevel = currentStart.getLevel();
+			//endLevel = currentEnd.getLevel();
+			//System.out.println(startLevel + " : " + endLevel);
 			done = drawDone(contentGraphics, left,right);
 			if (startLevel == endLevel && !done)
 			{
@@ -252,6 +259,29 @@ public class TraceComponent extends JComponent {
 	}
 	private void drawStart(SyntacticStructure start, boolean left,
 			Graphics2D contentGraphics) {
+		if (start.getChildren().size() == 0)
+		{
+			float padBottom = 0;
+			
+			padBottom = - (start.getPadStartLeft() * padWidth) + start.getPadStartLeftCount() * padWidth;
+			
+			contentGraphics.fillArc((int)(start.getButtonX() 
+					+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
+							.getButtonY() + start.getTextHeight()), circle,
+					circle, 0, 360);
+			contentGraphics.drawLine((int)(start.getButtonX() 
+					+ start.getButtonWidth()/2 + padBottom),(int) (start
+					.getButtonY() + start.getTextHeight() + circle),(int)(start.getButtonX() 
+							+ start.getButtonWidth()/2 + padBottom),(int) (start
+									.getButtonY() + start.getTextHeight() + circle + lineLength));
+	
+			mStartX = (int)(start.getButtonX() 
+					+ start.getButtonWidth()/2 + padBottom);
+			mStartY = (int) (start
+					.getButtonY() + start.getTextHeight() + circle + lineLength);
+		}
+		else
+		{
 		if (left) {
 			contentGraphics.fillArc((int) start.getButtonX() - padEdge  
 					- start.getPadStartLeftCount() * padWidth, (int) start
@@ -273,7 +303,7 @@ public class TraceComponent extends JComponent {
 									(int) start
 									.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 									+ start.getPadStartLeftCount() * padLength);
-			testWidthStart(start, left,false);
+			//testWidthStart(start, left,false);
 			mStartX = (int) start.getButtonX() - padEdge
 					- (start.getPadStartLeftCount() * padWidth) - lineLength;
 			mStartY = (int) start
@@ -302,13 +332,14 @@ public class TraceComponent extends JComponent {
 									+ (start.getPadStartRightCount() * padWidth)
 									+ lineLength, (int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 									+ start.getPadStartRightCount() * padLength);
-			testWidthStart(start, left,false);
+			//testWidthStart(start, left,false);
 			mStartX = (int) start.getButtonX() + padEdge
 					+ start.getButtonWidth()
 					+ (start.getPadStartRightCount() * padWidth) + lineLength;
 			mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 			+ start.getPadStartRightCount() * padLength);
 			start.setPadStartRightCount(start.getPadStartRightCount() + 1);
+		}
 		}
 	}
 
@@ -419,19 +450,56 @@ public class TraceComponent extends JComponent {
 	}
 	private void setPrecedingStart()
 	{
-		previousStart = currentStart;
+		
 		mLeftmostStartPreceding = mLeftmostStart;
 		mRightmostStartPreceding = mRightmostStart;
 	}
 	private void setPrecedingEnd()
 	{
-		previousEnd = currentEnd;
+		
 		mLeftmostEndPreceding = mLeftmostEnd;
 		mRightmostEndPreceding = mRightmostEnd;
 	}
 
 	private void drawEnd(SyntacticStructure end, boolean left,
 			Graphics2D contentGraphics) {
+		if (end.getChildren().size() == 0)
+		{
+			float padBottom = 0;
+			
+				padBottom = - (end.getPadStartLeft() * padWidth) + end.getPadStartLeftCount() * padWidth;
+			
+			GeneralPath polly = new GeneralPath();
+			// move the pollygon to the middle and bottom
+			polly.moveTo((float) (end.getButtonX() 
+					+ end.getButtonWidth()/2 + padBottom),
+					(float) end
+					.getButtonY() + end.getTextHeight());
+			polly.lineTo((float) (end.getButtonX() 
+					+ end.getButtonWidth()/2 + padBottom) - (triangleLength /2),
+					(float) end
+					.getButtonY() + end.getTextHeight() + triangleLength);
+			polly.lineTo((float) (end.getButtonX() 
+					+ end.getButtonWidth()/2 + padBottom) + (triangleLength /2),
+					(float) end
+					.getButtonY() + end.getTextHeight() + triangleLength);
+			polly.closePath();
+			contentGraphics.fill(polly);
+			
+			contentGraphics.drawLine((int)(end.getButtonX() 
+					+ end.getButtonWidth()/2 + padBottom),(int) (end
+					.getButtonY() + end.getTextHeight() + triangleLength),(int)(end.getButtonX() 
+							+ end.getButtonWidth()/2 + padBottom),(int) (end
+									.getButtonY() + end.getTextHeight() + triangleLength + lineLength));
+			//testWidthEnd(end, left,false);
+			mEndX = (int)(end.getButtonX() 
+					+ end.getButtonWidth()/2 + padBottom);
+			mEndY = (int) (end
+					.getButtonY() + end.getTextHeight() + triangleLength + lineLength);
+			
+		}
+		else
+		{
 		if (left) {
 			
 			GeneralPath polly = new GeneralPath();
@@ -465,14 +533,12 @@ public class TraceComponent extends JComponent {
 					 (int) end
 						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 						+ end.getPadStartLeftCount() * padLength);
-			testWidthEnd(end, left,false);
+			//testWidthEnd(end, left,false);
 			mEndX = (int) end.getButtonX() - padEdge
 					- (end.getPadStartLeftCount() * padWidth) - lineLength;
 			mEndY = (int) end
 			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 			+ end.getPadStartLeftCount() * padLength;
-			end.setPadStartLeftCount(end.getPadStartLeftCount() + 1);
-			// System.out.println("draw left");
 		} else {
 			
 			GeneralPath polly = new GeneralPath();
@@ -511,15 +577,22 @@ public class TraceComponent extends JComponent {
 							(int) end
 							.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 							+ end.getPadStartRightCount() * padLength);
-			testWidthEnd(end, left, false);
+			//testWidthEnd(end, left, false);
 			mEndX = (int) end.getButtonX() + padEdge + end.getButtonWidth()
 					+ (end.getPadStartRightCount() * padWidth) + lineLength;
 			mEndY = (int) end
 			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 			+ end.getPadStartRightCount() * padLength;
+		}
+		}
+		if (left)
+		{
+			end.setPadStartLeftCount(end.getPadStartLeftCount() + 1);
+		}
+		else
+		{
 			end.setPadStartRightCount(end.getPadStartRightCount() + 1);
 		}
-		
 	}
 
 
@@ -664,9 +737,8 @@ public class TraceComponent extends JComponent {
 			{
 				LinkedList hold = (LinkedList) 
 					getSyntaxFacade().getLinkedArray().get(currentStart.getLevel());
-				System.out.println("current end order = " + currentEnd.getAbsoluteOrder());
-				System.out.println("hold size = " + hold.size());
-				System.out.println("left = " + left);
+				System.out.println("current start = " + currentStart.getPreorder());
+				System.out.println("current end = " + currentEnd.getPreorder());
 				if (currentStart.equals(currentEnd))
 					testStart = true;
 				if (currentEnd.getAbsoluteOrder() < hold.size() -1 && 
@@ -686,20 +758,20 @@ public class TraceComponent extends JComponent {
 				}	
 				if(testStart)
 				{
-					System.out.println("the easy way!");
-					if (currentEnd == previousEnd)
+					//System.out.println("the easy way!");
+					if (true)
 					{	
+						contentGraphics.drawLine(mEndX, mEndY,
+								mStartX, mEndY);
+						contentGraphics.drawLine(mStartX, mEndY,
+								mStartX, mStartY);	
+					}
+					else 
+					{
 						contentGraphics.drawLine(mStartX,
 								mStartY, mEndX, mStartY);
 						contentGraphics.drawLine(mEndX, mStartY,
 								mEndX, mEndY);
-					}
-					else if(currentStart == previousStart)
-					{
-						contentGraphics.drawLine(mEndX, mEndY,
-								mStartX, mEndY);
-						contentGraphics.drawLine(mStartX, mEndY,
-								mStartX, mStartY);
 					}		
 				}
 			}
