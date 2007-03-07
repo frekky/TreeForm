@@ -180,14 +180,13 @@ public class TraceComponent extends JComponent {
 		setPrecedingStart();
 		setPrecedingEnd();
 		boolean done = drawDone(contentGraphics, left, right);
-		System.out.println("about to walk down " + done);
+		//System.out.println("about to walk down " + done);
 		while (!done)
 		{
 			int startLevel = currentStart.getLevel();
 			int endLevel = currentEnd.getLevel();
 			if (endLevel >= startLevel)
 			{
-				//System.out.println("start down");
 				setPrecedingStart();
 				testWidthStart(currentStart, left,false);
 				drawLines(contentGraphics,true, firstStart, left);
@@ -196,13 +195,9 @@ public class TraceComponent extends JComponent {
 				currentStart = getSyntaxFacade().getLower(currentStart,
 						currentStart.getNumber(), currentStart.getLevel(),
 						currentStart.getLevel() + 1, left);
-				//System.out.println("current start = " + currentStart.getPreorder());
-				//System.out.println("previous start = " + prevStart.getPreorder());
-				//System.out.println();
 			}	
 			if (startLevel >= endLevel)
 			{
-				//System.out.println("end down");
 				setPrecedingEnd();
 				testWidthEnd(currentEnd, right,false);
 				drawLines(contentGraphics,false, firstEnd, right);
@@ -211,9 +206,6 @@ public class TraceComponent extends JComponent {
 				currentEnd = getSyntaxFacade().getLower(currentEnd,
 						currentEnd.getNumber(), currentEnd.getLevel(),
 						currentEnd.getLevel() + 1, right);
-				//System.out.println("current end = " + currentEnd.getPreorder());
-				//System.out.println("previous end = " + prevEnd.getPreorder());
-				//System.out.println();
 			}
 		//	System.out.println("current start = " + currentStart.getPreorder());
 		//	System.out.println("current end = " + currentEnd.getPreorder());
@@ -245,7 +237,7 @@ public class TraceComponent extends JComponent {
 				mY=mY2;
 			}
 			contentGraphics.drawLine(mStartX,
-					mEndY, mX, mEndY);
+					mStartY, mX, mStartY);
 			contentGraphics.drawLine(mX, mStartY,
 					mX, mY);				
 			
@@ -573,8 +565,7 @@ public class TraceComponent extends JComponent {
 		if (start)
 		{
 			if (mLeftmostStartPreceding >= mRightmostStart 
-					|| mLeftmostStart >= mRightmostStartPreceding 
-					)
+					|| mLeftmostStart >= mRightmostStartPreceding)
 			{
 				int mX = getX(currentStart,left);
 				int mY = getY(currentStart,left);
