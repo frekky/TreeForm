@@ -195,7 +195,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 					relativeWidth = (int) (w.getButtonX() - left.getButtonX());	
 					//System.out.println("width = " + halfway + " : relativeWidth = " + relativeWidth);
 					//lGraphics2D.drawLine(x1, y1, x2, y2);
-					if (getSyntacticLevel() == SyntacticLevel.TRIANGLE)
+					if (w.getSyntacticLevel() == SyntacticLevel.TRIANGLE)
 					{
 						lGraphics2D.drawLine(halfway, 1, relativeWidth, Sizer.lineLength()+1);
 						lGraphics2D.drawLine(halfway, 1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);

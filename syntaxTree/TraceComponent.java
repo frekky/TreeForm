@@ -659,7 +659,8 @@ public class TraceComponent extends JComponent {
 		if (start)
 		{
 			if (mLeftmostStartPreceding >= mRightmostStart 
-					|| mLeftmostStart >= mRightmostStartPreceding)
+					//|| mLeftmostStart >= mRightmostStartPreceding
+					)
 			{
 				int mX = getX(currentStart,left);
 				int mY = getY(currentStart,left);
@@ -704,7 +705,7 @@ public class TraceComponent extends JComponent {
 		else
 		{
 			if (mLeftmostEndPreceding >= mRightmostEnd 
-					|| mLeftmostEnd >= mRightmostEndPreceding
+					//|| mLeftmostEnd >= mRightmostEndPreceding
 					)
 			{
 				int	mX = getX(currentEnd,left);
