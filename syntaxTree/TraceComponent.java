@@ -497,11 +497,11 @@ public class TraceComponent extends JComponent {
 					(float) end
 					.getButtonY() + end.getTextHeight());
 			polly.lineTo((float) (end.getButtonX() 
-					+ end.getButtonWidth()/2 + padBottom) - (triangleLength /2),
+					+ end.getButtonWidth()/2 + padBottom) - (triangleLength),
 					(float) end
 					.getButtonY() + end.getTextHeight() + triangleLength);
 			polly.lineTo((float) (end.getButtonX() 
-					+ end.getButtonWidth()/2 + padBottom) + (triangleLength /2),
+					+ end.getButtonWidth()/2 + padBottom) + (triangleLength),
 					(float) end
 					.getButtonY() + end.getTextHeight() + triangleLength);
 			polly.closePath();

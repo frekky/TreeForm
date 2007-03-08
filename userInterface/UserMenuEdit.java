@@ -187,14 +187,14 @@ public class UserMenuEdit extends JMenu {
 		mCopyTree.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mCopyTree);	
 		this.add(mCopyTree);
-		mSelectAll = new UserMenuItemSelectAll((String) mUserFrame.getI18n().getObject("SELECTALL_LABEL"),mUserFrame.getObservableNew());
-		mSelectAll.addActionListener(new ListenerSelectAll(mUserFrame));
-		mSelectAll.setMnemonic('A');
-		mSelectAll.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_A, ActionEvent.CTRL_MASK));
-		mSelectAll.setEnabled(false);
-		mUserFrame.getObservableNew().addObserver(mSelectAll);	
-		this.add(mSelectAll);					
+//		mSelectAll = new UserMenuItemSelectAll((String) mUserFrame.getI18n().getObject("SELECTALL_LABEL"),mUserFrame.getObservableNew());
+//		mSelectAll.addActionListener(new ListenerSelectAll(mUserFrame));
+//		mSelectAll.setMnemonic('A');
+//		mSelectAll.setAccelerator(KeyStroke.getKeyStroke(
+//							   KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+//		mSelectAll.setEnabled(false);
+//		mUserFrame.getObservableNew().addObserver(mSelectAll);	
+//		this.add(mSelectAll);					
 	}
 /**
  * 

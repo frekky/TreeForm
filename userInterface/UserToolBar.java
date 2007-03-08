@@ -29,7 +29,6 @@ import javax.swing.JToolBar;
 
 import staticFunctions.Sizer;
 import staticFunctions.StringManipulator;
-import enumerators.SyntacticViewLayout;
 
 /**
  * 

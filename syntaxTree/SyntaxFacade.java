@@ -229,6 +229,10 @@ public void displayTree() {
 	{
 		treeLayout(mSentence);
 	}
+	else
+	{
+		getUIF().getContentPane().repaint();
+	}
 }
 
 private void treeLayout(Sentence sentence) {

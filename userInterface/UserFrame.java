@@ -234,6 +234,7 @@ public class UserFrame extends JFrame{
  */
 	public UserFrame()
 	{
+		this.setVisible(false);
 		setObservableZoom(new ObservableZoom(1.0F));		
 		mCurrentLocale = mSupportedLocales[0];
 		seti18n(mCurrentLocale);
@@ -266,6 +267,7 @@ public class UserFrame extends JFrame{
 		// resize that picture.	
 		pack();
 		resize();
+		this.setVisible(true);
 	}
 
 /**
@@ -414,8 +416,6 @@ public class UserFrame extends JFrame{
 		this.setTitle("TreeForm");
 		ImageIcon treeFormIcon =  (ImageIcon) mI18n.getObject("TREEFORM_ICON_SMALL");
 		this.setIconImage(treeFormIcon.getImage());
-		this.setVisible(true);
-		
 	}
 
 	/**
@@ -432,7 +432,6 @@ public class UserFrame extends JFrame{
 	private void resize() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setSize((int)dim.getWidth(), (int)dim.getHeight()-30);
-		this.setVisible(true);
 	}
 /**
  * sets the layout of the JFrame

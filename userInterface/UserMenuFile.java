@@ -214,12 +214,12 @@ public class UserMenuFile extends JMenu {
 		mUserFrame.getObservableNew().addObserver(mPrint);
 		this.add(mPrint);
 		
-		mPrintPreview = new UserMenuItemPrintPreview((String) mUserFrame.getI18n().getObject("PRINTPREVIEW_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL"), mUserFrame.getObservableNew());
-		mPrintPreview.addActionListener(new ListenerPrintPreview(mUserFrame));
-		mPrintPreview.setMnemonic('V');
-		mPrintPreview.setEnabled(false);
-		mUserFrame.getObservableNew().addObserver(mPrintPreview);
-		this.add(mPrintPreview);
+//		mPrintPreview = new UserMenuItemPrintPreview((String) mUserFrame.getI18n().getObject("PRINTPREVIEW_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL"), mUserFrame.getObservableNew());
+//		mPrintPreview.addActionListener(new ListenerPrintPreview(mUserFrame));
+//		mPrintPreview.setMnemonic('V');
+//		mPrintPreview.setEnabled(false);
+//		mUserFrame.getObservableNew().addObserver(mPrintPreview);
+//		this.add(mPrintPreview);
 		
 		this.addSeparator();
 		
