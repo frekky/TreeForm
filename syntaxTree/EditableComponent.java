@@ -500,7 +500,7 @@ public class EditableComponent extends JComponent {
 	public EditableComponent(UserInternalFrame pUserInternalFrame) {
 		setUserInternalFrame(pUserInternalFrame);
 		mHead = new AttributedString(" ");
-		Font lFont = new Font("Times New Roman", Font.BOLD, Sizer.fontSize());
+		Font lFont = new Font("Doulos SIL", Font.BOLD, Sizer.fontSize());
 		mHead.addAttribute(TextAttribute.FONT, lFont);
 		this.addMouseListener(new HitTestMouseListener());
 		this.addMouseMotionListener(new HitTestMouseListener());

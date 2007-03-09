@@ -246,7 +246,7 @@ public class UserFrame extends JFrame{
 		setObservableNew(new ObservableNew(0));
 		setObservableStack(new ObservableStack(null));
 		setObservableClipboard(new ObservableClipboard(null));
-		setObservableFont(new ObservableFont("Times New Roman"));
+		setObservableFont(new ObservableFont("Doulos SIL"));
 		setObservableFontSize(new ObservableFontSize(10));
 		setObservableFontBold(new ObservableFontBold(false));
 		setObservableFontItalic(new ObservableFontItalic(false));
@@ -584,7 +584,6 @@ public class UserFrame extends JFrame{
 	}
 
 	protected ObservableFontStrikethrough getObservableFontStrikethrough() {
-		// TODO Auto-generated method stub
 		return mObservableStrikethrough;
 	}
 }
