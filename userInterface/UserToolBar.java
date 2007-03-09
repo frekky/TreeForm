@@ -327,6 +327,8 @@ public class UserToolBar extends JToolBar {
 	 */
 	private UserFrame mUserFrame;
 
+	private UserToggleFontStrikethrough mStrikethrough;
+
 /**
  * 
  * @param pUserFrame The UserFrame for this instance of TreeForm 
@@ -464,6 +466,7 @@ public class UserToolBar extends JToolBar {
 		mUserFrame.getObservableNew().addObserver(mItalics);
 		mItalics.setFocusable(false);
 		this.add(mItalics);
+		
 		mUnderline = new UserToggleFontUnderline(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDERLINE_ICON_LARGE"),
 		(ImageIcon) mUserFrame.getI18n().getObject("UNDERLINE_ICON_LARGE_GREY"),
@@ -478,6 +481,21 @@ public class UserToolBar extends JToolBar {
 		mUserFrame.getObservableNew().addObserver(mUnderline);
 		mUnderline.setFocusable(false);
 		this.add(mUnderline);
+		
+		mStrikethrough = new UserToggleFontStrikethrough(mUserFrame,
+				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_LARGE"),
+				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_LARGE_GREY"),
+				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_LARGE_HIGHLIGHT"),
+				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_SMALL"),
+				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_SMALL_GREY"),
+				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_SMALL_HIGHLIGHT"),
+				mIconSize, mUserFrame.getObservableFontStrikethrough(), mUserFrame.getObservableNew());
+				mStrikethrough.addActionListener(new ListenerStrikethrough(mUserFrame));
+				mStrikethrough.setToolTipText((String) mUserFrame.getI18n().getObject("UNDERLINE_TOOLTIP"));
+				mUserFrame.getObservableFontStrikethrough().addObserver(mStrikethrough);
+				mUserFrame.getObservableNew().addObserver(mStrikethrough);
+				mStrikethrough.setFocusable(false);
+				this.add(mStrikethrough);
 		
 		mSubscript = new UserToggleFontSubscript(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("SUBSCRIPT_ICON_LARGE"),
@@ -703,20 +721,20 @@ public class UserToolBar extends JToolBar {
 		mPrint.setFocusable(false);
 		mUserFrame.getObservableNew().addObserver(mPrint);
 		this.add(mPrint);
-		mPrintPreview = new UserButtonPrintPreview(mUserFrame,
-		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_LARGE"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_LARGE_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_LARGE_HIGHLIGHT"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL_GREY"),
-		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL_HIGHLIGHT"),
-		mIconSize,mUserFrame.getObservableNew());
-		mPrintPreview.addActionListener(new ListenerPrintPreview(mUserFrame));
-		mPrintPreview.setToolTipText((String) mUserFrame.getI18n().getObject("PRINTPREVIEW_TOOLTIP"));
-		mPrintPreview.setEnabled(false);
-		mPrintPreview.setFocusable(false);
-		mUserFrame.getObservableNew().addObserver(mPrintPreview);
-		this.add(mPrintPreview);
+//		mPrintPreview = new UserButtonPrintPreview(mUserFrame,
+//		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_LARGE"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_LARGE_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_LARGE_HIGHLIGHT"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL_GREY"),
+//		(ImageIcon) mUserFrame.getI18n().getObject("PRINTPREVIEW_ICON_SMALL_HIGHLIGHT"),
+//		mIconSize,mUserFrame.getObservableNew());
+//		mPrintPreview.addActionListener(new ListenerPrintPreview(mUserFrame));
+//		mPrintPreview.setToolTipText((String) mUserFrame.getI18n().getObject("PRINTPREVIEW_TOOLTIP"));
+//		mPrintPreview.setEnabled(false);
+//		mPrintPreview.setFocusable(false);
+//		mUserFrame.getObservableNew().addObserver(mPrintPreview);
+//		this.add(mPrintPreview);
 
 	}
 /**

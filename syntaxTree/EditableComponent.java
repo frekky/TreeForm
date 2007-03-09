@@ -1055,6 +1055,18 @@ private double getZero(double d) {
 					.setValue(
 					false);
 			}
+			lObject = lAttributes.get(TextAttribute.STRIKETHROUGH);
+			if (lObject == TextAttribute.STRIKETHROUGH_ON) {
+				mUserInternalFrame
+					.getObservableFontStrikethrough()
+					.setValue(
+					true);
+			} else {
+				mUserInternalFrame
+					.getObservableFontStrikethrough()
+					.setValue(
+					false);
+			}
 		}
 		else
 		{

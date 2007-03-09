@@ -425,6 +425,19 @@ public class XMLParser implements SaveFile, LoadFile {
 			}
 			lIElement.setAttributeNode(lAttr);
 		}
+		else if (lKey.equals(TextAttribute.STRIKETHROUGH))
+		{
+			Attr lAttr = mDoc.createAttribute("strikethrough");
+			if (lValue.equals(TextAttribute.STRIKETHROUGH_ON))
+			{
+				lAttr.setValue("true");
+			}
+			else
+			{
+				lAttr.setValue("false");
+			}
+			lIElement.setAttributeNode(lAttr);
+		}
 		else
 		{
 			System.out.println("ERROR!");
@@ -690,6 +703,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		String lStyle = lElement.getAttribute("style");
 		String lSize = lElement.getAttribute("size");
 		String lUnderline = lElement.getAttribute("underline");
+		String lStrikethrough = lElement.getAttribute("strikethrough");
 		String lScript = lElement.getAttribute("subscript");
 		if (!lFontName.equals(""))
 		{
@@ -713,6 +727,10 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		if(lUnderline.equals("true"))
 		{
 			lMap.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
+		}
+		if(lStrikethrough.equals("true"))
+		{
+			lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
 		}
 		return lMap;
 	}

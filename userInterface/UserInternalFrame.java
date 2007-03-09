@@ -244,6 +244,9 @@ public class UserInternalFrame extends JInternalFrame {
 		return mUserFrame.getObservableSubscript();
 	}
 
+	public ObservableFontStrikethrough getObservableFontStrikethrough() {
+		return mUserFrame.getObservableFontStrikethrough();
+	}
 	/**
 	 * 
 	 * @return Returns the ObservableFontBold containing the font superscript

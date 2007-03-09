@@ -89,13 +89,6 @@ public class TraceComponent extends JComponent {
 
 	private LinkedList mLinkedArray;
 
-	private int mRightmostStartMax;
-
-	private int mLeftmostStartMax;
-
-	private int mRightmostEndMax;
-
-	private int mLeftmostEndMax;
 
 	private static final float triangleLength = 3;
 
@@ -371,8 +364,6 @@ public class TraceComponent extends JComponent {
 			start.setPadStartRightCount(start.getPadStartRightCount() + 1);
 		}
 		}
-		mRightmostStartMax = mStartX;
-		mLeftmostStartMax = mStartX;
 	}
 
 	private void testWidthStart(SyntacticStructure start, boolean left,boolean next) {
@@ -625,8 +616,6 @@ public class TraceComponent extends JComponent {
 		{
 			end.setPadStartRightCount(end.getPadStartRightCount() + 1);
 		}
-		mRightmostEndMax = mEndX;
-		mLeftmostEndMax = mEndX;
 	}
 
 	private int getY(SyntacticStructure start, boolean left) {
@@ -790,13 +779,26 @@ public class TraceComponent extends JComponent {
 				}	
 				if(testStart)
 				{		
-					System.out.println("rightmost end max = " + mRightmostEndMax);
-					System.out.println("leftmost end max = " + mLeftmostEndMax);
-					System.out.println("end x = " + mEndX);
-					System.out.println("rightmost start max = " + mRightmostStartMax);
-					System.out.println("leftmost start max = " + mLeftmostStartMax);
-					System.out.println("start x = " + mStartX);
+					System.out.println("here");
+					System.out.println("firststart = " + firstStart.getPreorder());
+					System.out.println("firstend = " + firstEnd.getPreorder());
+					System.out.println("currentstart = " + currentStart.getPreorder());
+					System.out.println("currentend = " + currentEnd.getPreorder());
 					boolean horizontalFirst = true;
+//					if (firstStart == currentStart && firstEnd == currentEnd)
+//					{
+//						System.out.println("here");
+//						if ((firstStart.getChildren().size() == 0 && mStartY < mEndY)
+//								|| (firstEnd.getChildren().size() == 0 && mEndY < mStartY))
+//						{
+//							horizontalFirst = false;
+//						}
+//						else
+//						{
+//							horizontalFirst = true;
+//						}
+//					}
+//					else 
 					if (firstStart == currentStart)
 					{
 						if (firstStart.getChildren().size() == 0)

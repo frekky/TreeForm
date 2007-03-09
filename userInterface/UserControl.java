@@ -382,6 +382,7 @@ public void loadTree() {
  * that parser the SyntaxFacade needed to save files.
  */ 
 		public void saveTree(SyntaxFacade pSyntaxFacade, File pFile,SaveFileType pSFT) {
+			
 			if (pSyntaxFacade.getName() == "")
 			{
 				saveAsTree(pSyntaxFacade);
@@ -636,6 +637,14 @@ public void loadTree() {
 			else
 			{
 				lMap.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE);
+			}
+			if(mUserFrame.getObservableFontStrikethrough().getValue())
+			{
+				lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+			}
+			else
+			{
+				lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH);
 			}
 			return lMap;
 		}

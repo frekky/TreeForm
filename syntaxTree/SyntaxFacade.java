@@ -98,7 +98,7 @@ public class SyntaxFacade {
 		setParser(new XMLParser());
 		setUIF(pUIF);
 		setFile("");
-		setName(getUIF().getTitle());
+		//setName(getUIF().getTitle());
 		mDocs = new LinkedList();
 	}
 

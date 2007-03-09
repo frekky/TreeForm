@@ -199,20 +199,20 @@ public class UserGlassPane extends JComponent {
 		int pRelativePosition,
 		int pPosition) {
 		if (pPosition == getPosition()) {
-			Color lColor = new Color(0, 255, 0);
+			Color lColor = new Color(0, 190, 0);
 			lGraphics2D.setColor(lColor);
 			Arc2D lArc =
 				new Arc2D.Float(
 					mPoint.x + pRelativePosition-3,
 					mPoint.y - 1,
-					6,
-					6,
+					8,
+					8,
 					0,
 					360,
 					Arc2D.PIE);
 			lGraphics2D.fill(lArc);
 		} else {
-			Color lColor = new Color(255, 0, 0);
+			Color lColor = new Color(255, 00, 00);
 			lGraphics2D.setColor(lColor);
 			Arc2D lArc =
 				new Arc2D.Float(

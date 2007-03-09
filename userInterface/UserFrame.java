@@ -228,6 +228,8 @@ public class UserFrame extends JFrame{
 	 */
 	private UserControl mUserControl;
 
+	private ObservableFontStrikethrough mObservableStrikethrough;
+
 /**
  * Sets the environment for TreeForm
  *
@@ -249,10 +251,11 @@ public class UserFrame extends JFrame{
 		setObservableFontBold(new ObservableFontBold(false));
 		setObservableFontItalic(new ObservableFontItalic(false));
 		setObservableFontUnderline(new ObservableFontUnderline(false));
+		setObservableFontStrikethrough(new ObservableFontStrikethrough(false));
 		setObservableSubscript(new ObservableFontSubscript(false));
 		setObservableSuperscript(new ObservableFontSuperscript(false));
-		mToolBarFile = new UserToolBar(this,UserToolBar.LOAD + UserToolBar.PRINT + UserToolBar.CUT_AND_PASTE);
-		mToolBarFonts = new UserToolBar(this, UserToolBar.VIEW_AND_HELP + UserToolBar.ADD_FONT_EFFECTS);
+		mToolBarFile = new UserToolBar(this,UserToolBar.LOAD + UserToolBar.PRINT + UserToolBar.CUT_AND_PASTE + UserToolBar.VIEW_AND_HELP);
+		mToolBarFonts = new UserToolBar(this,  UserToolBar.ADD_FONT_EFFECTS);
 		// open and set 
 		mObjectBrowser = new UserObjectBrowser(this);
 		mDesktopPane = new UserDesktopPane(this);
@@ -268,6 +271,8 @@ public class UserFrame extends JFrame{
 		pack();
 		resize();
 		this.setVisible(true);
+		getUserControl().createNewTree();
+		getObservableNew().setValue(getDesktopPane().getAllFrames().length + 1);
 	}
 
 /**
@@ -293,6 +298,9 @@ public class UserFrame extends JFrame{
 	private void setObservableFontItalic(ObservableFontItalic pItalic) {
 		mObservableItalic = pItalic;
 		
+	}
+	private void setObservableFontStrikethrough(ObservableFontStrikethrough pStrikethrough) {
+		mObservableStrikethrough = pStrikethrough;
 	}
 /**
  * @return Returns the ObservableFontItalic for setting italics
@@ -573,6 +581,11 @@ public class UserFrame extends JFrame{
  */
 	protected ObservableFontSubscript getObservableSubscript() {
 		return mObservableSubscript;
+	}
+
+	protected ObservableFontStrikethrough getObservableFontStrikethrough() {
+		// TODO Auto-generated method stub
+		return mObservableStrikethrough;
 	}
 }
 
