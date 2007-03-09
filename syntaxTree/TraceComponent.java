@@ -89,6 +89,14 @@ public class TraceComponent extends JComponent {
 
 	private LinkedList mLinkedArray;
 
+	private int mRightmostStartMax;
+
+	private int mLeftmostStartMax;
+
+	private int mRightmostEndMax;
+
+	private int mLeftmostEndMax;
+
 	private static final float triangleLength = 3;
 
 	static final int lineLength = 4;
@@ -243,6 +251,7 @@ public class TraceComponent extends JComponent {
 				done = drawBottom(contentGraphics,left,right);
 			}
 		}
+		System.out.println("");
 	}
 
 	private boolean drawBottom(Graphics2D contentGraphics, boolean left, boolean right) {
@@ -294,12 +303,12 @@ public class TraceComponent extends JComponent {
 					+ start.getButtonWidth()/2 + padBottom),(int) (start
 					.getButtonY() + start.getTextHeight() + circle),(int)(start.getButtonX() 
 							+ start.getButtonWidth()/2 + padBottom),(int) (start
-									.getButtonY() + start.getTextHeight() + circle + lineLength));
+									.getButtonY() + start.getTextHeight() + lineLength*2));
 	
 			mStartX = (int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom);
 			mStartY = (int) (start
-					.getButtonY() + start.getTextHeight() + circle + lineLength);
+					.getButtonY() + start.getTextHeight() + lineLength*2);
 		}
 		else
 		{
@@ -362,6 +371,8 @@ public class TraceComponent extends JComponent {
 			start.setPadStartRightCount(start.getPadStartRightCount() + 1);
 		}
 		}
+		mRightmostStartMax = mStartX;
+		mLeftmostStartMax = mStartX;
 	}
 
 	private void testWidthStart(SyntacticStructure start, boolean left,boolean next) {
@@ -511,12 +522,12 @@ public class TraceComponent extends JComponent {
 					+ end.getButtonWidth()/2 + padBottom),(int) (end
 					.getButtonY() + end.getTextHeight() + triangleLength),(int)(end.getButtonX() 
 							+ end.getButtonWidth()/2 + padBottom),(int) (end
-									.getButtonY() + end.getTextHeight() + triangleLength + lineLength));
+									.getButtonY() + end.getTextHeight() + lineLength*2));
 			//testWidthEnd(end, left,false);
 			mEndX = (int)(end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom);
 			mEndY = (int) (end
-					.getButtonY() + end.getTextHeight() + triangleLength + lineLength);
+					.getButtonY() + end.getTextHeight()+ lineLength*2);
 			
 		}
 		else
@@ -614,9 +625,9 @@ public class TraceComponent extends JComponent {
 		{
 			end.setPadStartRightCount(end.getPadStartRightCount() + 1);
 		}
+		mRightmostEndMax = mEndX;
+		mLeftmostEndMax = mEndX;
 	}
-
-
 
 	private int getY(SyntacticStructure start, boolean left) {
 		if (left)
@@ -655,7 +666,6 @@ public class TraceComponent extends JComponent {
 
 
 	private void drawLines(Graphics2D contentGraphics,boolean start, boolean first, boolean left) {
-
 		if (start)
 		{
 			if (mLeftmostStartPreceding >= mRightmostStart 
@@ -779,32 +789,103 @@ public class TraceComponent extends JComponent {
 						testStart = true;
 				}	
 				if(testStart)
-				{
-					if (firstStart.getChildren().size() > 0 && firstEnd.getChildren().size() > 0)
+				{		
+					System.out.println("rightmost end max = " + mRightmostEndMax);
+					System.out.println("leftmost end max = " + mLeftmostEndMax);
+					System.out.println("end x = " + mEndX);
+					System.out.println("rightmost start max = " + mRightmostStartMax);
+					System.out.println("leftmost start max = " + mLeftmostStartMax);
+					System.out.println("start x = " + mStartX);
+					boolean horizontalFirst = true;
+					if (firstStart == currentStart)
 					{
-						if (!(mStartX > firstStart.getButtonX() && mStartX < (firstStart.getButtonX() + firstStart.getButtonWidth()))
-						&& !(mEndX > firstEnd.getButtonX() && mEndX < (firstEnd.getButtonX() + firstEnd.getButtonWidth()))		
-						)
-						{	
-							contentGraphics.drawLine(mEndX, mEndY,
-									mStartX, mEndY);
-							contentGraphics.drawLine(mStartX, mEndY,
-									mStartX, mStartY);	
-						}
-						else 
+						if (firstStart.getChildren().size() == 0)
 						{
-							contentGraphics.drawLine(mStartX,
-									mStartY, mEndX, mStartY);
-							contentGraphics.drawLine(mEndX, mStartY,
-									mEndX, mEndY);
+							if (mEndY > mStartY)
+							{
+								horizontalFirst = true;
+							}
+							else
+							{
+								horizontalFirst = false;
+							}
 						}
+						else if (left)
+						{
+							if (mEndX > mStartX)
+							{
+								horizontalFirst = true;
+							}
+							else
+							{
+								horizontalFirst = false;
+							}
+						}
+						else
+						{
+							if(mEndX < mStartX)
+							{
+								horizontalFirst = true;
+							}
+							else
+							{
+								horizontalFirst = false;
+							}
+						}
+					}
+					else if (firstEnd == currentEnd)
+					{
+						if (firstEnd.getChildren().size() == 0)
+						{
+							if(mStartY > mEndY)
+							{
+								horizontalFirst = false;
+							}
+							else
+							{
+								horizontalFirst = true;
+							}
+						}
+						else if (right)
+						{
+							if (mStartX > mEndX)
+							{
+								horizontalFirst = false;
+							}
+							else
+							{
+								horizontalFirst = true;
+							}
+						}
+						else
+						{
+							if (mStartX < mEndX)
+							{
+								horizontalFirst = false;
+							}
+							else
+							{
+								horizontalFirst = true;
+							}
+						}
+					}
+					else
+					{
+						System.out.println("this should never print");
+					}
+					if (horizontalFirst)
+					{
+						contentGraphics.drawLine(mEndX, mEndY,
+								mStartX, mEndY);
+						contentGraphics.drawLine(mStartX, mEndY,
+								mStartX, mStartY);
 					}
 					else
 					{
 						contentGraphics.drawLine(mStartX,
 								mStartY, mEndX, mStartY);
 						contentGraphics.drawLine(mEndX, mStartY,
-								mEndX, mEndY);	
+								mEndX, mEndY);
 					}
 				}
 			}
