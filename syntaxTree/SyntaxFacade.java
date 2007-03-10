@@ -1722,7 +1722,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 		{
 			deleteSubtree((SyntacticStructure) mSentence.getChildren().get(0));
 			resetClipboard((SyntacticStructure) mSentence.getChildren().get(0));
-			//displayTree();
+			displayTree();
 		}
 		getParser().loadFile(((Document)mDocs.get(mDocPosition % mDocMax)),getUIF());
 	}
@@ -1736,8 +1736,9 @@ private void fourthWalk(SyntacticStructure v, int level)
 	}
 
 	public void addTrace(SyntacticStructure end, SyntacticStructure start) {
-		deleteStartTrace(start);
-		deleteEndTrace(end);
+		addUndo();
+		deleteStartTrace(start,false);
+		deleteEndTrace(end,false);
 		start.getStartTrace().add(end);
 		end.getEndTrace().add(start);
 		//System.out.println("please work");
@@ -1772,7 +1773,11 @@ private void fourthWalk(SyntacticStructure v, int level)
 		return mHeightPad;
 	}
 
-	public void deleteStartTrace(SyntacticStructure start) {
+	public void deleteStartTrace(SyntacticStructure start, boolean b) {
+		if (b)
+		{
+			addUndo();
+		}
 		if(start.getStartTrace().size() > 0)
 		{
 			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().remove();
@@ -1780,7 +1785,11 @@ private void fourthWalk(SyntacticStructure v, int level)
 		}
 	}
 
-	public void deleteEndTrace(SyntacticStructure end) {
+	public void deleteEndTrace(SyntacticStructure end, boolean b) {
+		if (b)
+		{
+			addUndo();
+		}
 		if(end.getEndTrace().size() > 0)
 		{
 			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().remove();

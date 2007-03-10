@@ -509,7 +509,6 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public void setHighlight(Map map) 
 	{
 		super.setHighlight(map);
-			//getUserInternalFrame().getSyntaxFacade().redisplayTree();	
 	}
 /**
  * repaint both the structure and it's lines

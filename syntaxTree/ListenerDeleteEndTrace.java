@@ -14,7 +14,7 @@ public class ListenerDeleteEndTrace implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		mSF.deleteEndTrace(mSS);
+		mSF.deleteEndTrace(mSS,true);
 		mSF.displayTree();
 	}
 }

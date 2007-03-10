@@ -107,7 +107,6 @@ public class SyntacticFeature extends EditableComponent{
 			((SyntacticAssociation)getSyntacticAssociation().get(i)).setHead(pAT);
 		}
 		getSyntacticFeatureSet().testXY();
-		getUserInternalFrame().getSyntaxFacade().displayTree();
 	}
 	public void setHeadWithoutUpdate(AttributedString pAT)
 	{

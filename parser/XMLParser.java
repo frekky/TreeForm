@@ -88,8 +88,8 @@ public class XMLParser implements SaveFile, LoadFile {
 	 * @uml.property name="mMap" multiplicity="(0 1)" qualifier="getAttribute:java.lang.String
 	 * lSA:syntaxTree.SyntacticAssociation"
 	 */
-	private HashMap mMap;
-
+	private HashMap mAssociationMap;
+	private HashMap mStructureMap;
 	/**
 	 * 
 	 * @uml.property name="mInternalFrame"
@@ -237,9 +237,14 @@ public class XMLParser implements SaveFile, LoadFile {
 		Attr lAttr = mDoc.createAttribute("syntacticlevel");
 		lAttr.setValue(pSS.getSyntacticLevel().toString());
 		lRoot.setAttributeNode(lAttr);
+		lAttr = mDoc.createAttribute("string");
+		lAttr.setValue(Integer.toString(pSS.hashCode()));
+		lRoot.setAttributeNode(lAttr);
 		lRoot.appendChild(saveATDetails(pSS.getHead()));
 		lRoot.appendChild(saveFeatureSet(pSS.getSyntacticFeatureSet(), pRoot));
 		lRoot.appendChild(saveAssociations(pSS.getSyntacticAssociation(),pRoot));
+		lRoot.appendChild(saveStartTrace(pSS.getStartTrace(),pRoot));
+		lRoot.appendChild(saveEndTrace(pSS.getEndTrace(),pRoot));
 		pRoot.appendChild(lRoot);
 		for (int i = 0; i < pSS.getChildren().size(); i++)
 		{
@@ -261,6 +266,30 @@ public class XMLParser implements SaveFile, LoadFile {
 		for (int i = 0; i < list.size(); i++)
 		{
 			Element lRootSA = mDoc.createElement("syntacticassociation");
+			Attr lAttr = mDoc.createAttribute("string");
+			lAttr.setValue(Integer.toString(list.get(i).hashCode()));
+			lRootSA.setAttributeNode(lAttr);
+			lRootSAS.appendChild(lRootSA);
+		}
+		return lRootSAS;
+	}
+	private Node saveStartTrace(LinkedList list, Element pRoot) {
+		Element lRootSAS = mDoc.createElement("starttraces");
+		for (int i = 0; i < list.size(); i++)
+		{
+			Element lRootSA = mDoc.createElement("starttrace");
+			Attr lAttr = mDoc.createAttribute("string");
+			lAttr.setValue(Integer.toString(list.get(i).hashCode()));
+			lRootSA.setAttributeNode(lAttr);
+			lRootSAS.appendChild(lRootSA);
+		}
+		return lRootSAS;
+	}
+	private Node saveEndTrace(LinkedList list, Element pRoot) {
+		Element lRootSAS = mDoc.createElement("endtraces");
+		for (int i = 0; i < list.size(); i++)
+		{
+			Element lRootSA = mDoc.createElement("endtrace");
 			Attr lAttr = mDoc.createAttribute("string");
 			lAttr.setValue(Integer.toString(list.get(i).hashCode()));
 			lRootSA.setAttributeNode(lAttr);
@@ -501,16 +530,17 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		mDoc = doc;
 		mRoot = mDoc.getDocumentElement();		
 		mSyntaxFacade = mInternalFrame.getSyntaxFacade();
-		mMap = new HashMap();
+		mAssociationMap = new HashMap();
+		mStructureMap = new HashMap();
 		loadATDetails(mRoot.getChildNodes().item(0),(RepositionTree)mSyntaxFacade.getSentence());
 		mSyntaxFacade.setName(mRoot.getAttribute("name"));
 		mSyntaxFacade.setFile(mRoot.getAttribute("file"));
 		mInternalFrame.setTitle(mRoot.getAttribute("name"));
-		Set lKey = mMap.keySet();
+		Set lKey = mAssociationMap.keySet();
 		Iterator lIterator = lKey.iterator();
 		while (lIterator.hasNext())
 		{
-			SyntacticAssociation lAS = (SyntacticAssociation) mMap.get(lIterator.next());
+			SyntacticAssociation lAS = (SyntacticAssociation) mAssociationMap.get(lIterator.next());
 			lAS.setHead(lAS.getSyntacticFeature().getHead());
 			mInternalFrame.getContentPane().add(lAS);
 			lAS.getSyntacticStructure().testXY();
@@ -536,7 +566,25 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 			if (lElement.getNodeName().equals("syntacticstructure"))
 			{
 				NodeList lNodeList = pRoot.getChildNodes();
-				SyntacticStructure lSS = new SyntacticStructure(mInternalFrame,pSS);
+				SyntacticStructure lSS = null;
+				System.out.println(lElement.getAttribute("string"));
+				if (lElement.getAttribute("string") != "")
+				{
+					if (mStructureMap.get(lElement.getAttribute("string")) == null)
+					{
+						lSS = new SyntacticStructure(mInternalFrame,pSS);
+						mStructureMap.put(lElement.getAttribute("string"), lSS);
+					}
+					else
+					{
+						lSS = (SyntacticStructure) mStructureMap.get(lElement.getAttribute("string"));
+						lSS.setSyntacticParent(pSS);
+					}
+				}
+				else
+				{
+					lSS = new SyntacticStructure(mInternalFrame,pSS);
+				}
 				lSS.setSyntacticLevel(getSyntacticLevel(lElement.getAttribute("syntacticlevel")));
 				lSS.setHead(loadHead(lElement));
 				if (pSS instanceof Sentence)
@@ -562,6 +610,14 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 			{
 				loadAssociations(lElement, pSS);
 			}
+			else if (lElement.getNodeName().equals("starttraces"))
+			{
+				loadStartTraces(lElement, pSS);
+			}
+			else if (lElement.getNodeName().equals("endtraces"))
+			{
+				loadEndTraces(lElement, pSS);
+			}
 		}
 	}
 /**
@@ -583,9 +639,9 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		{
 			Element lRootSA = (Element) lAssociations.item(l);
 			SyntacticAssociation lSA = null;
-			if (mMap.get(lRootSA.getAttribute("string")) != null)
+			if (mAssociationMap.get(lRootSA.getAttribute("string")) != null)
 			{
-				lSA = (SyntacticAssociation) mMap.get(lRootSA.getAttribute("string"));
+				lSA = (SyntacticAssociation) mAssociationMap.get(lRootSA.getAttribute("string"));
 				lSS.getSyntacticAssociation().add(lSA);
 				lSA.setSyntacticStructure(lSS);	
 			}
@@ -594,7 +650,52 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 				lSA = new SyntacticAssociation(mInternalFrame);
 				lSS.getSyntacticAssociation().add(lSA);
 				lSA.setSyntacticStructure(lSS);
-				mMap.put(lRootSA.getAttribute("string"),lSA);
+				mAssociationMap.put(lRootSA.getAttribute("string"),lSA);
+			}
+		}	
+	}
+	
+	private void loadStartTraces(Element lElement, RepositionTree pSS) {
+		SyntacticStructure lSS = (SyntacticStructure) pSS;
+		
+		NodeList lStartTraces = lElement.getChildNodes();
+		for (int l = 0; l < lStartTraces.getLength(); l++)
+		{
+			Element lStartTrace = (Element) lStartTraces.item(l);
+			SyntacticStructure lSSTrace = null;
+			//System.out.println(lStartTrace.getAttribute("string"));
+			if (mStructureMap.get(lStartTrace.getAttribute("string")) != null)
+			{
+				lSSTrace = (SyntacticStructure) mStructureMap.get(lStartTrace.getAttribute("string"));
+				lSS.getStartTrace().add(lSSTrace);
+			}
+			else
+			{
+				lSSTrace = new SyntacticStructure(mInternalFrame, null);
+				lSS.getStartTrace().add(lSSTrace);
+				mStructureMap.put(lStartTrace.getAttribute("string"),lSSTrace);
+			}
+		}	
+	}
+	private void loadEndTraces(Element lElement, RepositionTree pSS) {
+		SyntacticStructure lSS = (SyntacticStructure) pSS;
+		
+		NodeList lEndTraces = lElement.getChildNodes();
+		for (int l = 0; l < lEndTraces.getLength(); l++)
+		{
+			Element lEndTrace = (Element) lEndTraces.item(l);
+			SyntacticStructure lSSTrace = null;
+			//System.out.println(lEndTrace.getAttribute("string"));
+			if (mStructureMap.get(lEndTrace.getAttribute("string")) != null)
+			{
+				lSSTrace = (SyntacticStructure) mStructureMap.get(lEndTrace.getAttribute("string"));
+				lSS.getEndTrace().add(lSSTrace);
+			}
+			else
+			{
+				lSSTrace = new SyntacticStructure(mInternalFrame, null);
+				lSS.getEndTrace().add(lSSTrace);
+				mStructureMap.put(lEndTrace.getAttribute("string"),lSSTrace);
 			}
 		}	
 	}
@@ -652,9 +753,9 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 						{
 							Element lRootSA = (Element) lAssociations.item(l);
 							SyntacticAssociation lSA = null;
-							if (mMap.get(lRootSA.getAttribute("string")) != null)
+							if (mAssociationMap.get(lRootSA.getAttribute("string")) != null)
 							{
-								lSA = (SyntacticAssociation) mMap.get(lRootSA.getAttribute("string"));
+								lSA = (SyntacticAssociation) mAssociationMap.get(lRootSA.getAttribute("string"));
 								lSF.getSyntacticAssociation().add(lSA);
 								lSA.setSyntacticFeature(lSF);
 							}
@@ -663,7 +764,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 								lSA = new SyntacticAssociation(mInternalFrame);
 								lSF.getSyntacticAssociation().add(lSA);
 								lSA.setSyntacticFeature(lSF);
-								mMap.put(lRootSA.getAttribute("string"),lSA);
+								mAssociationMap.put(lRootSA.getAttribute("string"),lSA);
 							}
 						}
 					}
