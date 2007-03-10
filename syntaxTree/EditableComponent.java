@@ -479,7 +479,7 @@ public class EditableComponent extends JComponent {
 				setCarat(false);
 				setHighlightEnd(pointTest(pME));
 				paint(getGraphics());
-				repaint();
+				//repaint();
 			}
 		}
 /**
@@ -615,6 +615,9 @@ public class EditableComponent extends JComponent {
 			AffineTransform at = AffineTransform.getTranslateInstance(rx, ry);
 			lHilite = at.createTransformedShape(lHilite);
 			lGraphics2D.fill(lHilite);
+			//System.out.println(lHilite.getBounds().x + " : " + lHilite.getBounds().y + " : " + lHilite.getBounds().width + " : " + lHilite.getBounds().height);
+			//super.paint(lGraphics2D);
+			//System.out.println(getHighlightBegin() +" : " +  getHighlightEnd());
 		}
 	}
 /**
@@ -698,6 +701,7 @@ private double getZero(double d) {
 		}
 		testXY();
 		setHeadLength(lI);
+		//mUserInternalFrame.getSyntaxFacade().displayTree();
 	}
 /**
  * 
