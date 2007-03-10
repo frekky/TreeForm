@@ -387,7 +387,7 @@ public class UserFrame extends JFrame{
  * 
  * @return returns the i18n bundle.
  */
-	protected ResourceBundle getI18n()
+	public ResourceBundle getI18n()
 	{
 		return mI18n;
 	}

@@ -255,6 +255,7 @@ public class UserGlassPane extends JComponent {
 	public void setChild() {
 		mSS.getChildren().add(mPosition, mSSChild);
 		mSSChild.setSyntacticParent(mSS);
+		mUserFrame.getInternalFrame().getTrace().setDrawTrace(true);
 		mUserFrame
 			.getSyntaxFacade()
 			.displayTree();

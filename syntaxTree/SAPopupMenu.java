@@ -60,7 +60,7 @@ public class SAPopupMenu extends JPopupMenu {
 	 * @uml.associationEnd 
 	 * @uml.property name="mDeleteSubtree" multiplicity="(1 1)"
 	 */
-	private JMenuItem mDeleteSubtree;
+	private JMenuItem mDeleteAssociation;
 
 /**
  * 
@@ -74,9 +74,9 @@ public class SAPopupMenu extends JPopupMenu {
 	{
 		mSA = pSA;
 		mSF = pSF;
-		mDeleteSubtree = new JMenuItem("Delete Association");
-		mDeleteSubtree.addActionListener(new ListenerAssociation(mSF, mSA));
-		add(mDeleteSubtree);
+		mDeleteAssociation = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_ASSOCIATION"));
+		mDeleteAssociation.addActionListener(new ListenerAssociation(mSF, mSA));
+		add(mDeleteAssociation);
 		
 	}
 }

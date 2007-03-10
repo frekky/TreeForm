@@ -91,13 +91,13 @@ public class SFPopupMenu extends JPopupMenu {
 	{
 		mSF = pSF;
 		mFacade = pF;
-		mDeleteFeature = new JMenuItem("Delete Feature");
+		mDeleteFeature = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("DELETE_FEATURE"));
 		mDeleteFeature.addActionListener(new ListenerDeleteFeature(mFacade, mSF));
 		add(mDeleteFeature);
-		mDeleteFeatureSet = new JMenuItem("Delete Feature Set");
+		mDeleteFeatureSet = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("DELETE_FEATURE_SET"));
 		mDeleteFeatureSet.addActionListener(new ListenerDeleteFeatureSet(mFacade, mSF));
 		add(mDeleteFeatureSet);
-		mAddFeature = new JMenuItem("Add Feature");
+		mAddFeature = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("ADD_FEATURE"));
 		mAddFeature.addActionListener(new ListenerAddFeature(mFacade, mSF));
 		add(mAddFeature);
 	}

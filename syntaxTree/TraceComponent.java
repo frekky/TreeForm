@@ -89,6 +89,8 @@ public class TraceComponent extends JComponent {
 
 	private LinkedList mLinkedArray;
 
+	private boolean mDrawTrace;
+
 
 	private static final float triangleLength = 3;
 
@@ -99,11 +101,15 @@ public class TraceComponent extends JComponent {
 	public TraceComponent(UserInternalFrame pUserInternalFrame) {
 		mUserInternalFrame = pUserInternalFrame;
 		mSyntaxFacade = mUserInternalFrame.getSyntaxFacade();
+		mDrawTrace = true;
 	}
 	public void paint(Graphics G) {
 		this.setBounds(getUserInternalFrame().getBounds());
 		super.paint(G);
+		if(mDrawTrace)
+		{
 		displayMovement(G);
+		}
 	}
 
 	private void displayMovement(Graphics G) {
@@ -935,6 +941,14 @@ public class TraceComponent extends JComponent {
 	private UserInternalFrame getUserInternalFrame()
 	{
 		return mUserInternalFrame;
+	}
+	public void setDrawTrace(boolean drawTrace)
+	{
+		mDrawTrace = drawTrace;
+	}
+	public boolean getDrawTrace()
+	{
+		return mDrawTrace;
 	}
 }
 

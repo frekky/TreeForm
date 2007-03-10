@@ -70,6 +70,10 @@ public class SSPopupMenu extends JPopupMenu {
 	 */
 	private JMenuItem mDeleteSubtree;
 
+	private JMenuItem mDeleteStartTrace;
+
+	private JMenuItem mDeleteEndTrace;
+
 	/**
 	 * 
 	 * @param pSF The SyntaxFacade for this menu
@@ -83,11 +87,23 @@ public class SSPopupMenu extends JPopupMenu {
 	{
 		mSS = pSS;
 		mSF = pSF;
-		mDeleteSubtree = new JMenuItem("Delete Subtree");
+		mDeleteSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_SUBTREE"));
 		mDeleteSubtree.addActionListener(new ListenerDelete(mSF, mSS));
 		add(mDeleteSubtree);
-		mRepositionSubtree = new JMenuItem("Reposition Subtree");
+		mRepositionSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("REPOSITION_SUBTREE"));
 		mRepositionSubtree.addActionListener(new ListenerReposition(mSF, mSS));
 		add(mRepositionSubtree);
+		if(pSS.getStartTrace().size() > 0)
+		{
+			mDeleteStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_START_TRACE"));
+			mDeleteStartTrace.addActionListener(new ListenerDeleteStartTrace(mSF,mSS));
+			add(mDeleteStartTrace);
+		}
+		if(pSS.getEndTrace().size() > 0)
+		{
+			mDeleteEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_END_TRACE"));
+			mDeleteEndTrace.addActionListener(new ListenerDeleteEndTrace(mSF,mSS));
+			add(mDeleteEndTrace);
+		}
 	}
 }

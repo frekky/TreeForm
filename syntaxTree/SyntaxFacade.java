@@ -98,7 +98,6 @@ public class SyntaxFacade {
 		setParser(new XMLParser());
 		setUIF(pUIF);
 		setFile("");
-		//setName(getUIF().getTitle());
 		mDocs = new LinkedList();
 	}
 
@@ -798,7 +797,7 @@ private void firstWalk(SyntacticStructure v,int position) {
 	//System.out.println("end firstwalk");
 }
 
-double getPad(SyntacticStructure start) {
+public double getPad(SyntacticStructure start) {
 	if (start.getPadStartRight() > 0)
 	{
 	return TraceComponent.padEdge
@@ -1474,6 +1473,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  */
 	public void repositionSyntacticStructure(SyntacticStructure pSS) {
 		if (pSS.getSyntacticParent() instanceof SyntacticStructure) {
+			getUIF().getTrace().setDrawTrace(false);
 			addUndo();
 			pSS.getSyntacticParent().getChildren().remove(pSS);
 			hideTree(pSS);
@@ -1736,16 +1736,8 @@ private void fourthWalk(SyntacticStructure v, int level)
 	}
 
 	public void addTrace(SyntacticStructure end, SyntacticStructure start) {
-		if(start.getStartTrace().size() > 0)
-		{
-			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().remove();
-			start.getStartTrace().remove();
-		}
-		if(end.getEndTrace().size() > 0)
-		{
-			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().remove();
-			end.getEndTrace().remove();
-		}
+		deleteStartTrace(start);
+		deleteEndTrace(end);
 		start.getStartTrace().add(end);
 		end.getEndTrace().add(start);
 		//System.out.println("please work");
@@ -1778,5 +1770,22 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public LinkedList getHeightPad()
 	{
 		return mHeightPad;
+	}
+
+	public void deleteStartTrace(SyntacticStructure start) {
+		if(start.getStartTrace().size() > 0)
+		{
+			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().remove();
+			start.getStartTrace().remove();
+		}
+	}
+
+	public void deleteEndTrace(SyntacticStructure end) {
+		if(end.getEndTrace().size() > 0)
+		{
+			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().remove();
+			end.getEndTrace().remove();
+		}
+		
 	}
 }
