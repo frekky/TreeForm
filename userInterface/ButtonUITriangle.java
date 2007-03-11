@@ -102,7 +102,7 @@ public class ButtonUITriangle extends ButtonUIAbstract {
 				(int) ((mDim.getWidth()) / 2)
 					+ 13,
 				(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 					
 						
@@ -113,7 +113,7 @@ public class ButtonUITriangle extends ButtonUIAbstract {
 				(int) ((mDim.getWidth()) / 2)
 					- 13,
 				(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 					
 		Rectangle drawBottom =
@@ -121,12 +121,12 @@ public class ButtonUITriangle extends ButtonUIAbstract {
 		(int) ((mDim.getWidth()) / 2)
 			+ 13,
 		(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-			+ Sizer.lineLength()
+			+ Sizer.UILineLength()
 			+ 2,
 		(int) ((mDim.getWidth()) / 2)
 				- 13,
 			(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-				+ Sizer.lineLength()
+				+ Sizer.UILineLength()
 				+ 2);
 
 		mGraphics2D.drawLine(

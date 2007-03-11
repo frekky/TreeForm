@@ -85,7 +85,7 @@ public class ButtonUITheta extends ButtonUIAbstract {
 			(float) (mDim.getHeight() - 2));
 
 		// repeat for the SPEC
-		mFont = new Font("Doulos SIL", Font.BOLD, Sizer.fontSize());
+		mFont = new Font("Doulos SIL", Font.BOLD, Sizer.UIFontSize());
 		ats = new AttributedString("<θ,θ>");
 		
 		ats.addAttribute(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON,1,2);

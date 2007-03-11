@@ -23,7 +23,6 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 
-import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
 /**
  * 
@@ -48,7 +47,7 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
 		SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
 		AttributedString lAttributedString = new AttributedString("<Agent>");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize()-2);
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSF.setSyntacticFeatureSet(lSFS);
 		lSFS.getSyntacticFeature().add(lSF);
@@ -57,7 +56,7 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 		
 		lSF = new SyntacticFeature(pInternalFrame);
 		lAttributedString = new AttributedString("<Theme>");
-		lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize()-2);
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSF.setSyntacticFeatureSet(lSFS);
 		lSFS.getSyntacticFeature().add(lSF);

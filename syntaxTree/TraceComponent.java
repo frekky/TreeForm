@@ -296,18 +296,18 @@ public class TraceComponent extends JComponent {
 			
 			contentGraphics.fillArc((int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
-							.getButtonY() + start.getTextHeight()), circle,
+							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().fontSize()), circle,
 					circle, 0, 360);
 			contentGraphics.drawLine((int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom),(int) (start
-					.getButtonY() + start.getTextHeight() + circle),(int)(start.getButtonX() 
+					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + circle),(int)(start.getButtonX() 
 							+ start.getButtonWidth()/2 + padBottom),(int) (start
-									.getButtonY() + start.getTextHeight() + lineLength*2));
+									.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + lineLength*2));
 	
 			mStartX = (int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom);
 			mStartY = (int) (start
-					.getButtonY() + start.getTextHeight() + lineLength*2);
+					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + lineLength*2);
 		}
 		else
 		{
@@ -338,7 +338,7 @@ public class TraceComponent extends JComponent {
 			mStartY = (int) start
 			.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 			+ start.getPadStartLeftCount() * padLength;
-			start.setPadStartLeftCount(start.getPadStartLeftCount() + 1);
+			
 		} else {
 			contentGraphics.fillArc((int) start.getButtonX() + padEdge
 					+ start.getButtonWidth() + start.getPadStartRightCount()
@@ -367,8 +367,16 @@ public class TraceComponent extends JComponent {
 					+ (start.getPadStartRightCount() * padWidth) + lineLength;
 			mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 			+ start.getPadStartRightCount() * padLength);
-			start.setPadStartRightCount(start.getPadStartRightCount() + 1);
+			
 		}
+		}
+		if (left)
+		{
+			start.setPadStartLeftCount(start.getPadStartLeftCount() + 1);
+		}
+		else
+		{
+			start.setPadStartRightCount(start.getPadStartRightCount() + 1);
 		}
 	}
 
@@ -503,28 +511,28 @@ public class TraceComponent extends JComponent {
 			polly.moveTo((float) (end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom),
 					(float) end
-					.getButtonY() + end.getTextHeight());
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength());
 			polly.lineTo((float) (end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom) - (triangleLength),
 					(float) end
-					.getButtonY() + end.getTextHeight() + triangleLength);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength);
 			polly.lineTo((float) (end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom) + (triangleLength),
 					(float) end
-					.getButtonY() + end.getTextHeight() + triangleLength);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength);
 			polly.closePath();
 			contentGraphics.fill(polly);
 			
 			contentGraphics.drawLine((int)(end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom),(int) (end
-					.getButtonY() + end.getTextHeight() + triangleLength),(int)(end.getButtonX() 
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength),(int)(end.getButtonX() 
 							+ end.getButtonWidth()/2 + padBottom),(int) (end
-									.getButtonY() + end.getTextHeight() + lineLength*2));
+									.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + lineLength*2));
 			//testWidthEnd(end, left,false);
 			mEndX = (int)(end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom);
 			mEndY = (int) (end
-					.getButtonY() + end.getTextHeight()+ lineLength*2);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength()+ lineLength*2);
 			
 		}
 		else
@@ -633,7 +641,7 @@ public class TraceComponent extends JComponent {
 			}
 		}
 		int pad = ((Integer) getSyntaxFacade().getHeightPad().get(start.getLevel())).intValue();
-		pad = (int) (start.getButtonY() + start.getTextHeight() + (start.getPadBottom() * 3) - (start.getPadBottomCount() * 3));
+		pad = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + (start.getPadBottom() * 3) - (start.getPadBottomCount() * 3));
 		start.setPadBottomCount(start.getPadBottomCount()+1);
 		return pad;
 	}
@@ -950,5 +958,6 @@ public class TraceComponent extends JComponent {
 	{
 		return mDrawTrace;
 	}
+	
 }
 

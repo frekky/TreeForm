@@ -23,7 +23,6 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 
-import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
 /**
  * 
@@ -48,7 +47,7 @@ public class CaseBuilder extends AbstractFeatureBuilder {
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
 		SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
 		AttributedString lAttributedString = new AttributedString("[NOM]");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize()-2);
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSF.setSyntacticFeatureSet(lSFS);
 		lSFS.getSyntacticFeature().add(lSF);

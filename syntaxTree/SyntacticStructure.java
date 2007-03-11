@@ -21,6 +21,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.GeneralPath;
 import java.text.AttributedString;
 import java.util.LinkedList;
 import java.util.Map;
@@ -197,17 +198,20 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 					//lGraphics2D.drawLine(x1, y1, x2, y2);
 					if (w.getSyntacticLevel() == SyntacticLevel.TRIANGLE)
 					{
-						lGraphics2D.drawLine(halfway, 1, relativeWidth, Sizer.lineLength()+1);
-						lGraphics2D.drawLine(halfway, 1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
-						lGraphics2D.drawLine(relativeWidth, Sizer.lineLength()+1, relativeWidth + w.getButtonWidth(), Sizer.lineLength()+1);
-					}
+						GeneralPath polly = new GeneralPath();
+						polly.moveTo(halfway, 1);
+						polly.lineTo(relativeWidth, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
+						polly.lineTo(relativeWidth + w.getButtonWidth(), (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
+						polly.closePath();
+						lGraphics2D.draw(polly);
+						}
 					else
 					{
 					lGraphics2D.drawLine(
 						(int) (halfway),
 						(int) (1),
 						(int) (relativeWidth + w.getButtonWidth()/2),
-						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+Sizer.lineLength())
+						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength())
 						);
 					}
 					//System.out.println("width = " + halfway + " : relativeWidth = " + relativeWidth);
@@ -471,7 +475,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	{
 		super.testXY();
 
-		int lHeight = Sizer.lineLength();
+		int lHeight = getUserInternalFrame().getProperties().lineLength();
 		lHeight = (int) (lHeight + getTextHeight()+2);
 		int lWidth = getTextWidth();
 		for(int i = 0; i < this.getSyntacticAssociation().size(); i++)

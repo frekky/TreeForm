@@ -25,7 +25,6 @@ import java.text.AttributedString;
 
 import enumerators.SyntacticLevel;
 
-import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
 
 /**
@@ -52,7 +51,7 @@ public class HeadBuilder extends AbstractStructureBuilder {
 	public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
 		AttributedString lAttributedString = new AttributedString("X");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureTop.setHead(lAttributedString);
 		lSyntacticStructureTop.setSyntacticLevel(SyntacticLevel.HEAD);

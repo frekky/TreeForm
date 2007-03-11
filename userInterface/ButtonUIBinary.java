@@ -99,7 +99,7 @@ public class ButtonUIBinary extends ButtonUIAbstract {
 				(int) ((mDim.getWidth()) / 2)
 					+ 13,
 				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 					
 						
@@ -110,7 +110,7 @@ public class ButtonUIBinary extends ButtonUIAbstract {
 				(int) ((mDim.getWidth()) / 2)
 					- 13,
 				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 
 		mGraphics2D.drawLine(

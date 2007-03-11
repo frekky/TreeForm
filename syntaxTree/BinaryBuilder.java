@@ -23,7 +23,6 @@ import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.text.AttributedString;
 
-import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
 import enumerators.SyntacticLevel;
 
@@ -53,7 +52,7 @@ public class BinaryBuilder extends AbstractStructureBuilder {
 	public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
 		AttributedString lAttributedString = new AttributedString("XP");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureTop.setHead(lAttributedString);
 		lSyntacticStructureTop.setSyntacticLevel(SyntacticLevel.DOUBLE_BAR);
@@ -62,7 +61,7 @@ public class BinaryBuilder extends AbstractStructureBuilder {
 		
 		SyntacticStructure lSyntacticStructureLeft = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
 		lAttributedString = new AttributedString("∅");
-		lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());		
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());		
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureLeft.setHead(lAttributedString);
 		lSyntacticStructureLeft.setSyntacticLevel(SyntacticLevel.NULL);
@@ -71,7 +70,7 @@ public class BinaryBuilder extends AbstractStructureBuilder {
 		
 		SyntacticStructure lSyntacticStructureRight = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
 		lAttributedString = new AttributedString("X");
-		lFont = new Font("Doulos SIL", Font.PLAIN, Sizer.fontSize());
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSyntacticStructureRight.setHead(lAttributedString);
 		lSyntacticStructureRight.setSyntacticLevel(SyntacticLevel.HEAD);

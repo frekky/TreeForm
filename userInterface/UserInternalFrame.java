@@ -23,6 +23,7 @@ import java.util.Map;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
+import syntaxTree.Properties;
 import syntaxTree.SyntacticStructure;
 import syntaxTree.SyntaxFacade;
 import syntaxTree.TraceComponent;
@@ -84,6 +85,8 @@ public class UserInternalFrame extends JInternalFrame {
 	private float mScale;
 
 	private TraceComponent mTrace;
+	
+	private Properties mProperties;
 
 	/**
 	 * 
@@ -102,6 +105,7 @@ public class UserInternalFrame extends JInternalFrame {
 				true, // maximizable
 				true);// iconifiable
 		mUserFrame = pUserFrame;
+		mProperties = new Properties();
 		mSyntaxFacade = new SyntaxFacade(this);
 		mSaveFileType = SaveFileType.XML;
 		// ...Create the GUI and put it in the window...
@@ -329,5 +333,9 @@ public class UserInternalFrame extends JInternalFrame {
 	public TraceComponent getTrace()
 	{
 		return mTrace;
+	}
+	public Properties getProperties()
+	{
+		return mProperties;
 	}
 }

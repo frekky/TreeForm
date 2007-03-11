@@ -57,26 +57,7 @@ public final class Sizer {
 		Dimension lReturnDim = new Dimension((int)(lDim.width * scaleWidth()), (int)(lDim.height * scaleHeight()));
 		return lReturnDim;
 	}
-/**
- * 
- * @return base font size.
- */
-	public static int fontSize()
-	{
-		return 10;
-	}
-/**
- * 
- * @return base line length
- */
-	public static int lineLength()
-	{
-		return 10;
-	}
-/**
- * 
- * @return the scaled width based on screen resolution
- */
+
 	public static float scaleWidth()
 	{
 		return scale();
@@ -116,5 +97,12 @@ public final class Sizer {
 			return true;
 		}
 	}
-	
+	public static int UILineLength()
+	{
+		return 10;
+	}
+	public static int UIFontSize()
+	{
+		return 10;
+	}
 }

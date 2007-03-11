@@ -98,7 +98,7 @@ public class ButtonUIMorph extends ButtonUIAbstract {
 				(int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
 				(int) ((mDim.getWidth()) / 2),
 				(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 
 		mGraphics2D.drawLine(

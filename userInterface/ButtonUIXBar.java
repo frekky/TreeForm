@@ -72,7 +72,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 
 	this.prepaint(pG,pC);
 			
-		mGraphics2D.translate(-Sizer.lineLength(),0);
+		mGraphics2D.translate(-Sizer.UILineLength(),0);
 		// set the string (internationalize later!)		
 		AttributedString ats = new AttributedString("X-Bar");
 		ats.addAttribute(TextAttribute.FONT, mFont);
@@ -105,7 +105,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 				(int) ((mDim.getWidth()) / 2)
 					+ 13,
 				(int) (tl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 		Rectangle drawLeft =
 			new Rectangle(
@@ -114,7 +114,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 				(int) ((mDim.getWidth()) / 2)
 					- 13,
 				(int) (tl.getBounds().getHeight() * 1.5)
-					+ Sizer.lineLength()
+					+ Sizer.UILineLength()
 					+ 2);
 
 		mGraphics2D.drawLine(
@@ -154,14 +154,14 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 				(int) (drawRight.height + (tl.getBounds().getHeight() * 1.5)),
 				(int) (drawRight.width) + 13,
 				(int) (drawRight.height + (tl.getBounds().getHeight() * 1.5))
-					+ Sizer.lineLength());
+					+ Sizer.UILineLength());
 		Rectangle drawLeftBar =
 			new Rectangle(
 				(int) (drawRight.width),
 				(int) (drawRight.height + (tl.getBounds().getHeight() * 1.5)),
 				(int) (drawRight.width) - 13,
 				(int) (drawRight.height + (tl.getBounds().getHeight() * 1.5))
-					+ Sizer.lineLength());
+					+ Sizer.UILineLength());
 
 		mGraphics2D.drawLine(
 			drawRightBar.width,
@@ -198,7 +198,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 		
 
 		// surround in a gray rectangle.
-		mGraphics2D.translate(Sizer.lineLength(),0);
+		mGraphics2D.translate(Sizer.UILineLength(),0);
 		this.postpaint();
 	}
 }

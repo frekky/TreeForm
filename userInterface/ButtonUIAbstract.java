@@ -122,7 +122,7 @@ public class ButtonUIAbstract extends BasicButtonUI {
 		mGraphics2D = (Graphics2D) mGraphics;
 		mDim = Sizer.buttonSize();
 		mGraphics2D.scale(Sizer.scaleWidth(), Sizer.scaleHeight());	
-		mFont = new Font("Doulos SIL", Font.BOLD, Sizer.fontSize());
+		mFont = new Font("Doulos SIL", Font.BOLD, Sizer.UIFontSize());
 		mGraphics2D.setColor(Color.BLACK);
 		mGraphics2D.setRenderingHint(
 			RenderingHints.KEY_ANTIALIASING,
