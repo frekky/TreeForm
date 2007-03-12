@@ -19,10 +19,11 @@ public class TraceComponent extends JComponent {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	static final int padWidth = 6;
+	static final int padWidth = 7;
 	private static final int circle = 4;
 	static final int lineLength = 4;
 	static final int padEdge = 6;
+	static final int padLength = 6;
 	private static final float triangleLength = 3;
 	private UserInternalFrame mUserInternalFrame;
 	private SyntaxFacade mSyntaxFacade;
@@ -31,6 +32,13 @@ public class TraceComponent extends JComponent {
 	private int mStartY;
 	private int mEndY;
 	private int mEndX;
+	private int midStartY;
+	private int midEndY;
+	private int midStartX;
+	private int midEndX;
+	private static final int POSITION_BOTTOM = 0;
+	private static final int POSITION_LEFT = 1;
+	private static final int POSITION_RIGHT = 2;
 
 	public TraceComponent(UserInternalFrame pUserInternalFrame) {
 		mUserInternalFrame = pUserInternalFrame;
@@ -68,11 +76,7 @@ public class TraceComponent extends JComponent {
 	}
 
 	private void resetCounters(SyntacticStructure start) {
-		start.setPadBottomCount(0);
-		start.setPadLeftCount(0);
-		start.setPadRightCount(0);
-		start.setPadStartLeftCount(0);
-		start.setPadStartRightCount(0);
+		start.setTraceCount(0);
 		for (int i = 0; i < start.getChildren().size(); i++) {
 			SyntacticStructure w = (SyntacticStructure) start.getChildren()
 					.get(i);
@@ -98,24 +102,118 @@ public class TraceComponent extends JComponent {
 	private void drawMovement(SyntacticStructure start,
 			SyntacticStructure end, Graphics2D contentGraphics) {
 		
-		drawStart(start, contentGraphics);
-		drawEnd(end, contentGraphics);
-		drawQuadCurve(start, contentGraphics);
+		calculateMovement(start,end,contentGraphics);
+		drawCubicCurve(start, end, contentGraphics);
 	}
 	
-	private void drawQuadCurve(SyntacticStructure start, Graphics2D contentGraphics) {
-		CubicCurve2D bezier = new CubicCurve2D.Float(mStartX,mStartY,mStartX,mStartY,mEndX,mEndY,mEndX,mEndY);
+	private void drawCubicCurve(SyntacticStructure start,SyntacticStructure end, Graphics2D contentGraphics) {
 		
+		
+		CubicCurve2D bezier = new CubicCurve2D.Float(mStartX,mStartY
+				,midStartX,(float) midStartY,
+				midEndX,(float) midEndY,mEndX,mEndY);
 		contentGraphics.draw(bezier);
 		
 	}
-	private void drawStart(SyntacticStructure start,
-			Graphics2D contentGraphics) {
+	
+	private void calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)
+	{
 		
+		SyntacticStructure tempTop = null;
+		SyntacticStructure tempBottom = null;
+		if(start.getChildren().size() == 0 && end.getChildren().size() == 0)
+		{
+			drawStart(start,contentGraphics,POSITION_BOTTOM);
+			drawEnd(end,contentGraphics,POSITION_BOTTOM);
+			midStartX = mStartX;
+			midEndX = mEndX;
+			if (mEndY > mStartY)
+			{
+				midStartY = mEndY + 20;
+				midEndY = mEndY + 20;
+			}
+			else
+			{
+				midStartY = mStartY + 20;
+				midEndY = mStartY + 20;
+			}
+			return;
+		}
+		if(start.getLevel() > end.getLevel())
+		{
+			tempTop = end;
+			tempBottom = start;
+		}
+		else
+		{
+			tempTop = start;
+			tempBottom = end;
+		}
+		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
+		{
+			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempTop.getLevel()+ 1, true);
+		}
+		if (tempTop.equals(tempBottom))
+		{
+			drawStart(start,contentGraphics,POSITION_LEFT);
+			drawEnd(end,contentGraphics,POSITION_LEFT);
+				midStartX = mStartX;
+				midEndX = mEndX;
+
+			if (mEndY < mStartY)
+			{
+				midStartY = mEndY;
+				midEndY = mEndY;
+			}
+			else
+			{
+				midStartY = mStartY;
+				midEndY = mStartY;
+			}
+			return;
+		}
+		if(start.getLevel() > end.getLevel())
+		{
+			tempTop = end;
+			tempBottom = start;
+		}
+		else
+		{
+			tempTop = start;
+			tempBottom = end;
+		}
+		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
+		{
+			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempTop.getLevel()+ 1, false);
+		}
+		if (tempTop.equals(tempBottom))
+		{
+			drawStart(start,contentGraphics,POSITION_RIGHT);
+			drawEnd(end,contentGraphics,POSITION_RIGHT);
+			
+				midStartX = mStartX;
+				midEndX = mEndX;
+			if (mEndY < mStartY)
+			{
+				midStartY = mEndY;
+				midEndY = mEndY;
+			}
+			else
+			{
+				midStartY = mStartY;
+				midEndY = mStartY;
+			}
+			return;
+		}
+	}
+	
+	private void drawStart(SyntacticStructure start,
+			Graphics2D contentGraphics, int position) {
+		
+		if (position == POSITION_BOTTOM)
+		{
 			float padBottom = 0;
-			
-			padBottom = - (start.getPadStartLeft() * padWidth) + start.getPadStartLeftCount() * padWidth;
-			
+			padBottom = - (start.getTraceNumber() * padWidth)/2 + start.getTraceCount() * padWidth;
 			contentGraphics.fillArc((int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
 							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().fontSize()), circle,
@@ -125,88 +223,51 @@ public class TraceComponent extends JComponent {
 					+ start.getButtonWidth()/2 + padBottom);
 			mStartY = (int) (start
 					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + circle);
-		
-//		else
-//		{
-//		if (left) {
-//			contentGraphics.fillArc((int) start.getButtonX() - padEdge  
-//					- start.getPadStartLeftCount() * padWidth, (int) start
-//					.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
-//					+ start.getPadStartLeftCount() * padLength, circle,
-//					circle, 0, 360);
-//
-//			contentGraphics
-//					.drawLine(
-//							(int) start.getButtonX() - padEdge
-//									- start.getPadStartLeftCount()
-//									* padWidth,
-//									(int) start
-//									.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-//									+ start.getPadStartLeftCount() * padLength,
-//							(int) start.getButtonX()
-//									- padEdge - (start.getPadStartLeftCount() * padWidth)
-//									- lineLength,
-//									(int) start
-//									.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-//									+ start.getPadStartLeftCount() * padLength);
-//			//testWidthStart(start, left,false);
-//			mStartX = (int) start.getButtonX() - padEdge
-//					- (start.getPadStartLeftCount() * padWidth) - lineLength;
-//			mStartY = (int) start
-//			.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-//			+ start.getPadStartLeftCount() * padLength;
-//			
-//		} else {
-//			contentGraphics.fillArc((int) start.getButtonX() + padEdge
-//					+ start.getButtonWidth() + start.getPadStartRightCount()
-//					* padWidth - lineLength,
-//					(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
-//					+ start.getPadStartRightCount() * padLength,
-//					circle,
-//					circle, 0, 360);
-//
-//			contentGraphics
-//					.drawLine(
-//							(int) start.getButtonX() + padEdge
-//									+ start.getButtonWidth()
-//									+ (start.getPadStartRightCount() * padWidth)
-//									,
-//									(int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-//									+ start.getPadStartRightCount() * padLength,
-//							(int) start.getButtonX() + padEdge
-//									+ start.getButtonWidth()
-//									+ (start.getPadStartRightCount() * padWidth)
-//									+ lineLength, (int) start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-//									+ start.getPadStartRightCount() * padLength);
-//			//testWidthStart(start, left,false);
-//			mStartX = (int) start.getButtonX() + padEdge
-//					+ start.getButtonWidth()
-//					+ (start.getPadStartRightCount() * padWidth) + lineLength;
-//			mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-//			+ start.getPadStartRightCount() * padLength);
-//			
-//		}
-//		}
-//		if (left)
-//		{
-//			start.setPadStartLeftCount(start.getPadStartLeftCount() + 1);
-//		}
-//		else
-//		{
-//			start.setPadStartRightCount(start.getPadStartRightCount() + 1);
-//		}
+		}
+		else if (position == POSITION_LEFT) {
+			contentGraphics.fillArc((int) start.getButtonX() - padEdge  
+					- start.getTraceCount() * padWidth, (int) start
+					.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
+					+ start.getTraceCount() * padLength, circle,
+					circle, 0, 360);
+
+			mStartX = (int) start.getButtonX() - padEdge
+					- (start.getTraceCount() * padWidth);
+			mStartY = (int) start
+			.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+			+ start.getTraceCount() * padLength;
+			
+		} 
+		else
+		{
+			contentGraphics.fillArc((int) start.getButtonX() + padEdge
+					+ start.getButtonWidth() + start.getTraceCount()
+					* padWidth - lineLength,
+					(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
+					+ start.getTraceCount() * padLength,
+					circle,
+					circle, 0, 360);
+
+			mStartX = (int) start.getButtonX() + padEdge
+					+ start.getButtonWidth()
+					+ (start.getTraceCount() * padWidth);
+			mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+			+ start.getTraceCount() * padLength);
+			
+		}
+			start.setTraceCount(start.getTraceCount() + 1);
 	}
 
 
 
 
 	private void drawEnd(SyntacticStructure end,
-			Graphics2D contentGraphics) {
-		
+			Graphics2D contentGraphics, int position) {
+	
+		if (position == POSITION_BOTTOM)
+		{
 			float padBottom = 0;
-			
-				padBottom = - (end.getPadStartLeft() * padWidth) + end.getPadStartLeftCount() * padWidth;
-			
+			padBottom = - (end.getTraceNumber() * padWidth)/2 + end.getTraceCount() * padWidth;
 			GeneralPath polly = new GeneralPath();
 			// move the pollygon to the middle and bottom
 			polly.moveTo((float) (end.getButtonX() 
@@ -228,102 +289,69 @@ public class TraceComponent extends JComponent {
 					+ end.getButtonWidth()/2 + padBottom);
 			mEndY = (int) (end
 					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength);
+		}
+		else if (position == POSITION_LEFT) {
 			
-//		else
-//		{
-//		if (left) {
-//			
-//			GeneralPath polly = new GeneralPath();
-//			polly.moveTo((float) end.getButtonX() - padEdge
-//					- end.getPadStartLeftCount() * padWidth + triangleLength,
-//					(float) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartLeftCount() * padLength
-//							+ 0.25f);
-//			polly.lineTo((float) end.getButtonX() - padEdge
-//					- end.getPadStartLeftCount() * padWidth,
-//					(float) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartLeftCount() * padLength
-//							+ 3.25f);
-//			polly.lineTo((float) end.getButtonX() - padEdge
-//					- end.getPadStartLeftCount() * padWidth,
-//					(float) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartLeftCount() * padLength
-//							- 2.75f);
-//			polly.closePath();
-//			contentGraphics.fill(polly);
-//			
-//			contentGraphics.drawLine((int) end.getButtonX() - padEdge
-//					- (end.getPadStartLeftCount() * padWidth) - lineLength , (int) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartLeftCount() * padLength, (int) end
-//					.getButtonX() - padEdge
-//					- (end.getPadStartLeftCount() * padWidth),
-//					 (int) end
-//						.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//						+ end.getPadStartLeftCount() * padLength);
-//			//testWidthEnd(end, left,false);
-//			mEndX = (int) end.getButtonX() - padEdge
-//					- (end.getPadStartLeftCount() * padWidth) - lineLength;
-//			mEndY = (int) end
-//			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//			+ end.getPadStartLeftCount() * padLength;
-//		} else {
-//			
-//			GeneralPath polly = new GeneralPath();
-//			polly.moveTo((float) end.getButtonX() + padEdge
-//					+ end.getButtonWidth()
-//					+ (end.getPadStartRightCount() * padWidth) - triangleLength,
-//					(float) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartRightCount() * padLength
-//							+ 0.25f);
-//			polly.lineTo((float) end.getButtonX() + padEdge
-//					+ end.getButtonWidth()
-//					+ (end.getPadStartRightCount() * padWidth),
-//					(float) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartRightCount() * padLength
-//							+ 3.25f);
-//			polly.lineTo((float) end.getButtonX() + padEdge
-//					+ end.getButtonWidth()
-//					+ (end.getPadStartRightCount() * padWidth),
-//					(float) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartRightCount() * padLength
-//							- 2.75f);
-//			polly.closePath();
-//			contentGraphics.fill(polly);
-//			
-//			contentGraphics.drawLine((int) end.getButtonX() + padEdge
-//					+ end.getButtonWidth()
-//					+ (end.getPadStartRightCount() * padWidth) ,
-//					(int) end
-//					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//					+ end.getPadStartRightCount() * padLength, (int) end.getButtonX() + padEdge
-//							+ end.getButtonWidth()
-//							+ (end.getPadStartRightCount() * padWidth) + lineLength,
-//							(int) end
-//							.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//							+ end.getPadStartRightCount() * padLength);
-//			//testWidthEnd(end, left, false);
-//			mEndX = (int) end.getButtonX() + padEdge + end.getButtonWidth()
-//					+ (end.getPadStartRightCount() * padWidth) + lineLength;
-//			mEndY = (int) end
-//			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-//			+ end.getPadStartRightCount() * padLength;
-//		}
-//		}
-//		if (left)
-//		{
-//			end.setPadStartLeftCount(end.getPadStartLeftCount() + 1);
-//		}
-//		else
-//		{
-//			end.setPadStartRightCount(end.getPadStartRightCount() + 1);
-//		}
+			GeneralPath polly = new GeneralPath();
+			polly.moveTo((float) end.getButtonX() - padEdge
+					- end.getTraceCount() * padWidth + triangleLength,
+					(float) end
+					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+					+ end.getTraceCount() * padLength
+							+ 0.25f);
+			polly.lineTo((float) end.getButtonX() - padEdge
+					- end.getTraceCount() * padWidth,
+					(float) end
+					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+					+ end.getTraceCount() * padLength
+							+ 3.25f);
+			polly.lineTo((float) end.getButtonX() - padEdge
+					- end.getTraceCount() * padWidth,
+					(float) end
+					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+					+ end.getTraceCount() * padLength
+							- 2.75f);
+			polly.closePath();
+			contentGraphics.fill(polly);
+			mEndX = (int) end.getButtonX() - padEdge
+					- (end.getTraceCount() * padWidth);
+			mEndY = (int) end
+			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+			+ end.getTraceCount() * padLength;
+		} else {
+			
+			GeneralPath polly = new GeneralPath();
+			polly.moveTo((float) end.getButtonX() + padEdge
+					+ end.getButtonWidth()
+					+ (end.getTraceCount() * padWidth) - triangleLength,
+					(float) end
+					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+					+ end.getTraceCount() * padLength
+							+ 0.25f);
+			polly.lineTo((float) end.getButtonX() + padEdge
+					+ end.getButtonWidth()
+					+ (end.getTraceCount() * padWidth),
+					(float) end
+					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+					+ end.getTraceCount() * padLength
+							+ 3.25f);
+			polly.lineTo((float) end.getButtonX() + padEdge
+					+ end.getButtonWidth()
+					+ (end.getTraceCount() * padWidth),
+					(float) end
+					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+					+ end.getTraceCount() * padLength
+							- 2.75f);
+			polly.closePath();
+			contentGraphics.fill(polly);
+			
+			mEndX = (int) end.getButtonX() + padEdge + end.getButtonWidth()
+					+ (end.getTraceCount() * padWidth);
+			mEndY = (int) end
+			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
+			+ end.getTraceCount() * padLength;
+		}
+		end.setTraceCount(end.getTraceCount()+1);
 	}
 
 	private SyntaxFacade getSyntaxFacade()

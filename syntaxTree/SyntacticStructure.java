@@ -130,25 +130,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 
 	private int mAbsoluteOrder;
 
-	private int mPadStartLeft;
+	private int mTraceCount;
 
-	private int mPadLeft;
-
-	private int mPadStartRight;
-
-	private int mPadRight;
-
-	private int mPadStartLeftCount;
-
-	private int mPadStartRightCount;
-
-	private int mPadRightCount;
-
-	private int mPadLeftCount;
-
-	private int mPadBottomCount;
-
-	private boolean mPad;
 	
 /**
  * 
@@ -620,110 +603,18 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	}
 
 
-	public int getPadStartLeft() {
+	public int getTraceCount() {
 		// TODO Auto-generated method stub
-		return mPadStartLeft;
+		return mTraceCount;
 	}
-
-
-	public void setPadStartLeft(int i) {
-		mPadStartLeft = i;
-		
-	}
-
-
-	public int getPadLeft() {
-		// TODO Auto-generated method stub
-		return mPadLeft;
-	}
-
-
-	public void setPadLeft(int i) {
-		mPadLeft = i;
-		
-	}
-
-
-	public int getPadStartRight() {
-		return mPadStartRight;
-	}
-
-
-	public void setPadStartRight(int i) {
-		mPadStartRight = i;
-		
-	}
-
-
-	public int getPadRight() {
-		return mPadRight;
-	}
-
-
-	public void setPadRight(int i) {
-		mPadRight = i;
-		
-	}
-
-
-	public int getPadStartLeftCount() {
-		// TODO Auto-generated method stub
-		return mPadStartLeftCount;
-	}
-
-
-	public void setPadStartLeftCount(int i) {
-		mPadStartLeftCount = i;
-		
-	}
-
-
-	public void setPadStartRightCount(int i) {
-		mPadStartRightCount = i;
-		
-	}
-
-
-	public void setPadRightCount(int i) {
-		mPadRightCount = i;
-		
-	}
-
-
-	public void setPadLeftCount(int i) {
-		mPadLeftCount = i;
-		
-	}
-
-
-	public void setPadBottomCount(int i) {
-		mPadBottomCount = i;
-		
-	}
-
-	public int getPadStartRightCount() {
-		// TODO Auto-generated method stub
-		return mPadStartRightCount;
-	}
-	
-	public int getPadRightCount() {
-		return mPadRightCount;
-	}
-	
-	public int getPadLeftCount() {
-		return mPadLeftCount;
-	}
-	
-	public int getPadBottomCount() {
-		return mPadBottomCount;
-	}
-
-	public void setPad(boolean b) {
-		mPad = b;
-	}
-	
-	public boolean getPad()
+	public void setTraceCount(int traceCount)
 	{
-		return mPad;
+		mTraceCount = traceCount;
+	}
+
+
+	public int getTraceNumber() {
+		// TODO Auto-generated method stub
+		return getStartTrace().size() + getEndTrace().size();
 	}
 }

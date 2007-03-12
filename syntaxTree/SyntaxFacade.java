@@ -710,11 +710,6 @@ private void initializeTree(SyntacticStructure v,int number,int level) {
 	v.setButtonX(0);
 	v.setShift(0);
 	v.setPadBottom(0);
-	v.setPadLeft(0);
-	v.setPadRight(0);
-	v.setPadStartLeft(0);
-	v.setPadStartRight(0);
-	v.setPad(false);
 	v.setNumber(number);
 	v.setLevel(level);
 	v.setPreorder(mPreorder);
@@ -745,13 +740,7 @@ private void firstWalk(SyntacticStructure v,int position) {
 		{
 			SyntacticStructure w = ((SyntacticStructure) (v.getSyntacticParent().getChildren().get(position-1)));
 			v.setPrelim(w.getPrelim() + w.getButtonWidth());
-			if (!v.getSyntacticParent().getChildren().getLast().equals(v))
-			{
-				v.setPrelim(v.getPrelim() + getPad(w));
-				v.setPad(true);
-			}
-			//System.out.println("v = " + printText(v));
-			//System.out.println("v prelim = " + v.getPrelim());
+			
 		}
 	}
 	else
@@ -776,11 +765,6 @@ private void firstWalk(SyntacticStructure v,int position) {
 			SyntacticStructure w = ((SyntacticStructure) 
 					v.getSyntacticParent().getChildren().get(position-1));
 			v.setPrelim(w.getPrelim() + w.getButtonWidth());
-			if (!v.getSyntacticParent().getChildren().getLast().equals(v))
-			{
-				v.setPrelim(v.getPrelim() + getPad(w));
-				v.setPad(true);
-			}
 			v.setMod(v.getPrelim() - midpoint);
 			//System.out.println("v = " + printText(v));
 			//System.out.println("v prelim = " + v.getPrelim());
@@ -797,17 +781,6 @@ private void firstWalk(SyntacticStructure v,int position) {
 	//System.out.println("end firstwalk");
 }
 
-public double getPad(SyntacticStructure start) {
-	if (start.getPadStartRight() > 0)
-	{
-	return TraceComponent.padEdge
-	+ (start.getPadStartRight() * TraceComponent.padWidth * 2);
-	}
-	else
-	{
-		return 0;
-	}
-}
 
 private void apportion(SyntacticStructure v, int p) 
 {
@@ -845,14 +818,8 @@ private void apportion(SyntacticStructure v, int p)
 			//System.out.println("VOP ancestor = "+printText(v));
 			mShift = (VIN.getPrelim() + SIN) - (VIP.getPrelim() + SIP) 
 			+ VIN.getButtonWidth();
-			mShift = mShift + getPad(VIN);
-			//System.out.println("VIN prelim = " + VIN.getPrelim() + " SIN = " + SIN);
-			//System.out.println("VIP prelim = " + VIP.getPrelim() + " SIP = " + SIP);
-			//System.out.println("VIN buttonWidth = " + VIN.getButtonWidth());
-			//System.out.println("shift = " + mShift);
 			if (mShift > 0)
 			{
-				VIN.setPad(true);
 				moveSubtree(ancestor(VIN,v),v);
 				SIP = SIP + mShift;
 				SOP = SOP + mShift;
