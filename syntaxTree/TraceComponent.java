@@ -127,6 +127,10 @@ public class TraceComponent extends JComponent {
 		start.setControlStartY(midStartY);
 		start.setControlEndY(midEndY);
 		}
+		start.setStartX(mStartX);
+		start.setEndX(mEndX);
+		start.setStartY(mStartY);
+		start.setEndY(mEndY);
 	}
 	
 	private boolean calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)

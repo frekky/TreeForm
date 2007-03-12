@@ -279,16 +279,25 @@ public class UserInternalFrame extends JInternalFrame {
 		this.setGlassPane(lUGP);
 		this.getGlassPane().setVisible(true);
 	}
+	public void activateBezierPane(SyntacticStructure pSS)
+	{
+		UserBezierPane lUBP = new UserBezierPane(mUserFrame,pSS);
+		ListenerBezierPane listenerBezierPane = new ListenerBezierPane(mUserFrame);
+		lUBP.addMouseListener(listenerBezierPane);
+		lUBP.addMouseMotionListener(listenerBezierPane);
+		this.setGlassPane(lUBP);
+		this.getGlassPane().setVisible(true);
+	}
 
-	/**
-	 * turns off the glass pane - needed to continue editing trees.
-	 * 
-	 */
 	public void deactivateGlassPane() {
 		this.setGlassPane(new JLabel());
 		this.getGlassPane().setVisible(false);
 	}
 
+	public void deactivateBezierPane(){
+		this.setGlassPane(new JLabel());
+		this.getGlassPane().setVisible(false);
+	}
 	/**
 	 * 
 	 * @return Returns the User Frame

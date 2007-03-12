@@ -5,13 +5,17 @@ import java.awt.event.ActionListener;
 
 public class ListenerCustomizeEndTrace implements ActionListener {
 
-	public ListenerCustomizeEndTrace(SyntaxFacade msf, SyntacticStructure mss) {
-		// TODO Auto-generated constructor stub
+
+	private SyntaxFacade mSF;
+	private SyntacticStructure mSS;
+
+	public ListenerCustomizeEndTrace(SyntaxFacade pSF, SyntacticStructure pSS) {
+		mSF = pSF;
+		mSS = pSS;
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent arg0) {
+		mSF.getUIF().activateBezierPane((SyntacticStructure) mSS.getStartTrace().get(0));
 
 	}
-
 }
