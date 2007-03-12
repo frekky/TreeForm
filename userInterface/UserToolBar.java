@@ -491,7 +491,7 @@ public class UserToolBar extends JToolBar {
 				(ImageIcon) mUserFrame.getI18n().getObject("STRIKETHROUGH_ICON_SMALL_HIGHLIGHT"),
 				mIconSize, mUserFrame.getObservableFontStrikethrough(), mUserFrame.getObservableNew());
 				mStrikethrough.addActionListener(new ListenerStrikethrough(mUserFrame));
-				mStrikethrough.setToolTipText((String) mUserFrame.getI18n().getObject("UNDERLINE_TOOLTIP"));
+				mStrikethrough.setToolTipText((String) mUserFrame.getI18n().getObject("STRIKETHROUGH_TOOLTIP"));
 				mUserFrame.getObservableFontStrikethrough().addObserver(mStrikethrough);
 				mUserFrame.getObservableNew().addObserver(mStrikethrough);
 				mStrikethrough.setFocusable(false);
