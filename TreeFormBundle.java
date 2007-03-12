@@ -444,6 +444,8 @@ public class TreeFormBundle extends ListResourceBundle {
 				{ "REPOSITION_SUBTREE", new String("Reposition Subtree")},
 				{ "DELETE_START_TRACE", new String("Delete Start Trace")},
 				{ "DELETE_END_TRACE", new String("Delete End Trace")},
+				{ "CUSTOMIZE_START_TRACE", new String("Customize Start Trace")},
+				{ "CUSTOMIZE_END_TRACE", new String("Customize End Trace")},
 				{ "DELETE_FEATURE", new String("Delete Feature")},
 				{ "DELETE_FEATURE_SET", new String("Delete Feature Set")},
 				{ "ADD_FEATURE", new String("Add Feature")},

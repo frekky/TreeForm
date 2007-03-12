@@ -124,7 +124,7 @@ public class TreeFormBundle_fr_CA extends ListResourceBundle {
 						new ImageIcon("image/underline24.gif") },
 				{ "UNDERLINE_TOOLTIP", new String("Underline") },
 				{ "UNDERLINE_LABEL", new String("Underline") },
-
+				
 				{ "STRIKETHROUGH_ICON_SMALL",
 					new ImageIcon("image/strikethrough16.gif") },
 				{ "STRIKETHROUGH_ICON_SMALL_GREY",
@@ -139,7 +139,7 @@ public class TreeFormBundle_fr_CA extends ListResourceBundle {
 						new ImageIcon("image/strikethrough24.gif") },
 				{ "STRIKETHROUGH_TOOLTIP", new String("Strikethrough") },
 				{ "STRIKETHROUGH_LABEL", new String("Strikethrough") },
-				
+
 				{ "BOLD_ICON_SMALL", new ImageIcon("image/bold16.gif") },
 				{ "BOLD_ICON_SMALL_GREY", new ImageIcon("image/bold16.gif") },
 				{ "BOLD_ICON_SMALL_HIGHLIGHT",
@@ -302,17 +302,17 @@ public class TreeFormBundle_fr_CA extends ListResourceBundle {
 				{ "PASTE_TOOLTIP", new String("Paste Text") },
 				{ "PASTE_LABEL", new String("Paste") },
 
-				{ "COPY_TREE_ICON_SMALL", new ImageIcon("image/delete_x16.gif") },
+				{ "COPY_TREE_ICON_SMALL", new ImageIcon("image/copy_tree16.gif") },
 				{ "COPY_TREE_ICON_SMALL_GREY",
-						new ImageIcon("image/delete_x16_d.gif") },
+						new ImageIcon("image/copy_tree16_d.gif") },
 				{ "COPY_TREE_ICON_SMALL_HIGHLIGHT",
-						new ImageIcon("image/delete_x16_h.gif") },
-				{ "COPY_TREE_ICON_LARGE", new ImageIcon("image/delete_x24.gif") },
+						new ImageIcon("image/copy_tree16_h.gif") },
+				{ "COPY_TREE_ICON_LARGE", new ImageIcon("image/copy_tree24.gif") },
 				{ "COPY_TREE_ICON_LARGE_GREY",
-						new ImageIcon("image/delete_x24_d.gif") },
+						new ImageIcon("image/copy_tree24_d.gif") },
 				{ "COPY_TREE_ICON_LARGE_HIGHLIGHT",
-						new ImageIcon("image/delete_x24_h.gif") },
-				{ "COPY_TREE_TOOLTIP", new String("Copy Tree to clipboard") },
+						new ImageIcon("image/copy_tree24_h.gif") },
+				{ "COPY_TREE_TOOLTIP", new String("Copy Tree to clipboard, paste in MS Word or other text editor.") },
 				{ "COPY_TREE_LABEL", new String("Copy Tree") },
 				
 				{ "PRINT_ICON_SMALL", new ImageIcon("image/print16.gif") },
@@ -439,6 +439,17 @@ public class TreeFormBundle_fr_CA extends ListResourceBundle {
 				{ "EXIT_LABEL", new String("Exit") },
 				{ "SELECTALL_LABEL", new String("Select All") },
 				{ "CASCADE_LABEL", new String("Cascade") },
-				{ "TILE_LABEL", new String("Tile") }, };
+				{ "TILE_LABEL", new String("Tile") },
+				{ "DELETE_SUBTREE", new String("Delete Subtree")},
+				{ "REPOSITION_SUBTREE", new String("Reposition Subtree")},
+				{ "DELETE_START_TRACE", new String("Delete Start Trace")},
+				{ "DELETE_END_TRACE", new String("Delete End Trace")},
+				{ "CUSTOMIZE_START_TRACE", new String("Customize Start Trace")},
+				{ "CUSTOMIZE_END_TRACE", new String("Customize End Trace")},
+				{ "DELETE_FEATURE", new String("Delete Feature")},
+				{ "DELETE_FEATURE_SET", new String("Delete Feature Set")},
+				{ "ADD_FEATURE", new String("Add Feature")},
+				{ "DELETE_ASSOCIATION", new String("Delete Association")}
+				};
 
 }

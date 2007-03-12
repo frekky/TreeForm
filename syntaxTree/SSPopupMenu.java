@@ -74,6 +74,10 @@ public class SSPopupMenu extends JPopupMenu {
 
 	private JMenuItem mDeleteEndTrace;
 
+	private JMenuItem mCustomizeStartTrace;
+
+	private JMenuItem mCustomizeEndTrace;
+
 	/**
 	 * 
 	 * @param pSF The SyntaxFacade for this menu
@@ -98,12 +102,18 @@ public class SSPopupMenu extends JPopupMenu {
 			mDeleteStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_START_TRACE"));
 			mDeleteStartTrace.addActionListener(new ListenerDeleteStartTrace(mSF,mSS));
 			add(mDeleteStartTrace);
+			mCustomizeStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CUSTOMIZE_START_TRACE"));
+			mCustomizeStartTrace.addActionListener(new ListenerCustomizeStartTrace(mSF,mSS));
+			add(mCustomizeStartTrace);
 		}
 		if(pSS.getEndTrace().size() > 0)
 		{
 			mDeleteEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_END_TRACE"));
 			mDeleteEndTrace.addActionListener(new ListenerDeleteEndTrace(mSF,mSS));
 			add(mDeleteEndTrace);
+			mCustomizeEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CUSTOMIZE_END_TRACE"));
+			mCustomizeEndTrace.addActionListener(new ListenerCustomizeEndTrace(mSF,mSS));
+			add(mCustomizeEndTrace);
 		}
 	}
 }
