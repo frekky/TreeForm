@@ -109,12 +109,24 @@ public class TraceComponent extends JComponent {
 	
 	private void drawCubicCurve(SyntacticStructure start,SyntacticStructure end, Graphics2D contentGraphics) {
 		
-		
+		if (start.getCustomTrace())
+		{
+			midStartX = start.getControlStartX();
+			midEndX = start.getControlEndX();
+			midStartY = start.getControlStartY();
+			midEndY = start.getControlEndY();
+		}
+		else
+		{
 		CubicCurve2D bezier = new CubicCurve2D.Float(mStartX,mStartY
 				,midStartX,(float) midStartY,
 				midEndX,(float) midEndY,mEndX,mEndY);
 		contentGraphics.draw(bezier);
-		
+		start.setControlStartX(midStartX);
+		start.setControlEndX(midEndX);
+		start.setControlStartY(midStartY);
+		start.setControlEndY(midEndY);
+		}
 	}
 	
 	private boolean calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)

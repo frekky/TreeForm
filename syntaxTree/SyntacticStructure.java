@@ -132,6 +132,16 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 
 	private int mTraceCount;
 
+	private boolean mCustomTrace = false;
+
+	private int mControlStartX;
+
+	private int mControlEndX;
+
+	private int mControlStartY;
+
+	private int mControlEndY;
+
 	
 /**
  * 
@@ -616,5 +626,56 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public int getTraceNumber() {
 		// TODO Auto-generated method stub
 		return getStartTrace().size() + getEndTrace().size();
+	}
+
+	public void setCustomTrace(boolean customTrace)
+	{
+		mCustomTrace = customTrace;
+	}
+	
+	public boolean getCustomTrace() {
+
+		return mCustomTrace;
+	}
+
+
+	public int getControlStartX() {
+
+		return mControlStartX;
+	}
+
+
+	public int getControlEndX() {
+		return mControlEndX;
+	}
+
+
+	public int getControlStartY() {
+		return mControlStartY;
+	}
+
+
+	public int getControlEndY() {
+		return mControlEndY;
+	}
+
+
+	public void setControlStartX(int midStartX) {
+		mControlStartX = midStartX;
+	}
+
+
+	public void setControlEndX(int midEndX) {
+		mControlEndX = midEndX;
+	}
+
+
+	public void setControlStartY(int midStartY) {
+		mControlStartY = midStartY;
+	}
+
+
+	public void setControlEndY(int midEndY) {
+		mControlEndY = midEndY;
 	}
 }

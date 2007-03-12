@@ -248,7 +248,7 @@ private void treeLayout(Sentence sentence) {
 	//initializeTrace(mR);
 	firstWalk(mR,0);
 	secondWalk(mR,-mR.getPrelim(),0);
-	mLeftShift -= 12;
+	mLeftShift -= getUIF().getProperties().getLeftTranslate();
 	thirdWalk(mR,0);
 	fourthWalk(mR,0);
 	resizeUIF();

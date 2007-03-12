@@ -30,5 +30,9 @@ public class Properties {
 	{
 		mLineLength = lineLength;
 	}
+	public double getLeftTranslate() {
+		// TODO Auto-generated method stub
+		return 20;
+	}
 	
 }
