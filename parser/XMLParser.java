@@ -567,7 +567,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 			{
 				NodeList lNodeList = pRoot.getChildNodes();
 				SyntacticStructure lSS = null;
-				System.out.println(lElement.getAttribute("string"));
+				//System.out.println(lElement.getAttribute("string"));
 				if (lElement.getAttribute("string") != "")
 				{
 					if (mStructureMap.get(lElement.getAttribute("string")) == null)

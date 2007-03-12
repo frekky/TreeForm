@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.GeneralPath;
+import java.util.LinkedList;
 
 import javax.swing.JComponent;
 
@@ -116,11 +117,12 @@ public class TraceComponent extends JComponent {
 		
 	}
 	
-	private void calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)
+	private boolean calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)
 	{
 		
 		SyntacticStructure tempTop = null;
 		SyntacticStructure tempBottom = null;
+
 		if(start.getChildren().size() == 0 && end.getChildren().size() == 0)
 		{
 			drawStart(start,contentGraphics,POSITION_BOTTOM);
@@ -137,7 +139,7 @@ public class TraceComponent extends JComponent {
 				midStartY = mStartY + 20;
 				midEndY = mStartY + 20;
 			}
-			return;
+			return true;
 		}
 		if(start.getLevel() > end.getLevel())
 		{
@@ -159,7 +161,6 @@ public class TraceComponent extends JComponent {
 			drawEnd(end,contentGraphics,POSITION_LEFT);
 				midStartX = mStartX;
 				midEndX = mEndX;
-
 			if (mEndY < mStartY)
 			{
 				midStartY = mEndY;
@@ -170,7 +171,34 @@ public class TraceComponent extends JComponent {
 				midStartY = mStartY;
 				midEndY = mStartY;
 			}
-			return;
+			return true;
+		}
+		LinkedList tempList = ((LinkedList) mSyntaxFacade.getLinkedArray().get(tempTop.getLevel()));
+		if(!(tempTop.getAbsoluteOrder() == 0))
+		{
+			//System.out.println("left down");
+			if (tempList.get(tempTop.getAbsoluteOrder()-1).equals(tempBottom))
+			{
+				//System.out.println("we have a match");
+				if (tempBottom == start)
+				{
+					tempTop = end;
+					drawStart(tempBottom,contentGraphics,POSITION_RIGHT);
+					drawEnd(tempTop,contentGraphics,POSITION_LEFT);
+				}
+				else
+				{
+					tempTop = start;
+					drawStart(tempTop,contentGraphics,POSITION_LEFT);
+					drawEnd(tempBottom,contentGraphics,POSITION_RIGHT);
+				}
+				double difference = mStartX - mEndX;
+				midStartX = (int) (mStartX - .3*difference);
+				midEndX = (int) (mEndX + .3*difference);
+				midStartY = mStartY;
+				midEndY = mEndY;
+				return true;
+			}
 		}
 		if(start.getLevel() > end.getLevel())
 		{
@@ -203,8 +231,56 @@ public class TraceComponent extends JComponent {
 				midStartY = mStartY;
 				midEndY = mStartY;
 			}
-			return;
+			return true;
 		}
+		tempList = ((LinkedList) mSyntaxFacade.getLinkedArray().get(tempTop.getLevel()));
+		if(!(tempTop.getAbsoluteOrder() + 1 == 
+			tempList.size()))
+		{
+			//System.out.println("right down");
+			if (tempList.get(tempTop.getAbsoluteOrder()+1).equals(tempBottom))
+			{
+				//System.out.println("we hae a match");
+				if (tempBottom == start)
+				{
+					tempTop = end;
+					drawStart(tempBottom,contentGraphics,POSITION_LEFT);
+					drawEnd(tempTop,contentGraphics,POSITION_RIGHT);
+				}
+				else
+				{
+					tempTop = start;
+					drawStart(tempTop,contentGraphics,POSITION_RIGHT);
+					drawEnd(tempBottom,contentGraphics,POSITION_LEFT);
+				}
+				double difference = mStartX - mEndX;
+				midStartX = (int) (mStartX - .3*difference);
+				midEndX = (int) (mEndX + .3*difference);
+				midStartY = mStartY;
+				midEndY = mEndY;
+				return true;
+			}
+		}
+		if (start.getButtonX() > end.getButtonX())
+		{
+			drawStart(start,contentGraphics,POSITION_LEFT);
+			drawEnd(end,contentGraphics,POSITION_RIGHT);
+			//midStartX = 0;
+			//midEndX = (int) getSyntaxFacade().getRightShift();
+		}
+		else
+		{
+			drawStart(start,contentGraphics,POSITION_RIGHT);
+			drawEnd(end,contentGraphics,POSITION_LEFT);
+			//midStartX = (int) getSyntaxFacade().getRightShift();
+			//midEndX = 0;
+			
+		}
+		midStartX = mStartX;
+		midEndX = mEndX;
+		midStartY = (int) getSyntaxFacade().getBottomShift();
+		midEndY = midStartY;
+		return true;
 	}
 	
 	private void drawStart(SyntacticStructure start,
