@@ -251,20 +251,7 @@ public void loadTree() {
 				 exportTree(pSyntaxFacade, lFile, lExportPictureType);
 			  }		
 		}
-/**
- * 
- * @param pSyntaxFacade The SyntaxFacade for the selected InternalFrame
- * @param lFile The selected file
- * @param lExportPictureType The export picture type selected from the JFileChooser
- * menu.
- * <br>
- * <br>
- * This command sets the background color to white (for exporting)
- * The command then sets the export picture size based on the formula
- * chosen DPI (300 or 600) / 72 DPI (Standard Screen Resolution) / Sizer.width & Length
- * (Based on the chosen screen resolution).  Exported pictures are scaled to fit
- * the new component size.
- */
+
 		private void exportTree(SyntaxFacade pSyntaxFacade, File pFile, ExportPictureType pEPT) {
 			int lDetail;
 			String lType;

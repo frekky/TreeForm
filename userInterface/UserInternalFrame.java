@@ -18,6 +18,7 @@
 
 package userInterface;
 
+import java.awt.Color;
 import java.util.Map;
 
 import javax.swing.JInternalFrame;
@@ -114,10 +115,12 @@ public class UserInternalFrame extends JInternalFrame {
 		setSize(mUserFrame.getDesktopPane().getSize());
 		mSyntacticViewLayout = SyntacticViewLayout.D_STRUCTURE;
 		mTrace = new TraceComponent(this);
+		this.getContentPane().setBackground(new Color(255,255,255));
 		this.getContentPane().add(mTrace);
 		this.setScale(1.0F);
 		setMinHeight(this.getHeight());
 		setMinWidth(this.getWidth());
+		
 	}
 
 	/**

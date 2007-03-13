@@ -19,6 +19,7 @@
 package parser;
 
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.awt.font.TransformAttribute;
@@ -254,6 +255,15 @@ public class XMLParser implements SaveFile, LoadFile {
 		lRoot.setAttributeNode(lAttr);
 		lAttr = mDoc.createAttribute("string");
 		lAttr.setValue(Integer.toString(pSS.hashCode()));
+		lRoot.setAttributeNode(lAttr);
+		lAttr = mDoc.createAttribute("linered");
+		lAttr.setValue(Integer.toString(pSS.getLineColor().getRed()));
+		lRoot.setAttributeNode(lAttr);
+		lAttr = mDoc.createAttribute("linegreen");
+		lAttr.setValue(Integer.toString(pSS.getLineColor().getGreen()));
+		lRoot.setAttributeNode(lAttr);
+		lAttr = mDoc.createAttribute("lineblue");
+		lAttr.setValue(Integer.toString(pSS.getLineColor().getBlue()));
 		lRoot.setAttributeNode(lAttr);
 		lRoot.appendChild(saveATDetails(pSS.getHead()));
 		lRoot.appendChild(saveFeatureSet(pSS.getSyntacticFeatureSet(), pRoot));
@@ -512,6 +522,30 @@ public class XMLParser implements SaveFile, LoadFile {
 			}
 			lIElement.setAttributeNode(lAttr);
 		}
+		else if (lKey.equals(TextAttribute.BACKGROUND))
+		{
+			Attr lAttr = mDoc.createAttribute("backgroundred");
+			lAttr.setValue(Integer.toString(((Color)lValue).getRed()));
+			lIElement.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("backgroundgreen");
+			lAttr.setValue(Integer.toString(((Color)lValue).getGreen()));
+			lIElement.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("backgroundblue");
+			lAttr.setValue(Integer.toString(((Color)lValue).getBlue()));
+			lIElement.setAttributeNode(lAttr);
+		}
+		else if(lKey.equals(TextAttribute.FOREGROUND))
+		{
+			Attr lAttr = mDoc.createAttribute("foregroundred");
+			lAttr.setValue(Integer.toString(((Color)lValue).getRed()));
+			lIElement.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("foregroundgreen");
+			lAttr.setValue(Integer.toString(((Color)lValue).getGreen()));
+			lIElement.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("foregroundblue");
+			lAttr.setValue(Integer.toString(((Color)lValue).getBlue()));
+			lIElement.setAttributeNode(lAttr);
+		}
 		else
 		{
 			System.out.println("ERROR!");
@@ -637,6 +671,12 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 				else
 				{
 					lSS = new SyntacticStructure(mInternalFrame,pSS);
+				}
+				if (lElement.getAttribute("linered") !="")
+				{
+					lSS.setLineColor(new Color(Integer.valueOf(lElement.getAttribute("linered")).intValue()
+							,Integer.valueOf(lElement.getAttribute("linegreen")).intValue(),
+							Integer.valueOf(lElement.getAttribute("lineblue")).intValue()));
 				}
 				lSS.setSyntacticLevel(getSyntacticLevel(lElement.getAttribute("syntacticlevel")));
 				lSS.setHead(loadHead(lElement));
@@ -908,6 +948,15 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		if(lStrikethrough.equals("true"))
 		{
 			lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+		}
+		if(lElement.getAttribute("backgroundred") != "")
+		{
+			lMap.put(TextAttribute.BACKGROUND, new Color(Integer.valueOf(lElement.getAttribute("backgroundred")).intValue()
+					,Integer.valueOf(lElement.getAttribute("backgroundgreen")).intValue(),
+					Integer.valueOf(lElement.getAttribute("backgroundblue")).intValue()));
+			lMap.put(TextAttribute.FOREGROUND, new Color(Integer.valueOf(lElement.getAttribute("foregroundred")).intValue()
+					,Integer.valueOf(lElement.getAttribute("foregroundgreen")).intValue(),
+					Integer.valueOf(lElement.getAttribute("foregroundblue")).intValue()));
 		}
 		return lMap;
 	}
