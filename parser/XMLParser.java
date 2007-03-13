@@ -243,7 +243,7 @@ public class XMLParser implements SaveFile, LoadFile {
 		lRoot.appendChild(saveATDetails(pSS.getHead()));
 		lRoot.appendChild(saveFeatureSet(pSS.getSyntacticFeatureSet(), pRoot));
 		lRoot.appendChild(saveAssociations(pSS.getSyntacticAssociation(),pRoot));
-		lRoot.appendChild(saveStartTrace(pSS.getStartTrace(),pRoot));
+		lRoot.appendChild(saveStartTrace(pSS.getStartTrace(),pSS,pRoot));
 		lRoot.appendChild(saveEndTrace(pSS.getEndTrace(),pRoot));
 		pRoot.appendChild(lRoot);
 		for (int i = 0; i < pSS.getChildren().size(); i++)
@@ -273,13 +273,43 @@ public class XMLParser implements SaveFile, LoadFile {
 		}
 		return lRootSAS;
 	}
-	private Node saveStartTrace(LinkedList list, Element pRoot) {
+	private Node saveStartTrace(LinkedList list,SyntacticStructure start, Element pRoot) {
 		Element lRootSAS = mDoc.createElement("starttraces");
 		for (int i = 0; i < list.size(); i++)
 		{
 			Element lRootSA = mDoc.createElement("starttrace");
 			Attr lAttr = mDoc.createAttribute("string");
 			lAttr.setValue(Integer.toString(list.get(i).hashCode()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("customtrace");
+			lAttr.setValue(Boolean.toString(start.getCustomTrace()));
+			lRootSA.setAttributeNode(lAttr);
+			//System.out.println(start.getPreorder() + " : " + Boolean.toString(start.getCustomTrace()));
+			//System.out.println(lAttr.getValue());
+			lAttr = mDoc.createAttribute("controlstartx");
+			lAttr.setValue(Integer.toString(start.getControlStartX()));
+			lRootSA.setAttributeNode(lAttr);
+			System.out.println(lAttr.getValue());
+			lAttr = mDoc.createAttribute("controlendx");
+			lAttr.setValue(Integer.toString(start.getControlEndX()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("controlstarty");
+			lAttr.setValue(Integer.toString(start.getControlStartY()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("controlendy");
+			lAttr.setValue(Integer.toString(start.getControlEndY()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("startx");
+			lAttr.setValue(Integer.toString(start.getStartX()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("endx");
+			lAttr.setValue(Integer.toString(start.getEndX()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("starty");
+			lAttr.setValue(Integer.toString(start.getStartY()));
+			lRootSA.setAttributeNode(lAttr);
+			lAttr = mDoc.createAttribute("endy");
+			lAttr.setValue(Integer.toString(start.getEndY()));
 			lRootSA.setAttributeNode(lAttr);
 			lRootSAS.appendChild(lRootSA);
 		}
@@ -674,6 +704,30 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 				lSSTrace = new SyntacticStructure(mInternalFrame, null);
 				lSS.getStartTrace().add(lSSTrace);
 				mStructureMap.put(lStartTrace.getAttribute("string"),lSSTrace);
+			}
+			
+			if(lStartTrace.getAttribute("customtrace") != "")
+			{
+				System.out.println(lStartTrace.getAttribute("customtrace"));
+				System.out.println(lStartTrace.getAttribute("controlstartx"));
+				System.out.println(lStartTrace.getAttribute("controlstarty"));
+				if (lStartTrace.getAttribute("customtrace").equals("true"))
+				{
+					System.out.println("IN");
+					lSS.setCustomTrace(true);
+				}
+				lSS.setControlStartX(new Integer(lStartTrace.getAttribute("controlstartx")).intValue());
+				lSS.setControlStartY(new Integer(lStartTrace.getAttribute("controlstarty")).intValue());
+				lSS.setControlEndX(new Integer(lStartTrace.getAttribute("controlendx")).intValue());
+				lSS.setControlEndY(new Integer(lStartTrace.getAttribute("controlendy")).intValue());
+				lSS.setStartX(new Integer(lStartTrace.getAttribute("startx")).intValue());
+				lSS.setStartY(new Integer(lStartTrace.getAttribute("starty")).intValue());
+				lSS.setEndX(new Integer(lStartTrace.getAttribute("endx")).intValue());
+				lSS.setEndY(new Integer(lStartTrace.getAttribute("endy")).intValue());
+				System.out.println(lSS.getCustomTrace());
+				System.out.println(lSS.getControlStartX());
+				System.out.println(lSS.getControlStartY());
+				
 			}
 		}	
 	}

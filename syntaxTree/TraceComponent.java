@@ -47,7 +47,7 @@ public class TraceComponent extends JComponent {
 		mDrawTrace = true;
 	}
 	public void paint(Graphics G) {
-		this.setBounds(getUserInternalFrame().getBounds());
+		this.setBounds(getUserInternalFrame().getContentPane().getBounds());
 		super.paint(G);
 		if(mDrawTrace)
 		{
@@ -230,6 +230,8 @@ public class TraceComponent extends JComponent {
 		{
 			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempTop.getLevel()+ 1, false);
 		}
+		if(tempTop != null)
+		{
 		if (tempTop.equals(tempBottom))
 		{
 			drawStart(start,contentGraphics,POSITION_RIGHT);
@@ -276,6 +278,7 @@ public class TraceComponent extends JComponent {
 				midEndY = mEndY;
 				return true;
 			}
+		}
 		}
 		if (start.getButtonX() > end.getButtonX())
 		{

@@ -19,7 +19,6 @@
 
 package userInterface;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -75,11 +74,11 @@ public class UserBezierPane extends JComponent {
 	}
 
 	private void drawLines(Graphics2D graphics2D, SyntacticStructure mss2) {
-		graphics2D.setColor(new Color(0,0,0));
-		graphics2D.setStroke(new BasicStroke(.5F));
+		graphics2D.setColor(new Color(0,0,100));
+		//graphics2D.setStroke(new BasicStroke(.5F));
 		graphics2D.drawLine(mSS.getStartX(),mSS.getStartY(),mSS.getControlStartX(),mSS.getControlStartY());
 		graphics2D.drawLine(mSS.getEndX(),mSS.getEndY(),mSS.getControlEndX(),mSS.getControlEndY());
-		
+		graphics2D.drawLine(mSS.getControlStartX(),mSS.getControlStartY(),mSS.getControlEndX(),mSS.getControlEndY());
 	}
 
 	public void setSyntacticStructure(SyntacticStructure pSS) {
