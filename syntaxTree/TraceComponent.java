@@ -118,15 +118,15 @@ public class TraceComponent extends JComponent {
 		}
 		else
 		{
+			start.setControlStartX(midStartX);
+			start.setControlEndX(midEndX);
+			start.setControlStartY(midStartY);
+			start.setControlEndY(midEndY);
+		}
 		CubicCurve2D bezier = new CubicCurve2D.Float(mStartX,mStartY
 				,midStartX,(float) midStartY,
 				midEndX,(float) midEndY,mEndX,mEndY);
 		contentGraphics.draw(bezier);
-		start.setControlStartX(midStartX);
-		start.setControlEndX(midEndX);
-		start.setControlStartY(midStartY);
-		start.setControlEndY(midEndY);
-		}
 		start.setStartX(mStartX);
 		start.setEndX(mEndX);
 		start.setStartY(mStartY);
@@ -317,14 +317,12 @@ public class TraceComponent extends JComponent {
 					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + circle);
 		}
 		else if (position == POSITION_LEFT) {
-			contentGraphics.fillArc((int) start.getButtonX() - padEdge  
-					- start.getTraceCount() * padWidth, (int) start
+			contentGraphics.fillArc((int) start.getButtonX() - padEdge  , (int) start
 					.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
 					+ start.getTraceCount() * padLength, circle,
 					circle, 0, 360);
 
-			mStartX = (int) start.getButtonX() - padEdge
-					- (start.getTraceCount() * padWidth);
+			mStartX = (int) start.getButtonX() - padEdge;
 			mStartY = (int) start
 			.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 			+ start.getTraceCount() * padLength;
@@ -333,16 +331,14 @@ public class TraceComponent extends JComponent {
 		else
 		{
 			contentGraphics.fillArc((int) start.getButtonX() + padEdge
-					+ start.getButtonWidth() + start.getTraceCount()
-					* padWidth - lineLength,
+					+ start.getButtonWidth() - lineLength,
 					(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
 					+ start.getTraceCount() * padLength,
 					circle,
 					circle, 0, 360);
 
 			mStartX = (int) start.getButtonX() + padEdge
-					+ start.getButtonWidth()
-					+ (start.getTraceCount() * padWidth);
+					+ start.getButtonWidth();
 			mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
 			+ start.getTraceCount() * padLength);
 			
@@ -386,19 +382,19 @@ public class TraceComponent extends JComponent {
 			
 			GeneralPath polly = new GeneralPath();
 			polly.moveTo((float) end.getButtonX() - padEdge
-					- end.getTraceCount() * padWidth + triangleLength,
+					+ triangleLength,
 					(float) end
 					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 					+ end.getTraceCount() * padLength
 							+ 0.25f);
 			polly.lineTo((float) end.getButtonX() - padEdge
-					- end.getTraceCount() * padWidth,
+					,
 					(float) end
 					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 					+ end.getTraceCount() * padLength
 							+ 3.25f);
 			polly.lineTo((float) end.getButtonX() - padEdge
-					- end.getTraceCount() * padWidth,
+					,
 					(float) end
 					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 					+ end.getTraceCount() * padLength
@@ -406,7 +402,7 @@ public class TraceComponent extends JComponent {
 			polly.closePath();
 			contentGraphics.fill(polly);
 			mEndX = (int) end.getButtonX() - padEdge
-					- (end.getTraceCount() * padWidth);
+					;
 			mEndY = (int) end
 			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 			+ end.getTraceCount() * padLength;
@@ -415,21 +411,21 @@ public class TraceComponent extends JComponent {
 			GeneralPath polly = new GeneralPath();
 			polly.moveTo((float) end.getButtonX() + padEdge
 					+ end.getButtonWidth()
-					+ (end.getTraceCount() * padWidth) - triangleLength,
+					- triangleLength,
 					(float) end
 					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 					+ end.getTraceCount() * padLength
 							+ 0.25f);
 			polly.lineTo((float) end.getButtonX() + padEdge
 					+ end.getButtonWidth()
-					+ (end.getTraceCount() * padWidth),
+					,
 					(float) end
 					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 					+ end.getTraceCount() * padLength
 							+ 3.25f);
 			polly.lineTo((float) end.getButtonX() + padEdge
 					+ end.getButtonWidth()
-					+ (end.getTraceCount() * padWidth),
+					,
 					(float) end
 					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 					+ end.getTraceCount() * padLength
@@ -438,7 +434,7 @@ public class TraceComponent extends JComponent {
 			contentGraphics.fill(polly);
 			
 			mEndX = (int) end.getButtonX() + padEdge + end.getButtonWidth()
-					+ (end.getTraceCount() * padWidth);
+					;
 			mEndY = (int) end
 			.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
 			+ end.getTraceCount() * padLength;

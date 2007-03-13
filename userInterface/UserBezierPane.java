@@ -19,6 +19,7 @@
 
 package userInterface;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -39,6 +40,10 @@ public class UserBezierPane extends JComponent {
 	private SyntacticStructure mSS;
 
 	private UserFrame mUserFrame;
+
+	private boolean mControlStart;
+
+	private boolean mControlEnd;
 
 	public UserBezierPane(
 		UserFrame pUserFrame, SyntacticStructure pSS
@@ -61,10 +66,20 @@ public class UserBezierPane extends JComponent {
 					* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
 				Sizer.scaleHeight()
 					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-		drawSquare(lGraphics2D, mSS.getStartX(),mSS.getStartY());
-		drawSquare(lGraphics2D, mSS.getEndX(),mSS.getEndY());
-		drawSquare(lGraphics2D, mSS.getControlStartX(),mSS.getControlStartY());
-		drawSquare(lGraphics2D, mSS.getControlEndX(),mSS.getControlEndY());
+		drawLines(lGraphics2D,mSS);
+		drawSquare(lGraphics2D, mSS.getStartX(),mSS.getStartY(), new Color(200,0,0));
+		drawSquare(lGraphics2D, mSS.getEndX(),mSS.getEndY(), new Color(200,0,0));
+		drawSquare(lGraphics2D, mSS.getControlStartX(),mSS.getControlStartY(), new Color(0,0,200));
+		drawSquare(lGraphics2D, mSS.getControlEndX(),mSS.getControlEndY(), new Color(0,0,200));
+		
+	}
+
+	private void drawLines(Graphics2D graphics2D, SyntacticStructure mss2) {
+		graphics2D.setColor(new Color(0,0,0));
+		graphics2D.setStroke(new BasicStroke(.5F));
+		graphics2D.drawLine(mSS.getStartX(),mSS.getStartY(),mSS.getControlStartX(),mSS.getControlStartY());
+		graphics2D.drawLine(mSS.getEndX(),mSS.getEndY(),mSS.getControlEndX(),mSS.getControlEndY());
+		
 	}
 
 	public void setSyntacticStructure(SyntacticStructure pSS) {
@@ -74,9 +89,9 @@ public class UserBezierPane extends JComponent {
 	private void drawSquare(
 		Graphics2D lGraphics2D,
 		int pX,
-		int pY) {
+		int pY,Color lColor) {
 		
-			Color lColor = new Color(0,0,0);
+			
 			lGraphics2D.setColor(lColor);
 			GeneralPath polly = new GeneralPath();
 			polly.moveTo(pX-3, pY-3);
@@ -89,9 +104,55 @@ public class UserBezierPane extends JComponent {
 	}
 
 	public void setPosition(MouseEvent e) {
-		System.out.println(e.getX() + " : " + e.getY());
+		//System.out.println(e.getX() + " : " + e.getY());
+		float scaleX = e.getX() / Sizer.scaleWidth()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
+		float scaleY = e.getY() / Sizer.scaleHeight()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
+			if(mControlStart)
+			{
+			mSS.setCustomTrace(true);
+			mSS.setControlStartX((int) scaleX);
+			mSS.setControlStartY((int) scaleY);
+			mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
+			//System.out.println(1);
+			}
+			if(mControlEnd)
+			{
+			mSS.setCustomTrace(true);
+			mSS.setControlEndX((int) scaleX);
+			mSS.setControlEndY((int) scaleY);
+			mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
+			//System.out.println(2);
+			}
+		
 	}
 
+	public void setTarget(MouseEvent e)
+	{
+		float scaleX = e.getX() / Sizer.scaleWidth()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
+		float scaleY = e.getY() / Sizer.scaleHeight()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
+		if (scaleX > mSS.getControlStartX() -10 && scaleX < mSS.getControlStartX() + 10
+				&& scaleY > mSS.getControlStartY() -10 && scaleY < mSS.getControlStartY() + 10)
+		{
+			mControlStart = true;
+			mControlEnd = false;
+		}
+		else if (scaleX > mSS.getControlEndX() -10 && scaleX < mSS.getControlEndX() + 10
+				&& scaleY > mSS.getControlEndY() -10 && scaleY < mSS.getControlEndY() + 10)
+		{
+			mControlStart = false;
+			mControlEnd = true;
+		}
+		else
+		{
+			mControlStart = false;
+			mControlEnd = false;
+		}
+	}
+	
 	public void exit() {
 		mUserFrame.getDesktopPane().getInternalFrame().deactivateBezierPane();
 	}

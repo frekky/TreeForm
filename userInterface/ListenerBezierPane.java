@@ -73,7 +73,7 @@ public class ListenerBezierPane extends MouseInputAdapter {
 	}
 
 	public void mousePressed(MouseEvent e) {
-		
+		((UserBezierPane)e.getSource()).setTarget(e);
 	}
 
 	public void mouseReleased(MouseEvent e) {

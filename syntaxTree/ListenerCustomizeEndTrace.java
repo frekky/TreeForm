@@ -15,7 +15,6 @@ public class ListenerCustomizeEndTrace implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent arg0) {
-		mSF.getUIF().activateBezierPane((SyntacticStructure) mSS.getStartTrace().get(0));
-
+		mSF.getUIF().activateBezierPane((SyntacticStructure) mSS.getEndTrace().get(0));
 	}
 }
