@@ -34,5 +34,9 @@ public class Properties {
 		// TODO Auto-generated method stub
 		return 20;
 	}
+	public int getTopTranslate() {
+		// TODO Auto-generated method stub
+		return 20;
+	}
 	
 }

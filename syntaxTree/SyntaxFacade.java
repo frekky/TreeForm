@@ -997,7 +997,7 @@ private void thirdWalk(SyntacticStructure v, int level)
 		//tempY += ((Integer) mHeightPad.get(i)).intValue() * 3;
 	}
 	tempY = tempY + (((Integer) mHeight.get(level)).intValue()-v.getButtonHeight())/2;
-	v.setButtonY(tempY);
+	v.setButtonY(tempY + getUIF().getProperties().getTopTranslate());
 	v.setButtonX(v.getButtonX() - (mLeftShift));
 	v.setBounds(
 			(int) (v.getButtonX()
@@ -1749,6 +1749,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 		{
 			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().remove();
 			start.getStartTrace().remove();
+			start.setCustomTrace(false);
 		}
 	}
 
@@ -1760,8 +1761,16 @@ private void fourthWalk(SyntacticStructure v, int level)
 		if(end.getEndTrace().size() > 0)
 		{
 			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().remove();
+			((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
 			end.getEndTrace().remove();
 		}
-		
+	}
+	public void deleteStartCustom(SyntacticStructure start)
+	{
+		start.setCustomTrace(false);
+	}
+	public void deleteEndCustom(SyntacticStructure end)
+	{
+		((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
 	}
 }

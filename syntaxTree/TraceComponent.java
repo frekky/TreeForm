@@ -280,6 +280,28 @@ public class TraceComponent extends JComponent {
 			}
 		}
 		}
+		if (start.getAbsoluteOrder() == 0 
+				&& end.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
+				{
+					drawStart(start,contentGraphics,POSITION_LEFT);
+					drawEnd(end,contentGraphics,POSITION_RIGHT);
+					midStartY = 0;
+					midStartX = mStartX - 20;
+					midEndX = mEndX + 20;
+					midEndY = 0;
+					return true;
+				}
+		if (end.getAbsoluteOrder() == 0
+				&& start.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(start.getLevel())).size()-1)
+				{
+					drawStart(start,contentGraphics,POSITION_RIGHT);
+					drawEnd(end,contentGraphics,POSITION_LEFT);
+					midStartY = 0;
+					midStartX = mStartX + 20;
+					midEndX = mEndX - 20;
+					midEndY = 0;
+					return true;
+				}
 		if (start.getButtonX() > end.getButtonX())
 		{
 			drawStart(start,contentGraphics,POSITION_LEFT);

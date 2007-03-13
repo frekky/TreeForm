@@ -289,7 +289,7 @@ public class XMLParser implements SaveFile, LoadFile {
 			lAttr = mDoc.createAttribute("controlstartx");
 			lAttr.setValue(Integer.toString(start.getControlStartX()));
 			lRootSA.setAttributeNode(lAttr);
-			System.out.println(lAttr.getValue());
+			//System.out.println(lAttr.getValue());
 			lAttr = mDoc.createAttribute("controlendx");
 			lAttr.setValue(Integer.toString(start.getControlEndX()));
 			lRootSA.setAttributeNode(lAttr);
@@ -708,12 +708,12 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 			
 			if(lStartTrace.getAttribute("customtrace") != "")
 			{
-				System.out.println(lStartTrace.getAttribute("customtrace"));
-				System.out.println(lStartTrace.getAttribute("controlstartx"));
-				System.out.println(lStartTrace.getAttribute("controlstarty"));
+				//System.out.println(lStartTrace.getAttribute("customtrace"));
+				//System.out.println(lStartTrace.getAttribute("controlstartx"));
+				//System.out.println(lStartTrace.getAttribute("controlstarty"));
 				if (lStartTrace.getAttribute("customtrace").equals("true"))
 				{
-					System.out.println("IN");
+					//System.out.println("IN");
 					lSS.setCustomTrace(true);
 				}
 				lSS.setControlStartX(new Integer(lStartTrace.getAttribute("controlstartx")).intValue());
@@ -724,10 +724,9 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 				lSS.setStartY(new Integer(lStartTrace.getAttribute("starty")).intValue());
 				lSS.setEndX(new Integer(lStartTrace.getAttribute("endx")).intValue());
 				lSS.setEndY(new Integer(lStartTrace.getAttribute("endy")).intValue());
-				System.out.println(lSS.getCustomTrace());
-				System.out.println(lSS.getControlStartX());
-				System.out.println(lSS.getControlStartY());
-				
+				//System.out.println(lSS.getCustomTrace());
+				//System.out.println(lSS.getControlStartX());
+				//System.out.println(lSS.getControlStartY());
 			}
 		}	
 	}
