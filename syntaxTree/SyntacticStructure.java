@@ -185,9 +185,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 			if (getChildren().size() > 0)
 			{
 				SyntacticStructure left = (SyntacticStructure) getChildren().getFirst();
-				//SyntacticStructure right = (SyntacticStructure) getChildren().getLast();
 				SyntacticStructure w = (SyntacticStructure) getChildren().getFirst();
-				//int width = (int) (right.getButtonX() + right.getButtonWidth()-left.getButtonX());
 				int halfway = (int) (getButtonX() - left.getButtonX() + getButtonWidth()/2);
 				int relativeWidth = 0;
 				for (int i = 0; i < getChildren().size(); i++) 
@@ -195,8 +193,6 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 					w = (SyntacticStructure) getChildren().get(i);
 					
 					relativeWidth = (int) (w.getButtonX() - left.getButtonX());	
-					//System.out.println("width = " + halfway + " : relativeWidth = " + relativeWidth);
-					//lGraphics2D.drawLine(x1, y1, x2, y2);
 					if (w.getSyntacticLevel() == SyntacticLevel.TRIANGLE)
 					{
 						GeneralPath polly = new GeneralPath();
@@ -247,6 +243,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  */
 	public int getButtonHeight()
 	{
+		testXY();
 		return mButtonHeight;
 	}
 /**

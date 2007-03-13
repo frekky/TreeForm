@@ -437,7 +437,9 @@ public class UserToolBar extends JToolBar {
 		mFontSize.setFocusable(false);
 		mFontSize.addActionListener(new ListenerFontSize(mUserFrame));
 		mUserFrame.getObservableFontSize().addObserver(mFontSize);
-		this.add(mFontSize);		
+		this.add(mFontSize);	
+		
+		
 		mBold = new UserToggleFontBold(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_LARGE"),
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_LARGE_GREY"),
@@ -630,18 +632,6 @@ public class UserToolBar extends JToolBar {
  * add cut and paste options, fully i18n
  */
 	private void addCutAndPaste() {
-//		mProperties = new UserButton(mUserFrame,
-//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE"),
-//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_GREY"),
-//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_HIGHLIGHT"),
-//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"),
-//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_GREY"),
-//		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_HIGHLIGHT"),
-//		mIconSize);
-//		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
-//		mProperties.setToolTipText((String) mUserFrame.getI18n().getObject("PROPERTIES_TOOLTIP"));
-//		mProperties.setFocusable(false);
-//		this.add(mProperties);
 		mCut = (new UserButtonCut(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("CUT_ICON_LARGE"),
 		(ImageIcon) mUserFrame.getI18n().getObject("CUT_ICON_LARGE_GREY"),
@@ -822,6 +812,19 @@ public class UserToolBar extends JToolBar {
 		mExport.setFocusable(false);
 		mUserFrame.getObservableNew().addObserver(mExport);
 		this.add(mExport);
+
+		mProperties = new UserButton(mUserFrame,
+		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE"),
+		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_GREY"),
+		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_LARGE_HIGHLIGHT"),
+		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"),
+		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_GREY"),
+		(ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL_HIGHLIGHT"),
+		mIconSize);
+		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
+		mProperties.setToolTipText((String) mUserFrame.getI18n().getObject("PROPERTIES_TOOLTIP"));
+		mProperties.setFocusable(false);
+		this.add(mProperties);
 	}
 
 	/**

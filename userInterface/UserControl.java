@@ -477,7 +477,8 @@ public void loadTree() {
  *
  */
 		public void editPresenation() {
-			JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
+			PropertiesFrame propertiesFrame = new PropertiesFrame(mUserFrame.getDesktopPane().getInternalFrame());
+			propertiesFrame.setVisible(true);
 		}
 
 /**
@@ -741,8 +742,8 @@ public void loadTree() {
 		JPanel lPanel = (JPanel) lC;
 		try
 		{
-			int scaleWidth = (int) (lSF.getRightShift() * (300/72/Sizer.scaleWidth()));
-			int scaleHeight = (int) (lSF.getBottomShift() * (300/72/Sizer.scaleHeight()));
+			int scaleWidth = (int) ((lSF.getRightShift() +20) * (300/72/Sizer.scaleWidth()));
+			int scaleHeight = (int) ((lSF.getBottomShift() + 20) * (300/72/Sizer.scaleHeight()));
 			BufferedImage lImg = new BufferedImage(scaleWidth,scaleHeight, BufferedImage.TYPE_INT_RGB);
 			Graphics lGraphics= lImg.getGraphics();		
 			Graphics2D lG2D = ((Graphics2D)lGraphics);

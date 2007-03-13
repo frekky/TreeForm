@@ -449,7 +449,13 @@ public class TreeFormBundle extends ListResourceBundle {
 				{ "DELETE_FEATURE", new String("Delete Feature")},
 				{ "DELETE_FEATURE_SET", new String("Delete Feature Set")},
 				{ "ADD_FEATURE", new String("Add Feature")},
-				{ "DELETE_ASSOCIATION", new String("Delete Association")}
+				{ "DELETE_ASSOCIATION", new String("Delete Association")},
+				{ "LINE_HEIGHT_LABEL", new String("Line Height")},
+				{ "LINE_WIDTH_LABEL", new String("Line Width")},
+				{ "LEFT_PAD_LABEL", new String("Left Pad")},
+				{ "TOP_PAD_LABEL", new String("Top Pad")},
+				{ "FONT_SIZE_LABEL", new String("Default Font Size")},
+				{ "CLOSE_PROPERTIES_LABEL", new String("Close")}
 				};
 
 }

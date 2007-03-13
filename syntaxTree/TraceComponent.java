@@ -167,10 +167,10 @@ public class TraceComponent extends JComponent {
 			tempTop = start;
 			tempBottom = end;
 		}
-		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
-		{
-			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempTop.getLevel()+ 1, true);
-		}
+//		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
+//		{
+			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempBottom.getLevel(), true);
+//		}
 		if (tempTop.equals(tempBottom))
 		{
 			drawStart(start,contentGraphics,POSITION_LEFT);
@@ -226,10 +226,10 @@ public class TraceComponent extends JComponent {
 			tempTop = start;
 			tempBottom = end;
 		}
-		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
-		{
-			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempTop.getLevel()+ 1, false);
-		}
+//		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
+//		{
+			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempBottom.getLevel(), false);
+//		}
 		if(tempTop != null)
 		{
 		if (tempTop.equals(tempBottom))
@@ -285,10 +285,10 @@ public class TraceComponent extends JComponent {
 				{
 					drawStart(start,contentGraphics,POSITION_LEFT);
 					drawEnd(end,contentGraphics,POSITION_RIGHT);
-					midStartY = 0;
+					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
 					midStartX = mStartX - 20;
 					midEndX = mEndX + 20;
-					midEndY = 0;
+					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
 					return true;
 				}
 		if (end.getAbsoluteOrder() == 0
@@ -296,10 +296,10 @@ public class TraceComponent extends JComponent {
 				{
 					drawStart(start,contentGraphics,POSITION_RIGHT);
 					drawEnd(end,contentGraphics,POSITION_LEFT);
-					midStartY = 0;
+					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
 					midStartX = mStartX + 20;
 					midEndX = mEndX - 20;
-					midEndY = 0;
+					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
 					return true;
 				}
 		if (start.getButtonX() > end.getButtonX())
@@ -333,7 +333,7 @@ public class TraceComponent extends JComponent {
 			padBottom = - (start.getTraceNumber() * padWidth)/2 + start.getTraceCount() * padWidth;
 			contentGraphics.fillArc((int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
-							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().fontSize()), circle,
+							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength()), circle,
 					circle, 0, 360);
 	
 			mStartX = (int)(start.getButtonX() 

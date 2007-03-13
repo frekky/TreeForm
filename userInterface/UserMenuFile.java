@@ -204,7 +204,14 @@ public class UserMenuFile extends JMenu {
 		this.add(mSaveAll);
 		
 		this.addSeparator();	
-
+		mProperties = new JMenuItem((String) mUserFrame.getI18n().getObject("PROPERTIES_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"));
+		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
+		mProperties.setMnemonic('P');
+		this.add(mProperties);	
+		
+		this.addSeparator();
+		
+		
 		mPrint = new UserMenuItemPrint((String) mUserFrame.getI18n().getObject("PRINT_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PRINT_ICON_SMALL"), mUserFrame.getObservableNew());
 		mPrint.addActionListener(new ListenerPrintTree(mUserFrame));
 		mPrint.setMnemonic('P');
@@ -233,13 +240,6 @@ public class UserMenuFile extends JMenu {
 		this.add(mExport);	
 		
 		this.addSeparator();
-		
-//		mProperties = new JMenuItem((String) mUserFrame.getI18n().getObject("PROPERTIES_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"));
-//		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
-//		mProperties.setMnemonic('P');
-//		this.add(mProperties);	
-//		
-//		this.addSeparator();
 		
 		mExit = new JMenuItem((String) mUserFrame.getI18n().getObject("EXIT_LABEL"));
 		mExit.addActionListener(new ListenerExitTree(mUserFrame));

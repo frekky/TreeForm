@@ -207,6 +207,21 @@ public class XMLParser implements SaveFile, LoadFile {
 		lName = mDoc.createAttribute("type");
 		lName.setValue("TreeForm");
 		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("linelength");
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().lineLength()));
+		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("mintextwidth");
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().minTextWidth()));
+		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("lefttranslate");
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getLeftTranslate()));
+		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("toptranslate");
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getTopTranslate()));
+		mRoot.setAttributeNode(lName);
+		lName = mDoc.createAttribute("defaultfontsize");
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().fontSize()));
+		mRoot.setAttributeNode(lName);
 		for(int i = 0;i < pSyntaxFacade.getSentence().getChildren().size();i++)
 		{
 			saveHead((SyntacticStructure) pSyntaxFacade.getSentence().getChildren().get(0),mRoot);
@@ -566,6 +581,14 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		mSyntaxFacade.setName(mRoot.getAttribute("name"));
 		mSyntaxFacade.setFile(mRoot.getAttribute("file"));
 		mInternalFrame.setTitle(mRoot.getAttribute("name"));
+		if (mRoot.getAttribute("linelength") != "")
+		{
+			mInternalFrame.getProperties().setFontSize(new Integer(mRoot.getAttribute("defaultfontsize")).intValue());
+			mInternalFrame.getProperties().setLineLength(new Integer(mRoot.getAttribute("linelength")).intValue());
+			mInternalFrame.getProperties().setMinTextWidth(new Integer(mRoot.getAttribute("mintextwidth")).intValue());
+			mInternalFrame.getProperties().setLeftTranslate(new Integer(mRoot.getAttribute("lefttranslate")).intValue());
+			mInternalFrame.getProperties().setTopTranslate(new Integer(mRoot.getAttribute("toptranslate")).intValue());
+		}
 		Set lKey = mAssociationMap.keySet();
 		Iterator lIterator = lKey.iterator();
 		while (lIterator.hasNext())

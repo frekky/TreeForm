@@ -5,6 +5,8 @@ public class Properties {
 	private int mMinTextWidth = 30;
 	private int mFontSize = 10;
 	private int mLineLength = 10;
+	private int mLeftTranslate = 20;
+	private int mTopTranslate = 20;
 	
 	public int fontSize()
 	{
@@ -30,13 +32,18 @@ public class Properties {
 	{
 		mLineLength = lineLength;
 	}
-	public double getLeftTranslate() {
-		// TODO Auto-generated method stub
-		return 20;
+	public int getLeftTranslate() {
+		return mLeftTranslate;
 	}
 	public int getTopTranslate() {
-		// TODO Auto-generated method stub
-		return 20;
+		return mTopTranslate;
 	}
-	
+	public void setLeftTranslate(int leftTranslate)
+	{
+		mLeftTranslate = leftTranslate;
+	}
+	public void setTopTranslate(int topTranslate)
+	{
+		mTopTranslate = topTranslate;
+	}
 }
