@@ -150,6 +150,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 
 	private int mStartY;
 
+	private Color mLineColor = new Color(0,0,0);
+
 	
 /**
  * 
@@ -180,7 +182,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		lGraphics2D.setRenderingHint(
 			RenderingHints.KEY_RENDERING,
 			RenderingHints.VALUE_RENDER_QUALITY);
-
+		lGraphics2D.setColor(getLineColor());
 			// draw the lines according to the directions!
 			if (getChildren().size() > 0)
 			{
@@ -715,5 +717,13 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public int getEndY()
 	{
 		return mEndY;
+	}
+	public Color getLineColor()
+	{
+		return mLineColor ;
+	}
+	public void setLineColor(Color color)
+	{
+		mLineColor = color;
 	}
 }

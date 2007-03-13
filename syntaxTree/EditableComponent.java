@@ -103,6 +103,8 @@ public class EditableComponent extends JComponent {
 	private int mInsertionIndex;
 	private int mHighlightBegin;
 	private int mHighlightEnd;
+	private Color mFontColor;
+	private Color mBackgroundColor;
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
 	private static final Color HIGHLIGHT_COLOR = new Color(0, 100, 255, 50);
@@ -1077,5 +1079,21 @@ private double getZero(double d) {
 			mUserInternalFrame.getObservableFontSubscript().setValue(false);
 			mUserInternalFrame.getObservableFontSuperscript().setValue(false);
 		}
+	}
+	public void setFontColor(Color color)
+	{
+		mFontColor = color;
+	}
+	public void setBackgroundColor(Color color)
+	{
+		mBackgroundColor = color;
+	}
+	public Color getFontColor()
+	{
+		return mFontColor;
+	}
+	public Color getBackgroundColor()
+	{
+		return mBackgroundColor;
 	}
 }

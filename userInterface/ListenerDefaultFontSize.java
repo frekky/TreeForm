@@ -1,5 +1,6 @@
 package userInterface;
 
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -8,12 +9,17 @@ import syntaxTree.SyntaxFacade;
 
 public class ListenerDefaultFontSize implements ChangeListener {
 
+	private Properties mProperties;
+	private SyntaxFacade mSyntaxFacade;
+
 	public ListenerDefaultFontSize(Properties properties, SyntaxFacade syntaxFacade) {
-		// TODO Auto-generated constructor stub
+		mProperties = properties;
+		mSyntaxFacade = syntaxFacade;
 	}
 
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
+		mProperties.setFontSize(((JSlider)e.getSource()).getValue());
+		mSyntaxFacade.displayTree();
 
 	}
 

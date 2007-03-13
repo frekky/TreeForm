@@ -49,20 +49,26 @@ public class UnaryBuilder extends AbstractStructureBuilder {
 public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 
 	SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
+	lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 
 	AttributedString lAttributedString = new AttributedString("XP");
 	Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 	lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+	lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+	lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 	lSyntacticStructureTop.setHead(lAttributedString);
 	lSyntacticStructureTop.setSyntacticLevel(SyntacticLevel.DOUBLE_BAR);
 	pInternalFrame.getContentPane().add(lSyntacticStructureTop);	
 	pInternalFrame.getContentPane().add(lSyntacticStructureTop.getSyntacticStructureLines());
 			
 	SyntacticStructure lSyntacticStructureCenter = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
+	lSyntacticStructureCenter.setLineColor(pInternalFrame.getProperties().getLineColor());
 
 	lAttributedString = new AttributedString("X");
 	lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 	lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+	lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+	lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 	lSyntacticStructureCenter.setHead(lAttributedString);
 	lSyntacticStructureCenter.setSyntacticLevel(SyntacticLevel.HEAD);
 	pInternalFrame.getContentPane().add(lSyntacticStructureCenter);

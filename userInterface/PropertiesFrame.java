@@ -16,13 +16,17 @@
 //Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 package userInterface;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTabbedPane;
 
 public class PropertiesFrame extends JFrame {
 
@@ -39,6 +43,14 @@ public class PropertiesFrame extends JFrame {
 	private UserInternalFrame mFrame;
 	private JSlider defaultFontSize;
 	private JLabel defaultFontSizeLabel;
+	private JButton restoreDefaults;
+	private JColorChooser textColor;
+	private JTabbedPane tabbedPane;
+	private JPanel textColorPanel;
+	private JPanel highlightColorPanel;
+	private UserColorChooser highlightColor;
+	private JPanel lineColorPanel;
+	private UserColorChooser lineColor;
 	public PropertiesFrame(UserInternalFrame frame) {
 		mFrame = frame;
 		lineLengthLabel = new JLabel((String) mFrame.getUserFrame().getI18n().getObject("LINE_HEIGHT_LABEL"));
@@ -61,18 +73,18 @@ public class PropertiesFrame extends JFrame {
 		lineWidth.addChangeListener(new ListenerLineWidth(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade()));
 		leftPadLabel = new JLabel((String) mFrame.getUserFrame().getI18n().getObject("LEFT_PAD_LABEL"));
 		leftPad = new JSlider();
-		leftPad.setMajorTickSpacing(5);
-		leftPad.setMinorTickSpacing(1);
-		leftPad.setMaximum(100);
+		leftPad.setMajorTickSpacing(20);
+		//leftPad.setMinorTickSpacing(1);
+		leftPad.setMaximum(200);
 		leftPad.setPaintTicks(true);
 		leftPad.setPaintLabels(true);
 		leftPad.setValue(frame.getProperties().getLeftTranslate());
 		leftPad.addChangeListener(new ListenerLeftPad(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade()));
 		topPadLabel = new JLabel((String) mFrame.getUserFrame().getI18n().getObject("TOP_PAD_LABEL"));
 		topPad = new JSlider();
-		topPad.setMajorTickSpacing(5);
-		topPad.setMinorTickSpacing(1);
-		topPad.setMaximum(100);
+		topPad.setMajorTickSpacing(20);
+		//topPad.setMinorTickSpacing(1);
+		topPad.setMaximum(200);
 		topPad.setPaintTicks(true);
 		topPad.setPaintLabels(true);
 		topPad.setValue(frame.getProperties().getTopTranslate());
@@ -87,7 +99,31 @@ public class PropertiesFrame extends JFrame {
 		defaultFontSize.setPaintLabels(true);
 		defaultFontSize.setValue(frame.getProperties().fontSize());
 		defaultFontSize.addChangeListener(new ListenerDefaultFontSize(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade()));
+		tabbedPane = new JTabbedPane();
+		textColorPanel = new JPanel();
+		textColor = new UserColorChooser(frame.getProperties());
+		textColor.setColor(frame.getProperties().getFontColor());
+		textColor.getSelectionModel().addChangeListener(new ListenerTextColor(frame.getProperties()));
+		textColorPanel.add(textColor);
+		highlightColorPanel = new JPanel();
+		highlightColor = new UserColorChooser(frame.getProperties());
+		highlightColor.setColor(frame.getProperties().getBackgroundColor());
+		highlightColor.getSelectionModel().addChangeListener(new ListenerHighlightColor(frame.getProperties()));
+
+		highlightColorPanel.add(highlightColor);
+		lineColorPanel = new JPanel();
+		lineColor = new UserColorChooser(frame.getProperties());
+		lineColor.setColor(frame.getProperties().getLineColor());
+		lineColor.getSelectionModel().addChangeListener(new ListenerLineColor(frame.getProperties()));
+
+		lineColorPanel.add(lineColor);
+		tabbedPane.addTab( "Text Color", textColorPanel );
+		tabbedPane.addTab( "Text Highlight", highlightColorPanel );
+		tabbedPane.addTab( "Line Color", lineColorPanel );
 		close = new JButton((String) mFrame.getUserFrame().getI18n().getObject("CLOSE_PROPERTIES_LABEL"));
+		close.addActionListener(new ListenerCloseProperties(this));
+		restoreDefaults = new JButton((String) mFrame.getUserFrame().getI18n().getObject("RESTORE_PROPERTIES_LABEL"));
+		restoreDefaults.addActionListener(new ListenerRestoreDefaults(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade(), this));
 		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(), BoxLayout.PAGE_AXIS));
 		this.getContentPane().add(lineLengthLabel);
 		this.getContentPane().add(lineLength);
@@ -99,12 +135,49 @@ public class PropertiesFrame extends JFrame {
 		this.getContentPane().add(topPad);
 		this.getContentPane().add(defaultFontSizeLabel);
 		this.getContentPane().add(defaultFontSize);
+		this.getContentPane().add(tabbedPane);
+		this.getContentPane().add(restoreDefaults);
 		this.getContentPane().add(close);
 		this.setBounds(
-			(int) (Toolkit.getDefaultToolkit().getScreenSize().width * .2d),
-			(int) (Toolkit.getDefaultToolkit().getScreenSize().height * .2d),
-			(int) (Toolkit.getDefaultToolkit().getScreenSize().width * .6d),
-			(int) (Toolkit.getDefaultToolkit().getScreenSize().height * .6d));
+			(int) (Toolkit.getDefaultToolkit().getScreenSize().width * .45d),
+			(int) (Toolkit.getDefaultToolkit().getScreenSize().height * .0d),
+			(int) (Toolkit.getDefaultToolkit().getScreenSize().width * .5d),
+			(int) (Toolkit.getDefaultToolkit().getScreenSize().height * .95d));
 		this.setVisible(true);
 	}
+	public UserInternalFrame getUIF()
+	{
+		return mFrame;
+	}
+	public void setMinTextWidth(int i) {
+		lineWidth.setValue(i);
+	}
+	public void setLineLength(int i) {
+		lineLength.setValue(i);
+		
+	}
+	public void setLeftTranslate(int leftTranslate) {
+		leftPad.setValue(leftTranslate);
+		
+	}
+	public void setTopTranslate(int topTranslate) {
+		topPad.setValue(topTranslate);
+		
+	}
+	public void setFontSize(int i) {
+		defaultFontSize.setValue(i);
+		
+	}
+	public void setFontColor(Color fontColor) {
+		textColor.setColor(fontColor);
+		
+	}
+	public void setBackgroundColor(Color backgroundColor) {
+		highlightColor.setColor(backgroundColor);
+	}
+	public void setLineColor(Color lineColor2) {
+		lineColor.setColor(lineColor2);
+		
+	}
+	
 }

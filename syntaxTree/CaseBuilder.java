@@ -49,6 +49,8 @@ public class CaseBuilder extends AbstractFeatureBuilder {
 		AttributedString lAttributedString = new AttributedString("[NOM]");
 		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSF.setSyntacticFeatureSet(lSFS);
 		lSFS.getSyntacticFeature().add(lSF);
 		lSF.setHead(lAttributedString);

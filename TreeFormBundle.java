@@ -455,7 +455,8 @@ public class TreeFormBundle extends ListResourceBundle {
 				{ "LEFT_PAD_LABEL", new String("Left Pad")},
 				{ "TOP_PAD_LABEL", new String("Top Pad")},
 				{ "FONT_SIZE_LABEL", new String("Default Font Size")},
-				{ "CLOSE_PROPERTIES_LABEL", new String("Close")}
+				{ "CLOSE_PROPERTIES_LABEL", new String("Close")},
+				{ "RESTORE_PROPERTIES_LABEL", new String("Restore Original Settings")},
 				};
 
 }

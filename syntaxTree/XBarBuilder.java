@@ -53,28 +53,38 @@ public class XBarBuilder extends AbstractStructureBuilder {
 	 */
 	public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
+		lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 		AttributedString lAttributedString = new AttributedString("XP");
 		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());	
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSyntacticStructureTop.setHead(lAttributedString);
-
 		lSyntacticStructureTop.setSyntacticLevel(SyntacticLevel.DOUBLE_BAR);
 		pInternalFrame.getContentPane().add(lSyntacticStructureTop);
 		pInternalFrame.getContentPane().add(lSyntacticStructureTop.getSyntacticStructureLines());
 
 		SyntacticStructure lSyntacticStructureBarLeft = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
+		lSyntacticStructureBarLeft.setLineColor(pInternalFrame.getProperties().getLineColor());
+
 		lAttributedString = new AttributedString("∅");
 		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSyntacticStructureBarLeft.setHead(lAttributedString);
 		lSyntacticStructureBarLeft.setSyntacticLevel(SyntacticLevel.NULL);
 		pInternalFrame.getContentPane().add(lSyntacticStructureBarLeft);
 		pInternalFrame.getContentPane().add(lSyntacticStructureBarLeft.getSyntacticStructureLines());
 		
 		SyntacticStructure lSyntacticStructureBarRight = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
+		lSyntacticStructureBarRight.setLineColor(pInternalFrame.getProperties().getLineColor());
+
 		lAttributedString = new AttributedString("X'");
 		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSyntacticStructureBarRight.setHead(lAttributedString);
 		lSyntacticStructureBarRight.setSyntacticLevel(SyntacticLevel.BAR);
 		pInternalFrame.getContentPane().add(lSyntacticStructureBarRight);
@@ -84,9 +94,12 @@ public class XBarBuilder extends AbstractStructureBuilder {
 		lSyntacticStructureTop.getChildren().add(lSyntacticStructureBarRight);		
 
 		SyntacticStructure lSyntacticStructureLeft = new SyntacticStructure(pInternalFrame, lSyntacticStructureBarRight);
+		lSyntacticStructureLeft.setLineColor(pInternalFrame.getProperties().getLineColor());
 		lAttributedString = new AttributedString("X");
 		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSyntacticStructureLeft.setHead(lAttributedString);
 		lSyntacticStructureLeft.setSyntacticLevel(SyntacticLevel.HEAD);
 		pInternalFrame.getContentPane().add(lSyntacticStructureLeft);
@@ -94,9 +107,12 @@ public class XBarBuilder extends AbstractStructureBuilder {
 
 
 		SyntacticStructure lSyntacticStructureRight = new SyntacticStructure(pInternalFrame, lSyntacticStructureBarRight);
+		lSyntacticStructureRight.setLineColor(pInternalFrame.getProperties().getLineColor());
 		lAttributedString = new AttributedString("∅");
 		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSyntacticStructureRight.setHead(lAttributedString);
 		lSyntacticStructureRight.setSyntacticLevel(SyntacticLevel.NULL);
 		pInternalFrame.getContentPane().add(lSyntacticStructureRight);

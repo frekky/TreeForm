@@ -1,5 +1,7 @@
 package syntaxTree;
 
+import java.awt.Color;
+
 public class Properties {
 
 	private int mMinTextWidth = 30;
@@ -7,6 +9,9 @@ public class Properties {
 	private int mLineLength = 10;
 	private int mLeftTranslate = 20;
 	private int mTopTranslate = 20;
+	private Color mLineColor = new Color(0,0,0);
+	private Color mBackgroundColor = new Color(255,255,255);
+	private Color mFontColor = new Color(0,0,0);
 	
 	public int fontSize()
 	{
@@ -45,5 +50,38 @@ public class Properties {
 	public void setTopTranslate(int topTranslate)
 	{
 		mTopTranslate = topTranslate;
+	}
+	public void restoreDefaults() {
+		setLineLength(10);
+		setMinTextWidth(30);
+		setFontSize(10);
+		setLeftTranslate(20);
+		setTopTranslate(20);
+		setFontColor(new Color(0,0,0));
+		setBackgroundColor(new Color(255,255,255));
+		setLineColor(new Color(0,0,0));
+	}
+	public void setLineColor(Color color) {
+		mLineColor = color;
+		
+	}
+	public void setBackgroundColor(Color color) {
+		mBackgroundColor = color;
+	}
+	public void setFontColor(Color color) {
+		mFontColor = color;
+		
+	}
+	public Color getLineColor()
+	{
+		return mLineColor;
+	}
+	public Color getBackgroundColor()
+	{
+		return mBackgroundColor;
+	}
+	public Color getFontColor()
+	{
+		return mFontColor;
 	}
 }
