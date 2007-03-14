@@ -42,7 +42,7 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 		{
 			this.setForeground(((ObservableBackgroundColor) arg0).getValue());
 			this.setColor(this.getForeground());
-			System.out.println("yes");
+			//System.out.println("yes");
 		}
 		if (arg0 == mObservableNew)
 		{

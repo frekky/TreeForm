@@ -1033,7 +1033,14 @@ private double getZero(double d) {
 				lFont.isBold());
 			mUserInternalFrame.getObservableFontItalic().setValue(
 				lFont.isItalic());
-			
+			if (lAttributes.get(TextAttribute.FOREGROUND) != null)
+			{
+				mUserInternalFrame.getUserFrame().getObservableFontColor().setValue((Color) lAttributes.get(TextAttribute.FOREGROUND));
+			}
+			if (lAttributes.get(TextAttribute.BACKGROUND) != null)
+			{
+				mUserInternalFrame.getUserFrame().getObservableBackgroundColor().setValue((Color) lAttributes.get(TextAttribute.BACKGROUND));
+			}
 			if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1)
 			{
 				mUserInternalFrame.getObservableFontSubscript().setValue(true);
