@@ -109,7 +109,11 @@ public class TraceComponent extends JComponent {
 	
 	private void drawCubicCurve(SyntacticStructure start,SyntacticStructure end, Graphics2D contentGraphics) {
 		
-		if (start.getCustomTrace())
+		if (start.getCustomTrace() &&
+				start.getStartX() == mStartX &&
+				start.getEndX() == mEndX &&
+				start.getStartY() == mStartY &&
+				start.getEndY() == mEndY)
 		{
 			midStartX = start.getControlStartX();
 			midEndX = start.getControlEndX();
@@ -122,6 +126,7 @@ public class TraceComponent extends JComponent {
 			start.setControlEndX(midEndX);
 			start.setControlStartY(midStartY);
 			start.setControlEndY(midEndY);
+			start.setCustomTrace(false);
 		}
 		CubicCurve2D bezier = new CubicCurve2D.Float(mStartX,mStartY
 				,midStartX,(float) midStartY,

@@ -1273,6 +1273,11 @@ private void fourthWalk(SyntacticStructure v, int level)
 			SyntacticStructure w = (SyntacticStructure) pSS.getStartTrace().get(j);
 			w.getEndTrace().remove(pSS);
 		}
+		for(int j = 0; j<pSS.getEndTrace().size();j++)
+		{
+			SyntacticStructure w = (SyntacticStructure) pSS.getEndTrace().get(j);
+			w.getStartTrace().remove(pSS);
+		}
 		getUIF().remove(pSS.getSyntacticStructureLines());
 		getUIF().remove(pSS);
 		for (int j = 0; j < pSS.getSyntacticFeatureSet().size(); j++) {
