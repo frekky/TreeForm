@@ -193,7 +193,7 @@ private XMLParser getParser()
 						(SyntacticStructure) lSS.getSyntacticParent();
 					int lI = lSSParent.getChildren().indexOf(lSS);
 					lSSParent.getChildren().remove(lSS);
-					getUIF().remove(lSS);
+					deleteSubtree(lSS);
 					lSSParent.getChildren().add(lI, lSyntacticStructure);
 					lSyntacticStructure.setSyntacticParent(lSSParent);
 				} else {

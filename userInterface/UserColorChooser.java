@@ -39,13 +39,5 @@ public class UserColorChooser extends JColorChooser implements Observer
         return null;
     }
 	public void update(Observable arg0, Object arg1) {
-		if(arg0 instanceof ObservableFontColor)
-		{
-			
-		}
-		if(arg0 instanceof ObservableBackgroundColor)
-		{
-			
-		}
 	}
 }

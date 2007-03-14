@@ -459,7 +459,7 @@ public class TreeFormBundle extends ListResourceBundle {
 				{ "RESTORE_PROPERTIES_LABEL", new String("Restore Original Settings")},
 				{ "FONT_COLOR_TOOLTIP", new String("Select Font Color For new Entries or Highlighted Text")},
 				{ "BACKGROUND_COLOR_TOOLTIP", new String("Select Background Color For new Entries or Highlighted Text")},
-				{ "LINE_COLOR_TOOLTIP", new String("Select Line Color For new subtrees")}
+				{ "LINE_COLOR_TOOLTIP", new String("Select Line Color For new subtrees")},
+				{ "CHANGE_LINE_COLOR", new String("Change Line Color")}
 				};
-
 }

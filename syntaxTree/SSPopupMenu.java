@@ -21,6 +21,7 @@ package syntaxTree;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.JSeparator;
 /**
  * 
  * @author Donald Derrick
@@ -78,6 +79,8 @@ public class SSPopupMenu extends JPopupMenu {
 
 	private JMenuItem mCustomizeEndTrace;
 
+	private JMenuItem mChangeLineColor;
+
 	/**
 	 * 
 	 * @param pSF The SyntaxFacade for this menu
@@ -99,6 +102,7 @@ public class SSPopupMenu extends JPopupMenu {
 		add(mRepositionSubtree);
 		if(pSS.getStartTrace().size() > 0)
 		{
+			add(new JSeparator());
 			mDeleteStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_START_TRACE"));
 			mDeleteStartTrace.addActionListener(new ListenerDeleteStartTrace(mSF,mSS));
 			add(mDeleteStartTrace);
@@ -108,6 +112,7 @@ public class SSPopupMenu extends JPopupMenu {
 		}
 		if(pSS.getEndTrace().size() > 0)
 		{
+			add(new JSeparator());
 			mDeleteEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_END_TRACE"));
 			mDeleteEndTrace.addActionListener(new ListenerDeleteEndTrace(mSF,mSS));
 			add(mDeleteEndTrace);
@@ -115,5 +120,9 @@ public class SSPopupMenu extends JPopupMenu {
 			mCustomizeEndTrace.addActionListener(new ListenerCustomizeEndTrace(mSF,mSS));
 			add(mCustomizeEndTrace);
 		}
+		add(new JSeparator());
+		mChangeLineColor = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CHANGE_LINE_COLOR"));
+		mChangeLineColor.addActionListener(new ListenerChangeLineColor(mSF,mSS));
+		add(mChangeLineColor);
 	}
 }
