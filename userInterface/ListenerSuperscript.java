@@ -25,14 +25,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JToggleButton;
 
 /**
- * @author Donald Derrick
- * @version 0.1 
- * <br>
- * This is one of several Listener classes (part of the Java Command design pattern
- * interface) designed to fire UserControl commands that operate non-sentence
- * GUI interaction in TreeFrom
- *  
- */
+* @author Donald Derrick
+* @version 0.1 
+* <br>
+* This is one of several Listener classes (part of the Java Command design pattern
+* interface) designed to fire UserControl commands that operate non-sentence
+* GUI interaction in TreeFrom
+*  
+*/
 public class ListenerSuperscript implements ActionListener {
 
 	/**
@@ -58,18 +58,18 @@ public class ListenerSuperscript implements ActionListener {
 	/**
 	 * @param pAE Passes a mouse event to the listener
 	 * <br>
-	 * This command calls the ObservableSubscript to set the flag false
+	 * This command calls the ObservableSuperscript to set the flag false
 	 * <br>
-	 * This command then calls the ObservableSuperscript to set the value to that of the toggle button
+	 * This command then calls the ObservableSubscript to set the value to that of the toggle button
 	 * <br>
-	 * The command then sets the highlight to turn on/off superscript.
+	 * The command then sets the highlight to turn on/off subscript.
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {
 		mUserFrame.getObservableSuperscript().setValue(((JToggleButton)pAE.getSource()).isSelected());
 		mUserFrame.getObservableSubscript().setValue(false);
 		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
-
+		
 	}
 
 }

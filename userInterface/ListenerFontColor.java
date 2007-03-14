@@ -6,11 +6,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ListenerLineColor implements ActionListener {
+public class ListenerFontColor implements ActionListener {
 
 	private UserFrame frame;
 
-	public ListenerLineColor(UserFrame userFrame) {
+	public ListenerFontColor(UserFrame userFrame) {
 		super();
 		frame = userFrame;
 	}
@@ -20,8 +20,8 @@ public class ListenerLineColor implements ActionListener {
 		JPanel textColorPanel = new JPanel();
 		UserColorChooser textColor = new UserColorChooser(frame.getInternalFrame().getProperties());
 		textColor.setColor(frame.getInternalFrame().getProperties().getFontColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerFrameLineColor(frame.getInternalFrame().getProperties(),frame));
-		frame.getObservableLineColor().addObserver(textColor);
+		textColor.getSelectionModel().addChangeListener(new ListenerFrameFontColor(frame.getInternalFrame().getProperties(),frame));
+		frame.getObservableFontColor().addObserver(textColor);
 		textColorPanel.add(textColor);
 		textFrame.add(textColorPanel);
 		textFrame.pack();

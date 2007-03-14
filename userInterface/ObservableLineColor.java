@@ -32,7 +32,7 @@ import java.util.Observable;
  *  TODO: implement this observable
  * 
  */
-public class ObservableFontColor extends Observable {
+public class ObservableLineColor extends Observable {
 
 	private Color mColor;
 
@@ -42,7 +42,7 @@ public class ObservableFontColor extends Observable {
 	 * <br>
 	 * 
 	 */
-	public ObservableFontColor(Color pObject) {
+	public ObservableLineColor(Color pObject) {
 		
 		mColor = pObject;
 	}

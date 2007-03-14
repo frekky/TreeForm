@@ -1,11 +1,14 @@
 package userInterface;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javax.swing.JColorChooser;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 import syntaxTree.Properties;
 
-public class UserColorChooser extends JColorChooser 
+public class UserColorChooser extends JColorChooser implements Observer 
 {
 
 	public UserColorChooser(Properties properties)
@@ -35,4 +38,14 @@ public class UserColorChooser extends JColorChooser
         }
         return null;
     }
+	public void update(Observable arg0, Object arg1) {
+		if(arg0 instanceof ObservableFontColor)
+		{
+			
+		}
+		if(arg0 instanceof ObservableBackgroundColor)
+		{
+			
+		}
+	}
 }

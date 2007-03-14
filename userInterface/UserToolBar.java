@@ -329,6 +329,14 @@ public class UserToolBar extends JToolBar {
 
 	private UserToggleFontStrikethrough mStrikethrough;
 
+	private UserButtonFontColor mFontColor;
+
+	private UserButtonBackgroundColor mBackgroundColor;
+
+	private UserButtonLineColor mLineColor;
+
+	//private UserButtonLineColor mLineColor;
+
 /**
  * 
  * @param pUserFrame The UserFrame for this instance of TreeForm 
@@ -438,8 +446,40 @@ public class UserToolBar extends JToolBar {
 		mFontSize.addActionListener(new ListenerFontSize(mUserFrame));
 		mUserFrame.getObservableFontSize().addObserver(mFontSize);
 		this.add(mFontSize);	
+		this.add(new JToolBar.Separator());
+		
+		mFontColor = new UserButtonFontColor(mUserFrame,
+				mIconSize,
+				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
+		mFontColor.addActionListener(new ListenerFontColor(mUserFrame));
+		mFontColor.setToolTipText((String) mUserFrame.getI18n().getObject("FONT_COLOR_TOOLTIP"));
+		mUserFrame.getObservableNew().addObserver(mFontColor);
+		mUserFrame.getObservableFontColor().addObserver(mFontColor);
+		mFontColor.setFocusable(false);
+		this.add(mFontColor);
+		
+		mBackgroundColor = new UserButtonBackgroundColor(mUserFrame,
+				mIconSize,
+				mUserFrame.getObservableBackgroundColor(),mUserFrame.getObservableNew());
+		mBackgroundColor.addActionListener(new ListenerBackgroundColor(mUserFrame));
+		mBackgroundColor.setToolTipText((String) mUserFrame.getI18n().getObject("BACKGROUND_COLOR_TOOLTIP"));
+		mUserFrame.getObservableBackgroundColor().addObserver(mBackgroundColor);
+		mUserFrame.getObservableNew().addObserver(mBackgroundColor);
+		mBackgroundColor.setFocusable(false);
+		this.add(mBackgroundColor);
+		
+		mLineColor = new UserButtonLineColor(mUserFrame,
+				mIconSize,
+				mUserFrame.getObservableLineColor(),mUserFrame.getObservableNew());
+		mLineColor.addActionListener(new ListenerLineColor(mUserFrame));
+		mLineColor.setToolTipText((String) mUserFrame.getI18n().getObject("LINE_COLOR_TOOLTIP"));
+		mUserFrame.getObservableLineColor().addObserver(mLineColor);
+		mUserFrame.getObservableNew().addObserver(mLineColor);
+		mLineColor.setFocusable(false);
+		this.add(mLineColor);
 		
 		
+		this.add(new JToolBar.Separator());
 		mBold = new UserToggleFontBold(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_LARGE"),
 		(ImageIcon) mUserFrame.getI18n().getObject("BOLD_ICON_LARGE_GREY"),
@@ -454,6 +494,7 @@ public class UserToolBar extends JToolBar {
 		mUserFrame.getObservableNew().addObserver(mBold);
 		mBold.setFocusable(false);
 		this.add(mBold);
+		
 		mItalics = new UserToggleFontItalic(mUserFrame,
 		(ImageIcon) mUserFrame.getI18n().getObject("ITALICS_ICON_LARGE"),
 		(ImageIcon) mUserFrame.getI18n().getObject("ITALICS_ICON_LARGE_GREY"),
@@ -529,6 +570,8 @@ public class UserToolBar extends JToolBar {
 		mSuperscript.setFocusable(false);
 		this.add(mSuperscript);
 
+		
+		
 	}
 /**
  *  add view and help options, fully i18n

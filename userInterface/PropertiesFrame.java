@@ -103,18 +103,17 @@ public class PropertiesFrame extends JFrame {
 		textColorPanel = new JPanel();
 		textColor = new UserColorChooser(frame.getProperties());
 		textColor.setColor(frame.getProperties().getFontColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerTextColor(frame.getProperties()));
+		textColor.getSelectionModel().addChangeListener(new ListenerFrameFontColor(frame.getProperties(),frame.getUserFrame()));
 		textColorPanel.add(textColor);
 		highlightColorPanel = new JPanel();
 		highlightColor = new UserColorChooser(frame.getProperties());
 		highlightColor.setColor(frame.getProperties().getBackgroundColor());
-		highlightColor.getSelectionModel().addChangeListener(new ListenerHighlightColor(frame.getProperties()));
-
+		highlightColor.getSelectionModel().addChangeListener(new ListenerFrameBackgroundColor(frame.getProperties(),frame.getUserFrame()));
 		highlightColorPanel.add(highlightColor);
 		lineColorPanel = new JPanel();
 		lineColor = new UserColorChooser(frame.getProperties());
 		lineColor.setColor(frame.getProperties().getLineColor());
-		lineColor.getSelectionModel().addChangeListener(new ListenerLineColor(frame.getProperties()));
+		lineColor.getSelectionModel().addChangeListener(new ListenerFrameLineColor(frame.getProperties(),frame.getUserFrame()));
 
 		lineColorPanel.add(lineColor);
 		tabbedPane.addTab( "Text Color", textColorPanel );

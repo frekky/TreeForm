@@ -634,6 +634,8 @@ public void loadTree() {
 			{
 				lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH);
 			}
+			lMap.put(TextAttribute.BACKGROUND, mUserFrame.getObservableBackgroundColor().getValue());
+			lMap.put(TextAttribute.FOREGROUND, mUserFrame.getObservableFontColor().getValue());
 			return lMap;
 		}
 /**

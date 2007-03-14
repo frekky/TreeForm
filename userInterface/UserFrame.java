@@ -19,6 +19,7 @@
 package userInterface;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
@@ -230,6 +231,12 @@ public class UserFrame extends JFrame{
 
 	private ObservableFontStrikethrough mObservableStrikethrough;
 
+	private ObservableFontColor mObservableFontColor;
+
+	private ObservableBackgroundColor mObservableBackgroundColor;
+
+	private ObservableLineColor mObservableLineColor;
+
 /**
  * Sets the environment for TreeForm
  *
@@ -254,6 +261,9 @@ public class UserFrame extends JFrame{
 		setObservableFontStrikethrough(new ObservableFontStrikethrough(false));
 		setObservableSubscript(new ObservableFontSubscript(false));
 		setObservableSuperscript(new ObservableFontSuperscript(false));
+		setObservableFontColor(new ObservableFontColor(new Color(0,0,0)));
+		setObservableBackgroundColor(new ObservableBackgroundColor(new Color(255,255,255)));
+		setObservableLineColor(new ObservableLineColor(new Color(0,0,0)));
 		mToolBarFile = new UserToolBar(this,UserToolBar.LOAD + UserToolBar.PRINT + UserToolBar.CUT_AND_PASTE + UserToolBar.VIEW_AND_HELP);
 		mToolBarFonts = new UserToolBar(this,  UserToolBar.ADD_FONT_EFFECTS);
 		// open and set 
@@ -274,6 +284,16 @@ public class UserFrame extends JFrame{
 		getUserControl().createNewTree();
 		getObservableNew().setValue(getDesktopPane().getAllFrames().length + 1);
 	}
+
+private void setObservableBackgroundColor(ObservableBackgroundColor color) {
+	mObservableBackgroundColor = color;
+	
+}
+
+private void setObservableFontColor(ObservableFontColor color) {
+	mObservableFontColor = color;
+	
+}
 
 /**
  * 
@@ -585,6 +605,25 @@ public class UserFrame extends JFrame{
 
 	protected ObservableFontStrikethrough getObservableFontStrikethrough() {
 		return mObservableStrikethrough;
+	}
+
+	public ObservableFontColor getObservableFontColor() {
+		// TODO Auto-generated method stub
+		return mObservableFontColor;
+	}
+
+	public ObservableBackgroundColor getObservableBackgroundColor() {
+		// TODO Auto-generated method stub
+		return mObservableBackgroundColor;
+	}
+
+	public ObservableLineColor getObservableLineColor() {
+		// TODO Auto-generated method stub
+		return mObservableLineColor;
+	}
+	public void setObservableLineColor(ObservableLineColor color)
+	{
+		mObservableLineColor = color;
 	}
 }
 
