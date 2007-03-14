@@ -104,10 +104,10 @@ public class UserBezierPane extends JComponent {
 
 	public void setPosition(MouseEvent e) {
 		//System.out.println(e.getX() + " : " + e.getY());
-		float scaleX = e.getX() / Sizer.scaleWidth()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
-		float scaleY = e.getY() / Sizer.scaleHeight()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
+		float scaleX = e.getX() / (Sizer.scaleWidth()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
+		float scaleY = e.getY() / (Sizer.scaleHeight()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
 			if(mControlStart)
 			{
 			mSS.setCustomTrace(true);
@@ -129,10 +129,11 @@ public class UserBezierPane extends JComponent {
 
 	public void setTarget(MouseEvent e)
 	{
-		float scaleX = e.getX() / Sizer.scaleWidth()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
-		float scaleY = e.getY() / Sizer.scaleHeight()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale();
+		float scaleX = e.getX() / (Sizer.scaleWidth()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
+		float scaleY = e.getY() / (Sizer.scaleHeight()
+		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
+		
 		if (scaleX > mSS.getControlStartX() -10 && scaleX < mSS.getControlStartX() + 10
 				&& scaleY > mSS.getControlStartY() -10 && scaleY < mSS.getControlStartY() + 10)
 		{

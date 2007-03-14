@@ -22,8 +22,7 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 		super();
 		mObservableBackgroundColor = observableFontColor;
 		mObservableNew = observableNew;
-		//this.setIcon(null);
-		//this.setBorderPainted(false);
+		this.setForeground(new Color(255,255,255));
 		this.setText("B");
 		if (iconSize)
 		{

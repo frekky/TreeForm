@@ -1037,9 +1037,18 @@ private double getZero(double d) {
 			{
 				mUserInternalFrame.getUserFrame().getObservableFontColor().setValue((Color) lAttributes.get(TextAttribute.FOREGROUND));
 			}
+			else
+			{
+				mUserInternalFrame.getUserFrame().getObservableFontColor().setValue(new Color(0,0,0));
+				
+			}
 			if (lAttributes.get(TextAttribute.BACKGROUND) != null)
 			{
 				mUserInternalFrame.getUserFrame().getObservableBackgroundColor().setValue((Color) lAttributes.get(TextAttribute.BACKGROUND));
+			}
+			else
+			{
+				mUserInternalFrame.getUserFrame().getObservableBackgroundColor().setValue(new Color(255,255,255));
 			}
 			if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1)
 			{
