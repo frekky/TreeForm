@@ -292,7 +292,8 @@ public class EditableComponent extends JComponent {
 			}
 			else 
 			{
-				if ((e.getModifiersEx() & InputEvent.BUTTON3_DOWN_MASK) != 0) 
+				if ((e.getModifiersEx() & InputEvent.BUTTON3_DOWN_MASK) != 0  ||
+						(e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) !=0)  
 				{
 					getUserInternalFrame().getSyntaxFacade().getPopupMenu(
 						e.getSource()).show(

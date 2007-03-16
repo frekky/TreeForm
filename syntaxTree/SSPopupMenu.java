@@ -81,6 +81,8 @@ public class SSPopupMenu extends JPopupMenu {
 
 	private JMenuItem mChangeLineColor;
 
+	private JMenuItem mToggleTriangle;
+
 	/**
 	 * 
 	 * @param pSF The SyntaxFacade for this menu
@@ -124,5 +126,9 @@ public class SSPopupMenu extends JPopupMenu {
 		mChangeLineColor = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CHANGE_LINE_COLOR"));
 		mChangeLineColor.addActionListener(new ListenerChangeLineColor(mSF,mSS));
 		add(mChangeLineColor);
+		add(new JSeparator());
+		mToggleTriangle = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("TOGGLE_TRIANGLE"));
+		mToggleTriangle.addActionListener(new ListenerToggleTriangle(mSF,mSS));
+		add(mToggleTriangle);
 	}
 }

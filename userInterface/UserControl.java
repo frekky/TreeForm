@@ -399,12 +399,12 @@ public void loadTree() {
  **/
 	public void saveAsTree(SyntaxFacade pSyntaxFacade) {
 			
-			FileDialog fileDialog = new FileDialog(mUserFrame,"Save Syntax Tree");
+			FileDialog fileDialog = new FileDialog(mUserFrame,"Save Syntax Tree", FileDialog.SAVE);
 			FileFilterXML fileFilterXML = new FileFilterXML();
 			fileDialog.setFilenameFilter(fileFilterXML);
 			//FileFilterSVG fileFilterSVG = new FileFilterSVG();
 			//fileDialog.setFilenameFilter(fileFilterSVG);
-			fileDialog.setMode(FileDialog.SAVE);
+			//fileDialog.setMode(FileDialog.SAVE);
 			fileDialog.setFile(pSyntaxFacade.getFile().getName());
 			fileDialog.setVisible(true);
 			

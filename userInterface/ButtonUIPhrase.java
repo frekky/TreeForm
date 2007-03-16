@@ -69,7 +69,7 @@ public class ButtonUIPhrase extends ButtonUIAbstract {
 
 		this.prepaint(pG,pC);
 		// set the string (internationalize later!)		
-		AttributedString ats = new AttributedString("Phrase");
+		AttributedString ats = new AttributedString("Bare Phrase");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -82,7 +82,7 @@ public class ButtonUIPhrase extends ButtonUIAbstract {
 
 		// repeat for the title X-double-bar
 
-		ats = new AttributedString("XP");
+		ats = new AttributedString("X");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();

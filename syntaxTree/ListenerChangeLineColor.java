@@ -23,7 +23,7 @@ public class ListenerChangeLineColor implements ActionListener {
 		JPanel textColorPanel = new JPanel();
 		UserColorChooser textColor = new UserColorChooser(mSF.getUIF().getProperties());
 		textColor.setColor(mSS.getLineColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerUpdateLineColor(mSS,mSF));
+		textColor.getSelectionModel().addChangeListener(new ListenerUpdateLineColor(mSS,mSF,textFrame));
 		textColorPanel.add(textColor);
 		textFrame.add(textColorPanel);
 		textFrame.pack();

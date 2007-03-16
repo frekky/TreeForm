@@ -20,7 +20,7 @@ public class ListenerFontColor implements ActionListener {
 		JPanel textColorPanel = new JPanel();
 		UserColorChooser textColor = new UserColorChooser(frame.getInternalFrame().getProperties());
 		textColor.setColor(frame.getInternalFrame().getProperties().getFontColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerButtonFontColor(frame));
+		textColor.getSelectionModel().addChangeListener(new ListenerButtonFontColor(frame,textFrame));
 		frame.getObservableFontColor().addObserver(textColor);
 		textColorPanel.add(textColor);
 		textFrame.add(textColorPanel);

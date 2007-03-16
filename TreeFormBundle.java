@@ -460,6 +460,7 @@ public class TreeFormBundle extends ListResourceBundle {
 				{ "FONT_COLOR_TOOLTIP", new String("Select Font Color For new Entries or Highlighted Text")},
 				{ "BACKGROUND_COLOR_TOOLTIP", new String("Select Background Color For new Entries or Highlighted Text")},
 				{ "LINE_COLOR_TOOLTIP", new String("Select Line Color For new subtrees")},
-				{ "CHANGE_LINE_COLOR", new String("Change Line Color")}
+				{ "CHANGE_LINE_COLOR", new String("Change Line Color")},
+				{"TOGGLE_TRIANGLE", new String("Toggle Triangle (up)")}
 				};
 }
