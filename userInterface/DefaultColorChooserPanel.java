@@ -90,11 +90,21 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
         public static final Color GRAY2 = new Color(177,178,178);
         public static final Color GRAY3 = new Color(208,208,208);
         public static final Color GRAY4 = new Color(244,244,244);
-       
+        
+        public static final Color GOLD1 = new Color(198,197,42);
+        public static final Color GOLD2 = new Color(211,210,110);
+        public static final Color GOLD3 = new Color(224,223,157);
+        public static final Color GOLD4 = new Color(249,244,191);
+        
+        public static final Color TEAL1 = new Color(5,199,215);
+        public static final Color TEAL2 = new Color(122,211,223);
+        public static final Color TEAL3 = new Color(171,224,232);
+        public static final Color TEAL4 = new Color(213,244,252);
+        
         public static final Color DARKGRAY1 = new Color(0,0,0);
-        public static final Color DARKGRAY2 = new Color(36,36,36);
-        public static final Color DARKGRAY3 = new Color(72,72,72);
-        public static final Color DARKGRAY4 = new Color(109,109,109);
+        public static final Color DARKGRAY2 = new Color(0,255,255);
+        public static final Color DARKGRAY3 = new Color(255,255,0);
+        public static final Color DARKGRAY4 = new Color(255,0,255);
 
         public static final Color PRIMARY1 = new Color(255,255,255);
         public static final Color PRIMARY2 = new Color(255,0,0);
@@ -109,12 +119,14 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
         	BROWN1,BROWN2,BROWN3,BROWN4,
         	PINK1,PINK2,PINK3,PINK4,
         	GRAY1,GRAY2,GRAY3,GRAY4,
+        	GOLD1,GOLD2,GOLD3,GOLD4,
+        	TEAL1,TEAL2,TEAL3,TEAL4,
         	DARKGRAY1,DARKGRAY2,DARKGRAY3,DARKGRAY4,
         	PRIMARY1,PRIMARY2,PRIMARY3,PRIMARY4};
         	MainSwatchPanel() {
             super();
             numCols = 4;
-            numRows = 10;
+            numRows = 12;
             initializeColors();
             revalidate();
         }
