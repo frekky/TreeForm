@@ -109,9 +109,11 @@ public class EditableComponent extends JComponent {
 	private Color mBackgroundColor;
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
-	private static final Color HIGHLIGHT_COLOR = new Color(0, 100, 255, 50);
+	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,50);
 	private static final Color TEXT_HIGHLIGHT_COLOR = new Color(0,0,255,70);
-	private static final Color NULL_COLOR = new Color(180,0,0,70);
+	private static final Color NULL_COLOR = new Color(223,61,51,70);
+	private static final Color FEATURE_COLOR = new Color(50,171,90,50);
+	private static final Color ASSOCIATION_COLOR = new Color(254,151,41,50);
 /**
  * 
  * @author Donald Derrick
@@ -588,6 +590,14 @@ public class EditableComponent extends JComponent {
 				{
 					lGraphics2D.setColor(NULL_COLOR);
 				}
+			}
+			if (this instanceof SyntacticFeature)
+			{
+				lGraphics2D.setColor(FEATURE_COLOR);
+			}
+			if (this instanceof SyntacticAssociation)
+			{
+				lGraphics2D.setColor(ASSOCIATION_COLOR);
 			}
 			lGraphics2D.fillRect(
 				0,

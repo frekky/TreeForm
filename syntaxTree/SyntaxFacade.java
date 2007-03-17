@@ -1318,6 +1318,17 @@ private void fourthWalk(SyntacticStructure v, int level)
 				getUIF().remove(lSF);
 			}
 		}
+		for (int m = 0; m < pSS.getSyntacticAssociation().size();m++)
+		{
+			SyntacticAssociation lSA =
+				(SyntacticAssociation) pSS
+					.getSyntacticAssociation()
+					.get(
+					m);
+			SyntacticFeature lSF = lSA.getSyntacticFeature();
+			lSF.getSyntacticAssociation().remove(lSA);
+				getUIF().remove(lSA);
+		}
 		for (int i = 0; i < pSS.getChildren().size(); i++) {
 			deleteSubtree((SyntacticStructure) pSS.getChildren().get(i));
 		}

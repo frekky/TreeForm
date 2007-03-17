@@ -73,7 +73,7 @@ public class ListenerExitTree implements ActionListener {
 			}
 			else if (I == JOptionPane.NO_OPTION)
 			{
-				System.out.println("yuck");
+				//System.out.println("yuck");
 				System.exit(0);
 			}
 		}
