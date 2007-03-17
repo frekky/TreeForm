@@ -41,11 +41,11 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUITrinary extends ButtonUIAbstract {
+public class ButtonUITernary extends ButtonUIAbstract {
 
 
-	static ButtonUITrinary b = new ButtonUITrinary();
-	public ButtonUITrinary() {
+	static ButtonUITernary b = new ButtonUITernary();
+	public ButtonUITernary() {
 		super();
 	}
 	public static ComponentUI createUI(JComponent c) {
@@ -72,7 +72,7 @@ public class ButtonUITrinary extends ButtonUIAbstract {
 
 		this.prepaint(pG,pC);
 		// set the string (internationalize later!)		
-		AttributedString ats = new AttributedString("Trinary");
+		AttributedString ats = new AttributedString("Ternary");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.

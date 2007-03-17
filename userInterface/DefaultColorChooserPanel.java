@@ -101,15 +101,15 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
         public static final Color TEAL3 = new Color(171,224,232);
         public static final Color TEAL4 = new Color(213,244,252);
         
-        public static final Color DARKGRAY1 = new Color(0,0,0);
-        public static final Color DARKGRAY2 = new Color(0,255,255);
-        public static final Color DARKGRAY3 = new Color(255,255,0);
-        public static final Color DARKGRAY4 = new Color(255,0,255);
+        public static final Color DARKGRAY1 = new Color(1,1,1);
+        public static final Color DARKGRAY2 = Color.YELLOW;
+        public static final Color DARKGRAY3 = Color.MAGENTA;
+        public static final Color DARKGRAY4 = Color.CYAN;
 
-        public static final Color PRIMARY1 = new Color(255,255,255);
-        public static final Color PRIMARY2 = new Color(255,0,0);
-        public static final Color PRIMARY3 = new Color(0,255,0);
-        public static final Color PRIMARY4 = new Color(0,0,255);
+        public static final Color PRIMARY1 = Color.WHITE;
+        public static final Color PRIMARY2 = Color.RED;
+        public static final Color PRIMARY3 = Color.GREEN;
+        public static final Color PRIMARY4 = Color.BLUE;
 
         static Color[] colors = {BLUE1,BLUE2,BLUE3,BLUE4,
         	ORANGE1,ORANGE2,ORANGE3,ORANGE4,

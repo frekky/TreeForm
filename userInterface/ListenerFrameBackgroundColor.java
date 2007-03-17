@@ -1,5 +1,7 @@
 package userInterface;
 
+import java.awt.Color;
+
 import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -10,6 +12,7 @@ public class ListenerFrameBackgroundColor implements ChangeListener {
 
 	private Properties mProperties;
 	private UserFrame mUserFrame;
+	private Color color;
 
 	public ListenerFrameBackgroundColor(Properties properties, UserFrame userFrame) {
 		mProperties = properties;
@@ -17,6 +20,11 @@ public class ListenerFrameBackgroundColor implements ChangeListener {
 	}
 
 	public void stateChanged(ChangeEvent e) {
+		color = ((ColorSelectionModel) e.getSource()).getSelectedColor();
+		if (color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1)
+		{
+			((ColorSelectionModel)e.getSource()).setSelectedColor(Color.BLACK);
+		}
 		mProperties.setBackgroundColor(((ColorSelectionModel) e.getSource()).getSelectedColor());
 		mUserFrame.getObservableBackgroundColor().setValue(((ColorSelectionModel) e.getSource()).getSelectedColor());
 		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());

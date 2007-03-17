@@ -1,5 +1,7 @@
 package userInterface;
 
+import java.awt.Color;
+
 import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -10,6 +12,7 @@ public class ListenerFrameFontColor implements ChangeListener {
 
 	private Properties mProperties;
 	private UserFrame mUserFrame;
+	private Color color;
 
 	public ListenerFrameFontColor(Properties properties,UserFrame userFrame) {
 		mProperties = properties;
@@ -17,6 +20,11 @@ public class ListenerFrameFontColor implements ChangeListener {
 	}
 
 	public void stateChanged(ChangeEvent arg0) {
+		color = ((ColorSelectionModel) arg0.getSource()).getSelectedColor();
+		if (color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1)
+		{
+			((ColorSelectionModel)arg0.getSource()).setSelectedColor(Color.BLACK);
+		}
 		mProperties.setFontColor(((ColorSelectionModel) arg0.getSource()).getSelectedColor());
 		mUserFrame.getObservableFontColor().setValue(((ColorSelectionModel) arg0.getSource()).getSelectedColor());
 		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());

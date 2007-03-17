@@ -254,7 +254,7 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mBinary);
 		
 		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
-		mUIObject = (ButtonUI) ButtonUITrinary.createUI(mTrinary);
+		mUIObject = (ButtonUI) ButtonUITernary.createUI(mTrinary);
 		mTrinary.setUI(mUIObject);
 		mTrinary.setPreferredSize(Sizer.scaledButtonSize());
 		mTrinary.setLabel();

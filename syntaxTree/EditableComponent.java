@@ -29,6 +29,8 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -49,6 +51,7 @@ import java.util.Map;
 
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 import javax.swing.event.MouseInputListener;
 
 import enumerators.SyntacticLevel;
@@ -78,7 +81,7 @@ public class EditableComponent extends JComponent {
 	private static final long serialVersionUID = 1L;
 	private int mTextHeight;
 	private int mTextWidth;
-
+	private boolean mCaratTimer;
 	/**
 	 * 
 	 * @uml.property name="mUserInternalFrame"
@@ -107,6 +110,7 @@ public class EditableComponent extends JComponent {
 	private int mHighlightEnd;
 	private Color mFontColor;
 	private Color mBackgroundColor;
+	private boolean doubleClick = false;
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
 	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,50);
@@ -230,8 +234,23 @@ public class EditableComponent extends JComponent {
  */
 		public void mouseClicked(MouseEvent pME) {
 			setInsertionIndex(pointTest(pME));
-			setHighlightBegin(pointTest(pME));
-			setHighlightEnd(pointTest(pME));
+			if(pME.getClickCount() > 1)
+			{
+				setOver(false);
+				setCarat(false);
+				setHighlightEnd(pointTest(pME));
+				Rectangle2D lRectangle = mTextLayoutHead.getBounds();
+				setHighlightBegin((int) lRectangle.getX());
+				setHighlightEnd((int) lRectangle.getWidth());
+				paint(getGraphics());
+				doubleClick = true;
+			}
+			else
+			{
+				doubleClick = false;
+				setHighlightBegin(pointTest(pME));
+				setHighlightEnd(pointTest(pME));
+			}
 			mUserInternalFrame.getObservableClipboard().setValue(pME.getSource());
 			mUserInternalFrame.getObservableClipboard().setIndex(
 				getInsertionIndex());
@@ -269,7 +288,6 @@ public class EditableComponent extends JComponent {
 		public void mouseExited(MouseEvent arg0) {
 			setOver(false);
 			repaint();
-
 		}
 /**
  * A test for pressed mouse.  
@@ -353,7 +371,9 @@ public class EditableComponent extends JComponent {
 						- (((lRectangle.getWidth() / 2) - clickX)
 							/ (Sizer.scaleWidth()
 								* getUserInternalFrame().getScale())));
-			} else {
+			} 
+			else 
+			{
 				clickX =
 					(float) ((lRectangle.getWidth() / 2)
 						+ ((clickX - (lRectangle.getWidth() / 2))
@@ -484,6 +504,7 @@ public class EditableComponent extends JComponent {
 			}
 			else 
 			{
+				doubleClick = false;
 				setOver(false);
 				setCarat(false);
 				setHighlightEnd(pointTest(pME));
@@ -514,6 +535,19 @@ public class EditableComponent extends JComponent {
 		this.addMouseListener(new HitTestMouseListener());
 		this.addMouseMotionListener(new HitTestMouseListener());
 		this.addKeyListener(new UserKeyListener());
+		int delay = 500; //milliseconds
+		  ActionListener taskPerformer = new ActionListener() {
+		     
+
+			public void actionPerformed(ActionEvent evt) {
+		    	  mCaratTimer = !mCaratTimer;
+		    	  if(getCarat() == true)
+		    	  {
+		    		  repaint();
+		    	  }
+		      }
+		  };
+		  new Timer(delay, taskPerformer).start();
 	}
 /**
  * @param pG The graphics object passed into the paint command (usually the
@@ -606,7 +640,7 @@ public class EditableComponent extends JComponent {
 				(int) lPoint2D.getY());
 		}
 
-		if (this.getCarat()) {
+		if (this.getCarat() && mCaratTimer) {
 			lGraphics2D.translate(getZero(this.getTextWidth() - mTextLayoutHead.getBounds().getWidth())/2,
 				mTextLayoutHead.getAscent());
 			Shape[] carets =
@@ -629,11 +663,19 @@ public class EditableComponent extends JComponent {
 					getHighlightBegin(),
 					getHighlightEnd());
 			lGraphics2D.setColor(TEXT_HIGHLIGHT_COLOR);
-			float rx = (float) (getZero(this.getTextWidth() - mTextLayoutHead.getBounds().getWidth())/2);
-			float ry = (float) (mTextLayoutHead.getAscent());
-			AffineTransform at = AffineTransform.getTranslateInstance(rx, ry);
-			lHilite = at.createTransformedShape(lHilite);
-			lGraphics2D.fill(lHilite);
+			if (doubleClick )
+			{
+				//doubleClick = false;
+				lGraphics2D.fill(lHilite);
+			}
+			else
+			{
+				float rx = (float) (getZero(this.getTextWidth() - mTextLayoutHead.getBounds().getWidth())/2);
+				float ry = (float) (mTextLayoutHead.getAscent());
+				AffineTransform at = AffineTransform.getTranslateInstance(rx, ry);
+				lHilite = at.createTransformedShape(lHilite);
+				lGraphics2D.fill(lHilite);
+			}
 		}
 	}
 /**
