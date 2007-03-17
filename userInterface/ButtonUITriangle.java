@@ -84,7 +84,7 @@ public class ButtonUITriangle extends ButtonUIAbstract {
 
 		// repeat for the title X-double-bar
 
-		ats = new AttributedString("XP");
+		ats = new AttributedString(" ");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();

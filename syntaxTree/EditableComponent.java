@@ -113,11 +113,11 @@ public class EditableComponent extends JComponent {
 	private boolean doubleClick = false;
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
-	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,65);
+	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,90);
 	private static final Color TEXT_HIGHLIGHT_COLOR = new Color(0,0,255,70);
-	private static final Color NULL_COLOR = new Color(223,61,51,70);
-	private static final Color FEATURE_COLOR = new Color(50,171,90,50);
-	private static final Color ASSOCIATION_COLOR = new Color(254,151,41,50);
+	private static final Color NULL_COLOR = new Color(223,61,51,90);
+	private static final Color FEATURE_COLOR = new Color(50,171,90,90);
+	private static final Color ASSOCIATION_COLOR = new Color(166,127,190,90);
 /**
  * 
  * @author Donald Derrick
@@ -282,12 +282,59 @@ public class EditableComponent extends JComponent {
  */
 		public void mouseEntered(MouseEvent arg0) {
 			setOver(true);
+			if (arg0.getSource() instanceof SyntacticFeature)
+			{
+				SyntacticFeature hold = (SyntacticFeature) arg0.getSource();
+				
+				for(int i = 0;i < hold.getSyntacticAssociation().size();i++)
+				{
+					SyntacticAssociation w = (SyntacticAssociation) hold.getSyntacticAssociation().get(i);
+					w.setOver(true);
+					w.repaint();
+				}
+			}
+			if (arg0.getSource() instanceof SyntacticAssociation)
+			{
+				SyntacticAssociation hold1 = (SyntacticAssociation) arg0.getSource();
+				SyntacticFeature hold = hold1.getSyntacticFeature();
+				hold.setOver(true);
+				hold.repaint();
+				for(int i = 0;i < hold.getSyntacticAssociation().size();i++)
+				{
+					SyntacticAssociation w = (SyntacticAssociation) hold.getSyntacticAssociation().get(i);
+					w.setOver(true);
+					w.repaint();
+				}
+			}
 			repaint();
 		}
 /**
  * Simple highlight changes
  */
 		public void mouseExited(MouseEvent arg0) {
+			if (arg0.getSource() instanceof SyntacticFeature)
+			{
+				SyntacticFeature hold = (SyntacticFeature) arg0.getSource();
+				for(int i = 0;i < hold.getSyntacticAssociation().size();i++)
+				{
+					SyntacticAssociation w = (SyntacticAssociation) hold.getSyntacticAssociation().get(i);
+					w.setOver(false);
+					w.repaint();
+				}
+			}
+			if (arg0.getSource() instanceof SyntacticAssociation)
+			{
+				SyntacticAssociation hold1 = (SyntacticAssociation) arg0.getSource();
+				SyntacticFeature hold = hold1.getSyntacticFeature();
+				hold.setOver(false);
+				hold.repaint();
+				for(int i = 0;i < hold.getSyntacticAssociation().size();i++)
+				{
+					SyntacticAssociation w = (SyntacticAssociation) hold.getSyntacticAssociation().get(i);
+					w.setOver(false);
+					w.repaint();
+				}
+			}
 			setOver(false);
 			repaint();
 		}
