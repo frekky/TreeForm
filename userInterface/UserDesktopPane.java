@@ -92,6 +92,9 @@ public class UserDesktopPane extends JDesktopPane {
 		internalFrame.addInternalFrameListener(new ListenerInternalFrame(mUserFrame));
 		internalFrame.getContentPane().setLayout(null);
 		//internalFrame.setAutoscrolls(true);
+		ListenerHighlightPane hold = new ListenerHighlightPane(mUserFrame);
+		internalFrame.addMouseListener(hold);
+		internalFrame.addMouseMotionListener(hold);
 		this.add(internalFrame);
 		try {
 			internalFrame.setSelected(true);

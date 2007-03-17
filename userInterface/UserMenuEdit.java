@@ -19,7 +19,7 @@
 
 package userInterface;
 
-import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
@@ -128,18 +128,19 @@ public class UserMenuEdit extends JMenu {
 		mUserFrame = pUserFrame;
 		mUndo = new UserMenuItemUndo((String) mUserFrame.getI18n().getObject("UNDO_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("UNDO_ICON_SMALL"),mUserFrame.getObservableStack(),mUserFrame.getObservableNew());
 		mUndo.addActionListener(new ListenerUndo(mUserFrame));
-		mUndo.setMnemonic('U');
+	//	mUndo.setMnemonic('U');
 		mUndo.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
+							   KeyEvent.VK_Z, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+
 		mUndo.setEnabled(false);
 		mUserFrame.getObservableStack().addObserver(mUndo);	
 		mUserFrame.getObservableNew().addObserver(mUndo);
 		this.add(mUndo);		
 		mRedo = new UserMenuItemRedo((String) mUserFrame.getI18n().getObject("REDO_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("REDO_ICON_SMALL"),mUserFrame.getObservableStack(), mUserFrame.getObservableNew());
 		mRedo.addActionListener(new ListenerRedo(mUserFrame));
-		mRedo.setMnemonic('R');
+		//mRedo.setMnemonic('R');
 		mRedo.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
+							   KeyEvent.VK_Y, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		
 		mRedo.setEnabled(false);
 		mUserFrame.getObservableStack().addObserver(mRedo);	
@@ -150,25 +151,25 @@ public class UserMenuEdit extends JMenu {
 		
 		mCut = new UserMenuItemCut((String) mUserFrame.getI18n().getObject("CUT_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("CUT_ICON_SMALL"),mUserFrame.getObservableNew());
 		mCut.addActionListener(new ListenerCut(mUserFrame));
-		mCut.setMnemonic('U');
+		//mCut.setMnemonic('U');
 		mCut.setAccelerator(KeyStroke.getKeyStroke(
-					   KeyEvent.VK_X, ActionEvent.CTRL_MASK));
+					   KeyEvent.VK_X, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mCut.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mCut);	
 		this.add(mCut);
 		mCopy = new UserMenuItemCopy((String) mUserFrame.getI18n().getObject("COPY_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("COPY_ICON_SMALL"),mUserFrame.getObservableNew());
 		mCopy.addActionListener(new ListenerCopy(mUserFrame));
-		mCopy.setMnemonic('C');
+		//mCopy.setMnemonic('C');
 		mCopy.setAccelerator(KeyStroke.getKeyStroke(
-					   KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+					   KeyEvent.VK_C, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mCopy.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mCopy);	
 		this.add(mCopy);
 		mPaste = new UserMenuItemPaste((String) mUserFrame.getI18n().getObject("PASTE_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PASTE_ICON_SMALL"),mUserFrame.getObservableNew());
 		mPaste.addActionListener(new ListenerPaste(mUserFrame));
-		mPaste.setMnemonic('P');
+		//mPaste.setMnemonic('P');
 		mPaste.setAccelerator(KeyStroke.getKeyStroke(
-					   KeyEvent.VK_V, ActionEvent.CTRL_MASK));
+					   KeyEvent.VK_V, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mPaste.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mPaste);	
 		this.add(mPaste);
@@ -185,6 +186,9 @@ public class UserMenuEdit extends JMenu {
 		mCopyTree = new UserMenuItemDeleteSubtree((String) mUserFrame.getI18n().getObject("COPY_TREE_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("COPY_TREE_ICON_SMALL"),mUserFrame.getObservableNew());
 		mCopyTree.addActionListener(new ListenerCopyTree(mUserFrame));
 		mCopyTree.setEnabled(false);
+		//mCopyTree.setMnemonic('R');
+		mCopyTree.setAccelerator(KeyStroke.getKeyStroke(
+				   KeyEvent.VK_R, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mUserFrame.getObservableNew().addObserver(mCopyTree);	
 		this.add(mCopyTree);
 //		mSelectAll = new UserMenuItemSelectAll((String) mUserFrame.getI18n().getObject("SELECTALL_LABEL"),mUserFrame.getObservableNew());

@@ -233,9 +233,12 @@ public class UserGlassPane extends JComponent {
  */
 	public void setPosition(MouseEvent pME) {
 		mPosition = mMaxPosition;
+		//boolean hold = false;
 		for (int i = mMaxPosition; i >= 0; i--) {
+			//System.out.println(i);
 			if (pME.getX()
-				< ((Float) mPositions.get(new Integer(i))).intValue()) {
+				< ((Float) mPositions.get(new Integer(i))).intValue()) 
+			{
 				mPosition = i;
 			}
 		}

@@ -62,7 +62,10 @@ public class ListenerCopyTree implements ActionListener {
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getUserControl().copyTree();
+		mUserFrame.getUserControl().copyTree(
+				mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().getRightShift() + 40,
+				mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().getBottomShift() + 40,
+				0,0);
 	}
 
 }

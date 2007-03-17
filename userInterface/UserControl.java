@@ -721,26 +721,27 @@ public void loadTree() {
 /**
  * Delete selected items.
  */
-	public void copyTree() {
+	public void copyTree(double width, double height, double left, double top) {
 		if(mUserFrame.getObservableClipboard().getValue() != null)
 		{
 			mUserFrame.getObservableClipboard().getValue().setCarat(false);
 			mUserFrame.getObservableClipboard().getValue().repaint();
 		}
-		SyntaxFacade lSF = mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade();
+		//SyntaxFacade lSF = mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade();
 		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
 		Color lColor = lC.getBackground();
 		lC.setBackground(new Color(255,255,255));
 		JPanel lPanel = (JPanel) lC;
 		try
 		{
-			int scaleWidth = (int) ((lSF.getRightShift() +20) * (300/72/Sizer.scaleWidth()));
-			int scaleHeight = (int) ((lSF.getBottomShift() + 20) * (300/72/Sizer.scaleHeight()));
+			int scaleWidth = (int) (width* (300/72/Sizer.scaleWidth()));
+			int scaleHeight = (int) (height * (300/72/Sizer.scaleHeight()));
 			BufferedImage lImg = new BufferedImage(scaleWidth,scaleHeight, BufferedImage.TYPE_INT_RGB);
 			Graphics lGraphics= lImg.getGraphics();		
 			Graphics2D lG2D = ((Graphics2D)lGraphics);
 			AffineTransform lAT = new AffineTransform();
 			lAT.setToScale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
+			//lAT.setToTranslation(left, top);
 			lG2D.setTransform(lAT);
 			lPanel.print(lG2D);
 			UserTransferableGraphics t = new UserTransferableGraphics(lImg);

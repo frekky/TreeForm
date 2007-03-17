@@ -19,7 +19,7 @@
 
 package userInterface;
 
-import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
@@ -156,28 +156,28 @@ public class UserMenuFile extends JMenu {
 		mUserFrame = pUserFrame;
 		mNew = new UserMenuItemNew((String) mUserFrame.getI18n().getObject("NEW_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("NEW_ICON_SMALL"));
 		mNew.addActionListener(new ListenerNew(mUserFrame));
-		mNew.setMnemonic('N');
+		//mNew.setMnemonic('N');
 		mNew.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_N, ActionEvent.CTRL_MASK));					   
+							   KeyEvent.VK_N, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));					   
 		this.add(mNew);
 		
 		mOpen = new JMenuItem((String) mUserFrame.getI18n().getObject("OPEN_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("OPEN_ICON_SMALL"));
 		mOpen.addActionListener(new ListenerLoad(mUserFrame));
-		mOpen.setMnemonic('I');
+		//mOpen.setMnemonic('I');
 		mOpen.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+							   KeyEvent.VK_O, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		this.add(mOpen);
 		
 		mClose = new UserMenuItemClose((String) mUserFrame.getI18n().getObject("CLOSE_LABEL"),mUserFrame.getObservableNew());
 		mClose.addActionListener(new ListenerClose(mUserFrame));
-		mClose.setMnemonic('C');
+		//mClose.setMnemonic('C');
 		mClose.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mClose);	
 		this.add(mClose);
 		
 		mCloseAll = new UserMenuItemCloseAll((String) mUserFrame.getI18n().getObject("CLOSEALL_LABEL"), mUserFrame.getObservableNew());
 		mCloseAll.addActionListener(new ListenerCloseAll(mUserFrame));
-		mCloseAll.setMnemonic('A');
+		//mCloseAll.setMnemonic('A');
 		mCloseAll.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mCloseAll);
 		this.add(mCloseAll);	
@@ -186,9 +186,9 @@ public class UserMenuFile extends JMenu {
 					
 		mSave = new UserMenuItemSave((String) mUserFrame.getI18n().getObject("SAVE_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("SAVE_ICON_SMALL"), mUserFrame.getObservableNew());
 		mSave.addActionListener(new ListenerSave(mUserFrame));
-		mSave.setMnemonic('S');
+		//mSave.setMnemonic('S');
 		mSave.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+							   KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mSave.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mSave);					   
 		this.add(mSave);
@@ -206,7 +206,6 @@ public class UserMenuFile extends JMenu {
 		this.addSeparator();	
 		mProperties = new JMenuItem((String) mUserFrame.getI18n().getObject("PROPERTIES_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PROPERTIES_ICON_SMALL"));
 		mProperties.addActionListener(new ListenerPropertiesTree(mUserFrame));
-		mProperties.setMnemonic('P');
 		this.add(mProperties);	
 		
 		this.addSeparator();
@@ -214,9 +213,9 @@ public class UserMenuFile extends JMenu {
 		
 		mPrint = new UserMenuItemPrint((String) mUserFrame.getI18n().getObject("PRINT_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("PRINT_ICON_SMALL"), mUserFrame.getObservableNew());
 		mPrint.addActionListener(new ListenerPrintTree(mUserFrame));
-		mPrint.setMnemonic('P');
+		//mPrint.setMnemonic('P');
 		mPrint.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+							   KeyEvent.VK_P, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mPrint.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mPrint);
 		this.add(mPrint);
@@ -232,9 +231,9 @@ public class UserMenuFile extends JMenu {
 		
 		mExport = new UserMenuItemExport((String) mUserFrame.getI18n().getObject("EXPORT_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("EXPORT_ICON_SMALL"), mUserFrame.getObservableNew());
 		mExport.addActionListener(new ListenerExportTree(mUserFrame));
-		mExport.setMnemonic('E');
+//		mExport.setMnemonic('E');
 		mExport.setAccelerator(KeyStroke.getKeyStroke(
-							   KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+							   KeyEvent.VK_E, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		mExport.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mExport);
 		this.add(mExport);	
@@ -243,7 +242,7 @@ public class UserMenuFile extends JMenu {
 		
 		mExit = new JMenuItem((String) mUserFrame.getI18n().getObject("EXIT_LABEL"));
 		mExit.addActionListener(new ListenerExitTree(mUserFrame));
-		mExit.setMnemonic('X');
+//		mExit.setMnemonic('X');
 		this.add(mExit);		
 	}
 	protected JMenuItem getExit()

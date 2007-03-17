@@ -99,9 +99,12 @@ public class SSPopupMenu extends JPopupMenu {
 		mDeleteSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_SUBTREE"));
 		mDeleteSubtree.addActionListener(new ListenerDelete(mSF, mSS));
 		add(mDeleteSubtree);
-		mRepositionSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("REPOSITION_SUBTREE"));
-		mRepositionSubtree.addActionListener(new ListenerReposition(mSF, mSS));
-		add(mRepositionSubtree);
+		if (pSS.getSyntacticParent().getChildren().size() > 1)
+		{
+			mRepositionSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("REPOSITION_SUBTREE"));
+			mRepositionSubtree.addActionListener(new ListenerReposition(mSF, mSS));
+			add(mRepositionSubtree);
+		}
 		if(pSS.getStartTrace().size() > 0)
 		{
 			add(new JSeparator());

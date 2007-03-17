@@ -198,9 +198,10 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 					if (w.getSyntacticLevel() == SyntacticLevel.TRIANGLE)
 					{
 						GeneralPath polly = new GeneralPath();
+						int triangleDifference = (w.getButtonWidth() - w.getRealTextWidth())/2;
 						polly.moveTo(halfway, 1);
-						polly.lineTo(relativeWidth, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
-						polly.lineTo(relativeWidth + w.getButtonWidth(), (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
+						polly.lineTo(relativeWidth + triangleDifference, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
+						polly.lineTo(relativeWidth + w.getButtonWidth() - triangleDifference, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
 						polly.closePath();
 						lGraphics2D.draw(polly);
 						}

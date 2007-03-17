@@ -86,6 +86,7 @@ public class ButtonUIAbstract extends BasicButtonUI {
 	protected FontRenderContext mFrc;
 	public ButtonUIAbstract() {
 		super();
+		//this.
 	}
 	/**
 	 * @param pC

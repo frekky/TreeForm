@@ -291,6 +291,15 @@ public class UserInternalFrame extends JInternalFrame {
 		this.setGlassPane(lUBP);
 		this.getGlassPane().setVisible(true);
 	}
+	public void activateHighlightPane()
+	{
+		UserHighlightPane lUHP = new UserHighlightPane(mUserFrame);
+		ListenerHighlightPane listenerHighlightPane = new ListenerHighlightPane(mUserFrame);
+		lUHP.addMouseListener(listenerHighlightPane);
+		lUHP.addMouseMotionListener(listenerHighlightPane);
+		this.setGlassPane(lUHP);
+		this.getGlassPane().setVisible(true);
+	}
 
 	public void deactivateGlassPane() {
 		this.setGlassPane(new JLabel());
@@ -349,5 +358,19 @@ public class UserInternalFrame extends JInternalFrame {
 	public Properties getProperties()
 	{
 		return mProperties;
+	}
+
+	public void deactivateHighlightPane() {
+		this.setGlassPane(new JLabel());
+		this.getGlassPane().setVisible(false);
+		
+	}
+
+	public UserHighlightPane getHighlightPane() {
+		if(this.getGlassPane() instanceof UserHighlightPane)
+		{
+		return (UserHighlightPane) this.getGlassPane();
+		}
+		return null;
 	}
 }

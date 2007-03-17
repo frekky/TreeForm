@@ -60,23 +60,30 @@ public class Start {
  */
 
 	public static void main(String[] args) {
-		//Runtime lRuntime = Runtime.getRuntime();
-		
-		try {
-			UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-		} catch (ClassNotFoundException e) {
-
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
-
-			e.printStackTrace();
-		}
+//		Runtime lRuntime = Runtime.getRuntime();
+//		String vers = System.getProperty("os.name").toLowerCase();
+//	    if (vers.indexOf("mac") != -1) {
+//	    	 System.setProperty("apple.laf.useScreenMenuBar", "true"); 
+//	    }
+//	    else
+//	    {
+			try {
+				UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
+				System.setProperty("apple.laf.useScreenMenuBar", "true"); 
+			} catch (ClassNotFoundException e) {
+	
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+	
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+	
+				e.printStackTrace();
+			} catch (UnsupportedLookAndFeelException e) {
+	
+				e.printStackTrace();
+			}
+//	    }
 		pLogger.info("Launching the application...");
     
 			mUserSplashScreen = new UserSplashScreen("image/sunset800.jpg");

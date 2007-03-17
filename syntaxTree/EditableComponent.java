@@ -113,7 +113,7 @@ public class EditableComponent extends JComponent {
 	private boolean doubleClick = false;
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
-	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,50);
+	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,65);
 	private static final Color TEXT_HIGHLIGHT_COLOR = new Color(0,0,255,70);
 	private static final Color NULL_COLOR = new Color(223,61,51,70);
 	private static final Color FEATURE_COLOR = new Color(50,171,90,50);
@@ -200,7 +200,9 @@ public class EditableComponent extends JComponent {
 			int location = pKE.getKeyChar();
 			if (location != 8
 				&& location != 127
-				&& ((pKE.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) == 0)) {
+				&& (pKE.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) == 0
+				&& (pKE.getModifiersEx() & KeyEvent.META_DOWN_MASK) == 0) {
+				//System.out.println
 				deleteHead();
 				AttributedString lAT =
 					new AttributedString(String.valueOf(pKE.getKeyChar()));
@@ -663,7 +665,7 @@ public class EditableComponent extends JComponent {
 					getHighlightBegin(),
 					getHighlightEnd());
 			lGraphics2D.setColor(TEXT_HIGHLIGHT_COLOR);
-			if (doubleClick )
+			if (doubleClick && mCaratTimer)
 			{
 				//doubleClick = false;
 				lGraphics2D.fill(lHilite);

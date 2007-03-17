@@ -19,9 +19,13 @@
 
 package userInterface;
 
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 
 /**
  * 
@@ -73,11 +77,13 @@ public class UserMenuHelp extends JMenu {
 		mUserFrame = pUserFrame;
 		mHelp = new JMenuItem((String) mUserFrame.getI18n().getObject("CONTENTS_LABEL"));
 		mHelp.addActionListener(new ListenerHelp(mUserFrame));
-		mHelp.setMnemonic('H');
+		mHelp.setAccelerator(KeyStroke.getKeyStroke(
+				   KeyEvent.VK_H, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		this.add(mHelp);		
 		mAbout = new JMenuItem((String) mUserFrame.getI18n().getObject("ABOUT_LABEL"),(ImageIcon) mUserFrame.getI18n().getObject("TREEFORM_ICON_SMALL"));
 		mAbout.addActionListener(new ListenerAbout(mUserFrame));
-		mAbout.setMnemonic('A');
+		mAbout.setAccelerator(KeyStroke.getKeyStroke(
+				   KeyEvent.VK_A, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		this.add(mAbout);
 	}
 	protected JMenuItem getAbout()
