@@ -176,6 +176,7 @@ public class UserObjectBrowser extends JPanel {
 		mHead.addMouseListener(new ListenerMouse(mUserFrame));
 		mHead.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		this.add(mHead);
+		
 		mPhrase = new UserBrowserButton(mUserFrame, SyntacticStructureType.PHRASE);
 		mUIObject = (ButtonUI) ButtonUIPhrase.createUI(mPhrase);
 		mPhrase.setUI(mUIObject);
@@ -194,52 +195,6 @@ public class UserObjectBrowser extends JPanel {
 		mMorph.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		this.add(mMorph);
 		
-		mAdjunct = new UserBrowserButton(mUserFrame, SyntacticStructureType.ADJUNCT);
-		mUIObject = (ButtonUI) ButtonUIAdjunct.createUI(mAdjunct);
-		mAdjunct.setUI(mUIObject);
-		mAdjunct.setPreferredSize(Sizer.scaledButtonSize());
-		mAdjunct.setLabel();
-		mAdjunct.addMouseListener(new ListenerMouse(mUserFrame));
-		mAdjunct.addMouseMotionListener(
-			new ListenerMouseMotion(mUserFrame));
-		this.add(mAdjunct);
-		
-		mUnary = new UserBrowserButton(mUserFrame, SyntacticStructureType.UNARY);
-		mUIObject = (ButtonUI) ButtonUIUnary.createUI(mUnary);
-		mUnary.setUI(mUIObject);
-		mUnary.setPreferredSize(Sizer.scaledButtonSize());
-		mUnary.setLabel();
-		mUnary.addMouseListener(new ListenerMouse(mUserFrame));
-		mUnary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
-		this.add(mUnary);
-		
-		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
-		mUIObject = (ButtonUI) ButtonUIBinary.createUI(mBinary);
-		mBinary.setUI(mUIObject);
-		mBinary.setPreferredSize(Sizer.scaledButtonSize());
-		mBinary.setLabel();
-		mBinary.addMouseListener(new ListenerMouse(mUserFrame));
-		mBinary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
-		this.add(mBinary);
-		
-		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
-		mUIObject = (ButtonUI) ButtonUITrinary.createUI(mTrinary);
-		mTrinary.setUI(mUIObject);
-		mTrinary.setPreferredSize(Sizer.scaledButtonSize());
-		mTrinary.setLabel();
-		mTrinary.addMouseListener(new ListenerMouse(mUserFrame));
-		mTrinary.addMouseMotionListener(
-			new ListenerMouseMotion(mUserFrame));
-		this.add(mTrinary);
-		
-		mXBar = new UserBrowserButton(mUserFrame, SyntacticStructureType.X_BAR);
-		mUIObject = (ButtonUI) ButtonUIXBar.createUI(mXBar);
-		mXBar.setUI(mUIObject);
-		mXBar.setPreferredSize(Sizer.scaledButtonSize());
-		mXBar.setLabel();
-		mXBar.addMouseListener(new ListenerMouse(mUserFrame));
-		mXBar.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
-		this.add(mXBar);
 		
 		mTriangle = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRIANGLE);
 		mUIObject = (ButtonUI) ButtonUITriangle.createUI(mTriangle);
@@ -279,6 +234,55 @@ public class UserObjectBrowser extends JPanel {
 		mFeature.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
 		this.add(mFeature);
+		
+		mUnary = new UserBrowserButton(mUserFrame, SyntacticStructureType.UNARY);
+		mUIObject = (ButtonUI) ButtonUIUnary.createUI(mUnary);
+		mUnary.setUI(mUIObject);
+		mUnary.setPreferredSize(Sizer.scaledButtonSize());
+		mUnary.setLabel();
+		mUnary.addMouseListener(new ListenerMouse(mUserFrame));
+		mUnary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		this.add(mUnary);
+		
+		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
+		mUIObject = (ButtonUI) ButtonUIBinary.createUI(mBinary);
+		mBinary.setUI(mUIObject);
+		mBinary.setPreferredSize(Sizer.scaledButtonSize());
+		mBinary.setLabel();
+		mBinary.addMouseListener(new ListenerMouse(mUserFrame));
+		mBinary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		this.add(mBinary);
+		
+		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
+		mUIObject = (ButtonUI) ButtonUITrinary.createUI(mTrinary);
+		mTrinary.setUI(mUIObject);
+		mTrinary.setPreferredSize(Sizer.scaledButtonSize());
+		mTrinary.setLabel();
+		mTrinary.addMouseListener(new ListenerMouse(mUserFrame));
+		mTrinary.addMouseMotionListener(
+			new ListenerMouseMotion(mUserFrame));
+		this.add(mTrinary);
+		
+		mAdjunct = new UserBrowserButton(mUserFrame, SyntacticStructureType.ADJUNCT);
+		mUIObject = (ButtonUI) ButtonUIAdjunct.createUI(mAdjunct);
+		mAdjunct.setUI(mUIObject);
+		mAdjunct.setPreferredSize(Sizer.scaledButtonSize());
+		mAdjunct.setLabel();
+		mAdjunct.addMouseListener(new ListenerMouse(mUserFrame));
+		mAdjunct.addMouseMotionListener(
+			new ListenerMouseMotion(mUserFrame));
+		this.add(mAdjunct);
+		
+		
+		mXBar = new UserBrowserButton(mUserFrame, SyntacticStructureType.X_BAR);
+		mUIObject = (ButtonUI) ButtonUIXBar.createUI(mXBar);
+		mXBar.setUI(mUIObject);
+		mXBar.setPreferredSize(Sizer.scaledButtonSize());
+		mXBar.setLabel();
+		mXBar.addMouseListener(new ListenerMouse(mUserFrame));
+		mXBar.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		this.add(mXBar);
+
 	}
 
 }

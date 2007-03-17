@@ -46,9 +46,10 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 		SyntacticFeatureSet lSFS = new ThetaRoleFeatureSet();
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
 		SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
-		AttributedString lAttributedString = new AttributedString("<Agent>");
+		AttributedString lAttributedString = new AttributedString("<θ>");
 		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+		lAttributedString.addAttribute(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON,1,2);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
 		lSF.setSyntacticFeatureSet(lSFS);
@@ -57,7 +58,7 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 		pInternalFrame.getContentPane().add(lSF);
 		
 		lSF = new SyntacticFeature(pInternalFrame);
-		lAttributedString = new AttributedString("<Theme>");
+		lAttributedString = new AttributedString("<θ>");
 		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());

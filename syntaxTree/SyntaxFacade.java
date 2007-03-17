@@ -166,7 +166,11 @@ private XMLParser getParser()
 				
 		if (getContainer() instanceof SyntacticStructure) {
 			SyntacticStructure lSS = ((SyntacticStructure) getContainer());
-			if (pSST == SyntacticStructureType.PHRASE)
+			if (pSST == SyntacticStructureType.ADJUNCT)
+			{
+				lSyntacticStructure.setHead(lSS.getHead());
+			}
+			if (pSST == SyntacticStructureType.PHRASE || pSST == SyntacticStructureType.ADJUNCT)
 			{
 				if (lSS.getSyntacticParent() != null)
 				{
@@ -1215,7 +1219,19 @@ private void fourthWalk(SyntacticStructure v, int level)
 		SyntacticStructure pParent,
 		SyntacticStructure pChild) {
 		addUndo();
-		if (pChild.getSyntacticParent() != null) {
+		if (pParent.getSyntacticLevel() == SyntacticLevel.NULL)
+		{
+			pChild.getSyntacticParent().getChildren().remove(pChild);
+			SyntacticStructure lSSParent =
+				(SyntacticStructure) pParent.getSyntacticParent();
+			int lI = lSSParent.getChildren().indexOf(pParent);
+			lSSParent.getChildren().remove(pParent);
+			deleteSubtree(pParent);
+			lSSParent.getChildren().add(lI, pChild);
+			pChild.setSyntacticParent(lSSParent);
+			displayTree();
+		}
+		else if (pChild.getSyntacticParent() != null) {
 			pChild.getSyntacticParent().getChildren().remove(pChild);
 			if (pParent.getChildren().size() == 0) {
 				pParent.getChildren().add(pChild);

@@ -149,7 +149,7 @@ public class ButtonUITrinary extends ButtonUIAbstract {
 		tl.draw(mGraphics2D, positionLeft.width, positionLeft.height);
 		
 //		repeat for the X
-		 ats = new AttributedString("X");
+		 ats = new AttributedString("Y");
 		 ats.addAttribute(TextAttribute.FONT, mFont);
 		 iter = ats.getIterator();
 		 tl = new TextLayout(iter, mFrc);
@@ -160,7 +160,7 @@ public class ButtonUITrinary extends ButtonUIAbstract {
 		 tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
 
 		// repeat for the title X
-		ats = new AttributedString("X");
+		ats = new AttributedString("Z");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);

@@ -87,7 +87,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 
 		// repeat for the title X-double-bar
 
-		ats = new AttributedString("X''");
+		ats = new AttributedString("XP");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();

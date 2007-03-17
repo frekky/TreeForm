@@ -500,16 +500,19 @@ public void loadTree() {
 /**
  * Closes all Trees without saving
  */
-		public void closeAllTrees() {
+		public boolean closeAllTrees() {
 			int lI = JOptionPane.showConfirmDialog(null,"Clicking NO will close ALL trees without saving them.","Save trees first?",JOptionPane.YES_NO_OPTION);
 			if (lI == JOptionPane.YES_OPTION)
 			{
 				saveAllTrees(mUserFrame.getDesktopPane());
+				return false;
 			}
-			else
+			else if (lI == JOptionPane.NO_OPTION)
 			{
-			mUserFrame.getDesktopPane().closeAllInternalFrames();
+				mUserFrame.getDesktopPane().closeAllInternalFrames();
+				return true;
 			}
+			return false;
 		}
 /**
  * 

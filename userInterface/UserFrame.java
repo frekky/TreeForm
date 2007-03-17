@@ -244,6 +244,7 @@ public class UserFrame extends JFrame{
 	public UserFrame()
 	{
 		this.setVisible(false);
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setObservableZoom(new ObservableZoom(1.0F));		
 		mCurrentLocale = mSupportedLocales[0];
 		seti18n(mCurrentLocale);
@@ -425,14 +426,18 @@ private void setObservableFontColor(ObservableFontColor color) {
 			{
 				if (getObservableNew().getValue() != 0)
 				{
-					int I = JOptionPane.showConfirmDialog(null,"Clicking NO exit the program without saving any trees.","Save trees first?",JOptionPane.YES_NO_OPTION);
+					int I = JOptionPane.showConfirmDialog(null,"Clicking NO will exit the program without saving any trees.","Save trees first?",JOptionPane.YES_NO_CANCEL_OPTION);
 					if (I == JOptionPane.YES_OPTION)
 					{
 						getUserControl().saveAllTrees(getDesktopPane());
 					}
-					else
+					else if (I == JOptionPane.NO_OPTION)
 					{
 						System.exit(0);
+					}
+					else
+					{
+						return;
 					}
 				}
 				else

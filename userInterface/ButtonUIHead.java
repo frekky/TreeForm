@@ -72,7 +72,7 @@ public class ButtonUIHead extends ButtonUIAbstract {
 
 		this.prepaint(pG,pC);
 		// set the string (internationalize later!)		
-		AttributedString ats = new AttributedString("Head");
+		AttributedString ats = new AttributedString("Node Down");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -117,7 +117,7 @@ public class ButtonUIHead extends ButtonUIAbstract {
 		tl = new TextLayout(iter, mFrc);
 		Dimension positionCenter =
 			new Dimension(
-				(int) (drawCenter.width - tl.getBounds().getWidth() / 2),
+				(int) (drawCenter.width - tl.getBounds().getWidth() / 2) +1,
 				(int) (drawCenter.height + tl.getBounds().getHeight() + 3));
 		tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
 

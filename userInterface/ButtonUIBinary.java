@@ -132,7 +132,7 @@ public class ButtonUIBinary extends ButtonUIAbstract {
 		lTl.draw(mGraphics2D, lPositionLeft.width, lPositionLeft.height);
 		
 		// repeat for the title X
-		lAts = new AttributedString("X");
+		lAts = new AttributedString("Y");
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		lIter = lAts.getIterator();
 		lTl = new TextLayout(lIter, mFrc);

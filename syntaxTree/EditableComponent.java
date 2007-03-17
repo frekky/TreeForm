@@ -51,6 +51,8 @@ import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputListener;
 
+import enumerators.SyntacticLevel;
+
 import staticFunctions.Sizer;
 import userInterface.UserInternalFrame;
 
@@ -108,6 +110,8 @@ public class EditableComponent extends JComponent {
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
 	private static final Color HIGHLIGHT_COLOR = new Color(0, 100, 255, 50);
+	private static final Color TEXT_HIGHLIGHT_COLOR = new Color(0,0,255,70);
+	private static final Color NULL_COLOR = new Color(180,0,0,70);
 /**
  * 
  * @author Donald Derrick
@@ -577,6 +581,14 @@ public class EditableComponent extends JComponent {
 		this.setSize((int) lPoint2DScaled.getX(), (int) lPoint2DScaled.getY());
 		if (this.getOver()) {
 			lGraphics2D.setColor(HIGHLIGHT_COLOR);
+			if (this instanceof SyntacticStructure)
+			{
+				SyntacticStructure hold = (SyntacticStructure) this;
+				if(hold.getSyntacticLevel() == SyntacticLevel.NULL)
+				{
+					lGraphics2D.setColor(NULL_COLOR);
+				}
+			}
 			lGraphics2D.fillRect(
 				0,
 				0,
@@ -606,21 +618,12 @@ public class EditableComponent extends JComponent {
 				mTextLayoutHead.getLogicalHighlightShape(
 					getHighlightBegin(),
 					getHighlightEnd());
-			lGraphics2D.setColor(new Color(0, 0, 0));
-			lGraphics2D.setPaintMode();
-			lGraphics2D.setXORMode(new Color(255, 255, 255));
-			float rx = 0;
-
-			rx
-				+= (float) (getZero(this.getTextWidth() - mTextLayoutHead.getBounds().getWidth())/2);
-
+			lGraphics2D.setColor(TEXT_HIGHLIGHT_COLOR);
+			float rx = (float) (getZero(this.getTextWidth() - mTextLayoutHead.getBounds().getWidth())/2);
 			float ry = (float) (mTextLayoutHead.getAscent());
 			AffineTransform at = AffineTransform.getTranslateInstance(rx, ry);
 			lHilite = at.createTransformedShape(lHilite);
 			lGraphics2D.fill(lHilite);
-			//System.out.println(lHilite.getBounds().x + " : " + lHilite.getBounds().y + " : " + lHilite.getBounds().width + " : " + lHilite.getBounds().height);
-			//super.paint(lGraphics2D);
-			//System.out.println(getHighlightBegin() +" : " +  getHighlightEnd());
 		}
 	}
 /**

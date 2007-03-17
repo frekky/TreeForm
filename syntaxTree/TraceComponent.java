@@ -172,53 +172,53 @@ public class TraceComponent extends JComponent {
 			tempTop = start;
 			tempBottom = end;
 		}
-//		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
-//		{
-			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempBottom.getLevel(), true);
-//		}
-		if (tempTop.equals(tempBottom))
+		tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempBottom.getLevel(), true);
+		if(tempTop != null)
 		{
-			drawStart(start,contentGraphics,POSITION_LEFT);
-			drawEnd(end,contentGraphics,POSITION_LEFT);
-				midStartX = mStartX;
-				midEndX = mEndX;
-			if (mEndY < mStartY)
+			if (tempTop.equals(tempBottom))
 			{
-				midStartY = mEndY;
-				midEndY = mEndY;
-			}
-			else
-			{
-				midStartY = mStartY;
-				midEndY = mStartY;
-			}
-			return true;
-		}
-		LinkedList tempList = ((LinkedList) mSyntaxFacade.getLinkedArray().get(tempTop.getLevel()));
-		if(!(tempTop.getAbsoluteOrder() == 0))
-		{
-			//System.out.println("left down");
-			if (tempList.get(tempTop.getAbsoluteOrder()-1).equals(tempBottom))
-			{
-				//System.out.println("we have a match");
-				if (tempBottom == start)
+				drawStart(start,contentGraphics,POSITION_LEFT);
+				drawEnd(end,contentGraphics,POSITION_LEFT);
+					midStartX = mStartX;
+					midEndX = mEndX;
+				if (mEndY < mStartY)
 				{
-					tempTop = end;
-					drawStart(tempBottom,contentGraphics,POSITION_RIGHT);
-					drawEnd(tempTop,contentGraphics,POSITION_LEFT);
+					midStartY = mEndY;
+					midEndY = mEndY;
 				}
 				else
 				{
-					tempTop = start;
-					drawStart(tempTop,contentGraphics,POSITION_LEFT);
-					drawEnd(tempBottom,contentGraphics,POSITION_RIGHT);
+					midStartY = mStartY;
+					midEndY = mStartY;
 				}
-				double difference = mStartX - mEndX;
-				midStartX = (int) (mStartX - .3*difference);
-				midEndX = (int) (mEndX + .3*difference);
-				midStartY = mStartY;
-				midEndY = mEndY;
 				return true;
+			}
+			LinkedList tempList = ((LinkedList) mSyntaxFacade.getLinkedArray().get(tempTop.getLevel()));
+			if(!(tempTop.getAbsoluteOrder() == 0))
+			{
+				//System.out.println("left down");
+				if (tempList.get(tempTop.getAbsoluteOrder()-1).equals(tempBottom))
+				{
+					//System.out.println("we have a match");
+					if (tempBottom == start)
+					{
+						tempTop = end;
+						drawStart(tempBottom,contentGraphics,POSITION_RIGHT);
+						drawEnd(tempTop,contentGraphics,POSITION_LEFT);
+					}
+					else
+					{
+						tempTop = start;
+						drawStart(tempTop,contentGraphics,POSITION_LEFT);
+						drawEnd(tempBottom,contentGraphics,POSITION_RIGHT);
+					}
+					double difference = mStartX - mEndX;
+					midStartX = (int) (mStartX - .3*difference);
+					midEndX = (int) (mEndX + .3*difference);
+					midStartY = mStartY;
+					midEndY = mEndY;
+					return true;
+				}
 			}
 		}
 		if(start.getLevel() > end.getLevel())
@@ -231,10 +231,9 @@ public class TraceComponent extends JComponent {
 			tempTop = start;
 			tempBottom = end;
 		}
-//		for(int i = 0; i < Math.abs(end.getLevel() - start.getLevel());i++)
-//		{
+		
 			tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempBottom.getLevel(), false);
-//		}
+
 		if(tempTop != null)
 		{
 		if (tempTop.equals(tempBottom))
@@ -256,7 +255,7 @@ public class TraceComponent extends JComponent {
 			}
 			return true;
 		}
-		tempList = ((LinkedList) mSyntaxFacade.getLinkedArray().get(tempTop.getLevel()));
+		LinkedList tempList = ((LinkedList) mSyntaxFacade.getLinkedArray().get(tempTop.getLevel()));
 		if(!(tempTop.getAbsoluteOrder() + 1 == 
 			tempList.size()))
 		{

@@ -69,7 +69,7 @@ public class ButtonUIPhrase extends ButtonUIAbstract {
 
 		this.prepaint(pG,pC);
 		// set the string (internationalize later!)		
-		AttributedString ats = new AttributedString("Bare Phrase");
+		AttributedString ats = new AttributedString("Node Up");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -90,7 +90,7 @@ public class ButtonUIPhrase extends ButtonUIAbstract {
 		tl.draw(
 			mGraphics2D,
 			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5));
+			(float) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5) -1);
 
 		// draw the lines below the X-double-bar
 

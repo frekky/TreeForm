@@ -71,8 +71,9 @@ public class ListenerExitTree implements ActionListener {
 			{
 				mUserFrame.getUserControl().saveAllTrees(mUserFrame.getDesktopPane());
 			}
-			else
+			else if (I == JOptionPane.NO_OPTION)
 			{
+				System.out.println("yuck");
 				System.exit(0);
 			}
 		}

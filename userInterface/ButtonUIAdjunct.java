@@ -78,7 +78,7 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 			(float) (mDim.getHeight() - 4));
 
 
-		lAts = new AttributedString("X'");
+		lAts = new AttributedString("X(P)");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		lIter = lAts.getIterator();
@@ -86,29 +86,28 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 		lTl.draw(
 			mGraphics2D,
 			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5));
+			(float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)-6);
 
 		// draw the lines below the X-double-bar
 		Rectangle lDrawRight =
 			new Rectangle(
 				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
+				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
 				(int) ((mDim.getWidth()) / 2)
 					+ 13,
 				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					+ 2);
+					+ Sizer.UILineLength() -4);
 					
 						
 		Rectangle lDrawLeft =
 			new Rectangle(
 				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
+				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
 				(int) ((mDim.getWidth()) / 2)
 					- 13,
 				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
 					+ Sizer.UILineLength()
-					+ 2);
+					-4);
 
 		mGraphics2D.drawLine(
 			lDrawRight.width,
@@ -119,14 +118,14 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 
 		
 		// repeat for the title X
-		lAts = new AttributedString("X");
+		lAts = new AttributedString("X(P)");
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		lIter = lAts.getIterator();
 		lTl = new TextLayout(lIter, mFrc);
 		Dimension lPositionRight =
 			new Dimension(
 				(int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
-				(int) (lDrawRight.height + lTl.getBounds().getHeight() + 3));
+				(int) (lDrawRight.height + lTl.getBounds().getHeight()));
 		lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
 
 //		repeat for the X
