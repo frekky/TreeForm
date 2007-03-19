@@ -114,7 +114,7 @@ public class EditableComponent extends JComponent {
 	private static final Color STRONG_CARET_COLOR = Color.black;
 	private static final Color WEAK_CARET_COLOR = Color.black;
 	private static final Color HIGHLIGHT_COLOR = new Color(36,139,192,90);
-	private static final Color TEXT_HIGHLIGHT_COLOR = new Color(0,0,255,70);
+	private static final Color TEXT_HIGHLIGHT_COLOR = new Color(0,0,255,80);
 	private static final Color NULL_COLOR = new Color(223,61,51,90);
 	private static final Color FEATURE_COLOR = new Color(50,171,90,90);
 	private static final Color ASSOCIATION_COLOR = new Color(166,127,190,90);

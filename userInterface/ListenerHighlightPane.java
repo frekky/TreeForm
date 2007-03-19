@@ -59,14 +59,15 @@ public class ListenerHighlightPane extends MouseInputAdapter {
 	}
 
 	public void mouseDragged(MouseEvent pME) {
+
 		Container lC = mUserFrame.getInternalFrame().getContentPane();
 		Point lP =
 			SwingUtilities.convertPoint(
 				(Component) pME.getSource(),
 				pME.getPoint(),
 				lC);
-		((UserHighlightPane)((UserInternalFrame)pME.getSource()).getHighlightPane()).setEndPosition(lP.x,lP.y);
-		//System.out.println("here");
+		mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
+		mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(pME);
 		
 	}
 
@@ -83,29 +84,32 @@ public class ListenerHighlightPane extends MouseInputAdapter {
 	}
 
 	public void mousePressed(MouseEvent e) {
-		((UserInternalFrame)e.getSource()).activateHighlightPane();
+		
 		Container lC = mUserFrame.getInternalFrame().getContentPane();
 		Point lP =
 			SwingUtilities.convertPoint(
 				(Component) e.getSource(),
 				e.getPoint(),
 				lC);
-		((UserHighlightPane)((UserInternalFrame)e.getSource()).getHighlightPane()).setStartPosition(lP.x,lP.y);
-		((UserHighlightPane)((UserInternalFrame)e.getSource()).getHighlightPane()).setEndPosition(lP.x,lP.y);
-
+		mUserFrame.getInternalFrame().activateHighlightPane();
+		mUserFrame.getInternalFrame().getHighlightPane().setStartPosition(lP.x,lP.y);
+		mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
+		mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(e);
 		//System.out.println("started here");
 	}
 
 	public void mouseReleased(MouseEvent e) {
+		
 		Container lC = mUserFrame.getInternalFrame().getContentPane();
 		Point lP =
 			SwingUtilities.convertPoint(
 				(Component) e.getSource(),
 				e.getPoint(),
 				lC);
-		((UserHighlightPane)((UserInternalFrame)e.getSource()).getHighlightPane()).setEndPosition(lP.x,lP.y);
-		((UserHighlightPane)((UserInternalFrame)e.getSource()).getHighlightPane()).copyImage();
-		((UserInternalFrame)e.getSource()).deactivateHighlightPane();
+		mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(e);
+		mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
+		mUserFrame.getInternalFrame().getHighlightPane().copyImage();
+		mUserFrame.getInternalFrame().deactivateHighlightPane();
 
 		//System.out.println("ended here");
 	}

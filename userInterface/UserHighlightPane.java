@@ -23,6 +23,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.InputEvent;
+import java.awt.event.MouseEvent;
 import java.awt.geom.GeneralPath;
 
 import javax.swing.JComponent;
@@ -40,6 +42,8 @@ public class UserHighlightPane extends JComponent {
 	private int mStartX;
 
 	private int mStartY;
+
+	private boolean mHighlight;
 
 
 	public UserHighlightPane(
@@ -64,9 +68,23 @@ public class UserHighlightPane extends JComponent {
 		polly.lineTo(mEndX,mEndY);
 		polly.lineTo(mEndX,mStartY);
 		polly.closePath();
+		if (mHighlight)
+		{
 		lGraphics2D.setColor(new Color(0,0,255,90));
+		}
+		else
+		{
+			lGraphics2D.setColor(new Color(0,0,0,90));
+		}
 		lGraphics2D.draw(polly);
-		lGraphics2D.setColor(new Color(0,0,255,30));
+		if (mHighlight)
+		{
+			lGraphics2D.setColor(new Color(0,0,255,30));
+			}
+			else
+			{
+				lGraphics2D.setColor(new Color(0,0,0,30));
+			}
 		lGraphics2D.fill(polly);
 		//System.out.println(mStartX + " : " + mStartY + " : " + mEndX + " : " + mEndY);
 	}
@@ -90,5 +108,17 @@ public class UserHighlightPane extends JComponent {
 	public void setStartPosition(int x, int y) {
 		mStartX = x;
 		mStartY = y;	
+	}
+
+	public void setHighlightType(MouseEvent e) {
+		if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) !=0)  
+		{
+			mHighlight = false;
+		}
+		else
+		{
+			mHighlight = true;
+		}
+		
 	}
 }

@@ -88,7 +88,8 @@ public class ListenerMouseMotion implements MouseMotionListener {
 				lP.y - lUBB.getPressedY());
 		lUBB.getTempLabel().setLocation(lP);
 		lUBB.getTempLabel().setVisible(true);
-		if (lComponent instanceof UserInternalFrame) {
+		if (lComponent instanceof UserInternalFrame) 
+		{
 						lP =
 				SwingUtilities.convertPoint(
 					(Component) pME.getSource(),

@@ -1101,9 +1101,9 @@ private void fourthWalk(SyntacticStructure v, int level)
 		SyntacticStructure right = (SyntacticStructure) v.getChildren().getLast();
 		//System.out.print("begin paint");
 		v.getSyntacticStructureLines().setBounds(
-			(int) (left.getButtonX() * Sizer.scaleWidth() * getUIF().getScale()),
+			(int) ((left.getButtonX()) * Sizer.scaleWidth() * getUIF().getScale()),
 			(int) ((v.getButtonY() + v.getButtonHeight() - getUIF().getProperties().lineLength()) * Sizer.scaleHeight() * getUIF().getScale()),
-			(int) ((right.getButtonX()+right.getButtonWidth()-left.getButtonX()) * Sizer.scaleWidth() * getUIF().getScale()),
+			(int) ((right.getButtonX()+right.getButtonWidth()-left.getButtonX()+6) * Sizer.scaleWidth() * getUIF().getScale()),
 			(int) ((left.getButtonY() + (left.getButtonHeight()/2)-(v.getButtonY()))* Sizer.scaleHeight() * getUIF().getScale()));
 		//v.getSyntacticStructureLines().paint(v.getSyntacticStructureLines().getGraphics());
 		//System.out.println("end paint");
