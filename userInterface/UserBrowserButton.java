@@ -182,5 +182,9 @@ public class UserBrowserButton extends JButton {
 	{
 		return mButtonType;
 	}
+public void setHighlight(boolean b) {
+	((ButtonUIAbstract) this.getUI()).setHighlight(b);
+	
+}
 
 }

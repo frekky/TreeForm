@@ -68,6 +68,17 @@ public class ButtonUIBinary extends ButtonUIAbstract {
 	public void paint(Graphics pG, JComponent pC) {
 
 		this.prepaint(pG,pC);	
+		
+
+		AttributedString ats = new AttributedString("F9");
+		ats.addAttribute(TextAttribute.FONT, mFont);
+		AttributedCharacterIterator iter = ats.getIterator();
+		// create a textlayout from the font, string, and font render context.
+		TextLayout tl = new TextLayout(iter, mFrc);
+		// draw the font				
+		tl.draw(
+			mGraphics2D,4,11);
+		
 		AttributedString lAts = new AttributedString("Binary");
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator lIter = lAts.getIterator();

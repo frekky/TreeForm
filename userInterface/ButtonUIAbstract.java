@@ -33,6 +33,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.font.FontRenderContext;
+import java.util.ResourceBundle;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
@@ -84,6 +85,8 @@ public class ButtonUIAbstract extends BasicButtonUI {
 	protected Dimension mDim;
 	protected Font mFont;
 	protected FontRenderContext mFrc;
+	private boolean mHighlight = false;
+	private ResourceBundle mResourceBundle;
 	public ButtonUIAbstract() {
 		super();
 		//this.
@@ -144,7 +147,7 @@ public class ButtonUIAbstract extends BasicButtonUI {
 		
 		mGraphics2D.setColor(Color.GRAY);
 		mGraphics2D.drawRect(0, 0, (int) mDim.getWidth() - 1, (int) mDim.getHeight() - 1);
-		if (mModel.isArmed() && mModel.isPressed())
+		if (mHighlight)
 		{
 			mGraphics2D.setColor(new Color(0,100,255,50));
 			mGraphics2D.fillRect(0,0,mDim.width,mDim.height);
@@ -156,5 +159,17 @@ public class ButtonUIAbstract extends BasicButtonUI {
 			(int) mDim.getWidth(),
 			(int) mDim.getHeight());
 		}
+	}
+	public void setHighlight(boolean highlight)
+	{
+		mHighlight = highlight;
+	}
+	public void setResourceBundle(ResourceBundle resourceBundle)
+	{
+		mResourceBundle = resourceBundle;
+	}
+	public ResourceBundle getResourceBundle()
+	{
+		return mResourceBundle;
 	}
 }

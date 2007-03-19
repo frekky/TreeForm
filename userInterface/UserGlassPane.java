@@ -151,7 +151,7 @@ public class UserGlassPane extends JComponent {
 			new Point2D
 				.Float(
 				lRectangle.x / (Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()),
-				(lRectangle.y + lRectangle.height/6)/ (Sizer.scaleHeight() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
+				(lRectangle.y + lRectangle.height)/ (Sizer.scaleHeight() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
 		SyntacticStructure left = (SyntacticStructure) mSS.getChildren().getFirst();
 		SyntacticStructure right = (SyntacticStructure) mSS.getChildren().getLast();
 		int lI = 0;
@@ -198,33 +198,48 @@ public class UserGlassPane extends JComponent {
 		Graphics2D lGraphics2D,
 		int pRelativePosition,
 		int pPosition) {
+		Arc2D lArc;
+		Color lColor;
 		if (pPosition == getPosition()) {
-			Color lColor = new Color(0, 190, 0);
+			lColor = new Color(0, 190, 0);
 			lGraphics2D.setColor(lColor);
-			Arc2D lArc =
+			lArc =
 				new Arc2D.Float(
-					mPoint.x + pRelativePosition-3,
-					mPoint.y - 1,
+					mPoint.x + pRelativePosition-4,
+					mPoint.y - 4,
 					8,
 					8,
 					0,
 					360,
-					Arc2D.PIE);
+					Arc2D.OPEN);
 			lGraphics2D.fill(lArc);
+			lGraphics2D.setColor(Color.BLACK);
+			//SyntacticStructure pSS = (SyntacticStructure) mSS.getSyntacticParent();
+			lGraphics2D.drawLine(
+					(int) ((mSS.getButtonWidth()/2) + (mSS.getX() / (Sizer.scaleWidth()
+			* mUserFrame.getDesktopPane().getInternalFrame().getScale()))),
+			 (int) (mSS.getTextHeight() + (mSS.getY()) /
+					(Sizer.scaleWidth()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale())),
+			 ((int) mPoint.x + pRelativePosition),
+			 (int) mPoint.y);
+
 		} else {
-			Color lColor = new Color(255, 00, 00);
+			lColor = new Color(255, 00, 00);
 			lGraphics2D.setColor(lColor);
-			Arc2D lArc =
+			lArc =
 				new Arc2D.Float(
 					mPoint.x + pRelativePosition-2,
-					mPoint.y,
+					mPoint.y -2,
 					4,
 					4,
 					0,
 					360,
-					Arc2D.PIE);
+					Arc2D.OPEN);
 			lGraphics2D.fill(lArc);
 		}
+		lGraphics2D.setColor(Sizer.BROWN1);
+		lGraphics2D.draw(lArc);
 	}
 /**
  * 

@@ -134,7 +134,7 @@ private XMLParser getParser()
  */
 	public void addSyntacticStructure(
 		SyntacticStructureType pSST,
-		UserInternalFrame pUIF)
+		UserInternalFrame pUIF, Object pSS)
 		throws Exception {
 		addUndo();
 		AbstractStructureBuilder lAB = null;
@@ -164,8 +164,8 @@ private XMLParser getParser()
 		}
 		lSyntacticStructure = StructureDirector.build(lAB, pUIF);
 				
-		if (getContainer() instanceof SyntacticStructure) {
-			SyntacticStructure lSS = ((SyntacticStructure) getContainer());
+		if (pSS instanceof SyntacticStructure) {
+			SyntacticStructure lSS = ((SyntacticStructure) pSS);
 			if (pSST == SyntacticStructureType.ADJUNCT)
 			{
 				lSyntacticStructure.setHead(lSS.getHead());
@@ -973,18 +973,18 @@ private void secondWalk(SyntacticStructure v, double m, int level) {
 			//System.out.println("level = " + level + " button height = " + v.getButtonHeight());
 		}	
 	}
-	if(mHeightPad.size() <= level)
-	{
-		mHeightPad.add(new Integer(v.getPadBottom()));
-	}
-	else
-	{
-		if (((Integer)mHeightPad.get(level)).intValue() < v.getPadBottom())
-		{
-			mHeightPad.remove(level);
-			mHeightPad.add(level,new Integer(v.getPadBottom()));
-		}
-	}
+//	if(mHeightPad.size() <= level)
+//	{
+//		mHeightPad.add(new Integer(v.getPadBottom()));
+//	}
+//	else
+//	{
+//		if (((Integer)mHeightPad.get(level)).intValue() < v.getPadBottom())
+//		{
+//			mHeightPad.remove(level);
+//			mHeightPad.add(level,new Integer(v.getPadBottom()));
+//		}
+//	}
 	
 	for(int i = 0;i < v.getChildren().size();i++)
 	{
@@ -1001,7 +1001,7 @@ private void thirdWalk(SyntacticStructure v, int level)
 		//tempY += ((Integer) mHeightPad.get(i)).intValue() * 3;
 	}
 	tempY = tempY + (((Integer) mHeight.get(level)).intValue()-v.getButtonHeight())/2;
-	v.setButtonY(tempY + getUIF().getProperties().getTopTranslate());
+	v.setButtonY(getHeight(v,level));
 	v.setButtonX(v.getButtonX() - (mLeftShift));
 	v.setBounds(
 			(int) (v.getButtonX()
@@ -1013,9 +1013,10 @@ private void thirdWalk(SyntacticStructure v, int level)
 			(int) (v.getButtonWidth()
 				* Sizer.scaleWidth()
 				* getUIF().getScale()),
-			(int) ((v.getButtonHeight() + ((Integer) mHeightPad.get(level)).intValue() * 3)
+			(int) ((v.getButtonHeight() 
 				* Sizer.scaleHeight()
-				* getUIF().getScale()));
+				* getUIF().getScale())));
+//			+ ((Integer) mHeightPad.get(level)).intValue() * 3)
 	int lFeatureHeight = 0;
 	if (v.getButtonX() + v.getButtonWidth() > mRightShift)
 	{
@@ -1092,6 +1093,17 @@ private void thirdWalk(SyntacticStructure v, int level)
 }
 
 
+private double getHeight(SyntacticStructure v, int level) {
+	int tempY = 0;
+	for (int i = 0; i <level;i++)
+	{
+		tempY += ((Integer) mHeight.get(i)).intValue();
+		//tempY += ((Integer) mHeightPad.get(i)).intValue() * 3;
+	}
+	tempY = tempY + (((Integer) mHeight.get(level)).intValue()-v.getButtonHeight())/2;
+	return tempY + getUIF().getProperties().getTopTranslate();
+}
+
 private void fourthWalk(SyntacticStructure v, int level)
 
 {
@@ -1099,14 +1111,13 @@ private void fourthWalk(SyntacticStructure v, int level)
 	{
 		SyntacticStructure left = (SyntacticStructure) v.getChildren().getFirst();
 		SyntacticStructure right = (SyntacticStructure) v.getChildren().getLast();
-		//System.out.print("begin paint");
+
 		v.getSyntacticStructureLines().setBounds(
 			(int) ((left.getButtonX()) * Sizer.scaleWidth() * getUIF().getScale()),
 			(int) ((v.getButtonY() + v.getButtonHeight() - getUIF().getProperties().lineLength()) * Sizer.scaleHeight() * getUIF().getScale()),
-			(int) ((right.getButtonX()+right.getButtonWidth()-left.getButtonX()+6) * Sizer.scaleWidth() * getUIF().getScale()),
-			(int) ((left.getButtonY() + (left.getButtonHeight()/2)-(v.getButtonY()))* Sizer.scaleHeight() * getUIF().getScale()));
-		//v.getSyntacticStructureLines().paint(v.getSyntacticStructureLines().getGraphics());
-		//System.out.println("end paint");
+			(int) ((right.getButtonX() + right.getButtonWidth() - left.getButtonX()+6) * Sizer.scaleWidth() * getUIF().getScale()),
+			(int) ((left.getButtonY() + (left.getButtonHeight()/2) - ((v.getButtonY() + v.getButtonHeight())))* Sizer.scaleHeight() * getUIF().getScale()));
+
 	}
 	for(int i = 0;i < v.getChildren().size();i++)
 	{
@@ -1366,6 +1377,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * @param pSFT SyntacticFeatureType
  * @param pUIF The internalFrame to add the structure to (I really need to get rid of
  * this crap, the facade already HAS this frame!) 
+ * @param ss 
  * @throws Exception The thrown excpetion if the type is not found.
  * <br>
  * This function simply selects the correct FeatureBuilder based on the desired
@@ -1374,7 +1386,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  */
 	public void addSyntacticFeatureToStructure(
 		SyntacticFeatureType pSFT,
-		UserInternalFrame pUIF)
+		UserInternalFrame pUIF, Object ss)
 		throws Exception {
 		addUndo();
 		if (getContainer() instanceof SyntacticStructure) {
@@ -1389,8 +1401,9 @@ private void fourthWalk(SyntacticStructure v, int level)
 				Exception typeNotFoundError = new TypeNotFoundError();
 				throw typeNotFoundError;
 			}
+			
 			SyntacticFeatureSet lSFS = FeatureDirector.build(lAB, pUIF);
-			SyntacticStructure lSS = ((SyntacticStructure) getContainer());
+			SyntacticStructure lSS = ((SyntacticStructure) ss);
 			lSS.getSyntacticFeatureSet().add(lSFS);
 			((SyntacticStructure) getContainer()).testXY();
 			displayTree();
@@ -1673,7 +1686,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public void addSyntacticFeature(SyntacticFeature mSF) {
 		addUndo();
 		SyntacticFeature lSF = new SyntacticFeature(getUIF());
-		AttributedString lAttributedString = new AttributedString("Feature");
+		AttributedString lAttributedString = new AttributedString("[feature]");
 		Font lFont = new Font("Doulos SIL", Font.PLAIN, getUIF().getProperties().fontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lSF.setSyntacticFeatureSet(mSF.getSyntacticFeatureSet());

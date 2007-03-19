@@ -69,12 +69,23 @@ public class ButtonUIMorph extends ButtonUIAbstract {
 	 */
 	public void paint(Graphics pG, JComponent pC) {
 		this.prepaint(pG,pC);
-		// set the string (internationalize later!)		
-		AttributedString ats = new AttributedString("Morph");
+		
+
+		AttributedString ats = new AttributedString("F3");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
 		TextLayout tl = new TextLayout(iter, mFrc);
+		// draw the font				
+		tl.draw(
+			mGraphics2D,4,11);
+		
+		// set the string (internationalize later!)		
+		ats = new AttributedString("Morph");
+		ats.addAttribute(TextAttribute.FONT, mFont);
+		iter = ats.getIterator();
+		// create a textlayout from the font, string, and font render context.
+		tl = new TextLayout(iter, mFrc);
 		// draw the font				
 		tl.draw(
 			mGraphics2D,

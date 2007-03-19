@@ -182,6 +182,10 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		lGraphics2D.setRenderingHint(
 			RenderingHints.KEY_RENDERING,
 			RenderingHints.VALUE_RENDER_QUALITY);
+		
+//		lGraphics2D.setColor(new Color(0,0,255,90));
+//			lGraphics2D.fillRect(0, 0, this.getWidth(), this.getHeight());
+			
 		lGraphics2D.setColor(getLineColor());
 			// draw the lines according to the directions!
 			if (getChildren().size() > 0)

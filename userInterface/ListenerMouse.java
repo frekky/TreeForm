@@ -66,32 +66,16 @@ public class ListenerMouse implements MouseListener {
 	}
 
 	public void mouseEntered(MouseEvent pME) {
+		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+		lUBB.setHighlight(true);
 	}
 
 	public void mouseExited(MouseEvent pME) {
+		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+		lUBB.setHighlight(false);
 	}
 
-	/**
-	 * @param pME - Passes a mouse event to the listener
-	 * 
-	 * This command checks to see where the mouse was pressed so that when
-	 * an object from the object browser is dragged it will appear to be dragged
-	 * from the location in which the mouse was pressed.
-	 * 
-	 */
-
 	public void mousePressed(MouseEvent pME) {
-//		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-//		lUBB.setPressedX(pME.getX());
-//		lUBB.setPressedY(
-//			pME.getY()
-//				- ((Integer) Toolkit
-//					.getDefaultToolkit()
-//					.getDesktopProperty("awt.frame.captionHeight"))
-//					.intValue()
-//				);
-		
-		//lUBB.setPressedY(pME.getY());
 		
 	}
 
@@ -134,7 +118,10 @@ public class ListenerMouse implements MouseListener {
 				if (lUBB.getButtonType() instanceof SyntacticStructureType)
 				{
 				try {
-					((UserInternalFrame)lComponent).getSyntaxFacade().addSyntacticStructure((SyntacticStructureType) lUBB.getButtonType(),((UserInternalFrame)lComponent));
+					((UserInternalFrame)lComponent).getSyntaxFacade().
+					addSyntacticStructure((SyntacticStructureType) 
+							lUBB.getButtonType(),((UserInternalFrame)lComponent), 
+							((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -142,7 +129,9 @@ public class ListenerMouse implements MouseListener {
 				else if (lUBB.getButtonType() instanceof SyntacticFeatureType)
 				{
 					try {
-						((UserInternalFrame)lComponent).getSyntaxFacade().addSyntacticFeatureToStructure((SyntacticFeatureType) lUBB.getButtonType(),((UserInternalFrame)lComponent));
+						((UserInternalFrame)lComponent).getSyntaxFacade().addSyntacticFeatureToStructure((SyntacticFeatureType) lUBB.getButtonType(),
+								((UserInternalFrame)lComponent),
+								((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

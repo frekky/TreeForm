@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.FlowLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.ButtonUI;
 import enumerators.SyntacticFeatureType;
@@ -175,6 +176,7 @@ public class UserObjectBrowser extends JPanel {
 		mHead.setLabel();
 		mHead.addMouseListener(new ListenerMouse(mUserFrame));
 		mHead.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mHead.setToolTipText((String) mUserFrame.getI18n().getObject("NODE_UP"));
 		this.add(mHead);
 		
 		mPhrase = new UserBrowserButton(mUserFrame, SyntacticStructureType.PHRASE);
@@ -184,6 +186,7 @@ public class UserObjectBrowser extends JPanel {
 		mPhrase.setLabel();
 		mPhrase.addMouseListener(new ListenerMouse(mUserFrame));
 		mPhrase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mPhrase.setToolTipText((String) mUserFrame.getI18n().getObject("NODE_DOWN"));
 		this.add(mPhrase);
 		
 		mMorph = new UserBrowserButton(mUserFrame, SyntacticStructureType.MORPH);
@@ -193,6 +196,7 @@ public class UserObjectBrowser extends JPanel {
 		mMorph.setLabel();
 		mMorph.addMouseListener(new ListenerMouse(mUserFrame));
 		mMorph.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mMorph.setToolTipText((String) mUserFrame.getI18n().getObject("MORPH"));
 		this.add(mMorph);
 		
 		
@@ -204,6 +208,7 @@ public class UserObjectBrowser extends JPanel {
 		mTriangle.addMouseListener(new ListenerMouse(mUserFrame));
 		mTriangle.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
+		mTriangle.setToolTipText((String) mUserFrame.getI18n().getObject("TRIANGLE"));
 		this.add(mTriangle);
 
 		mCase = new UserBrowserButton(mUserFrame, SyntacticFeatureType.CASE);
@@ -213,6 +218,7 @@ public class UserObjectBrowser extends JPanel {
 		mCase.setLabel();
 		mCase.addMouseListener(new ListenerMouse(mUserFrame));
 		mCase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mCase.setToolTipText((String) mUserFrame.getI18n().getObject("CASE"));
 		this.add(mCase);
 
 		mTheta = new UserBrowserButton(mUserFrame, SyntacticFeatureType.THETA);
@@ -222,6 +228,7 @@ public class UserObjectBrowser extends JPanel {
 		mTheta.setLabel();
 		mTheta.addMouseListener(new ListenerMouse(mUserFrame));
 		mTheta.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mTheta.setToolTipText((String) mUserFrame.getI18n().getObject("THETA"));
 		this.add(mTheta);
 
 
@@ -233,6 +240,7 @@ public class UserObjectBrowser extends JPanel {
 		mFeature.addMouseListener(new ListenerMouse(mUserFrame));
 		mFeature.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
+		mFeature.setToolTipText((String) mUserFrame.getI18n().getObject("FEATURE"));
 		this.add(mFeature);
 		
 		mUnary = new UserBrowserButton(mUserFrame, SyntacticStructureType.UNARY);
@@ -242,6 +250,7 @@ public class UserObjectBrowser extends JPanel {
 		mUnary.setLabel();
 		mUnary.addMouseListener(new ListenerMouse(mUserFrame));
 		mUnary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mUnary.setToolTipText((String) mUserFrame.getI18n().getObject("UNARY"));
 		this.add(mUnary);
 		
 		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
@@ -251,6 +260,7 @@ public class UserObjectBrowser extends JPanel {
 		mBinary.setLabel();
 		mBinary.addMouseListener(new ListenerMouse(mUserFrame));
 		mBinary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mBinary.setToolTipText((String) mUserFrame.getI18n().getObject("BINARY"));
 		this.add(mBinary);
 		
 		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
@@ -261,6 +271,7 @@ public class UserObjectBrowser extends JPanel {
 		mTrinary.addMouseListener(new ListenerMouse(mUserFrame));
 		mTrinary.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
+		mTrinary.setToolTipText((String) mUserFrame.getI18n().getObject("TERNARY"));
 		this.add(mTrinary);
 		
 		mAdjunct = new UserBrowserButton(mUserFrame, SyntacticStructureType.ADJUNCT);
@@ -271,6 +282,7 @@ public class UserObjectBrowser extends JPanel {
 		mAdjunct.addMouseListener(new ListenerMouse(mUserFrame));
 		mAdjunct.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
+		mAdjunct.setToolTipText((String) mUserFrame.getI18n().getObject("ADJUNCT"));
 		this.add(mAdjunct);
 		
 		
@@ -281,8 +293,30 @@ public class UserObjectBrowser extends JPanel {
 		mXBar.setLabel();
 		mXBar.addMouseListener(new ListenerMouse(mUserFrame));
 		mXBar.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mXBar.setToolTipText((String) mUserFrame.getI18n().getObject("X-BAR"));
 		this.add(mXBar);
+		
+		this.add(new JLabel((String) mUserFrame.getI18n().getObject("INSTRUCTIONS")));
+		JLabel moveTree = new JLabel((String) mUserFrame.getI18n().getObject("MOVE_TREE"));
+		JLabel moveTree2 = new JLabel((String) mUserFrame.getI18n().getObject("MOVE_TREE2"));
+		
+		this.add(moveTree);
+		this.add(moveTree2);
+	    String vers = System.getProperty("os.name").toLowerCase();
 
+	    JLabel addLines= new JLabel();
+	    JLabel addLines2 = new JLabel();
+	    if (vers.indexOf("mac") != -1) {
+	    	addLines.setText((String) mUserFrame.getI18n().getObject("ADD_LINES_MAC"));
+	    	addLines2.setText((String) mUserFrame.getI18n().getObject("ADD_LINES2"));
+	    }
+	    else
+	    {
+	    	addLines.setText((String) mUserFrame.getI18n().getObject("ADD_LINES"));
+	    	addLines2.setText((String) mUserFrame.getI18n().getObject("ADD_LINES2"));
+	    }
+		this.add(addLines);
+		this.add(addLines2);
 	}
 
 }

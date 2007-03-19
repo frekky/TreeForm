@@ -68,6 +68,16 @@ public class ButtonUICase extends ButtonUIAbstract {
 	
 		this.prepaint(pG,pC);
 
+
+		AttributedString ats = new AttributedString("F5");
+		ats.addAttribute(TextAttribute.FONT, mFont);
+		AttributedCharacterIterator iter = ats.getIterator();
+		// create a textlayout from the font, string, and font render context.
+		TextLayout tl = new TextLayout(iter, mFrc);
+		// draw the font				
+		tl.draw(
+			mGraphics2D,4,11);
+		
 		AttributedString lAts = new AttributedString("Case");
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator lIter = lAts.getIterator();

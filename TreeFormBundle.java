@@ -461,6 +461,26 @@ public class TreeFormBundle extends ListResourceBundle {
 				{ "BACKGROUND_COLOR_TOOLTIP", new String("Select Background Color For new Entries or Highlighted Text")},
 				{ "LINE_COLOR_TOOLTIP", new String("Select Line Color For new subtrees")},
 				{ "CHANGE_LINE_COLOR", new String("Change Line Color")},
-				{"TOGGLE_TRIANGLE", new String("Toggle Triangle (up)")}
+				{"TOGGLE_TRIANGLE", new String("Toggle Triangle (up)")},
+				{"INSTRUCTIONS", new String("INSTRUCTIONS")},
+				{"MOVE_TREE", new String("Shift-drag nodes to each")},	
+				{"MOVE_TREE2", new String("other to move tree")},	
+				{"ADD_LINES_MAC", new String("Option-drag nodes to each")},	
+				{"ADD_LINES", new String("Alt-drag nodes to each")},
+				{"ADD_LINES2", new String("other to add lines")},
+				
+				{ "NODE_UP", new String("Drag and drop onto a node to add a parent node.")},
+				{ "NODE_DOWN", new String("Drag and drop onto a node to add a child node.")},
+				{ "MORPH", new String("Drag and drop onto a node to add a child node.")},
+				{ "TRIANGLE", new String("Drag and drop onto a node to add a triangle node.")},
+				{ "CASE", new String("Drag and drop onto a node to add a case feature below.")},
+				{"THETA", new String("Drag and drop onto a node to add two theta features below.")},
+				{"FEATURE", new String("Drag and drop onto a node to add a generic feature below.")},
+				{"UNARY", new String("Drag and drop onto a node to add a child node with one child below.")},	
+				{"BINARY", new String("Drag and drop onto a node to add a child node with two children below.")},	
+				{"TERNARY", new String("Drag and drop onto a node to add a child node with three children below.")},	
+				{"ADJUNCT", new String("Drag and drop onto a node to add a parent node adjunct.")},
+				{"X-BAR", new String("Drag and drop onto a node to add an X-bar structure below.")}
+				
 				};
 }
