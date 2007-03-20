@@ -19,6 +19,7 @@
 package userInterface;
 
 import java.awt.Color;
+import java.awt.event.MouseEvent;
 import java.util.Map;
 
 import javax.swing.JInternalFrame;
@@ -318,7 +319,7 @@ public class UserInternalFrame extends JInternalFrame {
 		this.getGlassPane().setVisible(false);
 	}
 	
-	public void activateMovementPane(SyntacticStructure structure) {
+	public void activateMovementPane(SyntacticStructure structure, MouseEvent pme) {
 		UserMovementPane lUMP = new UserMovementPane(mUserFrame, structure);
 		ListenerMovementPane listenerMovementPane = new ListenerMovementPane(mUserFrame);
 		lUMP.addMouseListener(listenerMovementPane);

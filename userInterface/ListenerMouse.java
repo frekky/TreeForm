@@ -143,7 +143,7 @@ public class ListenerMouse implements MouseListener {
 				{
 					if (((UserInternalFrame)lComponent).getSyntaxFacade().getContainer() instanceof SyntacticStructure)
 					{
-						mUserFrame.getInternalFrame().activateMovementPane((SyntacticStructure) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
+						mUserFrame.getInternalFrame().activateMovementPane((SyntacticStructure) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
 					}
 				}
 		}
