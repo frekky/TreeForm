@@ -81,7 +81,7 @@ public class ButtonUIMorph extends ButtonUIAbstract {
 			mGraphics2D,4,11);
 		
 		// set the string (internationalize later!)		
-		ats = new AttributedString("Morph");
+		ats = new AttributedString((String) getResourceBundle().getObject("TERMINAL_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -120,7 +120,7 @@ public class ButtonUIMorph extends ButtonUIAbstract {
 		
 
 		// repeat for the SPEC
-		ats = new AttributedString("Text");
+		ats = new AttributedString((String) getResourceBundle().getObject("MORPH_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);

@@ -282,6 +282,12 @@ public class UserInternalFrame extends JInternalFrame {
 		this.setGlassPane(lUGP);
 		this.getGlassPane().setVisible(true);
 	}
+	
+	public void deactivateGlassPane() {
+		this.setGlassPane(new JLabel());
+		this.getGlassPane().setVisible(false);
+	}
+	
 	public void activateBezierPane(SyntacticStructure pSS)
 	{
 		UserBezierPane lUBP = new UserBezierPane(mUserFrame,pSS);
@@ -291,6 +297,12 @@ public class UserInternalFrame extends JInternalFrame {
 		this.setGlassPane(lUBP);
 		this.getGlassPane().setVisible(true);
 	}
+
+	public void deactivateBezierPane(){
+		this.setGlassPane(new JLabel());
+		this.getGlassPane().setVisible(false);
+	}
+	
 	public void activateHighlightPane()
 	{
 		UserHighlightPane lUHP = new UserHighlightPane(mUserFrame);
@@ -301,19 +313,25 @@ public class UserInternalFrame extends JInternalFrame {
 		this.getGlassPane().setVisible(true);
 	}
 
-	public void deactivateGlassPane() {
+	public void deactivateHighlightPane() {
 		this.setGlassPane(new JLabel());
 		this.getGlassPane().setVisible(false);
 	}
-
-	public void deactivateBezierPane(){
+	
+	public void activateMovementPane(SyntacticStructure structure) {
+		UserMovementPane lUMP = new UserMovementPane(mUserFrame, structure);
+		ListenerMovementPane listenerMovementPane = new ListenerMovementPane(mUserFrame);
+		lUMP.addMouseListener(listenerMovementPane);
+		lUMP.addMouseMotionListener(listenerMovementPane);
+		this.setGlassPane(lUMP);
+		this.getGlassPane().setVisible(true);
+	}
+	
+	public void deactivateMovementPane() {
 		this.setGlassPane(new JLabel());
 		this.getGlassPane().setVisible(false);
 	}
-	/**
-	 * 
-	 * @return Returns the User Frame
-	 */
+	
 	public UserFrame getUserFrame() {
 		return mUserFrame;
 	}
@@ -360,11 +378,7 @@ public class UserInternalFrame extends JInternalFrame {
 		return mProperties;
 	}
 
-	public void deactivateHighlightPane() {
-		this.setGlassPane(new JLabel());
-		this.getGlassPane().setVisible(false);
-		
-	}
+	
 
 	public UserHighlightPane getHighlightPane() {
 		if(this.getGlassPane() instanceof UserHighlightPane)
@@ -373,4 +387,5 @@ public class UserInternalFrame extends JInternalFrame {
 		}
 		return null;
 	}
+
 }

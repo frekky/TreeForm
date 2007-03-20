@@ -81,7 +81,7 @@ public class ButtonUIUnary extends ButtonUIAbstract {
 		tl.draw(
 			mGraphics2D,4,11);
 		
-		ats = new AttributedString("Unary");
+		ats = new AttributedString((String) getResourceBundle().getObject("UNARY_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.

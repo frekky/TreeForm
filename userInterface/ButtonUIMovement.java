@@ -24,6 +24,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
+import java.awt.geom.CubicCurve2D;
+import java.awt.geom.GeneralPath;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
@@ -41,17 +43,17 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIAdjunct extends ButtonUIAbstract{
-	protected static ButtonUIAdjunct mB = new ButtonUIAdjunct();
-	public ButtonUIAdjunct() {
+public class ButtonUIMovement extends ButtonUIAbstract {
+
+	protected static ButtonUIMovement mB = new ButtonUIMovement();
+	public ButtonUIMovement() {
 		super();
 	}
-	public static ComponentUI createUI(JComponent c) {
+	public static ComponentUI createUI(JComponent pC) {
 		  return mB;
 	  }
 	public void installUI(JComponent pC) {
 		AbstractButton lB = (AbstractButton)pC;
-
 		super.installListeners(lB);
 	}
 
@@ -66,11 +68,11 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 	 * 
 	 */
 	public void paint(Graphics pG, JComponent pC) {
-		
-		this.prepaint(pG,pC);
+
+		this.prepaint(pG,pC);	
 		
 
-		AttributedString ats = new AttributedString("F11");
+		AttributedString ats = new AttributedString(" ");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -79,17 +81,20 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 		tl.draw(
 			mGraphics2D,4,11);
 		
-		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("ADJUNCT_TEXT"));
+		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("MOVEMENT_TEXT"));
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator lIter = lAts.getIterator();
-		TextLayout lTl = new TextLayout(lIter, mFrc);			
+		// create a textlayout from the font, string, and font render context.
+		TextLayout lTl = new TextLayout(lIter, mFrc);
+		// draw the font				
 		lTl.draw(
 			mGraphics2D,
 			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) (mDim.getHeight() - 4));
+			(float) (mDim.getHeight() - 2));
 
+		// repeat for the title X-double-bar
 
-		lAts = new AttributedString("X(P)");
+		lAts = new AttributedString(". . .");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		lIter = lAts.getIterator();
@@ -97,28 +102,29 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 		lTl.draw(
 			mGraphics2D,
 			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)-6);
+			(float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5));
 
 		// draw the lines below the X-double-bar
 		Rectangle lDrawRight =
 			new Rectangle(
 				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
+				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
 				(int) ((mDim.getWidth()) / 2)
 					+ 13,
 				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength() -4);
+					+ Sizer.UILineLength()
+					+ 2);
 					
 						
 		Rectangle lDrawLeft =
 			new Rectangle(
 				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
+				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
 				(int) ((mDim.getWidth()) / 2)
 					- 13,
 				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
 					+ Sizer.UILineLength()
-					-4);
+					+ 2);
 
 		mGraphics2D.drawLine(
 			lDrawRight.width,
@@ -128,30 +134,43 @@ public class ButtonUIAdjunct extends ButtonUIAbstract{
 		mGraphics2D.drawLine(lDrawLeft.width, lDrawLeft.height, lDrawLeft.x, lDrawLeft.y);
 
 		
+		
+		// repeat for the X
+		lAts = new AttributedString("X");
+		lAts.addAttribute(TextAttribute.FONT, mFont);
+		lIter = lAts.getIterator();
+		lTl = new TextLayout(lIter, mFrc);
+		Dimension lPositionLeft =
+			new Dimension(
+				(int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2),
+				(int) (lDrawLeft.height + lTl.getBounds().getHeight() + 3));
+		lTl.draw(mGraphics2D, lPositionLeft.width, lPositionLeft.height);
+		
 		// repeat for the title X
-		lAts = new AttributedString("X(P)");
+		lAts = new AttributedString("Y");
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		lIter = lAts.getIterator();
 		lTl = new TextLayout(lIter, mFrc);
 		Dimension lPositionRight =
 			new Dimension(
 				(int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
-				(int) (lDrawRight.height + lTl.getBounds().getHeight()));
+				(int) (lDrawRight.height + lTl.getBounds().getHeight() + 3));
 		lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
-
-//		repeat for the X
-			 lAts = new AttributedString((String) getResourceBundle().getObject("ADJUNCT_TEXT"));
-			 lAts.addAttribute(TextAttribute.FONT, mFont);
-			 lIter = lAts.getIterator();
-			 lTl = new TextLayout(lIter, mFrc);
-			 Dimension positionLeft =
-				 new Dimension(
-					 (int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2),
-					 (int) (lDrawLeft.height + lTl.getBounds().getHeight()));
-			 lTl.draw(mGraphics2D, positionLeft.width, positionLeft.height);
-			 
-		// surround in a gray rectangle.
+		CubicCurve2D bezier = new CubicCurve2D.Float(lPositionLeft.width +3,lPositionLeft.height +2
+				,lPositionLeft.width+6, lPositionLeft.height + 10,
+				lPositionRight.width, lPositionRight.height + 10,
+				lPositionRight.width+3,lPositionRight.height +2);
+		mGraphics2D.draw(bezier);
+		
+		GeneralPath polly = new GeneralPath();
+		// move the pollygon to the middle and bottom
+		polly.moveTo(lPositionLeft.width + 4,lPositionLeft.height +2 );
+		polly.lineTo(lPositionLeft.width + 2,lPositionLeft.height + 4);
+		polly.lineTo(lPositionLeft.width + 6,lPositionLeft.height + 4);
+		polly.closePath();
+		mGraphics2D.fill(polly);
+		mGraphics2D.fillArc(lPositionRight.width +1 ,lPositionRight.height + 1, 3,
+				3, 0, 360);
 		this.postpaint();
-
-		}
+	}
 }

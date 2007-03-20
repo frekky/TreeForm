@@ -1,4 +1,5 @@
 
+
 //TreeForm Syntax Tree Drawing Software
 //Copyright (C) 2006  Donald Derrick
 //
@@ -474,8 +475,25 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"TERNARY", new String("Drag and drop onto a node to add a child node with three children below.")},	
 				{"ADJUNCT", new String("Drag and drop onto a node to add a parent node adjunct.")},
 				{"X-BAR", new String("Drag and drop onto a node to add an X-bar structure below.")},
-				{"MOVE_SUBTREE", new String("To move a Subtree, Shift-drag this node to another node.  Right-click for context menu.")}
-			};
+				{"MOVE_SUBTREE", new String("To move a Subtree, Shift-drag this node to another node.  Right-click for context menu.")},
+				{"MOVEMENT", new String("Drag and drop onto a node, then move to another node and click to add a movement line.")},
+				{"ADJUNCT_TEXT", new String("Adjunct")},
+				{"UNARY_TEXT", new String("Unary")},
+				{"BINARY_TEXT", new String("Binary")},
+				{"TERNARY_TEXT", new String("Ternary")},
+				{"X-BAR_TEXT", new String("X-Bar")},
+				{"CASE_TEXT", new String("Case")},
+				{"FEATURE_TEXT", new String("Feature")},
+				{"NODE_DOWN_TEXT", new String("Node Down")},
+				{"TERMINAL_TEXT", new String("Terminal")},
+				{"MORPH_TEXT", new String("Morph")},
+				{"NODE_UP_TEXT", new String("Node Up")},
+				{"THETA_TEXT", new String("Theta Roles")},
+				{"TRIANGLE_TEXT", new String("Triangle")},
+				{"SPEC_TEXT", new String("Spec")},
+				{"COMPL_TEXT", new String("Compl")},
+				{"MOVEMENT_TEXT", new String("Movement")}
+		};
 //		{"INSTRUCTIONS", new String("INSTRUCTIONS")},
 //		{"MOVE_TREE", new String("Shift-drag nodes to each")},	
 //		{"MOVE_TREE2", new String("other to move tree")},	

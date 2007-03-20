@@ -80,7 +80,7 @@ public class ButtonUIPhrase extends ButtonUIAbstract {
 			mGraphics2D,4,11);
 		
 		// set the string (internationalize later!)		
-		ats = new AttributedString("Node Up");
+		ats = new AttributedString((String) getResourceBundle().getObject("NODE_UP_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.

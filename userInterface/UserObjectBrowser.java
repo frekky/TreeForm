@@ -22,8 +22,8 @@ package userInterface;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
-import javax.swing.plaf.ButtonUI;
 import enumerators.SyntacticFeatureType;
+import enumerators.SyntacticOperationType;
 import enumerators.SyntacticStructureType;
 
 import staticFunctions.Sizer;
@@ -133,7 +133,7 @@ public class UserObjectBrowser extends JPanel {
 	 * @uml.associationEnd 
 	 * @uml.property name="mUIObject" multiplicity="(1 1)"
 	 */
-	private ButtonUI mUIObject;
+	private ButtonUIAbstract mUIObject;
 
 	/**
 	 * 
@@ -153,6 +153,8 @@ public class UserObjectBrowser extends JPanel {
 
 	private UserBrowserButton mPhrase;
 
+	private UserBrowserButton mMovement;
+
 /**
  * 
  * @param pUserFrame Yup, you guessed it, the UserFrame from this instance of TreeForm
@@ -169,7 +171,8 @@ public class UserObjectBrowser extends JPanel {
  */
 	private void addObjects() {
 		mHead = new UserBrowserButton(mUserFrame, SyntacticStructureType.HEAD);
-		mUIObject = (ButtonUI) ButtonUIHead.createUI(mHead);
+		mUIObject = (ButtonUIAbstract) ButtonUIHead.createUI(mHead);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mHead.setUI(mUIObject);
 		mHead.setPreferredSize(Sizer.scaledButtonSize());
 		mHead.setLabel();
@@ -179,7 +182,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mHead);
 		
 		mPhrase = new UserBrowserButton(mUserFrame, SyntacticStructureType.PHRASE);
-		mUIObject = (ButtonUI) ButtonUIPhrase.createUI(mPhrase);
+		mUIObject = (ButtonUIAbstract) ButtonUIPhrase.createUI(mPhrase);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mPhrase.setUI(mUIObject);
 		mPhrase.setPreferredSize(Sizer.scaledButtonSize());
 		mPhrase.setLabel();
@@ -189,7 +193,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mPhrase);
 		
 		mMorph = new UserBrowserButton(mUserFrame, SyntacticStructureType.MORPH);
-		mUIObject = (ButtonUI) ButtonUIMorph.createUI(mMorph);
+		mUIObject = (ButtonUIAbstract) ButtonUIMorph.createUI(mMorph);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mMorph.setUI(mUIObject);
 		mMorph.setPreferredSize(Sizer.scaledButtonSize());
 		mMorph.setLabel();
@@ -200,7 +205,8 @@ public class UserObjectBrowser extends JPanel {
 		
 		
 		mTriangle = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRIANGLE);
-		mUIObject = (ButtonUI) ButtonUITriangle.createUI(mTriangle);
+		mUIObject = (ButtonUIAbstract) ButtonUITriangle.createUI(mTriangle);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mTriangle.setUI(mUIObject);
 		mTriangle.setPreferredSize(Sizer.scaledButtonSize());
 		mTriangle.setLabel();
@@ -211,7 +217,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mTriangle);
 
 		mCase = new UserBrowserButton(mUserFrame, SyntacticFeatureType.CASE);
-		mUIObject = (ButtonUI) ButtonUICase.createUI(mCase);
+		mUIObject = (ButtonUIAbstract) ButtonUICase.createUI(mCase);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mCase.setUI(mUIObject);
 		mCase.setPreferredSize(Sizer.scaledButtonSize());
 		mCase.setLabel();
@@ -221,7 +228,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mCase);
 
 		mTheta = new UserBrowserButton(mUserFrame, SyntacticFeatureType.THETA);
-		mUIObject = (ButtonUI) ButtonUITheta.createUI(mTheta);
+		mUIObject = (ButtonUIAbstract) ButtonUITheta.createUI(mTheta);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mTheta.setUI(mUIObject);
 		mTheta.setPreferredSize(Sizer.scaledButtonSize());
 		mTheta.setLabel();
@@ -232,7 +240,8 @@ public class UserObjectBrowser extends JPanel {
 
 
 		mFeature = new UserBrowserButton(mUserFrame,SyntacticFeatureType.FEATURE);
-		mUIObject = (ButtonUI) ButtonUIFeature.createUI(mFeature);
+		mUIObject = (ButtonUIAbstract) ButtonUIFeature.createUI(mFeature);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mFeature.setUI(mUIObject);
 		mFeature.setPreferredSize(Sizer.scaledButtonSize());
 		mFeature.setLabel();
@@ -243,7 +252,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mFeature);
 		
 		mUnary = new UserBrowserButton(mUserFrame, SyntacticStructureType.UNARY);
-		mUIObject = (ButtonUI) ButtonUIUnary.createUI(mUnary);
+		mUIObject = (ButtonUIAbstract) ButtonUIUnary.createUI(mUnary);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mUnary.setUI(mUIObject);
 		mUnary.setPreferredSize(Sizer.scaledButtonSize());
 		mUnary.setLabel();
@@ -253,7 +263,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mUnary);
 		
 		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
-		mUIObject = (ButtonUI) ButtonUIBinary.createUI(mBinary);
+		mUIObject = (ButtonUIAbstract) ButtonUIBinary.createUI(mBinary);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mBinary.setUI(mUIObject);
 		mBinary.setPreferredSize(Sizer.scaledButtonSize());
 		mBinary.setLabel();
@@ -263,7 +274,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mBinary);
 		
 		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
-		mUIObject = (ButtonUI) ButtonUITernary.createUI(mTrinary);
+		mUIObject = (ButtonUIAbstract) ButtonUITernary.createUI(mTrinary);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mTrinary.setUI(mUIObject);
 		mTrinary.setPreferredSize(Sizer.scaledButtonSize());
 		mTrinary.setLabel();
@@ -274,7 +286,8 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mTrinary);
 		
 		mAdjunct = new UserBrowserButton(mUserFrame, SyntacticStructureType.ADJUNCT);
-		mUIObject = (ButtonUI) ButtonUIAdjunct.createUI(mAdjunct);
+		mUIObject = (ButtonUIAbstract) ButtonUIAdjunct.createUI(mAdjunct);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mAdjunct.setUI(mUIObject);
 		mAdjunct.setPreferredSize(Sizer.scaledButtonSize());
 		mAdjunct.setLabel();
@@ -286,7 +299,8 @@ public class UserObjectBrowser extends JPanel {
 		
 		
 		mXBar = new UserBrowserButton(mUserFrame, SyntacticStructureType.X_BAR);
-		mUIObject = (ButtonUI) ButtonUIXBar.createUI(mXBar);
+		mUIObject = (ButtonUIAbstract) ButtonUIXBar.createUI(mXBar);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
 		mXBar.setUI(mUIObject);
 		mXBar.setPreferredSize(Sizer.scaledButtonSize());
 		mXBar.setLabel();
@@ -295,6 +309,16 @@ public class UserObjectBrowser extends JPanel {
 		mXBar.setToolTipText((String) mUserFrame.getI18n().getObject("X-BAR"));
 		this.add(mXBar);
 
+		mMovement = new UserBrowserButton(mUserFrame, SyntacticOperationType.MOVEMENT);
+		mUIObject = (ButtonUIAbstract) ButtonUIMovement.createUI(mMovement);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
+		mMovement.setUI(mUIObject);
+		mMovement.setPreferredSize(Sizer.scaledButtonSize());
+		mMovement.setLabel();
+		mMovement.addMouseListener(new ListenerMouse(mUserFrame));
+		mMovement.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mMovement.setToolTipText((String) mUserFrame.getI18n().getObject("MOVEMENT"));
+		this.add(mMovement);
 		
 //		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
 //		mUIObject = (ButtonUI) ButtonUIBinary.createUI(mBinary);

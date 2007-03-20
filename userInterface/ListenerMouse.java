@@ -27,7 +27,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
+import syntaxTree.SyntacticStructure;
+
 import enumerators.SyntacticFeatureType;
+import enumerators.SyntacticOperationType;
 import enumerators.SyntacticStructureType;
 /**
  * @author Donald Derrick
@@ -134,6 +137,13 @@ public class ListenerMouse implements MouseListener {
 								((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
 					} catch (Exception e) {
 						e.printStackTrace();
+					}
+				}
+				else if (lUBB.getButtonType() instanceof SyntacticOperationType)
+				{
+					if (((UserInternalFrame)lComponent).getSyntaxFacade().getContainer() instanceof SyntacticStructure)
+					{
+						mUserFrame.getInternalFrame().activateMovementPane((SyntacticStructure) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
 					}
 				}
 		}

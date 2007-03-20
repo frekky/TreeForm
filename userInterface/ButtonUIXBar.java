@@ -84,7 +84,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 	
 		mGraphics2D.translate(-3,0);
 		// set the string (internationalize later!)		
-		ats = new AttributedString("X-Bar");
+		ats = new AttributedString((String) getResourceBundle().getObject("X-BAR_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		 iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -135,7 +135,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 		mGraphics2D.drawLine(drawLeft.width, drawLeft.height, drawLeft.x, drawLeft.y);
 
 		// repeat for the SPEC
-		ats = new AttributedString("spec");
+		ats = new AttributedString((String) getResourceBundle().getObject("SPEC_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);
@@ -196,7 +196,7 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 		tl.draw(mGraphics2D, positionLeftBar.width, positionLeftBar.height);
 
 		// repeat for the title Compl
-		ats = new AttributedString("compl");
+		ats = new AttributedString((String) getResourceBundle().getObject("COMPL_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);
