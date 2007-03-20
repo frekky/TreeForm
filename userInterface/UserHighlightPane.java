@@ -102,6 +102,13 @@ public class UserHighlightPane extends JComponent {
 	}
 
 	public void copyImage() {
+		if (!mHighlight)
+		{	
+			mUserFrame.getUserControl().copyTree(Math.abs(mStartX - mEndX),
+					Math.abs(mStartY - mEndY),
+					((mStartX < mEndX) ? mStartX : mEndX), 
+					((mStartY < mEndY) ? mStartY : mEndY));
+		}
 		exit();
 	}
 

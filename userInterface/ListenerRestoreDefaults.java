@@ -23,11 +23,11 @@ public class ListenerRestoreDefaults implements ActionListener {
 		mProperties.restoreDefaults();
 		mSyntaxFacade.displayTree();
 		mSyntaxFacade.displayTree();
-		mFrame.setMinTextWidth(mProperties.minTextWidth());
-		mFrame.setLineLength(mProperties.lineLength());
+		mFrame.setMinTextWidth(mProperties.getMinLineWidth());
+		mFrame.setLineLength(mProperties.getMinLineLength());
 		mFrame.setLeftTranslate(mProperties.getLeftTranslate());
 		mFrame.setTopTranslate(mProperties.getTopTranslate());
-		mFrame.setFontSize(mProperties.fontSize());
+		mFrame.setFontSize(mProperties.getDefaultFontSize());
 		mFrame.setFontColor(mProperties.getFontColor());
 		mFrame.setBackgroundColor(mProperties.getBackgroundColor());
 		mFrame.setLineColor(mProperties.getLineColor());

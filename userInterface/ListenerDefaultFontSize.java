@@ -18,7 +18,7 @@ public class ListenerDefaultFontSize implements ChangeListener {
 	}
 
 	public void stateChanged(ChangeEvent e) {
-		mProperties.setFontSize(((JSlider)e.getSource()).getValue());
+		mProperties.setDefaultFontSize(((JSlider)e.getSource()).getValue());
 		mSyntaxFacade.displayTree();
 
 	}

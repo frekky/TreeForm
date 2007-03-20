@@ -204,8 +204,8 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 						GeneralPath polly = new GeneralPath();
 						int triangleDifference = (w.getButtonWidth() - w.getRealTextWidth())/2 +1;
 						polly.moveTo(halfway, 1);
-						polly.lineTo(relativeWidth + triangleDifference, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
-						polly.lineTo(relativeWidth + w.getButtonWidth() - triangleDifference, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength()));
+						polly.lineTo(relativeWidth + triangleDifference, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().getMinLineLength()));
+						polly.lineTo(relativeWidth + w.getButtonWidth() - triangleDifference, (float) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().getMinLineLength()));
 						polly.closePath();
 						lGraphics2D.draw(polly);
 						}
@@ -215,7 +215,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 						(int) (halfway),
 						(int) (1),
 						(int) (relativeWidth + w.getButtonWidth()/2),
-						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().lineLength())
+						(int) (w.getButtonY()-getButtonY()-getButtonHeight()+getUserInternalFrame().getProperties().getMinLineLength())
 						);
 					}
 					//System.out.println("width = " + halfway + " : relativeWidth = " + relativeWidth);
@@ -480,7 +480,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	{
 		super.testXY();
 
-		int lHeight = getUserInternalFrame().getProperties().lineLength();
+		int lHeight = getUserInternalFrame().getProperties().getMinLineLength();
 		lHeight = (int) (lHeight + getTextHeight()+2);
 		int lWidth = getTextWidth();
 		for(int i = 0; i < this.getSyntacticAssociation().size(); i++)

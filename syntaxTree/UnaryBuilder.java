@@ -52,7 +52,7 @@ public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 	lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 
 	AttributedString lAttributedString = new AttributedString("XP");
-	Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+	Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 	lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 	lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 	lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
@@ -65,7 +65,7 @@ public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 	lSyntacticStructureCenter.setLineColor(pInternalFrame.getProperties().getLineColor());
 
 	lAttributedString = new AttributedString("X");
-	lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+	lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 	lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 	lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 	lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());

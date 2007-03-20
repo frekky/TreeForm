@@ -47,7 +47,7 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
 		SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
 		AttributedString lAttributedString = new AttributedString("<θ>");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON,1,2);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
@@ -59,7 +59,7 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 		
 		lSF = new SyntacticFeature(pInternalFrame);
 		lAttributedString = new AttributedString("<θ>");
-		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());

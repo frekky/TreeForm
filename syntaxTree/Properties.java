@@ -13,23 +13,23 @@ public class Properties {
 	private Color mBackgroundColor = new Color(255,255,255);
 	private Color mFontColor = new Color(0,0,0);
 	
-	public int fontSize()
+	public int getDefaultFontSize()
 	{
 		return mFontSize;
 	}
-	public int lineLength()
+	public int getMinLineLength()
 	{
 		return mLineLength;
 	}
-	public int minTextWidth()
+	public int getMinLineWidth()
 	{
 		return mMinTextWidth;
 	}
-	public void setFontSize(int fontSize)
+	public void setDefaultFontSize(int fontSize)
 	{
 		mFontSize = fontSize;
 	}
-	public void setMinTextWidth(int minTextWidth)
+	public void setMinLineWidth(int minTextWidth)
 	{
 		mMinTextWidth = minTextWidth;
 	}
@@ -53,8 +53,8 @@ public class Properties {
 	}
 	public void restoreDefaults() {
 		setLineLength(10);
-		setMinTextWidth(30);
-		setFontSize(10);
+		setMinLineWidth(30);
+		setDefaultFontSize(10);
 		setLeftTranslate(20);
 		setTopTranslate(20);
 		setFontColor(new Color(0,0,0));

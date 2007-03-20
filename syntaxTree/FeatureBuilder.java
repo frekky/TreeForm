@@ -47,7 +47,7 @@ public class FeatureBuilder extends AbstractFeatureBuilder {
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
 		SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
 		AttributedString lAttributedString = new AttributedString("[feature]");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());

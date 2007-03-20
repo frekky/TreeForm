@@ -18,7 +18,7 @@ public class ListenerLineWidth implements ChangeListener {
 	}
 
 	public void stateChanged(ChangeEvent e) {
-		mProperties.setMinTextWidth(((JSlider)e.getSource()).getValue());
+		mProperties.setMinLineWidth(((JSlider)e.getSource()).getValue());
 		mSyntaxFacade.displayTree();
 	}
 }

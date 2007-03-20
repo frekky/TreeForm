@@ -209,10 +209,10 @@ public class XMLParser implements SaveFile, LoadFile {
 		lName.setValue("TreeForm");
 		mRoot.setAttributeNode(lName);
 		lName = mDoc.createAttribute("linelength");
-		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().lineLength()));
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getMinLineLength()));
 		mRoot.setAttributeNode(lName);
 		lName = mDoc.createAttribute("mintextwidth");
-		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().minTextWidth()));
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getMinLineWidth()));
 		mRoot.setAttributeNode(lName);
 		lName = mDoc.createAttribute("lefttranslate");
 		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getLeftTranslate()));
@@ -221,7 +221,7 @@ public class XMLParser implements SaveFile, LoadFile {
 		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getTopTranslate()));
 		mRoot.setAttributeNode(lName);
 		lName = mDoc.createAttribute("defaultfontsize");
-		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().fontSize()));
+		lName.setValue(String.valueOf(pSyntaxFacade.getUIF().getProperties().getDefaultFontSize()));
 		mRoot.setAttributeNode(lName);
 		for(int i = 0;i < pSyntaxFacade.getSentence().getChildren().size();i++)
 		{
@@ -617,9 +617,9 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		mInternalFrame.setTitle(mRoot.getAttribute("name"));
 		if (mRoot.getAttribute("linelength") != "")
 		{
-			mInternalFrame.getProperties().setFontSize(new Integer(mRoot.getAttribute("defaultfontsize")).intValue());
+			mInternalFrame.getProperties().setDefaultFontSize(new Integer(mRoot.getAttribute("defaultfontsize")).intValue());
 			mInternalFrame.getProperties().setLineLength(new Integer(mRoot.getAttribute("linelength")).intValue());
-			mInternalFrame.getProperties().setMinTextWidth(new Integer(mRoot.getAttribute("mintextwidth")).intValue());
+			mInternalFrame.getProperties().setMinLineWidth(new Integer(mRoot.getAttribute("mintextwidth")).intValue());
 			mInternalFrame.getProperties().setLeftTranslate(new Integer(mRoot.getAttribute("lefttranslate")).intValue());
 			mInternalFrame.getProperties().setTopTranslate(new Integer(mRoot.getAttribute("toptranslate")).intValue());
 		}

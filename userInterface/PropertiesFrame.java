@@ -60,7 +60,7 @@ public class PropertiesFrame extends JFrame {
 		lineLength.setMaximum(100);
 		lineLength.setPaintTicks(true);
 		lineLength.setPaintLabels(true);
-		lineLength.setValue(frame.getProperties().lineLength());
+		lineLength.setValue(frame.getProperties().getMinLineLength());
 		lineLength.addChangeListener(new ListenerLineLength(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade()));
 		lineWidthLabel = new JLabel((String) mFrame.getUserFrame().getI18n().getObject("LINE_WIDTH_LABEL"));
 		lineWidth = new JSlider();
@@ -69,7 +69,7 @@ public class PropertiesFrame extends JFrame {
 		lineWidth.setMaximum(100);
 		lineWidth.setPaintTicks(true);
 		lineWidth.setPaintLabels(true);
-		lineWidth.setValue(frame.getProperties().minTextWidth());
+		lineWidth.setValue(frame.getProperties().getMinLineWidth());
 		lineWidth.addChangeListener(new ListenerLineWidth(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade()));
 		leftPadLabel = new JLabel((String) mFrame.getUserFrame().getI18n().getObject("LEFT_PAD_LABEL"));
 		leftPad = new JSlider();
@@ -97,7 +97,7 @@ public class PropertiesFrame extends JFrame {
 		defaultFontSize.setMaximum(30);
 		defaultFontSize.setPaintTicks(true);
 		defaultFontSize.setPaintLabels(true);
-		defaultFontSize.setValue(frame.getProperties().fontSize());
+		defaultFontSize.setValue(frame.getProperties().getDefaultFontSize());
 		defaultFontSize.addChangeListener(new ListenerDefaultFontSize(frame.getProperties(),frame.getUserFrame().getInternalFrame().getSyntaxFacade()));
 		tabbedPane = new JTabbedPane();
 		textColorPanel = new JPanel();

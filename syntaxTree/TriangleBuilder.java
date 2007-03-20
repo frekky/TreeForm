@@ -51,7 +51,7 @@ public class TriangleBuilder extends AbstractStructureBuilder {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
 		lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 		AttributedString lAttributedString = new AttributedString("XP");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());

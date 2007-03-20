@@ -646,7 +646,7 @@ public class EditableComponent extends JComponent {
 		setUserInternalFrame(pUserInternalFrame);
 		mHead = new AttributedString(" ");
 		Font lFont = new Font("Doulos SIL", Font.BOLD, getUserInternalFrame()
-				.getProperties().fontSize());
+				.getProperties().getDefaultFontSize());
 		mHead.addAttribute(TextAttribute.FONT, lFont);
 		this.addMouseListener(new HitTestMouseListener());
 		this.addMouseMotionListener(new HitTestMouseListener());
@@ -1171,7 +1171,7 @@ public class EditableComponent extends JComponent {
 		} catch (IllegalArgumentException e) {
 			AttributedString lAT = new AttributedString(" ");
 			Font lFont = new Font("Doulos SIL", Font.PLAIN,
-					getUserInternalFrame().getProperties().fontSize());
+					getUserInternalFrame().getProperties().getDefaultFontSize());
 			lAT.addAttribute(TextAttribute.FONT, lFont);
 			setHead(lAT);
 
@@ -1180,8 +1180,8 @@ public class EditableComponent extends JComponent {
 
 		lWidth = (int) tl.getAdvance() + 4;
 		this.setRealTextWidth(lWidth);
-		lWidth = lWidth < getUserInternalFrame().getProperties().minTextWidth() ? getUserInternalFrame()
-				.getProperties().minTextWidth()
+		lWidth = lWidth < getUserInternalFrame().getProperties().getMinLineWidth() ? getUserInternalFrame()
+				.getProperties().getMinLineWidth()
 				: lWidth;
 		this.setTextWidth(lWidth);
 		this.setTextHeight((int) (tl.getAscent() + tl.getDescent()) + 1);

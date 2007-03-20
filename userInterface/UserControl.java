@@ -727,7 +727,6 @@ public void loadTree() {
 			mUserFrame.getObservableClipboard().getValue().setCarat(false);
 			mUserFrame.getObservableClipboard().getValue().repaint();
 		}
-		//SyntaxFacade lSF = mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade();
 		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
 		Color lColor = lC.getBackground();
 		lC.setBackground(new Color(255,255,255));
@@ -739,10 +738,9 @@ public void loadTree() {
 			BufferedImage lImg = new BufferedImage(scaleWidth,scaleHeight, BufferedImage.TYPE_INT_RGB);
 			Graphics lGraphics= lImg.getGraphics();		
 			Graphics2D lG2D = ((Graphics2D)lGraphics);
-			AffineTransform lAT = new AffineTransform();
-			lAT.setToScale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
-			//lAT.setToTranslation(left, top);
-			lG2D.setTransform(lAT);
+			lG2D.translate(-left * (300/72/Sizer.scaleWidth()), -top * (300/72/Sizer.scaleHeight()));
+
+			lG2D.scale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
 			lPanel.print(lG2D);
 			UserTransferableGraphics t = new UserTransferableGraphics(lImg);
 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);

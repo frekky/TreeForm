@@ -52,7 +52,7 @@ public class TrinaryBuilder extends AbstractStructureBuilder {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
 		lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 		AttributedString lAttributedString = new AttributedString("XP");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
@@ -65,7 +65,7 @@ public class TrinaryBuilder extends AbstractStructureBuilder {
 		SyntacticStructure lSyntacticStructureLeft = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
 		lSyntacticStructureLeft.setLineColor(pInternalFrame.getProperties().getLineColor());
 		lAttributedString = new AttributedString("∅");
-		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
@@ -78,7 +78,7 @@ public class TrinaryBuilder extends AbstractStructureBuilder {
 		SyntacticStructure lSyntacticStructureCenter = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
 		lSyntacticStructureCenter.setLineColor(pInternalFrame.getProperties().getLineColor());
 		lAttributedString = new AttributedString("∅");
-		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
@@ -90,7 +90,7 @@ public class TrinaryBuilder extends AbstractStructureBuilder {
 		SyntacticStructure lSyntacticStructureRight = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
 		lSyntacticStructureRight.setLineColor(pInternalFrame.getProperties().getLineColor());
 		lAttributedString = new AttributedString("X");
-		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().fontSize());
+		lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
 		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());

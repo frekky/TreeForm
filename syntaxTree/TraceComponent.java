@@ -337,13 +337,13 @@ public class TraceComponent extends JComponent {
 			padBottom = - (start.getTraceNumber() * padWidth)/2 + start.getTraceCount() * padWidth;
 			contentGraphics.fillArc((int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
-							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength()), circle,
+							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()), circle,
 					circle, 0, 360);
 	
 			mStartX = (int)(start.getButtonX() 
 					+ start.getButtonWidth()/2 + padBottom);
 			mStartY = (int) (start
-					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + circle);
+					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + circle);
 		}
 		else if (position == POSITION_LEFT) {
 			contentGraphics.fillArc((int) start.getButtonX() - padEdge  , (int) start
@@ -390,22 +390,22 @@ public class TraceComponent extends JComponent {
 			polly.moveTo((float) (end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom),
 					(float) end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength());
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
 			polly.lineTo((float) (end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom) - (triangleLength),
 					(float) end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + triangleLength);
 			polly.lineTo((float) (end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom) + (triangleLength),
 					(float) end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + triangleLength);
 			polly.closePath();
 			contentGraphics.fill(polly);
 
 			mEndX = (int)(end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom);
 			mEndY = (int) (end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().lineLength() + triangleLength);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + triangleLength);
 		}
 		else if (position == POSITION_LEFT) {
 			

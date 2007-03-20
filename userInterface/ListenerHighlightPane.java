@@ -111,7 +111,6 @@ public class ListenerHighlightPane extends MouseInputAdapter {
 		mUserFrame.getInternalFrame().getHighlightPane().copyImage();
 		mUserFrame.getInternalFrame().deactivateHighlightPane();
 
-		//System.out.println("ended here");
 	}
 
 }
