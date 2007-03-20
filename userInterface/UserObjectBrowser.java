@@ -21,7 +21,6 @@ package userInterface;
 
 import java.awt.FlowLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.plaf.ButtonUI;
 import enumerators.SyntacticFeatureType;
@@ -295,28 +294,73 @@ public class UserObjectBrowser extends JPanel {
 		mXBar.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mXBar.setToolTipText((String) mUserFrame.getI18n().getObject("X-BAR"));
 		this.add(mXBar);
-		
-		this.add(new JLabel((String) mUserFrame.getI18n().getObject("INSTRUCTIONS")));
-		JLabel moveTree = new JLabel((String) mUserFrame.getI18n().getObject("MOVE_TREE"));
-		JLabel moveTree2 = new JLabel((String) mUserFrame.getI18n().getObject("MOVE_TREE2"));
-		
-		this.add(moveTree);
-		this.add(moveTree2);
-	    String vers = System.getProperty("os.name").toLowerCase();
 
-	    JLabel addLines= new JLabel();
-	    JLabel addLines2 = new JLabel();
-	    if (vers.indexOf("mac") != -1) {
-	    	addLines.setText((String) mUserFrame.getI18n().getObject("ADD_LINES_MAC"));
-	    	addLines2.setText((String) mUserFrame.getI18n().getObject("ADD_LINES2"));
-	    }
-	    else
-	    {
-	    	addLines.setText((String) mUserFrame.getI18n().getObject("ADD_LINES"));
-	    	addLines2.setText((String) mUserFrame.getI18n().getObject("ADD_LINES2"));
-	    }
-		this.add(addLines);
-		this.add(addLines2);
+		
+//		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
+//		mUIObject = (ButtonUI) ButtonUIBinary.createUI(mBinary);
+//		mBinary.setUI(mUIObject);
+//		mBinary.setPreferredSize(Sizer.scaledButtonSize());
+//		mBinary.setLabel();
+//		mBinary.addMouseListener(new ListenerMouse(mUserFrame));
+//		mBinary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+//		mBinary.setToolTipText((String) mUserFrame.getI18n().getObject("BINARY"));
+//		this.add(mBinary);
+//		
+//		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
+//		mUIObject = (ButtonUI) ButtonUITernary.createUI(mTrinary);
+//		mTrinary.setUI(mUIObject);
+//		mTrinary.setPreferredSize(Sizer.scaledButtonSize());
+//		mTrinary.setLabel();
+//		mTrinary.addMouseListener(new ListenerMouse(mUserFrame));
+//		mTrinary.addMouseMotionListener(
+//			new ListenerMouseMotion(mUserFrame));
+//		mTrinary.setToolTipText((String) mUserFrame.getI18n().getObject("TERNARY"));
+//		this.add(mTrinary);
+//		
+//		mAdjunct = new UserBrowserButton(mUserFrame, SyntacticStructureType.ADJUNCT);
+//		mUIObject = (ButtonUI) ButtonUIAdjunct.createUI(mAdjunct);
+//		mAdjunct.setUI(mUIObject);
+//		mAdjunct.setPreferredSize(Sizer.scaledButtonSize());
+//		mAdjunct.setLabel();
+//		mAdjunct.addMouseListener(new ListenerMouse(mUserFrame));
+//		mAdjunct.addMouseMotionListener(
+//			new ListenerMouseMotion(mUserFrame));
+//		mAdjunct.setToolTipText((String) mUserFrame.getI18n().getObject("ADJUNCT"));
+//		this.add(mAdjunct);
+//		
+//		
+//		mXBar = new UserBrowserButton(mUserFrame, SyntacticStructureType.X_BAR);
+//		mUIObject = (ButtonUI) ButtonUIXBar.createUI(mXBar);
+//		mXBar.setUI(mUIObject);
+//		mXBar.setPreferredSize(Sizer.scaledButtonSize());
+//		mXBar.setLabel();
+//		mXBar.addMouseListener(new ListenerMouse(mUserFrame));
+//		mXBar.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+//		mXBar.setToolTipText((String) mUserFrame.getI18n().getObject("X-BAR"));
+//		this.add(mXBar);
+		
+		
+//		this.add(new JLabel((String) mUserFrame.getI18n().getObject("INSTRUCTIONS")));
+//		JLabel moveTree = new JLabel((String) mUserFrame.getI18n().getObject("MOVE_TREE"));
+//		JLabel moveTree2 = new JLabel((String) mUserFrame.getI18n().getObject("MOVE_TREE2"));
+//		
+//		this.add(moveTree);
+//		this.add(moveTree2);
+//	    String vers = System.getProperty("os.name").toLowerCase();
+//
+//	    JLabel addLines= new JLabel();
+//	    JLabel addLines2 = new JLabel();
+//	    if (vers.indexOf("mac") != -1) {
+//	    	addLines.setText((String) mUserFrame.getI18n().getObject("ADD_LINES_MAC"));
+//	    	addLines2.setText((String) mUserFrame.getI18n().getObject("ADD_LINES2"));
+//	    }
+//	    else
+//	    {
+//	    	addLines.setText((String) mUserFrame.getI18n().getObject("ADD_LINES"));
+//	    	addLines2.setText((String) mUserFrame.getI18n().getObject("ADD_LINES2"));
+//	    }
+//		this.add(addLines);
+//		this.add(addLines2);
 	}
 
 }

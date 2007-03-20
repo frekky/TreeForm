@@ -739,7 +739,6 @@ public void loadTree() {
 			Graphics lGraphics= lImg.getGraphics();		
 			Graphics2D lG2D = ((Graphics2D)lGraphics);
 			lG2D.translate(-left * (300/72/Sizer.scaleWidth()), -top * (300/72/Sizer.scaleHeight()));
-
 			lG2D.scale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
 			lPanel.print(lG2D);
 			UserTransferableGraphics t = new UserTransferableGraphics(lImg);

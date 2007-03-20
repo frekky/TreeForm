@@ -239,6 +239,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		mStartTrace = new LinkedList();
 		mEndTrace = new LinkedList();
 		mParent = pParent;
+		setToolTipText((String) pUserInternalFrame.getUserFrame().getI18n().getObject("MOVE_SUBTREE"));
 		setSyntacticStructureLines(new SyntacticStructureLines());
 	}
 
