@@ -19,6 +19,7 @@
 
 package userInterface;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -117,6 +118,7 @@ public class UserGlassPane extends JComponent {
 		mUserFrame = pUserFrame;
 		mSS = pSS;
 		mSSChild = pSSChild;
+		
 	}
 /**
  * paintComponent is the command for drawing the circles.
@@ -214,8 +216,11 @@ public class UserGlassPane extends JComponent {
 					Arc2D.OPEN);
 			lGraphics2D.fill(lArc);
 			lGraphics2D.setColor(Color.BLACK);
-			//SyntacticStructure pSS = (SyntacticStructure) mSS.getSyntacticParent();
-			lGraphics2D.drawLine(
+			  float dash[] = {2.0f, 2.0f};
+			    lGraphics2D.setStroke(new BasicStroke(0.8f, BasicStroke.CAP_BUTT,
+			                BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f)); 			//stroke.getDashPhase();
+			
+					lGraphics2D.drawLine(
 					(int) ((mSS.getButtonWidth()/2) + (mSS.getX() / (Sizer.scaleWidth()
 			* mUserFrame.getDesktopPane().getInternalFrame().getScale()))),
 			 (int) (mSS.getTextHeight() + (mSS.getY()) /
@@ -223,7 +228,7 @@ public class UserGlassPane extends JComponent {
 					* mUserFrame.getDesktopPane().getInternalFrame().getScale())),
 			 ((int) mPoint.x + pRelativePosition),
 			 (int) mPoint.y);
-
+					lGraphics2D.setStroke(new BasicStroke());
 		} else {
 			lColor = new Color(255, 00, 00);
 			lGraphics2D.setColor(lColor);
@@ -257,6 +262,8 @@ public class UserGlassPane extends JComponent {
 				mPosition = i;
 			}
 		}
+		mSS.setOver(true);
+		mSS.repaint();
 		repaint();
 	}
 /**
@@ -277,6 +284,8 @@ public class UserGlassPane extends JComponent {
 		mUserFrame
 			.getSyntaxFacade()
 			.displayTree();
+		mSS.setOver(false);
+		mSS.repaint();
 		mUserFrame.getDesktopPane().getInternalFrame().deactivateGlassPane();
 	}
 }
