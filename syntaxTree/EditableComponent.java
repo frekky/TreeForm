@@ -753,7 +753,7 @@ public class EditableComponent extends JComponent {
 					.getY());
 		}
 
-		if (this.getCarat() && mCaratTimer) {
+		if (this.getCarat() && mCaratTimer  && isEnabled()) {
 			lGraphics2D.translate(getZero(this.getTextWidth()
 					- mTextLayoutHead.getBounds().getWidth()) / 2,
 					mTextLayoutHead.getAscent());

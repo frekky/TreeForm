@@ -444,6 +444,10 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  */
 	public void setSyntacticLevel(SyntacticLevel syntacticLevel) {
 		this.mSyntacticLevel = syntacticLevel;
+		if (syntacticLevel == SyntacticLevel.NULL)
+		{
+			this.setEnabled(false);
+		}
 	}
 /**
  * 
