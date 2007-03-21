@@ -1,6 +1,7 @@
 package userInterface;
 
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -23,8 +24,6 @@ public class UserMovementPane extends JComponent {
 	public UserMovementPane(UserFrame userFrame, SyntacticStructure structure) {
 		mUserFrame = userFrame;
 		mSS = structure;
-		mX = mSS.getButtonX() + (mSS.getButtonWidth()/2) + 10;
-		mY = mSS.getButtonY() + mSS.getButtonHeight() + 10;
 	}
 
 	/**
@@ -33,8 +32,10 @@ public class UserMovementPane extends JComponent {
 	private static final long serialVersionUID = 1L;
 
 	public void setPosition(MouseEvent pme) {
-		mX = pme.getX();
-		mY = pme.getY();
+		mX = pme.getX() / (Sizer.scaleWidth()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
+		mY = pme.getY()/ (Sizer.scaleHeight()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
 		repaint();
 		
 	}
@@ -52,14 +53,22 @@ public class UserMovementPane extends JComponent {
 		lGraphics2D.setRenderingHint(
 			RenderingHints.KEY_RENDERING,
 			RenderingHints.VALUE_RENDER_QUALITY);
+		
+		lGraphics2D.scale(
+				Sizer.scaleWidth()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
+				Sizer.scaleHeight()
+					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
+		lGraphics2D.setColor(new Color(0,0,200));
 		Ellipse2D.Double ellipse = new Ellipse2D.Double(mX, mY, 10,10);
 		lGraphics2D.fill(ellipse);
-		double x = mSS.getButtonX() + (mSS.getButtonWidth()/2) + 10;
-		double y = mSS.getButtonY() + mSS.getButtonHeight() + 10;
+		double x = mSS.getButtonX() + (mSS.getButtonWidth()/2) - 5;
+		double y = mSS.getButtonY() + mSS.getButtonHeight() - mUserFrame.getInternalFrame().getProperties().getMinLineLength();
 		
 		ellipse = new Ellipse2D.Double(x,
 				y, 10,10);
 		lGraphics2D.fill(ellipse);
+		lGraphics2D.setColor(Color.BLACK);
 		 float dash[] = {2.0f, 2.0f};
 		    lGraphics2D.setStroke(new BasicStroke(2f, BasicStroke.CAP_BUTT,
 		                BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f)); 			//stroke.getDashPhase();
@@ -73,13 +82,6 @@ public class UserMovementPane extends JComponent {
 				mX + 5,
 				mY + 5);
 		lGraphics2D.draw(bezier);
-		lGraphics2D.scale(
-				Sizer.scaleWidth()
-					* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
-				Sizer.scaleHeight()
-					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-		
-		//Rectangle lRectangle = mSS.getBounds();
 		
 		
 	}
