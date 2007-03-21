@@ -477,6 +477,8 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"X-BAR", new String("Drag and drop onto a node to add an X-bar structure below.")},
 				{"MOVE_SUBTREE", new String("To move a Subtree, Shift-drag this node to another node.  Right-click for context menu.")},
 				{"MOVEMENT", new String("Drag and drop onto a node, then move to another node and click to add a movement line.")},
+				{"ERASE", new String("Drag and drop onto a node, feature or association to delete (Undo to restore).")},
+
 				{"ADJUNCT_TEXT", new String("Adjunct")},
 				{"UNARY_TEXT", new String("Unary")},
 				{"BINARY_TEXT", new String("Binary")},
@@ -492,7 +494,8 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"TRIANGLE_TEXT", new String("Triangle")},
 				{"SPEC_TEXT", new String("Spec")},
 				{"COMPL_TEXT", new String("Compl")},
-				{"MOVEMENT_TEXT", new String("Movement")}
+				{"MOVEMENT_TEXT", new String("Movement")},
+				{"ERASE_TEXT", new String("Eraser")},
 		};
 //		{"INSTRUCTIONS", new String("INSTRUCTIONS")},
 //		{"MOVE_TREE", new String("Shift-drag nodes to each")},	

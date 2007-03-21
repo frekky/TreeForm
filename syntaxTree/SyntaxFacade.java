@@ -64,7 +64,7 @@ public class SyntaxFacade {
 	 * @uml.associationEnd 
 	 * @uml.property name="mUnder" multiplicity="(0 1)"
 	 */
-	private SyntacticStructure mUnder;
+	private Component mUnder;
 
 	private Component mOldContainer;
 	private Component mContainer;
@@ -1165,13 +1165,13 @@ private void fourthWalk(SyntacticStructure v, int level)
 		setContainer(pContainer);
 		if (getContainer() != mOldContainer) {
 			//boolean lPaintTest = false;
-			if (getContainer() instanceof SyntacticStructure) {
-				((SyntacticStructure) getContainer()).setOver(true);
-				((SyntacticStructure) getContainer()).repaint();
+			if (getContainer() instanceof EditableComponent) {
+				((EditableComponent) getContainer()).setOver(true);
+				((EditableComponent) getContainer()).repaint();
 			}
-			if (mOldContainer instanceof SyntacticStructure) {
-				((SyntacticStructure) mOldContainer).setOver(false);
-				((SyntacticStructure) mOldContainer).repaint();
+			if (mOldContainer instanceof EditableComponent) {
+				((EditableComponent) mOldContainer).setOver(false);
+				((EditableComponent) mOldContainer).repaint();
 			}
 			mOldContainer = getContainer();
 		}
@@ -1276,7 +1276,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * @param pSource The source of the call.
  * @return Returns the structure under the point, if any.
  */
-	public SyntacticStructure getUnder(Point pContainerPoint, Object pSource) {
+	public Component getUnder(Point pContainerPoint, Object pSource) {
 		mUnder = null;
 		getUnderRecursive(getSentence(), pContainerPoint, pSource);
 		return mUnder;
@@ -1306,10 +1306,52 @@ private void fourthWalk(SyntacticStructure v, int level)
 						<= lSS.getBounds().y + lSS.getBounds().height)) {
 				if (lSS != pSource) {
 					mUnder = lSS;
+					//System.out.println("structure");
+					return;
+				}
+				
+			}
+			for (int i = 0; i < lSS.getSyntacticFeatureSet().size(); i++)
+			{
+				//System.out.println("in feature");
+				SyntacticFeatureSet lSFS = (SyntacticFeatureSet) lSS.getSyntacticFeatureSet().get(i);
+				for (int j = 0; j < lSFS.getSyntacticFeature().size();j++)
+				{
+					SyntacticFeature lSF = (SyntacticFeature) lSFS.getSyntacticFeature().get(j);
+					if ((pContainerPoint.x >= lSF.getBounds().x
+							&& pContainerPoint.x <= lSF.getBounds().x + lSF.getBounds().width)
+							&& (pContainerPoint.y >= lSF.getBounds().y
+								&& pContainerPoint.y
+									<= lSF.getBounds().y + lSF.getBounds().height))
+					{
+						if (lSF != pSource) 
+						{
+							mUnder = lSF;
+							//System.out.println("feature");
+							return;
+						}
+					}
+				}
+			}
+			for (int i = 0; i < lSS.getSyntacticAssociation().size();i++)
+			{
+				SyntacticAssociation lSA = (SyntacticAssociation) lSS.getSyntacticAssociation().get(i);
+				if ((pContainerPoint.x >= lSA.getBounds().x
+						&& pContainerPoint.x <= lSA.getBounds().x + lSA.getBounds().width)
+						&& (pContainerPoint.y >= lSA.getBounds().y
+							&& pContainerPoint.y
+								<= lSA.getBounds().y + lSA.getBounds().height))
+				{
+					if (lSA != pSource) 
+					{
+						mUnder = lSA;
+						//System.out.println("association");
+						return;
+					}
 				}
 			}
 		}
-
+		
 		for (int i = 0; i < pRT.getChildren().size(); i++) {
 			getUnderRecursive(
 				(RepositionTree) pRT.getChildren().get(i),

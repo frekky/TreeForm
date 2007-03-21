@@ -155,6 +155,8 @@ public class UserObjectBrowser extends JPanel {
 
 	private UserBrowserButton mMovement;
 
+	private UserBrowserButton mErase;
+
 /**
  * 
  * @param pUserFrame Yup, you guessed it, the UserFrame from this instance of TreeForm
@@ -319,6 +321,19 @@ public class UserObjectBrowser extends JPanel {
 		mMovement.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mMovement.setToolTipText((String) mUserFrame.getI18n().getObject("MOVEMENT"));
 		this.add(mMovement);
+		
+		mErase = new UserBrowserButton(mUserFrame, SyntacticOperationType.ERASE);
+		mUIObject = (ButtonUIAbstract) ButtonUIErase.createUI(mErase);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
+		mErase.setUI(mUIObject);
+		mErase.setPreferredSize(Sizer.scaledButtonSize());
+		mErase.setLabel();
+		mErase.addMouseListener(new ListenerMouse(mUserFrame));
+		mErase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mErase.setToolTipText((String) mUserFrame.getI18n().getObject("ERASE"));
+		this.add(mErase);
+		
+		
 		
 //		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
 //		mUIObject = (ButtonUI) ButtonUIBinary.createUI(mBinary);

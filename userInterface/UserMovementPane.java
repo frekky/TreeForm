@@ -24,6 +24,9 @@ public class UserMovementPane extends JComponent {
 	public UserMovementPane(UserFrame userFrame, SyntacticStructure structure) {
 		mUserFrame = userFrame;
 		mSS = structure;
+		mX = mSS.getButtonX() + (mSS.getButtonWidth()/2) - 5;
+		mY = mSS.getButtonY() + mSS.getButtonHeight() - mUserFrame.getInternalFrame().getProperties().getMinLineLength();
+
 	}
 
 	/**

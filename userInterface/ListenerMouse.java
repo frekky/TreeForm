@@ -27,6 +27,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
+import syntaxTree.SyntacticAssociation;
+import syntaxTree.SyntacticFeature;
 import syntaxTree.SyntacticStructure;
 
 import enumerators.SyntacticFeatureType;
@@ -141,9 +143,28 @@ public class ListenerMouse implements MouseListener {
 				}
 				else if (lUBB.getButtonType() instanceof SyntacticOperationType)
 				{
-					if (((UserInternalFrame)lComponent).getSyntaxFacade().getContainer() instanceof SyntacticStructure)
+					if (lUBB.getButtonType() == SyntacticOperationType.MOVEMENT)
 					{
-						mUserFrame.getInternalFrame().activateMovementPane((SyntacticStructure) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
+						if (((UserInternalFrame)lComponent).getSyntaxFacade().getContainer() instanceof SyntacticStructure)
+						{
+							mUserFrame.getInternalFrame().activateMovementPane((SyntacticStructure) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
+						}
+					}
+					if (lUBB.getButtonType() == SyntacticOperationType.ERASE)
+					{
+						Component hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+						if (hold instanceof SyntacticStructure)
+						{
+							mUserFrame.getSyntaxFacade().deleteSyntacticStructure((SyntacticStructure) hold);
+						}
+						if (hold instanceof SyntacticFeature)
+						{
+							mUserFrame.getSyntaxFacade().deleteSyntacticFeature((SyntacticFeature) hold);
+						}
+						if (hold instanceof SyntacticAssociation)
+						{
+							mUserFrame.getSyntaxFacade().deleteSyntacticAssociation((SyntacticAssociation) hold);
+						}
 					}
 				}
 		}

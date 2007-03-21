@@ -196,96 +196,107 @@ public class EditableComponent extends JComponent {
 				}
 				deleteHead();
 				mUserInternalFrame.getSyntaxFacade().displayTree();
-			} else if (pKE.getSource() instanceof SyntacticStructure)
-			{
+			} else if (pKE.getSource() instanceof SyntacticStructure) {
 				SyntacticStructure ss = (SyntacticStructure) pKE.getSource();
 				UserInternalFrame uif = ss.getUserInternalFrame();
 				SyntaxFacade sf = uif.getSyntaxFacade();
-			if (location == KeyEvent.VK_F1) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.HEAD, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				if (location == KeyEvent.VK_F1) {
+					try {
+						sf.addSyntacticStructure(SyntacticStructureType.HEAD,
+								uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F2) {
+					try {
+						sf.addSyntacticStructure(SyntacticStructureType.PHRASE,
+								uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F3) {
+					try {
+						sf.addSyntacticStructure(SyntacticStructureType.MORPH,
+								uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F4) {
+					try {
+						sf.addSyntacticStructure(
+								SyntacticStructureType.TRIANGLE, uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F5) {
+					try {
+						sf.addSyntacticFeatureToStructure(
+								SyntacticFeatureType.CASE, uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F6) {
+					try {
+						sf.addSyntacticFeatureToStructure(
+								SyntacticFeatureType.THETA, uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F7) {
+					try {
+						sf.addSyntacticFeatureToStructure(
+								SyntacticFeatureType.FEATURE, uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F8) {
+					try {
+						sf.addSyntacticStructure(SyntacticStructureType.UNARY,
+								uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F9) {
+					try {
+						sf.addSyntacticStructure(SyntacticStructureType.BINARY,
+								uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F10) {
+					try {
+						sf.addSyntacticStructure(
+								SyntacticStructureType.TRINARY, uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F11) {
+					try {
+						sf.addSyntacticStructure(
+								SyntacticStructureType.ADJUNCT, uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} else if (location == KeyEvent.VK_F12) {
+					try {
+						sf.addSyntacticStructure(SyntacticStructureType.X_BAR,
+								uif, ss);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			} else if (location == KeyEvent.VK_F2) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.PHRASE, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F3) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.MORPH, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F4) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.TRIANGLE, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F5) {
-				try {
-					sf.addSyntacticFeatureToStructure(SyntacticFeatureType.CASE, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F6) {
-				try {
-					sf.addSyntacticFeatureToStructure(SyntacticFeatureType.THETA, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F7) {
-				try {
-					sf.addSyntacticFeatureToStructure(SyntacticFeatureType.FEATURE, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F8) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.UNARY, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F9) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.BINARY, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F10) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.TRINARY, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F11) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.ADJUNCT, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else if (location == KeyEvent.VK_F12) {
-				try {
-					sf.addSyntacticStructure(SyntacticStructureType.X_BAR, uif,ss);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
 			}
 
 		}
@@ -544,46 +555,52 @@ public class EditableComponent extends JComponent {
 		 * repaint. <br>
 		 */
 		public void mouseReleased(MouseEvent pME) {
-			if (mMove) {
-				Point containerPoint = SwingUtilities.convertPoint(
-						(Component) pME.getSource(), pME.getPoint(),
-						mUserInternalFrame.getContentPane());
-				SyntacticStructure lSSParent = mUserInternalFrame
-						.getSyntaxFacade().getUnder(containerPoint,
-								pME.getSource());
-				if (lSSParent != null) {
-					if (pME.getSource() instanceof SyntacticStructure) {
-						mUserInternalFrame.getSyntaxFacade()
-								.moveSyntacticStructure(lSSParent,
-										(SyntacticStructure) pME.getSource());
-					} else if (pME.getSource() instanceof SyntacticFeature) {
-						mUserInternalFrame.getSyntaxFacade()
-								.associateSyntacticFeature(lSSParent,
-										(SyntacticFeature) pME.getSource());
+			Point containerPoint = SwingUtilities.convertPoint((Component) pME
+					.getSource(), pME.getPoint(), mUserInternalFrame
+					.getContentPane());
+			if (mUserInternalFrame.getSyntaxFacade().getUnder(containerPoint,
+					pME.getSource()) instanceof SyntacticStructure) {
+				if (mMove) {
+					SyntacticStructure lSSParent = (SyntacticStructure) mUserInternalFrame
+							.getSyntaxFacade().getUnder(containerPoint,
+									pME.getSource());
+					if (lSSParent != null) {
+						if (pME.getSource() instanceof SyntacticStructure) {
+							mUserInternalFrame.getSyntaxFacade()
+									.moveSyntacticStructure(
+											lSSParent,
+											(SyntacticStructure) pME
+													.getSource());
+						} else if (pME.getSource() instanceof SyntacticFeature) {
+							mUserInternalFrame.getSyntaxFacade()
+									.associateSyntacticFeature(lSSParent,
+											(SyntacticFeature) pME.getSource());
+						}
+					} else {
+						mUserInternalFrame.getSyntaxFacade().displayTree();
 					}
-				} else {
+					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+					setCursor(lDefaultCursor);
+					mMove = false;
+				} else if (mTrace) {
+					containerPoint = SwingUtilities.convertPoint(
+							(Component) pME.getSource(), pME.getPoint(),
+							mUserInternalFrame.getContentPane());
+					SyntacticStructure lSSEnd = (SyntacticStructure) mUserInternalFrame
+							.getSyntaxFacade().getUnder(containerPoint,
+									pME.getSource());
+					if (lSSEnd != null) {
+						if (pME.getSource() instanceof SyntacticStructure) {
+							mUserInternalFrame.getSyntaxFacade().addTrace(
+									lSSEnd,
+									(SyntacticStructure) pME.getSource());
+						}
+					}
 					mUserInternalFrame.getSyntaxFacade().displayTree();
+					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+					setCursor(lDefaultCursor);
+					mMove = false;
 				}
-				Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-				setCursor(lDefaultCursor);
-				mMove = false;
-			} else if (mTrace) {
-				Point containerPoint = SwingUtilities.convertPoint(
-						(Component) pME.getSource(), pME.getPoint(),
-						mUserInternalFrame.getContentPane());
-				SyntacticStructure lSSEnd = mUserInternalFrame
-						.getSyntaxFacade().getUnder(containerPoint,
-								pME.getSource());
-				if (lSSEnd != null) {
-					if (pME.getSource() instanceof SyntacticStructure) {
-						mUserInternalFrame.getSyntaxFacade().addTrace(lSSEnd,
-								(SyntacticStructure) pME.getSource());
-					}
-				}
-				mUserInternalFrame.getSyntaxFacade().displayTree();
-				Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-				setCursor(lDefaultCursor);
-				mMove = false;
 			} else {
 				setHighlightEnd(pointTest(pME));
 				repaint();
@@ -1180,9 +1197,9 @@ public class EditableComponent extends JComponent {
 
 		lWidth = (int) tl.getAdvance() + 4;
 		this.setRealTextWidth(lWidth);
-		lWidth = lWidth < getUserInternalFrame().getProperties().getMinLineWidth() ? getUserInternalFrame()
-				.getProperties().getMinLineWidth()
-				: lWidth;
+		lWidth = lWidth < getUserInternalFrame().getProperties()
+				.getMinLineWidth() ? getUserInternalFrame().getProperties()
+				.getMinLineWidth() : lWidth;
 		this.setTextWidth(lWidth);
 		this.setTextHeight((int) (tl.getAscent() + tl.getDescent()) + 1);
 	}

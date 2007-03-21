@@ -38,6 +38,7 @@ public final class SyntacticOperationType {
 	 * @uml.property name="bINARY" changeability="frozen" 
 	 */
 	public static final SyntacticOperationType MOVEMENT = new SyntacticOperationType();
+	public static final SyntacticOperationType ERASE = new SyntacticOperationType();
 
 
 }
