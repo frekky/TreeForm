@@ -478,7 +478,9 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"MOVE_SUBTREE", new String("To move a Subtree, Shift-drag this node to another node.  Right-click for context menu.")},
 				{"MOVEMENT", new String("Drag and drop onto a node, then move to another node and click to add a movement line.")},
 				{"ERASE", new String("Drag and drop onto a node, feature or association to delete (Undo to restore).")},
-
+				{"ASSOCIATION", new String("Drag and drop onto a feature, then move to a node and click to add feature association.")},
+				{"ASSOCIATION_TOOLTIP", new String("I am a clone of a feature - changing text in any of us changes text in me.")}, 
+				{"ADD", new String("Drag me to feature to add another one in the same row, as in three theta roles for ditransitive verbs.")}, 	
 				{"ADJUNCT_TEXT", new String("Adjunct")},
 				{"UNARY_TEXT", new String("Unary")},
 				{"BINARY_TEXT", new String("Binary")},
@@ -496,6 +498,8 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"COMPL_TEXT", new String("Compl")},
 				{"MOVEMENT_TEXT", new String("Movement")},
 				{"ERASE_TEXT", new String("Eraser")},
+				{"ASSOCIATION_TEXT", new String("Link Features")},
+				{"ADD_TEXT", new String("Add Feature")}
 		};
 //		{"INSTRUCTIONS", new String("INSTRUCTIONS")},
 //		{"MOVE_TREE", new String("Shift-drag nodes to each")},	

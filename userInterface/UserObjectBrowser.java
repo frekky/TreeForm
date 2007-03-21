@@ -157,6 +157,10 @@ public class UserObjectBrowser extends JPanel {
 
 	private UserBrowserButton mErase;
 
+	private UserBrowserButton mAssociation;
+
+	private UserBrowserButton mAdd;
+
 /**
  * 
  * @param pUserFrame Yup, you guessed it, the UserFrame from this instance of TreeForm
@@ -321,6 +325,28 @@ public class UserObjectBrowser extends JPanel {
 		mMovement.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mMovement.setToolTipText((String) mUserFrame.getI18n().getObject("MOVEMENT"));
 		this.add(mMovement);
+		
+		mAssociation = new UserBrowserButton(mUserFrame, SyntacticOperationType.ASSOCIATION);
+		mUIObject = (ButtonUIAbstract) ButtonUIAssociation.createUI(mAssociation);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
+		mAssociation.setUI(mUIObject);
+		mAssociation.setPreferredSize(Sizer.scaledButtonSize());
+		mAssociation.setLabel();
+		mAssociation.addMouseListener(new ListenerMouse(mUserFrame));
+		mAssociation.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mAssociation.setToolTipText((String) mUserFrame.getI18n().getObject("ASSOCIATION"));
+		this.add(mAssociation);
+		
+		mAdd = new UserBrowserButton(mUserFrame, SyntacticOperationType.ADD);
+		mUIObject = (ButtonUIAbstract) ButtonUIAdd.createUI(mAdd);
+		mUIObject.setResourceBundle(mUserFrame.getI18n());
+		mAdd.setUI(mUIObject);
+		mAdd.setPreferredSize(Sizer.scaledButtonSize());
+		mAdd.setLabel();
+		mAdd.addMouseListener(new ListenerMouse(mUserFrame));
+		mAdd.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
+		mAdd.setToolTipText((String) mUserFrame.getI18n().getObject("ADD"));
+		this.add(mAdd);
 		
 		mErase = new UserBrowserButton(mUserFrame, SyntacticOperationType.ERASE);
 		mUIObject = (ButtonUIAbstract) ButtonUIErase.createUI(mErase);

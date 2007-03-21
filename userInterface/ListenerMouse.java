@@ -166,7 +166,26 @@ public class ListenerMouse implements MouseListener {
 							mUserFrame.getSyntaxFacade().deleteSyntacticAssociation((SyntacticAssociation) hold);
 						}
 					}
+					if (lUBB.getButtonType() == SyntacticOperationType.ADD)
+					{
+						Component hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+
+						if (hold instanceof SyntacticFeature)
+						{
+							mUserFrame.getSyntaxFacade().addSyntacticFeature((SyntacticFeature) hold);
+						}
+					}
+					if (lUBB.getButtonType() == SyntacticOperationType.ASSOCIATION)
+					{
+						Component hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+
+						if (hold instanceof SyntacticFeature)
+						{
+							mUserFrame.getInternalFrame().activateAssociationPane((SyntacticFeature) hold);
+						}
+					}
 				}
+				
 		}
 	}
 }

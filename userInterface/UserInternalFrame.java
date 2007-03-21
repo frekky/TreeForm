@@ -26,6 +26,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
 import syntaxTree.Properties;
+import syntaxTree.SyntacticFeature;
 import syntaxTree.SyntacticStructure;
 import syntaxTree.SyntaxFacade;
 import syntaxTree.TraceComponent;
@@ -329,6 +330,20 @@ public class UserInternalFrame extends JInternalFrame {
 	}
 	
 	public void deactivateMovementPane() {
+		this.setGlassPane(new JLabel());
+		this.getGlassPane().setVisible(false);
+	}
+	public void activateAssociationPane(SyntacticFeature feature) {
+		UserAssociationPane lUAP = new UserAssociationPane(mUserFrame, feature);
+		ListenerAssociationPane listenerAssociationPane = new ListenerAssociationPane(mUserFrame);
+		lUAP.addMouseListener(listenerAssociationPane);
+		lUAP.addMouseMotionListener(listenerAssociationPane);
+		this.setGlassPane(lUAP);
+		this.getGlassPane().setVisible(true);
+	}
+	
+	public void deactivateAssociationPane()
+	{
 		this.setGlassPane(new JLabel());
 		this.getGlassPane().setVisible(false);
 	}

@@ -39,6 +39,8 @@ public final class SyntacticOperationType {
 	 */
 	public static final SyntacticOperationType MOVEMENT = new SyntacticOperationType();
 	public static final SyntacticOperationType ERASE = new SyntacticOperationType();
+	public static final SyntacticOperationType ASSOCIATION = new SyntacticOperationType();
+	public static final SyntacticOperationType ADD = new SyntacticOperationType();
 
 
 }

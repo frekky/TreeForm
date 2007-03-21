@@ -24,7 +24,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.font.TextAttribute;
 import java.awt.font.TextLayout;
-import java.awt.geom.CubicCurve2D;
 import java.awt.geom.GeneralPath;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
@@ -43,10 +42,10 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIMovement extends ButtonUIAbstract {
+public class ButtonUIAssociation extends ButtonUIAbstract {
 
-	protected static ButtonUIMovement mB = new ButtonUIMovement();
-	public ButtonUIMovement() {
+	protected static ButtonUIAssociation mB = new ButtonUIAssociation();
+	public ButtonUIAssociation() {
 		super();
 	}
 	public static ComponentUI createUI(JComponent pC) {
@@ -81,7 +80,7 @@ public class ButtonUIMovement extends ButtonUIAbstract {
 		tl.draw(
 			mGraphics2D,4,11);
 		
-		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("MOVEMENT_TEXT"));
+		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("ASSOCIATION_TEXT"));
 		lAts.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator lIter = lAts.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -146,6 +145,16 @@ public class ButtonUIMovement extends ButtonUIAbstract {
 				(int) (lDrawLeft.height + lTl.getBounds().getHeight() + 3));
 		lTl.draw(mGraphics2D, lPositionLeft.width, lPositionLeft.height);
 		
+		lAts = new AttributedString("<θ>");
+		lAts.addAttribute(TextAttribute.FONT, mFont);
+		lIter = lAts.getIterator();
+		lTl = new TextLayout(lIter, mFrc);
+		lPositionLeft =
+			new Dimension(
+				(int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2 -3),
+				(int) (lDrawLeft.height + lTl.getBounds().getHeight() + 9));
+		lTl.draw(mGraphics2D, lPositionLeft.width, lPositionLeft.height);
+		
 		// repeat for the title X
 		lAts = new AttributedString("Y");
 		lAts.addAttribute(TextAttribute.FONT, mFont);
@@ -156,21 +165,32 @@ public class ButtonUIMovement extends ButtonUIAbstract {
 				(int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
 				(int) (lDrawRight.height + lTl.getBounds().getHeight() + 3));
 		lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
-		CubicCurve2D bezier = new CubicCurve2D.Float(lPositionLeft.width +3,lPositionLeft.height +2
-				,lPositionLeft.width+6, lPositionLeft.height + 10,
-				lPositionRight.width, lPositionRight.height + 10,
-				lPositionRight.width+3,lPositionRight.height +2);
-		mGraphics2D.draw(bezier);
 		
+		lAts = new AttributedString("<θ>");
+		lAts.addAttribute(TextAttribute.FONT, mFont);
+		lIter = lAts.getIterator();
+		lTl = new TextLayout(lIter, mFrc);
+		lPositionRight =
+			new Dimension(
+				(int) (lDrawRight.width - lTl.getBounds().getWidth() / 2 +1),
+				(int) (lDrawRight.height + lTl.getBounds().getHeight() + 9));
+		lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
+		
+		mGraphics2D.drawLine(30, 41, 36, 41);
 		GeneralPath polly = new GeneralPath();
-		// move the pollygon to the middle and bottom
-		polly.moveTo(lPositionLeft.width + 3,lPositionLeft.height +2 );
-		polly.lineTo(lPositionLeft.width + 3,lPositionLeft.height + 6);
-		polly.lineTo(lPositionLeft.width + 7,lPositionLeft.height + 2);
+		
+		polly.moveTo(27,41 );
+		polly.lineTo(30,38);
+		polly.lineTo(30,44);
 		polly.closePath();
 		mGraphics2D.fill(polly);
-		mGraphics2D.fillArc(lPositionRight.width +1 ,lPositionRight.height + 1, 3,
-				3, 0, 360);
+		polly = new GeneralPath();
+		polly.moveTo(39,41 );
+		polly.lineTo(36,38);
+		polly.lineTo(36,44);
+		polly.closePath();
+		mGraphics2D.fill(polly);
+		
 		this.postpaint();
 	}
 }
