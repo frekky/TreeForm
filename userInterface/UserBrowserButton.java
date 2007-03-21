@@ -24,19 +24,21 @@
  */
 package userInterface;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.font.FontRenderContext;
+import java.util.ResourceBundle;
 
 import javax.swing.AbstractButton;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
-import javax.swing.plaf.ButtonUI;
 
 import staticFunctions.Sizer;
 
@@ -103,7 +105,13 @@ public class UserBrowserButton extends JButton {
 	 * @uml.associationEnd 
 	 * @uml.property name="mCopy" multiplicity="(1 1)"
 	 */
-	private JButton mCopy;
+	private UserBrowserButton mCopy;
+
+	private boolean mDrag;
+
+	private ResourceBundle mResourceBundle;
+
+	private boolean mHighlight;
 
 	/**
  * 
@@ -115,9 +123,10 @@ public class UserBrowserButton extends JButton {
 
 	public UserBrowserButton(UserFrame pUserFrame, Object pButtonType) {
 		super();
+		this.setUI(null);
 		mUserFrame = pUserFrame;
 		mButtonType = pButtonType;
-		mCopy = new JButton();
+
 		
 	}
 /**
@@ -125,7 +134,7 @@ public class UserBrowserButton extends JButton {
  * @return returns a copy of the temporary label that gets moved around the
  * screen when browser objects are selected and dragged around.
  */
-	public JButton getTempLabel()
+	public UserBrowserButton getTempLabel()
 	{
 		return mCopy;
 	}
@@ -135,13 +144,13 @@ public class UserBrowserButton extends JButton {
  * In this case, a kind of ButtonUIAbstract.
  *
  */
-	public void setLabel()
+	public void setLabel(UserBrowserButton copy)
 	{
-		ButtonUI mUIObject = this.getUI();
-		mCopy.setUI(mUIObject);
+		mCopy = copy;
+		mCopy.setResourceBundle(getResourceBundle());
 		mCopy.setVisible(false);
 		mCopy.setBounds(0,0, Sizer.scaledButtonSize().width,Sizer.scaledButtonSize().height);
-		mUserFrame.getLayeredPane().setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		mUserFrame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		mUserFrame.getLayeredPane().add(mCopy,JLayeredPane.DRAG_LAYER);
 		mUserFrame.getLayeredPane().moveToFront(mCopy);
 	}
@@ -182,9 +191,58 @@ public class UserBrowserButton extends JButton {
 	{
 		return mButtonType;
 	}
-public void setHighlight(boolean b) {
-	((ButtonUIAbstract) this.getUI()).setHighlight(b);
+
+protected void prepaint(Graphics pG) {
+	
+	mGraphics = pG;
+	mButton = (AbstractButton) mComponent;
+	mGraphics2D = (Graphics2D) mGraphics;
+	mDim = Sizer.buttonSize();
+	if (mDrag)
+	{
+		mGraphics2D.scale(Sizer.scaleWidth()/3, Sizer.scaleHeight()/3);
+	}
+	else
+	{
+		mGraphics2D.scale(Sizer.scaleWidth(), Sizer.scaleHeight());	
+	}
+	mFont = new Font("Doulos SIL", Font.BOLD, Sizer.UIFontSize());
+	mGraphics2D.setColor(Color.BLACK);
+	mGraphics2D.setRenderingHint(
+		RenderingHints.KEY_ANTIALIASING,
+		RenderingHints.VALUE_ANTIALIAS_ON);
+	mGraphics2D.setRenderingHint(
+		RenderingHints.KEY_RENDERING,
+		RenderingHints.VALUE_RENDER_QUALITY);
+	mFrc = mGraphics2D.getFontRenderContext();	
+}
+protected void postpaint() {
+	
+	mGraphics2D.setColor(Color.GRAY);
+	mGraphics2D.drawRect(0, 0, (int) mDim.getWidth() - 1, (int) mDim.getHeight() - 1);
+	if (mHighlight)
+	{
+		mGraphics2D.setColor(new Color(0,100,255,50));
+		mGraphics2D.fillRect(0,0,mDim.width,mDim.height);
+	}
 	
 }
+	public void setHighlight(boolean highlight)
+	{
+		mHighlight = highlight;
+	}
+
+	public void setResourceBundle(ResourceBundle resourceBundle)
+	{
+		mResourceBundle = resourceBundle;
+	}
+	public ResourceBundle getResourceBundle()
+	{
+		return mResourceBundle;
+	}
+	public void setDrag(boolean drag)
+	{
+		mDrag = drag;
+	}
 
 }

@@ -127,20 +127,6 @@ public class UserObjectBrowser extends JPanel {
 	 */
 	private UserBrowserButton mAdjunct;
 
-	/**
-	 * 
-	 * @uml.property name="mUIObject"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUIObject" multiplicity="(1 1)"
-	 */
-	private ButtonUIAbstract mUIObject;
-
-	/**
-	 * 
-	 * @uml.property name="mHead"
-	 * @uml.associationEnd 
-	 * @uml.property name="mHead" multiplicity="(1 1)"
-	 */
 	private UserBrowserButton mHead;
 
 	/**
@@ -176,127 +162,106 @@ public class UserObjectBrowser extends JPanel {
  * proportional to your screen resolution.
  */
 	private void addObjects() {
-		mHead = new UserBrowserButton(mUserFrame, SyntacticStructureType.HEAD);
-		mUIObject = (ButtonUIAbstract) ButtonUIHead.createUI(mHead);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mHead.setUI(mUIObject);
+		mHead = new ButtonUIHead(mUserFrame, SyntacticStructureType.HEAD);
+		mHead.setResourceBundle(mUserFrame.getI18n());
 		mHead.setPreferredSize(Sizer.scaledButtonSize());
-		mHead.setLabel();
+		mHead.setLabel(new ButtonUIHead(mUserFrame, SyntacticStructureType.HEAD));
 		mHead.addMouseListener(new ListenerMouse(mUserFrame));
 		mHead.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mHead.setToolTipText((String) mUserFrame.getI18n().getObject("NODE_UP"));
 		this.add(mHead);
 		
-		mPhrase = new UserBrowserButton(mUserFrame, SyntacticStructureType.PHRASE);
-		mUIObject = (ButtonUIAbstract) ButtonUIPhrase.createUI(mPhrase);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mPhrase.setUI(mUIObject);
+		mPhrase = new ButtonUIPhrase(mUserFrame, SyntacticStructureType.PHRASE);
+		mPhrase.setResourceBundle(mUserFrame.getI18n());
 		mPhrase.setPreferredSize(Sizer.scaledButtonSize());
-		mPhrase.setLabel();
+		mPhrase.setLabel(new ButtonUIPhrase(mUserFrame, SyntacticStructureType.PHRASE));
 		mPhrase.addMouseListener(new ListenerMouse(mUserFrame));
 		mPhrase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mPhrase.setToolTipText((String) mUserFrame.getI18n().getObject("NODE_DOWN"));
 		this.add(mPhrase);
 		
-		mMorph = new UserBrowserButton(mUserFrame, SyntacticStructureType.MORPH);
-		mUIObject = (ButtonUIAbstract) ButtonUIMorph.createUI(mMorph);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mMorph.setUI(mUIObject);
+		mMorph = new ButtonUIMorph(mUserFrame, SyntacticStructureType.MORPH);
+		mMorph.setResourceBundle(mUserFrame.getI18n());
+
 		mMorph.setPreferredSize(Sizer.scaledButtonSize());
-		mMorph.setLabel();
+		mMorph.setLabel(new ButtonUIMorph(mUserFrame, SyntacticStructureType.MORPH));
 		mMorph.addMouseListener(new ListenerMouse(mUserFrame));
 		mMorph.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mMorph.setToolTipText((String) mUserFrame.getI18n().getObject("MORPH"));
 		this.add(mMorph);
 		
 		
-		mTriangle = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRIANGLE);
-		mUIObject = (ButtonUIAbstract) ButtonUITriangle.createUI(mTriangle);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mTriangle.setUI(mUIObject);
+		mTriangle = new ButtonUITriangle(mUserFrame, SyntacticStructureType.TRIANGLE);
+		mTriangle.setResourceBundle(mUserFrame.getI18n());
 		mTriangle.setPreferredSize(Sizer.scaledButtonSize());
-		mTriangle.setLabel();
+		mTriangle.setLabel(new ButtonUITriangle(mUserFrame, SyntacticStructureType.TRIANGLE));
 		mTriangle.addMouseListener(new ListenerMouse(mUserFrame));
 		mTriangle.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
 		mTriangle.setToolTipText((String) mUserFrame.getI18n().getObject("TRIANGLE"));
 		this.add(mTriangle);
 
-		mCase = new UserBrowserButton(mUserFrame, SyntacticFeatureType.CASE);
-		mUIObject = (ButtonUIAbstract) ButtonUICase.createUI(mCase);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mCase.setUI(mUIObject);
+		mCase = new ButtonUICase(mUserFrame, SyntacticFeatureType.CASE);
+		mCase.setResourceBundle(mUserFrame.getI18n());
 		mCase.setPreferredSize(Sizer.scaledButtonSize());
-		mCase.setLabel();
+		mCase.setLabel(new ButtonUICase(mUserFrame, SyntacticFeatureType.CASE));
 		mCase.addMouseListener(new ListenerMouse(mUserFrame));
 		mCase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mCase.setToolTipText((String) mUserFrame.getI18n().getObject("CASE"));
 		this.add(mCase);
 
-		mTheta = new UserBrowserButton(mUserFrame, SyntacticFeatureType.THETA);
-		mUIObject = (ButtonUIAbstract) ButtonUITheta.createUI(mTheta);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mTheta.setUI(mUIObject);
+		mTheta = new ButtonUITheta(mUserFrame, SyntacticFeatureType.THETA);
+		mTheta.setResourceBundle(mUserFrame.getI18n());
 		mTheta.setPreferredSize(Sizer.scaledButtonSize());
-		mTheta.setLabel();
+		mTheta.setLabel(new ButtonUITheta(mUserFrame, SyntacticFeatureType.THETA));
 		mTheta.addMouseListener(new ListenerMouse(mUserFrame));
 		mTheta.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mTheta.setToolTipText((String) mUserFrame.getI18n().getObject("THETA"));
 		this.add(mTheta);
 
 
-		mFeature = new UserBrowserButton(mUserFrame,SyntacticFeatureType.FEATURE);
-		mUIObject = (ButtonUIAbstract) ButtonUIFeature.createUI(mFeature);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mFeature.setUI(mUIObject);
+		mFeature = new ButtonUIFeature(mUserFrame,SyntacticFeatureType.FEATURE);
+		mFeature.setResourceBundle(mUserFrame.getI18n());
 		mFeature.setPreferredSize(Sizer.scaledButtonSize());
-		mFeature.setLabel();
+		mFeature.setLabel(new ButtonUIFeature(mUserFrame,SyntacticFeatureType.FEATURE));
 		mFeature.addMouseListener(new ListenerMouse(mUserFrame));
 		mFeature.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
 		mFeature.setToolTipText((String) mUserFrame.getI18n().getObject("FEATURE"));
 		this.add(mFeature);
 		
-		mUnary = new UserBrowserButton(mUserFrame, SyntacticStructureType.UNARY);
-		mUIObject = (ButtonUIAbstract) ButtonUIUnary.createUI(mUnary);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mUnary.setUI(mUIObject);
+		mUnary = new ButtonUIUnary(mUserFrame, SyntacticStructureType.UNARY);
+		mUnary.setResourceBundle(mUserFrame.getI18n());
 		mUnary.setPreferredSize(Sizer.scaledButtonSize());
-		mUnary.setLabel();
+		mUnary.setLabel(new ButtonUIUnary(mUserFrame, SyntacticStructureType.UNARY));
 		mUnary.addMouseListener(new ListenerMouse(mUserFrame));
 		mUnary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mUnary.setToolTipText((String) mUserFrame.getI18n().getObject("UNARY"));
 		this.add(mUnary);
 		
-		mBinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.BINARY);
-		mUIObject = (ButtonUIAbstract) ButtonUIBinary.createUI(mBinary);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mBinary.setUI(mUIObject);
+		mBinary = new ButtonUIBinary(mUserFrame, SyntacticStructureType.BINARY);
+		mBinary.setResourceBundle(mUserFrame.getI18n());
 		mBinary.setPreferredSize(Sizer.scaledButtonSize());
-		mBinary.setLabel();
+		mBinary.setLabel(new ButtonUIBinary(mUserFrame, SyntacticStructureType.BINARY));
 		mBinary.addMouseListener(new ListenerMouse(mUserFrame));
 		mBinary.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mBinary.setToolTipText((String) mUserFrame.getI18n().getObject("BINARY"));
 		this.add(mBinary);
 		
-		mTrinary = new UserBrowserButton(mUserFrame, SyntacticStructureType.TRINARY);
-		mUIObject = (ButtonUIAbstract) ButtonUITernary.createUI(mTrinary);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mTrinary.setUI(mUIObject);
+		mTrinary = new ButtonUITernary(mUserFrame, SyntacticStructureType.TRINARY);
+		mTrinary.setResourceBundle(mUserFrame.getI18n());
 		mTrinary.setPreferredSize(Sizer.scaledButtonSize());
-		mTrinary.setLabel();
+		mTrinary.setLabel(new ButtonUITernary(mUserFrame, SyntacticStructureType.TRINARY));
 		mTrinary.addMouseListener(new ListenerMouse(mUserFrame));
 		mTrinary.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
 		mTrinary.setToolTipText((String) mUserFrame.getI18n().getObject("TERNARY"));
 		this.add(mTrinary);
 		
-		mAdjunct = new UserBrowserButton(mUserFrame, SyntacticStructureType.ADJUNCT);
-		mUIObject = (ButtonUIAbstract) ButtonUIAdjunct.createUI(mAdjunct);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mAdjunct.setUI(mUIObject);
+		mAdjunct = new ButtonUIAdjunct(mUserFrame, SyntacticStructureType.ADJUNCT);
+		mAdjunct.setResourceBundle(mUserFrame.getI18n());
 		mAdjunct.setPreferredSize(Sizer.scaledButtonSize());
-		mAdjunct.setLabel();
+		mAdjunct.setLabel(new ButtonUIAdjunct(mUserFrame, SyntacticStructureType.ADJUNCT));
 		mAdjunct.addMouseListener(new ListenerMouse(mUserFrame));
 		mAdjunct.addMouseMotionListener(
 			new ListenerMouseMotion(mUserFrame));
@@ -304,56 +269,46 @@ public class UserObjectBrowser extends JPanel {
 		this.add(mAdjunct);
 		
 		
-		mXBar = new UserBrowserButton(mUserFrame, SyntacticStructureType.X_BAR);
-		mUIObject = (ButtonUIAbstract) ButtonUIXBar.createUI(mXBar);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mXBar.setUI(mUIObject);
+		mXBar = new ButtonUIXBar(mUserFrame, SyntacticStructureType.X_BAR);
+		mXBar.setResourceBundle(mUserFrame.getI18n());
 		mXBar.setPreferredSize(Sizer.scaledButtonSize());
-		mXBar.setLabel();
+		mXBar.setLabel(new ButtonUIXBar(mUserFrame, SyntacticStructureType.X_BAR));
 		mXBar.addMouseListener(new ListenerMouse(mUserFrame));
 		mXBar.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mXBar.setToolTipText((String) mUserFrame.getI18n().getObject("X-BAR"));
 		this.add(mXBar);
 
-		mMovement = new UserBrowserButton(mUserFrame, SyntacticOperationType.MOVEMENT);
-		mUIObject = (ButtonUIAbstract) ButtonUIMovement.createUI(mMovement);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mMovement.setUI(mUIObject);
+		mMovement = new ButtonUIMovement(mUserFrame, SyntacticOperationType.MOVEMENT);
+		mMovement.setResourceBundle(mUserFrame.getI18n());
 		mMovement.setPreferredSize(Sizer.scaledButtonSize());
-		mMovement.setLabel();
+		mMovement.setLabel(new ButtonUIMovement(mUserFrame, SyntacticOperationType.MOVEMENT));
 		mMovement.addMouseListener(new ListenerMouse(mUserFrame));
 		mMovement.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mMovement.setToolTipText((String) mUserFrame.getI18n().getObject("MOVEMENT"));
 		this.add(mMovement);
 		
-		mAssociation = new UserBrowserButton(mUserFrame, SyntacticOperationType.ASSOCIATION);
-		mUIObject = (ButtonUIAbstract) ButtonUIAssociation.createUI(mAssociation);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mAssociation.setUI(mUIObject);
+		mAssociation = new ButtonUIAssociation(mUserFrame, SyntacticOperationType.ASSOCIATION);
+		mAssociation.setResourceBundle(mUserFrame.getI18n());
 		mAssociation.setPreferredSize(Sizer.scaledButtonSize());
-		mAssociation.setLabel();
+		mAssociation.setLabel(new ButtonUIAssociation(mUserFrame, SyntacticOperationType.ASSOCIATION));
 		mAssociation.addMouseListener(new ListenerMouse(mUserFrame));
 		mAssociation.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mAssociation.setToolTipText((String) mUserFrame.getI18n().getObject("ASSOCIATION"));
 		this.add(mAssociation);
 		
-		mAdd = new UserBrowserButton(mUserFrame, SyntacticOperationType.ADD);
-		mUIObject = (ButtonUIAbstract) ButtonUIAdd.createUI(mAdd);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mAdd.setUI(mUIObject);
+		mAdd = new ButtonUIAdd(mUserFrame, SyntacticOperationType.ADD);
+		mAdd.setResourceBundle(mUserFrame.getI18n());
 		mAdd.setPreferredSize(Sizer.scaledButtonSize());
-		mAdd.setLabel();
+		mAdd.setLabel(new ButtonUIAdd(mUserFrame, SyntacticOperationType.ADD));
 		mAdd.addMouseListener(new ListenerMouse(mUserFrame));
 		mAdd.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mAdd.setToolTipText((String) mUserFrame.getI18n().getObject("ADD"));
 		this.add(mAdd);
 		
-		mErase = new UserBrowserButton(mUserFrame, SyntacticOperationType.ERASE);
-		mUIObject = (ButtonUIAbstract) ButtonUIErase.createUI(mErase);
-		mUIObject.setResourceBundle(mUserFrame.getI18n());
-		mErase.setUI(mUIObject);
+		mErase = new ButtonUIErase(mUserFrame, SyntacticOperationType.ERASE);
+		mErase.setResourceBundle(mUserFrame.getI18n());
 		mErase.setPreferredSize(Sizer.scaledButtonSize());
-		mErase.setLabel();
+		mErase.setLabel(new ButtonUIErase(mUserFrame, SyntacticOperationType.ERASE));
 		mErase.addMouseListener(new ListenerMouse(mUserFrame));
 		mErase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mErase.setToolTipText((String) mUserFrame.getI18n().getObject("ERASE"));

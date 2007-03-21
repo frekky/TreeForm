@@ -28,9 +28,7 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
 
 import staticFunctions.Sizer;
 
@@ -42,19 +40,17 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIMorph extends ButtonUIAbstract {
+public class ButtonUIMorph extends UserBrowserButton {
 
 
-	static ButtonUIMorph b = new ButtonUIMorph();
-	public ButtonUIMorph() {
-		super();
-	}
-	public static ComponentUI createUI(JComponent c) {
-		  return b;
-	  }
-	public void installUI(JComponent c) {
-		AbstractButton b = (AbstractButton)c;
-		super.installListeners(b);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ButtonUIMorph(UserFrame pUserFrame, Object pButtonType) {
+		super(pUserFrame, pButtonType);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -67,9 +63,9 @@ public class ButtonUIMorph extends ButtonUIAbstract {
 	 * you see in the button, and resizes it according to your screen resolution.
 	 * 
 	 */
-	public void paint(Graphics pG, JComponent pC) {
-		this.prepaint(pG,pC);
-		
+	public void paintComponent(Graphics pG) {
+		super.paintComponent(pG);
+		this.prepaint(pG);	
 
 		AttributedString ats = new AttributedString("F3");
 		ats.addAttribute(TextAttribute.FONT, mFont);

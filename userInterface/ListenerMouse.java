@@ -73,11 +73,13 @@ public class ListenerMouse implements MouseListener {
 	public void mouseEntered(MouseEvent pME) {
 		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
 		lUBB.setHighlight(true);
+		lUBB.repaint();
 	}
 
 	public void mouseExited(MouseEvent pME) {
 		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
 		lUBB.setHighlight(false);
+		lUBB.repaint();
 	}
 
 	public void mousePressed(MouseEvent pME) {

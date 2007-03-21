@@ -27,9 +27,7 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
 
 import staticFunctions.Sizer;
 
@@ -41,19 +39,16 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIUnary extends ButtonUIAbstract {
+public class ButtonUIUnary extends UserBrowserButton {
 
-	static ButtonUIUnary b = new ButtonUIUnary();
-	public ButtonUIUnary() {
-		super();
-	}
-	public static ComponentUI createUI(JComponent c) {
-		  return b;
-	  }
-	public void installUI(JComponent c) {
-		//Since we know this is a JButton it is safe to cast as an AbstractButton
-		AbstractButton b = (AbstractButton)c;
-		super.installListeners(b);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ButtonUIUnary(UserFrame pUserFrame, Object pButtonType) {
+		super(pUserFrame, pButtonType);
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -66,12 +61,9 @@ public class ButtonUIUnary extends ButtonUIAbstract {
 	 * you see in the button, and resizes it according to your screen resolution.
 	 * 
 	 */
-	public void paint(Graphics pG, JComponent pC) {
-
-		this.prepaint(pG,pC);
-		// set the string (internationalize later!)		
-		
-
+	public void paintComponent(Graphics pG) {
+		super.paintComponent(pG);
+		this.prepaint(pG);	
 		AttributedString ats = new AttributedString("F8");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();

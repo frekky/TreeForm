@@ -27,9 +27,7 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
 
 import staticFunctions.Sizer;
 
@@ -41,21 +39,19 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIXBar extends ButtonUIAbstract {
+public class ButtonUIXBar extends UserBrowserButton {
 
 
-	static ButtonUIXBar b = new ButtonUIXBar();
-	public ButtonUIXBar() {
-		super();
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public ButtonUIXBar(UserFrame pUserFrame, Object pButtonType) {
+		super(pUserFrame, pButtonType);
+		// TODO Auto-generated constructor stub
 	}
-	public static ComponentUI createUI(JComponent c) {
-		return b;
-	}
-	public void installUI(JComponent c) {
-		//Since we know this is a JButton it is safe to cast as an AbstractButton
-		AbstractButton b = (AbstractButton) c;
-		super.installListeners(b);
-	}
+
 	/**
 	 * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
 	 * @param pC  This parameter is the component to be painted.  repaint() sends
@@ -68,11 +64,9 @@ public class ButtonUIXBar extends ButtonUIAbstract {
 	 */
 
 
-	public void paint(Graphics pG, JComponent pC) {
-
-	this.prepaint(pG,pC);
-			
-
+	public void paintComponent(Graphics pG) {
+		super.paintComponent(pG);
+		this.prepaint(pG);	
 	AttributedString ats = new AttributedString("F12");
 	ats.addAttribute(TextAttribute.FONT, mFont);
 	AttributedCharacterIterator iter = ats.getIterator();

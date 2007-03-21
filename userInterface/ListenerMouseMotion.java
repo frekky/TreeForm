@@ -88,6 +88,7 @@ public class ListenerMouseMotion implements MouseMotionListener {
 				lP.y - lUBB.getPressedY());
 		lUBB.getTempLabel().setLocation(lP);
 		lUBB.getTempLabel().setVisible(true);
+		lUBB.repaint();
 		if (lComponent instanceof UserInternalFrame) 
 		{
 						lP =

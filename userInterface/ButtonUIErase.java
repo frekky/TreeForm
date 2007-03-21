@@ -29,9 +29,7 @@ import java.awt.geom.Ellipse2D;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
 
 import staticFunctions.Sizer;
 
@@ -43,19 +41,18 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIErase extends ButtonUIAbstract {
+public class ButtonUIErase extends UserBrowserButton {
 
-	protected static ButtonUIErase mB = new ButtonUIErase();
-	public ButtonUIErase() {
-		super();
+
+	public ButtonUIErase(UserFrame pUserFrame, Object pButtonType) {
+		super(pUserFrame, pButtonType);
+		// TODO Auto-generated constructor stub
 	}
-	public static ComponentUI createUI(JComponent pC) {
-		  return mB;
-	  }
-	public void installUI(JComponent pC) {
-		AbstractButton lB = (AbstractButton)pC;
-		super.installListeners(lB);
-	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
@@ -67,11 +64,9 @@ public class ButtonUIErase extends ButtonUIAbstract {
 	 * you see in the button, and resizes it according to your screen resolution.
 	 * 
 	 */
-	public void paint(Graphics pG, JComponent pC) {
-
-		this.prepaint(pG,pC);	
-		
-
+	public void paintComponent(Graphics pG) {
+		super.paintComponent(pG);
+		this.prepaint(pG);	
 		AttributedString ats = new AttributedString(" ");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();

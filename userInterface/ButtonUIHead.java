@@ -28,9 +28,7 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.AbstractButton;
 import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
 
 import staticFunctions.Sizer;
 
@@ -42,37 +40,22 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIHead extends ButtonUIAbstract {
+public class ButtonUIHead extends UserBrowserButton {
 
-
-	static ButtonUIHead b = new ButtonUIHead();
-	public ButtonUIHead() {
-		super();
-	}
-	public static ComponentUI createUI(JComponent c) {
-		  return b;
-	  }
-	public void installUI(JComponent c) {
-		AbstractButton b = (AbstractButton)c;
-		super.installListeners(b);
-	}
 
 	/**
-	 * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
-	 * @param pC  This parameter is the component to be painted.  repaint() sends
-	 * the component holding this UI to paint(a,b), but a programmer may send
-	 * any component they wish.
-	 * 
-	 * Like all the painting tasks for Object Broser buttons, this draws the text
-	 * you see in the button, and resizes it according to your screen resolution.
 	 * 
 	 */
+	private static final long serialVersionUID = 1L;
 
-	public void paint(Graphics pG, JComponent pC) {
+	public ButtonUIHead(UserFrame pUserFrame, Object pButtonType) {
+		super(pUserFrame, pButtonType);
+		// TODO Auto-generated constructor stub
+	}
 
-		this.prepaint(pG,pC);
-		// set the string (internationalize later!)		
-		
+	public void paintComponent(Graphics pG) {
+		super.paintComponent(pG);
+		this.prepaint(pG);	
 		AttributedString ats = new AttributedString("F1");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		AttributedCharacterIterator iter = ats.getIterator();
