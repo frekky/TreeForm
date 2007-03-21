@@ -25,6 +25,10 @@ public class ListenerButtonBackgroundColor implements ChangeListener {
 		{
 			((ColorSelectionModel)e.getSource()).setSelectedColor(Color.BLACK);
 		}
+		if (color.getRed() == 255 & color.getGreen() == 255 && color.getBlue() == 255)
+		{
+			((ColorSelectionModel)e.getSource()).setSelectedColor(new Color(255,255,255,0));
+		}
 		mUserFrame.getObservableBackgroundColor().setValue(((ColorSelectionModel) e.getSource()).getSelectedColor());
 		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
 		mFrame.dispose();

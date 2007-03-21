@@ -84,8 +84,9 @@ public class ListenerMouseMotion implements MouseMotionListener {
 				lP.y);
 		lP =
 			new Point(
-				lP.x - lUBB.getPressedX(),
-				lP.y - lUBB.getPressedY());
+				lP.x - lUBB.getWidth()/2,
+				lP.y);
+		
 		lUBB.getTempLabel().setLocation(lP);
 		lUBB.getTempLabel().setVisible(true);
 		lUBB.repaint();

@@ -28,8 +28,6 @@ import java.awt.geom.AffineTransform;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 /**
  * @author Donald Derrick
  * @version 0.1 

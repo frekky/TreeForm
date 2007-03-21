@@ -638,6 +638,12 @@ public void loadTree() {
 				lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH);
 			}
 			lMap.put(TextAttribute.BACKGROUND, mUserFrame.getObservableBackgroundColor().getValue());
+			if (((Color)lMap.get(TextAttribute.BACKGROUND)).getRed() == 255 &&
+					((Color)lMap.get(TextAttribute.BACKGROUND)).getGreen() == 255 &&
+					((Color)lMap.get(TextAttribute.BACKGROUND)).getBlue() == 255)
+			{
+				lMap.put(TextAttribute.BACKGROUND, new Color(255,255,255,0));				
+			}
 			lMap.put(TextAttribute.FOREGROUND, mUserFrame.getObservableFontColor().getValue());
 			return lMap;
 		}
@@ -722,6 +728,9 @@ public void loadTree() {
  * Delete selected items.
  */
 	public void copyTree(double width, double height, double left, double top) {
+		
+		if (height != 0 && width != 0)
+		{
 		if(mUserFrame.getObservableClipboard().getValue() != null)
 		{
 			mUserFrame.getObservableClipboard().getValue().setCarat(false);
@@ -753,6 +762,7 @@ public void loadTree() {
 		{
 			mUserFrame.getObservableClipboard().getValue().setCarat(true);
 			mUserFrame.getObservableClipboard().getValue().repaint();
+		}
 		}
 	}	
 }

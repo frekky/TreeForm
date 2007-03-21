@@ -221,7 +221,7 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(SyntacticStructureType.MORPH,
 								uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F4) {
@@ -229,7 +229,7 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(
 								SyntacticStructureType.TRIANGLE, uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F5) {
@@ -237,7 +237,7 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticFeatureToStructure(
 								SyntacticFeatureType.CASE, uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+						
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F6) {
@@ -558,50 +558,68 @@ public class EditableComponent extends JComponent {
 			Point containerPoint = SwingUtilities.convertPoint((Component) pME
 					.getSource(), pME.getPoint(), mUserInternalFrame
 					.getContentPane());
-			if (mUserInternalFrame.getSyntaxFacade().getUnder(containerPoint,
-					pME.getSource()) instanceof SyntacticStructure) {
+			
 				if (mMove) {
-					SyntacticStructure lSSParent = (SyntacticStructure) mUserInternalFrame
+					//System.out.println("move");
+					if (mUserInternalFrame
 							.getSyntaxFacade().getUnder(containerPoint,
-									pME.getSource());
-					if (lSSParent != null) {
-						if (pME.getSource() instanceof SyntacticStructure) {
+									pME.getSource()) instanceof SyntacticStructure)
+					{
+						SyntacticStructure lSSParent = (SyntacticStructure) mUserInternalFrame
+								.getSyntaxFacade().getUnder(containerPoint,
+										pME.getSource());
+						if (lSSParent != null && pME.getSource() instanceof SyntacticStructure) {
 							mUserInternalFrame.getSyntaxFacade()
 									.moveSyntacticStructure(
 											lSSParent,
 											(SyntacticStructure) pME
 													.getSource());
-						} else if (pME.getSource() instanceof SyntacticFeature) {
+						} 
+						else if (lSSParent != null && pME.getSource() instanceof SyntacticFeature) {
 							mUserInternalFrame.getSyntaxFacade()
 									.associateSyntacticFeature(lSSParent,
 											(SyntacticFeature) pME.getSource());
 						}
-					} else {
+						else 
+						{
+							mUserInternalFrame.getSyntaxFacade().displayTree();
+						}
+					}
+					else 
+					{
 						mUserInternalFrame.getSyntaxFacade().displayTree();
 					}
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 					setCursor(lDefaultCursor);
 					mMove = false;
-				} else if (mTrace) {
+				} 
+				else if (mTrace) 
+				{
 					containerPoint = SwingUtilities.convertPoint(
 							(Component) pME.getSource(), pME.getPoint(),
 							mUserInternalFrame.getContentPane());
-					SyntacticStructure lSSEnd = (SyntacticStructure) mUserInternalFrame
+					if (mUserInternalFrame
 							.getSyntaxFacade().getUnder(containerPoint,
-									pME.getSource());
-					if (lSSEnd != null) {
-						if (pME.getSource() instanceof SyntacticStructure) {
-							mUserInternalFrame.getSyntaxFacade().addTrace(
-									lSSEnd,
-									(SyntacticStructure) pME.getSource());
+									pME.getSource()) instanceof SyntacticStructure)
+					{
+						SyntacticStructure lSSEnd = (SyntacticStructure) mUserInternalFrame
+								.getSyntaxFacade().getUnder(containerPoint,
+										pME.getSource());
+						if (lSSEnd != null && pME.getSource() instanceof SyntacticStructure) {
+								mUserInternalFrame.getSyntaxFacade().addTrace(
+										lSSEnd,
+										(SyntacticStructure) pME.getSource());
 						}
 					}
-					mUserInternalFrame.getSyntaxFacade().displayTree();
+						mUserInternalFrame.getSyntaxFacade().displayTree();
+					
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 					setCursor(lDefaultCursor);
 					mMove = false;
 				}
-			} else {
+			
+			else 
+			{
 				setHighlightEnd(pointTest(pME));
 				repaint();
 			}
@@ -753,7 +771,7 @@ public class EditableComponent extends JComponent {
 					.getY());
 		}
 
-		if (this.getCarat() && mCaratTimer  && isEnabled()) {
+		if (this.getCarat() && mCaratTimer && isEnabled()) {
 			lGraphics2D.translate(getZero(this.getTextWidth()
 					- mTextLayoutHead.getBounds().getWidth()) / 2,
 					mTextLayoutHead.getAscent());

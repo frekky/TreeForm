@@ -28,8 +28,6 @@ import java.awt.geom.GeneralPath;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**

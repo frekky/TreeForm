@@ -27,8 +27,6 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**
@@ -65,14 +63,20 @@ public class ButtonUITheta extends UserBrowserButton {
 	public void paintComponent(Graphics pG) {
 		super.paintComponent(pG);
 		this.prepaint(pG);	
-		AttributedString ats = new AttributedString("F6");
+		AttributedString ats;
+		AttributedCharacterIterator iter;
+		TextLayout tl;
+		if (!mDrag)
+		{
+		ats = new AttributedString("F6");
 		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
+		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
+		tl = new TextLayout(iter, mFrc);
 		// draw the font				
 		tl.draw(
 			mGraphics2D,4,11);
+		}
 		
 		ats = new AttributedString((String) getResourceBundle().getObject("THETA_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);

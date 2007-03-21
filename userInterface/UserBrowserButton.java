@@ -107,7 +107,7 @@ public class UserBrowserButton extends JButton {
 	 */
 	private UserBrowserButton mCopy;
 
-	private boolean mDrag;
+	protected boolean mDrag;
 
 	private ResourceBundle mResourceBundle;
 
@@ -148,8 +148,11 @@ public class UserBrowserButton extends JButton {
 	{
 		mCopy = copy;
 		mCopy.setResourceBundle(getResourceBundle());
+		//mCopy.setHighlight(true);
+		mCopy.setDrag(true);
 		mCopy.setVisible(false);
-		mCopy.setBounds(0,0, Sizer.scaledButtonSize().width,Sizer.scaledButtonSize().height);
+		
+		mCopy.setBounds(0,0, Sizer.scaledButtonSize().width ,Sizer.scaledButtonSize().height);
 		mUserFrame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		mUserFrame.getLayeredPane().add(mCopy,JLayeredPane.DRAG_LAYER);
 		mUserFrame.getLayeredPane().moveToFront(mCopy);
@@ -198,14 +201,8 @@ protected void prepaint(Graphics pG) {
 	mButton = (AbstractButton) mComponent;
 	mGraphics2D = (Graphics2D) mGraphics;
 	mDim = Sizer.buttonSize();
-	if (mDrag)
-	{
-		mGraphics2D.scale(Sizer.scaleWidth()/3, Sizer.scaleHeight()/3);
-	}
-	else
-	{
+	
 		mGraphics2D.scale(Sizer.scaleWidth(), Sizer.scaleHeight());	
-	}
 	mFont = new Font("Doulos SIL", Font.BOLD, Sizer.UIFontSize());
 	mGraphics2D.setColor(Color.BLACK);
 	mGraphics2D.setRenderingHint(
@@ -219,10 +216,13 @@ protected void prepaint(Graphics pG) {
 protected void postpaint() {
 	
 	mGraphics2D.setColor(Color.GRAY);
-	mGraphics2D.drawRect(0, 0, (int) mDim.getWidth() - 1, (int) mDim.getHeight() - 1);
+	if (!mDrag)
+	{
+		mGraphics2D.drawRect(0, 0, (int) mDim.getWidth() - 1, (int) mDim.getHeight() - 1);
+	}
 	if (mHighlight)
 	{
-		mGraphics2D.setColor(new Color(0,100,255,50));
+		mGraphics2D.setColor(new Color(0,100,255,90));
 		mGraphics2D.fillRect(0,0,mDim.width,mDim.height);
 	}
 	

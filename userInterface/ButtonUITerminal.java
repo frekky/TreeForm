@@ -28,8 +28,6 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**
@@ -40,7 +38,7 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIHead extends UserBrowserButton {
+public class ButtonUITerminal extends UserBrowserButton {
 
 
 	/**
@@ -48,24 +46,40 @@ public class ButtonUIHead extends UserBrowserButton {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ButtonUIHead(UserFrame pUserFrame, Object pButtonType) {
+	public ButtonUITerminal(UserFrame pUserFrame, Object pButtonType) {
 		super(pUserFrame, pButtonType);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
+	 * @param pC  This parameter is the component to be painted.  repaint() sends
+	 * the component holding this UI to paint(a,b), but a programmer may send
+	 * any component they wish.
+	 * 
+	 * Like all the painting tasks for Object Broser buttons, this draws the text
+	 * you see in the button, and resizes it according to your screen resolution.
+	 * 
+	 */
 	public void paintComponent(Graphics pG) {
 		super.paintComponent(pG);
 		this.prepaint(pG);	
-		AttributedString ats = new AttributedString("F1");
+		AttributedString ats;
+		AttributedCharacterIterator iter;
+		TextLayout tl;
+		if (!mDrag)
+		{
+		ats = new AttributedString("F3");
 		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
+		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
+		tl = new TextLayout(iter, mFrc);
 		// draw the font				
 		tl.draw(
 			mGraphics2D,4,11);
-			
-		ats = new AttributedString((String) getResourceBundle().getObject("NODE_DOWN_TEXT"));
+		}
+		// set the string (internationalize later!)		
+		ats = new AttributedString((String) getResourceBundle().getObject("TERMINAL_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
@@ -77,8 +91,8 @@ public class ButtonUIHead extends UserBrowserButton {
 			(float) (mDim.getHeight() - 2));
 
 		// repeat for the title X-double-bar
-		mGraphics2D.setColor(Color.WHITE);
-		ats = new AttributedString("X");
+		//mGraphics2D.setColor(Color.WHITE);
+		ats = new AttributedString(" ");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
@@ -104,13 +118,13 @@ public class ButtonUIHead extends UserBrowserButton {
 		
 
 		// repeat for the SPEC
-		ats = new AttributedString("X");
+		ats = new AttributedString((String) getResourceBundle().getObject("MORPH_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);
 		Dimension positionCenter =
 			new Dimension(
-				(int) (drawCenter.width - tl.getBounds().getWidth() / 2) +1,
+				(int) (drawCenter.width - tl.getBounds().getWidth() / 2),
 				(int) (drawCenter.height + tl.getBounds().getHeight() + 3));
 		tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
 

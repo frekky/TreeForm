@@ -26,8 +26,6 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**
@@ -38,14 +36,14 @@ import staticFunctions.Sizer;
  * information to drive sentence generation using the GUI.  
  *  
  */
-public class ButtonUIPhrase extends UserBrowserButton {
+public class ButtonUINodeUp extends UserBrowserButton {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public ButtonUIPhrase(UserFrame pUserFrame, Object pButtonType) {
+	public ButtonUINodeUp(UserFrame pUserFrame, Object pButtonType) {
 		super(pUserFrame, pButtonType);
 		// TODO Auto-generated constructor stub
 	}
@@ -63,16 +61,22 @@ public class ButtonUIPhrase extends UserBrowserButton {
 	public void paintComponent(Graphics pG) {
 		super.paintComponent(pG);
 		this.prepaint(pG);	
-		AttributedString ats = new AttributedString("F2");
+		AttributedString ats;
+		AttributedCharacterIterator iter;
+		TextLayout tl;
+		if (!mDrag)
+		{
+		ats = new AttributedString("F2");
 		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
+		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
+		tl = new TextLayout(iter, mFrc);
 		// draw the font				
 		tl.draw(
 			mGraphics2D,4,11);
 		
-		// set the string (internationalize later!)		
+		}
+//		 set the string (internationalize later!)		
 		ats = new AttributedString((String) getResourceBundle().getObject("NODE_UP_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
@@ -83,8 +87,6 @@ public class ButtonUIPhrase extends UserBrowserButton {
 			mGraphics2D,
 			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
 			(float) (mDim.getHeight() - 2));
-
-		// repeat for the title X-double-bar
 
 		ats = new AttributedString("X");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);

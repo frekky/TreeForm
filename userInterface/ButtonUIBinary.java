@@ -27,8 +27,6 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**
@@ -67,14 +65,20 @@ public class ButtonUIBinary extends UserBrowserButton {
 		super.paintComponent(pG);
 		this.prepaint(pG);	
 
-		AttributedString ats = new AttributedString("F9");
+		AttributedString ats;
+		AttributedCharacterIterator iter;
+		TextLayout tl;
+		if (!mDrag)
+		{
+		ats = new AttributedString("F9");
 		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
+		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
+		tl = new TextLayout(iter, mFrc);
 		// draw the font				
 		tl.draw(
 			mGraphics2D,4,11);
+		}
 		
 		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("BINARY_TEXT"));
 		lAts.addAttribute(TextAttribute.FONT, mFont);

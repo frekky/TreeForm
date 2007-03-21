@@ -27,8 +27,6 @@ import java.awt.font.TextLayout;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**
@@ -67,14 +65,21 @@ public class ButtonUIXBar extends UserBrowserButton {
 	public void paintComponent(Graphics pG) {
 		super.paintComponent(pG);
 		this.prepaint(pG);	
-	AttributedString ats = new AttributedString("F12");
+		
+		AttributedString ats;
+		AttributedCharacterIterator iter;
+		TextLayout tl;
+		if (!mDrag)
+		{
+	ats = new AttributedString("F12");
 	ats.addAttribute(TextAttribute.FONT, mFont);
-	AttributedCharacterIterator iter = ats.getIterator();
+	iter = ats.getIterator();
 	// create a textlayout from the font, string, and font render context.
-	TextLayout tl = new TextLayout(iter, mFrc);
+	tl = new TextLayout(iter, mFrc);
 	// draw the font				
 	tl.draw(
 		mGraphics2D,4,11);
+		}
 	
 		mGraphics2D.translate(-3,0);
 		// set the string (internationalize later!)		

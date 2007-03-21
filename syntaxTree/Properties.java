@@ -10,7 +10,7 @@ public class Properties {
 	private int mLeftTranslate = 20;
 	private int mTopTranslate = 20;
 	private Color mLineColor = new Color(0,0,0);
-	private Color mBackgroundColor = new Color(255,255,255);
+	private Color mBackgroundColor = new Color(255,255,255,0);
 	private Color mFontColor = new Color(0,0,0);
 	
 	public int getDefaultFontSize()
@@ -58,7 +58,7 @@ public class Properties {
 		setLeftTranslate(20);
 		setTopTranslate(20);
 		setFontColor(new Color(0,0,0));
-		setBackgroundColor(new Color(255,255,255));
+		setBackgroundColor(new Color(255,255,255,0));
 		setLineColor(new Color(0,0,0));
 	}
 	public void setLineColor(Color color) {
@@ -66,6 +66,10 @@ public class Properties {
 		
 	}
 	public void setBackgroundColor(Color color) {
+		if (color.getRed() == 255 && color.getGreen() == 255 && color.getBlue() == 255)
+		{
+			color = new Color(255,255,255,0);
+		}
 		mBackgroundColor = color;
 	}
 	public void setFontColor(Color color) {

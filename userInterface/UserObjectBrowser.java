@@ -162,29 +162,29 @@ public class UserObjectBrowser extends JPanel {
  * proportional to your screen resolution.
  */
 	private void addObjects() {
-		mHead = new ButtonUIHead(mUserFrame, SyntacticStructureType.HEAD);
+		mHead = new ButtonUINodeDown(mUserFrame, SyntacticStructureType.HEAD);
 		mHead.setResourceBundle(mUserFrame.getI18n());
 		mHead.setPreferredSize(Sizer.scaledButtonSize());
-		mHead.setLabel(new ButtonUIHead(mUserFrame, SyntacticStructureType.HEAD));
+		mHead.setLabel(new ButtonUINodeDown(mUserFrame, SyntacticStructureType.HEAD));
 		mHead.addMouseListener(new ListenerMouse(mUserFrame));
 		mHead.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mHead.setToolTipText((String) mUserFrame.getI18n().getObject("NODE_UP"));
 		this.add(mHead);
 		
-		mPhrase = new ButtonUIPhrase(mUserFrame, SyntacticStructureType.PHRASE);
+		mPhrase = new ButtonUINodeUp(mUserFrame, SyntacticStructureType.PHRASE);
 		mPhrase.setResourceBundle(mUserFrame.getI18n());
 		mPhrase.setPreferredSize(Sizer.scaledButtonSize());
-		mPhrase.setLabel(new ButtonUIPhrase(mUserFrame, SyntacticStructureType.PHRASE));
+		mPhrase.setLabel(new ButtonUINodeUp(mUserFrame, SyntacticStructureType.PHRASE));
 		mPhrase.addMouseListener(new ListenerMouse(mUserFrame));
 		mPhrase.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mPhrase.setToolTipText((String) mUserFrame.getI18n().getObject("NODE_DOWN"));
 		this.add(mPhrase);
 		
-		mMorph = new ButtonUIMorph(mUserFrame, SyntacticStructureType.MORPH);
+		mMorph = new ButtonUITerminal(mUserFrame, SyntacticStructureType.MORPH);
 		mMorph.setResourceBundle(mUserFrame.getI18n());
 
 		mMorph.setPreferredSize(Sizer.scaledButtonSize());
-		mMorph.setLabel(new ButtonUIMorph(mUserFrame, SyntacticStructureType.MORPH));
+		mMorph.setLabel(new ButtonUITerminal(mUserFrame, SyntacticStructureType.MORPH));
 		mMorph.addMouseListener(new ListenerMouse(mUserFrame));
 		mMorph.addMouseMotionListener(new ListenerMouseMotion(mUserFrame));
 		mMorph.setToolTipText((String) mUserFrame.getI18n().getObject("MORPH"));

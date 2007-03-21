@@ -28,8 +28,6 @@ import java.awt.geom.GeneralPath;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 
-import javax.swing.JComponent;
-
 import staticFunctions.Sizer;
 
 /**
@@ -67,14 +65,20 @@ public class ButtonUIAdd extends UserBrowserButton {
 		this.prepaint(pG);
 		// set the string (internationalize later!)		
 		
-		AttributedString ats = new AttributedString(" ");
+		AttributedString ats;
+		AttributedCharacterIterator iter;
+		TextLayout tl;
+		if (!mDrag)
+		{
+		ats = new AttributedString(" ");
 		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
+		iter = ats.getIterator();
 		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
+		tl = new TextLayout(iter, mFrc);
 		// draw the font				
 		tl.draw(
 			mGraphics2D,4,11);
+		}
 		
 		ats = new AttributedString((String) getResourceBundle().getObject("ADD_TEXT"));
 		ats.addAttribute(TextAttribute.FONT, mFont);
