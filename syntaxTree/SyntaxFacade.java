@@ -1279,8 +1279,17 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public Component getUnder(Point pContainerPoint, Object pSource) {
 		mUnder = null;
 		getUnderRecursive(getSentence(), pContainerPoint, pSource);
+		if (mUnder == null)
+		{
+			getNearestNeighbour(getSentence(),pContainerPoint,pSource);
+		}
 		return mUnder;
 	}
+private void getNearestNeighbour(Sentence sentence, Point containerPoint, Object source) {
+	// TODO Auto-generated method stub
+	
+}
+
 /**
  * 
  * @param pRT The RepositionTree to test

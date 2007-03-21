@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -83,21 +84,13 @@ public class ListenerMouse implements MouseListener {
 	}
 
 	public void mousePressed(MouseEvent pME) {
-		
+		Cursor lDefaultCursor = new Cursor(Cursor.HAND_CURSOR);
+		mUserFrame.setCursor(lDefaultCursor);
 	}
 
-	/**
-	 * @param pME - Passes a mouse event to the listener
-	 * 
-	 * This command checks to see where the mouse was released.  If the object was
-	 * released over a UserInternalFrame, it then checks to see if it was released
-	 * over a SyntacticStructure.  The Observable Button's syntactic structure or 
-	 * feature type is then passed to the SyntaxFacade so that the correct builder
-	 * can generated the correct structure or feature.
-	 * 
-	 */
-
 	public void mouseReleased(MouseEvent pME) {
+		Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+		mUserFrame.setCursor(lDefaultCursor);
 		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
 		lUBB.getTempLabel().setVisible(false);
 		Container container = mUserFrame.getContentPane();

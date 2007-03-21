@@ -466,12 +466,13 @@ public class EditableComponent extends JComponent {
 		public void mousePressed(MouseEvent e) {
 			if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0) {
 				mMove = true;
-				Cursor lMoveCursor = new Cursor(Cursor.MOVE_CURSOR);
-				setCursor(lMoveCursor);
+				Cursor lMoveCursor = new Cursor(Cursor.HAND_CURSOR);
+				mUserInternalFrame.setCursor(lMoveCursor);
 			} else if ((e.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0) {
 				mTrace = true;
-				Cursor lMoveCursor = new Cursor(Cursor.MOVE_CURSOR);
+				Cursor lMoveCursor = new Cursor(Cursor.HAND_CURSOR);
 				setCursor(lMoveCursor);
+				mUserInternalFrame.setCursor(lMoveCursor);
 			} else {
 				if ((e.getModifiersEx() & InputEvent.BUTTON3_DOWN_MASK) != 0
 						|| (e.getModifiersEx() & InputEvent.CTRL_DOWN_MASK) != 0) {
@@ -590,7 +591,7 @@ public class EditableComponent extends JComponent {
 						mUserInternalFrame.getSyntaxFacade().displayTree();
 					}
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-					setCursor(lDefaultCursor);
+					mUserInternalFrame.setCursor(lDefaultCursor);
 					mMove = false;
 				} 
 				else if (mTrace) 
@@ -614,7 +615,7 @@ public class EditableComponent extends JComponent {
 						mUserInternalFrame.getSyntaxFacade().displayTree();
 					
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-					setCursor(lDefaultCursor);
+					mUserInternalFrame.setCursor(lDefaultCursor);
 					mMove = false;
 				}
 			

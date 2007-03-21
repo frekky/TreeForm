@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Cursor;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
@@ -71,6 +72,7 @@ public class ListenerMouseMotion implements MouseMotionListener {
 	 */
 
 	public void mouseDragged(MouseEvent pME) {
+		
 		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
 		Container lC = mUserFrame.getContentPane();
 		Point lP =
