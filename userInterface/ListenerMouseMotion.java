@@ -21,8 +21,8 @@ package userInterface;
 
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Cursor;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
@@ -72,40 +72,42 @@ public class ListenerMouseMotion implements MouseMotionListener {
 	 */
 
 	public void mouseDragged(MouseEvent pME) {
-		
-		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-		Container lC = mUserFrame.getContentPane();
-		Point lP =
-			SwingUtilities.convertPoint(
-				(Component) pME.getSource(),
-				pME.getPoint(),
-				lC);
-		Component lComponent =
-			mUserFrame.getDesktopPane().getComponentAt(
-				lP.x,
-				lP.y);
-		lP =
-			new Point(
-				lP.x - lUBB.getWidth()/2,
-				lP.y);
-		
-		lUBB.getTempLabel().setLocation(lP);
-		lUBB.getTempLabel().setVisible(true);
-		lUBB.repaint();
-		if (lComponent instanceof UserInternalFrame) 
+		if (((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0) ||
+				((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) == 0))
 		{
-						lP =
+			UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+			Container lC = mUserFrame.getContentPane();
+			Point lP =
 				SwingUtilities.convertPoint(
 					(Component) pME.getSource(),
 					pME.getPoint(),
-					((UserInternalFrame) lComponent).getContentPane());
-				
-			((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
-				((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
-					lP,
-					null));
+					lC);
+			Component lComponent =
+				mUserFrame.getDesktopPane().getComponentAt(
+					lP.x,
+					lP.y);
+			lP =
+				new Point(
+					lP.x - lUBB.getWidth()/2,
+					lP.y);
+			
+			lUBB.getTempLabel().setLocation(lP);
+			lUBB.getTempLabel().setVisible(true);
+			lUBB.repaint();
+			if (lComponent instanceof UserInternalFrame) 
+			{
+							lP =
+					SwingUtilities.convertPoint(
+						(Component) pME.getSource(),
+						pME.getPoint(),
+						((UserInternalFrame) lComponent).getContentPane());
+					
+				((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
+					((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
+						lP,
+						null,true));
+			}
 		}
-
 	}
 
 	public void mouseMoved(MouseEvent pME) {

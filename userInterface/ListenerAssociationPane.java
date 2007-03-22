@@ -79,7 +79,7 @@ public class ListenerAssociationPane extends MouseInputAdapter {
 			((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
 				((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
 					lP,
-					null));
+					null,true));
 		}
 
 		((UserAssociationPane) pME.getSource()).setPosition(pME);

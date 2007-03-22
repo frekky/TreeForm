@@ -93,6 +93,8 @@ public class SyntaxFacade {
 //	private SyntacticStructure lDStart;
 //	private SyntacticStructure lDEnd;
 	private LinkedList mHeightPad;
+private double mDistance;
+private Component mClosest;
 	public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
 		setParser(new XMLParser());
@@ -193,6 +195,7 @@ private XMLParser getParser()
 			else
 				{
 				if (lSS.getSyntacticLevel() == SyntacticLevel.NULL) {
+					//System.out.println(lSS.getPreorder());
 					SyntacticStructure lSSParent =
 						(SyntacticStructure) lSS.getSyntacticParent();
 					int lI = lSSParent.getChildren().indexOf(lSS);
@@ -846,7 +849,8 @@ private void fourthWalk(SyntacticStructure v, int level)
 			(int) ((left.getButtonX()) * Sizer.scaleWidth() * getUIF().getScale()),
 			(int) ((v.getButtonY() + v.getButtonHeight() - getUIF().getProperties().getMinLineLength()) * Sizer.scaleHeight() * getUIF().getScale()),
 			(int) ((right.getButtonX() + right.getButtonWidth() - left.getButtonX()+6) * Sizer.scaleWidth() * getUIF().getScale()),
-			(int) ((left.getButtonY() + (left.getButtonHeight()/2) - ((v.getButtonY() + v.getButtonHeight())))* Sizer.scaleHeight() * getUIF().getScale()));
+			(int) ((left.getButtonY()+ ((left.getButtonHeight()-getUIF().getProperties().getMinLineLength())/2) -v.getButtonY()-v.getButtonHeight()+getUIF().getProperties().getMinLineLength() + 3) * Sizer.scaleWidth() * getUIF().getScale())
+);
 
 	}
 	for(int i = 0;i < v.getChildren().size();i++)
@@ -959,6 +963,8 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public void moveSyntacticStructure(
 		SyntacticStructure pParent,
 		SyntacticStructure pChild) {
+		if (!pParent.equals(pChild))
+		{
 		addUndo();
 		if (pParent.getSyntacticLevel() == SyntacticLevel.NULL)
 		{
@@ -984,6 +990,11 @@ private void fourthWalk(SyntacticStructure v, int level)
 				getUIF().activateGlassPane(pParent, pChild);
 			}
 		} else {
+			displayTree();
+		}
+		}
+		else
+		{
 			displayTree();
 		}
 	}
@@ -1025,6 +1036,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * This function is recursive.
  */
 	public void deleteSubtree(SyntacticStructure pSS) {
+		deleteReferences();
 		for (int j = 0 ;j<pSS.getStartTrace().size();j++)
 		{
 			SyntacticStructure w = (SyntacticStructure) pSS.getStartTrace().get(j);
@@ -1276,17 +1288,77 @@ private void fourthWalk(SyntacticStructure v, int level)
  * @param pSource The source of the call.
  * @return Returns the structure under the point, if any.
  */
-	public Component getUnder(Point pContainerPoint, Object pSource) {
+	public Component getUnder(Point pContainerPoint, Object pSource, boolean nearestNeighbour) {
 		mUnder = null;
 		getUnderRecursive(getSentence(), pContainerPoint, pSource);
-		if (mUnder == null)
+		if (mUnder == null && nearestNeighbour)
 		{
+			mDistance = 1000000d;
 			getNearestNeighbour(getSentence(),pContainerPoint,pSource);
+			mUnder = mClosest;	
 		}
 		return mUnder;
 	}
-private void getNearestNeighbour(Sentence sentence, Point containerPoint, Object source) {
-	// TODO Auto-generated method stub
+private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Object pSource) 
+{
+	if (pRT instanceof SyntacticStructure) {
+		SyntacticStructure lSS = (SyntacticStructure) pRT;
+		if (!lSS.equals(pSource)) {
+			double xd = lSS.getBounds().getX() + (lSS.getBounds().getWidth() /2) -pContainerPoint.x;
+			double yd = lSS.getBounds().getY() + (lSS.getBounds().getHeight() /2)-pContainerPoint.y;
+			double distance = Math.sqrt(xd*xd + yd*yd);
+			if (distance < mDistance)
+			{
+				mDistance = distance;
+				mClosest = lSS;
+			}
+		}
+			
+		for (int i = 0; i < lSS.getSyntacticFeatureSet().size(); i++)
+		{
+			//System.out.println("in feature");
+			SyntacticFeatureSet lSFS = (SyntacticFeatureSet) lSS.getSyntacticFeatureSet().get(i);
+			for (int j = 0; j < lSFS.getSyntacticFeature().size();j++)
+			{
+				SyntacticFeature lSF = (SyntacticFeature) lSFS.getSyntacticFeature().get(j);
+				if (!lSF.equals(pSource)) 
+				{
+					double xd = lSF.getBounds().getX() + (lSF.getBounds().getWidth() /2) -pContainerPoint.x;
+					double yd = lSF.getBounds().getY() + (lSF.getBounds().getHeight() /2)-pContainerPoint.y;
+					double distance = Math.sqrt(xd*xd + yd*yd);
+					if (distance < mDistance)
+					{
+						mDistance = distance;
+						mClosest = lSF;
+					}
+				}
+			}
+		}
+		for (int i = 0; i < lSS.getSyntacticAssociation().size();i++)
+		{
+			SyntacticAssociation lSA = (SyntacticAssociation) lSS.getSyntacticAssociation().get(i);
+			
+			if (!lSA.equals(pSource)) 
+			{
+				double xd = lSA.getBounds().getX() + (lSA.getBounds().getWidth() /2) -pContainerPoint.x;
+				double yd = lSA.getBounds().getY() + (lSA.getBounds().getHeight() /2)-pContainerPoint.y;
+				double distance = Math.sqrt(xd*xd + yd*yd);
+				if (distance < mDistance)
+				{
+					mDistance = distance;
+					mClosest = lSA;
+				}
+			}
+			
+		}
+	}
+	
+	for (int i = 0; i < pRT.getChildren().size(); i++) {
+		getNearestNeighbour(
+			(RepositionTree) pRT.getChildren().get(i),
+			pContainerPoint,
+			pSource);
+	}
 	
 }
 
@@ -1494,9 +1566,19 @@ private void getNearestNeighbour(Sentence sentence, Point containerPoint, Object
 		{
 			mDocPosition++;
 			changeStack();
+			deleteReferences();
+			
 		}
 	}
 	
+	private void deleteReferences() {
+		mUnder = null;
+		mClosest = null;
+		mContainer = null;
+		mOldContainer = null;
+		
+	}
+
 	public void undo() {
 		if(mDocPosition == mDocMaxPosition)
 		{
@@ -1508,6 +1590,7 @@ private void getNearestNeighbour(Sentence sentence, Point containerPoint, Object
 			mDocPosition--;
 			changeStack();
 		}
+		deleteReferences();
 	}	
 	public void changeStack()
 	{

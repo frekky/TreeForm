@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Point;
+import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -107,7 +108,9 @@ public class ListenerMouse implements MouseListener {
 			new Point(
 				containerPoint.x - lUBB.getPressedX(),
 				containerPoint.y - lUBB.getPressedY());
-				
+		if (((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0) ||
+				((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) == 0))
+		{
 		if (lComponent instanceof UserInternalFrame) {
 	
 			containerPoint =
@@ -180,7 +183,7 @@ public class ListenerMouse implements MouseListener {
 						}
 					}
 				}
-				
+			}
 		}
 	}
 }

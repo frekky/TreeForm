@@ -83,7 +83,6 @@ public class ButtonUINodeDown extends UserBrowserButton {
 		
 
 		// repeat for the title X-double-bar
-		//mGraphics2D.setColor(Color.WHITE);
 		ats = new AttributedString(" ");
 		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
 		ats.addAttribute(TextAttribute.FONT, mFont);

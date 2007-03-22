@@ -93,7 +93,7 @@ public class ListenerMovementPane extends MouseInputAdapter {
 			((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
 				((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
 					lP,
-					null));
+					null,true));
 		}
 
 		((UserMovementPane) pME.getSource()).setPosition(pME);

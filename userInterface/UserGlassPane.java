@@ -153,7 +153,9 @@ public class UserGlassPane extends JComponent {
 			new Point2D
 				.Float(
 				lRectangle.x / (Sizer.scaleWidth() * mUserFrame.getDesktopPane().getInternalFrame().getScale()),
-				(lRectangle.y + lRectangle.height)/ (Sizer.scaleHeight() * mUserFrame.getDesktopPane().getInternalFrame().getScale()));
+				(lRectangle.y + lRectangle.height -4)/ (Sizer.scaleHeight() * mUserFrame.getDesktopPane().getInternalFrame().getScale())
+				//((SyntacticStructure) mSS.getChildren().getFirst()).getY() + ((SyntacticStructure) mSS.getChildren().getFirst()).getButtonHeight()/2
+				);
 		SyntacticStructure left = (SyntacticStructure) mSS.getChildren().getFirst();
 		SyntacticStructure right = (SyntacticStructure) mSS.getChildren().getLast();
 		int lI = 0;
@@ -202,6 +204,13 @@ public class UserGlassPane extends JComponent {
 		int pPosition) {
 		Arc2D lArc;
 		Color lColor;
+		int startX = (int) ((mSS.getButtonWidth()/2) + (mSS.getX() / (Sizer.scaleWidth()
+				* mUserFrame.getDesktopPane().getInternalFrame().getScale())));
+		int startY = (int) (mSS.getTextHeight() + (mSS.getY()) /
+				(Sizer.scaleWidth()
+						* mUserFrame.getDesktopPane().getInternalFrame().getScale()));
+		int endX = ((int) mPoint.x + pRelativePosition);	
+		int endY = (int) mPoint.y;
 		if (pPosition == getPosition()) {
 			lColor = new Color(0, 190, 0);
 			lGraphics2D.setColor(lColor);
@@ -219,16 +228,11 @@ public class UserGlassPane extends JComponent {
 			  float dash[] = {2.0f, 2.0f};
 			    lGraphics2D.setStroke(new BasicStroke(0.8f, BasicStroke.CAP_BUTT,
 			                BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f)); 			//stroke.getDashPhase();
-			
-					lGraphics2D.drawLine(
-					(int) ((mSS.getButtonWidth()/2) + (mSS.getX() / (Sizer.scaleWidth()
-			* mUserFrame.getDesktopPane().getInternalFrame().getScale()))),
-			 (int) (mSS.getTextHeight() + (mSS.getY()) /
-					(Sizer.scaleWidth()
-					* mUserFrame.getDesktopPane().getInternalFrame().getScale())),
-			 ((int) mPoint.x + pRelativePosition),
-			 (int) mPoint.y);
-					lGraphics2D.setStroke(new BasicStroke());
+			lGraphics2D.drawLine(startX,
+			startY,
+			 endX,
+			 endY);
+			lGraphics2D.setStroke(new BasicStroke());
 		} else {
 			lColor = new Color(255, 00, 00);
 			lGraphics2D.setColor(lColor);
