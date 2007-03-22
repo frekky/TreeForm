@@ -558,7 +558,7 @@ public class EditableComponent extends JComponent {
 			Point containerPoint = SwingUtilities.convertPoint((Component) pME
 					.getSource(), pME.getPoint(), mUserInternalFrame
 					.getContentPane());
-			
+			System.out.println(pME.getSource());
 				if (mMove) {
 					//System.out.println("move");
 					if (mUserInternalFrame
