@@ -204,7 +204,6 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(SyntacticStructureType.HEAD,
 								uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F2) {
@@ -212,7 +211,6 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(SyntacticStructureType.PHRASE,
 								uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F3) {
@@ -244,7 +242,6 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticFeatureToStructure(
 								SyntacticFeatureType.THETA, uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F7) {
@@ -252,7 +249,6 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticFeatureToStructure(
 								SyntacticFeatureType.FEATURE, uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F8) {
@@ -260,7 +256,7 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(SyntacticStructureType.UNARY,
 								uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F9) {
@@ -268,7 +264,7 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(SyntacticStructureType.BINARY,
 								uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F10) {
@@ -276,7 +272,6 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(
 								SyntacticStructureType.TRINARY, uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F11) {
@@ -284,7 +279,6 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(
 								SyntacticStructureType.ADJUNCT, uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else if (location == KeyEvent.VK_F12) {
@@ -292,7 +286,7 @@ public class EditableComponent extends JComponent {
 						sf.addSyntacticStructure(SyntacticStructureType.X_BAR,
 								uif, ss);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
+
 						e.printStackTrace();
 					}
 				}
