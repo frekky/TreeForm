@@ -29,10 +29,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.SwingUtilities;
 
+import syntaxTree.EditableComponent;
 import syntaxTree.SyntacticAssociation;
 import syntaxTree.SyntacticFeature;
+import syntaxTree.SyntacticFeatureSet;
 import syntaxTree.SyntacticStructure;
-
 import enumerators.SyntacticFeatureType;
 import enumerators.SyntacticOperationType;
 import enumerators.SyntacticStructureType;
@@ -108,11 +109,16 @@ public class ListenerMouse implements MouseListener {
 			new Point(
 				containerPoint.x - lUBB.getPressedX(),
 				containerPoint.y - lUBB.getPressedY());
-		if (((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0) ||
-				((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) == 0))
-		{
+		
 		if (lComponent instanceof UserInternalFrame) {
-	
+			Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
+			.getContainer();
+			if (hold != null)
+			{
+				((EditableComponent) hold).setOver(false);
+				hold.repaint();
+			}
+			
 			containerPoint =
 				SwingUtilities.convertPoint(
 					(Component) pME.getSource(),
@@ -149,7 +155,7 @@ public class ListenerMouse implements MouseListener {
 					}
 					if (lUBB.getButtonType() == SyntacticOperationType.ERASE)
 					{
-						Component hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+						hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
 						if (hold instanceof SyntacticStructure)
 						{
 							mUserFrame.getSyntaxFacade().deleteSyntacticStructure((SyntacticStructure) hold);
@@ -165,7 +171,7 @@ public class ListenerMouse implements MouseListener {
 					}
 					if (lUBB.getButtonType() == SyntacticOperationType.ADD)
 					{
-						Component hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+						hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
 
 						if (hold instanceof SyntacticFeature)
 						{
@@ -174,14 +180,13 @@ public class ListenerMouse implements MouseListener {
 					}
 					if (lUBB.getButtonType() == SyntacticOperationType.ASSOCIATION)
 					{
-						Component hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
-
+						hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
 						if (hold instanceof SyntacticFeature)
 						{
 							mUserFrame.getInternalFrame().activateAssociationPane((SyntacticFeature) hold);
 						}
 					}
-				}
+					
 			}
 		}
 	}

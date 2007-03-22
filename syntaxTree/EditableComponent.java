@@ -552,7 +552,18 @@ public class EditableComponent extends JComponent {
 			Point containerPoint = SwingUtilities.convertPoint((Component) pME
 					.getSource(), pME.getPoint(), mUserInternalFrame
 					.getContentPane());
+			
 				if (mMove) {
+					Component hold = mUserInternalFrame
+					.getSyntaxFacade().getUnder(containerPoint,
+							pME.getSource(),false);
+					if (hold != null)
+					{
+						((EditableComponent) hold).setOver(false);
+						hold.repaint();
+						((EditableComponent) pME.getSource()).setOver(false);
+						((Component) pME.getSource()).repaint();
+					}
 					if (mUserInternalFrame
 							.getSyntaxFacade().getUnder(containerPoint,
 									pME.getSource(),false) instanceof SyntacticStructure)
@@ -584,6 +595,7 @@ public class EditableComponent extends JComponent {
 					}
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 					mUserInternalFrame.setCursor(lDefaultCursor);
+					
 					mMove = false;
 				} 
 				else if (mTrace) 
@@ -594,6 +606,13 @@ public class EditableComponent extends JComponent {
 					Component hold = mUserInternalFrame
 					.getSyntaxFacade().getUnder(containerPoint,
 							pME.getSource(),true);
+					if (hold != null)
+					{
+						((EditableComponent) hold).setOver(false);
+						hold.repaint();
+						((EditableComponent) pME.getSource()).setOver(false);
+						((Component) pME.getSource()).repaint();
+					}
 					if (hold instanceof SyntacticAssociation)
 					{
 						hold = ((SyntacticAssociation)hold).getSyntacticStructure();

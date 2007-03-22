@@ -25,6 +25,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
 
+import syntaxTree.EditableComponent;
 import syntaxTree.SyntacticAssociation;
 import syntaxTree.SyntacticFeature;
 import syntaxTree.SyntacticFeatureSet;
@@ -126,6 +127,11 @@ public class ListenerMovementPane extends MouseInputAdapter {
 		if (lComponent instanceof UserInternalFrame) {
 			Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
 			.getContainer();
+			if (hold != null)
+			{
+				((EditableComponent) hold).setOver(false);
+				hold.repaint();
+			}
 			if (hold instanceof SyntacticAssociation)
 			{
 				hold = ((SyntacticAssociation)hold).getSyntacticStructure();
