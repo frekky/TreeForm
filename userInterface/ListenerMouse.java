@@ -23,7 +23,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Point;
-import java.awt.event.InputEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -32,7 +31,6 @@ import javax.swing.SwingUtilities;
 import syntaxTree.EditableComponent;
 import syntaxTree.SyntacticAssociation;
 import syntaxTree.SyntacticFeature;
-import syntaxTree.SyntacticFeatureSet;
 import syntaxTree.SyntacticStructure;
 import enumerators.SyntacticFeatureType;
 import enumerators.SyntacticOperationType;
