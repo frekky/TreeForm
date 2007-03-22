@@ -1516,6 +1516,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 	public void associateSyntacticFeature(
 		SyntacticStructure pSSParent,
 		SyntacticFeature pFeature) {
+		addUndo();
 		SyntacticAssociation lSA = new SyntacticAssociation(getUIF());
 		lSA.setSyntacticStructure(pSSParent);
 		lSA.setSyntacticFeature(pFeature);
