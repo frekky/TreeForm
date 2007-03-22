@@ -165,7 +165,14 @@ private XMLParser getParser()
 			throw typeNotFoundError;
 		}
 		lSyntacticStructure = StructureDirector.build(lAB, pUIF);
-				
+		if (pSS instanceof SyntacticAssociation)
+		{
+			pSS = ((SyntacticAssociation)pSS).getSyntacticStructure();
+		}
+		if (pSS instanceof SyntacticFeature)
+		{
+			pSS = ((SyntacticFeatureSet)((SyntacticFeature)pSS).getSyntacticFeatureSet()).getSyntacticStructure();
+		}
 		if (pSS instanceof SyntacticStructure) {
 			SyntacticStructure lSS = ((SyntacticStructure) pSS);
 			if (pSST == SyntacticStructureType.ADJUNCT)
@@ -1131,6 +1138,15 @@ private void fourthWalk(SyntacticStructure v, int level)
 		UserInternalFrame pUIF, Object ss)
 		throws Exception {
 		addUndo();
+		//Component hold = getContainer();
+		if (ss instanceof SyntacticAssociation)
+		{
+			setContainer(((SyntacticAssociation)ss).getSyntacticStructure());
+		}
+		if (ss instanceof SyntacticFeature)
+		{
+			setContainer(((SyntacticFeatureSet)((SyntacticFeature)ss).getSyntacticFeatureSet()).getSyntacticStructure());
+		}
 		if (getContainer() instanceof SyntacticStructure) {
 			AbstractFeatureBuilder lAB = null;
 			if (pSFT == SyntacticFeatureType.THETA) {
@@ -1145,7 +1161,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 			}
 			
 			SyntacticFeatureSet lSFS = FeatureDirector.build(lAB, pUIF);
-			SyntacticStructure lSS = ((SyntacticStructure) ss);
+			SyntacticStructure lSS = ((SyntacticStructure) getContainer());
 			lSS.getSyntacticFeatureSet().add(lSFS);
 			((SyntacticStructure) getContainer()).testXY();
 			displayTree();

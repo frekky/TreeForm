@@ -25,6 +25,9 @@ import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
 
+import syntaxTree.SyntacticAssociation;
+import syntaxTree.SyntacticFeature;
+import syntaxTree.SyntacticFeatureSet;
 import syntaxTree.SyntacticStructure;
 
 /**
@@ -121,12 +124,20 @@ public class ListenerMovementPane extends MouseInputAdapter {
 				containerPoint.x, containerPoint.y);
 		
 		if (lComponent instanceof UserInternalFrame) {
-			if (((UserInternalFrame) lComponent).getSyntaxFacade()
-					.getContainer() instanceof SyntacticStructure) 
+			Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
+			.getContainer();
+			if (hold instanceof SyntacticAssociation)
+			{
+				hold = ((SyntacticAssociation)hold).getSyntacticStructure();
+			}
+			if (hold instanceof SyntacticFeature)
+			{
+				hold = ((SyntacticFeatureSet)((SyntacticFeature)hold).getSyntacticFeatureSet()).getSyntacticStructure();
+			}
+			if (hold instanceof SyntacticStructure) 
 			{
 				((UserMovementPane) pME.getSource())
-						.setEnd((SyntacticStructure) ((UserInternalFrame) lComponent)
-								.getSyntaxFacade().getContainer());
+						.setEnd((SyntacticStructure) hold);
 			}
 		}
 		mUserFrame.getInternalFrame().deactivateMovementPane();

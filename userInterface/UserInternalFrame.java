@@ -19,6 +19,7 @@
 package userInterface;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.util.Map;
 
@@ -26,7 +27,9 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 
 import syntaxTree.Properties;
+import syntaxTree.SyntacticAssociation;
 import syntaxTree.SyntacticFeature;
+import syntaxTree.SyntacticFeatureSet;
 import syntaxTree.SyntacticStructure;
 import syntaxTree.SyntaxFacade;
 import syntaxTree.TraceComponent;
@@ -320,13 +323,24 @@ public class UserInternalFrame extends JInternalFrame {
 		this.getGlassPane().setVisible(false);
 	}
 	
-	public void activateMovementPane(SyntacticStructure structure, MouseEvent pme) {
-		UserMovementPane lUMP = new UserMovementPane(mUserFrame, structure);
+	public void activateMovementPane(Component component, MouseEvent pme) {
+		if (component instanceof SyntacticAssociation)
+		{
+			component = ((SyntacticAssociation)component).getSyntacticStructure();
+		}
+		if (component instanceof SyntacticFeature)
+		{
+			component = ((SyntacticFeatureSet)((SyntacticFeature)component).getSyntacticFeatureSet()).getSyntacticStructure();
+		}
+		if (component instanceof SyntacticStructure)
+		{
+		UserMovementPane lUMP = new UserMovementPane(mUserFrame, (SyntacticStructure) component);
 		ListenerMovementPane listenerMovementPane = new ListenerMovementPane(mUserFrame);
 		lUMP.addMouseListener(listenerMovementPane);
 		lUMP.addMouseMotionListener(listenerMovementPane);
 		this.setGlassPane(lUMP);
 		this.getGlassPane().setVisible(true);
+		}
 	}
 	
 	public void deactivateMovementPane() {

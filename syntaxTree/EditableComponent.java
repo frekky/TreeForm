@@ -591,13 +591,20 @@ public class EditableComponent extends JComponent {
 					containerPoint = SwingUtilities.convertPoint(
 							(Component) pME.getSource(), pME.getPoint(),
 							mUserInternalFrame.getContentPane());
-					if (mUserInternalFrame
-							.getSyntaxFacade().getUnder(containerPoint,
-									pME.getSource(),true) instanceof SyntacticStructure)
+					Component hold = mUserInternalFrame
+					.getSyntaxFacade().getUnder(containerPoint,
+							pME.getSource(),true);
+					if (hold instanceof SyntacticAssociation)
 					{
-						SyntacticStructure lSSEnd = (SyntacticStructure) mUserInternalFrame
-								.getSyntaxFacade().getUnder(containerPoint,
-										pME.getSource(),true);
+						hold = ((SyntacticAssociation)hold).getSyntacticStructure();
+					}
+					if (hold instanceof SyntacticFeature)
+					{
+						hold = ((SyntacticFeatureSet)((SyntacticFeature)hold).getSyntacticFeatureSet()).getSyntacticStructure();
+					}
+					if (hold instanceof SyntacticStructure)
+					{
+						SyntacticStructure lSSEnd = (SyntacticStructure) hold;
 						if (lSSEnd != null && pME.getSource() instanceof SyntacticStructure) {
 								mUserInternalFrame.getSyntaxFacade().addTrace(
 										lSSEnd,
@@ -633,7 +640,7 @@ public class EditableComponent extends JComponent {
 				Point containerPoint = SwingUtilities.convertPoint((Component) pME
 						.getSource(), pME.getPoint(), mUserInternalFrame
 						.getContentPane());
-				Component hold = (SyntacticStructure) mUserInternalFrame
+				Component hold = mUserInternalFrame
 				.getSyntaxFacade().getUnder(containerPoint,
 						pME.getSource(),(pME.getSource() instanceof SyntacticStructure ? false:true));
 				if (hold != null)
@@ -651,14 +658,16 @@ public class EditableComponent extends JComponent {
 							.translateSyntacticFeature(
 									(SyntacticFeature) pME.getSource(), pME);
 				}
-			} else if ((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0) {
+			}
+			else if ((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0 
+					&& pME.getSource() instanceof SyntacticStructure) {
 				Point containerPoint = SwingUtilities.convertPoint((Component) pME
 						.getSource(), pME.getPoint(), mUserInternalFrame
 						.getContentPane());
-				Component hold = (SyntacticStructure) mUserInternalFrame
+				Component hold = mUserInternalFrame
 				.getSyntaxFacade().getUnder(containerPoint,
 						pME.getSource(),true);
-				if (hold != null)
+				if (hold != null )
 				{
 					mUserInternalFrame.getSyntaxFacade().setHighlight(
 						hold);
@@ -666,7 +675,8 @@ public class EditableComponent extends JComponent {
 				mUserInternalFrame.getSyntaxFacade()
 						.translateSyntacticStructure(
 								(SyntacticStructure) pME.getSource(), pME);
-			} else {
+			} 
+			else {
 				doubleClick = false;
 				setOver(false);
 				setCarat(false);

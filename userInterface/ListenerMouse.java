@@ -143,10 +143,9 @@ public class ListenerMouse implements MouseListener {
 				{
 					if (lUBB.getButtonType() == SyntacticOperationType.MOVEMENT)
 					{
-						if (((UserInternalFrame)lComponent).getSyntaxFacade().getContainer() instanceof SyntacticStructure)
-						{
-							mUserFrame.getInternalFrame().activateMovementPane((SyntacticStructure) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
-						}
+						
+							mUserFrame.getInternalFrame().activateMovementPane((Component) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
+						
 					}
 					if (lUBB.getButtonType() == SyntacticOperationType.ERASE)
 					{
