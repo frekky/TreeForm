@@ -162,6 +162,46 @@ public class TraceComponent extends JComponent {
 			}
 			return true;
 		}
+		
+		if (start.getAbsoluteOrder() == 0 || end.getAbsoluteOrder() == 0)
+		{
+			drawStart(start,contentGraphics,POSITION_LEFT);
+			drawEnd(end,contentGraphics,POSITION_LEFT);
+			midStartX = mStartX;
+			midEndX = mEndX;
+			if (mEndY > mStartY)
+			{
+				midStartY = mEndY + 20;
+				midEndY = mEndY + 20;
+			}
+			else
+			{
+				midStartY = mStartY + 20;
+				midEndY = mStartY + 20;
+			}
+			return true;
+		}
+		if (start.getAbsoluteOrder() == ((LinkedList) mSyntaxFacade.getLinkedArray().get(start.getLevel())).size()-1
+				|| end.getAbsoluteOrder() == ((LinkedList) mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
+		{
+			drawStart(start,contentGraphics,POSITION_RIGHT);
+			drawEnd(end,contentGraphics,POSITION_RIGHT);
+			midStartX = mStartX;
+			midEndX = mEndX;
+			if (mEndY < mStartY)
+			{
+				midStartY = mEndY - 20;
+				midEndY = mEndY - 20;
+			}
+			else
+			{
+				midStartY = mStartY - 20;
+				midEndY = mStartY - 20;
+			}
+			return true;
+		}
+		
+		
 		if(start.getLevel() > end.getLevel())
 		{
 			tempTop = end;
@@ -172,6 +212,7 @@ public class TraceComponent extends JComponent {
 			tempTop = start;
 			tempBottom = end;
 		}
+		
 		tempTop = mSyntaxFacade.getLower(tempTop, tempTop.getNumber(), tempTop.getLevel(), tempBottom.getLevel(), true);
 		if(tempTop != null)
 		{

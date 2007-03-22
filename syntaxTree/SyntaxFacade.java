@@ -1322,7 +1322,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		if (!lSS.equals(pSource)) {
 			double xd = lSS.getBounds().getX() + (lSS.getBounds().getWidth() /2) -pContainerPoint.x;
 			double yd = lSS.getBounds().getY() + (lSS.getBounds().getHeight() /2)-pContainerPoint.y;
-			double distance = Math.sqrt(xd*xd + yd*yd);
+			double distance = xd*xd + yd*yd;
 			if (distance < mDistance)
 			{
 				mDistance = distance;

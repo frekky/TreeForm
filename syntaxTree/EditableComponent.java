@@ -595,8 +595,6 @@ public class EditableComponent extends JComponent {
 					}
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 					mUserInternalFrame.setCursor(lDefaultCursor);
-					
-					mMove = false;
 				} 
 				else if (mTrace) 
 				{
@@ -634,7 +632,6 @@ public class EditableComponent extends JComponent {
 					
 					Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 					mUserInternalFrame.setCursor(lDefaultCursor);
-					mMove = false;
 				}
 			
 			else 
@@ -642,6 +639,8 @@ public class EditableComponent extends JComponent {
 				setHighlightEnd(pointTest(pME));
 				repaint();
 			}
+				mMove = false;
+				mTrace = false;
 		}
 
 		/**
