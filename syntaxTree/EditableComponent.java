@@ -558,17 +558,15 @@ public class EditableComponent extends JComponent {
 			Point containerPoint = SwingUtilities.convertPoint((Component) pME
 					.getSource(), pME.getPoint(), mUserInternalFrame
 					.getContentPane());
-			System.out.println(pME.getSource());
 				if (mMove) {
-					//System.out.println("move");
 					if (mUserInternalFrame
 							.getSyntaxFacade().getUnder(containerPoint,
 									pME.getSource(),false) instanceof SyntacticStructure)
 					{
-						//System.out.println(pME.getSource());
+						
 						SyntacticStructure lSSParent = (SyntacticStructure) mUserInternalFrame
 								.getSyntaxFacade().getUnder(containerPoint,
-										pME.getSource(),false);
+										pME.getSource(),(pME.getSource() instanceof SyntacticStructure ? false:true));
 						if (lSSParent != null && pME.getSource() instanceof SyntacticStructure) {
 							mUserInternalFrame.getSyntaxFacade()
 									.moveSyntacticStructure(
@@ -601,11 +599,11 @@ public class EditableComponent extends JComponent {
 							mUserInternalFrame.getContentPane());
 					if (mUserInternalFrame
 							.getSyntaxFacade().getUnder(containerPoint,
-									pME.getSource(),false) instanceof SyntacticStructure)
+									pME.getSource(),true) instanceof SyntacticStructure)
 					{
 						SyntacticStructure lSSEnd = (SyntacticStructure) mUserInternalFrame
 								.getSyntaxFacade().getUnder(containerPoint,
-										pME.getSource(),false);
+										pME.getSource(),true);
 						if (lSSEnd != null && pME.getSource() instanceof SyntacticStructure) {
 								mUserInternalFrame.getSyntaxFacade().addTrace(
 										lSSEnd,
@@ -636,27 +634,19 @@ public class EditableComponent extends JComponent {
 		 * reset the highlightEnd position based on the results of a pointTest.
 		 */
 		public void mouseDragged(MouseEvent pME) {
-			if (((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0) ||
-			((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0))
-			{
-//				//System.out.println("here");
-//						Point lP = 
-//				SwingUtilities.convertPoint(
-//					(Component) pME.getSource(),
-//					pME.getPoint(),
-//					mUserInternalFrame.getContentPane());
-//					
-//				Component hold = mUserInternalFrame.getSyntaxFacade().getUnder(
-//						lP,
-//						null);
-//				if (hold != null)
-//				{
-//					mUserInternalFrame.getSyntaxFacade().setHighlight(
-//						hold);
-//					System.out.println(hold);
-//				}
-			}
+	
 			if ((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0) {
+				Point containerPoint = SwingUtilities.convertPoint((Component) pME
+						.getSource(), pME.getPoint(), mUserInternalFrame
+						.getContentPane());
+				Component hold = (SyntacticStructure) mUserInternalFrame
+				.getSyntaxFacade().getUnder(containerPoint,
+						pME.getSource(),(pME.getSource() instanceof SyntacticStructure ? false:true));
+				if (hold != null)
+				{
+					mUserInternalFrame.getSyntaxFacade().setHighlight(
+						hold);
+				}
 				if (pME.getSource() instanceof SyntacticStructure) {
 					mUserInternalFrame.getSyntaxFacade()
 							.translateSyntacticSubtree(
@@ -668,6 +658,17 @@ public class EditableComponent extends JComponent {
 									(SyntacticFeature) pME.getSource(), pME);
 				}
 			} else if ((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0) {
+				Point containerPoint = SwingUtilities.convertPoint((Component) pME
+						.getSource(), pME.getPoint(), mUserInternalFrame
+						.getContentPane());
+				Component hold = (SyntacticStructure) mUserInternalFrame
+				.getSyntaxFacade().getUnder(containerPoint,
+						pME.getSource(),true);
+				if (hold != null)
+				{
+					mUserInternalFrame.getSyntaxFacade().setHighlight(
+						hold);
+				}
 				mUserInternalFrame.getSyntaxFacade()
 						.translateSyntacticStructure(
 								(SyntacticStructure) pME.getSource(), pME);

@@ -1291,15 +1291,15 @@ private void fourthWalk(SyntacticStructure v, int level)
 	public Component getUnder(Point pContainerPoint, Object pSource, boolean nearestNeighbour) {
 		mUnder = null;
 		getUnderRecursive(getSentence(), pContainerPoint, pSource);
-		if (mUnder == null && nearestNeighbour)
+		if (mUnder == null)
 		{
 			mDistance = 1000000d;
-			getNearestNeighbour(getSentence(),pContainerPoint,pSource);
+			getNearestNeighbour(getSentence(),pContainerPoint,pSource,nearestNeighbour);
 			mUnder = mClosest;	
 		}
 		return mUnder;
 	}
-private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Object pSource) 
+private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Object pSource, boolean nearestNeighbour) 
 {
 	if (pRT instanceof SyntacticStructure) {
 		SyntacticStructure lSS = (SyntacticStructure) pRT;
@@ -1352,12 +1352,14 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 			
 		}
 	}
-	
-	for (int i = 0; i < pRT.getChildren().size(); i++) {
-		getNearestNeighbour(
-			(RepositionTree) pRT.getChildren().get(i),
-			pContainerPoint,
-			pSource);
+	if (nearestNeighbour || !pRT.equals(pSource))
+	{
+		for (int i = 0; i < pRT.getChildren().size(); i++) {
+			getNearestNeighbour(
+				(RepositionTree) pRT.getChildren().get(i),
+				pContainerPoint,
+				pSource, nearestNeighbour);
+		}
 	}
 	
 }
