@@ -1,31 +1,17 @@
 package userInterface;
 
-import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.colorchooser.ColorSelectionModel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
+public class ListenerButtonFontColor implements ActionListener {
 
-
-public class ListenerButtonFontColor implements ChangeListener {
-
-	private JFrame mFrame;
-	private Color color;
-	private UserButtonFontColor mBFC;
-
-	public ListenerButtonFontColor(UserButtonFontColor BFC, JFrame frame) {
-		mBFC = BFC;
-		mFrame = frame;
+	public ListenerButtonFontColor(UserButtonFontColor fontColor) {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void stateChanged(ChangeEvent arg0) {
-		color = ((ColorSelectionModel) arg0.getSource()).getSelectedColor();
-		if (color.getRed() == 1 && color.getGreen() == 1 && color.getBlue() == 1)
-		{
-			((ColorSelectionModel)arg0.getSource()).setSelectedColor(Color.BLACK);
-		}
-		mBFC.setColor(color);
-		mFrame.dispose();
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
 	}
+
 }

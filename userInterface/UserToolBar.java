@@ -459,14 +459,14 @@ public class UserToolBar extends JToolBar {
 				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
 		mFontColor.setToolTipText((String) mUserFrame.getI18n().getObject("FONT_COLOR_TOOLTIP"));
 		mUserFrame.getObservableNew().addObserver(mFontColor);
-		//mUserFrame.getObservableFontColor().addObserver(mFontColor);
+		mFontColor.addActionListener(new ListenerButtonFontColor(mFontColor));
 		mFontColor.setFocusable(false);
 		this.add(mFontColor);
 		
 		mPulldownFontColor = new UserButtonPulldownForeground(mUserFrame,
 				mIconSize,
 				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
-		mPulldownFontColor.addActionListener(new ListenerFontColor(mUserFrame,mPulldownFontColor, mFontColor));
+		mPulldownFontColor.addActionListener(new ListenerPulldownFontColor(mUserFrame,mPulldownFontColor, mFontColor));
 		mPulldownFontColor.setFocusable(false);
 		this.add(mPulldownFontColor);
 		
@@ -474,7 +474,7 @@ public class UserToolBar extends JToolBar {
 				mIconSize,
 				mUserFrame.getObservableBackgroundColor(),mUserFrame.getObservableNew());
 		mBackgroundColor.setToolTipText((String) mUserFrame.getI18n().getObject("BACKGROUND_COLOR_TOOLTIP"));
-		//mUserFrame.getObservableBackgroundColor().addObserver(mBackgroundColor);
+		mBackgroundColor.addActionListener(new ListenerButtonBackgroundColor(mBackgroundColor));
 		mUserFrame.getObservableNew().addObserver(mBackgroundColor);
 		mBackgroundColor.setFocusable(false);
 		this.add(mBackgroundColor);
@@ -482,7 +482,7 @@ public class UserToolBar extends JToolBar {
 		mPulldownBackgroundColor = new UserButtonPulldownBackground(mUserFrame,
 				mIconSize,
 				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
-		mPulldownBackgroundColor.addActionListener(new ListenerBackgroundColor(mUserFrame,mPulldownBackgroundColor, mBackgroundColor));
+		mPulldownBackgroundColor.addActionListener(new ListenerPulldownBackgroundColor(mUserFrame,mPulldownBackgroundColor, mBackgroundColor));
 		mPulldownBackgroundColor.setFocusable(false);
 		this.add(mPulldownBackgroundColor);
 		
@@ -490,14 +490,14 @@ public class UserToolBar extends JToolBar {
 				mIconSize,
 				mUserFrame.getObservableLineColor(),mUserFrame.getObservableNew());
 		mLineColor.setToolTipText((String) mUserFrame.getI18n().getObject("LINE_COLOR_TOOLTIP"));
-		mUserFrame.getObservableNew().addObserver(mLineColor);
+		mLineColor.addActionListener(new ListenerButtonLineColor(mLineColor));
 		mLineColor.setFocusable(false);
 		this.add(mLineColor);
 		
 		mPulldownLineColor = new UserButtonPulldownLine(mUserFrame,
 				mIconSize,
 				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
-		mPulldownLineColor.addActionListener(new ListenerLineColor(mUserFrame, mPulldownLineColor, mLineColor));
+		mPulldownLineColor.addActionListener(new ListenerPulldownLineColor(mUserFrame, mPulldownLineColor, mLineColor));
 		mPulldownLineColor.setFocusable(false);
 		this.add(mPulldownLineColor);
 		

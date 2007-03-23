@@ -124,6 +124,10 @@ public class EditableComponent extends JComponent {
 
 	private boolean doubleClick = false;
 
+	private SyntaxFacade mSyntaxFacade;
+
+	private EditableComponent mSelf;
+
 	private static final Color STRONG_CARET_COLOR = Color.black;
 
 	private static final Color WEAK_CARET_COLOR = Color.black;
@@ -347,6 +351,7 @@ public class EditableComponent extends JComponent {
 		 */
 		public void mouseClicked(MouseEvent pME) {
 			setInsertionIndex(pointTest(pME));
+			getSyntaxFacade().setSelected(mSelf);
 			if (pME.getClickCount() > 1) {
 				setOver(false);
 				setCarat(false);
@@ -366,6 +371,7 @@ public class EditableComponent extends JComponent {
 			mUserInternalFrame.getObservableClipboard().setIndex(
 					getInsertionIndex());
 			setCarat(true);
+			
 		}
 
 		/**
@@ -723,6 +729,8 @@ public class EditableComponent extends JComponent {
 	 */
 	public EditableComponent(UserInternalFrame pUserInternalFrame) {
 		setUserInternalFrame(pUserInternalFrame);
+		setSyntaxFacade(pUserInternalFrame.getSyntaxFacade());
+		mSelf = this;
 		mHead = new AttributedString(" ");
 		Font lFont = new Font("Doulos SIL", Font.BOLD, getUserInternalFrame()
 				.getProperties().getDefaultFontSize());
@@ -837,7 +845,7 @@ public class EditableComponent extends JComponent {
 			Shape lHilite = mTextLayoutHead.getLogicalHighlightShape(
 					getHighlightBegin(), getHighlightEnd());
 			lGraphics2D.setColor(TEXT_HIGHLIGHT_COLOR);
-			if (doubleClick && mCaratTimer) {
+			if (doubleClick && mCaratTimer && isEnabled()) {
 				// doubleClick = false;
 				lGraphics2D.fill(lHilite);
 			} else {
@@ -1354,5 +1362,13 @@ public class EditableComponent extends JComponent {
 
 	public Color getBackgroundColor() {
 		return mBackgroundColor;
+	}
+	public SyntaxFacade getSyntaxFacade()
+	{
+		return mSyntaxFacade;
+	}
+	public void setSyntaxFacade(SyntaxFacade syntaxFacade)
+	{
+		mSyntaxFacade = syntaxFacade;
 	}
 }

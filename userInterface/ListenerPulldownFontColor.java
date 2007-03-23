@@ -6,17 +6,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ListenerBackgroundColor implements ActionListener {
+public class ListenerPulldownFontColor implements ActionListener {
 
 	private UserFrame frame;
-	private UserButtonPulldownBackground mBPB;
-	private UserButtonBackgroundColor mUBB;
+	private UserButtonPulldownForeground mButton;
+	private UserButtonFontColor mBFC;
 
-	public ListenerBackgroundColor(UserFrame userFrame, UserButtonPulldownBackground button, UserButtonBackgroundColor UBB) {
+	public ListenerPulldownFontColor(UserFrame userFrame, UserButtonPulldownForeground pulldownFontColor, UserButtonFontColor BFC) {
 		super();
 		frame = userFrame;
-		mBPB = button;
-		mUBB = UBB;
+		mButton = pulldownFontColor;
+		mBFC = BFC;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -24,12 +24,13 @@ public class ListenerBackgroundColor implements ActionListener {
 		JPanel textColorPanel = new JPanel();
 		UserColorChooser textColor = new UserColorChooser(frame.getInternalFrame().getProperties());
 		textColor.setColor(frame.getInternalFrame().getProperties().getFontColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerButtonBackgroundColor(mUBB,textFrame));
+		textColor.getSelectionModel().addChangeListener(new ListenerHighlightFontColor(mBFC,textFrame));
 		textColorPanel.add(textColor);
 		textFrame.add(textColorPanel);
 		textFrame.pack();
-		textFrame.setBounds(mBPB.getX() + mBPB.getWidth(),mBPB.getY() + mBPB.getHeight(),
+		textFrame.setBounds(mButton.getX() + mButton.getWidth(),mButton.getY() + mButton.getHeight(),
 				textFrame.getWidth(),textFrame.getHeight());
+
 		textFrame.setVisible(true);
 	}
 }

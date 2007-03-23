@@ -6,13 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ListenerLineColor implements ActionListener {
+public class ListenerPulldownLineColor implements ActionListener {
 
 	private UserFrame frame;
 	private UserButtonPulldownLine mButton;
 	private UserButtonLineColor mULC;
 
-	public ListenerLineColor(UserFrame userFrame, UserButtonPulldownLine pulldownLineColor, UserButtonLineColor ULC) {
+	public ListenerPulldownLineColor(UserFrame userFrame, UserButtonPulldownLine pulldownLineColor, UserButtonLineColor ULC) {
 		super();
 		frame = userFrame;
 		mButton = pulldownLineColor;
@@ -24,7 +24,7 @@ public class ListenerLineColor implements ActionListener {
 		JPanel textColorPanel = new JPanel();
 		UserColorChooser textColor = new UserColorChooser(frame.getInternalFrame().getProperties());
 		textColor.setColor(frame.getInternalFrame().getProperties().getFontColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerButtonLineColor(mULC,textFrame));	
+		textColor.getSelectionModel().addChangeListener(new ListenerHighlightLineColor(mULC,textFrame));	
 		frame.getObservableLineColor().addObserver(textColor);
 		textColorPanel.add(textColor);
 		textFrame.add(textColorPanel);

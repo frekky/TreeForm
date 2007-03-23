@@ -20,14 +20,13 @@ public class UserButtonLineColor extends JButton implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ObservableLineColor mObservableFontColor;
 	private ObservableNew mObservableNew;
 	private Color mColor;
 	private boolean mIconSize;
+	private UserFrame mUserFrame;
 	public UserButtonLineColor(UserFrame userFrame, boolean iconSize, ObservableLineColor observableFontColor, ObservableNew observableNew) {
 		super();
-		//this.setUI(null);
-		mObservableFontColor = observableFontColor;
+		mUserFrame = userFrame;
 		mObservableNew = observableNew;
 		mColor = Color.black;
 		mIconSize = iconSize;
@@ -43,11 +42,6 @@ public class UserButtonLineColor extends JButton implements Observer {
 	}
 
 	public void update(Observable arg0, Object arg1) {
-		if(arg0 == mObservableFontColor)
-		{
-			this.setForeground(((ObservableLineColor) arg0).getValue());
-			this.setColor(this.getForeground());
-		}
 		if (arg0 == mObservableNew)
 		{
 			if (mObservableNew.getValue() == 0)
@@ -105,5 +99,12 @@ public class UserButtonLineColor extends JButton implements Observer {
 		mGraphics2D.drawLine(12, 10, 20, 20);
 		mGraphics2D.drawLine(12,10,8,14);
 		mGraphics2D.drawLine(16,16,12,20);
+	}
+	public void setHighlight()
+	{
+		//Map hold = mUserFrame.getUserControl().getAttributes();
+		
+			mUserFrame.getInternalFrame().getSyntaxFacade().setLineColor(mColor);
+		
 	}
 }

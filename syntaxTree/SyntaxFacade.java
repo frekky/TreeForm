@@ -19,6 +19,7 @@
 
 package syntaxTree;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -95,6 +96,7 @@ public class SyntaxFacade {
 	private LinkedList mHeightPad;
 private double mDistance;
 private Component mClosest;
+private EditableComponent mSelf;
 	public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
 		setParser(new XMLParser());
@@ -1699,5 +1701,23 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 	public void deleteEndCustom(SyntacticStructure end)
 	{
 		((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
+	}
+
+	public void setSelected(EditableComponent self) {
+		mSelf = self;
+	}
+	public EditableComponent getSelected()
+	{
+		return mSelf;
+	}
+
+	public void setLineColor(Color color) {
+		EditableComponent hold = getSelected();
+		if(hold instanceof SyntacticStructure)
+		{
+		((SyntacticStructure) mSelf).setLineColor(color);
+		hold.repaint();
+		}
+		
 	}
 }
