@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.CubicCurve2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.util.LinkedList;
 
@@ -37,6 +38,10 @@ public class TraceComponent extends JComponent {
 	private int midEndY;
 	private int midStartX;
 	private int midEndX;
+	private int mLeft;
+	private int mRight;
+	private int mTop;
+	private int mBottom;
 	private static final int POSITION_BOTTOM = 0;
 	private static final int POSITION_LEFT = 1;
 	private static final int POSITION_RIGHT = 2;
@@ -163,6 +168,29 @@ public class TraceComponent extends JComponent {
 			return true;
 		}
 		
+		if (start.getAbsoluteOrder() == 0 
+				&& end.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
+				{
+					drawStart(start,contentGraphics,POSITION_LEFT);
+					drawEnd(end,contentGraphics,POSITION_RIGHT);
+					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					midStartX = mStartX - 20;
+					midEndX = mEndX + 20;
+					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					return true;
+				}
+		if (end.getAbsoluteOrder() == 0
+				&& start.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(start.getLevel())).size()-1)
+				{
+					drawStart(start,contentGraphics,POSITION_RIGHT);
+					drawEnd(end,contentGraphics,POSITION_LEFT);
+					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					midStartX = mStartX + 20;
+					midEndX = mEndX - 20;
+					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					return true;
+				}
+		
 		if (start.getAbsoluteOrder() == 0 || end.getAbsoluteOrder() == 0)
 		{
 			drawStart(start,contentGraphics,POSITION_LEFT);
@@ -171,13 +199,13 @@ public class TraceComponent extends JComponent {
 			midEndX = mEndX;
 			if (mEndY > mStartY)
 			{
-				midStartY = mEndY + 20;
-				midEndY = mEndY + 20;
+				midStartY = mEndY - 20;
+				midEndY = mEndY - 20;
 			}
 			else
 			{
-				midStartY = mStartY + 20;
-				midEndY = mStartY + 20;
+				midStartY = mStartY - 20;
+				midEndY = mStartY - 20;
 			}
 			return true;
 		}
@@ -325,28 +353,7 @@ public class TraceComponent extends JComponent {
 			}
 		}
 		}
-		if (start.getAbsoluteOrder() == 0 
-				&& end.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
-				{
-					drawStart(start,contentGraphics,POSITION_LEFT);
-					drawEnd(end,contentGraphics,POSITION_RIGHT);
-					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
-					midStartX = mStartX - 20;
-					midEndX = mEndX + 20;
-					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
-					return true;
-				}
-		if (end.getAbsoluteOrder() == 0
-				&& start.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(start.getLevel())).size()-1)
-				{
-					drawStart(start,contentGraphics,POSITION_RIGHT);
-					drawEnd(end,contentGraphics,POSITION_LEFT);
-					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
-					midStartX = mStartX + 20;
-					midEndX = mEndX - 20;
-					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 40;
-					return true;
-				}
+		
 		if (start.getButtonX() > end.getButtonX())
 		{
 			drawStart(start,contentGraphics,POSITION_LEFT);
@@ -371,47 +378,82 @@ public class TraceComponent extends JComponent {
 	
 	private void drawStart(SyntacticStructure start,
 			Graphics2D contentGraphics, int position) {
-		
-		if (position == POSITION_BOTTOM)
+		//if (start.getChildren().size() == 0)
+		if (0==0)
 		{
-			float padBottom = 0;
-			padBottom = - (start.getTraceNumber() * padWidth)/2 + start.getTraceCount() * padWidth;
-			contentGraphics.fillArc((int)(start.getButtonX() 
-					+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
-							.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()), circle,
-					circle, 0, 360);
+			if (position == POSITION_BOTTOM)
+			{
+				float padBottom = 0;
+				padBottom = - (start.getTraceNumber() * padWidth)/2 + start.getTraceCount() * padWidth;
+				contentGraphics.fillArc((int)(start.getButtonX() 
+						+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
+								.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()), circle,
+						circle, 0, 360);
+		
+				mStartX = (int)(start.getButtonX() 
+						+ start.getButtonWidth()/2 + padBottom);
+				mStartY = (int) (start
+						.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + circle);
+			}
+			else if (position == POSITION_LEFT) {
+				contentGraphics.fillArc((int) start.getButtonX() - padEdge  , (int) start
+						.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
+						+ start.getTraceCount() * padLength, circle,
+						circle, 0, 360);
 	
-			mStartX = (int)(start.getButtonX() 
-					+ start.getButtonWidth()/2 + padBottom);
-			mStartY = (int) (start
-					.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + circle);
+				mStartX = (int) start.getButtonX() - padEdge;
+				mStartY = (int) start
+				.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+				+ start.getTraceCount() * padLength;
+				
+			} 
+			else
+			{
+				contentGraphics.fillArc((int) start.getButtonX() + padEdge
+						+ start.getButtonWidth() - lineLength,
+						(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
+						+ start.getTraceCount() * padLength,
+						circle,
+						circle, 0, 360);
+	
+				mStartX = (int) start.getButtonX() + padEdge
+						+ start.getButtonWidth();
+				mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
+				+ start.getTraceCount() * padLength);
+				
+			}
 		}
-		else if (position == POSITION_LEFT) {
-			contentGraphics.fillArc((int) start.getButtonX() - padEdge  , (int) start
-					.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
-					+ start.getTraceCount() * padLength, circle,
-					circle, 0, 360);
-
-			mStartX = (int) start.getButtonX() - padEdge;
-			mStartY = (int) start
-			.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-			+ start.getTraceCount() * padLength;
-			
-		} 
 		else
 		{
-			contentGraphics.fillArc((int) start.getButtonX() + padEdge
-					+ start.getButtonWidth() - lineLength,
-					(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
-					+ start.getTraceCount() * padLength,
-					circle,
-					circle, 0, 360);
-
-			mStartX = (int) start.getButtonX() + padEdge
-					+ start.getButtonWidth();
-			mStartY = (int) (start.getButtonY() + (start.getTextHeight()/2) - (padLength/2)
-			+ start.getTraceCount() * padLength);
-			
+			mLeft = (int) start.getButtonX();
+			mRight = (int) (start.getButtonX() + start.getButtonWidth());
+			mTop = (int) start.getButtonY();
+			mBottom = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
+			setSubtreeBounds(start);
+			mLeft -= (int) ((mRight-mLeft) *.15);
+			//mTop -= (int) ((mBottom-mTop) *.15);
+			mRight += (int) ((mRight-mLeft) *.1);
+			mBottom += (int) ((mBottom-mTop) *.2);
+			Ellipse2D ellipse = new Ellipse2D.Double(mLeft ,
+					mTop,
+					mRight - mLeft,
+					mBottom - mTop);
+					contentGraphics.draw(ellipse);
+			if (position == POSITION_BOTTOM)
+			{
+				mStartX = mLeft + (mRight-mLeft)/2;
+				mStartY = mBottom;
+			}
+			if (position == POSITION_LEFT)
+			{
+				mStartX = mLeft;
+				mStartY = mTop + (mBottom - mTop)/2;
+			}
+			if (position == POSITION_RIGHT)
+			{
+				mStartX = mRight;
+				mStartY = mTop + (mBottom - mTop)/2;
+			}
 		}
 			start.setTraceCount(start.getTraceCount() + 1);
 	}
@@ -419,6 +461,24 @@ public class TraceComponent extends JComponent {
 
 
 
+	private void setSubtreeBounds(SyntacticStructure start) {
+		if (mLeft > (int) start.getButtonX())
+		{
+			mLeft = (int) start.getButtonX();
+		}
+		if (mRight < (int) (start.getButtonX() + start.getButtonWidth()))
+		{
+			mRight = (int) (start.getButtonX() + start.getButtonWidth());
+		}
+		if (mBottom < (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()))
+		{
+			mBottom = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
+		}
+		for(int i = 0; i < start.getChildren().size(); i++)
+		{
+			setSubtreeBounds((SyntacticStructure) start.getChildren().get(i));
+		}
+	}
 	private void drawEnd(SyntacticStructure end,
 			Graphics2D contentGraphics, int position) {
 	

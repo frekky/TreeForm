@@ -499,7 +499,8 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"MOVEMENT_TEXT", new String("Movement")},
 				{"ERASE_TEXT", new String("Eraser")},
 				{"ASSOCIATION_TEXT", new String("Link Features")},
-				{"ADD_TEXT", new String("Add Feature")}
+				{"ADD_TEXT", new String("Add Feature")},
+				{"FRAME_TOOLTIP", new String("Highlight to select tree area. Shift-highlight to copy tree area to clipboard.")}
 		};
 //		{"INSTRUCTIONS", new String("INSTRUCTIONS")},
 //		{"MOVE_TREE", new String("Shift-drag nodes to each")},	

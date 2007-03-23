@@ -1714,7 +1714,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		}
 		else if (hold instanceof LinkedList)
 		{
-			//System.out.println("here");
+			addUndo();
 			LinkedList list = (LinkedList) hold;
 			for (int i = 0; i < list.size(); i++)
 			{
