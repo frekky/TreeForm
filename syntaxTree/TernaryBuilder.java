@@ -35,7 +35,7 @@ import enumerators.SyntacticLevel;
  * <br>
  *  A builder class for constructing Adjuncts.
  */
-public class TrinaryBuilder extends AbstractStructureBuilder {
+public class TernaryBuilder extends AbstractStructureBuilder {
 
 	/**
 	 * @param pInternalFrame The internal Frame that this structure will be attached to.

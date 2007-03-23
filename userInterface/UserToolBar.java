@@ -335,6 +335,12 @@ public class UserToolBar extends JToolBar {
 
 	private UserButtonLineColor mLineColor;
 
+	private UserButtonPulldownForeground mPulldownFontColor;
+
+	private UserButtonPulldownBackground mPulldownBackgroundColor;
+
+	private UserButtonPulldownLine mPulldownLineColor;
+
 	//private UserButtonLineColor mLineColor;
 
 /**
@@ -458,6 +464,12 @@ public class UserToolBar extends JToolBar {
 		mFontColor.setFocusable(false);
 		this.add(mFontColor);
 		
+		mPulldownFontColor = new UserButtonPulldownForeground(mUserFrame,
+				mIconSize,
+				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
+		mPulldownFontColor.setFocusable(false);
+		this.add(mPulldownFontColor);
+		
 		mBackgroundColor = new UserButtonBackgroundColor(mUserFrame,
 				mIconSize,
 				mUserFrame.getObservableBackgroundColor(),mUserFrame.getObservableNew());
@@ -467,6 +479,12 @@ public class UserToolBar extends JToolBar {
 		mUserFrame.getObservableNew().addObserver(mBackgroundColor);
 		mBackgroundColor.setFocusable(false);
 		this.add(mBackgroundColor);
+		
+		mPulldownBackgroundColor = new UserButtonPulldownBackground(mUserFrame,
+				mIconSize,
+				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
+		mPulldownBackgroundColor.setFocusable(false);
+		this.add(mPulldownBackgroundColor);
 		
 		mLineColor = new UserButtonLineColor(mUserFrame,
 				mIconSize,
@@ -478,6 +496,11 @@ public class UserToolBar extends JToolBar {
 		mLineColor.setFocusable(false);
 		this.add(mLineColor);
 		
+		mPulldownLineColor = new UserButtonPulldownLine(mUserFrame,
+				mIconSize,
+				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
+		mPulldownLineColor.setFocusable(false);
+		this.add(mPulldownLineColor);
 		
 		this.add(new JToolBar.Separator());
 		mBold = new UserToggleFontBold(mUserFrame,

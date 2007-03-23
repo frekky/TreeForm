@@ -97,7 +97,7 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 		ats = new AttributedString("ABC");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		ats.addAttribute(TextAttribute.FOREGROUND, Color.BLACK);
-		ats.addAttribute(TextAttribute.BACKGROUND, Sizer.BLUE3);
+		ats.addAttribute(TextAttribute.BACKGROUND, Sizer.BLUE2);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);				
 		tl.draw(mGraphics2D,5,17);

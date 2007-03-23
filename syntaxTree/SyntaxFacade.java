@@ -151,7 +151,7 @@ private XMLParser getParser()
 		} else if (pSST == SyntacticStructureType.TRIANGLE) {
 			lAB = new TriangleBuilder();
 		} else if (pSST == SyntacticStructureType.TRINARY) {
-			lAB = new TrinaryBuilder();
+			lAB = new TernaryBuilder();
 		} else if (pSST == SyntacticStructureType.UNARY) {
 			lAB = new UnaryBuilder();
 		} else if (pSST == SyntacticStructureType.X_BAR) {
