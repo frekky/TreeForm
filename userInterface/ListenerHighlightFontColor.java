@@ -1,7 +1,6 @@
 package userInterface;
 
 import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
@@ -26,6 +25,7 @@ public class ListenerHighlightFontColor implements ChangeListener {
 			((ColorSelectionModel)arg0.getSource()).setSelectedColor(Color.BLACK);
 		}
 		mBFC.setColor(color);
+
 		mFrame.dispose();
 	}
 }

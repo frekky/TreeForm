@@ -731,5 +731,6 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public void setLineColor(Color color)
 	{
 		mLineColor = color;
+		repaint();
 	}
 }

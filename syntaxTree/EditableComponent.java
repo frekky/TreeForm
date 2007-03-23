@@ -349,16 +349,10 @@ public class EditableComponent extends JComponent {
 		 * the carat, and repaint
 		 */
 		public void mouseClicked(MouseEvent pME) {
+			mSyntaxFacade.deselectTree();
 			setInsertionIndex(pointTest(pME));
-			//getSyntaxFacade().setSelected(mSelf);
 			if (pME.getClickCount() > 1) {
-				setOver(false);
-				setCarat(false);
-				setHighlightEnd(pointTest(pME));
-				Rectangle2D lRectangle = mTextLayoutHead.getBounds();
-				setHighlightBegin((int) lRectangle.getX());
-				setHighlightEnd((int) lRectangle.getWidth());
-				paint(getGraphics());
+				selectAll();
 				doubleClick = true;
 			} else {
 				doubleClick = false;
@@ -370,8 +364,9 @@ public class EditableComponent extends JComponent {
 			mUserInternalFrame.getObservableClipboard().setIndex(
 					getInsertionIndex());
 			setCarat(true);
-			
 		}
+
+		
 
 		/**
 		 * Set the layout origin for the carat This is calculated by getting the
@@ -704,8 +699,8 @@ public class EditableComponent extends JComponent {
 				setOver(false);
 				setCarat(false);
 				setHighlightEnd(pointTest(pME));
-				paint(getGraphics());
-				// repaint();
+				//paint(getGraphics());
+				 repaint();
 			}
 		}
 
@@ -1234,7 +1229,17 @@ public class EditableComponent extends JComponent {
 			getHead().addAttribute(string,object,getHighlightBegin(),getHighlightEnd());
 			testXY();
 			mUserInternalFrame.getSyntaxFacade().displayTree();
+			
 		}
+		
+	}
+	public boolean testAttribute()
+	{
+		if (getHighlightBegin() != getHighlightEnd()) 
+		{
+			return true;
+		}
+		return false;
 	}
 	public void removeAttribute()
 	{
@@ -1376,5 +1381,14 @@ public class EditableComponent extends JComponent {
 	public void setSyntaxFacade(SyntaxFacade syntaxFacade)
 	{
 		mSyntaxFacade = syntaxFacade;
+	}
+	public void selectAll() {
+		setOver(false);
+		setCarat(false);
+		Rectangle2D lRectangle = mTextLayoutHead.getBounds();
+		setHighlightBegin((int) lRectangle.getX());
+		setHighlightEnd((int) lRectangle.getWidth());
+		repaint();
+		
 	}
 }

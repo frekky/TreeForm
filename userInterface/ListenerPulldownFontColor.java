@@ -30,7 +30,6 @@ public class ListenerPulldownFontColor implements ActionListener {
 		textFrame.pack();
 		textFrame.setBounds(mButton.getX() + mButton.getWidth(),mButton.getY() + mButton.getHeight(),
 				textFrame.getWidth(),textFrame.getHeight());
-
 		textFrame.setVisible(true);
 	}
 }

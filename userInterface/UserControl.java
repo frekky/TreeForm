@@ -58,6 +58,7 @@ import javax.swing.JPanel;
 
 import parser.XMLParser;
 import staticFunctions.Sizer;
+import syntaxTree.EditableComponent;
 import syntaxTree.SyntacticStructure;
 import syntaxTree.SyntaxFacade;
 import enumerators.ExportPictureType;
@@ -131,18 +132,12 @@ public void loadTree() {
 			Container lC = mUserFrame.getInternalFrame().getContentPane();
 			Color lColor = lC.getBackground();
 			lC.setBackground(new Color(255,255,255));
-			if(mUserFrame.getObservableClipboard().getValue() != null)
-			{
-			mUserFrame.getObservableClipboard().getValue().setCarat(false);
-			mUserFrame.getObservableClipboard().getValue().repaint();
-			}
+			
+			mUserFrame.getSyntaxFacade().deselectTree();
+			
+			
 			PrintUtilities.printComponent(lC);
 			lC.setBackground(lColor);
-			if(mUserFrame.getObservableClipboard().getValue() != null)
-			{
-			mUserFrame.getObservableClipboard().getValue().setCarat(true);
-			mUserFrame.getObservableClipboard().getValue().repaint();
-			}
 		}
 /**
  * 
@@ -542,20 +537,28 @@ public void loadTree() {
  * Copies selected text to clipboard
  */
 		public void copy() {
-			setClipboard(mUserFrame.getObservableClipboard().getValue().getClip());
+			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
+			{
+				setClipboard(((EditableComponent) mUserFrame.getObservableClipboard().getValue()).getClip());
+			}
 		}
 		
 /**
  * copies selected text to clipboard (doesn't cut!)
  */
 		public void cut() {
-			setClipboard(mUserFrame.getObservableClipboard().getValue().getClip());
+			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
+			{
+				setClipboard(((EditableComponent) mUserFrame.getObservableClipboard().getValue()).getClip());
+			}
 		}
 /**
  * pastes text from the clipboard, UNICODE from external sources, AttributedStrings
  * from TreeForm
  */
 		public void paste() {
+			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
+			{
 			Object lObject = getClipboard();
 			AttributedString lAT = null;
 			if (lObject instanceof String)
@@ -577,13 +580,14 @@ public void loadTree() {
 			{
 				lLength += 1;
 			}
-			mUserFrame.getObservableClipboard().getValue().deleteHead();
-			mUserFrame.getObservableClipboard().getValue().insertHead(lAT,mUserFrame.getObservableClipboard().getIndex());
-			mUserFrame.getObservableClipboard().getValue().setHighlightEnd(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
-			mUserFrame.getObservableClipboard().getValue().setHighlightBegin(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
-			mUserFrame.getObservableClipboard().getValue().setInsertionIndex(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
-			mUserFrame.getObservableClipboard().getValue().setCarat(true);
+			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).deleteHead();
+			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).insertHead(lAT,mUserFrame.getObservableClipboard().getIndex());
+			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setHighlightEnd(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
+			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setHighlightBegin(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
+			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setInsertionIndex(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
+			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setCarat(true);
 			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().displayTree();
+			}
 		}
 /**
  * 
@@ -731,11 +735,7 @@ public void loadTree() {
 		
 		if (height != 0 && width != 0)
 		{
-		if(mUserFrame.getObservableClipboard().getValue() != null)
-		{
-			mUserFrame.getObservableClipboard().getValue().setCarat(false);
-			mUserFrame.getObservableClipboard().getValue().repaint();
-		}
+		mUserFrame.getSyntaxFacade().deselectTree();		
 		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
 		Color lColor = lC.getBackground();
 		lC.setBackground(new Color(255,255,255));
@@ -758,11 +758,6 @@ public void loadTree() {
 			JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
 		}
 		lC.setBackground(lColor);
-		if(mUserFrame.getObservableClipboard().getValue() != null)
-		{
-			mUserFrame.getObservableClipboard().getValue().setCarat(true);
-			mUserFrame.getObservableClipboard().getValue().repaint();
-		}
 		}
 	}	
 }

@@ -30,9 +30,11 @@ public class UserButtonFontColor extends JButton implements Observer {
 	private ObservableNew mObservableNew;
 	private Color mColor;
 	private boolean mIconSize;
+	private UserFrame mUserFrame;
 
 	public UserButtonFontColor(UserFrame userFrame, boolean iconSize, ObservableFontColor observableFontColor, ObservableNew observableNew) {
 		super();
+		mUserFrame = userFrame;
 		mObservableFontColor = observableFontColor;
 		mObservableNew = observableNew;
 		mIconSize = iconSize;
@@ -68,6 +70,7 @@ public class UserButtonFontColor extends JButton implements Observer {
 
 	public void setColor(Color foreground) {
 		mColor = foreground;
+		mUserFrame.getSyntaxFacade().changeAttributes(TextAttribute.FOREGROUND, mColor);
 		repaint();
 	}
 	public Color getColor()

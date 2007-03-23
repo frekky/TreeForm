@@ -86,10 +86,10 @@ public class ListenerZoom implements ActionListener {
 		}
 		mUserFrame.getObservableZoom().setValue(lZoom);
 		mUserFrame.getUserControl().zoom(lZoom);
-		if (mUserFrame.getObservableClipboard().getValue() != null)
-		{
-			mUserFrame.getObservableClipboard().getValue().requestFocus();
-		}
+//		if (mUserFrame.getObservableClipboard().getValue() != null)
+//		{
+//			mUserFrame.getObservableClipboard().getValue().requestFocus();
+//		}
 	}
 
 }

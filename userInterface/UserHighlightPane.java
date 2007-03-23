@@ -109,6 +109,14 @@ public class UserHighlightPane extends JComponent {
 					((mStartX < mEndX) ? mStartX : mEndX), 
 					((mStartY < mEndY) ? mStartY : mEndY));
 		}
+		else
+		{
+			mUserFrame.getSyntaxFacade().selectTree(
+					((mStartX < mEndX) ? mStartX : mEndX), 
+					((mStartY < mEndY) ? mStartY : mEndY),
+					((mStartX > mEndX) ? mStartX : mEndX), 
+					((mStartY > mEndY) ? mStartY : mEndY));
+		}
 		exit();
 	}
 

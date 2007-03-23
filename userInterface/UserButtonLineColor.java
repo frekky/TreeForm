@@ -57,6 +57,7 @@ public class UserButtonLineColor extends JButton implements Observer {
 
 	public void setColor(Color foreground) {
 		mColor = foreground;
+		mUserFrame.getSyntaxFacade().setLineColor(mColor);
 		repaint();
 	}
 	public Color getColor()

@@ -43,7 +43,7 @@ public class ObservableClipboard extends Observable {
 	 * @uml.associationEnd 
 	 * @uml.property name="mSelected" multiplicity="(1 1)"
 	 */
-	private EditableComponent mSelected;
+	private Object mSelected;
 
 	/**
 	 * Constructor
@@ -88,9 +88,13 @@ public class ObservableClipboard extends Observable {
 		 		((EditableComponent)pObject).setCarat(true);
 		 		((EditableComponent)pObject).repaint();
 				mSelected = (EditableComponent) pObject;
-				setChanged();
-				notifyObservers();
 		 	}
+		 	else
+		 	{
+		 		mSelected = pObject;
+		 	}
+		 	setChanged();
+			notifyObservers();
 	 	}
 	 	
 		
@@ -99,7 +103,7 @@ public class ObservableClipboard extends Observable {
 	 * 
 	 * @return EditableComponent - the value in the clipboard.
 	 */
-	 public EditableComponent getValue()
+	 public Object getValue()
 	 {
 		return mSelected;
 	 }

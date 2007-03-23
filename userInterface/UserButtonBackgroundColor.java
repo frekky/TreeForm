@@ -26,16 +26,16 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ObservableBackgroundColor mObservableBackgroundColor;
 	private ObservableNew mObservableNew;
 	private Color mColor;
 	private boolean mIconSize;
+	private UserFrame mUserFrame;
 
 	public UserButtonBackgroundColor(UserFrame userFrame, boolean iconSize, ObservableBackgroundColor observableFontColor, ObservableNew observableNew) {
 		super();
+		mUserFrame = userFrame;
 		mColor = Color.yellow;
 		mIconSize = iconSize;
-		mObservableBackgroundColor = observableFontColor;
 		mObservableNew = observableNew;
 		if (iconSize)
 		{
@@ -48,12 +48,7 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 	}
 
 	public void update(Observable arg0, Object arg1) {
-		if(arg0 == mObservableBackgroundColor)
-		{
-			this.setForeground(((ObservableBackgroundColor) arg0).getValue());
-			this.setColor(this.getForeground());
-			//System.out.println("yes");
-		}
+		
 		if (arg0 == mObservableNew)
 		{
 			if (mObservableNew.getValue() == 0)
@@ -69,6 +64,7 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 
 	public void setColor(Color background) {
 		mColor = background;
+		mUserFrame.getSyntaxFacade().changeAttributes(TextAttribute.BACKGROUND, mColor);
 		repaint();
 		
 	}

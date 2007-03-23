@@ -27,7 +27,6 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
-import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.text.AttributedString;
 import java.text.AttributedCharacterIterator.Attribute;
@@ -98,6 +97,7 @@ public class SyntaxFacade {
 	private LinkedList mHeightPad;
 private double mDistance;
 private Component mClosest;
+private LinkedList mSelected;
 public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
 		setParser(new XMLParser());
@@ -1704,14 +1704,25 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
 	}
 
-
-
 	public void setLineColor(Color color) {
 		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
 		if(hold instanceof SyntacticStructure)
 		{
-		((SyntacticStructure) hold).setLineColor(color);
-		((SyntacticStructure) hold).repaint();
+			addUndo();
+			((SyntacticStructure) hold).setLineColor(color);
+			((SyntacticStructure) hold).repaint();
+		}
+		else if (hold instanceof LinkedList)
+		{
+			//System.out.println("here");
+			LinkedList list = (LinkedList) hold;
+			for (int i = 0; i < list.size(); i++)
+			{
+				if (list.get(i) instanceof SyntacticStructure)
+				{
+					((SyntacticStructure) list.get(i)).setLineColor(color);
+				}
+			}
 		}
 	}
 	public void changeAttributes(Attribute string, Object object)
@@ -1719,15 +1730,128 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
 		if(hold instanceof EditableComponent)
 		{
-			if(object instanceof AffineTransform)
+			
+			if (((EditableComponent) hold).testAttribute())
 			{
-				((EditableComponent) hold).removeAttribute();
+				addUndo();
+				((EditableComponent) hold).addAttribute(string, object);
 			}
-		((EditableComponent) hold).addAttribute(string, object);
+		}
+		//System.out.println(hold);
+		if(hold instanceof LinkedList)
+		{
+			LinkedList list = (LinkedList) hold;
+			addUndo();
+			for (int i = 0; i < list.size(); i++)
+			{
+				EditableComponent component = (EditableComponent) list.get(i);
+				component.addAttribute(string,object);
+				//System.out.println("selected items");
+			}
 		}
 	}
 
+	public void selectTree(int x1, int y1, int x2, int y2) {
+		mSelected = new LinkedList();
+		deselectTree();
+		selectTreeRecursive((RepositionTree) getSentence().getChildren().get(0), x1, y1, x2, y2);
+		getUIF().getUserFrame().getObservableClipboard().setValue(mSelected);
+	}
 	
-		
+	private void selectTreeRecursive(
+			RepositionTree pRT,int x1, int y1, int x2, int y2) {
+			if (pRT instanceof SyntacticStructure) 
+			{
+				SyntacticStructure lSS = (SyntacticStructure) pRT;
+				if (x1 < lSS.getBounds().x && y1 < lSS.getBounds().y
+						&& x2 > (lSS.getBounds().x + lSS.getTextWidth())
+						&& y2 > (lSS.getBounds().y + lSS.getTextHeight()))
+				{
+					mSelected.add(lSS);
+					lSS.selectAll();
+					//System.out.println("in here");
+				}
+
+				for (int i = 0; i < lSS.getSyntacticFeatureSet().size(); i++)
+				{
+					//System.out.println("in feature");
+					SyntacticFeatureSet lSFS = (SyntacticFeatureSet) lSS.getSyntacticFeatureSet().get(i);
+					for (int j = 0; j < lSFS.getSyntacticFeature().size();j++)
+					{
+						SyntacticFeature lSF = (SyntacticFeature) lSFS.getSyntacticFeature().get(j);
+						if (x1 < lSF.getBounds().x && y1 < lSF.getBounds().y
+								&& x2 > (lSF.getBounds().x + lSF.getTextWidth())
+								&& y2 > (lSF.getBounds().y + lSF.getTextHeight()))
+						{
+							mSelected.add(lSF);
+							lSF.selectAll();
+						}
+					}
+				}
+				for (int i = 0; i < lSS.getSyntacticAssociation().size();i++)
+				{
+					SyntacticAssociation lSA = (SyntacticAssociation) lSS.getSyntacticAssociation().get(i);
+					if (x1 < lSA.getBounds().x && y1 < lSA.getBounds().y
+							&& x2 > (lSA.getBounds().x + lSA.getTextWidth())
+							&& y2 > (lSA.getBounds().y + lSA.getTextHeight()))
+					{
+						mSelected.add(lSA);
+						lSA.selectAll();
+					}
+				}
+			for (int i = 0; i < pRT.getChildren().size(); i++) {
+				selectTreeRecursive(
+					(RepositionTree) pRT.getChildren().get(i),
+					x1,y1,x2,y2);
+			}
+		}
+	}
+
+	public void deselectTree() {
+		deselectTreeRecursive((RepositionTree) getSentence().getChildren().get(0));	
+	}
+	
+	
+	private void deselectTreeRecursive(
+			RepositionTree pRT) {
+			if (pRT instanceof SyntacticStructure) 
+			{
+				
+				SyntacticStructure lSS = (SyntacticStructure) pRT;
+				lSS.setHighlightBegin(0);
+				lSS.setHighlightEnd(0);
+				lSS.setCarat(false);
+				lSS.setOver(false);
+				lSS.repaint();
+				for (int i = 0; i < lSS.getSyntacticFeatureSet().size(); i++)
+				{
+					//System.out.println("in feature");
+					SyntacticFeatureSet lSFS = (SyntacticFeatureSet) lSS.getSyntacticFeatureSet().get(i);
+					for (int j = 0; j < lSFS.getSyntacticFeature().size();j++)
+					{
+						SyntacticFeature lSF = (SyntacticFeature) lSFS.getSyntacticFeature().get(j);
+						lSF.setHighlightBegin(0);
+						lSF.setHighlightEnd(0);
+						lSF.setCarat(false);
+						lSF.setOver(false);
+						lSF.repaint();
+					}
+				}
+				for (int i = 0; i < lSS.getSyntacticAssociation().size();i++)
+				{
+					SyntacticAssociation lSA = (SyntacticAssociation) lSS.getSyntacticAssociation().get(i);
+					lSA.setHighlightBegin(0);
+					lSA.setHighlightEnd(0);
+					lSA.setCarat(false);
+					lSA.setOver(false);
+					lSA.repaint();
+				}
+			for (int i = 0; i < pRT.getChildren().size(); i++) {
+				deselectTreeRecursive(
+					(RepositionTree) pRT.getChildren().get(i));
+			}
+		}
+	}
+	
 	
 }
