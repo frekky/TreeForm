@@ -9,10 +9,14 @@ import javax.swing.JPanel;
 public class ListenerBackgroundColor implements ActionListener {
 
 	private UserFrame frame;
+	private UserButtonPulldownBackground mBPB;
+	private UserButtonBackgroundColor mUBB;
 
-	public ListenerBackgroundColor(UserFrame userFrame) {
+	public ListenerBackgroundColor(UserFrame userFrame, UserButtonPulldownBackground button, UserButtonBackgroundColor UBB) {
 		super();
 		frame = userFrame;
+		mBPB = button;
+		mUBB = UBB;
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -20,11 +24,12 @@ public class ListenerBackgroundColor implements ActionListener {
 		JPanel textColorPanel = new JPanel();
 		UserColorChooser textColor = new UserColorChooser(frame.getInternalFrame().getProperties());
 		textColor.setColor(frame.getInternalFrame().getProperties().getFontColor());
-		textColor.getSelectionModel().addChangeListener(new ListenerButtonBackgroundColor(frame,textFrame));
-		frame.getObservableBackgroundColor().addObserver(textColor);
+		textColor.getSelectionModel().addChangeListener(new ListenerButtonBackgroundColor(mUBB,textFrame));
 		textColorPanel.add(textColor);
 		textFrame.add(textColorPanel);
 		textFrame.pack();
+		textFrame.setBounds(mBPB.getX() + mBPB.getWidth(),mBPB.getY() + mBPB.getHeight(),
+				textFrame.getWidth(),textFrame.getHeight());
 		textFrame.setVisible(true);
 	}
 }

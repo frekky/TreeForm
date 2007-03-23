@@ -66,8 +66,9 @@ public class UserButtonFontColor extends JButton implements Observer {
 		}
 	}
 
-	private void setColor(Color foreground) {
+	public void setColor(Color foreground) {
 		mColor = foreground;
+		repaint();
 	}
 	public Color getColor()
 	{

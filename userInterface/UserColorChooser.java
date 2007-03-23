@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.JColorChooser;
+import javax.swing.JPanel;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 
 import syntaxTree.Properties;
@@ -14,7 +15,7 @@ public class UserColorChooser extends JColorChooser implements Observer
 	public UserColorChooser(Properties properties)
 	{
 		this.setChooserPanels(newPanels());
-		
+		this.setPreviewPanel(new JPanel());
 	}
 	private static final long serialVersionUID = 1L;
 

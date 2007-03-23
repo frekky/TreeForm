@@ -7,15 +7,13 @@ import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
-public class ListenerButtonFontColor implements ChangeListener {
+public class ListenerButtonLineColor implements ChangeListener {
 
 	private JFrame mFrame;
 	private Color color;
-	private UserButtonFontColor mBFC;
-
-	public ListenerButtonFontColor(UserButtonFontColor BFC, JFrame frame) {
-		mBFC = BFC;
+	private UserButtonLineColor mBLC;
+	public ListenerButtonLineColor(UserButtonLineColor BLC, JFrame frame) {
+		mBLC = BLC;
 		mFrame = frame;
 	}
 
@@ -25,7 +23,7 @@ public class ListenerButtonFontColor implements ChangeListener {
 		{
 			((ColorSelectionModel)arg0.getSource()).setSelectedColor(Color.BLACK);
 		}
-		mBFC.setColor(color);
+		mBLC.setColor(color);
 		mFrame.dispose();
 	}
 }

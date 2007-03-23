@@ -67,8 +67,10 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 		}
 	}
 
-	private void setColor(Color background) {
+	public void setColor(Color background) {
 		mColor = background;
+		repaint();
+		
 	}
 	public Color getColor()
 	{

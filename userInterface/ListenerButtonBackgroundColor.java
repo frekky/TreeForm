@@ -10,13 +10,15 @@ import javax.swing.event.ChangeListener;
 
 public class ListenerButtonBackgroundColor implements ChangeListener {
 
-	private UserFrame mUserFrame;
+
 	private JFrame mFrame;
 	private Color color;
+	private UserButtonBackgroundColor mBBC;
 
-	public ListenerButtonBackgroundColor(UserFrame userFrame, JFrame frame) {
-		mUserFrame = userFrame;
+	public ListenerButtonBackgroundColor(UserButtonBackgroundColor BBC, JFrame frame) {
+		
 		mFrame = frame;
+		mBBC = BBC;
 	}
 
 	public void stateChanged(ChangeEvent e) {
@@ -29,8 +31,8 @@ public class ListenerButtonBackgroundColor implements ChangeListener {
 		{
 			((ColorSelectionModel)e.getSource()).setSelectedColor(new Color(255,255,255,0));
 		}
-		mUserFrame.getObservableBackgroundColor().setValue(((ColorSelectionModel) e.getSource()).getSelectedColor());
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
+		
+		mBBC.setColor(color);
 		mFrame.dispose();
 	}
 }

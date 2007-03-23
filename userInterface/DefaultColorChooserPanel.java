@@ -12,9 +12,9 @@ import java.awt.LayoutManager;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import javax.swing.Icon;
 import javax.swing.JColorChooser;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
 
@@ -24,7 +24,7 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	MainSwatchPanel mainPalette;
-    RecentSwatchPanel recentPalette;
+    //RecentSwatchPanel recentPalette;
     MouseListener mouseHandler;
     static abstract class SwatchPanel  extends  JPanel {
         protected int cellWidth = 10;
@@ -161,64 +161,12 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
             return (c.getRed() + "," + c.getGreen() + "," + c.getBlue());
         }
     }
-    static class RecentSwatchPanel  extends  SwatchPanel {
-        /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		Color[] colors;
-        public static final Color defaultColor = Color.GRAY;
-        int start = 0;
-        RecentSwatchPanel() {
-            super();
-            numCols = 5;
-            numRows = 7;
-            initializeColors();
-            revalidate();
-        }
-        public Color getColorForPosition(int x, int y) {
-            if (x % (cellWidth + gap) > cellWidth || y % (cellHeight + gap) > cellHeight) return null;
-            int row = y / (cellHeight + gap);
-            int col = x / (cellWidth + gap);
-            return colors[getIndexForCell(row, col)];
-        }
-        protected void initializeColors() {
-            colors = new Color[numRows * numCols];
-            for (int i = 0; i < colors.length; i++) colors[i] = defaultColor;
-        }
-        private int getIndexForCell(int row, int col) {
-            return ((row * numCols) + col + start) % (numRows * numCols);
-        }
-        void addColorToQueue(Color c) {
-            if (--start == -1) start = numRows * numCols - 1;
-            colors[start] = c;
-        }
-        public void paint(Graphics g) {
-            //Color saved = g.getColor();
-            Insets insets = getInsets();
-            int currX = insets.left;
-            int currY = insets.top;
-            for (int i = 0; i < numRows; i++) {
-                for (int j = 0; j < numCols; j++) {
-                    g.setColor(colors[getIndexForCell(i, j)]);
-                    g.fill3DRect(currX, currY, cellWidth, cellHeight, true);
-                    currX += cellWidth + gap;
-                }
-                currX = insets.left;
-                currY += cellWidth + gap;
-            }
-        }
-        public String getToolTipText(MouseEvent e) {
-            Color c = getColorForPosition(e.getX(), e.getY());
-            if (c == null) return null;
-            return c.getRed() + "," + c.getGreen() + "," + c.getBlue();
-        }
-    }
+   
     class MouseHandler  extends  MouseAdapter {
         public void mousePressed(MouseEvent e) {
             SwatchPanel panel = (SwatchPanel)e.getSource();
             Color c = panel.getColorForPosition(e.getX(), e.getY());
-            recentPalette.addColorToQueue(c);
+           // recentPalette.addColorToQueue(c);
             DefaultSwatchChooserPanel.this.getColorSelectionModel().setSelectedColor(c);
             DefaultSwatchChooserPanel.this.repaint();
         }
@@ -268,43 +216,7 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
             return new Dimension(insets.left + insets.right + xmax, insets.top + insets.bottom + ymax);
         }
     }
-    static class RecentPanelLayout implements LayoutManager {
-        public void addLayoutComponent(String name, Component comp) {
-        }
-        public void layoutContainer(Container parent) {
-            Component[] comps = parent.getComponents();
-            //Dimension parentSize = parent.getSize();
-            Insets insets = parent.getInsets();
-            int currY = insets.top;
-            Dimension pref;
-            for (int i = 0; i < comps.length; i++) {
-                pref = comps[i].getPreferredSize();
-                if (pref == null) continue;
-                comps[i].setBounds(insets.left, currY, pref.width, pref.height);
-                currY += pref.height;
-            }
-        }
-        public Dimension minimumLayoutSize(Container parent) {
-            return preferredLayoutSize(parent);
-        }
-        public Dimension preferredLayoutSize(Container parent) {
-            int width = 0;
-            int height = 0;
-            Insets insets = parent.getInsets();
-            Component[] comps = parent.getComponents();
-            Dimension pref;
-            for (int i = 0; i < comps.length; i++) {
-                pref = comps[i].getPreferredSize();
-                if (pref != null) {
-                    width = Math.max(width, pref.width);
-                    height += pref.height;
-                }
-            }
-            return new Dimension(width + insets.left + insets.right, height + insets.top + insets.bottom);
-        }
-        public void removeLayoutComponent(Component comp) {
-        }
-    }
+   
     DefaultSwatchChooserPanel() {
         super();
     }
@@ -313,25 +225,17 @@ class DefaultSwatchChooserPanel  extends  AbstractColorChooserPanel {
     protected void buildChooser() {
         setLayout(new MainPanelLayout());
         JPanel mainPaletteHolder = new JPanel();
-        JPanel recentPaletteHolder = new JPanel();
         mainPalette = new MainSwatchPanel();
-        recentPalette = new RecentSwatchPanel();
-        JLabel label = new JLabel("Recent:");
         mouseHandler = new MouseHandler();
         mainPalette.addMouseListener(mouseHandler);
-        recentPalette.addMouseListener(mouseHandler);
         mainPaletteHolder.setLayout(new BorderLayout());
         mainPaletteHolder.add(mainPalette, BorderLayout.CENTER);
-        recentPaletteHolder.setLayout(new RecentPanelLayout());
-        recentPaletteHolder.add(label);
-        recentPaletteHolder.add(recentPalette);
         JPanel main = new JPanel();
-       main.add(mainPaletteHolder);
-        main.add(recentPaletteHolder);
+        main.add(mainPaletteHolder);
         this.add(main);
     }
     public void uninstallChooserPanel(JColorChooser chooser) {
-        recentPalette = null;
+     //   recentPalette = null;
        mainPalette = null;
        removeAll();
         super.uninstallChooserPanel(chooser);
