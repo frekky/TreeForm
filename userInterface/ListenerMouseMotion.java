@@ -105,7 +105,21 @@ public class ListenerMouseMotion implements MouseMotionListener {
 				((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
 					((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
 						lP,
-						null,true));
+						null,true));				
+//				Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
+//				.getContainer();
+//				if ((lUBB.getButtonType() == SyntacticOperationType.ADD 
+//						|| lUBB.getButtonType() == SyntacticOperationType.ASSOCIATION)
+//						&& !(hold instanceof SyntacticFeature))
+//				{
+//					Cursor lDefaultCursor = new Cursor(Cursor.MOVE_CURSOR);
+//					mUserFrame.setCursor(lDefaultCursor);
+//				}
+//				else
+//				{
+//					Cursor lDefaultCursor = new Cursor(Cursor.HAND_CURSOR);
+//					mUserFrame.setCursor(lDefaultCursor);
+//				}
 			}
 		}
 	}

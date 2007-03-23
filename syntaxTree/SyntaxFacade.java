@@ -1329,7 +1329,6 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 				mClosest = lSS;
 			}
 		}
-			
 		for (int i = 0; i < lSS.getSyntacticFeatureSet().size(); i++)
 		{
 			//System.out.println("in feature");
@@ -1341,7 +1340,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 				{
 					double xd = lSF.getBounds().getX() + (lSF.getBounds().getWidth() /2) -pContainerPoint.x;
 					double yd = lSF.getBounds().getY() + (lSF.getBounds().getHeight() /2)-pContainerPoint.y;
-					double distance = Math.sqrt(xd*xd + yd*yd);
+					double distance = xd*xd + yd*yd;
 					if (distance < mDistance)
 					{
 						mDistance = distance;
@@ -1358,7 +1357,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 			{
 				double xd = lSA.getBounds().getX() + (lSA.getBounds().getWidth() /2) -pContainerPoint.x;
 				double yd = lSA.getBounds().getY() + (lSA.getBounds().getHeight() /2)-pContainerPoint.y;
-				double distance = Math.sqrt(xd*xd + yd*yd);
+				double distance = xd*xd + yd*yd;
 				if (distance < mDistance)
 				{
 					mDistance = distance;
