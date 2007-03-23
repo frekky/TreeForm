@@ -1729,8 +1729,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 	{
 		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
 		if(hold instanceof EditableComponent)
-		{
-			
+		{	
 			if (((EditableComponent) hold).testAttribute())
 			{
 				addUndo();
