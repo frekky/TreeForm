@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
 
 import javax.swing.JToggleButton;
 
@@ -68,7 +69,7 @@ public class ListenerSubscript implements ActionListener {
 	public void actionPerformed(ActionEvent pAE) {
 		mUserFrame.getObservableSubscript().setValue(((JToggleButton)pAE.getSource()).isSelected());
 		mUserFrame.getObservableSuperscript().setValue(false);
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
+		mUserFrame.getSyntaxFacade().changeAttributes(TextAttribute.FONT,mUserFrame.changeFont());
 		
 	}
 

@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
 
 import javax.swing.JComboBox;
 
@@ -65,6 +66,7 @@ public class ListenerFontName implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent pAE) {
 		mUserFrame.getObservableFont().setValue(((String)((JComboBox)pAE.getSource()).getSelectedItem()));
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
+		mUserFrame.getSyntaxFacade().changeAttributes(TextAttribute.FONT,mUserFrame.changeFont());
+
 	}
 }

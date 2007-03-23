@@ -429,6 +429,7 @@ public class UserToolBar extends JToolBar {
 		mFont = new UserComboFont(mUserFrame.getObservableFont());
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		String fontNames[] = ge.getAvailableFontFamilyNames();
+		
 		mModelFont = new DefaultComboBoxModel();
 		for (int i = 0; i < fontNames.length; i++)
 		{
@@ -459,7 +460,7 @@ public class UserToolBar extends JToolBar {
 				mUserFrame.getObservableFontColor(),mUserFrame.getObservableNew());
 		mFontColor.setToolTipText((String) mUserFrame.getI18n().getObject("FONT_COLOR_TOOLTIP"));
 		mUserFrame.getObservableNew().addObserver(mFontColor);
-		mFontColor.addActionListener(new ListenerButtonFontColor(mFontColor));
+		mFontColor.addActionListener(new ListenerButtonFontColor(mUserFrame,mFontColor));
 		mFontColor.setFocusable(false);
 		this.add(mFontColor);
 		
@@ -474,7 +475,7 @@ public class UserToolBar extends JToolBar {
 				mIconSize,
 				mUserFrame.getObservableBackgroundColor(),mUserFrame.getObservableNew());
 		mBackgroundColor.setToolTipText((String) mUserFrame.getI18n().getObject("BACKGROUND_COLOR_TOOLTIP"));
-		mBackgroundColor.addActionListener(new ListenerButtonBackgroundColor(mBackgroundColor));
+		mBackgroundColor.addActionListener(new ListenerButtonBackgroundColor(mUserFrame,mBackgroundColor));
 		mUserFrame.getObservableNew().addObserver(mBackgroundColor);
 		mBackgroundColor.setFocusable(false);
 		this.add(mBackgroundColor);

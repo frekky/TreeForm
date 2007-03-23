@@ -21,7 +21,6 @@ package syntaxTree;
 
 import java.text.AttributedString;
 import java.util.LinkedList;
-import java.util.Map;
 
 import userInterface.UserInternalFrame;
 
@@ -132,8 +131,8 @@ public class SyntacticFeature extends EditableComponent{
 /**
  * Overrides setHighlight to facilitate synchronization
  */
-	public void setHighlight(Map map) {
-		super.setHighlight(map);
-		setHead(getHead());	
-	}
+//	public void setHighlight(Map map) {
+//		super.setHighlight(map);
+//		setHead(getHead());	
+//	}
 }

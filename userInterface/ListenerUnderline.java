@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
 
 import javax.swing.JToggleButton;
 
@@ -66,8 +67,13 @@ public class ListenerUnderline implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent pAE) {
 		mUserFrame.getObservableFontUnderline().setValue(((JToggleButton)pAE.getSource()).isSelected());
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
-
+		if (mUserFrame.getObservableFontUnderline().getValue())
+		{
+			mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
+		}
+		else
+		{
+			mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE);
+		}
 	}
-
 }

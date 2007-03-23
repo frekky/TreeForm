@@ -21,6 +21,7 @@ package userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
 
 import javax.swing.JToggleButton;
 
@@ -66,8 +67,14 @@ public class ListenerStrikethrough implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent pAE) {
 		mUserFrame.getObservableFontStrikethrough().setValue(((JToggleButton)pAE.getSource()).isSelected());
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
-
+		if (mUserFrame.getObservableFontStrikethrough().getValue())
+		{
+			mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.STRIKETHROUGH,TextAttribute.STRIKETHROUGH_ON);
+		}
+		else
+		{
+			mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.STRIKETHROUGH,TextAttribute.STRIKETHROUGH);
+		}
 	}
 
 }

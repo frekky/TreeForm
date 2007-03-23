@@ -1,6 +1,7 @@
 package userInterface;
 
 import java.awt.Color;
+import java.awt.font.TextAttribute;
 
 import javax.swing.colorchooser.ColorSelectionModel;
 import javax.swing.event.ChangeEvent;
@@ -27,6 +28,6 @@ public class ListenerFrameFontColor implements ChangeListener {
 		}
 		mProperties.setFontColor(((ColorSelectionModel) arg0.getSource()).getSelectedColor());
 		mUserFrame.getObservableFontColor().setValue(((ColorSelectionModel) arg0.getSource()).getSelectedColor());
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
+		mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.FOREGROUND,color);
 	}
 }

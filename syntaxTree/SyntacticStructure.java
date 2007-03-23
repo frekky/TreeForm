@@ -24,7 +24,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.GeneralPath;
 import java.text.AttributedString;
 import java.util.LinkedList;
-import java.util.Map;
 
 import javax.swing.JComponent;
 
@@ -520,10 +519,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 /**
  * Sets the features of highlighted text and redisplays the tree.
  */
-	public void setHighlight(Map map) 
-	{
-		super.setHighlight(map);
-	}
+	
 /**
  * repaint both the structure and it's lines
  */	

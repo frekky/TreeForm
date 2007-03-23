@@ -46,6 +46,7 @@ import java.awt.geom.Point2D.Float;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.text.CharacterIterator;
+import java.text.AttributedCharacterIterator.Attribute;
 import java.util.Map;
 
 import javax.swing.JComponent;
@@ -125,8 +126,6 @@ public class EditableComponent extends JComponent {
 	private boolean doubleClick = false;
 
 	private SyntaxFacade mSyntaxFacade;
-
-	private EditableComponent mSelf;
 
 	private static final Color STRONG_CARET_COLOR = Color.black;
 
@@ -351,7 +350,7 @@ public class EditableComponent extends JComponent {
 		 */
 		public void mouseClicked(MouseEvent pME) {
 			setInsertionIndex(pointTest(pME));
-			getSyntaxFacade().setSelected(mSelf);
+			//getSyntaxFacade().setSelected(mSelf);
 			if (pME.getClickCount() > 1) {
 				setOver(false);
 				setCarat(false);
@@ -730,7 +729,7 @@ public class EditableComponent extends JComponent {
 	public EditableComponent(UserInternalFrame pUserInternalFrame) {
 		setUserInternalFrame(pUserInternalFrame);
 		setSyntaxFacade(pUserInternalFrame.getSyntaxFacade());
-		mSelf = this;
+		//mSelf = this;
 		mHead = new AttributedString(" ");
 		Font lFont = new Font("Doulos SIL", Font.BOLD, getUserInternalFrame()
 				.getProperties().getDefaultFontSize());
@@ -1229,12 +1228,19 @@ public class EditableComponent extends JComponent {
 	 *            sets the attributes of highlighted texts with the passed in
 	 *            attribute set.
 	 */
-	public void setHighlight(Map map) {
+	public void addAttribute(Attribute string, Object object) {
 		if (getHighlightBegin() != getHighlightEnd()) {
-			getHead()
-					.addAttributes(map, getHighlightBegin(), getHighlightEnd());
+			
+			getHead().addAttribute(string,object,getHighlightBegin(),getHighlightEnd());
 			testXY();
 			mUserInternalFrame.getSyntaxFacade().displayTree();
+		}
+	}
+	public void removeAttribute()
+	{
+		if (getHighlightBegin() != getHighlightEnd()) {
+			getHead().addAttribute(TextAttribute.TRANSFORM,new AffineTransform(),getHighlightBegin(),getHighlightEnd());
+			testXY();
 		}
 	}
 

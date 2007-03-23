@@ -27,8 +27,10 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.text.AttributedString;
+import java.text.AttributedCharacterIterator.Attribute;
 import java.util.LinkedList;
 
 import javax.swing.JPopupMenu;
@@ -96,8 +98,7 @@ public class SyntaxFacade {
 	private LinkedList mHeightPad;
 private double mDistance;
 private Component mClosest;
-private EditableComponent mSelf;
-	public SyntaxFacade(UserInternalFrame pUIF) {
+public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
 		setParser(new XMLParser());
 		setUIF(pUIF);
@@ -1703,21 +1704,30 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
 	}
 
-	public void setSelected(EditableComponent self) {
-		mSelf = self;
-	}
-	public EditableComponent getSelected()
-	{
-		return mSelf;
-	}
+
 
 	public void setLineColor(Color color) {
-		EditableComponent hold = getSelected();
+		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
 		if(hold instanceof SyntacticStructure)
 		{
-		((SyntacticStructure) mSelf).setLineColor(color);
-		hold.repaint();
+		((SyntacticStructure) hold).setLineColor(color);
+		((SyntacticStructure) hold).repaint();
 		}
-		
 	}
+	public void changeAttributes(Attribute string, Object object)
+	{
+		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
+		if(hold instanceof EditableComponent)
+		{
+			if(object instanceof AffineTransform)
+			{
+				((EditableComponent) hold).removeAttribute();
+			}
+		((EditableComponent) hold).addAttribute(string, object);
+		}
+	}
+
+	
+		
+	
 }

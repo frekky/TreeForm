@@ -20,6 +20,7 @@ package userInterface;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.font.TextAttribute;
 
 import javax.swing.JComboBox;
 
@@ -67,10 +68,12 @@ public class ListenerFontSize implements ActionListener {
 		String string = ((JComboBox)pAE.getSource()).getSelectedItem().toString();
 		Integer integer = Integer.valueOf(string);
 		mUserFrame.getObservableFontSize().setValue(integer.intValue());
-		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
-		if(mUserFrame.getObservableClipboard().getValue()!=null)
-		{
-			mUserFrame.getObservableClipboard().getValue().requestFocus();
-		}
+//		mUserFrame.getObservableClipboard().getValue().setHighlight(mUserFrame.getUserControl().getAttributes());
+//		if(mUserFrame.getObservableClipboard().getValue()!=null)
+//		{
+//			mUserFrame.getObservableClipboard().getValue().requestFocus();
+//		}
+		mUserFrame.getSyntaxFacade().changeAttributes(TextAttribute.FONT,mUserFrame.changeFont());
+
 	}
 }

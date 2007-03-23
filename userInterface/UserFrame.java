@@ -22,9 +22,11 @@ package userInterface;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.geom.AffineTransform;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -392,7 +394,7 @@ private void setObservableFontColor(ObservableFontColor color) {
  * 
  * @return gets the Clipboard containing the selected syntactic object.
  */
-	protected ObservableClipboard getObservableClipboard() {
+	public ObservableClipboard getObservableClipboard() {
 		return mClipboard;
 	}
 
@@ -630,6 +632,34 @@ private void setObservableFontColor(ObservableFontColor color) {
 	public void setObservableLineColor(ObservableLineColor color)
 	{
 		mObservableLineColor = color;
+	}
+
+	public Font changeFont() {
+		int lStyle = 0;
+		if(getObservableFontBold().getValue())
+		{
+			lStyle += Font.BOLD;
+		}
+		if(getObservableFontItalic().getValue())
+		{
+			lStyle += Font.ITALIC;
+		}
+		Font lFont = new Font(getObservableFont().getValue(),lStyle,getObservableFontSize().getValue());
+		if(getObservableSubscript().getValue())
+		{
+			AffineTransform lAT = new AffineTransform();
+			lAT.translate(0,1);
+			lAT.scale(2d/3d,2d/3d);
+			lFont = lFont.deriveFont(lAT);
+		}
+		if(getObservableSuperscript().getValue())
+		{
+			AffineTransform lAT = new AffineTransform();
+			lAT.translate(0,-3);
+			lAT.scale(2d/3d,2d/3d);
+			lFont = lFont.deriveFont(lAT);
+		}
+		return lFont;
 	}
 }
 
