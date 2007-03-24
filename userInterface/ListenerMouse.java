@@ -84,6 +84,7 @@ public class ListenerMouse implements MouseListener {
 	}
 
 	public void mousePressed(MouseEvent pME) {
+		mUserFrame.getInternalFrame().setToolTipText(null);
 		Cursor lDefaultCursor = new Cursor(Cursor.HAND_CURSOR);
 		mUserFrame.setCursor(lDefaultCursor);
 	}

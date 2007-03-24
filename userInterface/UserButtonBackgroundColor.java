@@ -87,7 +87,7 @@ public class UserButtonBackgroundColor extends JButton implements Observer {
 			RenderingHints.VALUE_RENDER_QUALITY);
 		if (mIconSize)
 		{
-			mGraphics2D.scale(32/24, 32/24);
+			mGraphics2D.scale(32f/24f, 32f/24f);
 		}
 		Font mFont = new Font("Doulos SIL", Font.BOLD,7);
 		FontRenderContext mFrc = mGraphics2D.getFontRenderContext();

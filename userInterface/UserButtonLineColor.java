@@ -76,7 +76,7 @@ public class UserButtonLineColor extends JButton implements Observer {
 			RenderingHints.VALUE_RENDER_QUALITY);
 		if (mIconSize)
 		{
-			mGraphics2D.scale(32/24, 32/24);
+			mGraphics2D.scale(32f/24f, 32f/24f);
 		}
 		mGraphics2D.setStroke(new BasicStroke(0.5f));
 		Arc2D arc2D;

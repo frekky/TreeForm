@@ -389,8 +389,11 @@ public class EditableComponent extends JComponent {
 		 * Simple highlight changes
 		 */
 		public void mouseEntered(MouseEvent arg0) {
+			if (mUserInternalFrame.getCursor().getType() != Cursor.HAND_CURSOR)
+			{
 			Cursor lMoveCursor = new Cursor(Cursor.TEXT_CURSOR);
 			mUserInternalFrame.setCursor(lMoveCursor);
+			}
 			setOver(true);
 			if (arg0.getSource() instanceof SyntacticFeature) {
 				SyntacticFeature hold = (SyntacticFeature) arg0.getSource();
@@ -422,8 +425,11 @@ public class EditableComponent extends JComponent {
 		 * Simple highlight changes
 		 */
 		public void mouseExited(MouseEvent arg0) {
+			if (mUserInternalFrame.getCursor().getType() != Cursor.HAND_CURSOR)
+			{
 			Cursor lMoveCursor = new Cursor(Cursor.DEFAULT_CURSOR);
 			mUserInternalFrame.setCursor(lMoveCursor);
+			}
 			if (arg0.getSource() instanceof SyntacticFeature) {
 				SyntacticFeature hold = (SyntacticFeature) arg0.getSource();
 				for (int i = 0; i < hold.getSyntacticAssociation().size(); i++) {

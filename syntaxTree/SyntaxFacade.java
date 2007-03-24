@@ -1753,8 +1753,11 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 	public void selectTree(int x1, int y1, int x2, int y2) {
 		mSelected = new LinkedList();
 		deselectTree();
+		if (getSentence().getChildren().size() > 0)
+		{
 		selectTreeRecursive((RepositionTree) getSentence().getChildren().get(0), x1, y1, x2, y2);
 		getUIF().getUserFrame().getObservableClipboard().setValue(mSelected);
+		}
 	}
 	
 	private void selectTreeRecursive(
@@ -1807,7 +1810,10 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 	}
 
 	public void deselectTree() {
-		deselectTreeRecursive((RepositionTree) getSentence().getChildren().get(0));	
+		if (getSentence().getChildren().size() > 0)
+		{
+			deselectTreeRecursive((RepositionTree) getSentence().getChildren().get(0));
+		}	
 	}
 	
 	

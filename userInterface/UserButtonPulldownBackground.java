@@ -77,7 +77,7 @@ public class UserButtonPulldownBackground extends JButton implements Observer {
 			RenderingHints.VALUE_RENDER_QUALITY);
 		if (mIconSize)
 		{
-			mGraphics2D.scale(32/24, 32/24);
+			mGraphics2D.scale(32f/24f, 32f/24f);
 		}
 		GeneralPath polly = new GeneralPath();
 		polly.moveTo(2, 10);
