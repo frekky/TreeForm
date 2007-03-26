@@ -125,7 +125,7 @@ public class UserInternalFrame extends JInternalFrame {
 		this.setScale(1.0F);
 		setMinHeight(this.getHeight());
 		setMinWidth(this.getWidth());
-		this.setToolTipText((String) mUserFrame.getI18n().getObject("FRAME_TOOLTIP"));
+		//this.setToolTipText((String) mUserFrame.getI18n().getObject("FRAME_TOOLTIP"));
 		
 	}
 
