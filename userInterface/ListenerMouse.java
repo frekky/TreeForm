@@ -185,7 +185,6 @@ public class ListenerMouse implements MouseListener {
 							mUserFrame.getInternalFrame().activateAssociationPane((SyntacticFeature) hold);
 						}
 					}
-					
 			}
 		}
 	}

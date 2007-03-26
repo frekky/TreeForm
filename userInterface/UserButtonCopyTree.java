@@ -23,11 +23,20 @@
  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments
  */
 package userInterface;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
+import staticFunctions.Sizer;
 
 /**
  * @author Donald Derrick
@@ -50,61 +59,7 @@ public class UserButtonCopyTree extends JButton implements Observer{
 	 */
 	private ObservableNew mObservableNew;
 
-	/**
-	 * 
-	 * @uml.property name="mHoldIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="mHoldIcon" multiplicity="(0 1)"
-	 */
-	private ImageIcon mHoldIcon;
-
-	/**
-	 * 
-	 * @uml.property name="mActiveIconSmall"
-	 * @uml.associationEnd 
-	 * @uml.property name="mActiveIconSmall" multiplicity="(1 1)"
-	 */
-	private ImageIcon mActiveIconSmall;
-
-	/**
-	 * 
-	 * @uml.property name="mDisableIconSmall"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDisableIconSmall" multiplicity="(1 1)"
-	 */
-	private ImageIcon mDisableIconSmall;
-
-	/**
-	 * 
-	 * @uml.property name="mEnableIconSmall"
-	 * @uml.associationEnd 
-	 * @uml.property name="mEnableIconSmall" multiplicity="(1 1)"
-	 */
-	private ImageIcon mEnableIconSmall;
-
-	/**
-	 * 
-	 * @uml.property name="mActiveIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="mActiveIcon" multiplicity="(1 1)"
-	 */
-	private ImageIcon mActiveIcon;
-
-	/**
-	 * 
-	 * @uml.property name="mDisableIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDisableIcon" multiplicity="(1 1)"
-	 */
-	private ImageIcon mDisableIcon;
-
-	/**
-	 * 
-	 * @uml.property name="mEnableIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="mEnableIcon" multiplicity="(1 1)"
-	 */
-	private ImageIcon mEnableIcon;
+	
 
 	private boolean mSize;
 	public UserButtonCopyTree(UserFrame pUserFrame, 
@@ -129,66 +84,37 @@ public class UserButtonCopyTree extends JButton implements Observer{
 	 */
 	ImageIcon pActiveIconSmall, boolean pSize, ObservableNew pObservableNew) {
 		super();
-		mEnableIcon = pEnableIcon;
-		mDisableIcon = pDisableIcon;
-		mActiveIcon = pActiveIcon;
-		mEnableIconSmall = pEnableIconSmall;
-		mDisableIconSmall = pDisableIconSmall;
-		mActiveIconSmall = pActiveIconSmall;
 		mSize = pSize;
 		mObservableNew = pObservableNew;
-		setIcons();
-	}
-	/**
-	 * 
-	 */
-	private void setIcons() {
 		if (mSize)
 		{
-			this.setIcon(mEnableIcon);
+			this.setPreferredSize(new Dimension(32,32));
 		}
 		else
 		{
-			this.setIcon(mEnableIconSmall);
+			this.setPreferredSize(new Dimension(24,24));
 		}
-		if (mSize)
-		{
-			this.setDisabledIcon(mDisableIcon);
-		}
-		else
-		{
-			this.setDisabledIcon(mDisableIconSmall);
-		}		
 	}
+
 	public void activate()
 	{
-		mHoldIcon = (ImageIcon) this.getIcon();
-		if (mSize)
-		{
-			this.setIcon(mActiveIcon);
-		}
-		else
-		{
-			this.setIcon(mActiveIconSmall);
-		}
+
 	}
 	public void deactivate()
 	{
-		this.setIcon(mHoldIcon);
+//		this.setIcon(mHoldIcon);
 	}
 	public void makeSmall()
 	{
 		mSize = false;
-		setIcons();
+//		setIcons();
 	}
 	public void makeBig()
 	{
 		mSize = true;
-		setIcons();
+//		setIcons();
 	}
-	/* (non-Javadoc)
-	 * @see java.util.Observer#update(java.util.Observable, java.lang.Object)
-	 */
+
 	public void update(Observable pObservable, Object arg1) {
 		if (pObservable == mObservableNew)
 	   {
@@ -202,5 +128,39 @@ public class UserButtonCopyTree extends JButton implements Observer{
 		  }
 	   }
 		
+	}
+	public void paintComponent(Graphics pG) {
+		super.paintComponent(pG);
+		Graphics2D mGraphics2D = (Graphics2D) pG;
+		mGraphics2D.setColor(Color.BLACK);
+		mGraphics2D.setRenderingHint(
+			RenderingHints.KEY_ANTIALIASING,
+			RenderingHints.VALUE_ANTIALIAS_ON);
+		mGraphics2D.setRenderingHint(
+			RenderingHints.KEY_RENDERING,
+			RenderingHints.VALUE_RENDER_QUALITY);
+		if (mSize)
+		{
+			mGraphics2D.scale(32f/24f, 32f/24f);
+		}
+		
+
+		 float dash[] = {2.0f, 2.0f};
+		    mGraphics2D.setStroke(new BasicStroke(.5f, BasicStroke.CAP_BUTT,
+		                BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f)); 		
+		mGraphics2D.drawRect(4, 4, 16, 16);
+		mGraphics2D.setStroke(new BasicStroke(.5f));
+		mGraphics2D.setColor(Color.gray);
+		mGraphics2D.fillRect(6,6,11,11);
+		//mGraphics2D.setStroke(new BasicStroke(1f));
+		mGraphics2D.setColor(Color.black);
+		mGraphics2D.drawRect(6,6,11,11);
+		mGraphics2D.setColor(Sizer.BLUE1);
+		mGraphics2D.fillRect(8,8,2,1);
+		mGraphics2D.setColor(Sizer.BLUE2);
+		mGraphics2D.fillRect(12, 8, 2, 1);
+		mGraphics2D.setColor(Color.black);
+		Ellipse2D ellipse2D = new Ellipse2D.Float(8.5f,10,6,6);
+		mGraphics2D.fill(ellipse2D);
 	}
 }

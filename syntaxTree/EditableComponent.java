@@ -318,6 +318,8 @@ public class EditableComponent extends JComponent {
 				deleteHead();
 				AttributedString lAT = new AttributedString(String.valueOf(pKE
 						.getKeyChar()));
+				//System.out.println(KeyEvent.getModifiersExText(pKE.getModifiersEx()));
+				
 				lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, 1);
 				insertHead(lAT, getInsertionIndex());
 				setInsertionIndex(getInsertionIndex() + 1);

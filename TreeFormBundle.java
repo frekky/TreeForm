@@ -313,7 +313,7 @@ public class TreeFormBundle extends ListResourceBundle {
 						new ImageIcon("image/copy_tree24_d.gif") },
 				{ "COPY_TREE_ICON_LARGE_HIGHLIGHT",
 						new ImageIcon("image/copy_tree24_h.gif") },
-				{ "COPY_TREE_TOOLTIP", new String("Copy Tree to clipboard, paste in MS Word or other text editor.") },
+				{ "COPY_TREE_TOOLTIP", new String("Copy Tree to clipboard, paste in MS Word.  Shift-drag over tree for more precise copy.") },
 				{ "COPY_TREE_LABEL", new String("Copy Tree") },
 				
 				{ "PRINT_ICON_SMALL", new ImageIcon("image/print16.gif") },
