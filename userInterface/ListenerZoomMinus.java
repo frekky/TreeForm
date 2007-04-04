@@ -62,7 +62,7 @@ public class ListenerZoomMinus implements ActionListener {
 	 * 
 	 */
 	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getObservableZoom().setValue(mUserFrame.getObservableZoom().getValue() * 0.909090909F);
+		mUserFrame.getObservableZoom().setValue(mUserFrame.getObservableZoom().getValue() * 0.909090909090f);
 		mUserFrame.getUserControl().zoom(mUserFrame.getObservableZoom().getValue());
 	}
 

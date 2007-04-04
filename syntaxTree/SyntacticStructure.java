@@ -238,7 +238,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		mStartTrace = new LinkedList();
 		mEndTrace = new LinkedList();
 		mParent = pParent;
-		setToolTipText((String) pUserInternalFrame.getUserFrame().getI18n().getObject("MOVE_SUBTREE"));
+		//setToolTipText((String) pUserInternalFrame.getUserFrame().getI18n().getObject("MOVE_SUBTREE"));
 		setSyntacticStructureLines(new SyntacticStructureLines());
 	}
 
@@ -526,7 +526,10 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	public void repaint()
 	{
 		super.repaint();
+		if (getSyntacticStructureLines() != null)
+		{
 		getSyntacticStructureLines().repaint();
+		}
 	}
 /**
  * 

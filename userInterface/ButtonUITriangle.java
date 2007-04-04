@@ -135,7 +135,7 @@ public class ButtonUITriangle extends UserBrowserButton {
 		mGraphics2D.drawLine(drawBottom.width, drawBottom.height, drawBottom.x, drawBottom.y);
 
 		// repeat for the X
-		ats = new AttributedString("X");
+		ats = new AttributedString("text");
 		ats.addAttribute(TextAttribute.FONT, mFont);
 		iter = ats.getIterator();
 		tl = new TextLayout(iter, mFrc);

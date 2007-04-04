@@ -171,6 +171,9 @@ public class UserMenuFile extends JMenu {
 		mClose = new UserMenuItemClose((String) mUserFrame.getI18n().getObject("CLOSE_LABEL"),mUserFrame.getObservableNew());
 		mClose.addActionListener(new ListenerClose(mUserFrame));
 		//mClose.setMnemonic('C');
+		mClose.setAccelerator(KeyStroke.getKeyStroke(
+				   KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+
 		mClose.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mClose);	
 		this.add(mClose);
@@ -194,6 +197,9 @@ public class UserMenuFile extends JMenu {
 		this.add(mSave);
 		mSaveAs = new UserMenuItemSaveAs((String) mUserFrame.getI18n().getObject("SAVEAS_LABEL"), (ImageIcon) mUserFrame.getI18n().getObject("SAVEAS_ICON_SMALL"), mUserFrame.getObservableNew());
 		mSaveAs.addActionListener(new ListenerSaveAs(mUserFrame));
+		mSaveAs.setAccelerator(KeyStroke.getKeyStroke(
+				   KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() + KeyEvent.SHIFT_DOWN_MASK));
+
 		mSaveAs.setEnabled(false);
 		mUserFrame.getObservableNew().addObserver(mSaveAs);
 		this.add(mSaveAs);

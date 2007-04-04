@@ -451,6 +451,7 @@ public class UserToolBar extends JToolBar {
 		mFontSize.setEditable(true);
 		mFontSize.setFocusable(false);
 		mFontSize.addActionListener(new ListenerFontSize(mUserFrame));
+		
 		mUserFrame.getObservableFontSize().addObserver(mFontSize);
 		this.add(mFontSize);	
 		this.add(new JToolBar.Separator());

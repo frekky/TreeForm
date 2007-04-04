@@ -60,16 +60,10 @@ public class Start {
  */
 
 	public static void main(String[] args) {
-//		Runtime lRuntime = Runtime.getRuntime();
-//		String vers = System.getProperty("os.name").toLowerCase();
-//	    if (vers.indexOf("mac") != -1) {
-//	    	 System.setProperty("apple.laf.useScreenMenuBar", "true"); 
-//	    }
-//	    else
-//	    {
+		System.setProperty("apple.laf.useScreenMenuBar", "true"); 
+		
 			try {
 				UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-				System.setProperty("apple.laf.useScreenMenuBar", "true"); 
 			} catch (ClassNotFoundException e) {
 	
 				e.printStackTrace();
@@ -83,12 +77,12 @@ public class Start {
 	
 				e.printStackTrace();
 			}
-//	    }
 		pLogger.info("Launching the application...");
     
 			mUserSplashScreen = new UserSplashScreen("image/sunset800.jpg");
 			mUserSplashScreen.splash();
 			UserFrame userUI = new UserFrame();
+			//userUI.addKeyListener(new ListenerKeyboard());
 			userUI.validate();
 			EventQueue.invokeLater( new SplashScreenCloser() );
     

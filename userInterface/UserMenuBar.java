@@ -100,10 +100,10 @@ public class UserMenuBar extends JMenuBar {
 		super();
 		mUserFrame = pUserFrame;
 		mFile = new UserMenuFile((String) mUserFrame.getI18n().getObject("FILE_LABEL"),mUserFrame);
-		mFile.setMnemonic('F');
+		//mFile.setMnemonic('F');
 		this.add(mFile);
 		mEdit = new UserMenuEdit((String) mUserFrame.getI18n().getObject("EDIT_LABEL"),mUserFrame);
-		mEdit.setMnemonic('E');
+		//mEdit.setMnemonic('E');
 		this.add(mEdit);
 //		mView = new UserMenuView((String) mUserFrame.getI18n().getObject("VIEW_LABEL"),mUserFrame);
 //		mView.setMnemonic('V');
@@ -112,10 +112,10 @@ public class UserMenuBar extends JMenuBar {
 //		mFormat.setMnemonic('F');
 //		this.add(mFormat);
 		mWindow = new UserMenuWindow((String) mUserFrame.getI18n().getObject("WINDOW_LABEL"),mUserFrame.getDesktopPane(), mUserFrame);
-		mWindow.setMnemonic('W');
+		//mWindow.setMnemonic('W');
 		this.add(mWindow);
 		mHelp = new UserMenuHelp((String) mUserFrame.getI18n().getObject("HELP_LABEL"),mUserFrame);
-		mHelp.setMnemonic('H');
+		//mHelp.setMnemonic('H');
 		this.add(mHelp);	
 	}
 /**

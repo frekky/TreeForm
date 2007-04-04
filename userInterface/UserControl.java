@@ -717,9 +717,7 @@ public void loadTree() {
 		public void zoom(float pZoom) {
 			UserInternalFrame lUIF = mUserFrame.getDesktopPane().getInternalFrame();
 			lUIF.setScale(pZoom);
-//			lUIF.getSyntaxFacade().displayTree(lUIF.getSyntaxFacade().getSentence());
 			lUIF.getSyntaxFacade().displayTree();
-			//lUIF.getSyntaxFacade().setUIFBounds();
 		}
 /**
  * Selects a new frame.

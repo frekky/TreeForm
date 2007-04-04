@@ -287,6 +287,7 @@ public class UserFrame extends JFrame{
 		this.setVisible(true);
 		getUserControl().createNewTree();
 		getObservableNew().setValue(getDesktopPane().getAllFrames().length + 1);
+		//this.getContentPane().addKeyListener(new ListenerKeyboard());
 	}
 
 private void setObservableBackgroundColor(ObservableBackgroundColor color) {

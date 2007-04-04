@@ -28,9 +28,17 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDropEvent;
+import java.awt.dnd.DropTargetListener;
+import java.awt.dnd.DnDConstants;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.InputMethodListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -43,6 +51,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.Point2D.Float;
+import java.awt.im.InputMethodRequests;
+import java.io.IOException;
+import java.io.Serializable;
 import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.text.CharacterIterator;
@@ -74,9 +85,6 @@ import enumerators.SyntacticStructureType;
  */
 public class EditableComponent extends JComponent {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	private int mTextHeight;
@@ -85,24 +93,10 @@ public class EditableComponent extends JComponent {
 
 	private boolean mCaratTimer;
 
-	/**
-	 * 
-	 * @uml.property name="mUserInternalFrame"
-	 * @uml.associationEnd
-	 * @uml.property name="mUserInternalFrame" multiplicity="(1 1)"
-	 */
 	private UserInternalFrame mUserInternalFrame;
 
 	private TextLayout mTextLayoutHead;
 
-	/**
-	 * 
-	 * @uml.property name="mHead"
-	 * @uml.associationEnd
-	 * @uml.property name="mHead" multiplicity="(0 1)"
-	 *               qualifier="TRANSFORM:java.awt.font.TextAttribute
-	 *               value:java.awt.font.TransformAttribute"
-	 */
 	private AttributedString mHead;
 
 	private int mHeadLength;
@@ -141,48 +135,89 @@ public class EditableComponent extends JComponent {
 
 	private static final Color ASSOCIATION_COLOR = new Color(166, 127, 190, 90);
 
-	/**
-	 * 
-	 * @author Donald Derrick
-	 * @version 0.1 <br>
-	 *          date: 19-Aug-2004 <br>
-	 *          <br>
-	 *          This is a Key listener, it only works when the implementing
-	 *          class has focus.
-	 */
-	public class UserKeyListener implements KeyListener {
-		/**
-		 * If a key is pressed, do the following: <br>
-		 * LEFT: subtract one from the insertionIndex, set the beginning and end
-		 * of the highlight to the insertion index, set the Head Observers, and
-		 * repaint the screen so the new carat position shows up. <br>
-		 * <br>
-		 * RIGHT: add one to the insertionIndex, set the beginning and end of
-		 * the highlight to the insertion index, set the Head Observers, and
-		 * repaint the screen so the new carat position shows up. <br>
-		 * <br>
-		 * DELETE: delete the highlighted text (if any), then step the highlight
-		 * forward one, and delete this new highlightted text. <br>
-		 * <br>
-		 * BACKSPACE: delete the highlighted text (if any), then step the
-		 * highlight back one, and delete this new highlighted text.
-		 */
+	public class UserDropTarget extends DropTarget
+	implements DropTargetListener, Serializable {
+
+		private static final long serialVersionUID = 1L;
+		public void drop(DropTargetDropEvent dtde) {
+			setClicked(pointTestXY(dtde.getLocation().x,dtde.getLocation().y),1,dtde.getSource());
+			Object lObject;
+			try {
+				dtde.acceptDrop(DnDConstants.ACTION_COPY);
+				lObject = dtde.getTransferable().getTransferData(DataFlavor.stringFlavor);
+				if (lObject instanceof String)
+				{
+					deleteHead();	
+					AttributedString lAT = new AttributedString((String)lObject);
+					lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, 1);
+					insertHead(lAT, getInsertionIndex());
+					setInsertionIndex(getInsertionIndex() + 1);
+					setHighlightBegin(getInsertionIndex());
+					setHighlightEnd(getInsertionIndex());
+					mUserInternalFrame.getSyntaxFacade().displayTree();
+				}
+			} catch (UnsupportedFlavorException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+	
+	
+	private class UserInputMethodListener implements InputMethodListener{
+
+		public void caretPositionChanged(InputMethodEvent arg0) {
+			
+		}
+
+		public void inputMethodTextChanged(InputMethodEvent event) {
+			deleteHead();
+			AttributedString lAT = new AttributedString(event.getText());		
+			lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, 1);
+			insertHead(lAT, getInsertionIndex());
+			setInsertionIndex(getInsertionIndex() + 1);
+			setHighlightBegin(getInsertionIndex());
+			setHighlightEnd(getInsertionIndex());
+			mUserInternalFrame.getSyntaxFacade().displayTree();		
+		}	
+	}
+	private class UserKeyListener implements KeyListener {
+	
 		public void keyPressed(KeyEvent pKE) {
 
 			int location = pKE.getKeyCode();
 			if (location == KeyEvent.VK_LEFT) {
+				
 				setInsertionIndex(getInsertionIndex() - 1);
-				setCarat(true);
-				setHighlightBegin(getInsertionIndex());
 				setHighlightEnd(getInsertionIndex());
+				if ((pKE.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0)
+				{
+					setCarat(true);
+					setHighlightBegin(getInsertionIndex());
+				}
+				else
+				{
+					setCarat(false);
+				}
 				setHeadObservers();
 				repaint();
-
 			} else if (location == KeyEvent.VK_RIGHT) {
 				setInsertionIndex(getInsertionIndex() + 1);
-				setCarat(true);
-				setHighlightBegin(getInsertionIndex());
+				
 				setHighlightEnd(getInsertionIndex());
+				if ((pKE.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0)
+				{
+					setHighlightBegin(getInsertionIndex());
+					setCarat(true);
+				}
+				else
+				{
+					setCarat(false);
+				}
 				setHeadObservers();
 				repaint();
 
@@ -301,7 +336,7 @@ public class EditableComponent extends JComponent {
 		 * nothing
 		 */
 		public void keyReleased(KeyEvent pKE) {
-
+			//System.out.println("key released");
 		}
 
 		/**
@@ -310,7 +345,9 @@ public class EditableComponent extends JComponent {
 		 * the visible textstring. Then redisplay the tree.
 		 */
 		public void keyTyped(KeyEvent pKE) {
+			//System.out.println("key typed");
 			int location = pKE.getKeyChar();
+			setCarat(true);
 			if (location != 8 && location != 127
 					&& (pKE.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) == 0
 					&& (pKE.getModifiersEx() & KeyEvent.META_DOWN_MASK) == 0) {
@@ -328,6 +365,7 @@ public class EditableComponent extends JComponent {
 				mUserInternalFrame.getSyntaxFacade().displayTree();
 			}
 		}
+
 	}
 
 	/**
@@ -338,58 +376,18 @@ public class EditableComponent extends JComponent {
 	 *          <br>
 	 *          The mouse listener that performs hit tests.
 	 */
+
+	
 	private class HitTestMouseListener implements MouseInputListener {
 
 		private boolean mMove;
 
 		private boolean mTrace;
 
-		/**
-		 * If the mouse is clicked, set the highlight start, end, and insertion
-		 * index to the location of the pointtest. Then set the
-		 * ObservableClipboard value and index to the hittest location, turn on
-		 * the carat, and repaint
-		 */
 		public void mouseClicked(MouseEvent pME) {
-			mSyntaxFacade.deselectTree();
-			setInsertionIndex(pointTest(pME));
-			if (pME.getClickCount() > 1) {
-				selectAll();
-				doubleClick = true;
-			} else {
-				doubleClick = false;
-				setHighlightBegin(pointTest(pME));
-				setHighlightEnd(pointTest(pME));
-			}
-			mUserInternalFrame.getObservableClipboard().setValue(
-					pME.getSource());
-			mUserInternalFrame.getObservableClipboard().setIndex(
-					getInsertionIndex());
-			setCarat(true);
+			setClicked(pointTest(pME),pME.getClickCount(),pME.getSource());
 		}
 
-		
-
-		/**
-		 * Set the layout origin for the carat This is calculated by getting the
-		 * size of the object, and the position of the center of the textlayout
-		 * within this object.
-		 */
-		private Point2D computeLayoutOrigin() {
-
-			Dimension size = getSize();
-
-			Point2D.Float origin = new Point2D.Float();
-
-			origin.x = (float) (size.width - mTextLayoutHead.getAdvance()) / 2;
-			origin.y = (float) (size.height - mTextLayoutHead.getDescent() + mTextLayoutHead
-					.getAscent()) / 2;
-			return origin;
-		}
-
-		/**
-		 * Simple highlight changes
-		 */
 		public void mouseEntered(MouseEvent arg0) {
 			if (mUserInternalFrame.getCursor().getType() != Cursor.HAND_CURSOR)
 			{
@@ -423,9 +421,6 @@ public class EditableComponent extends JComponent {
 			repaint();
 		}
 
-		/**
-		 * Simple highlight changes
-		 */
 		public void mouseExited(MouseEvent arg0) {
 			if (mUserInternalFrame.getCursor().getType() != Cursor.HAND_CURSOR)
 			{
@@ -458,16 +453,6 @@ public class EditableComponent extends JComponent {
 			repaint();
 		}
 
-		/**
-		 * A test for pressed mouse. If the SHIFT key is also pressed, a
-		 * movement flag is set, and the move cursor is displayed. <br>
-		 * If the RIGHT MOUSE BUTTON is pressed, a relevant popup menu is
-		 * displayed. <br>
-		 * Otherwise, a pointest is conducted, and the insertion index,
-		 * highlight begin, and highlight end are activated. Components are then
-		 * repainted. <br>
-		 * <br>
-		 */
 		public void mousePressed(MouseEvent e) {
 			if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0) {
 				mMove = true;
@@ -515,40 +500,7 @@ public class EditableComponent extends JComponent {
 		 *         Then you test the hit location in an unscaled environment,
 		 *         and return the correct index.
 		 */
-		private int pointTest(MouseEvent pME) {
-			Point2D origin = computeLayoutOrigin();
-
-			// Compute the mouse click location relative to
-			// textLayout's origin.
-			float clickX = (float) (pME.getX() - origin.getX());
-			float clickY = (float) (pME.getY() - origin.getY());
-
-			// Get the character position of the mouse click.
-			Rectangle2D lRectangle = mTextLayoutHead.getBounds();
-			if (clickX < (lRectangle.getWidth() / 2)) {
-				clickX = (float) ((lRectangle.getWidth() / 2) - (((lRectangle
-						.getWidth() / 2) - clickX) / (Sizer.scaleWidth() * getUserInternalFrame()
-						.getScale())));
-			} else {
-				clickX = (float) ((lRectangle.getWidth() / 2) + ((clickX - (lRectangle
-						.getWidth() / 2)) / (Sizer.scaleWidth() * getUserInternalFrame()
-						.getScale())));
-			}
-			if (clickY < (lRectangle.getHeight() / 2)) {
-				clickY = (float) ((lRectangle.getHeight() / 2) - (((lRectangle
-						.getHeight() / 2) - clickY) / (Sizer.scaleHeight() * getUserInternalFrame()
-						.getScale())));
-			} else {
-				clickY = (float) ((lRectangle.getHeight() / 2) + ((clickY - (lRectangle
-						.getHeight() / 2)) / (Sizer.scaleHeight() * getUserInternalFrame()
-						.getScale())));
-			}
-
-			TextHitInfo currentHit = mTextLayoutHead
-					.hitTestChar(clickX, clickY);
-			return currentHit.getInsertionIndex();
-		}
-
+		
 		/**
 		 * if the move flag is on, releasing the mouse is the completion of a
 		 * move or association event <br>
@@ -734,19 +686,22 @@ public class EditableComponent extends JComponent {
 	 *            mousemotion, and key listeners.
 	 */
 	public EditableComponent(UserInternalFrame pUserInternalFrame) {
+		this.setDropTarget((DropTarget) new UserDropTarget());
 		setUserInternalFrame(pUserInternalFrame);
 		setSyntaxFacade(pUserInternalFrame.getSyntaxFacade());
-		//mSelf = this;
 		mHead = new AttributedString(" ");
 		Font lFont = new Font("Doulos SIL", Font.BOLD, getUserInternalFrame()
 				.getProperties().getDefaultFontSize());
 		mHead.addAttribute(TextAttribute.FONT, lFont);
-		this.addMouseListener(new HitTestMouseListener());
-		this.addMouseMotionListener(new HitTestMouseListener());
-		this.addKeyListener(new UserKeyListener());
-		int delay = 500; // milliseconds
-		ActionListener taskPerformer = new ActionListener() {
+		HitTestMouseListener hitTest = new HitTestMouseListener();
+		this.addMouseListener(hitTest);
+		this.addMouseMotionListener(hitTest);
+		UserKeyListener key = new UserKeyListener();
+		this.addKeyListener(key);
+		this.addInputMethodListener(new UserInputMethodListener());
 
+		int delay = 500;
+		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
 				mCaratTimer = !mCaratTimer;
 				if (getCarat() == true) {
@@ -1402,5 +1357,84 @@ public class EditableComponent extends JComponent {
 		setHighlightEnd((int) lRectangle.getWidth());
 		repaint();
 		
+	}
+	public InputMethodRequests getInputMethodRequests()
+	{
+		return (InputMethodRequests) this.getInputContext();
+	}
+	public void setDropTarget(DropTarget dropTarget)
+	{
+		super.setDropTarget(dropTarget);
+	}
+	public DropTarget getDropTarget()
+	{
+		return super.getDropTarget();
+	}
+	public void setClicked(int pME, int clickCount, Object source)
+	{
+		mSyntaxFacade.deselectTree();
+		setInsertionIndex(pME);
+		if (clickCount > 1) {
+			selectAll();
+			doubleClick = true;
+		} else {
+			doubleClick = false;
+			setHighlightBegin(pME);
+			setHighlightEnd(pME);
+		}
+		mUserInternalFrame.getObservableClipboard().setValue(
+				source);
+		mUserInternalFrame.getObservableClipboard().setIndex(
+				getInsertionIndex());
+		setCarat(true);
+		requestFocus(true);
+	}
+	private int pointTest(MouseEvent pME) {
+		Point2D origin = computeLayoutOrigin();
+
+		// Compute the mouse click location relative to
+		// textLayout's origin.
+		float clickX = (float) (pME.getX() - origin.getX());
+		float clickY = (float) (pME.getY() - origin.getY());
+
+		// Get the character position of the mouse click.
+		return pointTestXY(clickX,clickY);
+	}
+	private int pointTestXY(float clickX, float clickY)
+	{
+		Rectangle2D lRectangle = mTextLayoutHead.getBounds();
+		if (clickX < (lRectangle.getWidth() / 2)) {
+			clickX = (float) ((lRectangle.getWidth() / 2) - (((lRectangle
+					.getWidth() / 2) - clickX) / (Sizer.scaleWidth() * getUserInternalFrame()
+					.getScale())));
+		} else {
+			clickX = (float) ((lRectangle.getWidth() / 2) + ((clickX - (lRectangle
+					.getWidth() / 2)) / (Sizer.scaleWidth() * getUserInternalFrame()
+					.getScale())));
+		}
+		if (clickY < (lRectangle.getHeight() / 2)) {
+			clickY = (float) ((lRectangle.getHeight() / 2) - (((lRectangle
+					.getHeight() / 2) - clickY) / (Sizer.scaleHeight() * getUserInternalFrame()
+					.getScale())));
+		} else {
+			clickY = (float) ((lRectangle.getHeight() / 2) + ((clickY - (lRectangle
+					.getHeight() / 2)) / (Sizer.scaleHeight() * getUserInternalFrame()
+					.getScale())));
+		}
+
+		TextHitInfo currentHit = mTextLayoutHead
+				.hitTestChar(clickX, clickY);
+		return currentHit.getInsertionIndex();
+	}
+	private Point2D computeLayoutOrigin() {
+
+		Dimension size = getSize();
+
+		Point2D.Float origin = new Point2D.Float();
+
+		origin.x = (float) (size.width - mTextLayoutHead.getAdvance()) / 2;
+		origin.y = (float) (size.height - mTextLayoutHead.getDescent() + mTextLayoutHead
+				.getAscent()) / 2;
+		return origin;
 	}
 }

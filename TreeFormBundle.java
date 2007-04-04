@@ -490,7 +490,7 @@ public class TreeFormBundle extends ListResourceBundle {
 				{"FEATURE_TEXT", new String("Feature")},
 				{"NODE_DOWN_TEXT", new String("Node Down")},
 				{"TERMINAL_TEXT", new String("Terminal")},
-				{"MORPH_TEXT", new String("Morph")},
+				{"MORPH_TEXT", new String("text")},
 				{"NODE_UP_TEXT", new String("Node Up")},
 				{"THETA_TEXT", new String("Theta Roles")},
 				{"TRIANGLE_TEXT", new String("Triangle")},
