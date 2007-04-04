@@ -149,7 +149,7 @@ public class EditableComponent extends JComponent {
 				{
 					deleteHead();	
 					AttributedString lAT = new AttributedString((String)lObject);
-					lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, 1);
+					lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, ((String)lObject).length());
 					insertHead(lAT, getInsertionIndex());
 					setInsertionIndex(getInsertionIndex() + 1);
 					setHighlightBegin(getInsertionIndex());
