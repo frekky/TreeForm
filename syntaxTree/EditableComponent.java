@@ -116,6 +116,8 @@ public class EditableComponent extends JComponent {
 	private Color mFontColor;
 
 	private Color mBackgroundColor;
+	
+	private int mDelete;
 
 	private boolean doubleClick = false;
 
@@ -135,7 +137,7 @@ public class EditableComponent extends JComponent {
 
 	private static final Color ASSOCIATION_COLOR = new Color(166, 127, 190, 90);
 
-	public class UserDropTarget extends DropTarget
+	private class UserDropTarget extends DropTarget
 	implements DropTargetListener, Serializable {
 
 		private static final long serialVersionUID = 1L;
@@ -151,7 +153,7 @@ public class EditableComponent extends JComponent {
 					AttributedString lAT = new AttributedString((String)lObject);
 					lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, ((String)lObject).length());
 					insertHead(lAT, getInsertionIndex());
-					setInsertionIndex(getInsertionIndex() + 1);
+					setInsertionIndex(getInsertionIndex() + ((String)lObject).length());
 					setHighlightBegin(getInsertionIndex());
 					setHighlightEnd(getInsertionIndex());
 					mUserInternalFrame.getSyntaxFacade().displayTree();
@@ -168,19 +170,30 @@ public class EditableComponent extends JComponent {
 	
 	private class UserInputMethodListener implements InputMethodListener{
 
+
 		public void caretPositionChanged(InputMethodEvent arg0) {
-			
+
 		}
 
 		public void inputMethodTextChanged(InputMethodEvent event) {
+			int start = event.getText().getBeginIndex();
+			int end = event.getText().getEndIndex();
+			int commit = event.getCommittedCharacterCount();
 			deleteHead();
+			if(mDelete > 0)
+			{
+			setHighlightBegin(getInsertionIndex() - mDelete);
+			setHighlightEnd(getInsertionIndex());
+			deleteHead();
+			}
+			mDelete = end - commit;
 			AttributedString lAT = new AttributedString(event.getText());		
-			lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, 1);
+			lAT.addAttributes(mUserInternalFrame.getAttributes(), start, end);
 			insertHead(lAT, getInsertionIndex());
-			setInsertionIndex(getInsertionIndex() + 1);
+			setInsertionIndex(getInsertionIndex() + end);
 			setHighlightBegin(getInsertionIndex());
 			setHighlightEnd(getInsertionIndex());
-			mUserInternalFrame.getSyntaxFacade().displayTree();		
+			mUserInternalFrame.getSyntaxFacade().displayTree();	
 		}	
 	}
 	private class UserKeyListener implements KeyListener {
