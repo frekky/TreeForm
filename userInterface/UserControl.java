@@ -37,7 +37,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.text.AttributedCharacterIterator;
 import java.text.AttributedString;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -59,7 +58,6 @@ import javax.swing.JPanel;
 import parser.XMLParser;
 import staticFunctions.Sizer;
 import syntaxTree.EditableComponent;
-import syntaxTree.SyntacticStructure;
 import syntaxTree.SyntaxFacade;
 import enumerators.ExportPictureType;
 import enumerators.SaveFileType;
@@ -559,34 +557,26 @@ public void loadTree() {
 		public void paste() {
 			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
 			{
-			Object lObject = getClipboard();
-			AttributedString lAT = null;
-			if (lObject instanceof String)
-			{
-				lAT = new AttributedString((String)lObject);
-				lAT.addAttributes(getAttributes(),0,((String)lObject).length());
-			}
-			else
-			{
-				lAT = (AttributedString) lObject;
-			}
-			int lLength = 0;
-			AttributedCharacterIterator lIterator = lAT.getIterator();
-			if (lIterator.first() != AttributedCharacterIterator.DONE)
-			{
-				lLength = 1;
-			}
-			while (lIterator.next() != AttributedCharacterIterator.DONE)
-			{
-				lLength += 1;
-			}
-			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).deleteHead();
-			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).insertHead(lAT,mUserFrame.getObservableClipboard().getIndex());
-			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setHighlightEnd(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
-			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setHighlightBegin(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
-			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setInsertionIndex(((SyntacticStructure)mUserFrame.getObservableClipboard().getValue()).getInsertionIndex() + lLength);
-			((EditableComponent) mUserFrame.getObservableClipboard().getValue()).setCarat(true);
-			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().displayTree();
+				EditableComponent ec = ((EditableComponent) mUserFrame.getObservableClipboard().getValue());
+				Object lObject = getClipboard();
+				AttributedString lAT = null;
+				if (lObject instanceof String)
+				{
+					lAT = new AttributedString((String)lObject);
+					lAT.addAttributes(getAttributes(),0,((String)lObject).length());
+				}
+				else
+				{
+					lAT = (AttributedString) lObject;
+				}
+				int lLength =lAT.getIterator().getEndIndex() -  lAT.getIterator().getBeginIndex();
+				ec.deleteHead();
+				ec.insertHead(lAT,ec.getInsertionIndex());
+				ec.setInsertionIndex(ec.getInsertionIndex() + lLength);
+				ec.setHighlightEnd(ec.getInsertionIndex());
+				ec.setHighlightBegin(ec.getInsertionIndex());
+				ec.setCarat(true);
+				mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().displayTree();
 			}
 		}
 /**

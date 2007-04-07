@@ -149,6 +149,7 @@ public class EditableComponent extends JComponent {
 				lObject = dtde.getTransferable().getTransferData(DataFlavor.stringFlavor);
 				if (lObject instanceof String)
 				{
+					//System.out.println("item dropped");
 					deleteHead();	
 					AttributedString lAT = new AttributedString((String)lObject);
 					lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, ((String)lObject).length());
@@ -170,30 +171,34 @@ public class EditableComponent extends JComponent {
 	
 	private class UserInputMethodListener implements InputMethodListener{
 
-
 		public void caretPositionChanged(InputMethodEvent arg0) {
-
 		}
-
+		
 		public void inputMethodTextChanged(InputMethodEvent event) {
 			int start = event.getText().getBeginIndex();
 			int end = event.getText().getEndIndex();
 			int commit = event.getCommittedCharacterCount();
+			//System.out.println("start = " + start);
+			//System.out.println("end = " + end);
+			//System.out.println("commit = " + commit);
 			deleteHead();
 			if(mDelete > 0)
 			{
-			setHighlightBegin(getInsertionIndex() - mDelete);
-			setHighlightEnd(getInsertionIndex());
+			setHighlightBegin(getInsertionIndex());
+			setHighlightEnd(getInsertionIndex() - mDelete);
 			deleteHead();
 			}
 			mDelete = end - commit;
-			AttributedString lAT = new AttributedString(event.getText());		
-			lAT.addAttributes(mUserInternalFrame.getAttributes(), start, end);
-			insertHead(lAT, getInsertionIndex());
-			setInsertionIndex(getInsertionIndex() + end);
-			setHighlightBegin(getInsertionIndex());
-			setHighlightEnd(getInsertionIndex());
-			mUserInternalFrame.getSyntaxFacade().displayTree();	
+			if(start != end)
+			{
+				AttributedString lAT = new AttributedString(event.getText());
+				lAT.addAttributes(mUserInternalFrame.getAttributes(), start, end);
+				insertHead(lAT, getInsertionIndex());
+				setInsertionIndex(getInsertionIndex() + (end-start));
+				setHighlightBegin(getInsertionIndex());
+				setHighlightEnd(getInsertionIndex());
+				mUserInternalFrame.getSyntaxFacade().displayTree();	
+			}
 		}	
 	}
 	private class UserKeyListener implements KeyListener {
@@ -366,8 +371,6 @@ public class EditableComponent extends JComponent {
 				deleteHead();
 				AttributedString lAT = new AttributedString(String.valueOf(pKE
 						.getKeyChar()));
-				//System.out.println(KeyEvent.getModifiersExText(pKE.getModifiersEx()));
-				
 				lAT.addAttributes(mUserInternalFrame.getAttributes(), 0, 1);
 				insertHead(lAT, getInsertionIndex());
 				setInsertionIndex(getInsertionIndex() + 1);
