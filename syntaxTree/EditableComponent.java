@@ -31,6 +31,7 @@ import java.awt.Shape;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.DropTarget;
+import java.awt.dnd.DropTargetDragEvent;
 import java.awt.dnd.DropTargetDropEvent;
 import java.awt.dnd.DropTargetListener;
 import java.awt.dnd.DnDConstants;
@@ -141,6 +142,12 @@ public class EditableComponent extends JComponent {
 	implements DropTargetListener, Serializable {
 
 		private static final long serialVersionUID = 1L;
+		public void dragOver(DropTargetDragEvent dtde)
+		{
+			setClicked(pointTestXY(dtde.getLocation().x,dtde.getLocation().y),1,dtde.getSource());			
+			//System.out.println("here");
+			repaint();
+		}
 		public void drop(DropTargetDropEvent dtde) {
 			setClicked(pointTestXY(dtde.getLocation().x,dtde.getLocation().y),1,dtde.getSource());
 			Object lObject;
@@ -700,7 +707,9 @@ public class EditableComponent extends JComponent {
 	 *            mousemotion, and key listeners.
 	 */
 	public EditableComponent(UserInternalFrame pUserInternalFrame) {
-		this.setDropTarget((DropTarget) new UserDropTarget());
+		DropTarget dtl = (DropTarget) new UserDropTarget();
+		this.setDropTarget(dtl);
+		
 		setUserInternalFrame(pUserInternalFrame);
 		setSyntaxFacade(pUserInternalFrame.getSyntaxFacade());
 		mHead = new AttributedString(" ");
@@ -713,7 +722,6 @@ public class EditableComponent extends JComponent {
 		UserKeyListener key = new UserKeyListener();
 		this.addKeyListener(key);
 		this.addInputMethodListener(new UserInputMethodListener());
-
 		int delay = 500;
 		ActionListener taskPerformer = new ActionListener() {
 			public void actionPerformed(ActionEvent evt) {
@@ -1404,18 +1412,18 @@ public class EditableComponent extends JComponent {
 		requestFocus(true);
 	}
 	private int pointTest(MouseEvent pME) {
-		Point2D origin = computeLayoutOrigin();
-
-		// Compute the mouse click location relative to
-		// textLayout's origin.
-		float clickX = (float) (pME.getX() - origin.getX());
-		float clickY = (float) (pME.getY() - origin.getY());
+		
+		float clickX = (float) (pME.getX());
+		float clickY = (float) (pME.getY());
 
 		// Get the character position of the mouse click.
 		return pointTestXY(clickX,clickY);
 	}
 	private int pointTestXY(float clickX, float clickY)
 	{
+		Point2D origin = computeLayoutOrigin();
+		clickX -=origin.getX();
+		clickY -=origin.getY();
 		Rectangle2D lRectangle = mTextLayoutHead.getBounds();
 		if (clickX < (lRectangle.getWidth() / 2)) {
 			clickX = (float) ((lRectangle.getWidth() / 2) - (((lRectangle

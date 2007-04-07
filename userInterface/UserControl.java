@@ -450,7 +450,6 @@ public void loadTree() {
  *
  */
 		public void addDemographicInformation() {
-			// TODO: I have to add something here, structure not known yet.
 		}
 /**
  * 
