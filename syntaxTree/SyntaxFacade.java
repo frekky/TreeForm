@@ -504,11 +504,20 @@ private void firstWalk(SyntacticStructure v,int position) {
 			apportion((SyntacticStructure) v.getChildren().get(i), i);
 		}
 		executeShifts(v);
+//		double midpoint = 0.5*(((SyntacticStructure) v.getChildren().getFirst()).getPrelim() 
+//				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim()
+//				- v.getButtonWidth()
+//				+ ((SyntacticStructure) v.getChildren().getLast()).getButtonWidth()
+//				);
+		
 		double midpoint = 0.5*(((SyntacticStructure) v.getChildren().getFirst()).getPrelim() 
+				+ ((SyntacticStructure) v.getChildren().getFirst()).getButtonWidth()/2
 				+ ((SyntacticStructure) v.getChildren().getLast()).getPrelim()
+				+ ((SyntacticStructure) v.getChildren().getLast()).getButtonWidth()/2
 				- v.getButtonWidth()
-				+ ((SyntacticStructure) v.getChildren().getLast()).getButtonWidth()
 				);
+		
+		
 		//System.out.println("midpoint = " + midpoint);
 		if (position != 0)
 		{

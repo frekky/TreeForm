@@ -4,10 +4,10 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.awt.RenderingHints;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.GeneralPath;
 import java.util.LinkedList;
 
 import javax.swing.JComponent;
@@ -42,6 +42,10 @@ public class TraceComponent extends JComponent {
 	private int mRight;
 	private int mTop;
 	private int mBottom;
+	private double mLeftHeightBottom;
+	private double mRightHeightBottom;
+	private double mLeftHeightTop;
+	private double mRightHeightTop;
 	private static final int POSITION_BOTTOM = 0;
 	private static final int POSITION_LEFT = 1;
 	private static final int POSITION_RIGHT = 2;
@@ -137,12 +141,44 @@ public class TraceComponent extends JComponent {
 				,midStartX,(float) midStartY,
 				midEndX,(float) midEndY,mEndX,mEndY);
 		contentGraphics.draw(bezier);
+		drawArrow(contentGraphics);
 		start.setStartX(mStartX);
 		start.setEndX(mEndX);
 		start.setStartY(mStartY);
 		start.setEndY(mEndY);
+		
 	}
 	
+	private void drawArrow(Graphics2D contentGraphics) {
+		double    xFrom, xTo, yFrom, yTo;
+	    double denom, x, y, dx, dy, cos, sin;
+	    Polygon triangle;
+
+	    xFrom  = midEndX;
+	    xTo   = mEndX;
+	    yFrom  = midEndY;
+	    yTo   = mEndY;
+
+	    dx   	= (double)(xTo - xFrom);
+	    dy   	= (double)(yTo - yFrom);
+	    denom 	= Math.sqrt(dx*dx + dy*dy);
+
+	    cos = triangleLength /denom;
+	    sin = triangleLength /denom;
+	    x   = xTo - cos*dx;
+	    y   = yTo - cos*dy;
+	    int x1  = (int)(x - sin*dy);
+	    int y1  = (int)(y + sin*dx);
+	    int x2  = (int)(x + sin*dy);
+	    int y2  = (int)(y - sin*dx);
+
+	    triangle = new Polygon();
+	    triangle.addPoint((int)xTo, (int)yTo);
+	    triangle.addPoint(x1, y1);
+	    triangle.addPoint(x2, y2);
+	    contentGraphics.fillPolygon(triangle);
+	    contentGraphics.drawPolygon(triangle);
+	}
 	private boolean calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)
 	{
 		
@@ -168,33 +204,17 @@ public class TraceComponent extends JComponent {
 			return true;
 		}
 		
-		if (start.getAbsoluteOrder() == 0 
-				&& end.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
-				{
-					drawStart(start,contentGraphics,POSITION_LEFT);
-					drawEnd(end,contentGraphics,POSITION_RIGHT);
-					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
-					midStartX = mStartX - 20;
-					midEndX = mEndX + 20;
-					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
-					return true;
-				}
-		if (end.getAbsoluteOrder() == 0
-				&& start.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(start.getLevel())).size()-1)
-				{
-					drawStart(start,contentGraphics,POSITION_RIGHT);
-					drawEnd(end,contentGraphics,POSITION_LEFT);
-					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
-					midStartX = mStartX + 20;
-					midEndX = mEndX - 20;
-					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
-					return true;
-				}
-		
 		if (start.getAbsoluteOrder() == 0 || end.getAbsoluteOrder() == 0)
 		{
 			drawStart(start,contentGraphics,POSITION_LEFT);
-			drawEnd(end,contentGraphics,POSITION_LEFT);
+			if(end.getChildren().size() == 0)
+			{
+				drawEnd(end,contentGraphics,POSITION_BOTTOM);
+			}
+			else
+			{
+				drawEnd(end,contentGraphics,POSITION_LEFT);
+			}
 			midStartX = mStartX;
 			midEndX = mEndX;
 			if (mEndY > mStartY)
@@ -213,7 +233,14 @@ public class TraceComponent extends JComponent {
 				|| end.getAbsoluteOrder() == ((LinkedList) mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
 		{
 			drawStart(start,contentGraphics,POSITION_RIGHT);
-			drawEnd(end,contentGraphics,POSITION_RIGHT);
+			if(end.getChildren().size() == 0)
+			{
+				drawEnd(end,contentGraphics,POSITION_BOTTOM);
+			}
+			else
+			{
+				drawEnd(end,contentGraphics,POSITION_RIGHT);
+			}
 			midStartX = mStartX;
 			midEndX = mEndX;
 			if (mEndY < mStartY)
@@ -228,7 +255,42 @@ public class TraceComponent extends JComponent {
 			}
 			return true;
 		}
-		
+		if (start.getAbsoluteOrder() == 0 
+				&& end.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(end.getLevel())).size()-1)
+				{
+					drawStart(start,contentGraphics,POSITION_LEFT);
+					if(end.getChildren().size() == 0)
+					{
+						drawEnd(end,contentGraphics,POSITION_BOTTOM);
+					}
+					else
+					{
+						drawEnd(end,contentGraphics,POSITION_RIGHT);
+					}
+					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					midStartX = mStartX - 20;
+					midEndX = mEndX + 20;
+					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					return true;
+				}
+		if (end.getAbsoluteOrder() == 0
+				&& start.getAbsoluteOrder() == ((LinkedList)mSyntaxFacade.getLinkedArray().get(start.getLevel())).size()-1)
+				{
+					drawStart(start,contentGraphics,POSITION_RIGHT);
+					if(end.getChildren().size() == 0)
+					{
+						drawEnd(end,contentGraphics,POSITION_BOTTOM);
+					}
+					else
+					{
+						drawEnd(end,contentGraphics,POSITION_LEFT);
+					}
+					midStartY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					midStartX = mStartX + 20;
+					midEndX = mEndX - 20;
+					midEndY = mUserInternalFrame.getProperties().getTopTranslate() - 30;
+					return true;
+				}
 		
 		if(start.getLevel() > end.getLevel())
 		{
@@ -378,8 +440,8 @@ public class TraceComponent extends JComponent {
 	
 	private void drawStart(SyntacticStructure start,
 			Graphics2D contentGraphics, int position) {
-		//if (start.getChildren().size() == 0)
-		if (0==0)
+		if (start.getChildren().size() == 0)
+		//if (0==0)
 		{
 			if (position == POSITION_BOTTOM)
 			{
@@ -427,18 +489,47 @@ public class TraceComponent extends JComponent {
 		{
 			mLeft = (int) start.getButtonX();
 			mRight = (int) (start.getButtonX() + start.getButtonWidth());
-			mTop = (int) start.getButtonY();
+			mTop = (int) start.getButtonY() - mUserInternalFrame.getProperties().getMinLineLength()/2;
 			mBottom = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
 			setSubtreeBounds(start);
-			mLeft -= (int) ((mRight-mLeft) *.15);
-			//mTop -= (int) ((mBottom-mTop) *.15);
-			mRight += (int) ((mRight-mLeft) *.1);
-			mBottom += (int) ((mBottom-mTop) *.2);
+			
+			
+			// Which diagonal is bigger?
+			double LBRTy = mLeftHeightBottom - mRightHeightTop;
+			double LTRBy = mLeftHeightTop - mRightHeightBottom;
+			double length = Math.abs(mLeft - mRight);
+			double width = Math.abs(mTop - mBottom);
+			double centerX = mLeft + (mRight-mLeft)/2;
+			double centerY = mTop + (mBottom-mTop)/2;
+			double LBRT = Math.sqrt(length*length + LBRTy*LBRTy);
+			double LTRB = Math.sqrt(length*length + LTRBy*LTRBy);
+//			
+//			System.out.println("LBRTy = " + LBRTy);
+//			System.out.println("LTRBy = " + LTRBy);
+//			System.out.println("length = " + length);
+//			System.out.println("width = " + width);
+//			System.out.println("centerX = " + centerX);
+//			System.out.println("center Y = " + centerY);
+//			System.out.println("LBRT = " + LBRT);
+//			System.out.println("LTRB = " + LTRB);
+			// what is the angle from center to left and center to right?
+			double diagLeft = (LBRT > LTRB ? mLeftHeightBottom - centerY:mLeftHeightTop - centerY);
+			double diagRight = (LBRT > LTRB ? mRightHeightTop - centerY :mRightHeightBottom - centerY);
+			double eccent = length/width;
+			double diagLeftX = Math.sqrt(((mLeft-centerX)*(mLeft-centerX))+(diagLeft*diagLeft));
+			double diagRightX = Math.sqrt(((mRight-centerX)*(mRight-centerX))+(diagRight*diagRight));
+			diagLeftX /=eccent;
+			diagRightX /=eccent;
+			
+			int left = (int) (centerX - diagLeftX);
+			int right = (int) (centerX + diagRightX);
+			mLeft = (left < mLeft ? left : mLeft);
+			mRight = (right > mRight ? right : mRight);
 			Ellipse2D ellipse = new Ellipse2D.Double(mLeft ,
 					mTop,
 					mRight - mLeft,
 					mBottom - mTop);
-					contentGraphics.draw(ellipse);
+			contentGraphics.draw(ellipse);
 			if (position == POSITION_BOTTOM)
 			{
 				mStartX = mLeft + (mRight-mLeft)/2;
@@ -458,21 +549,22 @@ public class TraceComponent extends JComponent {
 			start.setTraceCount(start.getTraceCount() + 1);
 	}
 
-
-
-
 	private void setSubtreeBounds(SyntacticStructure start) {
 		if (mLeft > (int) start.getButtonX())
 		{
 			mLeft = (int) start.getButtonX();
+			mLeftHeightTop = start.getButtonY();
+			mLeftHeightBottom = start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()/2;
 		}
 		if (mRight < (int) (start.getButtonX() + start.getButtonWidth()))
 		{
 			mRight = (int) (start.getButtonX() + start.getButtonWidth());
+			mRightHeightTop = start.getButtonY();
+			mRightHeightBottom = start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()/2;
 		}
-		if (mBottom < (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()))
+		if (mBottom < (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()/2))
 		{
-			mBottom = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
+			mBottom = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()/2);
 		}
 		for(int i = 0; i < start.getChildren().size(); i++)
 		{
@@ -486,51 +578,14 @@ public class TraceComponent extends JComponent {
 		{
 			float padBottom = 0;
 			padBottom = - (end.getTraceNumber() * padWidth)/2 + end.getTraceCount() * padWidth;
-			GeneralPath polly = new GeneralPath();
-			// move the pollygon to the middle and bottom
-			polly.moveTo((float) (end.getButtonX() 
-					+ end.getButtonWidth()/2 + padBottom),
-					(float) end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
-			polly.lineTo((float) (end.getButtonX() 
-					+ end.getButtonWidth()/2 + padBottom) - (triangleLength),
-					(float) end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + triangleLength);
-			polly.lineTo((float) (end.getButtonX() 
-					+ end.getButtonWidth()/2 + padBottom) + (triangleLength),
-					(float) end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + triangleLength);
-			polly.closePath();
-			contentGraphics.fill(polly);
 
 			mEndX = (int)(end.getButtonX() 
 					+ end.getButtonWidth()/2 + padBottom);
 			mEndY = (int) (end
-					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + triangleLength);
+					.getButtonY() + end.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() );
 		}
 		else if (position == POSITION_LEFT) {
 			
-			GeneralPath polly = new GeneralPath();
-			polly.moveTo((float) end.getButtonX() - padEdge
-					+ triangleLength,
-					(float) end
-					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-					+ end.getTraceCount() * padLength
-							+ 0.25f);
-			polly.lineTo((float) end.getButtonX() - padEdge
-					,
-					(float) end
-					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-					+ end.getTraceCount() * padLength
-							+ 3.25f);
-			polly.lineTo((float) end.getButtonX() - padEdge
-					,
-					(float) end
-					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-					+ end.getTraceCount() * padLength
-							- 2.75f);
-			polly.closePath();
-			contentGraphics.fill(polly);
 			mEndX = (int) end.getButtonX() - padEdge
 					;
 			mEndY = (int) end
@@ -538,30 +593,6 @@ public class TraceComponent extends JComponent {
 			+ end.getTraceCount() * padLength;
 		} else {
 			
-			GeneralPath polly = new GeneralPath();
-			polly.moveTo((float) end.getButtonX() + padEdge
-					+ end.getButtonWidth()
-					- triangleLength,
-					(float) end
-					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-					+ end.getTraceCount() * padLength
-							+ 0.25f);
-			polly.lineTo((float) end.getButtonX() + padEdge
-					+ end.getButtonWidth()
-					,
-					(float) end
-					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-					+ end.getTraceCount() * padLength
-							+ 3.25f);
-			polly.lineTo((float) end.getButtonX() + padEdge
-					+ end.getButtonWidth()
-					,
-					(float) end
-					.getButtonY() + (end.getTextHeight()/2) - (padLength/2)
-					+ end.getTraceCount() * padLength
-							- 2.75f);
-			polly.closePath();
-			contentGraphics.fill(polly);
 			
 			mEndX = (int) end.getButtonX() + padEdge + end.getButtonWidth()
 					;

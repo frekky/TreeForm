@@ -120,8 +120,6 @@ public class EditableComponent extends JComponent {
 	
 	private int mDelete;
 
-	private boolean doubleClick = false;
-
 	private SyntaxFacade mSyntaxFacade;
 
 	private static final Color STRONG_CARET_COLOR = Color.black;
@@ -371,7 +369,8 @@ public class EditableComponent extends JComponent {
 			//System.out.println("key typed");
 			int location = pKE.getKeyChar();
 			setCarat(true);
-			if (location != 8 && location != 127
+			if (location != KeyEvent.VK_BACK_SPACE && location != KeyEvent.VK_DELETE && 
+					location != KeyEvent.VK_ENTER 
 					&& (pKE.getModifiersEx() & KeyEvent.CTRL_DOWN_MASK) == 0
 					&& (pKE.getModifiersEx() & KeyEvent.META_DOWN_MASK) == 0) {
 				// System.out.println
@@ -386,18 +385,7 @@ public class EditableComponent extends JComponent {
 				mUserInternalFrame.getSyntaxFacade().displayTree();
 			}
 		}
-
 	}
-
-	/**
-	 * 
-	 * @author Donald Derrick
-	 * @version 0.1 <br>
-	 *          date: 19-Aug-2004 <br>
-	 *          <br>
-	 *          The mouse listener that performs hit tests.
-	 */
-
 	
 	private class HitTestMouseListener implements MouseInputListener {
 
@@ -680,18 +668,13 @@ public class EditableComponent extends JComponent {
 								(SyntacticStructure) pME.getSource(), pME);
 			} 
 			else {
-				doubleClick = false;
 				setOver(false);
 				setCarat(false);
 				setHighlightEnd(pointTest(pME));
-				//paint(getGraphics());
 				 repaint();
 			}
 		}
 
-		/**
-		 * Nothing.
-		 */
 		public void mouseMoved(MouseEvent arg0) {
 
 		}
@@ -707,15 +690,14 @@ public class EditableComponent extends JComponent {
 	 *            mousemotion, and key listeners.
 	 */
 	public EditableComponent(UserInternalFrame pUserInternalFrame) {
-		DropTarget dtl = (DropTarget) new UserDropTarget();
-		this.setDropTarget(dtl);
-		
 		setUserInternalFrame(pUserInternalFrame);
 		setSyntaxFacade(pUserInternalFrame.getSyntaxFacade());
 		mHead = new AttributedString(" ");
 		Font lFont = new Font("Doulos SIL", Font.BOLD, getUserInternalFrame()
 				.getProperties().getDefaultFontSize());
 		mHead.addAttribute(TextAttribute.FONT, lFont);
+		DropTarget dtl = (DropTarget) new UserDropTarget();
+		this.setDropTarget(dtl);
 		HitTestMouseListener hitTest = new HitTestMouseListener();
 		this.addMouseListener(hitTest);
 		this.addMouseMotionListener(hitTest);
@@ -732,6 +714,7 @@ public class EditableComponent extends JComponent {
 			}
 		};
 		new Timer(delay, taskPerformer).start();
+		
 	}
 
 	/**
@@ -769,7 +752,6 @@ public class EditableComponent extends JComponent {
 		lGraphics2D.scale(Sizer.scaleWidth()
 				* this.getUserInternalFrame().getScale(), Sizer.scaleHeight()
 				* this.getUserInternalFrame().getScale());
-
 		// set the font
 		// Set the g2D to antialias.
 		lGraphics2D.setColor(Color.BLACK);
@@ -804,8 +786,19 @@ public class EditableComponent extends JComponent {
 			}
 			lGraphics2D.fillRect(0, 0, (int) lPoint2D.getX(), (int) lPoint2D
 					.getY());
+		}		
+		if (getHighlightBegin() != getHighlightEnd()) {
+			Shape lHilite = mTextLayoutHead.getLogicalHighlightShape(
+					getHighlightBegin(), getHighlightEnd());
+			lGraphics2D.setColor(TEXT_HIGHLIGHT_COLOR);
+			float rx = (float) (getZero(this.getTextWidth()
+					- mTextLayoutHead.getBounds().getWidth()) / 2);
+			float ry = (float) (mTextLayoutHead.getAscent());
+			AffineTransform at = AffineTransform.getTranslateInstance(rx,
+					ry);
+			lHilite = at.createTransformedShape(lHilite);
+			lGraphics2D.fill(lHilite);
 		}
-
 		if (this.getCarat() && mCaratTimer && isEnabled()) {
 			lGraphics2D.translate(getZero(this.getTextWidth()
 					- mTextLayoutHead.getBounds().getWidth()) / 2,
@@ -822,23 +815,6 @@ public class EditableComponent extends JComponent {
 			if (carets[1] != null) {
 				lGraphics2D.setColor(WEAK_CARET_COLOR);
 				lGraphics2D.draw(carets[1]);
-			}
-		}
-		if (getHighlightBegin() != getHighlightEnd()) {
-			Shape lHilite = mTextLayoutHead.getLogicalHighlightShape(
-					getHighlightBegin(), getHighlightEnd());
-			lGraphics2D.setColor(TEXT_HIGHLIGHT_COLOR);
-			if (doubleClick && mCaratTimer && isEnabled()) {
-				// doubleClick = false;
-				lGraphics2D.fill(lHilite);
-			} else {
-				float rx = (float) (getZero(this.getTextWidth()
-						- mTextLayoutHead.getBounds().getWidth()) / 2);
-				float ry = (float) (mTextLayoutHead.getAscent());
-				AffineTransform at = AffineTransform.getTranslateInstance(rx,
-						ry);
-				lHilite = at.createTransformedShape(lHilite);
-				lGraphics2D.fill(lHilite);
 			}
 		}
 	}
@@ -1274,12 +1250,6 @@ public class EditableComponent extends JComponent {
 		this.setTextHeight((int) (tl.getAscent() + tl.getDescent()) + 1);
 	}
 
-	/**
-	 * Sets all the observer values for a particular carat loction. This class
-	 * is vital to make the GUI store accurate information about highlighted
-	 * text.
-	 * 
-	 */
 	public void setHeadObservers() {
 		AttributedCharacterIterator lIterator = mHead.getIterator();
 		lIterator.setIndex(getInsertionIndex());
@@ -1398,9 +1368,7 @@ public class EditableComponent extends JComponent {
 		setInsertionIndex(pME);
 		if (clickCount > 1) {
 			selectAll();
-			doubleClick = true;
 		} else {
-			doubleClick = false;
 			setHighlightBegin(pME);
 			setHighlightEnd(pME);
 		}
@@ -1415,7 +1383,6 @@ public class EditableComponent extends JComponent {
 		
 		float clickX = (float) (pME.getX());
 		float clickY = (float) (pME.getY());
-
 		// Get the character position of the mouse click.
 		return pointTestXY(clickX,clickY);
 	}

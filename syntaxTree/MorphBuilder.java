@@ -50,7 +50,7 @@ public class MorphBuilder extends AbstractStructureBuilder {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
 		lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 
-		AttributedString lAttributedString = new AttributedString("Morph");
+		AttributedString lAttributedString = new AttributedString("text");
 		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
 		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
 		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
