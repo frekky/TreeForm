@@ -492,43 +492,33 @@ public class TraceComponent extends JComponent {
 			mTop = (int) start.getButtonY() - mUserInternalFrame.getProperties().getMinLineLength()/2;
 			mBottom = (int) (start.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength());
 			setSubtreeBounds(start);
-			
-			
 			// Which diagonal is bigger?
 			double LBRTy = mLeftHeightBottom - mRightHeightTop;
 			double LTRBy = mLeftHeightTop - mRightHeightBottom;
-			double length = Math.abs(mLeft - mRight);
-			double width = Math.abs(mTop - mBottom);
+			double width = Math.abs(mLeft - mRight);
+			double LBRT = Math.sqrt(width*width + LBRTy*LBRTy);
+			double LTRB = Math.sqrt(width*width + LTRBy*LTRBy);
+			double leftY = (LBRT > LTRB ? mLeftHeightBottom :mLeftHeightTop);
+			double rightY = (LBRT > LTRB ? mRightHeightTop:mRightHeightBottom);
+			// now, get the center:
 			double centerX = mLeft + (mRight-mLeft)/2;
 			double centerY = mTop + (mBottom-mTop)/2;
-			double LBRT = Math.sqrt(length*length + LBRTy*LBRTy);
-			double LTRB = Math.sqrt(length*length + LTRBy*LTRBy);
-//			
-//			System.out.println("LBRTy = " + LBRTy);
-//			System.out.println("LTRBy = " + LTRBy);
-//			System.out.println("length = " + length);
-//			System.out.println("width = " + width);
-//			System.out.println("centerX = " + centerX);
-//			System.out.println("center Y = " + centerY);
-//			System.out.println("LBRT = " + LBRT);
-//			System.out.println("LTRB = " + LTRB);
-			// what is the angle from center to left and center to right?
-			double diagLeft = (LBRT > LTRB ? mLeftHeightBottom - centerY:mLeftHeightTop - centerY);
-			double diagRight = (LBRT > LTRB ? mRightHeightTop - centerY :mRightHeightBottom - centerY);
-			double eccent = length/width;
-			double diagLeftX = Math.sqrt(((mLeft-centerX)*(mLeft-centerX))+(diagLeft*diagLeft));
-			double diagRightX = Math.sqrt(((mRight-centerX)*(mRight-centerX))+(diagRight*diagRight));
-			diagLeftX /=eccent;
-			diagRightX /=eccent;
-			
-			int left = (int) (centerX - diagLeftX);
-			int right = (int) (centerX + diagRightX);
-			mLeft = (left < mLeft ? left : mLeft);
-			mRight = (right > mRight ? right : mRight);
+			double leftAngle = (centerX - mLeft)/ (centerY - leftY);
+			double rightAngle = (centerX - mRight)/ (centerY - rightY);
+			double sinLeft = Math.sin(Math.atan(leftAngle));
+			double sinRight = Math.sin(Math.atan(rightAngle));
+			double sin = sinLeft < sinRight ? sinLeft : sinRight;
+			double maxLength = Math.abs(centerX-mLeft) > Math.abs(centerX-mRight) ? 
+					Math.abs(centerX-mLeft) : Math.abs(centerX-mRight);
+			mLeft = (int) (centerX-Math.abs(maxLength/sin));
+			mRight = (int) (centerX+Math.abs(maxLength/sin));
+			System.out.println(mLeft);
+			System.out.println(mRight);
 			Ellipse2D ellipse = new Ellipse2D.Double(mLeft ,
 					mTop,
 					mRight - mLeft,
 					mBottom - mTop);
+			
 			contentGraphics.draw(ellipse);
 			if (position == POSITION_BOTTOM)
 			{
