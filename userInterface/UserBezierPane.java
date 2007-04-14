@@ -49,7 +49,6 @@ public class UserBezierPane extends JComponent {
 		) {
 		mUserFrame = pUserFrame;
 		mSS = pSS;
-		
 	}
 
 	public void paintComponent(Graphics g) {
@@ -65,6 +64,8 @@ public class UserBezierPane extends JComponent {
 					* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
 				Sizer.scaleHeight()
 					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
+		lGraphics2D.translate(mUserFrame.getInternalFrame().getProperties().getLeftTranslate(),
+				mUserFrame.getInternalFrame().getProperties().getTopTranslate());
 		drawLines(lGraphics2D,mSS);
 		drawSquare(lGraphics2D, mSS.getStartX(),mSS.getStartY(), new Color(200,0,0));
 		drawSquare(lGraphics2D, mSS.getEndX(),mSS.getEndY(), new Color(200,0,0));
@@ -111,16 +112,16 @@ public class UserBezierPane extends JComponent {
 			if(mControlStart)
 			{
 			mSS.setCustomTrace(true);
-			mSS.setControlStartX((int) scaleX);
-			mSS.setControlStartY((int) scaleY);
+			mSS.setControlStartX((int) scaleX - mUserFrame.getInternalFrame().getProperties().getLeftTranslate());
+			mSS.setControlStartY((int) scaleY - mUserFrame.getInternalFrame().getProperties().getTopTranslate());
 			mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
 			//System.out.println(1);
 			}
 			if(mControlEnd)
 			{
 			mSS.setCustomTrace(true);
-			mSS.setControlEndX((int) scaleX);
-			mSS.setControlEndY((int) scaleY);
+			mSS.setControlEndX((int) scaleX- mUserFrame.getInternalFrame().getProperties().getLeftTranslate());
+			mSS.setControlEndY((int) scaleY - mUserFrame.getInternalFrame().getProperties().getTopTranslate());
 			mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
 			//System.out.println(2);
 			}
@@ -134,14 +135,14 @@ public class UserBezierPane extends JComponent {
 		float scaleY = e.getY() / (Sizer.scaleHeight()
 		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
 		
-		if (scaleX > mSS.getControlStartX() -10 && scaleX < mSS.getControlStartX() + 10
-				&& scaleY > mSS.getControlStartY() -10 && scaleY < mSS.getControlStartY() + 10)
+		if (scaleX > mSS.getControlStartX()+ mUserFrame.getInternalFrame().getProperties().getLeftTranslate() -10 && scaleX < mSS.getControlStartX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate() + 10
+				&& scaleY > mSS.getControlStartY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()-10 && scaleY < mSS.getControlStartY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()+ 10)
 		{
 			mControlStart = true;
 			mControlEnd = false;
 		}
-		else if (scaleX > mSS.getControlEndX() -10 && scaleX < mSS.getControlEndX() + 10
-				&& scaleY > mSS.getControlEndY() -10 && scaleY < mSS.getControlEndY() + 10)
+		else if (scaleX > mSS.getControlEndX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate()-10 && scaleX < mSS.getControlEndX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate()+ 10
+				&& scaleY > mSS.getControlEndY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()-10 && scaleY < mSS.getControlEndY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate() + 10)
 		{
 			mControlStart = false;
 			mControlEnd = true;

@@ -118,6 +118,15 @@ public class TraceComponent extends JComponent {
 	
 	private void drawCubicCurve(SyntacticStructure start,SyntacticStructure end, Graphics2D contentGraphics) {
 		
+		mStartX -= mUserInternalFrame.getProperties().getLeftTranslate();
+		mEndX -= mUserInternalFrame.getProperties().getLeftTranslate();
+		mStartY -= mUserInternalFrame.getProperties().getTopTranslate();
+		mEndY -= mUserInternalFrame.getProperties().getTopTranslate();
+		midStartX -= mUserInternalFrame.getProperties().getLeftTranslate();
+		midEndX -= mUserInternalFrame.getProperties().getLeftTranslate();
+		midStartY -= mUserInternalFrame.getProperties().getTopTranslate();
+		midEndY -= mUserInternalFrame.getProperties().getTopTranslate();
+		
 		if (start.getCustomTrace() &&
 				start.getStartX() == mStartX &&
 				start.getEndX() == mEndX &&
@@ -137,15 +146,24 @@ public class TraceComponent extends JComponent {
 			start.setControlEndY(midEndY);
 			start.setCustomTrace(false);
 		}
+		start.setStartX(mStartX);
+		start.setEndX(mEndX);
+		start.setStartY(mStartY);
+		start.setEndY(mEndY);
+		mStartX += mUserInternalFrame.getProperties().getLeftTranslate();
+		mEndX += mUserInternalFrame.getProperties().getLeftTranslate();
+		mStartY += mUserInternalFrame.getProperties().getTopTranslate();
+		mEndY += mUserInternalFrame.getProperties().getTopTranslate();
+		midStartX += mUserInternalFrame.getProperties().getLeftTranslate();
+		midEndX += mUserInternalFrame.getProperties().getLeftTranslate();
+		midStartY += mUserInternalFrame.getProperties().getTopTranslate();
+		midEndY += mUserInternalFrame.getProperties().getTopTranslate();
 		CubicCurve2D bezier = new CubicCurve2D.Float(mStartX,mStartY
 				,midStartX,(float) midStartY,
 				midEndX,(float) midEndY,mEndX,mEndY);
 		contentGraphics.draw(bezier);
 		drawArrow(contentGraphics);
-		start.setStartX(mStartX);
-		start.setEndX(mEndX);
-		start.setStartY(mStartY);
-		start.setEndY(mEndY);
+		
 		
 	}
 	
@@ -440,8 +458,8 @@ public class TraceComponent extends JComponent {
 	
 	private void drawStart(SyntacticStructure start,
 			Graphics2D contentGraphics, int position) {
-		if (start.getChildren().size() == 0)
-		//if (0==0)
+		//if (start.getChildren().size() == 0)
+		if (0==0)
 		{
 			if (position == POSITION_BOTTOM)
 			{
@@ -449,7 +467,7 @@ public class TraceComponent extends JComponent {
 				padBottom = - (start.getTraceNumber() * padWidth)/2 + start.getTraceCount() * padWidth;
 				contentGraphics.fillArc((int)(start.getButtonX() 
 						+ start.getButtonWidth()/2 + padBottom - circle/2),(int) (start
-								.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()), circle,
+								.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength()) + (circle/2), circle,
 						circle, 0, 360);
 		
 				mStartX = (int)(start.getButtonX() 
@@ -458,7 +476,7 @@ public class TraceComponent extends JComponent {
 						.getButtonY() + start.getButtonHeight() - mUserInternalFrame.getProperties().getMinLineLength() + circle);
 			}
 			else if (position == POSITION_LEFT) {
-				contentGraphics.fillArc((int) start.getButtonX() - padEdge  , (int) start
+				contentGraphics.fillArc((int) start.getButtonX() - padEdge  -(circle/2), (int) start
 						.getButtonY() + (start.getTextHeight()/2) - (padLength/2)- (circle/2)
 						+ start.getTraceCount() * padLength, circle,
 						circle, 0, 360);
@@ -472,7 +490,7 @@ public class TraceComponent extends JComponent {
 			else
 			{
 				contentGraphics.fillArc((int) start.getButtonX() + padEdge
-						+ start.getButtonWidth() - lineLength,
+						+ start.getButtonWidth() - (circle/2),
 						(int) start.getButtonY() + (start.getTextHeight()/2) - (circle/2) - (padLength/2)
 						+ start.getTraceCount() * padLength,
 						circle,
