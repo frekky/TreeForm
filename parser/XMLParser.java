@@ -482,6 +482,8 @@ public class XMLParser implements SaveFile, LoadFile {
 			lAttr.setValue(Integer.toString(lFont.getSize()));
 			lIElement.setAttributeNode(lAttr);
 			lAttr = mDoc.createAttribute("subscript");
+			if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)) != null)
+			{
 			if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1)
 			{
 				lAttr.setValue("sub");
@@ -489,6 +491,7 @@ public class XMLParser implements SaveFile, LoadFile {
 			else if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3)
 			{
 				lAttr.setValue("super");
+			}
 			}
 			else
 			{

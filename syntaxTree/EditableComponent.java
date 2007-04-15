@@ -1283,16 +1283,19 @@ public class EditableComponent extends JComponent {
 						.getObservableBackgroundColor().setValue(
 								new Color(255, 255, 255));
 			}
-			if (((TransformAttribute) lFont.getAttributes().get(
-					TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1) {
-				mUserInternalFrame.getObservableFontSubscript().setValue(true);
-				mUserInternalFrame.getObservableFontSuperscript().setValue(
-						false);
-			} else if (((TransformAttribute) lFont.getAttributes().get(
-					TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3) {
-				mUserInternalFrame.getObservableFontSubscript().setValue(false);
-				mUserInternalFrame.getObservableFontSuperscript()
-						.setValue(true);
+			if ((TransformAttribute) lFont.getAttributes().get(TextAttribute.TRANSFORM) != null)
+			{
+				if (((TransformAttribute) lFont.getAttributes().get(
+						TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1) {
+					mUserInternalFrame.getObservableFontSubscript().setValue(true);
+					mUserInternalFrame.getObservableFontSuperscript().setValue(
+							false);
+				} else if (((TransformAttribute) lFont.getAttributes().get(
+						TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3) {
+					mUserInternalFrame.getObservableFontSubscript().setValue(false);
+					mUserInternalFrame.getObservableFontSuperscript()
+							.setValue(true);
+			}
 			} else {
 				mUserInternalFrame.getObservableFontSubscript().setValue(false);
 				mUserInternalFrame.getObservableFontSuperscript().setValue(
