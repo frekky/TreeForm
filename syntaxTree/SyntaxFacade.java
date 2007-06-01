@@ -1686,8 +1686,8 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		}
 		if(start.getStartTrace().size() > 0)
 		{
-			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().remove();
-			start.getStartTrace().remove();
+			((SyntacticStructure) start.getStartTrace().get(0)).getEndTrace().removeFirst();
+			start.getStartTrace().removeFirst();
 			start.setCustomTrace(false);
 		}
 	}
@@ -1699,9 +1699,9 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		}
 		if(end.getEndTrace().size() > 0)
 		{
-			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().remove();
+			((SyntacticStructure) end.getEndTrace().get(0)).getStartTrace().removeFirst();
 			((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
-			end.getEndTrace().remove();
+			end.getEndTrace().removeFirst();
 		}
 	}
 	public void deleteStartCustom(SyntacticStructure start)
@@ -1754,7 +1754,6 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 			{
 				EditableComponent component = (EditableComponent) list.get(i);
 				component.addAttribute(string,object);
-				//System.out.println("selected items");
 			}
 		}
 	}

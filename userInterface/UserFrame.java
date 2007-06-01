@@ -652,6 +652,7 @@ private void setObservableFontColor(ObservableFontColor color) {
 			lAT.translate(0,1);
 			lAT.scale(2d/3d,2d/3d);
 			lFont = lFont.deriveFont(lAT);
+			
 		}
 		if(getObservableSuperscript().getValue())
 		{
@@ -660,6 +661,7 @@ private void setObservableFontColor(ObservableFontColor color) {
 			lAT.scale(2d/3d,2d/3d);
 			lFont = lFont.deriveFont(lAT);
 		}
+
 		return lFont;
 	}
 }

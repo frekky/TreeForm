@@ -30,7 +30,6 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.font.FontRenderContext;
 import java.util.ResourceBundle;
 
@@ -153,7 +152,7 @@ public class UserBrowserButton extends JButton {
 		mCopy.setVisible(false);
 		
 		mCopy.setBounds(0,0, Sizer.scaledButtonSize().width ,Sizer.scaledButtonSize().height);
-		mUserFrame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		//mUserFrame.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 		mUserFrame.getLayeredPane().add(mCopy,JLayeredPane.DRAG_LAYER);
 		mUserFrame.getLayeredPane().moveToFront(mCopy);
 	}

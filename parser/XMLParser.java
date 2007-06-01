@@ -155,6 +155,7 @@ public class XMLParser implements SaveFile, LoadFile {
 	 */
 	private Element mRoot;
 
+
 /**
  * implementation of the SaveFile interface.
  * <br>
@@ -482,17 +483,16 @@ public class XMLParser implements SaveFile, LoadFile {
 			lAttr.setValue(Integer.toString(lFont.getSize()));
 			lIElement.setAttributeNode(lAttr);
 			lAttr = mDoc.createAttribute("subscript");
-			if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)) != null)
-			{
-			if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1)
-			{
-				lAttr.setValue("sub");
-			}
-			else if(((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3)
-			{
-				lAttr.setValue("super");
-			}
-			}
+			if (((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)) != null
+			&& ((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1)
+				{
+					lAttr.setValue("sub");
+				}
+			else if (((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)) != null 
+				&& ((TransformAttribute)lFont.getAttributes().get(TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3)
+				{
+					lAttr.setValue("super");
+				}
 			else
 			{
 				lAttr.setValue("normal");
@@ -547,6 +547,19 @@ public class XMLParser implements SaveFile, LoadFile {
 			lIElement.setAttributeNode(lAttr);
 			lAttr = mDoc.createAttribute("foregroundblue");
 			lAttr.setValue(Integer.toString(((Color)lValue).getBlue()));
+			lIElement.setAttributeNode(lAttr);
+		}
+		else if(lKey.equals(TextAttribute.SUPERSCRIPT))
+		{
+			Attr lAttr = mDoc.createAttribute("subscript");
+			if(lValue.equals(TextAttribute.SUPERSCRIPT_SUB))
+			{
+				lAttr.setValue("sub");
+			}
+			else
+			{
+				lAttr.setValue("sub");
+			}
 			lIElement.setAttributeNode(lAttr);
 		}
 		else
@@ -606,7 +619,6 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		try {
 			mBuilder = mFactory.newDocumentBuilder();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		mDoc = doc;
@@ -931,17 +943,18 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 			AffineTransform lAT = new AffineTransform();
 			if (lScript.equals("sub"))
 			{
-				lAT.translate(0,1);
+				lAT.translate(0f,1f);
 				lAT.scale(2d/3d,2d/3d);
 				lFont = lFont.deriveFont(lAT);
+				//lMap.put(TextAttribute.TRANSFORM, lAT);
 			}
 			else if (lScript.equals("super"))
 			{
-				lAT.translate(0,-3);
+				lAT.translate(0f,-3f);
 				lAT.scale(2d/3d,2d/3d);
 				lFont = lFont.deriveFont(lAT);
+				//lMap.put(TextAttribute.TRANSFORM, lAT);
 			}
-			
 			lMap.put(TextAttribute.FONT,lFont);
 		}
 		if(lUnderline.equals("true"))

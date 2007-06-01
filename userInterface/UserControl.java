@@ -605,6 +605,7 @@ public void loadTree() {
 				lAT.translate(0,1);
 				lAT.scale(2d/3d,2d/3d);
 				lFont = lFont.deriveFont(lAT);
+				//lMap.put(TextAttribute.TRANSFORM, lAT);
 			}
 			if(mUserFrame.getObservableSuperscript().getValue())
 			{
@@ -612,6 +613,7 @@ public void loadTree() {
 				lAT.translate(0,-3);
 				lAT.scale(2d/3d,2d/3d);
 				lFont = lFont.deriveFont(lAT);
+				//lMap.put(TextAttribute.TRANSFORM, lAT);
 			}
 			lMap.put(TextAttribute.FONT, lFont);
 			if(mUserFrame.getObservableFontUnderline().getValue())

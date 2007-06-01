@@ -1194,9 +1194,7 @@ public class EditableComponent extends JComponent {
 			getHead().addAttribute(string,object,getHighlightBegin(),getHighlightEnd());
 			testXY();
 			mUserInternalFrame.getSyntaxFacade().displayTree();
-			
 		}
-		
 	}
 	public boolean testAttribute()
 	{
@@ -1283,20 +1281,24 @@ public class EditableComponent extends JComponent {
 						.getObservableBackgroundColor().setValue(
 								new Color(255, 255, 255));
 			}
-			if ((TransformAttribute) lFont.getAttributes().get(TextAttribute.TRANSFORM) != null)
+			if ((TransformAttribute) lFont.getAttributes().get(TextAttribute.TRANSFORM) != null
+					 &&((TransformAttribute) lFont.getAttributes().get(
+						TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1) 
 			{
-				if (((TransformAttribute) lFont.getAttributes().get(
-						TextAttribute.TRANSFORM)).getTransform().getTranslateY() == 1) {
 					mUserInternalFrame.getObservableFontSubscript().setValue(true);
 					mUserInternalFrame.getObservableFontSuperscript().setValue(
 							false);
-				} else if (((TransformAttribute) lFont.getAttributes().get(
-						TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3) {
+				} 
+			else if ((TransformAttribute) lFont.getAttributes().get(TextAttribute.TRANSFORM) != null
+					&& ((TransformAttribute) lFont.getAttributes().get(
+						TextAttribute.TRANSFORM)).getTransform().getTranslateY() == -3) 
+			{
 					mUserInternalFrame.getObservableFontSubscript().setValue(false);
 					mUserInternalFrame.getObservableFontSuperscript()
 							.setValue(true);
 			}
-			} else {
+			else 
+			{
 				mUserInternalFrame.getObservableFontSubscript().setValue(false);
 				mUserInternalFrame.getObservableFontSuperscript().setValue(
 						false);
