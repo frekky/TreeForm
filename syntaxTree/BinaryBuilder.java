@@ -49,6 +49,7 @@ public class BinaryBuilder extends AbstractStructureBuilder {
  * <br><br>
  * Note that the enforcement of SyntacticLevels has not been implemented.
  */
+	@SuppressWarnings("unchecked")
 	public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 		SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
 		lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());

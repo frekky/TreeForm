@@ -45,6 +45,7 @@ public interface SyntacticFeatureSet {
 	 * 
 	 * @uml.property name="syntacticFeature"
 	 */
+	@SuppressWarnings("unchecked")
 	LinkedList getSyntacticFeature();
 
 	/**
@@ -52,6 +53,7 @@ public interface SyntacticFeatureSet {
 	 * 
 	 * @uml.property name="syntacticFeature"
 	 */
+	@SuppressWarnings("unchecked")
 	void setSyntacticFeature(LinkedList syntacticFeature);
 
 	/**

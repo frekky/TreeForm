@@ -300,6 +300,7 @@ public void loadTree() {
 		lC.setBackground(lColor);
 		return null;
 	}
+	@SuppressWarnings("unchecked")
 	public void writeGraphicsFile(String lType, File pFile, BufferedImage lImg)
 	{
 		if (lType.equals("jpg"))
@@ -553,6 +554,7 @@ public void loadTree() {
  * pastes text from the clipboard, UNICODE from external sources, AttributedStrings
  * from TreeForm
  */
+		@SuppressWarnings("unchecked")
 		public void paste() {
 			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
 			{
@@ -587,6 +589,7 @@ public void loadTree() {
  * Note the hokey implementation of Subscript and Superscript, thanks to a persistant
  * Java bug.
  */
+		@SuppressWarnings("unchecked")
 		public Map getAttributes() {
 			Map lMap = new HashMap();
 			int lStyle = 0;

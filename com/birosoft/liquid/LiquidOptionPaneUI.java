@@ -89,6 +89,7 @@ import javax.swing.plaf.OptionPaneUI;
  * @author Scott Violet
  * @author Amy Fowler
  */
+@SuppressWarnings("unchecked")
 public class LiquidOptionPaneUI extends OptionPaneUI {
     public static final int MinimumWidth = 262;
     public static final int MinimumHeight = 90;

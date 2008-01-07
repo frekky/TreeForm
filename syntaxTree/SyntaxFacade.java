@@ -77,8 +77,11 @@ public class SyntaxFacade {
 	private double mShift;
 	private double mChange;
 	private int subtrees;
+	@SuppressWarnings("unchecked")
 	private LinkedList mHeight;
+	@SuppressWarnings("unchecked")
 	private LinkedList mLinkedArray;
+	@SuppressWarnings("unchecked")
 	private LinkedList mDocs;
 	private int mDocPosition = 0;
 	private int mDocMaxPosition = 0;
@@ -94,10 +97,13 @@ public class SyntaxFacade {
 //	private SyntacticStructure mEnd;
 //	private SyntacticStructure lDStart;
 //	private SyntacticStructure lDEnd;
+	@SuppressWarnings("unchecked")
 	private LinkedList mHeightPad;
 private double mDistance;
 private Component mClosest;
+@SuppressWarnings("unchecked")
 private LinkedList mSelected;
+@SuppressWarnings("unchecked")
 public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
 		setParser(new XMLParser());
@@ -137,6 +143,7 @@ private XMLParser getParser()
  * <br>
  * Finally, redisplay the tree.
  */
+	@SuppressWarnings("unchecked")
 	public void addSyntacticStructure(
 		SyntacticStructureType pSST,
 		UserInternalFrame pUIF, Object pSS)
@@ -228,6 +235,7 @@ private XMLParser getParser()
 		displayTree();
 	}
 	
+@SuppressWarnings("unchecked")
 private void addUndo() {
 	Document mDoc = getParser().saveFile(this);
 	mDocs.add(mDocMaxPosition % mDocMax,mDoc);
@@ -251,6 +259,7 @@ public void displayTree() {
 	}
 }
 
+@SuppressWarnings("unchecked")
 private void treeLayout(Sentence sentence) {
 	SyntacticStructure mR = (SyntacticStructure) mSentence.getChildren().getFirst();
 	mLeftShift = 0;
@@ -451,6 +460,7 @@ private void resizeUIF() {
 		getUIF().getDesktopPane().revalidate();
 }
 
+@SuppressWarnings("unchecked")
 private void initializeTree(SyntacticStructure v,int number,int level) {
 	v.setThread(null);
 	v.setAncestor(v);
@@ -707,6 +717,7 @@ private SyntacticStructure ancestor(SyntacticStructure vin, SyntacticStructure v
 	}
 }
 
+@SuppressWarnings("unchecked")
 private void secondWalk(SyntacticStructure v, double m, int level) {
 	v.setButtonX(v.getPrelim() + m);
 	if (v.getButtonX() < mLeftShift)
@@ -979,6 +990,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * the program user to select it's insertion position using the GlassPane
  * interface.
  */
+	@SuppressWarnings("unchecked")
 	public void moveSyntacticStructure(
 		SyntacticStructure pParent,
 		SyntacticStructure pChild) {
@@ -1112,6 +1124,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * this funtion just deletes a syntactic feature and all of it's associations
  * from a SyntacticStructure and from the InternalFrame.
  */
+	@SuppressWarnings("unchecked")
 	public void deleteSyntacticFeature(SyntacticFeature pSF) {
 		addUndo();
 		SyntacticFeatureSet lSFS = pSF.getSyntacticFeatureSet();
@@ -1145,6 +1158,7 @@ private void fourthWalk(SyntacticStructure v, int level)
  * features, and attaches the new featureset to both the UIF and the relevant
  * SyntacticStructure.
  */
+	@SuppressWarnings("unchecked")
 	public void addSyntacticFeatureToStructure(
 		SyntacticFeatureType pSFT,
 		UserInternalFrame pUIF, Object ss)
@@ -1325,6 +1339,7 @@ private void fourthWalk(SyntacticStructure v, int level)
 			getNearestNeighbour(getSentence(),pContainerPoint,pSource,nearestNeighbour);
 			mUnder = mClosest;	
 		}
+		//System.out.println(mUnder);
 		return mUnder;
 	}
 private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Object pSource, boolean nearestNeighbour) 
@@ -1524,6 +1539,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
  * and a SyntacticStructure.  Associations are liked objects whose
  * text changes with that of their associated features.  Useful in Syntax tasks.
  */
+	@SuppressWarnings("unchecked")
 	public void associateSyntacticFeature(
 		SyntacticStructure pSSParent,
 		SyntacticFeature pFeature) {
@@ -1566,6 +1582,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
  * (Sorry fellow computer geeks, but you really do need to learn Syntax
  * to understand this program!)
  */
+	@SuppressWarnings("unchecked")
 	public void addSyntacticFeature(SyntacticFeature mSF) {
 		addUndo();
 		SyntacticFeature lSF = new SyntacticFeature(getUIF());
@@ -1641,6 +1658,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		return mRightShift;
 	}
 
+	@SuppressWarnings("unchecked")
 	public void addTrace(SyntacticStructure end, SyntacticStructure start) {
 		addUndo();
 		deleteStartTrace(start,false);
@@ -1662,10 +1680,12 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		//getUIF().repaint();
 		
 	}
+	@SuppressWarnings("unchecked")
 	public LinkedList getVariableHeight()
 	{
 		return mHeight;
 	}
+	@SuppressWarnings("unchecked")
 	public LinkedList getLinkedArray()
 	{
 		return mLinkedArray;
@@ -1674,6 +1694,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 	{
 		return mLeftShift;
 	}
+	@SuppressWarnings("unchecked")
 	public LinkedList getHeightPad()
 	{
 		return mHeightPad;
@@ -1713,6 +1734,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		((SyntacticStructure) end.getEndTrace().get(0)).setCustomTrace(false);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setLineColor(Color color) {
 		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
 		if(hold instanceof SyntacticStructure)
@@ -1734,6 +1756,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 			}
 		}
 	}
+	@SuppressWarnings("unchecked")
 	public void changeAttributes(Attribute string, Object object)
 	{
 		Object hold = getUIF().getUserFrame().getObservableClipboard().getValue();
@@ -1758,6 +1781,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public void selectTree(int x1, int y1, int x2, int y2) {
 		mSelected = new LinkedList();
 		deselectTree();
@@ -1768,6 +1792,7 @@ private void getNearestNeighbour(RepositionTree pRT, Point pContainerPoint, Obje
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void selectTreeRecursive(
 			RepositionTree pRT,int x1, int y1, int x2, int y2) {
 			if (pRT instanceof SyntacticStructure) 

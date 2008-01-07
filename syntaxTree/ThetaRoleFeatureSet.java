@@ -36,6 +36,7 @@ public class ThetaRoleFeatureSet implements SyntacticFeatureSet {
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticFeature" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticFeature"
 	 */
+	@SuppressWarnings("unchecked")
 	private LinkedList mSyntacticFeature;
 
 	/**
@@ -56,6 +57,7 @@ public class ThetaRoleFeatureSet implements SyntacticFeatureSet {
  * Constructor
  *
  */	
+	@SuppressWarnings("unchecked")
 	public ThetaRoleFeatureSet()
 	{
 		mSyntacticFeature = new LinkedList();
@@ -75,12 +77,14 @@ public class ThetaRoleFeatureSet implements SyntacticFeatureSet {
 /**
  * @return Accessor
  */
+	@SuppressWarnings("unchecked")
 	public LinkedList getSyntacticFeature() {
 		return mSyntacticFeature;
 	}
 /**
  * @param pSyntacticFeature Accessor
  */
+	@SuppressWarnings("unchecked")
 	public void setSyntacticFeature(LinkedList pSyntacticFeature) {
 		mSyntacticFeature = pSyntacticFeature;
 	}

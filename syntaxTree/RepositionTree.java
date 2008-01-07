@@ -31,6 +31,7 @@ public interface RepositionTree {
 	 * 
 	 * @uml.property name="children"
 	 */
+	@SuppressWarnings("unchecked")
 	public LinkedList getChildren();
 
 }

@@ -46,6 +46,7 @@ public class UnaryBuilder extends AbstractStructureBuilder {
  * <br><br>
  * Note that SyntacticLevels are not inforced.
  */
+@SuppressWarnings("unchecked")
 public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 
 	SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);

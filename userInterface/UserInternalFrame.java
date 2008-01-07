@@ -136,6 +136,7 @@ public class UserInternalFrame extends JInternalFrame {
 	 *         These attributes include font information, underline, and
 	 *         sub/superscript information.
 	 */
+	@SuppressWarnings("unchecked")
 	public Map getAttributes() {
 		return mUserFrame.getUserControl().getAttributes();
 	}

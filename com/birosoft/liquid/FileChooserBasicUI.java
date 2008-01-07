@@ -1713,7 +1713,8 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
             return columnNames[column];
         }
 
-        public Class getColumnClass(int column) {
+        @SuppressWarnings("unchecked")
+		public Class getColumnClass(int column) {
             switch (column) {
             case COLUMN_FILENAME:
                 return File.class;
@@ -2053,6 +2054,7 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
 		 * 
 		 */
 		private static final long serialVersionUID = 1L;
+		@SuppressWarnings("unchecked")
 		Vector directories = new Vector();
         int[] depths = null;
         File selectedDirectory = null;
@@ -2074,7 +2076,8 @@ public class FileChooserBasicUI extends BasicFileChooserUI {
          * additionally clears out the previous selected directory and
          * the paths leading up to it, if any.
          */
-        private void addItem(File directory) {
+        @SuppressWarnings("unchecked")
+		private void addItem(File directory) {
             if (directory == null) {
                 return;
             }

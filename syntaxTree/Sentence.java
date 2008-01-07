@@ -38,8 +38,10 @@ public class Sentence implements RepositionTree{
 	 * @uml.associationEnd 
 	 * @uml.property name="children" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticStructure"
 	 */
+	@SuppressWarnings("unchecked")
 	private LinkedList children;
 
+	@SuppressWarnings("unchecked")
 	public Sentence() {
 		super();
 		mName = "";
@@ -52,6 +54,7 @@ public class Sentence implements RepositionTree{
 	public void setName(String pName) {
 		mName = pName;
 	}
+	@SuppressWarnings("unchecked")
 	public void addChild(SyntacticStructure child) {
 		if (children.size() < 1)
 		{
@@ -63,6 +66,7 @@ public class Sentence implements RepositionTree{
 	 * 
 	 * @uml.property name="children"
 	 */
+	@SuppressWarnings("unchecked")
 	public void setChildren(LinkedList children) {
 		this.children = children;
 	}
@@ -71,6 +75,7 @@ public class Sentence implements RepositionTree{
 	 * 
 	 * @uml.property name="children"
 	 */
+	@SuppressWarnings("unchecked")
 	public LinkedList getChildren() {
 		return children;
 	}

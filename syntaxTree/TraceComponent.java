@@ -197,6 +197,7 @@ public class TraceComponent extends JComponent {
 	    contentGraphics.fillPolygon(triangle);
 	    contentGraphics.drawPolygon(triangle);
 	}
+	@SuppressWarnings("unchecked")
 	private boolean calculateMovement(SyntacticStructure start, SyntacticStructure end,Graphics2D contentGraphics)
 	{
 		

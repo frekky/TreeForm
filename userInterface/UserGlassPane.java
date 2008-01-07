@@ -70,6 +70,7 @@ public class UserGlassPane extends JComponent {
 	 * @uml.property name="mPositions" multiplicity="(0 1)" qualifier="new:java.lang.Integer
 	 * value:java.lang.Float"
 	 */
+	@SuppressWarnings("unchecked")
 	private HashMap mPositions;
 
 	/**
@@ -134,6 +135,7 @@ public class UserGlassPane extends JComponent {
  * Draw the circles midway between each line and just below them
  * <br>
  */
+	@SuppressWarnings("unchecked")
 	public void paintComponent(Graphics g) {
 		Graphics2D lGraphics2D = (Graphics2D) g;
 		lGraphics2D.setRenderingHint(
@@ -281,6 +283,7 @@ public class UserGlassPane extends JComponent {
  * 
  * Sets the child subtree in the correct position.
  */
+	@SuppressWarnings("unchecked")
 	public void setChild() {
 		mSS.getChildren().add(mPosition, mSSChild);
 		mSSChild.setSyntacticParent(mSS);

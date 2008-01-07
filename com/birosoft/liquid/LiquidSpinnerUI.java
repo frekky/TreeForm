@@ -225,7 +225,8 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
          * Selects the passed in field, returning true if it is found,
          * false otherwise.
          */
-        private boolean select(JFormattedTextField ftf,
+        @SuppressWarnings("unchecked")
+		private boolean select(JFormattedTextField ftf,
             AttributedCharacterIterator iterator, DateFormat.Field field) {
             int max = ftf.getDocument().getLength();
 

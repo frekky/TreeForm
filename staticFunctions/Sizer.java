@@ -92,7 +92,7 @@ public final class Sizer {
  * @return base button size for ObjectBrowser buttons
  */
 	public static Dimension buttonSize(){
-		Dimension lDim = new Dimension(69,55);
+		Dimension lDim = new Dimension(64,52);
 		return lDim;
 	}
 /**
