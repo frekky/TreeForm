@@ -450,7 +450,8 @@ public class TreeFormBundle_fr_CA extends ListResourceBundle {
 				{ "DELETE_FEATURE", new String("Delete Feature")},
 				{ "DELETE_FEATURE_SET", new String("Delete Feature Set")},
 				{ "ADD_FEATURE", new String("Add Feature")},
-				{ "DELETE_ASSOCIATION", new String("Delete Association")}
+				{ "DELETE_ASSOCIATION", new String("Delete Association")},
+				{ "WHAT_NEW_LABEL", new String("What's new")}
 				};
 
 }

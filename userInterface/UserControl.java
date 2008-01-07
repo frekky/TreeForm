@@ -691,7 +691,7 @@ public void loadTree() {
  * 
  */
 		public void openAbout() {
-			System.out.println("Open About");
+			//System.out.println("Open About");
 			AboutFrame lAboutFrame = new AboutFrame();
 			lAboutFrame.validate();
 		}
@@ -751,6 +751,11 @@ public void loadTree() {
 		}
 		lC.setBackground(lColor);
 		}
-	}	
+	}
+public void openWhatNew() {
+	WhatNewFrame lWhatNewFrame = new WhatNewFrame();
+	lWhatNewFrame.validate();
+	
+}	
 }
 

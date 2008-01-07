@@ -58,6 +58,8 @@ public class UserMenuHelp extends JMenu {
 	 * @uml.associationEnd 
 	 * @uml.property name="mHelp" multiplicity="(1 1)"
 	 */
+	private JMenuItem mWhatNew;
+	
 	private JMenuItem mHelp;
 
 	/**
@@ -80,6 +82,9 @@ public class UserMenuHelp extends JMenu {
 		mHelp.setAccelerator(KeyStroke.getKeyStroke(
 				   KeyEvent.VK_H, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 		this.add(mHelp);		
+		mWhatNew = new JMenuItem((String) mUserFrame.getI18n().getObject("WHAT_NEW_LABEL"));
+		mWhatNew.addActionListener(new ListenerWhatNew(mUserFrame));
+		this.add(mWhatNew);
 		mAbout = new JMenuItem((String) mUserFrame.getI18n().getObject("ABOUT_LABEL"),(ImageIcon) mUserFrame.getI18n().getObject("TREEFORM_ICON_SMALL"));
 		mAbout.addActionListener(new ListenerAbout(mUserFrame));
 		mAbout.setAccelerator(KeyStroke.getKeyStroke(
