@@ -107,10 +107,6 @@ public class ListenerMouseMotion implements MouseMotionListener {
 						lP,
 						null,true));				
 			}
-			else
-			{
-				System.out.println(lComponent);
-			}
 		}
 	}
 

@@ -103,6 +103,8 @@ private double mDistance;
 private Component mClosest;
 @SuppressWarnings("unchecked")
 private LinkedList mSelected;
+private int mPadBottom = 100;
+private int mPadRight = 25;
 @SuppressWarnings("unchecked")
 public SyntaxFacade(UserInternalFrame pUIF) {
 		setSentence(new Sentence());
@@ -443,21 +445,22 @@ private void resizeUIF() {
 	mBottomShift = mBottomShift * Sizer.scaleHeight() * getUIF().getScale();
 	double lRightShift = mRightShift;
 	double lBottomShift = mBottomShift;
-	if (mRightShift < getUIF().getMinWidth()-25)
+	if (mRightShift < getUIF().getMinWidth()-mPadRight)
 	{
-		lRightShift = getUIF().getMinWidth()-25;
+		lRightShift = getUIF().getMinWidth()-mPadRight;
 	}
-	if (mBottomShift < getUIF().getMinHeight() -25)
+	if (mBottomShift < getUIF().getMinHeight() -mPadBottom)
 	{
-		lBottomShift = getUIF().getMinHeight()-25;
+		lBottomShift = getUIF().getMinHeight()-mPadBottom;
 	}
-	getUIF().getTrace().setBounds(0,0,(int)lRightShift+25,(int)lBottomShift+25);
-	getUIF().setBounds(0,0,(int)lRightShift+25,(int)lBottomShift+25);
+	getUIF().getTrace().setBounds(0,0,(int)lRightShift+mPadRight,(int)lBottomShift+mPadBottom);
+	getUIF().setBounds(0,0,(int)lRightShift+mPadRight,(int)lBottomShift+mPadBottom);
 	getUIF().getDesktopPane().setPreferredSize(
 			new Dimension(
-				getUIF().getBounds().x + (int)lRightShift +25,
-				getUIF().getBounds().y + (int)lBottomShift+25));
-		getUIF().getDesktopPane().revalidate();
+				getUIF().getBounds().x + (int)lRightShift +mPadRight,
+				getUIF().getBounds().y + (int)lBottomShift+mPadBottom ));
+	getUIF().getDesktopPane().revalidate();
+		
 }
 
 @SuppressWarnings("unchecked")
