@@ -146,7 +146,7 @@ public class EditableComponent extends JComponent {
 			//System.out.println("here");
 			repaint();
 		}
-		@SuppressWarnings("unchecked")
+		//@SupressWarnings("unchecked")
 		public void drop(DropTargetDropEvent dtde) {
 			setClicked(pointTestXY(dtde.getLocation().x,dtde.getLocation().y),1,dtde.getSource());
 			Object lObject;
@@ -180,7 +180,7 @@ public class EditableComponent extends JComponent {
 		public void caretPositionChanged(InputMethodEvent arg0) {
 		}
 		
-		@SuppressWarnings("unchecked")
+		//@SupressWarnings("unchecked")
 		public void inputMethodTextChanged(InputMethodEvent event) {
 			int start = event.getText().getBeginIndex();
 			int end = event.getText().getEndIndex();
@@ -367,7 +367,7 @@ public class EditableComponent extends JComponent {
 		 * key, insert the text, with the current observed text attributes, into
 		 * the visible textstring. Then redisplay the tree.
 		 */
-		@SuppressWarnings("unchecked")
+		//@SupressWarnings("unchecked")
 		public void keyTyped(KeyEvent pKE) {
 			//System.out.println("key typed");
 			int location = pKE.getKeyChar();
@@ -1251,7 +1251,7 @@ public class EditableComponent extends JComponent {
 		this.setTextHeight((int) (tl.getAscent() + tl.getDescent()) + 1);
 	}
 
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public void setHeadObservers() {
 		AttributedCharacterIterator lIterator = mHead.getIterator();
 		lIterator.setIndex(getInsertionIndex());

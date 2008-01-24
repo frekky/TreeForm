@@ -44,7 +44,7 @@ public class SyntacticFeature extends EditableComponent{
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticAssociation" multiplicity="(0 -1)" inverse="mSyntacticFeature:syntaxTree.SyntacticAssociation"
 	 */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	private LinkedList mSyntacticAssociation;
 
 	/**
@@ -59,7 +59,7 @@ public class SyntacticFeature extends EditableComponent{
  * 
  * @param pUserInternalFrame The InternalFrame holding the SyntacticFeature
  */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	public SyntacticFeature(UserInternalFrame pUserInternalFrame) {
 		super(pUserInternalFrame);
 		setSyntacticAssociation(new LinkedList());
@@ -68,7 +68,7 @@ public class SyntacticFeature extends EditableComponent{
  * 
  * @return Returns a LinkedList of SyntacticAssociations.
  */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	public LinkedList getSyntacticAssociation() {
 		return mSyntacticAssociation;
 	}
@@ -76,7 +76,7 @@ public class SyntacticFeature extends EditableComponent{
  * 
  * @param pSyntacticAssociation Sets the LinkedList of SyntacticAssociations
  */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	public void setSyntacticAssociation( LinkedList pSyntacticAssociation) {
 		mSyntacticAssociation = pSyntacticAssociation;
 	}

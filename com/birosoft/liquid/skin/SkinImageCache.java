@@ -42,7 +42,7 @@ public class SkinImageCache
 	 * @uml.property name="map" multiplicity="(0 1)" qualifier="fileName:java.lang.String
 	 * img:java.awt.Image"
 	 */
-	private HashMap<String, Image> map;
+	private HashMap map;
 
 	/**
 	 * 
@@ -51,7 +51,7 @@ public class SkinImageCache
 	 * @uml.property name="bufferedMap" multiplicity="(0 1)" qualifier="fileName:java.lang.String
 	 * img2:java.awt.image.BufferedImage"
 	 */
-	private HashMap<String, BufferedImage> bufferedMap;
+	private HashMap bufferedMap;
 
     
     static GraphicsConfiguration conf;
@@ -63,8 +63,8 @@ public class SkinImageCache
     
     protected SkinImageCache()
     {
-        map = new HashMap<String, Image>();
-        bufferedMap = new HashMap<String, BufferedImage>();
+        map = new HashMap();
+        bufferedMap = new HashMap();
     }
     
     /**
@@ -76,7 +76,7 @@ public class SkinImageCache
      */
     public Image getAutomaticImage(String fileName)
     {
-        Image ret = map.get(fileName);
+        Image ret = (Image) map.get(fileName);
         if (ret == null)
         {            
             Image img=SecretLoader.loadImage(fileName);
@@ -103,7 +103,7 @@ public class SkinImageCache
      */
     public BufferedImage getBufferedImage(String fileName)
     {
-        BufferedImage b = bufferedMap.get(fileName);
+        BufferedImage b = (BufferedImage) bufferedMap.get(fileName);
         if (b != null)
             return b;
         

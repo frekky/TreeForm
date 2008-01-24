@@ -37,7 +37,7 @@ public class CaseFeatureSet implements SyntacticFeatureSet {
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticFeature" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticFeature"
 	 */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mSyntacticFeature;
 
 	/**
@@ -58,7 +58,7 @@ public class CaseFeatureSet implements SyntacticFeatureSet {
  * Constructor
  *
  */	
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public CaseFeatureSet()
 	{
 		mSyntacticFeature = new LinkedList();
@@ -78,14 +78,14 @@ public class CaseFeatureSet implements SyntacticFeatureSet {
 /**
  * Accessors
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getSyntacticFeature() {
 		return mSyntacticFeature;
 	}
 /**
  * Accessors
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public void setSyntacticFeature(LinkedList pSyntacticFeature) {
 		mSyntacticFeature = pSyntacticFeature;
 	}

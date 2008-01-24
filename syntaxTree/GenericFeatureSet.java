@@ -36,7 +36,7 @@ public class GenericFeatureSet implements SyntacticFeatureSet {
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticFeature" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticFeature"
 	 */
-	@SuppressWarnings("unchecked")
+//	("unchecked")
 	private LinkedList mSyntacticFeature;
 
 	/**
@@ -57,7 +57,7 @@ public class GenericFeatureSet implements SyntacticFeatureSet {
  * Constructor
  *
  */	
-	@SuppressWarnings("unchecked")
+//	("unchecked")
 	public GenericFeatureSet()
 	{
 		mSyntacticFeature = new LinkedList();
@@ -77,14 +77,14 @@ public class GenericFeatureSet implements SyntacticFeatureSet {
 /**
  * @return gets the SyntacticFeature LinkedList
  */
-	@SuppressWarnings("unchecked")
+//	("unchecked")
 	public LinkedList getSyntacticFeature() {
 		return mSyntacticFeature;
 	}
 /**
  * @param pSyntacticFeature sets a new LinkedList of SyntacticFeatures
  */
-	@SuppressWarnings("unchecked")
+//	("unchecked")
 	public void setSyntacticFeature(LinkedList pSyntacticFeature) {
 		mSyntacticFeature = pSyntacticFeature;
 	}

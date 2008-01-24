@@ -61,7 +61,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	 * @uml.associationEnd 
 	 * @uml.property name="mChildren" multiplicity="(0 -1)" inverse="mChildren:syntaxTree.SyntacticStructure"
 	 */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mChildren;
 
 	private int mButtonHeight;
@@ -84,7 +84,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticAssociation" multiplicity="(0 -1)" inverse="mSyntacticStructure:syntaxTree.SyntacticAssociation"
 	 */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mSyntacticAssociation;
 
 	/**
@@ -93,7 +93,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 	 * @uml.associationEnd 
 	 * @uml.property name="mSyntacticFeatureSet" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticFeature"
 	 */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mSyntacticFeatureSet;
 
 	/**
@@ -124,10 +124,10 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 
 	private int mPreorder;
 
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mStartTrace;
 
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mEndTrace;
 
 	private int mPadBottom;
@@ -234,7 +234,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * @param pParent The Parent (Sentence or SyntacticStructure) holding this
  * SyntacticStructure.  Needed to visual positioning among other tasks.
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public SyntacticStructure(UserInternalFrame pUserInternalFrame, RepositionTree pParent)
 	{
 		super(pUserInternalFrame);
@@ -288,7 +288,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 /**
  * Returns all the SyntacticStructure children.
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getChildren() {
 		return mChildren;
 	}
@@ -338,7 +338,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * 
  * @return Returns the list of SyntacticAssociations
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getSyntacticAssociation() {
 		return mSyntacticAssociation;
 	}
@@ -411,7 +411,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * 
  * @param children sets the LinkedList of children.
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public void setChildren(LinkedList children) {
 		this.mChildren = children;
 	}
@@ -443,7 +443,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * 
  * @param syntacticAssociation Sets the SyntacticAssociation
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public void setSyntacticAssociation(LinkedList syntacticAssociation) {
 		this.mSyntacticAssociation = syntacticAssociation;
 	}
@@ -545,7 +545,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * 
  * @param pSyntacticFeatureSet sets the LinkedList of FeatureSets
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public void setSyntacticFeatureSet(LinkedList pSyntacticFeatureSet) {
 		mSyntacticFeatureSet = pSyntacticFeatureSet;
 	}
@@ -553,7 +553,7 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
  * 
  * @return Returns the list of FeatureSets
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getSyntacticFeatureSet() {
 		return mSyntacticFeatureSet;
 	}
@@ -610,12 +610,12 @@ public class SyntacticStructure extends EditableComponent implements RepositionT
 		return mPreorder;
 	}
 	
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getEndTrace()
 	{
 		return mEndTrace;
 	}
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getStartTrace()
 	{
 		return mStartTrace;

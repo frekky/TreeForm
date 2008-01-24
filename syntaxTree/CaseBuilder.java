@@ -42,7 +42,7 @@ public class CaseBuilder extends AbstractFeatureBuilder {
  * <br><br>
  * This FeatureSet contains one Feature, "[NOM]"
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame) {
 		SyntacticFeatureSet lSFS = new CaseFeatureSet();
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());

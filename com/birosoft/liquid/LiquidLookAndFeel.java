@@ -93,7 +93,7 @@ public class LiquidLookAndFeel extends BasicLookAndFeel {
 	 * @uml.property name="colorMap" multiplicity="(0 1)" qualifier="constant:java.lang.String
 	 * constant:java.lang.String"
 	 */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	private HashMap colorMap = new HashMap();
 
     
@@ -398,7 +398,7 @@ contrast=7
      *
      * @param table The ui defaults table.
      */
-    @SuppressWarnings("unchecked")
+ //   @SuppressWarnings("unchecked")
 	protected void initSystemColorDefaults(UIDefaults table) {
         colorMap.put("activeBackground", "#3E91EB");
         colorMap.put("activeBlend", "#3E91EB");

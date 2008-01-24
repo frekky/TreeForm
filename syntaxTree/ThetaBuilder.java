@@ -42,7 +42,7 @@ public class ThetaBuilder extends AbstractFeatureBuilder {
 	 * <br><br>
 	 * This FeatureSet contains two features by default, an "&lt;agent&gt;" and a "&lt;theme&gt;"
 	 */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame) {
 		SyntacticFeatureSet lSFS = new ThetaRoleFeatureSet();
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());

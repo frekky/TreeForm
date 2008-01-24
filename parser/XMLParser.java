@@ -89,9 +89,9 @@ public class XMLParser implements SaveFile, LoadFile {
 	 * @uml.property name="mMap" multiplicity="(0 1)" qualifier="getAttribute:java.lang.String
 	 * lSA:syntaxTree.SyntacticAssociation"
 	 */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	private HashMap mAssociationMap;
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	private HashMap mStructureMap;
 	/**
 	 * 
@@ -289,7 +289,7 @@ public class XMLParser implements SaveFile, LoadFile {
  * be matched up by the load program)
  * <br>
  */
-	@SuppressWarnings("unchecked")
+//	@SuppressWarnings("unchecked")
 	private Node saveAssociations(LinkedList list, Element pRoot) {
 		Element lRootSAS = mDoc.createElement("syntacticassociations");
 		for (int i = 0; i < list.size(); i++)
@@ -302,7 +302,7 @@ public class XMLParser implements SaveFile, LoadFile {
 		}
 		return lRootSAS;
 	}
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private Node saveStartTrace(LinkedList list,SyntacticStructure start, Element pRoot) {
 		Element lRootSAS = mDoc.createElement("starttraces");
 		for (int i = 0; i < list.size(); i++)
@@ -345,7 +345,7 @@ public class XMLParser implements SaveFile, LoadFile {
 		}
 		return lRootSAS;
 	}
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private Node saveEndTrace(LinkedList list, Element pRoot) {
 		Element lRootSAS = mDoc.createElement("endtraces");
 		for (int i = 0; i < list.size(); i++)
@@ -374,7 +374,7 @@ public class XMLParser implements SaveFile, LoadFile {
  * Then, for each association of each feature, save the hashcode for 
  * the load routine (so associations can be rebuilt)
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private Element saveFeatureSet(LinkedList list, Element pRoot) {
 		Element lRootSFSS = mDoc.createElement("syntacticfeaturesets");
 		for (int i = 0; i < list.size(); i++)
@@ -428,7 +428,7 @@ public class XMLParser implements SaveFile, LoadFile {
  * all the font and transform information
  * <br>
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private Element saveATDetails(AttributedString pAT)
 	{
 		Element lText = mDoc.createElement("text");
@@ -618,7 +618,7 @@ public class XMLParser implements SaveFile, LoadFile {
 		}
 		
 	}
-@SuppressWarnings("unchecked")
+//@SupressWarnings("unchecked")
 public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		
 		mInternalFrame = userInternalFrame;
@@ -668,7 +668,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
  * which are loaded in a different method, and syntacticassociations which
  * are loaded from yet another method.
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private void loadATDetails(Node pRoot, RepositionTree pSS) {
 		
 		Element lElement = (Element) pRoot;
@@ -748,7 +748,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
  * each association was saved with a hash integer which stored the
  * uniqueness of that association.  So the map will always be correct.)
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private void loadAssociations(Element lElement, RepositionTree pSS) {
 		SyntacticStructure lSS = (SyntacticStructure) pSS;
 		
@@ -773,7 +773,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 		}	
 	}
 	
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private void loadStartTraces(Element lElement, RepositionTree pSS) {
 		SyntacticStructure lSS = (SyntacticStructure) pSS;
 		
@@ -819,7 +819,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
 			}
 		}	
 	}
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private void loadEndTraces(Element lElement, RepositionTree pSS) {
 		SyntacticStructure lSS = (SyntacticStructure) pSS;
 		
@@ -852,7 +852,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
  * generating the correct subclasses, add the features to the feature collection,
  * and adding all the correct AttributedString text.
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private void loadFeatureSets(Element lElement, RepositionTree pSS) {
 		SyntacticStructure lSS = (SyntacticStructure) pSS;
 		NodeList lFeatureSets = lElement.getChildNodes();
@@ -923,7 +923,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
  * information in the save file.
  * @return A fully formed and transformed AttributedString
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private AttributedString loadHead(Element pElement) {
 		Node lNode =  pElement.getChildNodes().item(0);
 		Element lElement = (Element)lNode;
@@ -942,7 +942,7 @@ public void loadFile(Document doc,UserInternalFrame userInternalFrame) {
  * of attributes for the AttributedString
  * @return returns the rebuilt Map.
  */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private Map loadAttributes(Node pNode) {
 		Map lMap = new HashMap();
 		Element lElement = (Element)pNode;

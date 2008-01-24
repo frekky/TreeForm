@@ -358,7 +358,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
      * Return the minimum size of the header. The minimum width is the sum
      * of the minimum widths of each column (plus inter-cell spacing).
      */
-    @SuppressWarnings("unchecked")
+ //   @SuppressWarnings("unchecked")
 	public Dimension getMinimumSize(JComponent c) {
         long width = 0;
         Enumeration enumeration = header.getColumnModel().getColumns();
@@ -377,7 +377,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
      * by the header renderers. The preferred width is the sum of the
      * preferred widths of each column (plus inter-cell spacing).
      */
-    @SuppressWarnings("unchecked")
+ //   @SuppressWarnings("unchecked")
 	public Dimension getPreferredSize(JComponent c) {
         long width = 0;
         Enumeration enumeration = header.getColumnModel().getColumns();
@@ -394,7 +394,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
      * Return the maximum size of the header. The maximum width is the sum
      * of the maximum widths of each column (plus inter-cell spacing).
      */
-    @SuppressWarnings("unchecked")
+ //   @SuppressWarnings("unchecked")
 	public Dimension getMaximumSize(JComponent c) {
         long width = 0;
         Enumeration enumeration = header.getColumnModel().getColumns();

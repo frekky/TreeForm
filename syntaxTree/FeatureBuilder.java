@@ -42,7 +42,7 @@ public class FeatureBuilder extends AbstractFeatureBuilder {
 	 * <br><br>
 	 * This FeatureSet contains one Feature, "[+Q, +WH]"
 	 */
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame) {
 		SyntacticFeatureSet lSFS = new GenericFeatureSet();
 		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());

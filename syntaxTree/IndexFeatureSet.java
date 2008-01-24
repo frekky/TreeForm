@@ -30,7 +30,7 @@ import java.util.LinkedList;
 
 public class IndexFeatureSet implements SyntacticFeatureSet {
 
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	private LinkedList mSyntacticFeature;
 
 	/**
@@ -55,12 +55,12 @@ public class IndexFeatureSet implements SyntacticFeatureSet {
 		mSyntacticStructure = pSyntacticStructure;
 	}
 
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public LinkedList getSyntacticFeature() {
 		return mSyntacticFeature;
 	}
 
-	@SuppressWarnings("unchecked")
+	//@SupressWarnings("unchecked")
 	public void setSyntacticFeature(LinkedList pSyntacticFeature) {
 		mSyntacticFeature = pSyntacticFeature;
 	}
