@@ -27,6 +27,7 @@ public class TreeFormBundle extends ListResourceBundle {
 
 
 		public Object[][] getContents() {
+			
 			return contents;
 		}
 
