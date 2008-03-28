@@ -27,7 +27,7 @@ public class ListenerPulldownLineColor implements ActionListener {
 		textColor.getSelectionModel().addChangeListener(new ListenerHighlightLineColor(mULC,textFrame));	
 		frame.getObservableLineColor().addObserver(textColor);
 		textColorPanel.add(textColor);
-		textFrame.add(textColorPanel);
+		textFrame.getContentPane().add(textColorPanel);
 		textFrame.pack();
 		textFrame.setBounds(mButton.getX() + mButton.getWidth(),mButton.getY() + mButton.getHeight(),
 				textFrame.getWidth(),textFrame.getHeight());

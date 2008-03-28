@@ -26,7 +26,7 @@ public class ListenerPulldownBackgroundColor implements ActionListener {
 		textColor.setColor(frame.getInternalFrame().getProperties().getFontColor());
 		textColor.getSelectionModel().addChangeListener(new ListenerHighlightBackgroundColor(mUBB,textFrame));
 		textColorPanel.add(textColor);
-		textFrame.add(textColorPanel);
+		textFrame.getContentPane().add(textColorPanel);
 		textFrame.pack();
 		textFrame.setBounds(mBPB.getX() + mBPB.getWidth(),mBPB.getY() + mBPB.getHeight(),
 				textFrame.getWidth(),textFrame.getHeight());
