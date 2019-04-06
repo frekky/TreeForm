@@ -19,8 +19,8 @@ import java.awt.event.*;
  * XTra Scrollbar.
  * <br>
  *
- * @author $Author$
- * @version $Revision$, $Date$
+ * @author $Author: donald_derrick $
+ * @version $Revision: 1.2 $, $Date: 2007/02/12 06:45:15 $
  */
 public class XTraScrollBarUI extends BasicScrollBarUI {
 
