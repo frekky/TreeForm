@@ -1,9 +1,16 @@
-Copyright 2004, Donald James Derrick
+TreeForm - Syntax Tree Drawing Software
+=======================================
 
-These models may be viewed, but not otherwise referenced
-until the project is complete.
+Forked from [https://sourceforge.net/projects/treeform/].
 
-Development Software:
+See also [http://www.mapsofspeech.com/2017/10/02/treeform].
+
+Copyright 2004-2010, Donald James Derrick
+
+Development Software
+--------------------
+
+**This list is likely outdated. See [userInterface/about.htm] for more details.**
 
 1) Eclipse Platform
 
@@ -80,6 +87,3 @@ http://www.cafeconleche.org/books/xmljava/chapters/ch10s03.html
 
 http://java.freehep.org/vectorgraphics/SourceDistributions.html
 
-
-
-///////////////UNDER CONSTRUCTION//////////////////
