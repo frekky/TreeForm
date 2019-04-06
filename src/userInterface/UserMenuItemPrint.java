@@ -26,7 +26,7 @@ import javax.swing.Icon;
 import javax.swing.JMenuItem;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -37,42 +37,42 @@ import javax.swing.JMenuItem;
  */
 public class UserMenuItemPrint extends JMenuItem implements Observer{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableNew"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableNew" multiplicity="(1 1)"
-	 */
-	private ObservableNew mObservableNew;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableNew"
+     * @uml.associationEnd
+     * @uml.property name="mObservableNew" multiplicity="(1 1)"
+     */
+    private ObservableNew mObservableNew;
 
-/**
- * 
- * @param pString The Title
- * @param pIcon The Icon
- * @param pObservableNew The Observer containing the count of InternalFrames
- */
-	public UserMenuItemPrint(String pString, Icon pIcon, ObservableNew pObservableNew) {
-		super(pString, pIcon);
-		mObservableNew = pObservableNew;
-	}
-/**
- * implements observer
- */
-	public void update(Observable pObservable, Object pObject) {
-		if (pObservable == mObservableNew)
-			   {
-				  if (mObservableNew.getValue() == 0)
-				  {
-					this.setEnabled(false);
-				  }
-				  else
-				  {
-					this.setEnabled(true);
-				  }
-			   }
-	}
+    /**
+     *
+     * @param pString The Title
+     * @param pIcon The Icon
+     * @param pObservableNew The Observer containing the count of InternalFrames
+     */
+    public UserMenuItemPrint(String pString, Icon pIcon, ObservableNew pObservableNew) {
+        super(pString, pIcon);
+        mObservableNew = pObservableNew;
+    }
+    /**
+     * implements observer
+     */
+    public void update(Observable pObservable, Object pObject) {
+        if (pObservable == mObservableNew)
+        {
+            if (mObservableNew.getValue() == 0)
+            {
+                this.setEnabled(false);
+            }
+            else
+            {
+                this.setEnabled(true);
+            }
+        }
+    }
 }

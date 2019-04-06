@@ -26,54 +26,54 @@ import javax.swing.Icon;
 import javax.swing.JMenuItem;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
  * date: 19-Aug-2004
  * <br>
  * <br>
- * The MenuItem Export Pictures 
+ * The MenuItem Export Pictures
  */
 public class UserMenuItemExport extends JMenuItem implements Observer{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableNew"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableNew" multiplicity="(1 1)"
-	 */
-	private ObservableNew mObservableNew;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableNew"
+     * @uml.associationEnd
+     * @uml.property name="mObservableNew" multiplicity="(1 1)"
+     */
+    private ObservableNew mObservableNew;
 
-/**
- * 
- * @param pString The title of the menu
- * @param pIcon The Icon
- * @param pObservableNew The Observer containing the count of InternalFrames
- */
-	public UserMenuItemExport(String pString, Icon pIcon, ObservableNew pObservableNew) {
-		super(pString, pIcon);
-		mObservableNew = pObservableNew;
-	}
+    /**
+     *
+     * @param pString The title of the menu
+     * @param pIcon The Icon
+     * @param pObservableNew The Observer containing the count of InternalFrames
+     */
+    public UserMenuItemExport(String pString, Icon pIcon, ObservableNew pObservableNew) {
+        super(pString, pIcon);
+        mObservableNew = pObservableNew;
+    }
 
-/**
- * implements Observer
- */
-	public void update(Observable pObservable, Object pObject) {
-		if (pObservable == mObservableNew)
-			   {
-				  if (mObservableNew.getValue() == 0)
-				  {
-					this.setEnabled(false);
-				  }
-				  else
-				  {
-					this.setEnabled(true);
-				  }
-			   }
-	}
+    /**
+     * implements Observer
+     */
+    public void update(Observable pObservable, Object pObject) {
+        if (pObservable == mObservableNew)
+        {
+            if (mObservableNew.getValue() == 0)
+            {
+                this.setEnabled(false);
+            }
+            else
+            {
+                this.setEnabled(true);
+            }
+        }
+    }
 }

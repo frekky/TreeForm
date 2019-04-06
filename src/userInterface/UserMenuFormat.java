@@ -23,7 +23,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -34,43 +34,43 @@ import javax.swing.JMenuItem;
  */
 public class UserMenuFormat extends JMenu {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mFont"
-	 * @uml.associationEnd 
-	 * @uml.property name="mFont" multiplicity="(1 1)"
-	 */
-	private JMenuItem mFont;
+    /**
+     *
+     * @uml.property name="mFont"
+     * @uml.associationEnd
+     * @uml.property name="mFont" multiplicity="(1 1)"
+     */
+    private JMenuItem mFont;
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-/**
- * 
- * @param pString The string containing the title of the menu
- * @param pUserFrame The UserFrame for this instance of TreeForm
- */
-	public UserMenuFormat(String pString, UserFrame pUserFrame) {
-		super(pString);
-		mUserFrame = pUserFrame;
-		mFont = new JMenuItem((String) mUserFrame.getI18n().getObject("FONT_LABEL"));
-		//mFont.addActionListener(new ListenerFontName(mUserFrame));
-		//TODO: a menu option for changing font information (if I ever care!)
-		mFont.setMnemonic('D');
-		this.add(mFont);
-	}
-	protected JMenuItem getMenuItemFont()
-	{
-		return mFont;
-	}
+    /**
+     *
+     * @param pString The string containing the title of the menu
+     * @param pUserFrame The UserFrame for this instance of TreeForm
+     */
+    public UserMenuFormat(String pString, UserFrame pUserFrame) {
+        super(pString);
+        mUserFrame = pUserFrame;
+        mFont = new JMenuItem((String) mUserFrame.getI18n().getObject("FONT_LABEL"));
+        //mFont.addActionListener(new ListenerFontName(mUserFrame));
+        //TODO: a menu option for changing font information (if I ever care!)
+        mFont.setMnemonic('D');
+        this.add(mFont);
+    }
+    protected JMenuItem getMenuItemFont()
+    {
+        return mFont;
+    }
 }

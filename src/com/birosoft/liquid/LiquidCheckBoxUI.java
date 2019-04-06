@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*        Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *        Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid;
 
 import java.awt.BasicStroke;
@@ -54,8 +54,8 @@ public class LiquidCheckBoxUI extends BasicCheckBoxUI {
      */
     static LiquidCheckBoxIcon skinnedIcon = new LiquidCheckBoxIcon();
     static BasicStroke focusStroke = new BasicStroke(1.0f,
-            BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1.0f,
-            new float[] { 1.0f / 1.0f }, 1.0f);
+        BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1.0f,
+        new float[] { 1.0f / 1.0f }, 1.0f);
 
     /**
      * Creates the UI delegate for the given component.
@@ -107,7 +107,7 @@ public class LiquidCheckBoxUI extends BasicCheckBoxUI {
 
         Icon altIcon = b.getIcon();
         String text = SwingUtilities.layoutCompoundLabel(c, fm, b.getText(),
-                (altIcon != null) ? altIcon : getDefaultIcon(),
+            (altIcon != null) ? altIcon : getDefaultIcon(),
                 b.getVerticalAlignment(), b.getHorizontalAlignment(),
                 b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
                 viewRect, iconRect, textRect,
@@ -168,7 +168,7 @@ public class LiquidCheckBoxUI extends BasicCheckBoxUI {
                 paintText(g, b, textRect, text);
 
                 if (b.hasFocus() && b.isFocusPainted() && (textRect.width > 0) &&
-                        (textRect.height > 0)) {
+                    (textRect.height > 0)) {
                     paintFocus(g, textRect, size);
                 }
             }

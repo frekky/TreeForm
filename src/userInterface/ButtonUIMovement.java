@@ -33,126 +33,126 @@ import staticFunctions.Sizer;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Object Browser buttons designed to contain the necessary
- * information to drive sentence generation using the GUI.  
- *  
+ * information to drive sentence generation using the GUI.
+ *
  */
 public class ButtonUIMovement extends UserBrowserButton {
 
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	public ButtonUIMovement(UserFrame pUserFrame, Object pButtonType) {
-		super(pUserFrame, pButtonType);
-		// TODO Auto-generated constructor stub
-	}
-	public void paintComponent(Graphics pG) {
-		super.paintComponent(pG);
-		this.prepaint(pG);	
-		AttributedString ats = new AttributedString(" ");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,4,11);
-		
-		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("MOVEMENT_TEXT"));
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator lIter = lAts.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		TextLayout lTl = new TextLayout(lIter, mFrc);
-		// draw the font				
-		lTl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) (mDim.getHeight() - 2));
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-		// repeat for the title X-double-bar
+    public ButtonUIMovement(UserFrame pUserFrame, Object pButtonType) {
+        super(pUserFrame, pButtonType);
+        // TODO Auto-generated constructor stub
+    }
+    public void paintComponent(Graphics pG) {
+        super.paintComponent(pG);
+        this.prepaint(pG);
+        AttributedString ats = new AttributedString(" ");
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        AttributedCharacterIterator iter = ats.getIterator();
+        // create a textlayout from the font, string, and font render context.
+        TextLayout tl = new TextLayout(iter, mFrc);
+        // draw the font
+        tl.draw(
+            mGraphics2D,4,11);
 
-		lAts = new AttributedString(". . .");
-		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		lIter = lAts.getIterator();
-		lTl = new TextLayout(lIter, mFrc);
-		lTl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5));
+        AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("MOVEMENT_TEXT"));
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        AttributedCharacterIterator lIter = lAts.getIterator();
+        // create a textlayout from the font, string, and font render context.
+        TextLayout lTl = new TextLayout(lIter, mFrc);
+        // draw the font
+        lTl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
+            (float) (mDim.getHeight() - 2));
 
-		// draw the lines below the X-double-bar
-		Rectangle lDrawRight =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
-				(int) ((mDim.getWidth()) / 2)
-					+ 13,
-				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					+ 2);
-					
-						
-		Rectangle lDrawLeft =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
-				(int) ((mDim.getWidth()) / 2)
-					- 13,
-				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					+ 2);
+        // repeat for the title X-double-bar
 
-		mGraphics2D.drawLine(
-			lDrawRight.width,
-			lDrawRight.height,
-			lDrawRight.x,
-			lDrawRight.y);
-		mGraphics2D.drawLine(lDrawLeft.width, lDrawLeft.height, lDrawLeft.x, lDrawLeft.y);
+        lAts = new AttributedString(". . .");
+        mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        lIter = lAts.getIterator();
+        lTl = new TextLayout(lIter, mFrc);
+        lTl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
+            (float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5));
 
-		
-		
-		// repeat for the X
-		lAts = new AttributedString("X");
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		lIter = lAts.getIterator();
-		lTl = new TextLayout(lIter, mFrc);
-		Dimension lPositionLeft =
-			new Dimension(
-				(int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2),
-				(int) (lDrawLeft.height + lTl.getBounds().getHeight() + 3));
-		lTl.draw(mGraphics2D, lPositionLeft.width, lPositionLeft.height);
-		
-		// repeat for the title X
-		lAts = new AttributedString("Y");
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		lIter = lAts.getIterator();
-		lTl = new TextLayout(lIter, mFrc);
-		Dimension lPositionRight =
-			new Dimension(
-				(int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
-				(int) (lDrawRight.height + lTl.getBounds().getHeight() + 3));
-		lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
-		CubicCurve2D bezier = new CubicCurve2D.Float(lPositionLeft.width +3,lPositionLeft.height +2
-				,lPositionLeft.width+6, lPositionLeft.height + 10,
-				lPositionRight.width, lPositionRight.height + 10,
-				lPositionRight.width+3,lPositionRight.height +2);
-		mGraphics2D.draw(bezier);
-		
-		GeneralPath polly = new GeneralPath();
-		// move the pollygon to the middle and bottom
-		polly.moveTo(lPositionLeft.width + 3,lPositionLeft.height +2 );
-		polly.lineTo(lPositionLeft.width + 3,lPositionLeft.height + 6);
-		polly.lineTo(lPositionLeft.width + 7,lPositionLeft.height + 2);
-		polly.closePath();
-		mGraphics2D.fill(polly);
-		mGraphics2D.fillArc(lPositionRight.width +1 ,lPositionRight.height + 1, 3,
-				3, 0, 360);
-		this.postpaint();
-	}
+        // draw the lines below the X-double-bar
+        Rectangle lDrawRight =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
+                (int) ((mDim.getWidth()) / 2)
+                + 13,
+                (int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2);
+
+
+        Rectangle lDrawLeft =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) + 2),
+                (int) ((mDim.getWidth()) / 2)
+                - 13,
+                (int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2);
+
+        mGraphics2D.drawLine(
+            lDrawRight.width,
+            lDrawRight.height,
+            lDrawRight.x,
+            lDrawRight.y);
+        mGraphics2D.drawLine(lDrawLeft.width, lDrawLeft.height, lDrawLeft.x, lDrawLeft.y);
+
+
+
+        // repeat for the X
+        lAts = new AttributedString("X");
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        lIter = lAts.getIterator();
+        lTl = new TextLayout(lIter, mFrc);
+        Dimension lPositionLeft =
+            new Dimension(
+                (int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2),
+                (int) (lDrawLeft.height + lTl.getBounds().getHeight() + 3));
+        lTl.draw(mGraphics2D, lPositionLeft.width, lPositionLeft.height);
+
+        // repeat for the title X
+        lAts = new AttributedString("Y");
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        lIter = lAts.getIterator();
+        lTl = new TextLayout(lIter, mFrc);
+        Dimension lPositionRight =
+            new Dimension(
+                (int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
+                (int) (lDrawRight.height + lTl.getBounds().getHeight() + 3));
+        lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
+        CubicCurve2D bezier = new CubicCurve2D.Float(lPositionLeft.width +3,lPositionLeft.height +2
+            ,lPositionLeft.width+6, lPositionLeft.height + 10,
+            lPositionRight.width, lPositionRight.height + 10,
+            lPositionRight.width+3,lPositionRight.height +2);
+        mGraphics2D.draw(bezier);
+
+        GeneralPath polly = new GeneralPath();
+        // move the pollygon to the middle and bottom
+        polly.moveTo(lPositionLeft.width + 3,lPositionLeft.height +2 );
+        polly.lineTo(lPositionLeft.width + 3,lPositionLeft.height + 6);
+        polly.lineTo(lPositionLeft.width + 7,lPositionLeft.height + 2);
+        polly.closePath();
+        mGraphics2D.fill(polly);
+        mGraphics2D.fillArc(lPositionRight.width +1 ,lPositionRight.height + 1, 3,
+            3, 0, 360);
+        this.postpaint();
+    }
 }

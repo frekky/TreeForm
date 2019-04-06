@@ -9,18 +9,18 @@ import syntaxTree.SyntaxFacade;
 
 public class ListenerLeftPad implements ChangeListener {
 
-	private Properties mProperties;
-	private SyntaxFacade mSyntaxFacade;
+    private Properties mProperties;
+    private SyntaxFacade mSyntaxFacade;
 
-	public ListenerLeftPad(Properties properties, SyntaxFacade syntaxFacade) {
-		mProperties = properties;
-		mSyntaxFacade = syntaxFacade;
-	}
+    public ListenerLeftPad(Properties properties, SyntaxFacade syntaxFacade) {
+        mProperties = properties;
+        mSyntaxFacade = syntaxFacade;
+    }
 
-	public void stateChanged(ChangeEvent e) {
-		mProperties.setLeftTranslate(((JSlider)e.getSource()).getValue());
-		mSyntaxFacade.displayTree();
+    public void stateChanged(ChangeEvent e) {
+        mProperties.setLeftTranslate(((JSlider)e.getSource()).getValue());
+        mSyntaxFacade.displayTree();
 
-	}
+    }
 
 }

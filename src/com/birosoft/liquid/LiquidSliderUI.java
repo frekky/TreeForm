@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*        Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *        Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid;
 
 import com.birosoft.liquid.skin.Skin;
@@ -20,6 +20,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JSlider;
+import javax.swing.SwingConstants;
 import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.basic.BasicSliderUI;
 
@@ -37,33 +38,33 @@ public class LiquidSliderUI extends BasicSliderUI {
     /** the skin for the vertical slider*/
     private static Skin skinVertSlider;
 
-	/**
-	 * 
-	 * @uml.property name="skinSlider"
-	 * @uml.associationEnd 
-	 * @uml.property name="skinSlider" multiplicity="(0 1)"
-	 */
-	private Skin skinSlider;
+    /**
+     *
+     * @uml.property name="skinSlider"
+     * @uml.associationEnd
+     * @uml.property name="skinSlider" multiplicity="(0 1)"
+     */
+    private Skin skinSlider;
 
-	/**
-	 * 
-	 * @uml.property name="skinIndexModel"
-	 * @uml.associationEnd 
-	 * @uml.property name="skinIndexModel" multiplicity="(1 1)"
-	 */
-	private SkinSimpleButtonIndexModel skinIndexModel = new SkinSimpleButtonIndexModel();
+    /**
+     *
+     * @uml.property name="skinIndexModel"
+     * @uml.associationEnd
+     * @uml.property name="skinIndexModel" multiplicity="(1 1)"
+     */
+    private SkinSimpleButtonIndexModel skinIndexModel = new SkinSimpleButtonIndexModel();
 
     protected boolean isRollover = false;
     protected boolean wasRollover = false;
     protected boolean isDragging = false;
 
-	/**
-	 * 
-	 * @uml.property name="trackListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="trackListener" multiplicity="(0 1)"
-	 */
-	protected TrackListener trackListener;
+    /**
+     *
+     * @uml.property name="trackListener"
+     * @uml.associationEnd
+     * @uml.property name="trackListener" multiplicity="(0 1)"
+     */
+    protected TrackListener trackListener;
 
 
     public LiquidSliderUI() {
@@ -84,7 +85,7 @@ public class LiquidSliderUI extends BasicSliderUI {
         Rectangle knobBounds = thumbRect;
 
         int index = skinIndexModel.getIndexForState(slider.isEnabled(),
-                isRollover, isDragging);
+            isRollover, isDragging);
         getSkinThumb().drawCentered(g, index, knobBounds.x, knobBounds.y,
             knobBounds.width, knobBounds.height);
     }
@@ -103,7 +104,7 @@ public class LiquidSliderUI extends BasicSliderUI {
         final double kIdealThumbHeight = 16.0;
         final double kWidthScalar = kIdealTrackWidth / kIdealThumbHeight;
 
-        if (slider.getOrientation() == JSlider.HORIZONTAL) {
+        if (slider.getOrientation() == SwingConstants.HORIZONTAL) {
             return (int) (kWidthScalar * thumbRect.height);
         } else {
             return (int) (kWidthScalar * thumbRect.width);
@@ -111,7 +112,7 @@ public class LiquidSliderUI extends BasicSliderUI {
     }
 
     protected int getThumbOverhang() {
-        if (slider.getOrientation() == JSlider.VERTICAL) {
+        if (slider.getOrientation() == SwingConstants.VERTICAL) {
             return (int) (getThumbSize().getWidth() - getTrackWidth()) / 2;
         } else {
             return (int) (getThumbSize().getHeight() - getTrackWidth()) / 2;
@@ -127,7 +128,7 @@ public class LiquidSliderUI extends BasicSliderUI {
 
     public void paintTicks(Graphics g) {
         Rectangle tickBounds = tickRect;
-      
+
         boolean leftToRight = slider.getComponentOrientation().isLeftToRight();
 
         g.setColor(new Color(0, 0, 0, 0));
@@ -136,7 +137,7 @@ public class LiquidSliderUI extends BasicSliderUI {
         g.setColor(Color.black);
 
 
-        if (slider.getOrientation() == JSlider.HORIZONTAL) {
+        if (slider.getOrientation() == SwingConstants.HORIZONTAL) {
             g.translate(0, tickBounds.y);
 
             int value = slider.getMinimum();
@@ -219,7 +220,7 @@ public class LiquidSliderUI extends BasicSliderUI {
         int trackBottom = 0;
 
         // Draw the track
-        if (slider.getOrientation() == JSlider.HORIZONTAL) {
+        if (slider.getOrientation() == SwingConstants.HORIZONTAL) {
             trackBottom = (trackRect.height - 1) - getThumbOverhang();
             trackTop = trackBottom - (getTrackWidth() - 1);
             trackRight = trackRect.width - 1;
@@ -271,67 +272,67 @@ public class LiquidSliderUI extends BasicSliderUI {
         g.drawLine(0, y, tickBounds.width - 2, y);
     }
 
-	/**
-	 * Returns the skinHorizSlider.
-	 * @return SkinGenericButton
-	 * 
-	 * @uml.property name="skinHorizSlider"
-	 */
-	public static Skin getSkinHorizSlider() {
-		if (skinHorizSlider == null) {
-			skinHorizSlider = new Skin(
-				"sliderhorizbackground.png",
-				1,
-				6,
-				0,
-				6,
-				0);
-		}
+    /**
+     * Returns the skinHorizSlider.
+     * @return SkinGenericButton
+     *
+     * @uml.property name="skinHorizSlider"
+     */
+    public static Skin getSkinHorizSlider() {
+        if (skinHorizSlider == null) {
+            skinHorizSlider = new Skin(
+                "sliderhorizbackground.png",
+                1,
+                6,
+                0,
+                6,
+                0);
+        }
 
-		return skinHorizSlider;
-	}
+        return skinHorizSlider;
+    }
 
-	/**
-	 * Returns the skinThumbHoriz.
-	 * @return SkinCenteredButton
-	 * 
-	 * @uml.property name="skinThumbHoriz"
-	 */
-	public static Skin getSkinThumbHoriz() {
-		if (skinThumbHoriz == null) {
-			skinThumbHoriz = new Skin("sliderhoriz.png", 4, 0);
-		}
+    /**
+     * Returns the skinThumbHoriz.
+     * @return SkinCenteredButton
+     *
+     * @uml.property name="skinThumbHoriz"
+     */
+    public static Skin getSkinThumbHoriz() {
+        if (skinThumbHoriz == null) {
+            skinThumbHoriz = new Skin("sliderhoriz.png", 4, 0);
+        }
 
-		return skinThumbHoriz;
-	}
+        return skinThumbHoriz;
+    }
 
-	/**
-	 * Returns the skinThumbVert.
-	 * @return SkinCenteredButton
-	 * 
-	 * @uml.property name="skinThumbVert"
-	 */
-	public static Skin getSkinThumbVert() {
-		if (skinThumbVert == null) {
-			skinThumbVert = new Skin("slidervert.png", 4, 0);
-		}
+    /**
+     * Returns the skinThumbVert.
+     * @return SkinCenteredButton
+     *
+     * @uml.property name="skinThumbVert"
+     */
+    public static Skin getSkinThumbVert() {
+        if (skinThumbVert == null) {
+            skinThumbVert = new Skin("slidervert.png", 4, 0);
+        }
 
-		return skinThumbVert;
-	}
+        return skinThumbVert;
+    }
 
-	/**
-	 * Returns the skinVertSlider.
-	 * @return SkinGenericButton
-	 * 
-	 * @uml.property name="skinVertSlider"
-	 */
-	public static Skin getSkinVertSlider() {
-		if (skinVertSlider == null) {
-			skinVertSlider = new Skin("slidervertbackground.png", 1, 0, 6, 0, 6);
-		}
+    /**
+     * Returns the skinVertSlider.
+     * @return SkinGenericButton
+     *
+     * @uml.property name="skinVertSlider"
+     */
+    public static Skin getSkinVertSlider() {
+        if (skinVertSlider == null) {
+            skinVertSlider = new Skin("slidervertbackground.png", 1, 0, 6, 0, 6);
+        }
 
-		return skinVertSlider;
-	}
+        return skinVertSlider;
+    }
 
     /**
      * Returns the skinSlider.
@@ -339,7 +340,7 @@ public class LiquidSliderUI extends BasicSliderUI {
      */
     public Skin getSkinThumb() {
         if (skinSlider == null) {
-            skinSlider = (slider.getOrientation() == JSlider.HORIZONTAL)
+            skinSlider = (slider.getOrientation() == SwingConstants.HORIZONTAL)
                 ? getSkinThumbHoriz() : getSkinThumbVert();
         }
 

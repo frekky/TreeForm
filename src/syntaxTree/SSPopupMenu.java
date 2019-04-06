@@ -23,7 +23,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -34,104 +34,104 @@ import javax.swing.JSeparator;
  */
 public class SSPopupMenu extends JPopupMenu {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mSF;
+    /**
+     *
+     * @uml.property name="mSF"
+     * @uml.associationEnd
+     * @uml.property name="mSF" multiplicity="(1 1)"
+     */
+    private SyntaxFacade mSF;
 
-	/**
-	 * 
-	 * @uml.property name="mSS"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSS" multiplicity="(1 1)"
-	 */
-	private SyntacticStructure mSS;
+    /**
+     *
+     * @uml.property name="mSS"
+     * @uml.associationEnd
+     * @uml.property name="mSS" multiplicity="(1 1)"
+     */
+    private SyntacticStructure mSS;
 
-	/**
-	 * 
-	 * @uml.property name="mRepositionSubtree"
-	 * @uml.associationEnd 
-	 * @uml.property name="mRepositionSubtree" multiplicity="(1 1)"
-	 */
-	private JMenuItem mRepositionSubtree;
+    /**
+     *
+     * @uml.property name="mRepositionSubtree"
+     * @uml.associationEnd
+     * @uml.property name="mRepositionSubtree" multiplicity="(1 1)"
+     */
+    private JMenuItem mRepositionSubtree;
 
-	/**
-	 * 
-	 * @uml.property name="mDeleteSubtree"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDeleteSubtree" multiplicity="(1 1)"
-	 */
-	private JMenuItem mDeleteSubtree;
+    /**
+     *
+     * @uml.property name="mDeleteSubtree"
+     * @uml.associationEnd
+     * @uml.property name="mDeleteSubtree" multiplicity="(1 1)"
+     */
+    private JMenuItem mDeleteSubtree;
 
-	private JMenuItem mDeleteStartTrace;
+    private JMenuItem mDeleteStartTrace;
 
-	private JMenuItem mDeleteEndTrace;
+    private JMenuItem mDeleteEndTrace;
 
-	private JMenuItem mCustomizeStartTrace;
+    private JMenuItem mCustomizeStartTrace;
 
-	private JMenuItem mCustomizeEndTrace;
+    private JMenuItem mCustomizeEndTrace;
 
-	private JMenuItem mChangeLineColor;
+    private JMenuItem mChangeLineColor;
 
-	private JMenuItem mToggleTriangle;
+    private JMenuItem mToggleTriangle;
 
-	/**
-	 * 
-	 * @param pSF The SyntaxFacade for this menu
-	 * @param pSS The SyntacticStructure associated with this menu
-	 * <br>
-	 * This menu includes Delete Subtree, and Reposition Subtree
-	 * commands.
-	 * TODO: Add i18n
-	 */
-	public SSPopupMenu(SyntaxFacade pSF, SyntacticStructure pSS)
-	{
-		mSS = pSS;
-		mSF = pSF;
-		mDeleteSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_SUBTREE"));
-		mDeleteSubtree.addActionListener(new ListenerDelete(mSF, mSS));
-		add(mDeleteSubtree);
-		if (pSS.getSyntacticParent() != null && pSS.getSyntacticParent().getChildren().size() > 1)
-		{
-			mRepositionSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("REPOSITION_SUBTREE"));
-			mRepositionSubtree.addActionListener(new ListenerReposition(mSF, mSS));
-			add(mRepositionSubtree);
-		}
-		if(pSS.getStartTrace().size() > 0)
-		{
-			add(new JSeparator());
-			mDeleteStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_START_TRACE"));
-			mDeleteStartTrace.addActionListener(new ListenerDeleteStartTrace(mSF,mSS));
-			add(mDeleteStartTrace);
-			mCustomizeStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CUSTOMIZE_START_TRACE"));
-			mCustomizeStartTrace.addActionListener(new ListenerCustomizeStartTrace(mSF,mSS));
-			add(mCustomizeStartTrace);
-		}
-		if(pSS.getEndTrace().size() > 0)
-		{
-			add(new JSeparator());
-			mDeleteEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_END_TRACE"));
-			mDeleteEndTrace.addActionListener(new ListenerDeleteEndTrace(mSF,mSS));
-			add(mDeleteEndTrace);
-			mCustomizeEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CUSTOMIZE_END_TRACE"));
-			mCustomizeEndTrace.addActionListener(new ListenerCustomizeEndTrace(mSF,mSS));
-			add(mCustomizeEndTrace);
-		}
-		add(new JSeparator());
-		mChangeLineColor = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CHANGE_LINE_COLOR"));
-		mChangeLineColor.addActionListener(new ListenerChangeLineColor(mSF,mSS));
-		add(mChangeLineColor);
-		add(new JSeparator());
-		mToggleTriangle = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("TOGGLE_TRIANGLE"));
-		mToggleTriangle.addActionListener(new ListenerToggleTriangle(mSF,mSS));
-		add(mToggleTriangle);
-	}
+    /**
+     *
+     * @param pSF The SyntaxFacade for this menu
+     * @param pSS The SyntacticStructure associated with this menu
+     * <br>
+     * This menu includes Delete Subtree, and Reposition Subtree
+     * commands.
+     * TODO: Add i18n
+     */
+    public SSPopupMenu(SyntaxFacade pSF, SyntacticStructure pSS)
+    {
+        mSS = pSS;
+        mSF = pSF;
+        mDeleteSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_SUBTREE"));
+        mDeleteSubtree.addActionListener(new ListenerDelete(mSF, mSS));
+        add(mDeleteSubtree);
+        if (pSS.getSyntacticParent() != null && pSS.getSyntacticParent().getChildren().size() > 1)
+        {
+            mRepositionSubtree = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("REPOSITION_SUBTREE"));
+            mRepositionSubtree.addActionListener(new ListenerReposition(mSF, mSS));
+            add(mRepositionSubtree);
+        }
+        if(pSS.getStartTrace().size() > 0)
+        {
+            add(new JSeparator());
+            mDeleteStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_START_TRACE"));
+            mDeleteStartTrace.addActionListener(new ListenerDeleteStartTrace(mSF,mSS));
+            add(mDeleteStartTrace);
+            mCustomizeStartTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CUSTOMIZE_START_TRACE"));
+            mCustomizeStartTrace.addActionListener(new ListenerCustomizeStartTrace(mSF,mSS));
+            add(mCustomizeStartTrace);
+        }
+        if(pSS.getEndTrace().size() > 0)
+        {
+            add(new JSeparator());
+            mDeleteEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_END_TRACE"));
+            mDeleteEndTrace.addActionListener(new ListenerDeleteEndTrace(mSF,mSS));
+            add(mDeleteEndTrace);
+            mCustomizeEndTrace = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CUSTOMIZE_END_TRACE"));
+            mCustomizeEndTrace.addActionListener(new ListenerCustomizeEndTrace(mSF,mSS));
+            add(mCustomizeEndTrace);
+        }
+        add(new JSeparator());
+        mChangeLineColor = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("CHANGE_LINE_COLOR"));
+        mChangeLineColor.addActionListener(new ListenerChangeLineColor(mSF,mSS));
+        add(mChangeLineColor);
+        add(new JSeparator());
+        mToggleTriangle = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("TOGGLE_TRIANGLE"));
+        mToggleTriangle.addActionListener(new ListenerToggleTriangle(mSF,mSS));
+        add(mToggleTriangle);
+    }
 }

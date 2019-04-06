@@ -5,15 +5,15 @@ import java.awt.event.ActionListener;
 
 public class ListenerCloseProperties implements ActionListener {
 
-	private PropertiesFrame mFrame;
+    private PropertiesFrame mFrame;
 
-	public ListenerCloseProperties(PropertiesFrame frame) {
-		mFrame = frame;
-	}
+    public ListenerCloseProperties(PropertiesFrame frame) {
+        mFrame = frame;
+    }
 
-	public void actionPerformed(ActionEvent e) {
-		mFrame.dispose();
+    public void actionPerformed(ActionEvent e) {
+        mFrame.dispose();
 
-	}
+    }
 
 }

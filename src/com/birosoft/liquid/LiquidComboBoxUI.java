@@ -37,11 +37,11 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
 public class LiquidComboBoxUI extends BasicComboBoxUI {
-    
+
     static int comboBoxButtonSize = 18;
-    
+
     private int prevSelectedItem;
-    
+
     public static ComponentUI createUI(final JComponent c) {
         //     If we used an transparent toolbutton skin we would have to add:
         c.setOpaque(false);
@@ -52,38 +52,38 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
         });
         return new LiquidComboBoxUI();
     }
-    
+
     public void installUI(JComponent c) {
         super.installUI(c);
         addKeyboardActions((JComboBox)c);
     }
-    
+
     public void uninstallUI(JComponent c) {
         super.uninstallUI(c);
     }
-    
+
     public void paint(Graphics g, JComponent c) {
     }
-    
+
     protected ComboBoxEditor createEditor() {
         return new LiquidComboBoxEditor.UIResource();
     }
-    
+
     protected ComboPopup createPopup() {
         return new LiquidComboPopup(comboBox);
     }
-    
+
     protected JButton createArrowButton() {
         JButton button = new LiquidComboBoxButton(comboBox, new LiquidCheckBoxIcon(), comboBox.isEditable(), currentValuePane, listBox);
         button.setMargin(new Insets(0, 0, 0, 0));
         button.setFocusable(false);
         return button;
     }
-    
+
     public PropertyChangeListener createPropertyChangeListener() {
         return new LiquidPropertyChangeListener();
     }
-    
+
     /**
      * This inner class is marked &quot;public&quot; due to a compiler bug.
      * This class should be treated as a &quot;protected&quot; inner class.
@@ -93,7 +93,7 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
         public void propertyChange(PropertyChangeEvent e) {
             super.propertyChange(e);
             String propertyName = e.getPropertyName();
-            
+
             if (propertyName.equals("editable")) {
                 LiquidComboBoxButton button = (LiquidComboBoxButton) arrowButton;
                 button.setIconOnly(comboBox.isEditable());
@@ -101,14 +101,14 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
             } else if (propertyName.equals("background")) {
                 Color color = (Color) e.getNewValue();
                 listBox.setBackground(color);
-                
+
             } else if (propertyName.equals("foreground")) {
                 Color color = (Color) e.getNewValue();
                 listBox.setForeground(color);
             }
         }
     }
-    
+
     /**
      * Dominik Schwald <d.schwald@nextbyte.de> wrote this method. I did some
      * improvments. Thank you Dominik.
@@ -126,7 +126,7 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
                 }
             }
         }, ksEnter, JComponent.WHEN_FOCUSED);
-        
+
         // [ESC] --> hide List
         KeyStroke ksESC = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,KeyEvent.VK_UNDEFINED);
         cb.registerKeyboardAction(new ActionListener() {
@@ -135,8 +135,8 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
                 cb.setSelectedIndex(prevSelectedItem);
             }
         }, ksESC, JComponent.WHEN_FOCUSED);
-        
-        
+
+
         // [down arrow] --> next selection
         KeyStroke ksDown= KeyStroke.getKeyStroke(KeyEvent.VK_DOWN,KeyEvent.VK_UNDEFINED);
         cb.registerKeyboardAction(new ActionListener() {
@@ -150,7 +150,7 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
                 }
             }
         }, ksDown, JComponent.WHEN_FOCUSED);
-        
+
         // [right arrow] --> next selection
         KeyStroke ksRight= KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT,KeyEvent.VK_UNDEFINED);
         cb.registerKeyboardAction(new ActionListener() {
@@ -164,7 +164,7 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
                 }
             }
         }, ksRight, JComponent.WHEN_FOCUSED);
-        
+
         // [up arrow] --> previous selection
         KeyStroke ksUp = KeyStroke.getKeyStroke(KeyEvent.VK_UP,KeyEvent.VK_UNDEFINED);
         cb.registerKeyboardAction(new ActionListener() {
@@ -178,8 +178,8 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
                 }
             }
         }, ksUp, JComponent.WHEN_FOCUSED);
-        
-        
+
+
         // [left arrow] --> previous selection
         KeyStroke ksLeft = KeyStroke.getKeyStroke(KeyEvent.VK_LEFT,KeyEvent.VK_UNDEFINED);
         cb.registerKeyboardAction(new ActionListener() {
@@ -193,8 +193,8 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
                 }
             }
         }, ksLeft, JComponent.WHEN_FOCUSED);
-        
-        
+
+
     }
     /**
      * As of Java 2 platform v1.4 this method is no longer used. Do not call or
@@ -205,11 +205,11 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
      */
     protected void editablePropertyChanged(PropertyChangeEvent e) {
     }
-    
+
     protected LayoutManager createLayoutManager() {
         return new MetouiaComboBoxLayoutManager();
     }
-    
+
     /**
      * This inner class is marked &quot;public&quot; due to a compiler bug.
      * This class should be treated as a &quot;protected&quot; inner class.
@@ -218,25 +218,25 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
     public class MetouiaComboBoxLayoutManager implements LayoutManager {
         public void addLayoutComponent(String name, Component comp) {
         }
-        
+
         public void removeLayoutComponent(Component comp) {
         }
-        
+
         public Dimension preferredLayoutSize(Container parent) {
             return parent.getPreferredSize();
         }
-        
+
         public Dimension minimumLayoutSize(Container parent) {
             return parent.getMinimumSize();
         }
-        
+
         public void layoutContainer(Container parent) {
             JComboBox cb = (JComboBox) parent;
             int width = cb.getWidth();
             int height = cb.getHeight();
-            
+
             Rectangle cvb;
-            
+
             if (comboBox.isEditable()) {
                 if (arrowButton != null) {
                     arrowButton.setBounds(0, 0, width, height);
@@ -250,7 +250,7 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
             }
         }
     }
-    
+
     protected Rectangle rectangleForCurrentValue2() {
         int width = comboBox.getWidth();
         int height = comboBox.getHeight();
@@ -266,7 +266,7 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
             return new Rectangle(insets.left + buttonSize,insets.top, width - (insets.left + insets.right + buttonSize),height - (insets.top + insets.bottom));
         }
     }
-    
+
     /**
      * As of Java 2 platform v1.4 this method is no
      * longer used.
@@ -278,33 +278,33 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
             comboBox.removePropertyChangeListener(propertyChangeListener);
         }
     }
-    
+
     // These two methods were overloaded and made public. This was probably a
     // mistake in the implementation. The functionality that they used to
     // provide is no longer necessary and should be removed. However,
     // removing them will create an uncompatible API change.
-    
+
     public void configureEditor() {
         super.configureEditor();
     }
-    
+
     public void unconfigureEditor() {
         super.unconfigureEditor();
     }
-    
+
     public Dimension getMinimumSize(JComponent c) {
         if (!isMinimumSizeDirty) {
             return new Dimension(cachedMinimumSize);
         }
-        
+
         Dimension size = null;
-        
+
         if (!comboBox.isEditable() && arrowButton != null && arrowButton instanceof LiquidComboBoxButton) {
-            
+
             LiquidComboBoxButton button = (LiquidComboBoxButton) arrowButton;
             Insets buttonInsets = new Insets(0, 0, 0, 0);
             Insets insets = comboBox.getInsets();
-            
+
             size = getDisplaySize();
             size.width += comboBoxButtonSize + insets.left + insets.right; // Hack
             size.width += buttonInsets.left + buttonInsets.right;
@@ -320,18 +320,18 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
             }
             size.height += margin.top + margin.bottom;
             size.height += insets.top + insets.bottom;
-            
+
             //size.height = Math.max(20,size.height);
         } else {
             size = super.getMinimumSize(c);
         }
-        
+
         cachedMinimumSize.setSize(size.width, size.height);
         isMinimumSizeDirty = false;
-        
+
         return new Dimension(cachedMinimumSize);
     }
-    
+
     /**
      * This inner class is marked &quot;public&quot; due to a compiler bug.
      * This class should be treated as a &quot;protected&quot; inner class.
@@ -344,21 +344,21 @@ public class LiquidComboBoxUI extends BasicComboBoxUI {
      * @deprecated As of Java 2 platform v1.4.
      */
     public class LiquidComboPopup extends BasicComboPopup {
-        
-        /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
 
-		public LiquidComboPopup(JComboBox cBox) {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
+
+        public LiquidComboPopup(JComboBox cBox) {
             super(cBox);
         }
-        
+
         // This method was overloaded and made public. This was probably
         // mistake in the implementation. The functionality that they used to
         // provide is no longer necessary and should be removed. However,
         // removing them will create an uncompatible API change.
-        
+
         public void delegateFocus(MouseEvent e) {
             super.delegateFocus(e);
         }

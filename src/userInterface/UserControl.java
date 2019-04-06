@@ -74,688 +74,688 @@ import enumerators.SyntacticViewLayout;
 //import org.w3c.dom.DOMImplementation;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
  * The main class that controls all of the UserInterface Commands.  A big
  * storehouse of commands.
- * 
+ *
  */
 public class UserControl{
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)" inverse="mUserControl:userInterface.UserFrame"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)" inverse="mUserControl:userInterface.UserFrame"
+     */
+    private UserFrame mUserFrame;
 
-/**
- * 
- * @param pUserFrame The UserFrame for this instance of TreeForm
- */
-	public UserControl(UserFrame pUserFrame) {
-		super();
-		mUserFrame = pUserFrame;
-	}
-/**
- * Loads a sentence from an XML file.  This method opens the JFileChooser.
- * If the user selects a valid file and approves the choice, the XMLParser.loaFile
- * command is called.
- *
- */
+    /**
+     *
+     * @param pUserFrame The UserFrame for this instance of TreeForm
+     */
+    public UserControl(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+    }
+    /**
+     * Loads a sentence from an XML file.  This method opens the JFileChooser.
+     * If the user selects a valid file and approves the choice, the XMLParser.loaFile
+     * command is called.
+     *
+     */
 
-public void loadTree() {
-		
-		FileDialog fileDialog = new FileDialog(mUserFrame,"Load Syntax Tree");
-		FileFilterXML fileFilterXML = new FileFilterXML();
-		fileDialog.setFilenameFilter(fileFilterXML);
-		fileDialog.setVisible(true);
-		
-		if(fileDialog.getFile() != null)
-		{
-			XMLParser lXMLP = new XMLParser();
-			lXMLP.loadFileFromDisk(mUserFrame, new File(fileDialog.getDirectory() + fileDialog.getFile()));
-			mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
-		}
-	}
-/**
- * Prints the tree.  First this method sets the background to white,
- * then sends the selected InternalFrame to the PrintUtilities object.
- *
- */
-		public void printTree() {
-			Container lC = mUserFrame.getInternalFrame().getContentPane();
-			Color lColor = lC.getBackground();
-			lC.setBackground(new Color(255,255,255));
-			
-			mUserFrame.getSyntaxFacade().deselectTree();
-			
-			
-			PrintUtilities.printComponent(lC);
-			lC.setBackground(lColor);
-		}
-/**
- * 
- * @author Donald Derrick
- * @version 0.1
- * <br>
- * A class designed to watch and wait for the print job to complete.
- *
- */
-	protected class PrintJobWatcher {
-			// true iff it is safe to close the print job's input stream
-			private boolean done = false;
- /**
-  * Constructor
-  * @param job The print job
-  */   
-			public PrintJobWatcher(DocPrintJob job) {
-				// Add a listener to the print job
-				job.addPrintJobListener(new PrintJobAdapter() {
-					public void printJobCanceled(PrintJobEvent pje) {
-						allDone();
-					}
-					public void printJobCompleted(PrintJobEvent pje) {
-						allDone();
-					}
-					public void printJobFailed(PrintJobEvent pje) {
-						allDone();
-					}
-					public void printJobNoMoreEvents(PrintJobEvent pje) {
-						allDone();
-					}
-					void allDone() {
-						synchronized (PrintJobWatcher.this) {
-							done = true;
-							PrintJobWatcher.this.notify();
-						}
-					}
-				});
-			}
-/**
- * Wait until the print job is done.
- *
- */
+    public void loadTree() {
 
-			public synchronized void waitForDone() {
-				try {
-					while (!done) {
-						wait();
-					}
-				} catch (InterruptedException e) {
-				}
-			}
-		}
+        FileDialog fileDialog = new FileDialog(mUserFrame,"Load Syntax Tree");
+        FileFilterXML fileFilterXML = new FileFilterXML();
+        fileDialog.setFilenameFilter(fileFilterXML);
+        fileDialog.setVisible(true);
 
-/**
- * 
- * @param pSyntaxFacade
- * Note: source for ExampleFileFilter can be found in FileChooserDemo,
- * under the demo/jfc directory in the Java 2 SDK, Standard Edition.
- * 
- * This method opens the file chooser, and asks the user to select the export
- * type and type in a file name.  If the file name is valid, the project is
- * exported.
- * 
- **/		
-		public void exportPicture(SyntaxFacade pSyntaxFacade) {
-		
-			JFileChooser lChooser = new JFileChooser();
- 
-			lChooser.setDialogTitle("Export Picture");
-			lChooser.setAcceptAllFileFilterUsed(false);
-			lChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
-			lChooser.setFileFilter(new FileFilterJPG300());
-			lChooser.addChoosableFileFilter(new FileFilterJPG600());
-			lChooser.addChoosableFileFilter(new FileFilterPNG300());
-			lChooser.addChoosableFileFilter(new FileFilterPNG600());
-			lChooser.setSelectedFile(pSyntaxFacade.getPicture());
-			int returnVal = lChooser.showSaveDialog(mUserFrame);
-			if(returnVal == JFileChooser.APPROVE_OPTION) {
-				 ExportPictureType lExportPictureType = null;
-				 File lFile = lChooser.getSelectedFile();
-				 if (lChooser.getFileFilter() instanceof FileFilterJPG300)
-				 {
-					lExportPictureType = ExportPictureType.JPG300;
-					lFile = checkExtension(lFile,".jpg");
-				 }
-				else if (lChooser.getFileFilter() instanceof FileFilterJPG600)
-				 {
-					lExportPictureType = ExportPictureType.JPG600;
-					lFile = checkExtension(lFile,".jpg");
-				 }
-				else if (lChooser.getFileFilter() instanceof FileFilterPNG300)
-				 {
-					lExportPictureType = ExportPictureType.PNG300;
-					lFile = checkExtension(lFile,".png");
-				 }
-				else if (lChooser.getFileFilter() instanceof FileFilterPNG600)
-				 {
-					lExportPictureType = ExportPictureType.PNG600;
-					lFile = checkExtension(lFile,".png");
-				 }
-				else
-				{
-				}
-				 pSyntaxFacade.setPicture(lFile.getPath());
-				 exportTree(pSyntaxFacade, lFile, lExportPictureType);
-			  }		
-		}
+        if(fileDialog.getFile() != null)
+        {
+            XMLParser lXMLP = new XMLParser();
+            lXMLP.loadFileFromDisk(mUserFrame, new File(fileDialog.getDirectory() + fileDialog.getFile()));
+            mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
+        }
+    }
+    /**
+     * Prints the tree.  First this method sets the background to white,
+     * then sends the selected InternalFrame to the PrintUtilities object.
+     *
+     */
+    public void printTree() {
+        Container lC = mUserFrame.getInternalFrame().getContentPane();
+        Color lColor = lC.getBackground();
+        lC.setBackground(new Color(255,255,255));
 
-		private void exportTree(SyntaxFacade pSyntaxFacade, File pFile, ExportPictureType pEPT) {
-			int lDetail;
-			String lType;
-			if (pEPT == ExportPictureType.JPG600  || pEPT == ExportPictureType.PNG600)
-			{
-				lDetail = 600;
-			}
-			else
-			{
-				lDetail = 300;
-			}
-			if (pEPT == ExportPictureType.JPG300 || pEPT == ExportPictureType.JPG600)
-			{
-				lType = "jpg";
-				System.out.println("jpg");
-			}
-			else
-			{
-				lType = "png";
-				System.out.println("png");
-			}
-			BufferedImage lImg = createGraphicData(lDetail,pFile);
-			if(lImg != null)
-			{
-				writeGraphicsFile(lType,pFile,lImg);
-			}
-		}
-		
-	private BufferedImage createGraphicData(int lDetail, File pFile)
-	{
-		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
-		Color lColor = lC.getBackground();
-		lC.setBackground(new Color(255,255,255));
-		JPanel lPanel = (JPanel) lC;
-		
-		try
-		{
-			BufferedImage lImg = new				
-			BufferedImage(new Float(lPanel.getWidth() * (lDetail/72/ Sizer.scaleWidth())).intValue(),new Float(lPanel.getHeight() * (lDetail/72/Sizer.scaleHeight())).intValue(), BufferedImage.TYPE_INT_RGB);
-			Graphics lGraphics= lImg.getGraphics();		
-			Graphics2D lG2D = ((Graphics2D)lGraphics);
-			AffineTransform lAT = new AffineTransform();
-			lAT.setToScale(lDetail/72/Sizer.scaleWidth(),lDetail/72/Sizer.scaleHeight());
-			lG2D.setTransform(lAT);
-			lPanel.print(lG2D);
-			lC.setBackground(lColor);
-			return lImg;
-		}
-		catch (OutOfMemoryError pOME)
-		{
-			JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
-		}
-		lC.setBackground(lColor);
-		return null;
-	}
-	//@SupressWarnings("unchecked")
-	public void writeGraphicsFile(String lType, File pFile, BufferedImage lImg)
-	{
-		if (lType.equals("jpg"))
-		{
-			try {
-				OutputStream lOut;
-				lOut = new FileOutputStream(pFile);
-				Iterator writers = ImageIO.getImageWritersBySuffix("jpeg");	
-				ImageWriter writer = (ImageWriter) writers.next();
-				// this is the magic bullet - it needs to output to an object
-				// not a file
-				ImageOutputStream ios = ImageIO.createImageOutputStream(lOut);
-				writer.setOutput(ios);
-				ImageWriteParam param = writer.getDefaultWriteParam();
-				param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-				param.setCompressionQuality(1.0F);
-				writer.write(null, new IIOImage(lImg, null, null), param);
-				//writer.write
-				ios.close();
-				writer.dispose();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}	
-		else if (lType.equals("png"))
-		{
-			try {
-				ImageIO.write(lImg, "png", pFile);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}		
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null,"You have not chosen a valid file type","I have no idea how you got here!",JOptionPane.ERROR_MESSAGE);
-		}
-	}
-/**
- * Open the help screen
- *
- */
+        mUserFrame.getSyntaxFacade().deselectTree();
 
-		public void openHelp() {
-			System.out.println("Open About");
-			HelpFrame lHelpFrame = new HelpFrame();
-			lHelpFrame.validate();
-		}
 
-		
-/**
- * 
- * @param pSyntaxFacade The syntaxFacade for the selected InternalFrame
- * @param pFile The Selected save file
- * @param pSFT The selected save file type.
- * <br>
- * <br>
- * This method calls the correct parser based on the save file type, and passes
- * that parser the SyntaxFacade needed to save files.
- */ 
-		public void saveTree(SyntaxFacade pSyntaxFacade, File pFile,SaveFileType pSFT) {
-			
-			if (pSyntaxFacade.getName() == "")
-			{
-				saveAsTree(pSyntaxFacade);
-			}
-			else
-			{
-				if (pSFT == SaveFileType.XML)
-				{
-					XMLParser lXML = new XMLParser();
-					lXML.saveFileToDisk(pSyntaxFacade);
-				}
-				if (pSFT == SaveFileType.SVG)
-				{
-//get rid.
-				}
-			}
-		}
+        PrintUtilities.printComponent(lC);
+        lC.setBackground(lColor);
+    }
+    /**
+     *
+     * @author Donald Derrick
+     * @version 0.1
+     * <br>
+     * A class designed to watch and wait for the print job to complete.
+     *
+     */
+    protected class PrintJobWatcher {
+        // true iff it is safe to close the print job's input stream
+        private boolean done = false;
+        /**
+         * Constructor
+         * @param job The print job
+         */
+        public PrintJobWatcher(DocPrintJob job) {
+            // Add a listener to the print job
+            job.addPrintJobListener(new PrintJobAdapter() {
+                public void printJobCanceled(PrintJobEvent pje) {
+                    allDone();
+                }
+                public void printJobCompleted(PrintJobEvent pje) {
+                    allDone();
+                }
+                public void printJobFailed(PrintJobEvent pje) {
+                    allDone();
+                }
+                public void printJobNoMoreEvents(PrintJobEvent pje) {
+                    allDone();
+                }
+                void allDone() {
+                    synchronized (PrintJobWatcher.this) {
+                        done = true;
+                        PrintJobWatcher.this.notify();
+                    }
+                }
+            });
+        }
+        /**
+         * Wait until the print job is done.
+         *
+         */
 
-/**
- * 
- * @param pSyntaxFacade The SyntaxFacade for the selected InternalFrame
- * <br>
- * 	Note: source for ExampleFileFilter can be found in FileChooserDemo,
- * under the demo/jfc directory in the Java 2 SDK, Standard Edition.
- * <br>
- * This method calls the XMLParser object and saves a copy of the tree.
- **/
-	public void saveAsTree(SyntaxFacade pSyntaxFacade) {
-			
-			FileDialog fileDialog = new FileDialog(mUserFrame,"Save Syntax Tree", FileDialog.SAVE);
-			FileFilterXML fileFilterXML = new FileFilterXML();
-			fileDialog.setFilenameFilter(fileFilterXML);
-			//FileFilterSVG fileFilterSVG = new FileFilterSVG();
-			//fileDialog.setFilenameFilter(fileFilterSVG);
-			//fileDialog.setMode(FileDialog.SAVE);
-			fileDialog.setFile(pSyntaxFacade.getFile().getName());
-			fileDialog.setVisible(true);
-			
-			if(fileDialog.getFile() != null)
-			{
-			//	XMLParser lXMLP = new XMLParser();
-			//	lXMLP.loadFile(mUserFrame, new File(fileDialog.getFile()));
-			//	mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
-				 pSyntaxFacade.setName(fileDialog.getFile());
-				 SaveFileType lSaveFileType = SaveFileType.XML;
-			 	 File lFile = new File(fileDialog.getDirectory() + fileDialog.getFile());
-			 	 //System.out.println("XML = "+fileDialog.getDirectory() + fileDialog.getFile());
-				 lFile = checkExtension(lFile,".xml");
-				 pSyntaxFacade.setFile(lFile.getPath());
-				 pSyntaxFacade.setName(lFile.getName());
-				 pSyntaxFacade.getUIF().setTitle(lFile.getName());
-				 saveTree(pSyntaxFacade, lFile, lSaveFileType);
-			}
-		}
+        public synchronized void waitForDone() {
+            try {
+                while (!done) {
+                    wait();
+                }
+            } catch (InterruptedException e) {
+            }
+        }
+    }
 
-/**
- * 
- * @param lFile The passed in file Object
- * @param pExtension The extension required.
- * @return a File Object with the correct extension
- * <br>
- * PRE: a valid file Object
- * POST: a corrected file Object
- */
-		private File checkExtension(File lFile, String pExtension) {
-			if (lFile.getName().endsWith(pExtension))
-			{
-				// do nothing
-			}
-			else
-			{
-				if (lFile.getName().indexOf(".") == -1)
-				{
-					lFile = new File(lFile.getPath() + pExtension);
-				}
-				else
-				{
-					lFile = new File(lFile.getPath().substring(0,lFile.getPath().indexOf(".")) + pExtension);
-				}
-			}
-			return lFile;
-		}
-/**
- * Needs implementation
- *
- */
-		public void addDemographicInformation() {
-		}
-/**
- * 
- *
- */
-		public void editPresenation() {
-			PropertiesFrame propertiesFrame = new PropertiesFrame(mUserFrame.getDesktopPane().getInternalFrame());
-			propertiesFrame.setVisible(true);
-		}
+    /**
+     *
+     * @param pSyntaxFacade
+     * Note: source for ExampleFileFilter can be found in FileChooserDemo,
+     * under the demo/jfc directory in the Java 2 SDK, Standard Edition.
+     *
+     * This method opens the file chooser, and asks the user to select the export
+     * type and type in a file name.  If the file name is valid, the project is
+     * exported.
+     *
+     **/
+    public void exportPicture(SyntaxFacade pSyntaxFacade) {
 
-/**
- * Creates a new tree by adding a new InternalFrame.
- *
- */
-		public void createNewTree()
-		{
-			mUserFrame.getDesktopPane().addInternalFrame();
-		}
+        JFileChooser lChooser = new JFileChooser();
 
-		public void changeViewLayout(SyntacticViewLayout pSyntacticViewLayout) {
-			JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
-			System.out.println(pSyntacticViewLayout);
-		}
+        lChooser.setDialogTitle("Export Picture");
+        lChooser.setAcceptAllFileFilterUsed(false);
+        lChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        lChooser.setFileFilter(new FileFilterJPG300());
+        lChooser.addChoosableFileFilter(new FileFilterJPG600());
+        lChooser.addChoosableFileFilter(new FileFilterPNG300());
+        lChooser.addChoosableFileFilter(new FileFilterPNG600());
+        lChooser.setSelectedFile(pSyntaxFacade.getPicture());
+        int returnVal = lChooser.showSaveDialog(mUserFrame);
+        if(returnVal == JFileChooser.APPROVE_OPTION) {
+            ExportPictureType lExportPictureType = null;
+            File lFile = lChooser.getSelectedFile();
+            if (lChooser.getFileFilter() instanceof FileFilterJPG300)
+            {
+                lExportPictureType = ExportPictureType.JPG300;
+                lFile = checkExtension(lFile,".jpg");
+            }
+            else if (lChooser.getFileFilter() instanceof FileFilterJPG600)
+            {
+                lExportPictureType = ExportPictureType.JPG600;
+                lFile = checkExtension(lFile,".jpg");
+            }
+            else if (lChooser.getFileFilter() instanceof FileFilterPNG300)
+            {
+                lExportPictureType = ExportPictureType.PNG300;
+                lFile = checkExtension(lFile,".png");
+            }
+            else if (lChooser.getFileFilter() instanceof FileFilterPNG600)
+            {
+                lExportPictureType = ExportPictureType.PNG600;
+                lFile = checkExtension(lFile,".png");
+            }
+            else
+            {
+            }
+            pSyntaxFacade.setPicture(lFile.getPath());
+            exportTree(pSyntaxFacade, lFile, lExportPictureType);
+        }
+    }
 
-/**
- * Closes Trees without saving
- *
- */
-		public void closeTree() {
-			int lI = JOptionPane.showConfirmDialog(null,"Clicking NO will close trees without saving them.","Save trees first?",JOptionPane.YES_NO_OPTION);
-			if (lI == JOptionPane.YES_OPTION)
-			{
-				saveAsTree(mUserFrame.getSyntaxFacade());
-			}
-			else
-			{
-			mUserFrame.getDesktopPane().closeInternalFrame();
-			}
-		}
-/**
- * Closes all Trees without saving
- */
-		public boolean closeAllTrees() {
-			int lI = JOptionPane.showConfirmDialog(null,"Clicking NO will close ALL trees without saving them.","Save trees first?",JOptionPane.YES_NO_OPTION);
-			if (lI == JOptionPane.YES_OPTION)
-			{
-				saveAllTrees(mUserFrame.getDesktopPane());
-				return false;
-			}
-			else if (lI == JOptionPane.NO_OPTION)
-			{
-				mUserFrame.getDesktopPane().closeAllInternalFrames();
-				return true;
-			}
-			return false;
-		}
-/**
- * 
- * @param pUdp Saves all the trees
- */
-		public void saveAllTrees(UserDesktopPane pUdp) {
-			JInternalFrame[] internalPanes = pUdp.getAllFrames();
-			for(int i = 0; i < internalPanes.length; i++)
-			{
-				saveTree(((UserInternalFrame)internalPanes[i]).getSyntaxFacade(),((UserInternalFrame)internalPanes[i]).getSyntaxFacade().getFile(), ((UserInternalFrame)internalPanes[i]).getSaveFileType());
-			}
-		}
-/**
- * Redo
- */
-		public void redo() {
+    private void exportTree(SyntaxFacade pSyntaxFacade, File pFile, ExportPictureType pEPT) {
+        int lDetail;
+        String lType;
+        if (pEPT == ExportPictureType.JPG600  || pEPT == ExportPictureType.PNG600)
+        {
+            lDetail = 600;
+        }
+        else
+        {
+            lDetail = 300;
+        }
+        if (pEPT == ExportPictureType.JPG300 || pEPT == ExportPictureType.JPG600)
+        {
+            lType = "jpg";
+            System.out.println("jpg");
+        }
+        else
+        {
+            lType = "png";
+            System.out.println("png");
+        }
+        BufferedImage lImg = createGraphicData(lDetail,pFile);
+        if(lImg != null)
+        {
+            writeGraphicsFile(lType,pFile,lImg);
+        }
+    }
 
-			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().redo();
-		}
-/**
- * Undo
- */
-		public void undo() {
-			mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().undo();
-		}
-/**
- * Copies selected text to clipboard
- */
-		public void copy() {
-			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
-			{
-				setClipboard(((EditableComponent) mUserFrame.getObservableClipboard().getValue()).getClip());
-			}
-		}
-		
-/**
- * copies selected text to clipboard (doesn't cut!)
- */
-		public void cut() {
-			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
-			{
-				setClipboard(((EditableComponent) mUserFrame.getObservableClipboard().getValue()).getClip());
-			}
-		}
-/**
- * pastes text from the clipboard, UNICODE from external sources, AttributedStrings
- * from TreeForm
- */
-		//@SupressWarnings("unchecked")
-		public void paste() {
-			if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
-			{
-				EditableComponent ec = ((EditableComponent) mUserFrame.getObservableClipboard().getValue());
-				Object lObject = getClipboard();
-				AttributedString lAT = null;
-				if (lObject instanceof String)
-				{
-					lAT = new AttributedString((String)lObject);
-					lAT.addAttributes(getAttributes(),0,((String)lObject).length());
-				}
-				else
-				{
-					lAT = (AttributedString) lObject;
-				}
-				int lLength =lAT.getIterator().getEndIndex() -  lAT.getIterator().getBeginIndex();
-				ec.deleteHead();
-				ec.insertHead(lAT,ec.getInsertionIndex());
-				ec.setInsertionIndex(ec.getInsertionIndex() + lLength);
-				ec.setHighlightEnd(ec.getInsertionIndex());
-				ec.setHighlightBegin(ec.getInsertionIndex());
-				ec.setCarat(true);
-				mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().displayTree();
-			}
-		}
-/**
- * 
- * @return Returns a Map of all the attributes at the given cursor location of the
- * selected tree structure, feature, or association.
- * <br>
- * <br>
- * Note the hokey implementation of Subscript and Superscript, thanks to a persistant
- * Java bug.
- */
-		//@SupressWarnings("unchecked")
-		public Map getAttributes() {
-			Map lMap = new HashMap();
-			int lStyle = 0;
-			if(mUserFrame.getObservableFontBold().getValue())
-			{
-				lStyle += Font.BOLD;
-			}
-			if(mUserFrame.getObservableFontItalic().getValue())
-			{
-				lStyle += Font.ITALIC;
-			}
-			Font lFont = new Font(mUserFrame.getObservableFont().getValue(),lStyle,mUserFrame.getObservableFontSize().getValue());
-			if(mUserFrame.getObservableSubscript().getValue())
-			{
-				AffineTransform lAT = new AffineTransform();
-				lAT.translate(0,1);
-				lAT.scale(2d/3d,2d/3d);
-				lFont = lFont.deriveFont(lAT);
-				//lMap.put(TextAttribute.TRANSFORM, lAT);
-			}
-			if(mUserFrame.getObservableSuperscript().getValue())
-			{
-				AffineTransform lAT = new AffineTransform();
-				lAT.translate(0,-3);
-				lAT.scale(2d/3d,2d/3d);
-				lFont = lFont.deriveFont(lAT);
-				//lMap.put(TextAttribute.TRANSFORM, lAT);
-			}
-			lMap.put(TextAttribute.FONT, lFont);
-			if(mUserFrame.getObservableFontUnderline().getValue())
-			{
-				lMap.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
-			}
-			else
-			{
-				lMap.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE);
-			}
-			if(mUserFrame.getObservableFontStrikethrough().getValue())
-			{
-				lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
-			}
-			else
-			{
-				lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH);
-			}
-			lMap.put(TextAttribute.BACKGROUND, mUserFrame.getObservableBackgroundColor().getValue());
-			if (((Color)lMap.get(TextAttribute.BACKGROUND)).getRed() == 255 &&
-					((Color)lMap.get(TextAttribute.BACKGROUND)).getGreen() == 255 &&
-					((Color)lMap.get(TextAttribute.BACKGROUND)).getBlue() == 255)
-			{
-				lMap.put(TextAttribute.BACKGROUND, new Color(255,255,255,0));				
-			}
-			lMap.put(TextAttribute.FOREGROUND, mUserFrame.getObservableFontColor().getValue());
-			return lMap;
-		}
-/**
- * 
- * @param lAS The string passed to the clipboard
- */
-		public static void setClipboard(AttributedString lAS)
-		{
-			UserTransferable t = new UserTransferable(lAS);
-			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);
-		}
-		public static Object getClipboard() {
-		Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
-		String text = "";
-		if (t != null && t.isDataFlavorSupported(new DataFlavor(AttributedString.class,"Attributed String")))
-		{
-			try {
-				return t.getTransferData(new DataFlavor(AttributedString.class, "Attributed String"));
-			} catch (UnsupportedFlavorException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		else if (t != null && t.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-				try {
-					text = (String)t.getTransferData(DataFlavor.stringFlavor);
-				} catch (UnsupportedFlavorException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		return text;
-	}		
+    private BufferedImage createGraphicData(int lDetail, File pFile)
+    {
+        Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
+        Color lColor = lC.getBackground();
+        lC.setBackground(new Color(255,255,255));
+        JPanel lPanel = (JPanel) lC;
 
-/**
- * 
- *
- */
-		public void selectAll() {
-			JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);			
-			System.out.println("Select All Objects");
-		}
-/**
- * 
- */
-		public void openAbout() {
-			//System.out.println("Open About");
-			AboutFrame lAboutFrame = new AboutFrame();
-			lAboutFrame.validate();
-		}
+        try
+        {
+            BufferedImage lImg = new
+                BufferedImage(new Float(lPanel.getWidth() * (lDetail/72/ Sizer.scaleWidth())).intValue(),new Float(lPanel.getHeight() * (lDetail/72/Sizer.scaleHeight())).intValue(), BufferedImage.TYPE_INT_RGB);
+            Graphics lGraphics= lImg.getGraphics();
+            Graphics2D lG2D = ((Graphics2D)lGraphics);
+            AffineTransform lAT = new AffineTransform();
+            lAT.setToScale(lDetail/72/Sizer.scaleWidth(),lDetail/72/Sizer.scaleHeight());
+            lG2D.setTransform(lAT);
+            lPanel.print(lG2D);
+            lC.setBackground(lColor);
+            return lImg;
+        }
+        catch (OutOfMemoryError pOME)
+        {
+            JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
+        }
+        lC.setBackground(lColor);
+        return null;
+    }
+    //@SupressWarnings("unchecked")
+    public void writeGraphicsFile(String lType, File pFile, BufferedImage lImg)
+    {
+        if (lType.equals("jpg"))
+        {
+            try {
+                OutputStream lOut;
+                lOut = new FileOutputStream(pFile);
+                Iterator writers = ImageIO.getImageWritersBySuffix("jpeg");
+                ImageWriter writer = (ImageWriter) writers.next();
+                // this is the magic bullet - it needs to output to an object
+                // not a file
+                ImageOutputStream ios = ImageIO.createImageOutputStream(lOut);
+                writer.setOutput(ios);
+                ImageWriteParam param = writer.getDefaultWriteParam();
+                param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+                param.setCompressionQuality(1.0F);
+                writer.write(null, new IIOImage(lImg, null, null), param);
+                //writer.write
+                ios.close();
+                writer.dispose();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (lType.equals("png"))
+        {
+            try {
+                ImageIO.write(lImg, "png", pFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"You have not chosen a valid file type","I have no idea how you got here!",JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    /**
+     * Open the help screen
+     *
+     */
 
-/**
- * 
- *
- */
-		public void printPreview() {
-			JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
-		}
+    public void openHelp() {
+        System.out.println("Open About");
+        HelpFrame lHelpFrame = new HelpFrame();
+        lHelpFrame.validate();
+    }
 
-/**
- * 
- * @param pZoom
- */		
-		public void zoom(float pZoom) {
-			UserInternalFrame lUIF = mUserFrame.getDesktopPane().getInternalFrame();
-			lUIF.setScale(pZoom);
-			lUIF.getSyntaxFacade().displayTree();
-		}
-/**
- * Selects a new frame.
- */
-		public void selectNewFrame() {
-			mUserFrame.getDesktopPane().selecteNewFrame();
-			
-		}
-/**
- * Delete selected items.
- */
-	public void copyTree(double width, double height, double left, double top) {
-		
-		if (height != 0 && width != 0)
-		{
-		mUserFrame.getSyntaxFacade().deselectTree();		
-		Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
-		Color lColor = lC.getBackground();
-		lC.setBackground(new Color(255,255,255));
-		JPanel lPanel = (JPanel) lC;
-		try
-		{
-			int scaleWidth = (int) (width* (300/72/Sizer.scaleWidth()));
-			int scaleHeight = (int) (height * (300/72/Sizer.scaleHeight()));
-			BufferedImage lImg = new BufferedImage(scaleWidth,scaleHeight, BufferedImage.TYPE_INT_RGB);
-			Graphics lGraphics= lImg.getGraphics();		
-			Graphics2D lG2D = ((Graphics2D)lGraphics);
-			lG2D.translate(-left * (300/72/Sizer.scaleWidth()), -top * (300/72/Sizer.scaleHeight()));
-			lG2D.scale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
-			lPanel.print(lG2D);
-			UserTransferableGraphics t = new UserTransferableGraphics(lImg);
-			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);
-		}
-		catch (OutOfMemoryError pOME)
-		{
-			JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
-		}
-		lC.setBackground(lColor);
-		}
-	}
-public void openWhatNew() {
-	WhatNewFrame lWhatNewFrame = new WhatNewFrame();
-	lWhatNewFrame.validate();
-	
-}	
+
+    /**
+     *
+     * @param pSyntaxFacade The syntaxFacade for the selected InternalFrame
+     * @param pFile The Selected save file
+     * @param pSFT The selected save file type.
+     * <br>
+     * <br>
+     * This method calls the correct parser based on the save file type, and passes
+     * that parser the SyntaxFacade needed to save files.
+     */
+    public void saveTree(SyntaxFacade pSyntaxFacade, File pFile,SaveFileType pSFT) {
+
+        if (pSyntaxFacade.getName() == "")
+        {
+            saveAsTree(pSyntaxFacade);
+        }
+        else
+        {
+            if (pSFT == SaveFileType.XML)
+            {
+                XMLParser lXML = new XMLParser();
+                lXML.saveFileToDisk(pSyntaxFacade);
+            }
+            if (pSFT == SaveFileType.SVG)
+            {
+                //get rid.
+            }
+        }
+    }
+
+    /**
+     *
+     * @param pSyntaxFacade The SyntaxFacade for the selected InternalFrame
+     * <br>
+     * 	Note: source for ExampleFileFilter can be found in FileChooserDemo,
+     * under the demo/jfc directory in the Java 2 SDK, Standard Edition.
+     * <br>
+     * This method calls the XMLParser object and saves a copy of the tree.
+     **/
+    public void saveAsTree(SyntaxFacade pSyntaxFacade) {
+
+        FileDialog fileDialog = new FileDialog(mUserFrame,"Save Syntax Tree", FileDialog.SAVE);
+        FileFilterXML fileFilterXML = new FileFilterXML();
+        fileDialog.setFilenameFilter(fileFilterXML);
+        //FileFilterSVG fileFilterSVG = new FileFilterSVG();
+        //fileDialog.setFilenameFilter(fileFilterSVG);
+        //fileDialog.setMode(FileDialog.SAVE);
+        fileDialog.setFile(pSyntaxFacade.getFile().getName());
+        fileDialog.setVisible(true);
+
+        if(fileDialog.getFile() != null)
+        {
+            //	XMLParser lXMLP = new XMLParser();
+            //	lXMLP.loadFile(mUserFrame, new File(fileDialog.getFile()));
+            //	mUserFrame.getObservableNew().setValue(mUserFrame.getObservableNew().getValue()+1);
+            pSyntaxFacade.setName(fileDialog.getFile());
+            SaveFileType lSaveFileType = SaveFileType.XML;
+            File lFile = new File(fileDialog.getDirectory() + fileDialog.getFile());
+            //System.out.println("XML = "+fileDialog.getDirectory() + fileDialog.getFile());
+            lFile = checkExtension(lFile,".xml");
+            pSyntaxFacade.setFile(lFile.getPath());
+            pSyntaxFacade.setName(lFile.getName());
+            pSyntaxFacade.getUIF().setTitle(lFile.getName());
+            saveTree(pSyntaxFacade, lFile, lSaveFileType);
+        }
+    }
+
+    /**
+     *
+     * @param lFile The passed in file Object
+     * @param pExtension The extension required.
+     * @return a File Object with the correct extension
+     * <br>
+     * PRE: a valid file Object
+     * POST: a corrected file Object
+     */
+    private File checkExtension(File lFile, String pExtension) {
+        if (lFile.getName().endsWith(pExtension))
+        {
+            // do nothing
+        }
+        else
+        {
+            if (lFile.getName().indexOf(".") == -1)
+            {
+                lFile = new File(lFile.getPath() + pExtension);
+            }
+            else
+            {
+                lFile = new File(lFile.getPath().substring(0,lFile.getPath().indexOf(".")) + pExtension);
+            }
+        }
+        return lFile;
+    }
+    /**
+     * Needs implementation
+     *
+     */
+    public void addDemographicInformation() {
+    }
+    /**
+     *
+     *
+     */
+    public void editPresenation() {
+        PropertiesFrame propertiesFrame = new PropertiesFrame(mUserFrame.getDesktopPane().getInternalFrame());
+        propertiesFrame.setVisible(true);
+    }
+
+    /**
+     * Creates a new tree by adding a new InternalFrame.
+     *
+     */
+    public void createNewTree()
+    {
+        mUserFrame.getDesktopPane().addInternalFrame();
+    }
+
+    public void changeViewLayout(SyntacticViewLayout pSyntacticViewLayout) {
+        JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
+        System.out.println(pSyntacticViewLayout);
+    }
+
+    /**
+     * Closes Trees without saving
+     *
+     */
+    public void closeTree() {
+        int lI = JOptionPane.showConfirmDialog(null,"Clicking NO will close trees without saving them.","Save trees first?",JOptionPane.YES_NO_OPTION);
+        if (lI == JOptionPane.YES_OPTION)
+        {
+            saveAsTree(mUserFrame.getSyntaxFacade());
+        }
+        else
+        {
+            mUserFrame.getDesktopPane().closeInternalFrame();
+        }
+    }
+    /**
+     * Closes all Trees without saving
+     */
+    public boolean closeAllTrees() {
+        int lI = JOptionPane.showConfirmDialog(null,"Clicking NO will close ALL trees without saving them.","Save trees first?",JOptionPane.YES_NO_OPTION);
+        if (lI == JOptionPane.YES_OPTION)
+        {
+            saveAllTrees(mUserFrame.getDesktopPane());
+            return false;
+        }
+        else if (lI == JOptionPane.NO_OPTION)
+        {
+            mUserFrame.getDesktopPane().closeAllInternalFrames();
+            return true;
+        }
+        return false;
+    }
+    /**
+     *
+     * @param pUdp Saves all the trees
+     */
+    public void saveAllTrees(UserDesktopPane pUdp) {
+        JInternalFrame[] internalPanes = pUdp.getAllFrames();
+        for(int i = 0; i < internalPanes.length; i++)
+        {
+            saveTree(((UserInternalFrame)internalPanes[i]).getSyntaxFacade(),((UserInternalFrame)internalPanes[i]).getSyntaxFacade().getFile(), ((UserInternalFrame)internalPanes[i]).getSaveFileType());
+        }
+    }
+    /**
+     * Redo
+     */
+    public void redo() {
+
+        mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().redo();
+    }
+    /**
+     * Undo
+     */
+    public void undo() {
+        mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().undo();
+    }
+    /**
+     * Copies selected text to clipboard
+     */
+    public void copy() {
+        if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
+        {
+            setClipboard(((EditableComponent) mUserFrame.getObservableClipboard().getValue()).getClip());
+        }
+    }
+
+    /**
+     * copies selected text to clipboard (doesn't cut!)
+     */
+    public void cut() {
+        if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
+        {
+            setClipboard(((EditableComponent) mUserFrame.getObservableClipboard().getValue()).getClip());
+        }
+    }
+    /**
+     * pastes text from the clipboard, UNICODE from external sources, AttributedStrings
+     * from TreeForm
+     */
+    //@SupressWarnings("unchecked")
+    public void paste() {
+        if (mUserFrame.getObservableClipboard().getValue() instanceof EditableComponent)
+        {
+            EditableComponent ec = ((EditableComponent) mUserFrame.getObservableClipboard().getValue());
+            Object lObject = getClipboard();
+            AttributedString lAT = null;
+            if (lObject instanceof String)
+            {
+                lAT = new AttributedString((String)lObject);
+                lAT.addAttributes(getAttributes(),0,((String)lObject).length());
+            }
+            else
+            {
+                lAT = (AttributedString) lObject;
+            }
+            int lLength =lAT.getIterator().getEndIndex() -  lAT.getIterator().getBeginIndex();
+            ec.deleteHead();
+            ec.insertHead(lAT,ec.getInsertionIndex());
+            ec.setInsertionIndex(ec.getInsertionIndex() + lLength);
+            ec.setHighlightEnd(ec.getInsertionIndex());
+            ec.setHighlightBegin(ec.getInsertionIndex());
+            ec.setCarat(true);
+            mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().displayTree();
+        }
+    }
+    /**
+     *
+     * @return Returns a Map of all the attributes at the given cursor location of the
+     * selected tree structure, feature, or association.
+     * <br>
+     * <br>
+     * Note the hokey implementation of Subscript and Superscript, thanks to a persistant
+     * Java bug.
+     */
+    //@SupressWarnings("unchecked")
+    public Map getAttributes() {
+        Map lMap = new HashMap();
+        int lStyle = 0;
+        if(mUserFrame.getObservableFontBold().getValue())
+        {
+            lStyle += Font.BOLD;
+        }
+        if(mUserFrame.getObservableFontItalic().getValue())
+        {
+            lStyle += Font.ITALIC;
+        }
+        Font lFont = new Font(mUserFrame.getObservableFont().getValue(),lStyle,mUserFrame.getObservableFontSize().getValue());
+        if(mUserFrame.getObservableSubscript().getValue())
+        {
+            AffineTransform lAT = new AffineTransform();
+            lAT.translate(0,1);
+            lAT.scale(2d/3d,2d/3d);
+            lFont = lFont.deriveFont(lAT);
+            //lMap.put(TextAttribute.TRANSFORM, lAT);
+        }
+        if(mUserFrame.getObservableSuperscript().getValue())
+        {
+            AffineTransform lAT = new AffineTransform();
+            lAT.translate(0,-3);
+            lAT.scale(2d/3d,2d/3d);
+            lFont = lFont.deriveFont(lAT);
+            //lMap.put(TextAttribute.TRANSFORM, lAT);
+        }
+        lMap.put(TextAttribute.FONT, lFont);
+        if(mUserFrame.getObservableFontUnderline().getValue())
+        {
+            lMap.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
+        }
+        else
+        {
+            lMap.put(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE);
+        }
+        if(mUserFrame.getObservableFontStrikethrough().getValue())
+        {
+            lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH_ON);
+        }
+        else
+        {
+            lMap.put(TextAttribute.STRIKETHROUGH, TextAttribute.STRIKETHROUGH);
+        }
+        lMap.put(TextAttribute.BACKGROUND, mUserFrame.getObservableBackgroundColor().getValue());
+        if (((Color)lMap.get(TextAttribute.BACKGROUND)).getRed() == 255 &&
+            ((Color)lMap.get(TextAttribute.BACKGROUND)).getGreen() == 255 &&
+            ((Color)lMap.get(TextAttribute.BACKGROUND)).getBlue() == 255)
+        {
+            lMap.put(TextAttribute.BACKGROUND, new Color(255,255,255,0));
+        }
+        lMap.put(TextAttribute.FOREGROUND, mUserFrame.getObservableFontColor().getValue());
+        return lMap;
+    }
+    /**
+     *
+     * @param lAS The string passed to the clipboard
+     */
+    public static void setClipboard(AttributedString lAS)
+    {
+        UserTransferable t = new UserTransferable(lAS);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);
+    }
+    public static Object getClipboard() {
+        Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null);
+        String text = "";
+        if (t != null && t.isDataFlavorSupported(new DataFlavor(AttributedString.class,"Attributed String")))
+        {
+            try {
+                return t.getTransferData(new DataFlavor(AttributedString.class, "Attributed String"));
+            } catch (UnsupportedFlavorException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else if (t != null && t.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+            try {
+                text = (String)t.getTransferData(DataFlavor.stringFlavor);
+            } catch (UnsupportedFlavorException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return text;
+    }
+
+    /**
+     *
+     *
+     */
+    public void selectAll() {
+        JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
+        System.out.println("Select All Objects");
+    }
+    /**
+     *
+     */
+    public void openAbout() {
+        //System.out.println("Open About");
+        AboutFrame lAboutFrame = new AboutFrame();
+        lAboutFrame.validate();
+    }
+
+    /**
+     *
+     *
+     */
+    public void printPreview() {
+        JOptionPane.showMessageDialog(null,"Not Impemented","This code has not been written yet.",JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    /**
+     *
+     * @param pZoom
+     */
+    public void zoom(float pZoom) {
+        UserInternalFrame lUIF = mUserFrame.getDesktopPane().getInternalFrame();
+        lUIF.setScale(pZoom);
+        lUIF.getSyntaxFacade().displayTree();
+    }
+    /**
+     * Selects a new frame.
+     */
+    public void selectNewFrame() {
+        mUserFrame.getDesktopPane().selecteNewFrame();
+
+    }
+    /**
+     * Delete selected items.
+     */
+    public void copyTree(double width, double height, double left, double top) {
+
+        if (height != 0 && width != 0)
+        {
+            mUserFrame.getSyntaxFacade().deselectTree();
+            Container lC = mUserFrame.getDesktopPane().getInternalFrame().getContentPane();
+            Color lColor = lC.getBackground();
+            lC.setBackground(new Color(255,255,255));
+            JPanel lPanel = (JPanel) lC;
+            try
+            {
+                int scaleWidth = (int) (width* (300/72/Sizer.scaleWidth()));
+                int scaleHeight = (int) (height * (300/72/Sizer.scaleHeight()));
+                BufferedImage lImg = new BufferedImage(scaleWidth,scaleHeight, BufferedImage.TYPE_INT_RGB);
+                Graphics lGraphics= lImg.getGraphics();
+                Graphics2D lG2D = ((Graphics2D)lGraphics);
+                lG2D.translate(-left * (300/72/Sizer.scaleWidth()), -top * (300/72/Sizer.scaleHeight()));
+                lG2D.scale(300/72/Sizer.scaleWidth(),300/72/Sizer.scaleHeight());
+                lPanel.print(lG2D);
+                UserTransferableGraphics t = new UserTransferableGraphics(lImg);
+                Toolkit.getDefaultToolkit().getSystemClipboard().setContents(t,null);
+            }
+            catch (OutOfMemoryError pOME)
+            {
+                JOptionPane.showMessageDialog(null,"You have not allocated enough memory to Java to export this picture","Run this program using the batch script instead",JOptionPane.ERROR_MESSAGE);
+            }
+            lC.setBackground(lColor);
+        }
+    }
+    public void openWhatNew() {
+        WhatNewFrame lWhatNewFrame = new WhatNewFrame();
+        lWhatNewFrame.validate();
+
+    }
 }
 

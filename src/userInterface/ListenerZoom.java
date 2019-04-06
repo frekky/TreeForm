@@ -26,70 +26,70 @@ import javax.swing.JComboBox;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerZoom implements ActionListener {
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * <br>
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     * <br>
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-	public ListenerZoom(UserFrame pUserFrame) {
-		super();
-		mUserFrame = pUserFrame;
-	}
+    public ListenerZoom(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+    }
 
-	/**
-	 * @param pAE Passes a mouse event to the listener
-	 * <br>
-	 * This command makes sure that typed zoom information is correct, fixes it
-	 * if it is not, and sends the zoom text back to the JComboBox.
-	 * <br>
-	 * The focus is then returned to any previously highlited syntax components stored
-	 * in the observable clipboard.
-	 * <br>
-	 * 
-	 */
-	public void actionPerformed(ActionEvent pAE) {
-		String lZoomString = ((String)((JComboBox)pAE.getSource()).getSelectedItem());
-		float lZoom = 1.0F;
-		try
-		{
-			if (lZoomString.substring(lZoomString.length()-1,lZoomString.length()).equals("%"))
-			{
-				lZoom = (Float.parseFloat(lZoomString.substring(0,lZoomString.length()-1))/100);		
-			}
-			else 
-			{
-				lZoom = (Float.parseFloat(lZoomString)/100);
-			}
-		}
-		catch (NumberFormatException e)
-		{
-			lZoom = 1.0F;
-		}
-		mUserFrame.getObservableZoom().setValue(lZoom);
-		mUserFrame.getUserControl().zoom(lZoom);
-//		if (mUserFrame.getObservableClipboard().getValue() != null)
-//		{
-//			mUserFrame.getObservableClipboard().getValue().requestFocus();
-//		}
-	}
+    /**
+     * @param pAE Passes a mouse event to the listener
+     * <br>
+     * This command makes sure that typed zoom information is correct, fixes it
+     * if it is not, and sends the zoom text back to the JComboBox.
+     * <br>
+     * The focus is then returned to any previously highlited syntax components stored
+     * in the observable clipboard.
+     * <br>
+     *
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        String lZoomString = ((String)((JComboBox)pAE.getSource()).getSelectedItem());
+        float lZoom = 1.0F;
+        try
+        {
+            if (lZoomString.substring(lZoomString.length()-1,lZoomString.length()).equals("%"))
+            {
+                lZoom = (Float.parseFloat(lZoomString.substring(0,lZoomString.length()-1))/100);
+            }
+            else
+            {
+                lZoom = (Float.parseFloat(lZoomString)/100);
+            }
+        }
+        catch (NumberFormatException e)
+        {
+            lZoom = 1.0F;
+        }
+        mUserFrame.getObservableZoom().setValue(lZoom);
+        mUserFrame.getUserControl().zoom(lZoom);
+        //		if (mUserFrame.getObservableClipboard().getValue() != null)
+        //		{
+        //			mUserFrame.getObservableClipboard().getValue().requestFocus();
+        //		}
+    }
 
 }

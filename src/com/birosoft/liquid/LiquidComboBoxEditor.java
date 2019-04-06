@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -24,37 +24,37 @@ import com.birosoft.liquid.skin.Skin;
  */
 public class LiquidComboBoxEditor extends BasicComboBoxEditor
 {
-    
+
     static Skin skin;
-    
+
     public LiquidComboBoxEditor()
     {
         super();
         editor.setBorder( new AbstractBorder()
         {
             /**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
+             *
+             */
+            private static final long serialVersionUID = 1L;
 
-			/**
+            /**
              * @see javax.swing.border.Border#getBorderInsets(java.awt.Component)
              */
             public Insets getBorderInsets(Component c)
             {
                 return new Insets(0, 3, 0, 3);
             }
-            
+
             /**
              * @see javax.swing.border.Border#paintBorder(java.awt.Component, java.awt.Graphics, int, int, int, int)
              */
             public void paintBorder(Component c, Graphics g, int x, int y, int w, int h)
-            {                
+            {
                 //int index = c.isEnabled() ? 0 : 1;
             }
         });
     }
-    
+
     /**
      * A subclass of BasicComboBoxEditor that implements UIResource.
      * BasicComboBoxEditor doesn't implement UIResource

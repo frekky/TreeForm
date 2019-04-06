@@ -22,7 +22,7 @@ package syntaxTree;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -33,39 +33,39 @@ import java.awt.event.ActionListener;
  */
 public class ListenerDeleteFeature implements ActionListener {
 
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntacticFeature mSF;
+    /**
+     *
+     * @uml.property name="mSF"
+     * @uml.associationEnd
+     * @uml.property name="mSF" multiplicity="(1 1)"
+     */
+    private SyntacticFeature mSF;
 
-	/**
-	 * 
-	 * @uml.property name="mFacade"
-	 * @uml.associationEnd 
-	 * @uml.property name="mFacade" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mFacade;
+    /**
+     *
+     * @uml.property name="mFacade"
+     * @uml.associationEnd
+     * @uml.property name="mFacade" multiplicity="(1 1)"
+     */
+    private SyntaxFacade mFacade;
 
-	/**
-	 * 
-	 * @param pFacade The SyntaxFacade holding all these commands
-	 * @param pSF The SyntacticFeature attached to this listener.
-	 */
-	public ListenerDeleteFeature(SyntaxFacade pFacade, SyntacticFeature pSF)
-	{
-		mFacade = pFacade;
-		mSF = pSF;
-	}
-/**
- * @param pAE The ActionEvent
- * <br>
- * Calls deleteSyntacticFeature
- */
-	public void actionPerformed(ActionEvent pAE) {
-		mFacade.deleteSyntacticFeature(mSF);
-	}
+    /**
+     *
+     * @param pFacade The SyntaxFacade holding all these commands
+     * @param pSF The SyntacticFeature attached to this listener.
+     */
+    public ListenerDeleteFeature(SyntaxFacade pFacade, SyntacticFeature pSF)
+    {
+        mFacade = pFacade;
+        mSF = pSF;
+    }
+    /**
+     * @param pAE The ActionEvent
+     * <br>
+     * Calls deleteSyntacticFeature
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        mFacade.deleteSyntacticFeature(mSF);
+    }
 
 }

@@ -33,38 +33,38 @@ import javax.swing.JComboBox;
  */
 public class UserComboFont extends JComboBox implements Observer {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableFont"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableFont" multiplicity="(1 1)"
-	 */
-	private ObservableFont mObservableFont;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableFont"
+     * @uml.associationEnd
+     * @uml.property name="mObservableFont" multiplicity="(1 1)"
+     */
+    private ObservableFont mObservableFont;
 
-/**
- * 
- * @param pObservableFont Contains the obervable that holds font information
- * 
- */
-	public UserComboFont(ObservableFont pObservableFont)
-	{
-		mObservableFont = pObservableFont;
-	}
-/**
- * @param pO the passed observable (in case an object uses more than one)
- * @param pObject the passed object (the value)
- * TODO: go back and change the observable values back to Objects, and convert info out.
- * 
- */
-	public void update(Observable pO, Object pObject) {
-		if (pO == mObservableFont)
-		{		
-			this.setSelectedItem(mObservableFont.getValue());
-		}
-	}
+    /**
+     *
+     * @param pObservableFont Contains the obervable that holds font information
+     *
+     */
+    public UserComboFont(ObservableFont pObservableFont)
+    {
+        mObservableFont = pObservableFont;
+    }
+    /**
+     * @param pO the passed observable (in case an object uses more than one)
+     * @param pObject the passed object (the value)
+     * TODO: go back and change the observable values back to Objects, and convert info out.
+     *
+     */
+    public void update(Observable pO, Object pObject) {
+        if (pO == mObservableFont)
+        {
+            this.setSelectedItem(mObservableFont.getValue());
+        }
+    }
 
 }

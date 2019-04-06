@@ -23,52 +23,52 @@ import java.util.Observable;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Observable classes (part of Java's implementation of the
  * Observer design pattern).  These classes are needed to easily add objects
  * to a big list of objects that care about changes to a particular variable.  This
  * program has a LOT of these types of variables.
- *  
+ *
  */
 public class ObservableFontItalic extends Observable {
 
-	private boolean mItalic;
+    private boolean mItalic;
 
-	/**
-	 * Constructor
-	 * @param pItalic - passes an EditableComponent to the clipboard.
-	 * <br>
-	 * 
-	 */
-	public ObservableFontItalic(boolean pItalic) {
-		
-		mItalic = pItalic;
-	}
-	/**
-	 * 
-	 * @param pItalic - passes a value for the Observable, in this case the boolean
-	 * indicating italics on/off
-	 * <br>
-	 * Once this command is invoked, the superclass change notification is sent,
-	 * and all the subscribed observers are told about the event.
-	 */
+    /**
+     * Constructor
+     * @param pItalic - passes an EditableComponent to the clipboard.
+     * <br>
+     *
+     */
+    public ObservableFontItalic(boolean pItalic) {
 
-	public void setValue(boolean pItalic)
-	 {
-		mItalic = pItalic;
-		setChanged();
-		notifyObservers();
-	 }
-	/**
-	 * 
-	 * @return getValue - passes a value from the Observable, in this case a boolean
-	 * indicating italics on/off
-	 * <br>
-	 * A convenience function for returning the observable value.
-	 */
-	 public boolean getValue()
-	 {
-		return mItalic;
-	 }
+        mItalic = pItalic;
+    }
+    /**
+     *
+     * @param pItalic - passes a value for the Observable, in this case the boolean
+     * indicating italics on/off
+     * <br>
+     * Once this command is invoked, the superclass change notification is sent,
+     * and all the subscribed observers are told about the event.
+     */
+
+    public void setValue(boolean pItalic)
+    {
+        mItalic = pItalic;
+        setChanged();
+        notifyObservers();
+    }
+    /**
+     *
+     * @return getValue - passes a value from the Observable, in this case a boolean
+     * indicating italics on/off
+     * <br>
+     * A convenience function for returning the observable value.
+     */
+    public boolean getValue()
+    {
+        return mItalic;
+    }
 }

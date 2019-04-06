@@ -38,27 +38,27 @@ import javax.swing.JComboBox;
  */
 public class UserComboFontSize extends JComboBox implements Observer {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableFontSize"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableFontSize" multiplicity="(1 1)"
-	 */
-	private ObservableFontSize mObservableFontSize;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableFontSize"
+     * @uml.associationEnd
+     * @uml.property name="mObservableFontSize" multiplicity="(1 1)"
+     */
+    private ObservableFontSize mObservableFontSize;
 
-	public UserComboFontSize(ObservableFontSize pObservableFontSize)
-	{
-		mObservableFontSize = pObservableFontSize;
-	}
-	public void update(Observable arg0, Object arg1) {
-		if (arg0 == mObservableFontSize)
-		{		
-			this.setSelectedItem(Integer.toString(mObservableFontSize.getValue()));
-		}
-	}
+    public UserComboFontSize(ObservableFontSize pObservableFontSize)
+    {
+        mObservableFontSize = pObservableFontSize;
+    }
+    public void update(Observable arg0, Object arg1) {
+        if (arg0 == mObservableFontSize)
+        {
+            this.setSelectedItem(Integer.toString(mObservableFontSize.getValue()));
+        }
+    }
 
 }

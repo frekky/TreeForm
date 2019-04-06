@@ -40,15 +40,15 @@ import javax.swing.JButton;
 public class SkinToggleButtonIndexModel
 {
 
-	/**
-	 * 
-	 * @uml.property name="button"
-	 * @uml.associationEnd 
-	 * @uml.property name="button" multiplicity="(0 1)"
-	 */
-	private AbstractButton button;
+    /**
+     *
+     * @uml.property name="button"
+     * @uml.associationEnd
+     * @uml.property name="button" multiplicity="(0 1)"
+     */
+    private AbstractButton button;
 
-    
+
     private int normal;
     private int rollover;
     private int pressed;
@@ -58,9 +58,9 @@ public class SkinToggleButtonIndexModel
     private int selectedPressed;
     private int selectedDisabled;
     private int defaultButton;
-    
+
     boolean checkForDefaultButton;
-    
+
     /**
      * Creates a SkinIndexModel for the button with the indices normal=0,
      * rollover=1, pushed=2 and disabled=3,
@@ -73,16 +73,16 @@ public class SkinToggleButtonIndexModel
         this.rollover=1;
         this.pressed=2;
         this.disabled=3;
-        
+
         this.selected=4;
         this.selectedRollover=5;
         this.selectedPressed=6;
         this.selectedDisabled=7;
-        
+
         this.defaultButton=8;
         checkForDefaultButton=false;
     }
-    
+
     /**
      * Creates a SkinIndexModel for the button with the indices normal=0,
      * rollover=1, pushed=2 and disabled=3,
@@ -101,13 +101,13 @@ public class SkinToggleButtonIndexModel
      * @param button
      */
     public SkinToggleButtonIndexModel(int normal,int rollover,int pressed,int disabled,
-    int selected,int selectedRollover, int selectedPressed, int selectedDisabled)
+        int selected,int selectedRollover, int selectedPressed, int selectedDisabled)
     {
         this.normal=normal;
         this.rollover=rollover;
         this.pressed=pressed;
         this.disabled=disabled;
-        
+
         this.selected=selected;
         this.selectedRollover=selectedRollover;
         this.selectedPressed=selectedPressed;
@@ -152,7 +152,7 @@ public class SkinToggleButtonIndexModel
             return selected;
         }
     }
-    
+
     /**
      * This methode can be used for Non-AbstractButtons. The states are passed
      * directly, but the logic to decide which index to use remains the same.
@@ -186,27 +186,27 @@ public class SkinToggleButtonIndexModel
         }
     }
 
-	/**
-	 * Returns the button.
-	 * @return AbstractButton
-	 * 
-	 * @uml.property name="button"
-	 */
-	public AbstractButton getButton() {
-		return button;
-	}
+    /**
+     * Returns the button.
+     * @return AbstractButton
+     *
+     * @uml.property name="button"
+     */
+    public AbstractButton getButton() {
+        return button;
+    }
 
-	/**
-	 * Sets the button.
-	 * @param button The button to set
-	 * 
-	 * @uml.property name="button"
-	 */
-	public void setButton(AbstractButton button) {
-		this.button = button;
-	}
+    /**
+     * Sets the button.
+     * @param button The button to set
+     *
+     * @uml.property name="button"
+     */
+    public void setButton(AbstractButton button) {
+        this.button = button;
+    }
 
-    
+
     /**
      * Returns the checkForDefaultButton.
      * @return boolean
@@ -216,15 +216,15 @@ public class SkinToggleButtonIndexModel
         return checkForDefaultButton;
     }
 
-	/**
-	 * Sets the checkForDefaultButton.
-	 * @param checkForDefaultButton The checkForDefaultButton to set
-	 * 
-	 * @uml.property name="checkForDefaultButton"
-	 */
-	public void setCheckForDefaultButton(boolean hasToggleButton) {
-		this.checkForDefaultButton = hasToggleButton;
-	}
+    /**
+     * Sets the checkForDefaultButton.
+     * @param checkForDefaultButton The checkForDefaultButton to set
+     *
+     * @uml.property name="checkForDefaultButton"
+     */
+    public void setCheckForDefaultButton(boolean hasToggleButton) {
+        this.checkForDefaultButton = hasToggleButton;
+    }
 
-    
+
 }

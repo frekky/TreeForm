@@ -9,16 +9,16 @@ import syntaxTree.SyntaxFacade;
 
 public class ListenerLineWidth implements ChangeListener {
 
-	private Properties mProperties;
-	private SyntaxFacade mSyntaxFacade;
+    private Properties mProperties;
+    private SyntaxFacade mSyntaxFacade;
 
-	public ListenerLineWidth(Properties properties, SyntaxFacade syntaxFacade) {
-		mProperties = properties;
-		mSyntaxFacade = syntaxFacade;
-	}
+    public ListenerLineWidth(Properties properties, SyntaxFacade syntaxFacade) {
+        mProperties = properties;
+        mSyntaxFacade = syntaxFacade;
+    }
 
-	public void stateChanged(ChangeEvent e) {
-		mProperties.setMinLineWidth(((JSlider)e.getSource()).getValue());
-		mSyntaxFacade.displayTree();
-	}
+    public void stateChanged(ChangeEvent e) {
+        mProperties.setMinLineWidth(((JSlider)e.getSource()).getValue());
+        mSyntaxFacade.displayTree();
+    }
 }

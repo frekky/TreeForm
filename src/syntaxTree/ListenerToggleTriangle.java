@@ -7,25 +7,25 @@ import enumerators.SyntacticLevel;
 
 public class ListenerToggleTriangle implements ActionListener {
 
-	private SyntaxFacade mSF;
-	private SyntacticStructure mSS;
+    private SyntaxFacade mSF;
+    private SyntacticStructure mSS;
 
-	public ListenerToggleTriangle(SyntaxFacade pSF, SyntacticStructure pSS) {
-		mSF = pSF;
-		mSS = pSS;
-	}
+    public ListenerToggleTriangle(SyntaxFacade pSF, SyntacticStructure pSS) {
+        mSF = pSF;
+        mSS = pSS;
+    }
 
-	public void actionPerformed(ActionEvent arg0) {
-		if(mSS.getSyntacticLevel() == SyntacticLevel.TRIANGLE)
-		{
-			mSS.setSyntacticLevel(SyntacticLevel.HEAD);
-		}
-		else
-		{
-			mSS.setSyntacticLevel(SyntacticLevel.TRIANGLE);
-		}
-		mSF.displayTree();
+    public void actionPerformed(ActionEvent arg0) {
+        if(mSS.getSyntacticLevel() == SyntacticLevel.TRIANGLE)
+        {
+            mSS.setSyntacticLevel(SyntacticLevel.HEAD);
+        }
+        else
+        {
+            mSS.setSyntacticLevel(SyntacticLevel.TRIANGLE);
+        }
+        mSF.displayTree();
 
-	}
+    }
 
 }

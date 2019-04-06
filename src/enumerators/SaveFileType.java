@@ -20,35 +20,35 @@ package enumerators;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * A list of file save types
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
  */
 
 public final class SaveFileType {
-	private SaveFileType(){}
+    private SaveFileType(){}
 
-	/**
-	 * 
-	 * @uml.property name="xML" changeability="frozen" 
-	 */
-	public static final SaveFileType XML = new SaveFileType();
+    /**
+     *
+     * @uml.property name="xML" changeability="frozen"
+     */
+    public static final SaveFileType XML = new SaveFileType();
 
-	/**
-	 * 
-	 * @uml.property name="lABELLED_BRACKET" changeability="frozen" 
-	 */
-	public static final SaveFileType LABELLED_BRACKET = new SaveFileType();
+    /**
+     *
+     * @uml.property name="lABELLED_BRACKET" changeability="frozen"
+     */
+    public static final SaveFileType LABELLED_BRACKET = new SaveFileType();
 
-	/**
-	 * 
-	 * @uml.property name="lATEX" changeability="frozen" 
-	 */
-	public static final SaveFileType LATEX = new SaveFileType();
-	
-	/**
-	 * 
-	 * @uml.property name="SVG" changeability="frozen" 
-	 */
-	public static final SaveFileType SVG = new SaveFileType();
+    /**
+     *
+     * @uml.property name="lATEX" changeability="frozen"
+     */
+    public static final SaveFileType LATEX = new SaveFileType();
+
+    /**
+     *
+     * @uml.property name="SVG" changeability="frozen"
+     */
+    public static final SaveFileType SVG = new SaveFileType();
 
 }

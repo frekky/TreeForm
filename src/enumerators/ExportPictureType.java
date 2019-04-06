@@ -20,15 +20,15 @@ package enumerators;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * A list of picture export types
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="enumerator" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="enumerator"
  */
 
 public final class ExportPictureType {
-	private ExportPictureType(String pName){}
-	public static final ExportPictureType JPG300 = new ExportPictureType("JPG300");
-	public static final ExportPictureType JPG600 = new ExportPictureType("JPG600");
-	public static final ExportPictureType PNG300 = new ExportPictureType("PNG300");
-	public static final ExportPictureType PNG600 = new ExportPictureType("PNG600");
+    private ExportPictureType(String pName){}
+    public static final ExportPictureType JPG300 = new ExportPictureType("JPG300");
+    public static final ExportPictureType JPG600 = new ExportPictureType("JPG600");
+    public static final ExportPictureType PNG300 = new ExportPictureType("PNG300");
+    public static final ExportPictureType PNG600 = new ExportPictureType("PNG600");
 }

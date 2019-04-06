@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid;
 
 import com.birosoft.liquid.skin.Skin;
@@ -18,21 +18,21 @@ import com.birosoft.liquid.skin.Skin;
 class LiquidRadioButtonIcon extends LiquidCheckBoxIcon
 {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	static Skin skin;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    static Skin skin;
 
-	/**
-	 * 
-	 * @uml.property name="skin"
-	 */
-	public Skin getSkin() {
-		if (skin == null)
-			skin = new Skin("radiobutton.png", 8, 0);
-		return skin;
-	}
+    /**
+     *
+     * @uml.property name="skin"
+     */
+    public Skin getSkin() {
+        if (skin == null)
+            skin = new Skin("radiobutton.png", 8, 0);
+        return skin;
+    }
 
-   
+
 }
 

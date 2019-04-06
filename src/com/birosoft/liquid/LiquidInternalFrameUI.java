@@ -48,24 +48,24 @@ public class LiquidInternalFrameUI extends BasicInternalFrameUI {
     static boolean allowRoundedWindows = false;
     private static DesktopManager sharedDesktopManager;
 
-	/**
-	 * 
-	 * @uml.property name="frameBorder"
-	 * @uml.associationEnd 
-	 * @uml.property name="frameBorder" multiplicity="(1 1)"
-	 */
-	LiquidInternalFrameBorder frameBorder = new LiquidInternalFrameBorder();
+    /**
+     *
+     * @uml.property name="frameBorder"
+     * @uml.associationEnd
+     * @uml.property name="frameBorder" multiplicity="(1 1)"
+     */
+    LiquidInternalFrameBorder frameBorder = new LiquidInternalFrameBorder();
 
-	//	static Border disabledBorder=new LiquidInternalFrameBorder(false);
+    //	static Border disabledBorder=new LiquidInternalFrameBorder(false);
 
-	/**
-	 * The metouia version of the internal frame title pane.
-	 * 
-	 * @uml.property name="titlePane"
-	 * @uml.associationEnd 
-	 * @uml.property name="titlePane" multiplicity="(0 1)"
-	 */
-	private LiquidInternalFrameTitlePane titlePane;
+    /**
+     * The metouia version of the internal frame title pane.
+     *
+     * @uml.property name="titlePane"
+     * @uml.associationEnd
+     * @uml.property name="titlePane" multiplicity="(0 1)"
+     */
+    private LiquidInternalFrameTitlePane titlePane;
 
     /**
      * Creates the UI delegate for the given frame.
@@ -217,7 +217,7 @@ public class LiquidInternalFrameUI extends BasicInternalFrameUI {
     }
 
     private static class LiquidPropertyChangeHandler
-        implements PropertyChangeListener {
+    implements PropertyChangeListener {
         public void propertyChange(PropertyChangeEvent e) {
             String name = e.getPropertyName();
             JInternalFrame jif = (JInternalFrame) e.getSource();

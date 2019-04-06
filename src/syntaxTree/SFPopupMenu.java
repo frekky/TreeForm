@@ -22,7 +22,7 @@ package syntaxTree;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -33,72 +33,72 @@ import javax.swing.JPopupMenu;
  */
 public class SFPopupMenu extends JPopupMenu {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mAddFeature"
-	 * @uml.associationEnd 
-	 * @uml.property name="mAddFeature" multiplicity="(1 1)"
-	 */
-	private JMenuItem mAddFeature;
+    /**
+     *
+     * @uml.property name="mAddFeature"
+     * @uml.associationEnd
+     * @uml.property name="mAddFeature" multiplicity="(1 1)"
+     */
+    private JMenuItem mAddFeature;
 
-	/**
-	 * 
-	 * @uml.property name="mDeleteFeatureSet"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDeleteFeatureSet" multiplicity="(1 1)"
-	 */
-	private JMenuItem mDeleteFeatureSet;
+    /**
+     *
+     * @uml.property name="mDeleteFeatureSet"
+     * @uml.associationEnd
+     * @uml.property name="mDeleteFeatureSet" multiplicity="(1 1)"
+     */
+    private JMenuItem mDeleteFeatureSet;
 
-	/**
-	 * 
-	 * @uml.property name="mDeleteFeature"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDeleteFeature" multiplicity="(1 1)"
-	 */
-	private JMenuItem mDeleteFeature;
+    /**
+     *
+     * @uml.property name="mDeleteFeature"
+     * @uml.associationEnd
+     * @uml.property name="mDeleteFeature" multiplicity="(1 1)"
+     */
+    private JMenuItem mDeleteFeature;
 
-	/**
-	 * 
-	 * @uml.property name="mFacade"
-	 * @uml.associationEnd 
-	 * @uml.property name="mFacade" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mFacade;
+    /**
+     *
+     * @uml.property name="mFacade"
+     * @uml.associationEnd
+     * @uml.property name="mFacade" multiplicity="(1 1)"
+     */
+    private SyntaxFacade mFacade;
 
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntacticFeature mSF;
+    /**
+     *
+     * @uml.property name="mSF"
+     * @uml.associationEnd
+     * @uml.property name="mSF" multiplicity="(1 1)"
+     */
+    private SyntacticFeature mSF;
 
-	/**
-	 * 
-	 * @param pF The SyntaxFacade for this menu
-	 * @param pSF The SyntacticStructure associated with this menu
-	 * <br>
-	 * This menu includes Delete Feature, Delete Feature Set, and Add Feature
-	 * commands.
-	 * TODO: Add i18n
-	 */
-	public SFPopupMenu(SyntaxFacade pF, SyntacticFeature pSF)
-	{
-		mSF = pSF;
-		mFacade = pF;
-		mDeleteFeature = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("DELETE_FEATURE"));
-		mDeleteFeature.addActionListener(new ListenerDeleteFeature(mFacade, mSF));
-		add(mDeleteFeature);
-		mDeleteFeatureSet = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("DELETE_FEATURE_SET"));
-		mDeleteFeatureSet.addActionListener(new ListenerDeleteFeatureSet(mFacade, mSF));
-		add(mDeleteFeatureSet);
-		mAddFeature = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("ADD_FEATURE"));
-		mAddFeature.addActionListener(new ListenerAddFeature(mFacade, mSF));
-		add(mAddFeature);
-	}
+    /**
+     *
+     * @param pF The SyntaxFacade for this menu
+     * @param pSF The SyntacticStructure associated with this menu
+     * <br>
+     * This menu includes Delete Feature, Delete Feature Set, and Add Feature
+     * commands.
+     * TODO: Add i18n
+     */
+    public SFPopupMenu(SyntaxFacade pF, SyntacticFeature pSF)
+    {
+        mSF = pSF;
+        mFacade = pF;
+        mDeleteFeature = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("DELETE_FEATURE"));
+        mDeleteFeature.addActionListener(new ListenerDeleteFeature(mFacade, mSF));
+        add(mDeleteFeature);
+        mDeleteFeatureSet = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("DELETE_FEATURE_SET"));
+        mDeleteFeatureSet.addActionListener(new ListenerDeleteFeatureSet(mFacade, mSF));
+        add(mDeleteFeatureSet);
+        mAddFeature = new JMenuItem((String) pF.getUIF().getUserFrame().getI18n().getObject("ADD_FEATURE"));
+        mAddFeature.addActionListener(new ListenerAddFeature(mFacade, mSF));
+        add(mAddFeature);
+    }
 }

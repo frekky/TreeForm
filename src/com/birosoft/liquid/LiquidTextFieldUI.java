@@ -49,7 +49,7 @@ public class LiquidTextFieldUI extends BasicTextFieldUI {
             Insets margin = editor.getMargin();
 
             if ((margin.top > 0) && (margin.left > 0) && (margin.bottom > 0) &&
-                    (margin.right > 0)) {
+                (margin.right > 0)) {
                 ((LiquidTextFieldBorder) editor.getBorder()).setInsets(editor.getMargin());
             }
         }

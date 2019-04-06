@@ -26,21 +26,21 @@ package enumerators;
  * <br>
  * <br>
  * A list of syntacticStructureTypes for the builder.
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
  */
 
 public final class SyntacticOperationType {
-	private SyntacticOperationType(){}
+    private SyntacticOperationType(){}
 
-	/**
-	 * 
-	 * @uml.property name="bINARY" changeability="frozen" 
-	 */
-	public static final SyntacticOperationType MOVEMENT = new SyntacticOperationType();
-	public static final SyntacticOperationType ERASE = new SyntacticOperationType();
-	public static final SyntacticOperationType ASSOCIATION = new SyntacticOperationType();
-	public static final SyntacticOperationType ADD = new SyntacticOperationType();
+    /**
+     *
+     * @uml.property name="bINARY" changeability="frozen"
+     */
+    public static final SyntacticOperationType MOVEMENT = new SyntacticOperationType();
+    public static final SyntacticOperationType ERASE = new SyntacticOperationType();
+    public static final SyntacticOperationType ASSOCIATION = new SyntacticOperationType();
+    public static final SyntacticOperationType ADD = new SyntacticOperationType();
 
 
 }

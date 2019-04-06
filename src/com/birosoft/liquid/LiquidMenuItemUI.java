@@ -172,7 +172,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
         Container parent = menuItem.getParent();
 
         if (((parent != null) && parent instanceof JComponent) &&
-                !(menuItem instanceof JMenu &&
+            !(menuItem instanceof JMenu &&
                 ((JMenu) menuItem).isTopLevelMenu())) {
             JComponent p = (JComponent) parent;
             p.putClientProperty(MAX_ACC_WIDTH, null);
@@ -317,7 +317,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
         if (v != null) {
             d = getPreferredSize(c);
             d.width -= (v.getPreferredSpan(View.X_AXIS) -
-            v.getMinimumSpan(View.X_AXIS));
+                v.getMinimumSpan(View.X_AXIS));
         }
 
         return d;
@@ -361,7 +361,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
         } else {
             // *** paint the text normally
             if (model.isArmed() ||
-                    (menuItem instanceof JMenu && model.isSelected())) {
+                (menuItem instanceof JMenu && model.isSelected())) {
                 g.setColor(selectionForeground); // Uses protected field.
             }
 
@@ -377,7 +377,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
         if (v != null) {
             d = getPreferredSize(c);
             d.width += (v.getMaximumSpan(View.X_AXIS) -
-            v.getPreferredSpan(View.X_AXIS));
+                v.getPreferredSpan(View.X_AXIS));
         }
 
         return d;
@@ -416,7 +416,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
         boolean b = true;
 
         if ((menuItem instanceof JMenu) &&
-                (((JMenu) menuItem).isTopLevelMenu())) {
+            (((JMenu) menuItem).isTopLevelMenu())) {
             b = false;
         }
 
@@ -501,7 +501,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
         menuItem.setOpaque(true);
 
         if ((menuItem.getMargin() == null) ||
-                (menuItem.getMargin() instanceof UIResource)) {
+            (menuItem.getMargin() instanceof UIResource)) {
             menuItem.setMargin(UIManager.getInsets(prefix + ".margin"));
         }
 
@@ -510,44 +510,44 @@ public class LiquidMenuItemUI extends MenuItemUI {
         LookAndFeel.installBorder(menuItem, prefix + ".border");
         oldBorderPainted = menuItem.isBorderPainted();
         menuItem.setBorderPainted(((Boolean) (UIManager.get(prefix +
-                ".borderPainted"))).booleanValue());
+            ".borderPainted"))).booleanValue());
         LookAndFeel.installColorsAndFont(menuItem, prefix + ".background",
             prefix + ".foreground", prefix + ".font");
 
         // MenuItem specific defaults
         if ((selectionBackground == null) ||
-                selectionBackground instanceof UIResource) {
+            selectionBackground instanceof UIResource) {
             selectionBackground = UIManager.getColor(prefix +
-                    ".selectionBackground");
+                ".selectionBackground");
         }
 
         if ((selectionForeground == null) ||
-                selectionForeground instanceof UIResource) {
+            selectionForeground instanceof UIResource) {
             selectionForeground = UIManager.getColor(prefix +
-                    ".selectionForeground");
+                ".selectionForeground");
         }
 
         if ((disabledForeground == null) ||
-                disabledForeground instanceof UIResource) {
+            disabledForeground instanceof UIResource) {
             disabledForeground = UIManager.getColor(prefix +
-                    ".disabledForeground");
+                ".disabledForeground");
         }
 
         if ((acceleratorForeground == null) ||
-                acceleratorForeground instanceof UIResource) {
+            acceleratorForeground instanceof UIResource) {
             acceleratorForeground = UIManager.getColor(prefix +
-                    ".acceleratorForeground");
+                ".acceleratorForeground");
         }
 
         if ((acceleratorSelectionForeground == null) ||
-                acceleratorSelectionForeground instanceof UIResource) {
+            acceleratorSelectionForeground instanceof UIResource) {
             acceleratorSelectionForeground = UIManager.getColor(prefix +
-                    ".acceleratorSelectionForeground");
+                ".acceleratorSelectionForeground");
         }
 
         // Get accelerator delimiter
         acceleratorDelimiter = UIManager.getString(
-                "MenuItem.acceleratorDelimiter");
+            "MenuItem.acceleratorDelimiter");
 
         if (acceleratorDelimiter == null) {
             acceleratorDelimiter = "+";
@@ -607,12 +607,12 @@ public class LiquidMenuItemUI extends MenuItemUI {
             b.getVerticalTextPosition(), b.getHorizontalTextPosition(),
             viewRect, iconRect, textRect, acceleratorRect, checkIconRect,
             arrowIconRect, (text == null) ? 0 : defaultTextIconGap,
-            defaultIconGap);
+                defaultIconGap);
 
         // find the union of the icon and text rects
         r.setBounds(textRect);
         r = SwingUtilities.computeUnion(iconRect.x, iconRect.y, iconRect.width,
-                iconRect.height, r);
+            iconRect.height, r);
 
         //r = iconRect.union(textRect);
         // To make the accelerator texts appear in a column, find the widest MenuItem text
@@ -622,7 +622,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
         //Check the parent, and see that it is not a top-level menu.
         if ((parent != null) && parent instanceof JComponent &&
-                !(menuItem instanceof JMenu &&
+            !(menuItem instanceof JMenu &&
                 ((JMenu) menuItem).isTopLevelMenu())) {
             JComponent p = (JComponent) parent;
 
@@ -632,10 +632,10 @@ public class LiquidMenuItemUI extends MenuItemUI {
             Integer maxIconWidth = (Integer) p.getClientProperty(MAX_ICON_WIDTH); // WAS ME
 
             int maxTextValue = (maxTextWidth != null) ? maxTextWidth.intValue()
-                                                      : 0;
+                : 0;
             int maxAccValue = (maxAccWidth != null) ? maxAccWidth.intValue() : 0;
             int maxIconValue = (maxIconWidth != null) ? maxIconWidth.intValue()
-                                                      : 0;
+                : 0;
 
             //Compare the text widths, and adjust the r.width to the widest.
             if (r.width < maxTextValue) {
@@ -765,7 +765,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
         if (useCheckAndArrow()) {
             if (c instanceof JCheckBoxMenuItem ||
-                    c instanceof JRadioButtonMenuItem) {
+                c instanceof JRadioButtonMenuItem) {
                 ic = checkIcon;
 
                 if (checkIcon.getIconWidth() < maxValue) {
@@ -785,11 +785,11 @@ public class LiquidMenuItemUI extends MenuItemUI {
         }
 
         String text = layoutMenuItem(fm, b.getText(), fmAccel, acceleratorText,
-                ic, null /*iCheck*/, arrowIcon, b.getVerticalAlignment(),
-                b.getHorizontalAlignment(), b.getVerticalTextPosition(),
-                b.getHorizontalTextPosition(), viewRect, iconRect, textRect,
-                acceleratorRect, checkIconRect, arrowIconRect,
-                (b.getText() == null) ? 0 : defaultTextIconGap, defaultIconGap);
+            ic, null /*iCheck*/, arrowIcon, b.getVerticalAlignment(),
+            b.getHorizontalAlignment(), b.getVerticalTextPosition(),
+            b.getHorizontalTextPosition(), viewRect, iconRect, textRect,
+            acceleratorRect, checkIconRect, arrowIconRect,
+            (b.getText() == null) ? 0 : defaultTextIconGap, defaultIconGap);
 
         // Paint background
         paintBackground(g, b, background);
@@ -808,7 +808,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
                 if (c instanceof JCheckBoxMenuItem) {
                     if (model.isSelected()) {
                         UIManager.getIcon("CheckBoxMenuItem.checkedIcon")
-                                 .paintIcon(c, g, (iconRect.x + offset) - 2,
+                        .paintIcon(c, g, (iconRect.x + offset) - 2,
                             iconRect.y);
                     } else {
                         checkIcon.paintIcon(c, g, (iconRect.x + offset) - 2,
@@ -819,7 +819,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
                 if (c instanceof JRadioButtonMenuItem) {
                     if (model.isSelected()) {
                         UIManager.getIcon("RadioButtonMenuItem.checkedIcon")
-                                 .paintIcon(c, g, iconRect.x + offset,
+                        .paintIcon(c, g, iconRect.x + offset,
                             iconRect.y);
                     } else {
                         checkIcon.paintIcon(c, g, iconRect.x + offset,
@@ -897,8 +897,8 @@ public class LiquidMenuItemUI extends MenuItemUI {
                 int amaxValue = (amaxValueInt != null)
                     ? amaxValueInt.intValue() : acceleratorRect.width;
 
-                //Calculate the offset, with which the accelerator texts will be drawn with.
-                accOffset = amaxValue - acceleratorRect.width;
+                    //Calculate the offset, with which the accelerator texts will be drawn with.
+                    accOffset = amaxValue - acceleratorRect.width;
             }
 
             g.setFont(acceleratorFont);
@@ -923,7 +923,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
             } else {
                 // *** paint the acceleratorText normally
                 if (model.isArmed() ||
-                        (c instanceof JMenu && model.isSelected())) {
+                    (c instanceof JMenu && model.isSelected())) {
                     g.setColor(acceleratorSelectionForeground);
                 } else {
                     g.setColor(acceleratorForeground);
@@ -948,7 +948,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
             }
 
             if (useCheckAndArrow()) // && menu.getItemCount()>0)// && menu.isEnabled())
-             {
+            {
                 if (model.isSelected()) {
                     UIManager.getIcon("MenuItem.selArrowIcon").paintIcon(c, g,
                         arrowIconRect.x, arrowIconRect.y);
@@ -1057,7 +1057,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
             acceleratorText = "";
         } else {
             acceleratorRect.width = SwingUtilities.computeStringWidth(fmAccel,
-                    acceleratorText);
+                acceleratorText);
             acceleratorRect.height = fmAccel.getHeight();
         }
 
@@ -1130,7 +1130,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
             Point p = e.getPoint();
 
             if ((p.x >= 0) && (p.x < menuItem.getWidth()) && (p.y >= 0) &&
-                    (p.y < menuItem.getHeight())) {
+                (p.y < menuItem.getHeight())) {
                 doClick(manager);
             } else {
                 manager.processMouseEvent(e);
@@ -1143,7 +1143,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
             // 4188027: drag enter/exit added in JDK 1.1.7A, JDK1.2
             if ((modifiers &
-                    (InputEvent.BUTTON1_MASK | InputEvent.BUTTON2_MASK |
+                (InputEvent.BUTTON1_MASK | InputEvent.BUTTON2_MASK |
                     InputEvent.BUTTON3_MASK)) != 0) {
                 MenuSelectionManager.defaultManager().processMouseEvent(e);
             } else {
@@ -1158,7 +1158,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
             // 4188027: drag enter/exit added in JDK 1.1.7A, JDK1.2
             if ((modifiers &
-                    (InputEvent.BUTTON1_MASK | InputEvent.BUTTON2_MASK |
+                (InputEvent.BUTTON1_MASK | InputEvent.BUTTON2_MASK |
                     InputEvent.BUTTON3_MASK)) != 0) {
                 MenuSelectionManager.defaultManager().processMouseEvent(e);
             } else {
@@ -1203,7 +1203,7 @@ public class LiquidMenuItemUI extends MenuItemUI {
             Point p = e.getPoint();
 
             if ((p.x >= 0) && (p.x < menuItem.getWidth()) && (p.y >= 0) &&
-                    (p.y < menuItem.getHeight())) {
+                (p.y < menuItem.getHeight())) {
                 doClick(manager);
             } else {
                 manager.clearSelectedPath();
@@ -1261,10 +1261,10 @@ public class LiquidMenuItemUI extends MenuItemUI {
             String name = e.getPropertyName();
 
             if (name.equals("labelFor") || name.equals("displayedMnemonic") ||
-                    name.equals("accelerator")) {
+                name.equals("accelerator")) {
                 updateAcceleratorBinding();
             } else if (name.equals("text") || "font".equals(name) ||
-                    "foreground".equals(name)) {
+                "foreground".equals(name)) {
                 // remove the old html view client property if one
                 // existed, and install a new one if the text installed
                 // into the JLabel is html source.
@@ -1277,11 +1277,11 @@ public class LiquidMenuItemUI extends MenuItemUI {
 
     private static class ClickAction extends AbstractAction {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
-		public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {
             JMenuItem mi = (JMenuItem) e.getSource();
             MenuSelectionManager.defaultManager().clearSelectedPath();
             mi.doClick();

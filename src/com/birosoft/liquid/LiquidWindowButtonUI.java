@@ -43,26 +43,26 @@ public class LiquidWindowButtonUI extends LiquidButtonUI {
     {"closebutton.png", "maximizebutton.png","minimizebutton.png","restorebutton.png"};
     /** the index model for the window buttons */
     private static SkinSimpleButtonIndexModel indexModel=new SkinSimpleButtonIndexModel(0,1,2,4);
-    
+
     static Skin skins[]=new Skin[4];
-    
+
     public static ComponentUI createUI(JComponent c) {
         throw new IllegalStateException("Must not be used this way.");
     }
-    
+
     LiquidWindowButtonUI(int type) {
         this.type=type;
     }
-    
+
     protected void paintFocus(Graphics g, AbstractButton b, Rectangle viewRect, Rectangle textRect, Rectangle iconRect) {
     }
-    
+
     public void paint(Graphics g, JComponent c) {
         SpecialUIButton button = (SpecialUIButton) c;
-        
+
         indexModel.setButton(button);
         int index=indexModel.getIndexForState();
-        
+
         if (button.frame != null) {
             if (button.frame.isMaximum() && type == MAXIMIZE) {
                 getSkin(RESTORE).draw(g, index,  button.getWidth(),  button.getHeight());
@@ -75,20 +75,20 @@ public class LiquidWindowButtonUI extends LiquidButtonUI {
                 getSkin(RESTORE).draw(g, index,  button.getWidth(),  button.getHeight());
             }
             else {*/
-                getSkin(type).draw(g, index,  button.getWidth(),  button.getHeight());
+            getSkin(type).draw(g, index,  button.getWidth(),  button.getHeight());
             //}
         }
     }
-    
+
     protected static Skin getSkin(int type) {
         if (skins[type]==null) {
             skins[type]=  new Skin(files[type], 5, 2);
         }
-        
+
         //
         return skins[type];
     }
-    
+
     /**
      * Creates a new Window Button UI for the specified type
      * @param type
@@ -103,6 +103,6 @@ public class LiquidWindowButtonUI extends LiquidButtonUI {
     public Dimension getPreferredSize(JComponent c) {
         return new Dimension( getSkin(type).getHsize(), getSkin(type).getVsize() );
     }
-    
-    
+
+
 }

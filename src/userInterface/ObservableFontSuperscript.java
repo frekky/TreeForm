@@ -23,52 +23,52 @@ import java.util.Observable;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Observable classes (part of Java's implementation of the
  * Observer design pattern).  These classes are needed to easily add objects
  * to a big list of objects that care about changes to a particular variable.  This
  * program has a LOT of these types of variables.
- *  
+ *
  */
 public class ObservableFontSuperscript extends Observable {
 
-	private boolean mSuperscript;
+    private boolean mSuperscript;
 
-	/**
-	 * Constructor
-	 * @param pSuperscript - passes an boolean representing the superscript
-	 * <br>
-	 * 
-	 */
-	public ObservableFontSuperscript(boolean pSuperscript) {
-		
-		mSuperscript = pSuperscript;
-	}
-	/**
-	 * 
-	 * @param pSuperscript - passes a value for the Observable, in this case boolean
-	 * indicating superscript on/off.
-	 * <br>
-	 * Once this command is invoked, the superclass change notification is sent,
-	 * and all the subscribed observers are told about the event.
-	 */
+    /**
+     * Constructor
+     * @param pSuperscript - passes an boolean representing the superscript
+     * <br>
+     *
+     */
+    public ObservableFontSuperscript(boolean pSuperscript) {
 
-	public void setValue(boolean pSuperscript)
-	 {
-		mSuperscript = pSuperscript;
-		setChanged();
-		notifyObservers();
-	 }
-	/**
-	 * 
-	 * @return getValue - passes a value from the Observable, in this case a boolean
-	 * indicating superscript on/off.
-	 * <br>
-	 * A convenience function for returning the observable value.
-	 */
-	 public boolean getValue()
-	 {
-		return mSuperscript;
-	 }
+        mSuperscript = pSuperscript;
+    }
+    /**
+     *
+     * @param pSuperscript - passes a value for the Observable, in this case boolean
+     * indicating superscript on/off.
+     * <br>
+     * Once this command is invoked, the superclass change notification is sent,
+     * and all the subscribed observers are told about the event.
+     */
+
+    public void setValue(boolean pSuperscript)
+    {
+        mSuperscript = pSuperscript;
+        setChanged();
+        notifyObservers();
+    }
+    /**
+     *
+     * @return getValue - passes a value from the Observable, in this case a boolean
+     * indicating superscript on/off.
+     * <br>
+     * A convenience function for returning the observable value.
+     */
+    public boolean getValue()
+    {
+        return mSuperscript;
+    }
 }

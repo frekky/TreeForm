@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -27,7 +27,7 @@ import com.birosoft.liquid.util.Colors;
  */
 public class LiquidMenuBarUI extends BasicMenuBarUI
 {
-    
+
     static Skin skin;
     /**
      * Creates the UI delegate for the given component.
@@ -42,7 +42,7 @@ public class LiquidMenuBarUI extends BasicMenuBarUI
         c.setBorder(new EmptyBorder(0,5,2,0 ));
         return new LiquidMenuBarUI();
     }
-    
+
     /**
      * Paints the given component.
      *
@@ -59,17 +59,17 @@ public class LiquidMenuBarUI extends BasicMenuBarUI
         }
     }
 
-	/**
-	 * 
-	 * @uml.property name="skin"
-	 */
-	public Skin getSkin() {
-		if (skin == null) {
-			skin = new Skin("menu_top.png", 3, 0);
-		}
+    /**
+     *
+     * @uml.property name="skin"
+     */
+    public Skin getSkin() {
+        if (skin == null) {
+            skin = new Skin("menu_top.png", 3, 0);
+        }
 
-		return skin;
-	}
+        return skin;
+    }
 
-    
+
 }

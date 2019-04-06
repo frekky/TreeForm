@@ -70,7 +70,7 @@ public class LiquidTableUI extends BasicTableUI {
         }
 
         if (LiquidLookAndFeel.defaultRowBackgroundMode &
-                (defaultBackground == null)) {
+            (defaultBackground == null)) {
             defaultBackground = table.getBackground();
             table.setIntercellSpacing(new Dimension());
         }
@@ -78,7 +78,7 @@ public class LiquidTableUI extends BasicTableUI {
         Rectangle clip = g.getClipBounds();
         Point upperLeft = clip.getLocation();
         Point lowerRight = new Point((clip.x + clip.width) - 1,
-                (clip.y + clip.height) - 1);
+            (clip.y + clip.height) - 1);
         int rMin = table.rowAtPoint(upperLeft);
         int rMax = table.rowAtPoint(lowerRight);
 
@@ -184,7 +184,7 @@ public class LiquidTableUI extends BasicTableUI {
     private void paintCells(Graphics g, int rMin, int rMax, int cMin, int cMax) {
         JTableHeader header = table.getTableHeader();
         TableColumn draggedColumn = (header == null) ? null
-                                                     : header.getDraggedColumn();
+            : header.getDraggedColumn();
 
         TableColumnModel cm = table.getColumnModel();
         int columnMargin = cm.getColumnMargin();
@@ -305,7 +305,7 @@ public class LiquidTableUI extends BasicTableUI {
 
     private void paintCell(Graphics g, Rectangle cellRect, int row, int column) {
         if (table.isEditing() && (table.getEditingRow() == row) &&
-                (table.getEditingColumn() == column)) {
+            (table.getEditingColumn() == column)) {
             Component component = table.getEditorComponent();
             component.setBounds(cellRect);
             component.validate();
@@ -314,8 +314,8 @@ public class LiquidTableUI extends BasicTableUI {
             Component component = table.prepareRenderer(renderer, row, column);
 
             if (LiquidLookAndFeel.defaultRowBackgroundMode &
-                    !table.isCellSelected(row, column)) {
-                if ((row % 2) == 0) {                    
+                !table.isCellSelected(row, column)) {
+                if ((row % 2) == 0) {
                     if (defaultBackground.equals(component.getBackground())) {
                         component.setBackground(LiquidLookAndFeel.getDesktopColor());
                     }

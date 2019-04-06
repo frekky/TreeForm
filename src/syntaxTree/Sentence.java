@@ -23,65 +23,65 @@ import java.util.LinkedList;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * A simple class that I probably shouldn't have made to hold the top of sentences * <br> * In retrospect, I should have just used a composite for this task. * <br> * Ahh, well, live and learn. * <br>
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="entity" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="entity"
  */
 
 public class Sentence implements RepositionTree{
 
-	private String mName;
+    private String mName;
 
-	/**
-	 * 
-	 * @uml.property name="children"
-	 * @uml.associationEnd 
-	 * @uml.property name="children" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticStructure"
-	 */
-//	@SuppressWarnings("unchecked")
-	private LinkedList children;
+    /**
+     *
+     * @uml.property name="children"
+     * @uml.associationEnd
+     * @uml.property name="children" multiplicity="(0 -1)" elementType="syntaxTree.SyntacticStructure"
+     */
+    //	@SuppressWarnings("unchecked")
+    private LinkedList children;
 
-//	@SuppressWarnings("unchecked")
-	public Sentence() {
-		super();
-		mName = "";
-		children = new LinkedList();
-	}
+    //	@SuppressWarnings("unchecked")
+    public Sentence() {
+        super();
+        mName = "";
+        children = new LinkedList();
+    }
 
-	public String getName() {
-		return mName;
-	}
-	public void setName(String pName) {
-		mName = pName;
-	}
-	//@SupressWarnings("unchecked")
-	public void addChild(SyntacticStructure child) {
-		if (children.size() < 1)
-		{
-			children.add(child);
-		}
-	}
+    public String getName() {
+        return mName;
+    }
+    public void setName(String pName) {
+        mName = pName;
+    }
+    //@SupressWarnings("unchecked")
+    public void addChild(SyntacticStructure child) {
+        if (children.size() < 1)
+        {
+            children.add(child);
+        }
+    }
 
-	/**
-	 * 
-	 * @uml.property name="children"
-	 */
-	//@SupressWarnings("unchecked")
-	public void setChildren(LinkedList children) {
-		this.children = children;
-	}
+    /**
+     *
+     * @uml.property name="children"
+     */
+    //@SupressWarnings("unchecked")
+    public void setChildren(LinkedList children) {
+        this.children = children;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="children"
-	 */
-	//@SupressWarnings("unchecked")
-	public LinkedList getChildren() {
-		return children;
-	}
+    /**
+     *
+     * @uml.property name="children"
+     */
+    //@SupressWarnings("unchecked")
+    public LinkedList getChildren() {
+        return children;
+    }
 
-	public void removeChild(SyntacticStructure child) {
-		children.remove(child);
-	}
+    public void removeChild(SyntacticStructure child) {
+        children.remove(child);
+    }
 
 }

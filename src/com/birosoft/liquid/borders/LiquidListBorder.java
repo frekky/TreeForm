@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid.borders;
 
@@ -23,26 +23,26 @@ import javax.swing.plaf.UIResource;
  */
 public class LiquidListBorder extends AbstractBorder implements UIResource
 {
-    
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	private static final Insets defaultInsets = new Insets(1, 1, 1, 1);
-    
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    private static final Insets defaultInsets = new Insets(1, 1, 1, 1);
+
     private Insets insets;
-    
+
     public LiquidListBorder()
     {
         insets=defaultInsets;
     }
-    
+
     public LiquidListBorder(Insets insets)
     {
         this.insets=insets;
     }
-    
+
     /**
      * Gets the border insets for a given component.
      *
@@ -53,7 +53,7 @@ public class LiquidListBorder extends AbstractBorder implements UIResource
     {
         return insets;
     }
-    
+
     /**
      * Use the skin to paint the border
      * @see javax.swing.border.Border#paintBorder(Component, Graphics, int, int, int, int)

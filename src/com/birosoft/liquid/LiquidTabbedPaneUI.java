@@ -41,13 +41,13 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
     static Skin skinBorder;
     static Skin skinBorderRight;
 
-	/**
-	 * 
-	 * @uml.property name="indexModel"
-	 * @uml.associationEnd 
-	 * @uml.property name="indexModel" multiplicity="(1 1)"
-	 */
-	SkinSimpleButtonIndexModel indexModel = new SkinSimpleButtonIndexModel();
+    /**
+     *
+     * @uml.property name="indexModel"
+     * @uml.associationEnd
+     * @uml.property name="indexModel" multiplicity="(1 1)"
+     */
+    SkinSimpleButtonIndexModel indexModel = new SkinSimpleButtonIndexModel();
 
 
     /**
@@ -182,7 +182,7 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
                h -= (y - insets.top);
                g.drawLine(x, y + 1, x, y + 1);
         }
-        */
+         */
     }
 
     /**
@@ -202,12 +202,12 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
         Insets contentBorderInsets = getContentBorderInsets(tabPlacement);
 
         if ((tabPane.getTabPlacement() == BOTTOM) &&
-                (contentBorderInsets.top == 5)) {
+            (contentBorderInsets.top == 5)) {
             contentBorderInsets.top = 0;
             contentBorderInsets.bottom = 5;
             tabPane.revalidate();
         } else if ((tabPane.getTabPlacement() == TOP) &&
-                (contentBorderInsets.top == 0)) {
+            (contentBorderInsets.top == 0)) {
             contentBorderInsets.top = 5;
             contentBorderInsets.bottom = 0;
             tabPane.revalidate();
@@ -215,7 +215,7 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
 
         //g.setColor(outerHighlight);
         int index = indexModel.getIndexForState(tabPane.isEnabledAt(tabIndex),
-                rollover == tabIndex, isSelected);
+            rollover == tabIndex, isSelected);
 
         switch (tabPlacement) {
         case LEFT:
@@ -284,12 +284,12 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
         Insets contentBorderInsets = getContentBorderInsets(tabPane.getTabPlacement());
 
         if ((tabPane.getTabPlacement() == BOTTOM) &&
-                (contentBorderInsets.top == 5)) {
+            (contentBorderInsets.top == 5)) {
             contentBorderInsets.top = 0;
             contentBorderInsets.bottom = 5;
             tabPane.revalidate();
         } else if ((tabPane.getTabPlacement() == TOP) &&
-                (contentBorderInsets.top == 0)) {
+            (contentBorderInsets.top == 0)) {
             contentBorderInsets.top = 5;
             contentBorderInsets.bottom = 0;
             tabPane.revalidate();
@@ -303,7 +303,7 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
         int y = insets.top;
         int w = width - insets.right - insets.left;
         int h = height - insets.top - insets.bottom;
-        
+
         //Color bg = LiquidLookAndFeel.getBackgroundColor();
 
         //if (c.isOpaque()) {
@@ -351,7 +351,7 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
     }
 
     public void update(Graphics g, JComponent c) {
-        paint(g, c);        
+        paint(g, c);
     }
 
     protected int getTabLabelShiftX(int tabPlacement, int tabIndex,
@@ -401,77 +401,77 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
         return nudge;
     }
 
-	/**
-	 * 
-	 * @uml.property name="skinTop"
-	 */
-	public Skin getSkinTop() {
-		if (skinTop == null) {
-			skinTop = new Skin("tabtop.png", 4, 7, 6, 7, 2);
-		}
+    /**
+     *
+     * @uml.property name="skinTop"
+     */
+    public Skin getSkinTop() {
+        if (skinTop == null) {
+            skinTop = new Skin("tabtop.png", 4, 7, 6, 7, 2);
+        }
 
-		return skinTop;
-	}
+        return skinTop;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="skinLeft"
-	 */
-	public Skin getSkinLeft() {
-		if (skinLeft == null) {
-			skinLeft = new Skin("tableft.png", 4, 6, 7, 2, 7);
-		}
+    /**
+     *
+     * @uml.property name="skinLeft"
+     */
+    public Skin getSkinLeft() {
+        if (skinLeft == null) {
+            skinLeft = new Skin("tableft.png", 4, 6, 7, 2, 7);
+        }
 
-		return skinLeft;
-	}
+        return skinLeft;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="skinRight"
-	 */
-	public Skin getSkinRight() {
-		if (skinRight == null) {
-			skinRight = new Skin("tabright.png", 4, 2, 7, 6, 7);
-		}
+    /**
+     *
+     * @uml.property name="skinRight"
+     */
+    public Skin getSkinRight() {
+        if (skinRight == null) {
+            skinRight = new Skin("tabright.png", 4, 2, 7, 6, 7);
+        }
 
-		return skinRight;
-	}
+        return skinRight;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="skinBottom"
-	 */
-	public Skin getSkinBottom() {
-		if (skinBottom == null) {
-			skinBottom = new Skin("tabbottom.png", 4, 6, 7, 6, 7);
-		}
+    /**
+     *
+     * @uml.property name="skinBottom"
+     */
+    public Skin getSkinBottom() {
+        if (skinBottom == null) {
+            skinBottom = new Skin("tabbottom.png", 4, 6, 7, 6, 7);
+        }
 
-		return skinBottom;
-	}
+        return skinBottom;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="skinBorder"
-	 */
-	public Skin getSkinBorder() {
-		if (skinBorder == null) {
-			skinBorder = new Skin("tabborderh.png", 1, 5, 2, 5, 2);
-		}
+    /**
+     *
+     * @uml.property name="skinBorder"
+     */
+    public Skin getSkinBorder() {
+        if (skinBorder == null) {
+            skinBorder = new Skin("tabborderh.png", 1, 5, 2, 5, 2);
+        }
 
-		return skinBorder;
-	}
+        return skinBorder;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="skinBorderRight"
-	 */
-	public Skin getSkinBorderRight() {
-		if (skinBorderRight == null) {
-			skinBorderRight = new Skin("tabborderright.png", 1, 0, 5, 0, 5);
-		}
+    /**
+     *
+     * @uml.property name="skinBorderRight"
+     */
+    public Skin getSkinBorderRight() {
+        if (skinBorderRight == null) {
+            skinBorderRight = new Skin("tabborderright.png", 1, 0, 5, 0, 5);
+        }
 
-		return skinBorderRight;
-	}
+        return skinBorderRight;
+    }
 
     public class MyMouseHandler implements MouseListener, MouseMotionListener {
         public void mousePressed(MouseEvent e) {
@@ -535,7 +535,7 @@ public class LiquidTabbedPaneUI extends BasicTabbedPaneUI {
             }
 
             if ((tabIndex >= 0) && tabPane.isEnabledAt(tabIndex) &&
-                    (tabIndex < tabPane.getTabCount())) {
+                (tabIndex < tabPane.getTabCount())) {
                 if (tabIndex == rollover) { // Paint new rollover
                 } else {
                     rollover = tabIndex;

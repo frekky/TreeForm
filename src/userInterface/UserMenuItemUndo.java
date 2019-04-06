@@ -25,7 +25,7 @@ import java.util.Observer;
 import javax.swing.Icon;
 import javax.swing.JMenuItem;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -36,56 +36,56 @@ import javax.swing.JMenuItem;
  */
 public class UserMenuItemUndo extends JMenuItem implements Observer{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableStack"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableStack" multiplicity="(1 1)"
-	 */
-	private ObservableStack mObservableStack;
-	private ObservableNew mObservableNew;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableStack"
+     * @uml.associationEnd
+     * @uml.property name="mObservableStack" multiplicity="(1 1)"
+     */
+    private ObservableStack mObservableStack;
+    private ObservableNew mObservableNew;
 
-/**
- * 
- * @param pString The title
- * @param pIcon The Icon
- * @param pObservableStack The Observer containing the stack of actions.
- */
-	public UserMenuItemUndo(String pString, Icon pIcon, ObservableStack pObservableStack, ObservableNew pObservableNew) {
-		super(pString, pIcon);
-		mObservableStack = pObservableStack;
-		mObservableNew = pObservableNew;
-	}
+    /**
+     *
+     * @param pString The title
+     * @param pIcon The Icon
+     * @param pObservableStack The Observer containing the stack of actions.
+     */
+    public UserMenuItemUndo(String pString, Icon pIcon, ObservableStack pObservableStack, ObservableNew pObservableNew) {
+        super(pString, pIcon);
+        mObservableStack = pObservableStack;
+        mObservableNew = pObservableNew;
+    }
 
-/**
- * implements Observer
- */
-	public void update(Observable pObservable, Object pObject) {
-		if (pObservable == mObservableStack)
-	   {
-		if (mObservableStack.getValue() == null)
-		  {
-			this.setEnabled(false);
-		  }
-		  else
-		  {
-			this.setEnabled(true);
-		  }	
-	   }
-		if (pObservable == mObservableNew)
-		{
-			if (mObservableNew.getValue() == 0)
-			  {
-				this.setEnabled(false);
-			  }
-			  else
-			  {
-				this.setEnabled(true);
-			  }
-		}
-	}
+    /**
+     * implements Observer
+     */
+    public void update(Observable pObservable, Object pObject) {
+        if (pObservable == mObservableStack)
+        {
+            if (mObservableStack.getValue() == null)
+            {
+                this.setEnabled(false);
+            }
+            else
+            {
+                this.setEnabled(true);
+            }
+        }
+        if (pObservable == mObservableNew)
+        {
+            if (mObservableNew.getValue() == 0)
+            {
+                this.setEnabled(false);
+            }
+            else
+            {
+                this.setEnabled(true);
+            }
+        }
+    }
 }

@@ -26,10 +26,10 @@ import com.birosoft.liquid.skin.SkinSimpleButtonIndexModel;
 public class LiquidScrollButton extends BasicArrowButton
 {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/** one of the four skins for the button */
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /** one of the four skins for the button */
     private static Skin skinUp= new Skin("scrollbuttonsup.png", 4, 0);
     /** one of the four skins for the button */
     private static Skin skinDown= new Skin("scrollbuttonsdown.png", 4, 0);
@@ -38,28 +38,28 @@ public class LiquidScrollButton extends BasicArrowButton
     /** one of the four skins for the button */
     private static Skin skinRight= new Skin("scrollbuttonsright.png", 4, 0);
 
-	/**
-	 * the skin used for this instance of the scroll button
-	 * 
-	 * @uml.property name="skin"
-	 * @uml.associationEnd 
-	 * @uml.property name="skin" multiplicity="(1 1)"
-	 */
-	private Skin skin;
+    /**
+     * the skin used for this instance of the scroll button
+     *
+     * @uml.property name="skin"
+     * @uml.associationEnd
+     * @uml.property name="skin" multiplicity="(1 1)"
+     */
+    private Skin skin;
 
-	/**
-	 * the index model for this button
-	 * 
-	 * @uml.property name="indexModel"
-	 * @uml.associationEnd 
-	 * @uml.property name="indexModel" multiplicity="(1 1)"
-	 */
-	private SkinSimpleButtonIndexModel indexModel = new SkinSimpleButtonIndexModel();
+    /**
+     * the index model for this button
+     *
+     * @uml.property name="indexModel"
+     * @uml.associationEnd
+     * @uml.property name="indexModel" multiplicity="(1 1)"
+     */
+    private SkinSimpleButtonIndexModel indexModel = new SkinSimpleButtonIndexModel();
 
-    
+
     /**
      * Create a new ScrollButton.
-     * 
+     *
      */
     public LiquidScrollButton(int orientation,int width, boolean freeStanding)
     {
@@ -69,28 +69,28 @@ public class LiquidScrollButton extends BasicArrowButton
         setMargin(new Insets(0, 0, 0, 0));
         setBorder(null);
         indexModel.setButton(this);
-        
+
         switch (orientation)
         {
-            case SwingConstants.NORTH:
-                skin= skinUp;
-                break;
-            case SwingConstants.SOUTH:
-                skin= skinDown;
-                break;
-            case SwingConstants.EAST:
-                skin= skinRight;
-                break;
-            case SwingConstants.WEST:
-                skin= skinLeft;
-                break;
+        case SwingConstants.NORTH:
+            skin= skinUp;
+            break;
+        case SwingConstants.SOUTH:
+            skin= skinDown;
+            break;
+        case SwingConstants.EAST:
+            skin= skinRight;
+            break;
+        case SwingConstants.WEST:
+            skin= skinLeft;
+            break;
         }
     }
-    
+
     public void setFreeStanding( boolean freeStanding )
     {
     }
-    
+
     /**
      * Paints the button
      * @see java.awt.Component#paint(Graphics)
@@ -99,7 +99,7 @@ public class LiquidScrollButton extends BasicArrowButton
     {
         skin.draw(g, indexModel.getIndexForState(), getWidth(), getHeight());
     }
-    
+
     /**
      * Returns the preferred size of the component wich is the size of the skin
      * @see java.awt.Component#getPreferredSize()
@@ -109,54 +109,54 @@ public class LiquidScrollButton extends BasicArrowButton
         return new Dimension(skinUp.getHsize(),skinUp.getVsize());
     }
 
-	/**
-	 * Returns the skin for a button with the arrow pointing upwards
-	 * @return Skin
-	 * 
-	 * @uml.property name="skinUp"
-	 */
-	public static Skin getSkinUp() {
-		return skinUp;
-	}
+    /**
+     * Returns the skin for a button with the arrow pointing upwards
+     * @return Skin
+     *
+     * @uml.property name="skinUp"
+     */
+    public static Skin getSkinUp() {
+        return skinUp;
+    }
 
-	/**
-	 * Returns the skin for a button with the arrow pointing downwards
-	 * @return Skin
-	 * 
-	 * @uml.property name="skinDown"
-	 */
-	public static Skin getSkinDown() {
-		return skinDown;
-	}
+    /**
+     * Returns the skin for a button with the arrow pointing downwards
+     * @return Skin
+     *
+     * @uml.property name="skinDown"
+     */
+    public static Skin getSkinDown() {
+        return skinDown;
+    }
 
-	/**
-	 * Returns the skin for a button with the arrow pointing to the left
-	 * @return Skin
-	 * 
-	 * @uml.property name="skinLeft"
-	 */
-	public static Skin getSkinLeft() {
-		return skinLeft;
-	}
+    /**
+     * Returns the skin for a button with the arrow pointing to the left
+     * @return Skin
+     *
+     * @uml.property name="skinLeft"
+     */
+    public static Skin getSkinLeft() {
+        return skinLeft;
+    }
 
-	/**
-	 * Returns the skin for a button with the arrow pointing to the right
-	 * @return Skin
-	 * 
-	 * @uml.property name="skinRight"
-	 */
-	public static Skin getSkinRight() {
-		return skinRight;
-	}
+    /**
+     * Returns the skin for a button with the arrow pointing to the right
+     * @return Skin
+     *
+     * @uml.property name="skinRight"
+     */
+    public static Skin getSkinRight() {
+        return skinRight;
+    }
 
-	/**
-	 * returns the skin for this instance of the button.
-	 * @return Skin
-	 * 
-	 * @uml.property name="skin"
-	 */
-	public Skin getSkin() {
-		return skin;
-	}
+    /**
+     * returns the skin for this instance of the button.
+     * @return Skin
+     *
+     * @uml.property name="skin"
+     */
+    public Skin getSkin() {
+        return skin;
+    }
 
 }

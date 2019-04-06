@@ -31,52 +31,52 @@ import staticFunctions.StringManipulator;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several file filter objects used in a JFileChooser object
- *  
+ *
  */
 public class FileFilterJPG300 extends FileFilter {
 
-	/**
-	 * Constructor
-	 */
-	public FileFilterJPG300() {
-		super();
-	}
-/**
- * @param pF - a File object for testing.
- * @return accept - Returns whether the file is a valid type for display
- * PRE: must pass a valid file object
- * POST: returns a boolean indicating whether the file is accepted.
- * This is based on whether the file is a directory or has a .jpg extension.
- * 
- */
-	public boolean accept(File pF) {
-		if (pF.isDirectory()) {
-			return true;
-		}
-	
-		String extension = StringManipulator.getExtension(pF);
-	
-		if (extension != null) {
-			if (extension.equals("jpg"))
-			{
-					return true;
-			} 
-			else 
-			{
-				return false;
-			}
-		}
-		return false;
-		}
+    /**
+     * Constructor
+     */
+    public FileFilterJPG300() {
+        super();
+    }
+    /**
+     * @param pF - a File object for testing.
+     * @return accept - Returns whether the file is a valid type for display
+     * PRE: must pass a valid file object
+     * POST: returns a boolean indicating whether the file is accepted.
+     * This is based on whether the file is a directory or has a .jpg extension.
+     *
+     */
+    public boolean accept(File pF) {
+        if (pF.isDirectory()) {
+            return true;
+        }
 
-/**
- * @return String - Returns the file type description.
- */
-	public String getDescription() {
-		return "300 dpi JPEG file";
-	}
+        String extension = StringManipulator.getExtension(pF);
+
+        if (extension != null) {
+            if (extension.equals("jpg"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return String - Returns the file type description.
+     */
+    public String getDescription() {
+        return "300 dpi JPEG file";
+    }
 
 }

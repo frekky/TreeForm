@@ -6,15 +6,15 @@ import java.awt.event.ActionListener;
 public class ListenerCustomizeEndTrace implements ActionListener {
 
 
-	private SyntaxFacade mSF;
-	private SyntacticStructure mSS;
+    private SyntaxFacade mSF;
+    private SyntacticStructure mSS;
 
-	public ListenerCustomizeEndTrace(SyntaxFacade pSF, SyntacticStructure pSS) {
-		mSF = pSF;
-		mSS = pSS;
-	}
+    public ListenerCustomizeEndTrace(SyntaxFacade pSF, SyntacticStructure pSS) {
+        mSF = pSF;
+        mSS = pSS;
+    }
 
-	public void actionPerformed(ActionEvent arg0) {
-		mSF.getUIF().activateBezierPane((SyntacticStructure) mSS.getEndTrace().get(0));
-	}
+    public void actionPerformed(ActionEvent arg0) {
+        mSF.getUIF().activateBezierPane((SyntacticStructure) mSS.getEndTrace().get(0));
+    }
 }

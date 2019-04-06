@@ -28,7 +28,7 @@ import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -39,65 +39,65 @@ import javax.swing.KeyStroke;
  */
 public class UserMenuHelp extends JMenu {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mAbout"
-	 * @uml.associationEnd 
-	 * @uml.property name="mAbout" multiplicity="(1 1)"
-	 */
-	private JMenuItem mAbout;
+    /**
+     *
+     * @uml.property name="mAbout"
+     * @uml.associationEnd
+     * @uml.property name="mAbout" multiplicity="(1 1)"
+     */
+    private JMenuItem mAbout;
 
-	/**
-	 * 
-	 * @uml.property name="mHelp"
-	 * @uml.associationEnd 
-	 * @uml.property name="mHelp" multiplicity="(1 1)"
-	 */
-	private JMenuItem mWhatNew;
-	
-	private JMenuItem mHelp;
+    /**
+     *
+     * @uml.property name="mHelp"
+     * @uml.associationEnd
+     * @uml.property name="mHelp" multiplicity="(1 1)"
+     */
+    private JMenuItem mWhatNew;
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    private JMenuItem mHelp;
 
-	/**
-	 * @param pString The title of the menu
-	 * @param pUserFrame The UserFrame for this instance of TreeForm
-	 */
-	public UserMenuHelp(String pString, UserFrame pUserFrame) {
-		super(pString);
-		mUserFrame = pUserFrame;
-		mHelp = new JMenuItem((String) mUserFrame.getI18n().getObject("CONTENTS_LABEL"));
-		mHelp.addActionListener(new ListenerHelp(mUserFrame));
-		mHelp.setAccelerator(KeyStroke.getKeyStroke(
-				   KeyEvent.VK_H, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		this.add(mHelp);		
-		mWhatNew = new JMenuItem((String) mUserFrame.getI18n().getObject("WHAT_NEW_LABEL"));
-		mWhatNew.addActionListener(new ListenerWhatNew(mUserFrame));
-		this.add(mWhatNew);
-		mAbout = new JMenuItem((String) mUserFrame.getI18n().getObject("ABOUT_LABEL"),(ImageIcon) mUserFrame.getI18n().getObject("TREEFORM_ICON_SMALL"));
-		mAbout.addActionListener(new ListenerAbout(mUserFrame));
-		mAbout.setAccelerator(KeyStroke.getKeyStroke(
-				   KeyEvent.VK_A, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
-		this.add(mAbout);
-	}
-	protected JMenuItem getAbout()
-	{
-		return mAbout;
-	}
-	protected JMenuItem getHelp()
-	{
-		return mHelp;
-	}
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
+
+    /**
+     * @param pString The title of the menu
+     * @param pUserFrame The UserFrame for this instance of TreeForm
+     */
+    public UserMenuHelp(String pString, UserFrame pUserFrame) {
+        super(pString);
+        mUserFrame = pUserFrame;
+        mHelp = new JMenuItem((String) mUserFrame.getI18n().getObject("CONTENTS_LABEL"));
+        mHelp.addActionListener(new ListenerHelp(mUserFrame));
+        mHelp.setAccelerator(KeyStroke.getKeyStroke(
+            KeyEvent.VK_H, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        this.add(mHelp);
+        mWhatNew = new JMenuItem((String) mUserFrame.getI18n().getObject("WHAT_NEW_LABEL"));
+        mWhatNew.addActionListener(new ListenerWhatNew(mUserFrame));
+        this.add(mWhatNew);
+        mAbout = new JMenuItem((String) mUserFrame.getI18n().getObject("ABOUT_LABEL"),(ImageIcon) mUserFrame.getI18n().getObject("TREEFORM_ICON_SMALL"));
+        mAbout.addActionListener(new ListenerAbout(mUserFrame));
+        mAbout.setAccelerator(KeyStroke.getKeyStroke(
+            KeyEvent.VK_A, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
+        this.add(mAbout);
+    }
+    protected JMenuItem getAbout()
+    {
+        return mAbout;
+    }
+    protected JMenuItem getHelp()
+    {
+        return mHelp;
+    }
 
 }

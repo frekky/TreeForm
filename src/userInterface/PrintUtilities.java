@@ -18,14 +18,14 @@
 //package userInterface;
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
- * This class is largely borrowed from 
+ * This class is largely borrowed from
  * http://www.apl.jhu.edu/~hall/java/Swing-Tutorial/Swing-Tutorial-Printing.html
  * But had to be rewritten using TreeForm's code standards because of it's complete
  * integration.
- * 
- *  
+ *
+ *
  */
 package userInterface;
 
@@ -42,77 +42,77 @@ import javax.swing.RepaintManager;
 import staticFunctions.Sizer;
 
 public class PrintUtilities implements Printable {
-  private Component mCTBPrinted;
+    private Component mCTBPrinted;
 
-/**
- * 
- * @param pC The Component to be printed.
- */
-  public static void printComponent(Component pC) {
-  // A strange construction that builds, and runs, the object at the same time.
-    new PrintUtilities(pC).print();
-  }
-/**
- * Constructor
- * @param pCTBPrinted The component to be printed.  This, and all components
- * contained in this component, will be printed.
- * 
- */  
-  public PrintUtilities(Component pCTBPrinted) {
-    mCTBPrinted = pCTBPrinted;
-  }
-/**
- * The Command that controls the opening of the print dialog and does
- * the printing if the printdialog comes back true.
- *
- */  
-	public void print() {
-		  PrinterJob lPrintJob = PrinterJob.getPrinterJob();
-		  lPrintJob.setPrintable(this);
-		  if (lPrintJob.printDialog())
-			try {
-			  lPrintJob.print();
-			} catch(PrinterException pe) {
-			  System.out.println("Error printing: " + pe);
-			}   
-		}
-/**
- * @return print The return value of successful or failed printing.
- * @param pG The Graphics to be printed
- * @param pPF The chosen page format (fron the print dialog)
- * @param pPI The chosen page index (from the print dialog)
- * 
- */
-  public int print(Graphics pG, PageFormat pPF, int pPI) {
-
-    if (pPI > 0) {
-      return(NO_SUCH_PAGE);
-    } else {
-      Graphics2D lG2d = (Graphics2D)pG;
-      lG2d.scale(1/Sizer.scaleWidth(),1/Sizer.scaleHeight());
-      lG2d.translate(pPF.getImageableX() * Sizer.scaleWidth(), pPF.getImageableY() * Sizer.scaleHeight());
-      disableDoubleBuffering(mCTBPrinted);
-      mCTBPrinted.paint(lG2d);
-      enableDoubleBuffering(mCTBPrinted);
-      return(PAGE_EXISTS);
+    /**
+     *
+     * @param pC The Component to be printed.
+     */
+    public static void printComponent(Component pC) {
+        // A strange construction that builds, and runs, the object at the same time.
+        new PrintUtilities(pC).print();
     }
-  }
-/**
- * 
- * @param pC The component and subcomponent to have it's repaint manager changed and
- * to have double buffering turned off (to allow SV printing)
- */
-  public static void disableDoubleBuffering(Component pC) {
-    RepaintManager currentManager = RepaintManager.currentManager(pC);
-    currentManager.setDoubleBufferingEnabled(false);
-  }
-/**
- * 
- * @param pC The component and subcomponent to have it's repaint manager changed and
- * to have double buffering turned on (so the screen does not flicker)
- */
-  public static void enableDoubleBuffering(Component pC) {
-    RepaintManager currentManager = RepaintManager.currentManager(pC);
-    currentManager.setDoubleBufferingEnabled(true);
-  }
+    /**
+     * Constructor
+     * @param pCTBPrinted The component to be printed.  This, and all components
+     * contained in this component, will be printed.
+     *
+     */
+    public PrintUtilities(Component pCTBPrinted) {
+        mCTBPrinted = pCTBPrinted;
+    }
+    /**
+     * The Command that controls the opening of the print dialog and does
+     * the printing if the printdialog comes back true.
+     *
+     */
+    public void print() {
+        PrinterJob lPrintJob = PrinterJob.getPrinterJob();
+        lPrintJob.setPrintable(this);
+        if (lPrintJob.printDialog())
+            try {
+                lPrintJob.print();
+            } catch(PrinterException pe) {
+                System.out.println("Error printing: " + pe);
+            }
+    }
+    /**
+     * @return print The return value of successful or failed printing.
+     * @param pG The Graphics to be printed
+     * @param pPF The chosen page format (fron the print dialog)
+     * @param pPI The chosen page index (from the print dialog)
+     *
+     */
+    public int print(Graphics pG, PageFormat pPF, int pPI) {
+
+        if (pPI > 0) {
+            return(NO_SUCH_PAGE);
+        } else {
+            Graphics2D lG2d = (Graphics2D)pG;
+            lG2d.scale(1/Sizer.scaleWidth(),1/Sizer.scaleHeight());
+            lG2d.translate(pPF.getImageableX() * Sizer.scaleWidth(), pPF.getImageableY() * Sizer.scaleHeight());
+            disableDoubleBuffering(mCTBPrinted);
+            mCTBPrinted.paint(lG2d);
+            enableDoubleBuffering(mCTBPrinted);
+            return(PAGE_EXISTS);
+        }
+    }
+    /**
+     *
+     * @param pC The component and subcomponent to have it's repaint manager changed and
+     * to have double buffering turned off (to allow SV printing)
+     */
+    public static void disableDoubleBuffering(Component pC) {
+        RepaintManager currentManager = RepaintManager.currentManager(pC);
+        currentManager.setDoubleBufferingEnabled(false);
+    }
+    /**
+     *
+     * @param pC The component and subcomponent to have it's repaint manager changed and
+     * to have double buffering turned on (so the screen does not flicker)
+     */
+    public static void enableDoubleBuffering(Component pC) {
+        RepaintManager currentManager = RepaintManager.currentManager(pC);
+        currentManager.setDoubleBufferingEnabled(true);
+    }
 }

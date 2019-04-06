@@ -20,42 +20,42 @@ package enumerators;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * A list of feature types
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="enumerator" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="enumerator"
  */
 
 public final class SyntacticFeatureType {
-	private SyntacticFeatureType(){}
+    private SyntacticFeatureType(){}
 
-	/**
-	 * 
-	 * @uml.property name="fEATURE" changeability="frozen" 
-	 */
-	public static final SyntacticFeatureType FEATURE = new SyntacticFeatureType();
+    /**
+     *
+     * @uml.property name="fEATURE" changeability="frozen"
+     */
+    public static final SyntacticFeatureType FEATURE = new SyntacticFeatureType();
 
-	/**
-	 * 
-	 * @uml.property name="iNDEX" changeability="frozen" 
-	 */
-	public static final SyntacticFeatureType INDEX = new SyntacticFeatureType();
+    /**
+     *
+     * @uml.property name="iNDEX" changeability="frozen"
+     */
+    public static final SyntacticFeatureType INDEX = new SyntacticFeatureType();
 
-	/**
-	 * 
-	 * @uml.property name="tRACE" changeability="frozen" 
-	 */
-	public static final SyntacticFeatureType TRACE = new SyntacticFeatureType();
+    /**
+     *
+     * @uml.property name="tRACE" changeability="frozen"
+     */
+    public static final SyntacticFeatureType TRACE = new SyntacticFeatureType();
 
-	/**
-	 * 
-	 * @uml.property name="tHETA" changeability="frozen" 
-	 */
-	public static final SyntacticFeatureType THETA = new SyntacticFeatureType();
+    /**
+     *
+     * @uml.property name="tHETA" changeability="frozen"
+     */
+    public static final SyntacticFeatureType THETA = new SyntacticFeatureType();
 
-	/**
-	 * 
-	 * @uml.property name="cASE" changeability="frozen" 
-	 */
-	public static final SyntacticFeatureType CASE = new SyntacticFeatureType();
+    /**
+     *
+     * @uml.property name="cASE" changeability="frozen"
+     */
+    public static final SyntacticFeatureType CASE = new SyntacticFeatureType();
 
 }

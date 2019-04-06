@@ -10,6 +10,7 @@
 
 package com.birosoft.liquid;
 
+import java.awt.event.InputEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.beans.PropertyChangeEvent;
@@ -37,7 +38,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
     {
         return new LiquidScrollPaneUI();
     }
-    
+
     /**
      * MouseWheelHandler is an inner class which implements the
      * MouseWheelListener interface.  MouseWheelHandler responds to
@@ -66,10 +67,10 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
             if (scrollpane.isWheelScrollingEnabled() && e.getScrollAmount() != 0)
             {
                 JScrollBar toScroll = scrollpane.getVerticalScrollBar();
-                
+
                 int length = toScroll.getHeight();
                 // find which scrollbar to scroll, or return if none
-                if (toScroll == null || !toScroll.isVisible() || e.getModifiers() == MouseWheelEvent.ALT_MASK)
+                if (toScroll == null || !toScroll.isVisible() || e.getModifiers() == InputEvent.ALT_MASK)
                 {
                     toScroll = scrollpane.getHorizontalScrollBar();
                     if (toScroll == null || !toScroll.isVisible())
@@ -78,7 +79,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
                     }
                     length = toScroll.getWidth();
                 }
-           
+
                 if (e.getScrollType() == MouseWheelEvent.WHEEL_UNIT_SCROLL)
                 {
                     int newValue = toScroll.getValue()+e.getWheelRotation()*length/(toScroll.getUnitIncrement()*2);
@@ -92,7 +93,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
             }
         }
     }
-    
+
     /**
      * Creates an instance of MouseWheelListener, which is added to the
      * JScrollPane by installUI().  The returned MouseWheelListener is used
@@ -107,7 +108,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
     {
         return new MouseWheelHandler();
     }
-    
+
     /**
      * Installs some default values for the given scrollpane.
      * The free standing property is disabled here.
@@ -117,13 +118,13 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
     public void installUI(JComponent c)
     {
         super.installUI(c);
-        
+
         scrollpane.getHorizontalScrollBar().putClientProperty
         (LiquidScrollBarUI.FREE_STANDING_PROP, Boolean.FALSE);
         scrollpane.getVerticalScrollBar().putClientProperty
         (LiquidScrollBarUI.FREE_STANDING_PROP, Boolean.FALSE);
     }
-    
+
     /**
      * Creates a property change listener that does nothing inorder to prevent the
      * free standing scrollbars.
@@ -134,7 +135,7 @@ public class LiquidScrollPaneUI extends BasicScrollPaneUI implements PropertyCha
     {
         return this;
     }
-    
+
     /**
      * Simply ignore any change.
      *

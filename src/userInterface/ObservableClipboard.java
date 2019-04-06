@@ -25,102 +25,102 @@ import syntaxTree.EditableComponent;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Observable classes (part of Java's implementation of the
  * Observer design pattern).  These classes are needed to easily add objects
  * to a big list of objects that care about changes to a particular variable.  This
  * program has a LOT of these types of variables.
- *  
+ *
  */
 public class ObservableClipboard extends Observable {
 
-	private int mInsertionIndex;
+    private int mInsertionIndex;
 
-	/**
-	 * 
-	 * @uml.property name="mSelected"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSelected" multiplicity="(1 1)"
-	 */
-	private Object mSelected;
+    /**
+     *
+     * @uml.property name="mSelected"
+     * @uml.associationEnd
+     * @uml.property name="mSelected" multiplicity="(1 1)"
+     */
+    private Object mSelected;
 
-	/**
-	 * Constructor
-	 * @param pComponent - passes an EditableComponent to the clipboard.
-	 * <br>
-	 * 
-	 */
-	public ObservableClipboard(EditableComponent pComponent) {
-		
-		mSelected = pComponent;
-	}
-	/**
-	 * 
-	 * @param pObject - passes a value for the Observable, in this case, whatever is
-	 * clicked on.
-	 * <br>
-	 * The program then checks to see if the new object is different from the old
-	 * selected object.
-	 * <br>
-	 * If it is, the old object is checked to see if it is an editableComponent
-	 * (and not a null value).  Then the highlights are reset, carat turned off, repaint.
-	 * <br>
-	 * If the new object is an editable component, the old component is repointed to
-	 * the new component, and the new component has it's carat turned on.
-	 * The change flag is set, and all observers notified.
-	 * <br>
-	 * TODO: chance to fix broken encapsulation
-	 */
-	public void setValue(Object pObject)
-	 {
-	 	if (pObject != mSelected)
-	 	{
-		 	if (mSelected instanceof EditableComponent)
-		 	{
-		 		((EditableComponent)mSelected).setCarat(false);
-		 		((EditableComponent)mSelected).setHighlightBegin(0);
-		 		((EditableComponent)mSelected).setHighlightEnd(0);
-		 		((EditableComponent)mSelected).repaint();
-		 	}
-		 	if (pObject instanceof EditableComponent)
-		 	{
-		 		((EditableComponent)pObject).setCarat(true);
-		 		((EditableComponent)pObject).repaint();
-				mSelected = (EditableComponent) pObject;
-		 	}
-		 	else
-		 	{
-		 		mSelected = pObject;
-		 	}
-		 	setChanged();
-			notifyObservers();
-	 	}
-	 	
-		
-	 }
-	/**
-	 * 
-	 * @return EditableComponent - the value in the clipboard.
-	 */
-	 public Object getValue()
-	 {
-		return mSelected;
-	 }
-	/**
-	 * @param pInsertionIndex The carat insertion index
-	 */
-	public void setIndex(int pInsertionIndex) {
-		mInsertionIndex = pInsertionIndex;
-		
-	}
-	/**
-	 * 
-	 * @return getIndex The carat insertion index
-	 * 
-	 */
-	public int getIndex()
-	{
-		return mInsertionIndex;
-	}
+    /**
+     * Constructor
+     * @param pComponent - passes an EditableComponent to the clipboard.
+     * <br>
+     *
+     */
+    public ObservableClipboard(EditableComponent pComponent) {
+
+        mSelected = pComponent;
+    }
+    /**
+     *
+     * @param pObject - passes a value for the Observable, in this case, whatever is
+     * clicked on.
+     * <br>
+     * The program then checks to see if the new object is different from the old
+     * selected object.
+     * <br>
+     * If it is, the old object is checked to see if it is an editableComponent
+     * (and not a null value).  Then the highlights are reset, carat turned off, repaint.
+     * <br>
+     * If the new object is an editable component, the old component is repointed to
+     * the new component, and the new component has it's carat turned on.
+     * The change flag is set, and all observers notified.
+     * <br>
+     * TODO: chance to fix broken encapsulation
+     */
+    public void setValue(Object pObject)
+    {
+        if (pObject != mSelected)
+        {
+            if (mSelected instanceof EditableComponent)
+            {
+                ((EditableComponent)mSelected).setCarat(false);
+                ((EditableComponent)mSelected).setHighlightBegin(0);
+                ((EditableComponent)mSelected).setHighlightEnd(0);
+                ((EditableComponent)mSelected).repaint();
+            }
+            if (pObject instanceof EditableComponent)
+            {
+                ((EditableComponent)pObject).setCarat(true);
+                ((EditableComponent)pObject).repaint();
+                mSelected = (EditableComponent) pObject;
+            }
+            else
+            {
+                mSelected = pObject;
+            }
+            setChanged();
+            notifyObservers();
+        }
+
+
+    }
+    /**
+     *
+     * @return EditableComponent - the value in the clipboard.
+     */
+    public Object getValue()
+    {
+        return mSelected;
+    }
+    /**
+     * @param pInsertionIndex The carat insertion index
+     */
+    public void setIndex(int pInsertionIndex) {
+        mInsertionIndex = pInsertionIndex;
+
+    }
+    /**
+     *
+     * @return getIndex The carat insertion index
+     *
+     */
+    public int getIndex()
+    {
+        return mInsertionIndex;
+    }
 }

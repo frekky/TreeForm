@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -21,17 +21,17 @@ import javax.swing.plaf.ComponentUI;
 
 public class LiquidRadioButtonMenuItemUI extends LiquidMenuItemUI
 {
-    
+
     public static ComponentUI createUI(JComponent b)
     {
         return new LiquidRadioButtonMenuItemUI();
     }
-    
+
     protected String getPropertyPrefix()
     {
         return "RadioButtonMenuItem";
     }
-    
+
     public void processMouseEvent(JMenuItem item, MouseEvent e, MenuElement path[], MenuSelectionManager manager)
     {
         Point p = e.getPoint();

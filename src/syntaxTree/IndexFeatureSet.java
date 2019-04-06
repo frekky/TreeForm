@@ -23,77 +23,77 @@ import java.util.LinkedList;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * UNIMPLEMENTED
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="entity" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="entity"
  */
 
 public class IndexFeatureSet implements SyntacticFeatureSet {
 
-	//@SupressWarnings("unchecked")
-	private LinkedList mSyntacticFeature;
+    //@SupressWarnings("unchecked")
+    private LinkedList mSyntacticFeature;
 
-	/**
-	 * 
-	 * @uml.property name="mSyntacticStructure"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSyntacticStructure" multiplicity="(0 1)"
-	 */
-	private SyntacticStructure mSyntacticStructure;
+    /**
+     *
+     * @uml.property name="mSyntacticStructure"
+     * @uml.associationEnd
+     * @uml.property name="mSyntacticStructure" multiplicity="(0 1)"
+     */
+    private SyntacticStructure mSyntacticStructure;
 
-	/**
-	 * 
-	 * @uml.property name="visibility" 
-	 */
-	private boolean visibility;
+    /**
+     *
+     * @uml.property name="visibility"
+     */
+    private boolean visibility;
 
-	public SyntacticStructure getSyntacticStructure() {
-		return mSyntacticStructure;
-	}
+    public SyntacticStructure getSyntacticStructure() {
+        return mSyntacticStructure;
+    }
 
-	public void setSyntacticStructure(SyntacticStructure pSyntacticStructure) {
-		mSyntacticStructure = pSyntacticStructure;
-	}
+    public void setSyntacticStructure(SyntacticStructure pSyntacticStructure) {
+        mSyntacticStructure = pSyntacticStructure;
+    }
 
-	//@SupressWarnings("unchecked")
-	public LinkedList getSyntacticFeature() {
-		return mSyntacticFeature;
-	}
+    //@SupressWarnings("unchecked")
+    public LinkedList getSyntacticFeature() {
+        return mSyntacticFeature;
+    }
 
-	//@SupressWarnings("unchecked")
-	public void setSyntacticFeature(LinkedList pSyntacticFeature) {
-		mSyntacticFeature = pSyntacticFeature;
-	}
+    //@SupressWarnings("unchecked")
+    public void setSyntacticFeature(LinkedList pSyntacticFeature) {
+        mSyntacticFeature = pSyntacticFeature;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="visibility"
-	 */
-	public boolean getVisibility() {
-		return visibility;
-	}
+    /**
+     *
+     * @uml.property name="visibility"
+     */
+    public boolean getVisibility() {
+        return visibility;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="visibility"
-	 */
-	public void setVisibility(boolean lvisibility) {
-		visibility = lvisibility;
-	}
+    /**
+     *
+     * @uml.property name="visibility"
+     */
+    public void setVisibility(boolean lvisibility) {
+        visibility = lvisibility;
+    }
 
-	public int getHeight() {
+    public int getHeight() {
 
-		return 0;
-	}
+        return 0;
+    }
 
 
-	public int getWidth() {
+    public int getWidth() {
 
-		return 0;
-	}
+        return 0;
+    }
 
-	public void testXY() {
+    public void testXY() {
 
-		
-	}
+
+    }
 }

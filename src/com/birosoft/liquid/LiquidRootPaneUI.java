@@ -79,7 +79,7 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             "RootPane.colorChooserDialogBorder",
             "RootPane.fileChooserDialogBorder", "RootPane.questionDialogBorder",
             "RootPane.warningDialogBorder"
-        };
+    };
 
     /**
      * The amount of space (in pixels) that the cursor is changed on.
@@ -104,32 +104,32 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             Cursor.SE_RESIZE_CURSOR, Cursor.SW_RESIZE_CURSOR,
             Cursor.SW_RESIZE_CURSOR, Cursor.S_RESIZE_CURSOR,
             Cursor.SE_RESIZE_CURSOR, Cursor.SE_RESIZE_CURSOR
-        };
+    };
 
     /**
      * Window the <code>JRootPane</code> is in.
      */
     private Window window;
 
-	/**
-	 * <code>JComponent</code> providing window decorations. This will be
-	 * null if not providing window decorations.
-	 * 
-	 * @uml.property name="titlePane"
-	 * @uml.associationEnd 
-	 * @uml.property name="titlePane" multiplicity="(0 1)"
-	 */
-	private JComponent titlePane;
+    /**
+     * <code>JComponent</code> providing window decorations. This will be
+     * null if not providing window decorations.
+     *
+     * @uml.property name="titlePane"
+     * @uml.associationEnd
+     * @uml.property name="titlePane" multiplicity="(0 1)"
+     */
+    private JComponent titlePane;
 
-	/**
-	 * <code>MouseInputListener</code> that is added to the parent
-	 * <code>Window</code> the <code>JRootPane</code> is contained in.
-	 * 
-	 * @uml.property name="mouseInputListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="mouseInputListener" multiplicity="(0 1)"
-	 */
-	private MouseInputListener mouseInputListener;
+    /**
+     * <code>MouseInputListener</code> that is added to the parent
+     * <code>Window</code> the <code>JRootPane</code> is contained in.
+     *
+     * @uml.property name="mouseInputListener"
+     * @uml.associationEnd
+     * @uml.property name="mouseInputListener" multiplicity="(0 1)"
+     */
+    private MouseInputListener mouseInputListener;
 
 
     /**
@@ -144,14 +144,14 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
      */
     private LayoutManager savedOldLayout;
 
-	/**
-	 * <code>JRootPane</code> providing the look and feel for.
-	 * 
-	 * @uml.property name="root"
-	 * @uml.associationEnd 
-	 * @uml.property name="root" multiplicity="(0 1)"
-	 */
-	private JRootPane root;
+    /**
+     * <code>JRootPane</code> providing the look and feel for.
+     *
+     * @uml.property name="root"
+     * @uml.associationEnd
+     * @uml.property name="root" multiplicity="(0 1)"
+     */
+    private JRootPane root;
 
 
     /**
@@ -365,48 +365,48 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
         return new MetalRootLayout();
     }
 
-	/**
-	 * Sets the window title pane -- the JComponent used to provide a plaf a
-	 * way to override the native operating system's window title pane with
-	 * one whose look and feel are controlled by the plaf.  The plaf creates
-	 * and sets this value; the default is null, implying a native operating
-	 * system window title pane.
-	 * 
-	 * @param content the <code>JComponent</code> to use for the window title pane.
-	 * 
-	 * @uml.property name="titlePane"
-	 */
-	private void setTitlePane(JRootPane root, JComponent titlePane) {
-		JLayeredPane layeredPane = root.getLayeredPane();
-		JComponent oldTitlePane = getTitlePane();
+    /**
+     * Sets the window title pane -- the JComponent used to provide a plaf a
+     * way to override the native operating system's window title pane with
+     * one whose look and feel are controlled by the plaf.  The plaf creates
+     * and sets this value; the default is null, implying a native operating
+     * system window title pane.
+     *
+     * @param content the <code>JComponent</code> to use for the window title pane.
+     *
+     * @uml.property name="titlePane"
+     */
+    private void setTitlePane(JRootPane root, JComponent titlePane) {
+        JLayeredPane layeredPane = root.getLayeredPane();
+        JComponent oldTitlePane = getTitlePane();
 
-		if (oldTitlePane != null) {
-			oldTitlePane.setVisible(false);
-			layeredPane.remove(oldTitlePane);
-		}
+        if (oldTitlePane != null) {
+            oldTitlePane.setVisible(false);
+            layeredPane.remove(oldTitlePane);
+        }
 
-		if (titlePane != null) {
-			layeredPane.add(titlePane, JLayeredPane.FRAME_CONTENT_LAYER);
-			titlePane.setVisible(true);
-		}
+        if (titlePane != null) {
+            layeredPane.add(titlePane, JLayeredPane.FRAME_CONTENT_LAYER);
+            titlePane.setVisible(true);
+        }
 
-		this.titlePane = titlePane;
-		root.validate();
-		root.repaint();
-	}
+        this.titlePane = titlePane;
+        root.validate();
+        root.repaint();
+    }
 
-	/**
-	 * Returns the <code>JComponent</code> rendering the title pane. If this
-	 * returns null, it implies there is no need to render window decorations.
-	 * 
-	 * @return the current window title pane, or null
-	 * @see #setTitlePane
-	 * 
-	 * @uml.property name="titlePane"
-	 */
-	private JComponent getTitlePane() {
-		return titlePane;
-	}
+    /**
+     * Returns the <code>JComponent</code> rendering the title pane. If this
+     * returns null, it implies there is no need to render window decorations.
+     *
+     * @return the current window title pane, or null
+     * @see #setTitlePane
+     *
+     * @uml.property name="titlePane"
+     */
+    private JComponent getTitlePane() {
+        return titlePane;
+    }
 
     /**
      * Returns the <code>JRootPane</code> we're providing the look and
@@ -515,7 +515,7 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             }
 
             if ((root.getWindowDecorationStyle() != JRootPane.NONE) &&
-                    (root.getUI() instanceof LiquidRootPaneUI)) {
+                (root.getUI() instanceof LiquidRootPaneUI)) {
                 JComponent titlePane = ((LiquidRootPaneUI) root.getUI()).getTitlePane();
 
                 if (titlePane != null) {
@@ -571,7 +571,7 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             }
 
             if ((root.getWindowDecorationStyle() != JRootPane.NONE) &&
-                    (root.getUI() instanceof LiquidRootPaneUI)) {
+                (root.getUI() instanceof LiquidRootPaneUI)) {
                 JComponent titlePane = ((LiquidRootPaneUI) root.getUI()).getTitlePane();
 
                 if (titlePane != null) {
@@ -626,7 +626,7 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             }
 
             if ((root.getWindowDecorationStyle() != JRootPane.NONE) &&
-                    (root.getUI() instanceof LiquidRootPaneUI)) {
+                (root.getUI() instanceof LiquidRootPaneUI)) {
                 JComponent titlePane = ((LiquidRootPaneUI) root.getUI()).getTitlePane();
 
                 if (titlePane != null) {
@@ -682,7 +682,7 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             // Note: This is laying out the children in the layeredPane,
             // technically, these are not our children.
             if ((root.getWindowDecorationStyle() != JRootPane.NONE) &&
-                    (root.getUI() instanceof LiquidRootPaneUI)) {
+                (root.getUI() instanceof LiquidRootPaneUI)) {
                 JComponent titlePane = ((LiquidRootPaneUI) root.getUI()).getTitlePane();
 
                 if (titlePane != null) {
@@ -775,7 +775,7 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             Point dragWindowOffset = ev.getPoint();
             Window w = (Window) ev.getSource();
             Point convertedDragWindowOffset = SwingUtilities.convertPoint(w,
-                    dragWindowOffset, getTitlePane());
+                dragWindowOffset, getTitlePane());
 
             Frame f = null;
             Dialog d = null;
@@ -789,11 +789,11 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             int frameState = (f != null) ? f.getExtendedState() : 0;
 
             if ((getTitlePane() != null) &&
-                    getTitlePane().contains(convertedDragWindowOffset)) {
+                getTitlePane().contains(convertedDragWindowOffset)) {
                 if (ev.getClickCount() == 2) {
                     if ((f != null) && f.isResizable()) {
                         if (((frameState & Frame.MAXIMIZED_HORIZ) == Frame.MAXIMIZED_HORIZ) ||
-                                ((frameState & Frame.MAXIMIZED_VERT) == Frame.MAXIMIZED_VERT)) {
+                            ((frameState & Frame.MAXIMIZED_VERT) == Frame.MAXIMIZED_VERT)) {
                             f.setExtendedState(frameState &
                                 ~Frame.MAXIMIZED_BOTH);
                         } else {
@@ -806,27 +806,27 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
                 }
 
                 if ((((f != null) &&
-                        (((frameState & Frame.MAXIMIZED_HORIZ) != Frame.MAXIMIZED_HORIZ) &&
+                    (((frameState & Frame.MAXIMIZED_HORIZ) != Frame.MAXIMIZED_HORIZ) &&
                         ((frameState & Frame.MAXIMIZED_VERT) != Frame.MAXIMIZED_VERT))) ||
-                        (d != null)) &&
-                        (dragWindowOffset.y >= BORDER_DRAG_THICKNESS) &&
-                        (dragWindowOffset.x >= BORDER_DRAG_THICKNESS) &&
-                        (dragWindowOffset.x < (w.getWidth() -
+                    (d != null)) &&
+                    (dragWindowOffset.y >= BORDER_DRAG_THICKNESS) &&
+                    (dragWindowOffset.x >= BORDER_DRAG_THICKNESS) &&
+                    (dragWindowOffset.x < (w.getWidth() -
                         BORDER_DRAG_THICKNESS))) {
                     isMovingWindow = true;
                     dragOffsetX = dragWindowOffset.x;
                     dragOffsetY = dragWindowOffset.y;
                 }
             } else if (((f != null) && f.isResizable() &&
-                    (((frameState & Frame.MAXIMIZED_HORIZ) != Frame.MAXIMIZED_HORIZ) &&
+                (((frameState & Frame.MAXIMIZED_HORIZ) != Frame.MAXIMIZED_HORIZ) &&
                     ((frameState & Frame.MAXIMIZED_VERT) != Frame.MAXIMIZED_VERT))) ||
-                    ((d != null) && d.isResizable())) {
+                ((d != null) && d.isResizable())) {
                 dragOffsetX = dragWindowOffset.x;
                 dragOffsetY = dragWindowOffset.y;
                 dragWidth = w.getWidth();
                 dragHeight = w.getHeight();
                 dragCursor = getCursor(calculateCorner(w, dragWindowOffset.x,
-                            dragWindowOffset.y));
+                    dragWindowOffset.y));
             }
         }
 
@@ -864,10 +864,10 @@ public class LiquidRootPaneUI extends BasicRootPaneUI {
             int cursor = getCursor(calculateCorner(w, ev.getX(), ev.getY()));
 
             if ((cursor != 0) &&
-                    (((f != null) &&
+                (((f != null) &&
                     (f.isResizable() &&
-                    ((f.getExtendedState() & Frame.MAXIMIZED_VERT) != Frame.MAXIMIZED_VERT) &&
-                    ((f.getExtendedState() & Frame.MAXIMIZED_HORIZ) != Frame.MAXIMIZED_HORIZ))) ||
+                        ((f.getExtendedState() & Frame.MAXIMIZED_VERT) != Frame.MAXIMIZED_VERT) &&
+                        ((f.getExtendedState() & Frame.MAXIMIZED_HORIZ) != Frame.MAXIMIZED_HORIZ))) ||
                     ((d != null) && d.isResizable()))) {
                 w.setCursor(Cursor.getPredefinedCursor(cursor));
             } else {

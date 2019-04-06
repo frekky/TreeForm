@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -56,86 +56,86 @@ import javax.swing.plaf.ComponentUI;
 public class LiquidMenuUI extends LiquidMenuItemUI
 {
 
-	/**
-	 * 
-	 * @uml.property name="changeListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="changeListener" multiplicity="(0 1)"
-	 */
-	protected ChangeListener changeListener;
+    /**
+     *
+     * @uml.property name="changeListener"
+     * @uml.associationEnd
+     * @uml.property name="changeListener" multiplicity="(0 1)"
+     */
+    protected ChangeListener changeListener;
 
     protected PropertyChangeListener propertyChangeListener;
 
-	/**
-	 * 
-	 * @uml.property name="menuListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="menuListener" multiplicity="(0 1)"
-	 */
-	protected MenuListener menuListener;
+    /**
+     *
+     * @uml.property name="menuListener"
+     * @uml.associationEnd
+     * @uml.property name="menuListener" multiplicity="(0 1)"
+     */
+    protected MenuListener menuListener;
 
-    
+
     // Shared instance of the menuListener
     private static MenuListener sharedMenuListener;
-    
+
     private int lastMnemonic = 0;
 
-	private static final boolean DEBUG = false; // show bad params, misc.
-    
+    private static final boolean DEBUG = false; // show bad params, misc.
+
     private static boolean crossMenuMnemonic = true;
-    
+
     public static ComponentUI createUI(JComponent x)
     {
         return new LiquidMenuUI();
     }
-    
+
     public void installUI(JComponent c)
     {
         super.installUI(c);
     }
-    
-    
+
+
     protected void installDefaults()
     {
         super.installDefaults();
         ((JMenu) menuItem).setDelay(200);
         crossMenuMnemonic = UIManager.getBoolean("Menu.crossMenuMnemonic");
     }
-    
+
     protected String getPropertyPrefix()
     {
         return "Menu";
     }
-    
+
     protected void installListeners()
     {
         super.installListeners();
-        
+
         if (changeListener == null)
             changeListener = createChangeListener(menuItem);
-        
+
         if (changeListener != null)
             menuItem.addChangeListener(changeListener);
-        
+
         if (propertyChangeListener == null)
             propertyChangeListener = createPropertyChangeListener(menuItem);
-        
+
         if (propertyChangeListener != null)
             menuItem.addPropertyChangeListener(propertyChangeListener);
-        
+
         if (menuListener == null)
             menuListener = createMenuListener(menuItem);
-        
+
         if (menuListener != null)
             ((JMenu) menuItem).addMenuListener(menuListener);
     }
-    
+
     protected void installKeyboardActions()
     {
         super.installKeyboardActions();
         updateMnemonicBinding();
     }
-    
+
     void updateMnemonicBinding()
     {
         int mnemonic = menuItem.getModel().getMnemonic();
@@ -165,12 +165,12 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         }
         lastMnemonic = mnemonic;
     }
-    
+
     protected void uninstallKeyboardActions()
     {
         super.uninstallKeyboardActions();
     }
-    
+
     /**
      * The ActionMap for BasicMenUI can not be shared, this is subclassed
      * to create a new one for each invocation.
@@ -179,7 +179,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
     {
         return createActionMap();
     }
-    
+
     /**
      * Invoked to create the ActionMap.
      */
@@ -192,12 +192,12 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         }
         return am;
     }
-    
+
     protected MouseInputListener createMouseInputListener(JComponent c)
     {
         return new MouseInputHandler();
     }
-    
+
     protected MenuListener createMenuListener(JComponent c)
     {
         if (sharedMenuListener == null)
@@ -206,17 +206,17 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         }
         return sharedMenuListener;
     }
-    
+
     protected ChangeListener createChangeListener(JComponent c)
     {
         return null;
     }
-    
+
     protected PropertyChangeListener createPropertyChangeListener(JComponent c)
     {
         return new PropertyChangeHandler();
     }
-    
+
     protected void uninstallDefaults()
     {
         menuItem.setArmed(false);
@@ -224,35 +224,35 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         menuItem.resetKeyboardActions();
         super.uninstallDefaults();
     }
-    
+
     protected void uninstallListeners()
     {
         super.uninstallListeners();
-        
+
         if (changeListener != null)
             menuItem.removeChangeListener(changeListener);
-        
+
         if (propertyChangeListener != null)
             menuItem.removePropertyChangeListener(propertyChangeListener);
-        
+
         if (menuListener != null)
             ((JMenu) menuItem).removeMenuListener(menuListener);
-        
+
         changeListener = null;
         propertyChangeListener = null;
         menuListener = null;
     }
-    
+
     protected MenuDragMouseListener createMenuDragMouseListener(JComponent c)
     {
         return new MenuDragMouseHandler();
     }
-    
+
     protected MenuKeyListener createMenuKeyListener(JComponent c)
     {
         return new MenuKeyHandler();
     }
-    
+
     public Dimension getMaximumSize(JComponent c)
     {
         if (((JMenu) menuItem).isTopLevelMenu() == true)
@@ -262,14 +262,14 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         }
         return null;
     }
-    
+
     protected void setupPostTimer(JMenu menu)
     {
         Timer timer = new Timer(menu.getDelay(), new PostAction(menu, false));
         timer.setRepeats(false);
         timer.start();
     }
-    
+
     private static void appendPath(MenuElement[] path, MenuElement elem)
     {
         MenuElement newPath[] = new MenuElement[path.length + 1];
@@ -277,22 +277,22 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         newPath[path.length] = elem;
         MenuSelectionManager.defaultManager().setSelectedPath(newPath);
     }
-    
+
     private static class PostAction extends AbstractAction
     {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		JMenu menu;
+         *
+         */
+        private static final long serialVersionUID = 1L;
+        JMenu menu;
         boolean force = false;
-        
+
         PostAction(JMenu menu, boolean shouldForce)
         {
             this.menu = menu;
             this.force = shouldForce;
         }
-        
+
         public void actionPerformed(ActionEvent e)
         {
             if (!crossMenuMnemonic)
@@ -303,7 +303,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                     return;
                 }
             }
-            
+
             final MenuSelectionManager defaultManager = MenuSelectionManager.defaultManager();
             if (force)
             {
@@ -312,7 +312,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                 {
                     MenuElement me[];
                     MenuElement subElements[];
-                    
+
                     subElements = menu.getPopupMenu().getSubElements();
                     if (subElements.length > 0)
                     {
@@ -339,13 +339,13 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                 }
             }
         }
-        
+
         public boolean isEnabled()
         {
             return menu.getModel().isEnabled();
         }
     }
-    
+
     private class PropertyChangeHandler implements PropertyChangeListener
     {
         public void propertyChange(PropertyChangeEvent e)
@@ -357,7 +357,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             }
         }
     }
-    
+
     /**
      * Instantiated and used by a menu item to handle the current menu selection
      * from mouse events. A MouseInputHandler processes and forwards all mouse events
@@ -376,7 +376,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         public void mouseClicked(MouseEvent e)
         {
         }
-        
+
         /**
          * Invoked when the mouse has been clicked on the menu. This
          * method clears or sets the selection path of the
@@ -389,7 +389,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             JMenu menu = (JMenu) menuItem;
             if (!menu.isEnabled())
                 return;
-            
+
             MenuSelectionManager manager = MenuSelectionManager.defaultManager();
             if (menu.isTopLevelMenu())
             {
@@ -408,11 +408,11 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                     }
                 }
             }
-            
+
             MenuElement selectedPath[] = manager.getSelectedPath();
             if (selectedPath.length > 0 && selectedPath[selectedPath.length - 1] != menu.getPopupMenu())
             {
-                
+
                 if (menu.isTopLevelMenu() || menu.getDelay() == 0)
                 {
                     appendPath(selectedPath, menu.getPopupMenu());
@@ -422,7 +422,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                 }
             }
         }
-        
+
         /**
          * Invoked when the mouse has been released on the menu. Delegates the
          * mouse event to the MenuSelectionManager.
@@ -439,7 +439,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             if (!e.isConsumed())
                 manager.clearSelectedPath();
         }
-        
+
         /**
          * Invoked when the cursor enters the menu. This method sets the selected
          * path for the MenuSelectionManager and handles the case
@@ -453,7 +453,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             JMenu menu = (JMenu) menuItem;
             if (!menu.isEnabled())
                 return;
-            
+
             menu.putClientProperty("rollover",Boolean.TRUE);
             menu.repaint();
             MenuSelectionManager manager = MenuSelectionManager.defaultManager();
@@ -486,14 +486,14 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             }
             menu.repaint();
         }
-        
+
         public void mouseExited(MouseEvent e)
         {
             JMenu menu = (JMenu) menuItem;
             menu.putClientProperty("rollover",Boolean.FALSE);
             menu.repaint();
         }
-        
+
         /**
          * Invoked when a mouse button is pressed on the menu and then dragged.
          * Delegates the mouse event to the MenuSelectionManager.
@@ -512,7 +512,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         {
         }
     }
-    
+
     private static class MenuHandler implements MenuListener
     {
         public void menuSelected(MenuEvent e)
@@ -528,9 +528,9 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             if (manager.isComponentPartOfCurrentMenu(m))
                 MenuSelectionManager.defaultManager().clearSelectedPath();
         }
-        
+
     }
-    
+
     /**
      * As of Java 2 platform 1.4, this previously undocumented class
      * is now obsolete. KeyBindings are now managed by the popup menu.
@@ -541,18 +541,18 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         public LiquidMenuUI ui;
         public boolean isSelected = false;
         public Component wasFocused;
-        
+
         public ChangeHandler(JMenu m, LiquidMenuUI ui)
         {
             menu = m;
             this.ui = ui;
         }
-        
+
         public void stateChanged(ChangeEvent e)
         {
         }
     }
-    
+
     private class MenuDragMouseHandler implements MenuDragMouseListener
     {
         public void menuDragMouseEntered(MenuDragMouseEvent e)
@@ -562,10 +562,10 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         {
             if (menuItem.isEnabled() == false)
                 return;
-            
+
             MenuSelectionManager manager = e.getMenuSelectionManager();
             MenuElement path[] = e.getPath();
-            
+
             Point p = e.getPoint();
             if (p.x >= 0 && p.x < menuItem.getWidth() && p.y >= 0 && p.y < menuItem.getHeight())
             {
@@ -588,7 +588,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                 if (comp == null)
                     manager.clearSelectedPath();
             }
-            
+
         }
         public void menuDragMouseExited(MenuDragMouseEvent e)
         {
@@ -597,7 +597,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         {
         }
     }
-    
+
     static JPopupMenu getActivePopupMenu()
     {
         MenuElement[] path = MenuSelectionManager.defaultManager().getSelectedPath();
@@ -611,19 +611,19 @@ public class LiquidMenuUI extends LiquidMenuItemUI
         }
         return null;
     }
-    
+
     /**
      * Handles the mnemonic handling for the JMenu and JMenuItems.
      */
     private class MenuKeyHandler implements MenuKeyListener
     {
-        
+
         // fields for handling duplicate mnemonics.
         private int indexes[];
         private char lastMnemonic;
         private int lastIndex;
         private int matches;
-        
+
         /**
          * Opens the SubMenu
          */
@@ -641,7 +641,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                     return;
                 }
             }
-            
+
             int key = menuItem.getMnemonic();
             if (key == 0)
                 return;
@@ -662,7 +662,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                 e.consume();
             }
         }
-        
+
         /**
          * Handles the mnemonics for the menu items. Will also handle duplicate mnemonics.
          * Perhaps this should be moved into BasicPopupMenuUI. See 4670831
@@ -677,18 +677,18 @@ public class LiquidMenuUI extends LiquidMenuItemUI
             char keyChar = e.getKeyChar();
             if (!Character.isLetterOrDigit(keyChar))
                 return;
-            
+
             MenuSelectionManager manager = e.getMenuSelectionManager();
             MenuElement path[] = e.getPath();
             MenuElement selectedPath[] = manager.getSelectedPath();
-            
+
             for (int i = selectedPath.length - 1; i >= 0; i--)
             {
                 if (selectedPath[i] == menuItem)
                 {
                     JPopupMenu popupMenu = ((JMenu) menuItem).getPopupMenu();
                     MenuElement items[] = popupMenu.getSubElements();
-                    
+
                     if (indexes == null || lastMnemonic != keyChar)
                     {
                         matches = 0;
@@ -729,7 +729,7 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                             lastIndex = 0;
                         }
                         MenuElement menuItem = items[indexes[lastIndex++]];
-                        
+
                         MenuElement newPath[] = new MenuElement[path.length + 2];
                         System.arraycopy(path, 0, newPath, 0, path.length);
                         newPath[path.length] = popupMenu;
@@ -741,16 +741,16 @@ public class LiquidMenuUI extends LiquidMenuItemUI
                 }
             }
         }
-        
+
         public void menuKeyReleased(MenuKeyEvent e)
         {
         }
-        
+
         private char lower(char keyChar)
         {
             return Character.toLowerCase(keyChar);
         }
     }
-    
-    
+
+
 }

@@ -25,10 +25,10 @@
 package userInterface;
 
 /**
- * @author Donald Derrick * @version 0.1 *  * TODO: Implement help features.
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="entity" 
+ * @author Donald Derrick * @version 0.1 * * TODO: Implement help features.
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="entity"
  */
 
 public class UIHelp {

@@ -23,11 +23,11 @@ import syntaxTree.SyntaxFacade;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * Save file interface
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="interface" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="interface"
  */
 
 public interface SaveFile {
-	public void saveFileToDisk(SyntaxFacade syntaxFacade);
+    public void saveFileToDisk(SyntaxFacade syntaxFacade);
 }

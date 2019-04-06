@@ -27,11 +27,11 @@ import java.util.LinkedList;
 
 public interface RepositionTree {
 
-	/**
-	 * 
-	 * @uml.property name="children"
-	 */
-	//@SupressWarnings("unchecked")
-	public LinkedList getChildren();
+    /**
+     *
+     * @uml.property name="children"
+     */
+    //@SupressWarnings("unchecked")
+    public LinkedList getChildren();
 
 }

@@ -34,113 +34,113 @@ import syntaxTree.SyntacticStructure;
 /**
  * @author Donald Derrick
  * @version 0.1
- * 
+ *
  * This is one of several Listener classes (part of the Java Command design
  * pattern interface) designed to fire UserControl commands that operate
  * non-sentence GUI interaction in TreeFrom
- * 
+ *
  */
 
 public class ListenerAssociationPane extends MouseInputAdapter {
 
-	private UserFrame mUserFrame;
+    private UserFrame mUserFrame;
 
-	public ListenerAssociationPane(UserFrame pUserFrame) {
-		mUserFrame = pUserFrame;
-	}
+    public ListenerAssociationPane(UserFrame pUserFrame) {
+        mUserFrame = pUserFrame;
+    }
 
-	/**
-	 * @param pME -
-	 *            Passes a mouse event to the listener
-	 * 
-	 * This command sets the position of the mouse in the glass pane. This is
-	 * the mechanism used to change the colors of the dots and help the user
-	 * select where to position trees.
-	 * 
-	 */
+    /**
+     * @param pME -
+     *            Passes a mouse event to the listener
+     *
+     * This command sets the position of the mouse in the glass pane. This is
+     * the mechanism used to change the colors of the dots and help the user
+     * select where to position trees.
+     *
+     */
 
-	public void mouseMoved(MouseEvent pME) {
-
-		
-		Container lC = mUserFrame.getContentPane();
-		Point lP =
-			SwingUtilities.convertPoint(
-				(Component) pME.getSource(),
-				pME.getPoint(),
-				lC);
-		Component lComponent =
-			mUserFrame.getDesktopPane().getComponentAt(
-				lP.x,
-				lP.y);
-		if (lComponent instanceof UserInternalFrame) 
-		{
-						lP =
-				SwingUtilities.convertPoint(
-					(Component) pME.getSource(),
-					pME.getPoint(),
-					((UserInternalFrame) lComponent).getContentPane());
-				
-			((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
-				((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
-					lP,
-					null,true));
-		}
-
-		((UserAssociationPane) pME.getSource()).setPosition(pME);
-	}
-
-	public void mouseDragged(MouseEvent e) {
-
-	}
+    public void mouseMoved(MouseEvent pME) {
 
 
-	public void mouseClicked(MouseEvent pME) {
-		
-		Container container = mUserFrame.getContentPane();
-		Point containerPoint = SwingUtilities.convertPoint((Component) pME
-				.getSource(), pME.getPoint(), container);
-		Component lComponent = mUserFrame.getDesktopPane().getComponentAt(
-				containerPoint.x, containerPoint.y);
-		
-		if (lComponent instanceof UserInternalFrame) {
-			Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
-			.getContainer();
-			if (hold != null)
-			{
-				((EditableComponent) hold).setOver(false);
-				hold.repaint();
-			}
-			if (hold instanceof SyntacticAssociation)
-			{
-				hold = ((SyntacticAssociation)hold).getSyntacticStructure();
-			}
-			if (hold instanceof SyntacticFeature)
-			{
-				hold = ((SyntacticFeatureSet)((SyntacticFeature)hold).getSyntacticFeatureSet()).getSyntacticStructure();
-			}
-			if (hold instanceof SyntacticStructure) 
-			{
-				((UserAssociationPane) pME.getSource())
-						.setEnd((SyntacticStructure) hold);
-			}
-		}
-		mUserFrame.getInternalFrame().deactivateAssociationPane();
-	}
+        Container lC = mUserFrame.getContentPane();
+        Point lP =
+            SwingUtilities.convertPoint(
+                (Component) pME.getSource(),
+                pME.getPoint(),
+                lC);
+        Component lComponent =
+            mUserFrame.getDesktopPane().getComponentAt(
+                lP.x,
+                lP.y);
+        if (lComponent instanceof UserInternalFrame)
+        {
+            lP =
+                SwingUtilities.convertPoint(
+                    (Component) pME.getSource(),
+                    pME.getPoint(),
+                    ((UserInternalFrame) lComponent).getContentPane());
 
-	public void mouseEntered(MouseEvent e) {
+            ((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
+                ((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
+                    lP,
+                    null,true));
+        }
 
-	}
+        ((UserAssociationPane) pME.getSource()).setPosition(pME);
+    }
 
-	public void mouseExited(MouseEvent e) {
+    public void mouseDragged(MouseEvent e) {
 
-	}
+    }
 
-	public void mousePressed(MouseEvent e) {
 
-	}
+    public void mouseClicked(MouseEvent pME) {
 
-	public void mouseReleased(MouseEvent e) {
+        Container container = mUserFrame.getContentPane();
+        Point containerPoint = SwingUtilities.convertPoint((Component) pME
+            .getSource(), pME.getPoint(), container);
+        Component lComponent = mUserFrame.getDesktopPane().getComponentAt(
+            containerPoint.x, containerPoint.y);
 
-	}
+        if (lComponent instanceof UserInternalFrame) {
+            Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
+                .getContainer();
+            if (hold != null)
+            {
+                ((EditableComponent) hold).setOver(false);
+                hold.repaint();
+            }
+            if (hold instanceof SyntacticAssociation)
+            {
+                hold = ((SyntacticAssociation)hold).getSyntacticStructure();
+            }
+            if (hold instanceof SyntacticFeature)
+            {
+                hold = ((SyntacticFeatureSet)((SyntacticFeature)hold).getSyntacticFeatureSet()).getSyntacticStructure();
+            }
+            if (hold instanceof SyntacticStructure)
+            {
+                ((UserAssociationPane) pME.getSource())
+                .setEnd((SyntacticStructure) hold);
+            }
+        }
+        mUserFrame.getInternalFrame().deactivateAssociationPane();
+    }
+
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
 
 }

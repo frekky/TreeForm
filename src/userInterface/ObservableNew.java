@@ -21,53 +21,53 @@ package userInterface;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Observable classes (part of Java's implementation of the
  * Observer design pattern).  These classes are needed to easily add objects
  * to a big list of objects that care about changes to a particular variable.  This
  * program has a LOT of these types of variables.
- *  
+ *
  */
 import java.util.Observable;
 
 public class ObservableNew extends Observable
 {
-   private int mValue = 0;
-   /**
-	* Constructor
-	* @param pValue - passes the number of open InternalFrame objects.
-	* <br>
-	* 
-	*/
-   public ObservableNew(int pValue)
-   {
-	  mValue = pValue;
-   }
-   /**
-	* 
-	* @param pValue - in the number of open InternalFrame objects.
-	* <br>
-	* Once this command is invoked, the superclass change notification is sent,
-	* and all the subscribed observers are told about the event.
-	*/
+    private int mValue = 0;
+    /**
+     * Constructor
+     * @param pValue - passes the number of open InternalFrame objects.
+     * <br>
+     *
+     */
+    public ObservableNew(int pValue)
+    {
+        mValue = pValue;
+    }
+    /**
+     *
+     * @param pValue - in the number of open InternalFrame objects.
+     * <br>
+     * Once this command is invoked, the superclass change notification is sent,
+     * and all the subscribed observers are told about the event.
+     */
 
-   public void setValue(int pValue)
-   {
-	  mValue = pValue;
-	  setChanged();
-	  notifyObservers();
-   }
-   /**
-	* 
-	* @return getValue - passes a value from the Observable, in this the count of
-	* InternalFrame objects.
-	* <br>
-	* A convenience function for returning the observable value.
-	*/
-   public int getValue()
-   {
-	  return mValue;
-   }
+    public void setValue(int pValue)
+    {
+        mValue = pValue;
+        setChanged();
+        notifyObservers();
+    }
+    /**
+     *
+     * @return getValue - passes a value from the Observable, in this the count of
+     * InternalFrame objects.
+     * <br>
+     * A convenience function for returning the observable value.
+     */
+    public int getValue()
+    {
+        return mValue;
+    }
 
 }

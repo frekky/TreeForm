@@ -27,90 +27,90 @@ import javax.swing.event.MouseInputAdapter;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 
 public class ListenerHighlightPane extends MouseInputAdapter {
 
-	private UserFrame mUserFrame;
+    private UserFrame mUserFrame;
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * 
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 */
-
-
-	public ListenerHighlightPane(UserFrame pUserFrame) {
-		mUserFrame = pUserFrame;
-	}
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     *
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     */
 
 
-	public void mouseMoved(MouseEvent pME) {
-	}
+    public ListenerHighlightPane(UserFrame pUserFrame) {
+        mUserFrame = pUserFrame;
+    }
 
-	public void mouseDragged(MouseEvent pME) {
 
-		Container lC = mUserFrame.getInternalFrame().getContentPane();
-		Point lP =
-			SwingUtilities.convertPoint(
-				(Component) pME.getSource(),
-				pME.getPoint(),
-				lC);
-		mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
-		mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(pME);
-		
-	}
+    public void mouseMoved(MouseEvent pME) {
+    }
 
-	public void mouseClicked(MouseEvent pME) {
-		
-	}
+    public void mouseDragged(MouseEvent pME) {
 
-	public void mouseEntered(MouseEvent e) {
-	
-	}
+        Container lC = mUserFrame.getInternalFrame().getContentPane();
+        Point lP =
+            SwingUtilities.convertPoint(
+                (Component) pME.getSource(),
+                pME.getPoint(),
+                lC);
+        mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
+        mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(pME);
 
-	public void mouseExited(MouseEvent e) {
-	
-	}
+    }
 
-	public void mousePressed(MouseEvent e) {
-		
-		Container lC = mUserFrame.getInternalFrame().getContentPane();
-		Point lP =
-			SwingUtilities.convertPoint(
-				(Component) e.getSource(),
-				e.getPoint(),
-				lC);
-		mUserFrame.getInternalFrame().activateHighlightPane();
-		mUserFrame.getInternalFrame().getHighlightPane().setStartPosition(lP.x,lP.y);
-		mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
-		mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(e);
-		//System.out.println("started here");
-	}
+    public void mouseClicked(MouseEvent pME) {
 
-	public void mouseReleased(MouseEvent e) {
-		
-		Container lC = mUserFrame.getInternalFrame().getContentPane();
-		Point lP =
-			SwingUtilities.convertPoint(
-				(Component) e.getSource(),
-				e.getPoint(),
-				lC);
-		mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(e);
-		mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
-		mUserFrame.getInternalFrame().getHighlightPane().copyImage();
-		mUserFrame.getInternalFrame().deactivateHighlightPane();
+    }
 
-	}
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void mousePressed(MouseEvent e) {
+
+        Container lC = mUserFrame.getInternalFrame().getContentPane();
+        Point lP =
+            SwingUtilities.convertPoint(
+                (Component) e.getSource(),
+                e.getPoint(),
+                lC);
+        mUserFrame.getInternalFrame().activateHighlightPane();
+        mUserFrame.getInternalFrame().getHighlightPane().setStartPosition(lP.x,lP.y);
+        mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
+        mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(e);
+        //System.out.println("started here");
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
+        Container lC = mUserFrame.getInternalFrame().getContentPane();
+        Point lP =
+            SwingUtilities.convertPoint(
+                (Component) e.getSource(),
+                e.getPoint(),
+                lC);
+        mUserFrame.getInternalFrame().getHighlightPane().setHighlightType(e);
+        mUserFrame.getInternalFrame().getHighlightPane().setEndPosition(lP.x,lP.y);
+        mUserFrame.getInternalFrame().getHighlightPane().copyImage();
+        mUserFrame.getInternalFrame().deactivateHighlightPane();
+
+    }
 
 }

@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*        Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *        Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid;
 
 import java.awt.AWTEvent;
@@ -53,16 +53,16 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
      * @see #createPreviousButton
      */
     private static final ArrowButtonHandler nextButtonHandler = new ArrowButtonHandler("increment",
-            true);
+        true);
     private static final ArrowButtonHandler previousButtonHandler = new ArrowButtonHandler("decrement",
-            false);
+        false);
     public static ComponentUI createUI(JComponent c) {
         return new LiquidSpinnerUI();
     }
 
     protected Component createPreviousButton() {
         JButton b = new SpecialUIButton(new LiquidSpinnerButtonUI(
-                    SwingConstants.SOUTH));
+            SwingConstants.SOUTH));
         b.setFocusable(false);
         b.addActionListener(previousButtonHandler);
         b.addMouseListener(previousButtonHandler);
@@ -72,7 +72,7 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
 
     protected Component createNextButton() {
         JButton b = new SpecialUIButton(new LiquidSpinnerButtonUI(
-                    SwingConstants.NORTH));
+            SwingConstants.NORTH));
         b.setFocusable(false);
         b.addActionListener(nextButtonHandler);
         b.addMouseListener(nextButtonHandler);
@@ -97,14 +97,14 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
             int compHeight = prefSize.height;
 
             int height = LiquidSpinnerButtonUI.getSkin(SwingConstants.NORTH)
-                                              .getVsize() +
+                .getVsize() +
                 LiquidSpinnerButtonUI.getSkin(SwingConstants.SOUTH).getVsize();
             int diff = height - compHeight;
 
             if (diff > 0) {
                 int half = diff / 2;
                 de.getTextField().setBorder(new EmptyBorder(half, 0,
-                        diff - half, 0));
+                    diff - half, 0));
             }
         }
 
@@ -131,12 +131,12 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
      * of a single button pressed/released gesture.
      */
     private static class ArrowButtonHandler extends AbstractAction
-        implements MouseListener {
+    implements MouseListener {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		final javax.swing.Timer autoRepeatTimer;
+         *
+         */
+        private static final long serialVersionUID = 1L;
+        final javax.swing.Timer autoRepeatTimer;
         final boolean isNext;
         JSpinner spinner = null;
 
@@ -175,7 +175,7 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
                     }
 
                     Object value = (isNext) ? spinner.getNextValue()
-                                            : spinner.getPreviousValue();
+                        : spinner.getPreviousValue();
 
                     if (value != null) {
                         spinner.setValue(value);
@@ -211,7 +211,7 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
                             AttributedCharacterIterator iterator = format.formatToCharacterIterator(value);
 
                             if (!select(ftf, iterator, field) &&
-                                    (field == DateFormat.Field.HOUR0)) {
+                                (field == DateFormat.Field.HOUR0)) {
                                 select(ftf, iterator, DateFormat.Field.HOUR1);
                             }
                         } catch (IllegalArgumentException iae) {
@@ -225,8 +225,8 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
          * Selects the passed in field, returning true if it is found,
          * false otherwise.
          */
- //       @SuppressWarnings("unchecked")
-		private boolean select(JFormattedTextField ftf,
+        //       @SuppressWarnings("unchecked")
+        private boolean select(JFormattedTextField ftf,
             AttributedCharacterIterator iterator, DateFormat.Field field) {
             int max = ftf.getDocument().getLength();
 
@@ -240,7 +240,7 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
                     int end = iterator.getRunLimit(field);
 
                     if ((start != -1) && (end != -1) && (start <= max) &&
-                            (end <= max)) {
+                        (end <= max)) {
                         ftf.select(start, end);
                     }
 
@@ -291,7 +291,7 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
 
         public void mousePressed(MouseEvent e) {
             if (SwingUtilities.isLeftMouseButton(e) &&
-                    e.getComponent().isEnabled()) {
+                e.getComponent().isEnabled()) {
                 spinner = eventToSpinner(e);
                 autoRepeatTimer.start();
 
@@ -319,10 +319,10 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
          */
         private void focusSpinnerIfNecessary() {
             Component fo = KeyboardFocusManager.getCurrentKeyboardFocusManager()
-                                               .getFocusOwner();
+                .getFocusOwner();
 
             if (spinner.isRequestFocusEnabled() &&
-                    ((fo == null) ||
+                ((fo == null) ||
                     !SwingUtilities.isDescendingFrom(fo, spinner))) {
                 Container root = spinner;
 
@@ -335,7 +335,7 @@ public class LiquidSpinnerUI extends BasicSpinnerUI {
                     Component child = ftp.getComponentAfter(root, spinner);
 
                     if ((child != null) &&
-                            SwingUtilities.isDescendingFrom(child, spinner)) {
+                        SwingUtilities.isDescendingFrom(child, spinner)) {
                         child.requestFocus();
                     }
                 }

@@ -24,7 +24,7 @@ import java.util.Observer;
 
 import javax.swing.JMenuItem;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -35,42 +35,42 @@ import javax.swing.JMenuItem;
  */
 public class UserMenuItemSelectAll extends JMenuItem implements Observer {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableNew"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableNew" multiplicity="(1 1)"
-	 */
-	private ObservableNew mObservableNew;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableNew"
+     * @uml.associationEnd
+     * @uml.property name="mObservableNew" multiplicity="(1 1)"
+     */
+    private ObservableNew mObservableNew;
 
-/**
- * 
- * @param string Tht title
- * @param pObservableNew The Observable containing the count of InternalFrames
- */
-	public UserMenuItemSelectAll(String string , ObservableNew pObservableNew) {
-		super(string);
-		mObservableNew = pObservableNew;
-	}
-/**
- * implements Observer
- */
-	public void update(Observable pObservable, Object pObject) {
-		if (pObservable == mObservableNew)
-	   {
-		  if (mObservableNew.getValue() == 0)
-		  {
-			this.setEnabled(false);
-		  }
-		  else
-		  {
-			this.setEnabled(true);
-		  }
-	   }
-	}
+    /**
+     *
+     * @param string Tht title
+     * @param pObservableNew The Observable containing the count of InternalFrames
+     */
+    public UserMenuItemSelectAll(String string , ObservableNew pObservableNew) {
+        super(string);
+        mObservableNew = pObservableNew;
+    }
+    /**
+     * implements Observer
+     */
+    public void update(Observable pObservable, Object pObject) {
+        if (pObservable == mObservableNew)
+        {
+            if (mObservableNew.getValue() == 0)
+            {
+                this.setEnabled(false);
+            }
+            else
+            {
+                this.setEnabled(true);
+            }
+        }
+    }
 
 }

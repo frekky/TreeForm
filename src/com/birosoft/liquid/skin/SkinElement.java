@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*        Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *        Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid.skin;
 
 import java.awt.Image;
@@ -30,42 +30,42 @@ public class SkinElement {
         }
     }
 
-	/**
-	 * returns the filename for the skin file.
-	 * @return String
-	 * 
-	 * @uml.property name="filename"
-	 */
-	public String getFilename() {
-		return filename;
-	}
+    /**
+     * returns the filename for the skin file.
+     * @return String
+     *
+     * @uml.property name="filename"
+     */
+    public String getFilename() {
+        return filename;
+    }
 
-	/**
-	 * Sets the filename for the skin file
-	 * @param filename the filename for the skin file
-	 * 
-	 * @uml.property name="filename"
-	 */
-	public void setFilename(String filename) {
-		this.filename = filename;
-	}
+    /**
+     * Sets the filename for the skin file
+     * @param filename the filename for the skin file
+     *
+     * @uml.property name="filename"
+     */
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
-	/**
-	 * returns the image for the skin
-	 * @return Image
-	 * 
-	 * @uml.property name="image"
-	 */
-	public Image getImage() {
-		return image;
-	}
+    /**
+     * returns the image for the skin
+     * @return Image
+     *
+     * @uml.property name="image"
+     */
+    public Image getImage() {
+        return image;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="image"
-	 */
-	protected void setImage(Image image) {
-		this.image = image;
-	}
+    /**
+     *
+     * @uml.property name="image"
+     */
+    protected void setImage(Image image) {
+        this.image = image;
+    }
 
 }

@@ -30,88 +30,88 @@ import javax.swing.SwingUtilities;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerMouseMotion implements MouseMotionListener {
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * <br>
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 */
-	public ListenerMouseMotion(UserFrame pUserFrame) {
-		mUserFrame = pUserFrame;
-	}
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     * <br>
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     */
+    public ListenerMouseMotion(UserFrame pUserFrame) {
+        mUserFrame = pUserFrame;
+    }
 
-	/**
-	 * @param pME - Passes a mouse event to the listener
-	 * <br>
-	 * This command makes a convenience reference to the UserBrowserButton.
-	 * It then checks to see if the mouse is dragged over a UserInternalFrame.
-	 * <br>
-	 * If it is, it runs through a routine to highlight any structure, feature,
-	 * or association under the mouse button.
-	 * <br>
-	 */
+    /**
+     * @param pME - Passes a mouse event to the listener
+     * <br>
+     * This command makes a convenience reference to the UserBrowserButton.
+     * It then checks to see if the mouse is dragged over a UserInternalFrame.
+     * <br>
+     * If it is, it runs through a routine to highlight any structure, feature,
+     * or association under the mouse button.
+     * <br>
+     */
 
-	public void mouseDragged(MouseEvent pME) {
-		if (((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0) ||
-				((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) == 0))
-		{
-			UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-			Container lC = mUserFrame.getContentPane();
-			Point lP =
-				SwingUtilities.convertPoint(
-					(Component) pME.getSource(),
-					pME.getPoint(),
-					lC);
-			Component lComponent =
-				mUserFrame.getDesktopPane().getComponentAt(
-					lP.x,
-					lP.y);
-			lP =
-				new Point(
-					lP.x - lUBB.getWidth()/2,
-					lP.y);
-			
-			lUBB.getTempLabel().setLocation(lP);
-			lUBB.getTempLabel().setVisible(true);
-			lUBB.repaint();
-			if (lComponent instanceof UserInternalFrame) 
-			{
-							lP =
-					SwingUtilities.convertPoint(
-						(Component) pME.getSource(),
-						pME.getPoint(),
-						((UserInternalFrame) lComponent).getContentPane());
-					
-				((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
-					((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
-						lP,
-						null,true));				
-			}
-		}
-	}
+    public void mouseDragged(MouseEvent pME) {
+        if (((pME.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) == 0) ||
+            ((pME.getModifiersEx() & InputEvent.ALT_DOWN_MASK) == 0))
+        {
+            UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+            Container lC = mUserFrame.getContentPane();
+            Point lP =
+                SwingUtilities.convertPoint(
+                    (Component) pME.getSource(),
+                    pME.getPoint(),
+                    lC);
+            Component lComponent =
+                mUserFrame.getDesktopPane().getComponentAt(
+                    lP.x,
+                    lP.y);
+            lP =
+                new Point(
+                    lP.x - lUBB.getWidth()/2,
+                    lP.y);
 
-	public void mouseMoved(MouseEvent pME) {
+            lUBB.getTempLabel().setLocation(lP);
+            lUBB.getTempLabel().setVisible(true);
+            lUBB.repaint();
+            if (lComponent instanceof UserInternalFrame)
+            {
+                lP =
+                    SwingUtilities.convertPoint(
+                        (Component) pME.getSource(),
+                        pME.getPoint(),
+                        ((UserInternalFrame) lComponent).getContentPane());
 
-	}
+                ((UserInternalFrame) lComponent).getSyntaxFacade().setHighlight(
+                    ((UserInternalFrame) lComponent).getSyntaxFacade().getUnder(
+                        lP,
+                        null,true));
+            }
+        }
+    }
+
+    public void mouseMoved(MouseEvent pME) {
+
+    }
 
 }

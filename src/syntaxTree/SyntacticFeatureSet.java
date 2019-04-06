@@ -23,67 +23,67 @@ import java.util.LinkedList;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br>
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="interface" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="interface"
  */
 
 public interface SyntacticFeatureSet {
-/**
- * 
- * @return Returns the visibility of the component
- */
-	boolean getVisibility();
-/**
- * 
- * @param visibility Sets the visibility of the component
- */
-	void setVisibility(boolean visibility);
+    /**
+     *
+     * @return Returns the visibility of the component
+     */
+    boolean getVisibility();
+    /**
+     *
+     * @param visibility Sets the visibility of the component
+     */
+    void setVisibility(boolean visibility);
 
-	/**
-	 * @return Returns the list of associated SyntacticFeatures
-	 * 
-	 * @uml.property name="syntacticFeature"
-	 */
-//	@SuppressWarnings("unchecked")
-	LinkedList getSyntacticFeature();
+    /**
+     * @return Returns the list of associated SyntacticFeatures
+     *
+     * @uml.property name="syntacticFeature"
+     */
+    //	@SuppressWarnings("unchecked")
+    LinkedList getSyntacticFeature();
 
-	/**
-	 * @param syntacticFeature sets the list of SyntacticFeatures
-	 * 
-	 * @uml.property name="syntacticFeature"
-	 */
-//	@SuppressWarnings("unchecked")
-	void setSyntacticFeature(LinkedList syntacticFeature);
+    /**
+     * @param syntacticFeature sets the list of SyntacticFeatures
+     *
+     * @uml.property name="syntacticFeature"
+     */
+    //	@SuppressWarnings("unchecked")
+    void setSyntacticFeature(LinkedList syntacticFeature);
 
-	/**
-	 * @return Returns the associated SyntacticStructure
-	 * 
-	 * @uml.property name="syntacticStructure"
-	 * @uml.associationEnd 
-	 * @uml.property name="syntacticStructure" multiplicity="(0 1)"
-	 */
-	SyntacticStructure getSyntacticStructure();
+    /**
+     * @return Returns the associated SyntacticStructure
+     *
+     * @uml.property name="syntacticStructure"
+     * @uml.associationEnd
+     * @uml.property name="syntacticStructure" multiplicity="(0 1)"
+     */
+    SyntacticStructure getSyntacticStructure();
 
-	/**
-	 * @param syntacticStructure sets the associated SyntacticStructure
-	 * 
-	 * @uml.property name="syntacticStructure"
-	 */
-	void setSyntacticStructure(SyntacticStructure syntacticStructure);
+    /**
+     * @param syntacticStructure sets the associated SyntacticStructure
+     *
+     * @uml.property name="syntacticStructure"
+     */
+    void setSyntacticStructure(SyntacticStructure syntacticStructure);
 
-	/**
-	 * @return Returns the text Height
-	 *
-	 */
-	int getHeight();
-	/**
-	 * @return Returns the text Width
-	 */
-	int getWidth();
-	/**
-	 * textXY command
-	 */
-	void testXY();
+    /**
+     * @return Returns the text Height
+     *
+     */
+    int getHeight();
+    /**
+     * @return Returns the text Width
+     */
+    int getWidth();
+    /**
+     * textXY command
+     */
+    void testXY();
 
 }

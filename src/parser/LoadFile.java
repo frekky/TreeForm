@@ -33,5 +33,5 @@ import userInterface.UserFrame;
  * Load file interface
  */
 public interface LoadFile {
-public void loadFileFromDisk(UserFrame pUserFrame, File pFile);
+    public void loadFileFromDisk(UserFrame pUserFrame, File pFile);
 }

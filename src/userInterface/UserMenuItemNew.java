@@ -23,7 +23,7 @@ import javax.swing.Icon;
 import javax.swing.JMenuItem;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -34,19 +34,19 @@ import javax.swing.JMenuItem;
  */
 public class UserMenuItemNew extends JMenuItem{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
- * 
- * @param pString The Title
- * @param pIcon The icon
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @param pString The Title
+     * @param pIcon The icon
 
- */
-	public UserMenuItemNew(String pString, Icon pIcon) {
-		super(pString, pIcon);
+     */
+    public UserMenuItemNew(String pString, Icon pIcon) {
+        super(pString, pIcon);
 
-	}
+    }
 
 }

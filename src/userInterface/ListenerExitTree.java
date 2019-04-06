@@ -26,61 +26,61 @@ import javax.swing.JOptionPane;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerExitTree implements ActionListener {
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * 
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     *
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-	public ListenerExitTree(UserFrame pUserFrame) {
-		super();
-		mUserFrame = pUserFrame;
-	}
+    public ListenerExitTree(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+    }
 
-	/**
-	 * @param pAE - Passes an action event to the listener
-	 * 
-	 * This listener copies the selected item into the clipboard.
-	 * 
-	 * TODO: Delete not implemented.
-	 * 
-	 */
-	public void actionPerformed(ActionEvent pAE) {
-		if (mUserFrame.getObservableNew().getValue() != 0)
-		{
-			int I = JOptionPane.showConfirmDialog(null,"Clicking NO will exit the program without saving any trees.","Save trees first?",JOptionPane.YES_NO_OPTION);
-			if (I == JOptionPane.YES_OPTION)
-			{
-				mUserFrame.getUserControl().saveAllTrees(mUserFrame.getDesktopPane());
-			}
-			else if (I == JOptionPane.NO_OPTION)
-			{
-				//System.out.println("yuck");
-				System.exit(0);
-			}
-		}
-		else
-		{
-		System.exit(0);
-		}
-	}
+    /**
+     * @param pAE - Passes an action event to the listener
+     *
+     * This listener copies the selected item into the clipboard.
+     *
+     * TODO: Delete not implemented.
+     *
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        if (mUserFrame.getObservableNew().getValue() != 0)
+        {
+            int I = JOptionPane.showConfirmDialog(null,"Clicking NO will exit the program without saving any trees.","Save trees first?",JOptionPane.YES_NO_OPTION);
+            if (I == JOptionPane.YES_OPTION)
+            {
+                mUserFrame.getUserControl().saveAllTrees(mUserFrame.getDesktopPane());
+            }
+            else if (I == JOptionPane.NO_OPTION)
+            {
+                //System.out.println("yuck");
+                System.exit(0);
+            }
+        }
+        else
+        {
+            System.exit(0);
+        }
+    }
 
 }

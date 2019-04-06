@@ -23,12 +23,12 @@ import syntaxTree.SyntaxFacade;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * LatexParser - not yet completed
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="entity" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="entity"
  */
 
 public class LaTeXParser implements SaveFile {
-	public void saveFileToDisk(SyntaxFacade pSyntaxFacade) {
-	}
+    public void saveFileToDisk(SyntaxFacade pSyntaxFacade) {
+    }
 }

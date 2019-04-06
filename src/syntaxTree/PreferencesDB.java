@@ -20,9 +20,9 @@ package syntaxTree;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * UNIMPLEMENTED
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="entity" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="entity"
  */
 
 public class PreferencesDB {

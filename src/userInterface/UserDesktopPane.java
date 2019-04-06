@@ -37,184 +37,184 @@ import javax.swing.JInternalFrame;
  *
  * Well, and also the author is JavaWorld Magazine! (for the window cascade
  * and tile methods)
- * 
+ *
  * http://www.javaworld.com/javaworld/jw-05-2001/jw-0525-mdi.html?#resources
- * 
- * 
+ *
+ *
  */
 public class UserDesktopPane extends JDesktopPane {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)" inverse="mDesktopPane:userInterface.UserFrame"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)" inverse="mDesktopPane:userInterface.UserFrame"
+     */
+    private UserFrame mUserFrame;
 
-	private static int FRAME_OFFSET=20;
+    private static int FRAME_OFFSET=20;
 
-	/**
-	 * 
-	 * @uml.property name="mManager"
-	 * @uml.associationEnd 
-	 * @uml.property name="mManager" multiplicity="(1 1)" inverse="pDesktop:userInterface.MDIDesktopManager"
-	 */
-	private MDIDesktopManager mManager;
+    /**
+     *
+     * @uml.property name="mManager"
+     * @uml.associationEnd
+     * @uml.property name="mManager" multiplicity="(1 1)" inverse="pDesktop:userInterface.MDIDesktopManager"
+     */
+    private MDIDesktopManager mManager;
 
-/**
- * 
- * @param pUserFrame The UserFrame for this instance of TreeForm.
- */	
-	public UserDesktopPane(UserFrame pUserFrame) {
-		super();
-		mUserFrame = pUserFrame;
-		mManager= new MDIDesktopManager(this);
-		setDesktopManager(mManager);
-		setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
-		
-	}
-/**
- * Adds a new InternalFrame
- *
- */
-	public void addInternalFrame() {
-		UserInternalFrame internalFrame =
-			new UserInternalFrame(
-				mUserFrame,
-				mUserFrame.getDesktopPane().getAllFrames().length + 1);
-		internalFrame.setVisible(true); //necessary as of 1.3
-		internalFrame.addInternalFrameListener(new ListenerInternalFrame(mUserFrame));
-		internalFrame.getContentPane().setLayout(null);
-		//internalFrame.setAutoscrolls(true);
-		ListenerHighlightPane hold = new ListenerHighlightPane(mUserFrame);
-		internalFrame.addMouseListener(hold);
-		internalFrame.addMouseMotionListener(hold);
-		this.add(internalFrame);
-		try {
-			internalFrame.setSelected(true);
-		} catch (java.beans.PropertyVetoException e) {
-		}
-	}
-/**
- * Closes InternalFrames
- *
- */
-	public void closeInternalFrame() {
-		if (this.getSelectedFrame() != null) {
-			this.remove(this.getSelectedFrame());
-			selecteNewFrame();
-		}
-		this.repaint();
-	}
+    /**
+     *
+     * @param pUserFrame The UserFrame for this instance of TreeForm.
+     */
+    public UserDesktopPane(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+        mManager= new MDIDesktopManager(this);
+        setDesktopManager(mManager);
+        setDragMode(JDesktopPane.OUTLINE_DRAG_MODE);
 
-/**
- * Selects a new frame when one was closed.
- *
- */
+    }
+    /**
+     * Adds a new InternalFrame
+     *
+     */
+    public void addInternalFrame() {
+        UserInternalFrame internalFrame =
+            new UserInternalFrame(
+                mUserFrame,
+                mUserFrame.getDesktopPane().getAllFrames().length + 1);
+        internalFrame.setVisible(true); //necessary as of 1.3
+        internalFrame.addInternalFrameListener(new ListenerInternalFrame(mUserFrame));
+        internalFrame.getContentPane().setLayout(null);
+        //internalFrame.setAutoscrolls(true);
+        ListenerHighlightPane hold = new ListenerHighlightPane(mUserFrame);
+        internalFrame.addMouseListener(hold);
+        internalFrame.addMouseMotionListener(hold);
+        this.add(internalFrame);
+        try {
+            internalFrame.setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
+        }
+    }
+    /**
+     * Closes InternalFrames
+     *
+     */
+    public void closeInternalFrame() {
+        if (this.getSelectedFrame() != null) {
+            this.remove(this.getSelectedFrame());
+            selecteNewFrame();
+        }
+        this.repaint();
+    }
 
-	public void selecteNewFrame() {
-		JInternalFrame[] jif = this.getAllFrames();
-		if (jif.length > 0) {
-			this.setSelectedFrame(jif[0]);
-			try {
-				jif[0].setSelected(true);
-			} catch (PropertyVetoException e) {
-				e.printStackTrace();
-			}
-			jif[0].repaint();
-		}
-		
-	}
-/**
- * 
- * @return returns the selected InternalFrame
- */
-	public UserInternalFrame getInternalFrame()
-	{
-		return (UserInternalFrame) this.getSelectedFrame();
-	}
-/**
- * 
- * Closes all the internal frames
- */
+    /**
+     * Selects a new frame when one was closed.
+     *
+     */
 
-	public void closeAllInternalFrames() {
-		JInternalFrame[] jif = this.getAllFrames();
-		for (int i = 0; i < jif.length; i++) {
-			this.remove(jif[i]);
-		}
-		this.repaint();
-	}
+    public void selecteNewFrame() {
+        JInternalFrame[] jif = this.getAllFrames();
+        if (jif.length > 0) {
+            this.setSelectedFrame(jif[0]);
+            try {
+                jif[0].setSelected(true);
+            } catch (PropertyVetoException e) {
+                e.printStackTrace();
+            }
+            jif[0].repaint();
+        }
 
-		public void setBounds(int x, int y, int w, int h) {
-			super.setBounds(x,y,w,h);
-			checkDesktopSize();
-		}
-		
-		public void remove(Component c) {
-			super.remove(c);
-			checkDesktopSize();
-		}
+    }
+    /**
+     *
+     * @return returns the selected InternalFrame
+     */
+    public UserInternalFrame getInternalFrame()
+    {
+        return (UserInternalFrame) this.getSelectedFrame();
+    }
+    /**
+     *
+     * Closes all the internal frames
+     */
 
-		/**
-		 * Cascade all internal frames
-		 */
-		public void cascadeFrames() {
-			int x = 0;
-			int y = 0;
-			JInternalFrame allFrames[] = getAllFrames();
+    public void closeAllInternalFrames() {
+        JInternalFrame[] jif = this.getAllFrames();
+        for (int i = 0; i < jif.length; i++) {
+            this.remove(jif[i]);
+        }
+        this.repaint();
+    }
 
-			mManager.setNormalSize();
-			int frameHeight = (getBounds().height - 5) - allFrames.length * FRAME_OFFSET;
-			int frameWidth = (getBounds().width - 5) - allFrames.length * FRAME_OFFSET;
-			for (int i = allFrames.length - 1; i >= 0; i--) {
-				allFrames[i].setSize(frameWidth,frameHeight);
-				allFrames[i].setLocation(x,y);
-				x = x + FRAME_OFFSET;
-				y = y + FRAME_OFFSET;
-			}
-		}
+    public void setBounds(int x, int y, int w, int h) {
+        super.setBounds(x,y,w,h);
+        checkDesktopSize();
+    }
 
-		/**
-		 * Tile all internal frames
-		 */
-		public void tileFrames() {
-			java.awt.Component allFrames[] = getAllFrames();
-			mManager.setNormalSize();
-			int frameHeight = getBounds().height/allFrames.length;
-			int y = 0;
-			for (int i = 0; i < allFrames.length; i++) {
-				allFrames[i].setSize(getBounds().width,frameHeight);
-				allFrames[i].setLocation(0,y);
-				y = y + frameHeight;
-			}
-		}
+    public void remove(Component c) {
+        super.remove(c);
+        checkDesktopSize();
+    }
 
-		/**
-		 * Sets all component size properties ( maximum, minimum, preferred)
-		 * to the given dimension.
-		 */
-		public void setAllSize(Dimension d){
-			setMinimumSize(d);
-			setMaximumSize(d);
-			setPreferredSize(d);
-		}
+    /**
+     * Cascade all internal frames
+     */
+    public void cascadeFrames() {
+        int x = 0;
+        int y = 0;
+        JInternalFrame allFrames[] = getAllFrames();
 
-		/**
-		 * Sets all component size properties ( maximum, minimum, preferred)
-		 * to the given width and height.
-		 */
-		public void setAllSize(int width, int height){
-			setAllSize(new Dimension(width,height));
-		}
+        mManager.setNormalSize();
+        int frameHeight = (getBounds().height - 5) - allFrames.length * FRAME_OFFSET;
+        int frameWidth = (getBounds().width - 5) - allFrames.length * FRAME_OFFSET;
+        for (int i = allFrames.length - 1; i >= 0; i--) {
+            allFrames[i].setSize(frameWidth,frameHeight);
+            allFrames[i].setLocation(x,y);
+            x = x + FRAME_OFFSET;
+            y = y + FRAME_OFFSET;
+        }
+    }
 
-		private void checkDesktopSize() {
-			if (getParent()!=null&&isVisible()) mManager.resizeDesktop();
-		}
-	}
+    /**
+     * Tile all internal frames
+     */
+    public void tileFrames() {
+        java.awt.Component allFrames[] = getAllFrames();
+        mManager.setNormalSize();
+        int frameHeight = getBounds().height/allFrames.length;
+        int y = 0;
+        for (int i = 0; i < allFrames.length; i++) {
+            allFrames[i].setSize(getBounds().width,frameHeight);
+            allFrames[i].setLocation(0,y);
+            y = y + frameHeight;
+        }
+    }
+
+    /**
+     * Sets all component size properties ( maximum, minimum, preferred)
+     * to the given dimension.
+     */
+    public void setAllSize(Dimension d){
+        setMinimumSize(d);
+        setMaximumSize(d);
+        setPreferredSize(d);
+    }
+
+    /**
+     * Sets all component size properties ( maximum, minimum, preferred)
+     * to the given width and height.
+     */
+    public void setAllSize(int width, int height){
+        setAllSize(new Dimension(width,height));
+    }
+
+    private void checkDesktopSize() {
+        if (getParent()!=null&&isVisible()) mManager.resizeDesktop();
+    }
+}

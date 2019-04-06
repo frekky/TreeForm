@@ -28,21 +28,21 @@ public class Colors {
     public Colors() {
     }
 
-	/**
-	 * 
-	 * @uml.property name="image"
-	 */
-	static public Image getImage() {
-		return newImage;
-	}
+    /**
+     *
+     * @uml.property name="image"
+     */
+    static public Image getImage() {
+        return newImage;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="clearFill"
-	 */
-	static public BufferedImage getClearFill() {
-		return clearFill;
-	}
+    /**
+     *
+     * @uml.property name="clearFill"
+     */
+    static public BufferedImage getClearFill() {
+        return clearFill;
+    }
 
     static public void drawStipples(Graphics g, JComponent c, Color bg) {
         g.setColor(Colors.dark(bg, 103));
@@ -70,7 +70,7 @@ public class Colors {
     public static void getPixels() {
         SkinImageCache sic = SkinImageCache.getInstance();
         image = sic.getAutomaticImage("button.png");
-        clearFill = sic.getBufferedImage("clear_fill.png");        
+        clearFill = sic.getBufferedImage("clear_fill.png");
 
         int x = 0;
         int y = 0;
@@ -109,7 +109,7 @@ public class Colors {
                 }
 
                 g.setColor(handlesinglepixel(x + i, y + j, pixels[(j * w) + i],
-                        colourWith));
+                    colourWith));
                 g.drawLine(x + i, y + j, x + i, y + j);
             }
         }

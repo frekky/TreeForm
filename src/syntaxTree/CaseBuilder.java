@@ -25,7 +25,7 @@ import java.text.AttributedString;
 
 import userInterface.UserInternalFrame;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -36,26 +36,26 @@ import userInterface.UserInternalFrame;
  */
 public class CaseBuilder extends AbstractFeatureBuilder {
 
-	/**
- * @param pInternalFrame The internal Frame that this structure will be attached to.
- * @return Returns the SyntacticFeatureSet.
- * <br><br>
- * This FeatureSet contains one Feature, "[NOM]"
- */
-	//@SupressWarnings("unchecked")
-	public SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame) {
-		SyntacticFeatureSet lSFS = new CaseFeatureSet();
-		lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
-		SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
-		AttributedString lAttributedString = new AttributedString("[CASE]");
-		Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
-		lAttributedString.addAttribute(TextAttribute.FONT, lFont);
-		lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
-		lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
-		lSF.setSyntacticFeatureSet(lSFS);
-		lSFS.getSyntacticFeature().add(lSF);
-		lSF.setHead(lAttributedString);
-		pInternalFrame.getContentPane().add(lSF);
-		return lSFS;
-	}
+    /**
+     * @param pInternalFrame The internal Frame that this structure will be attached to.
+     * @return Returns the SyntacticFeatureSet.
+     * <br><br>
+     * This FeatureSet contains one Feature, "[NOM]"
+     */
+    //@SupressWarnings("unchecked")
+    public SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame) {
+        SyntacticFeatureSet lSFS = new CaseFeatureSet();
+        lSFS.setSyntacticStructure((SyntacticStructure) pInternalFrame.getSyntaxFacade().getContainer());
+        SyntacticFeature lSF = new SyntacticFeature(pInternalFrame);
+        AttributedString lAttributedString = new AttributedString("[CASE]");
+        Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
+        lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+        lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+        lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
+        lSF.setSyntacticFeatureSet(lSFS);
+        lSFS.getSyntacticFeature().add(lSF);
+        lSF.setHead(lAttributedString);
+        pInternalFrame.getContentPane().add(lSF);
+        return lSFS;
+    }
 }

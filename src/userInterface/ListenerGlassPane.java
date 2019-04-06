@@ -24,75 +24,75 @@ import javax.swing.event.MouseInputAdapter;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 
 public class ListenerGlassPane extends MouseInputAdapter {
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * 
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 */
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     *
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     */
 
 
-	public ListenerGlassPane(UserFrame pUserFrame) {
-	}
+    public ListenerGlassPane(UserFrame pUserFrame) {
+    }
 
 
-	/**
-	 * @param pME - Passes a mouse event to the listener
-	 * 
-	 * This command sets the position of the mouse in the glass pane.  This is
-	 * the mechanism used to change the colors of the dots and help the user
-	 * select where to position trees.
-	 * 
-	 */
+    /**
+     * @param pME - Passes a mouse event to the listener
+     *
+     * This command sets the position of the mouse in the glass pane.  This is
+     * the mechanism used to change the colors of the dots and help the user
+     * select where to position trees.
+     *
+     */
 
-	public void mouseMoved(MouseEvent pME) {
-		
-		((UserGlassPane)pME.getSource()).setPosition(pME);
-	}
+    public void mouseMoved(MouseEvent pME) {
 
-	public void mouseDragged(MouseEvent e) {
-		
-	}
+        ((UserGlassPane)pME.getSource()).setPosition(pME);
+    }
 
-	/**
-	 * @param pME - Passes a mouse event to the listener
-	 * 
-	 * This command calls the commands to place the subtree in the correct
-	 * position among it's siblings.
-	 * 
-	 */
+    public void mouseDragged(MouseEvent e) {
 
-	public void mouseClicked(MouseEvent pME) {
-		((UserGlassPane)pME.getSource()).setChild();
-	}
+    }
 
-	public void mouseEntered(MouseEvent e) {
-	
-	}
+    /**
+     * @param pME - Passes a mouse event to the listener
+     *
+     * This command calls the commands to place the subtree in the correct
+     * position among it's siblings.
+     *
+     */
 
-	public void mouseExited(MouseEvent e) {
-	
-	}
+    public void mouseClicked(MouseEvent pME) {
+        ((UserGlassPane)pME.getSource()).setChild();
+    }
 
-	public void mousePressed(MouseEvent e) {
-		
-	}
+    public void mouseEntered(MouseEvent e) {
 
-	public void mouseReleased(MouseEvent e) {
+    }
 
-	}
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    public void mouseReleased(MouseEvent e) {
+
+    }
 
 }

@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -34,41 +34,41 @@ import java.awt.event.ActionListener;
  */
 public class ListenerDelete implements ActionListener {
 
-	/**
-	 * 
-	 * @uml.property name="mSS"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSS" multiplicity="(1 1)"
-	 */
-	private SyntacticStructure mSS;
+    /**
+     *
+     * @uml.property name="mSS"
+     * @uml.associationEnd
+     * @uml.property name="mSS" multiplicity="(1 1)"
+     */
+    private SyntacticStructure mSS;
 
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mSF;
+    /**
+     *
+     * @uml.property name="mSF"
+     * @uml.associationEnd
+     * @uml.property name="mSF" multiplicity="(1 1)"
+     */
+    private SyntaxFacade mSF;
 
-	/**
-	 * 
-	 * @param pSF The SyntaxFacade holding all these commands
-	 * @param pSS The SyntacticStructure attached to this listener.
-	 */
-	public ListenerDelete(SyntaxFacade pSF, SyntacticStructure pSS)
-	{
-		mSF = pSF;
-		mSS = pSS;
-	}
-/**
- * @param pAE The ActionEvent
- * <br>
- * Calls deleteSyntacticStructure
- */
-	public void actionPerformed(ActionEvent pAE) {
-		mSF.deleteSyntacticStructure(mSS);
+    /**
+     *
+     * @param pSF The SyntaxFacade holding all these commands
+     * @param pSS The SyntacticStructure attached to this listener.
+     */
+    public ListenerDelete(SyntaxFacade pSF, SyntacticStructure pSS)
+    {
+        mSF = pSF;
+        mSS = pSS;
+    }
+    /**
+     * @param pAE The ActionEvent
+     * <br>
+     * Calls deleteSyntacticStructure
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        mSF.deleteSyntacticStructure(mSS);
 
-	}
+    }
 
 
 

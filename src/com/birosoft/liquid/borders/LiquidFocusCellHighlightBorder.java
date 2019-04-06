@@ -25,29 +25,29 @@ import javax.swing.plaf.UIResource;
 public class LiquidFocusCellHighlightBorder extends LineBorder implements UIResource
 {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	final static float dash1[] = {1.0f};
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    final static float dash1[] = {1.0f};
     final static BasicStroke dashed = new BasicStroke(1.0f,
-                                                    BasicStroke.CAP_BUTT,
-                                                    BasicStroke.JOIN_MITER,
-                                                    10.0f, dash1, 0.0f);
-    
+        BasicStroke.CAP_BUTT,
+        BasicStroke.JOIN_MITER,
+        10.0f, dash1, 0.0f);
+
     private Color color;
-    
+
     public LiquidFocusCellHighlightBorder(Color c)
     {
         super(c);
         color = c;
     }
-    
+
     public LiquidFocusCellHighlightBorder(Color c, int thickness)
     {
         super(c, thickness);
         color = c;
     }
-    
+
     /**
      * Gets the border insets for a given component.
      *
@@ -58,7 +58,7 @@ public class LiquidFocusCellHighlightBorder extends LineBorder implements UIReso
         return insets;
     }
      */
-    
+
     /**
      * Use the skin to paint the border
      * @see javax.swing.border.Border#paintBorder(Component, Graphics, int, int, int, int)

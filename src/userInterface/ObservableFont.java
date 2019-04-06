@@ -22,49 +22,49 @@ package userInterface;
 import java.util.Observable;
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Observable classes (part of Java's implementation of the
  * Observer design pattern).  These classes are needed to easily add objects
  * to a big list of objects that care about changes to a particular variable.  This
  * program has a LOT of these types of variables.
- *  
+ *
  */
 public class ObservableFont extends Observable {
 
-	private String mFont;
-	/**
-	 * Constructor
-	 * @param pFont - passes a font.
-	 * <br>
-	 * 
-	 */
-	public ObservableFont(String pFont) {
-		
-		mFont = pFont;
-	}
+    private String mFont;
+    /**
+     * Constructor
+     * @param pFont - passes a font.
+     * <br>
+     *
+     */
+    public ObservableFont(String pFont) {
 
-	/**
-	 * 
-	 * @param pFont - passes a value for the Observable, in this case a font object
-	 * <br>
-	 * Once this command is invoked, the superclass change notification is sent,
-	 * and all the subscribed observers are told about the event.
-	 */
-	public void setValue(String pFont)
-	 {
-		mFont = pFont;
-		setChanged();
-		notifyObservers();
-	 }
-	/**
-	 * 
-	 * @return getValue - passes a value from the Observable, in this case a font.
-	 * <br>
-	 * A convenience function for returning the observable value.
-	 */
-	 public String getValue()
-	 {
-		return mFont;
-	 }
+        mFont = pFont;
+    }
+
+    /**
+     *
+     * @param pFont - passes a value for the Observable, in this case a font object
+     * <br>
+     * Once this command is invoked, the superclass change notification is sent,
+     * and all the subscribed observers are told about the event.
+     */
+    public void setValue(String pFont)
+    {
+        mFont = pFont;
+        setChanged();
+        notifyObservers();
+    }
+    /**
+     *
+     * @return getValue - passes a value from the Observable, in this case a font.
+     * <br>
+     * A convenience function for returning the observable value.
+     */
+    public String getValue()
+    {
+        return mFont;
+    }
 }

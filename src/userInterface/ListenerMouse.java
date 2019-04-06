@@ -37,155 +37,155 @@ import enumerators.SyntacticOperationType;
 import enumerators.SyntacticStructureType;
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerMouse implements MouseListener {
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * 
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 */
-	public ListenerMouse(UserFrame pUserFrame) {
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     *
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     */
+    public ListenerMouse(UserFrame pUserFrame) {
 
-		mUserFrame = pUserFrame;
-	}
+        mUserFrame = pUserFrame;
+    }
 
-	public void mouseClicked(MouseEvent pME) {
-	}
+    public void mouseClicked(MouseEvent pME) {
+    }
 
-	public void mouseEntered(MouseEvent pME) {
-		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-		lUBB.setHighlight(true);
-		lUBB.repaint();
-	}
+    public void mouseEntered(MouseEvent pME) {
+        UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+        lUBB.setHighlight(true);
+        lUBB.repaint();
+    }
 
-	public void mouseExited(MouseEvent pME) {
-		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-		lUBB.setHighlight(false);
-		lUBB.repaint();
-	}
+    public void mouseExited(MouseEvent pME) {
+        UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+        lUBB.setHighlight(false);
+        lUBB.repaint();
+    }
 
-	public void mousePressed(MouseEvent pME) {
-		mUserFrame.getInternalFrame().setToolTipText(null);
-		Cursor lDefaultCursor = new Cursor(Cursor.HAND_CURSOR);
-		mUserFrame.setCursor(lDefaultCursor);
-	}
+    public void mousePressed(MouseEvent pME) {
+        mUserFrame.getInternalFrame().setToolTipText(null);
+        Cursor lDefaultCursor = new Cursor(Cursor.HAND_CURSOR);
+        mUserFrame.setCursor(lDefaultCursor);
+    }
 
-	public void mouseReleased(MouseEvent pME) {
-		Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
-		mUserFrame.setCursor(lDefaultCursor);
-		UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
-		lUBB.getTempLabel().setVisible(false);
-		Container container = mUserFrame.getContentPane();
-		Point containerPoint =
-			SwingUtilities.convertPoint(
-				(Component) pME.getSource(),
-				pME.getPoint(),
-				container);
-		Component lComponent =
-			mUserFrame.getDesktopPane().getComponentAt(
-				containerPoint.x,
-				containerPoint.y);
-		containerPoint =
-			new Point(
-				containerPoint.x - lUBB.getPressedX(),
-				containerPoint.y - lUBB.getPressedY());
-		
-		if (lComponent instanceof UserInternalFrame) {
-			Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
-			.getContainer();
-			if (hold != null)
-			{
-				((EditableComponent) hold).setOver(false);
-				hold.repaint();
-			}
-			
-			containerPoint =
-				SwingUtilities.convertPoint(
-					(Component) pME.getSource(),
-					pME.getPoint(),
-					((UserInternalFrame) lComponent).getContentPane());
-				if (lUBB.getButtonType() instanceof SyntacticStructureType)
-				{
-				try {
-					((UserInternalFrame)lComponent).getSyntaxFacade().
-					addSyntacticStructure((SyntacticStructureType) 
-							lUBB.getButtonType(),((UserInternalFrame)lComponent), 
-							((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if (lUBB.getButtonType() instanceof SyntacticFeatureType)
-				{
-					try {
-						((UserInternalFrame)lComponent).getSyntaxFacade().addSyntacticFeatureToStructure((SyntacticFeatureType) lUBB.getButtonType(),
-								((UserInternalFrame)lComponent),
-								((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-				else if (lUBB.getButtonType() instanceof SyntacticOperationType)
-				{
-					if (lUBB.getButtonType() == SyntacticOperationType.MOVEMENT)
-					{
-						
-							mUserFrame.getInternalFrame().activateMovementPane((Component) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
-						
-					}
-					if (lUBB.getButtonType() == SyntacticOperationType.ERASE)
-					{
-						hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
-						if (hold instanceof SyntacticStructure)
-						{
-							mUserFrame.getSyntaxFacade().deleteSyntacticStructure((SyntacticStructure) hold);
-						}
-						if (hold instanceof SyntacticFeature)
-						{
-							mUserFrame.getSyntaxFacade().deleteSyntacticFeature((SyntacticFeature) hold);
-						}
-						if (hold instanceof SyntacticAssociation)
-						{
-							mUserFrame.getSyntaxFacade().deleteSyntacticAssociation((SyntacticAssociation) hold);
-						}
-					}
-					if (lUBB.getButtonType() == SyntacticOperationType.ADD)
-					{
-						hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+    public void mouseReleased(MouseEvent pME) {
+        Cursor lDefaultCursor = new Cursor(Cursor.DEFAULT_CURSOR);
+        mUserFrame.setCursor(lDefaultCursor);
+        UserBrowserButton lUBB = (UserBrowserButton) pME.getSource();
+        lUBB.getTempLabel().setVisible(false);
+        Container container = mUserFrame.getContentPane();
+        Point containerPoint =
+            SwingUtilities.convertPoint(
+                (Component) pME.getSource(),
+                pME.getPoint(),
+                container);
+        Component lComponent =
+            mUserFrame.getDesktopPane().getComponentAt(
+                containerPoint.x,
+                containerPoint.y);
+        containerPoint =
+            new Point(
+                containerPoint.x - lUBB.getPressedX(),
+                containerPoint.y - lUBB.getPressedY());
 
-						if (hold instanceof SyntacticFeature)
-						{
-							mUserFrame.getSyntaxFacade().addSyntacticFeature((SyntacticFeature) hold);
-						}
-					}
-					if (lUBB.getButtonType() == SyntacticOperationType.ASSOCIATION)
-					{
-						hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
-						if (hold instanceof SyntacticFeature)
-						{
-							mUserFrame.getInternalFrame().activateAssociationPane((SyntacticFeature) hold);
-						}
-					}
-			}
-		}
-	}
+        if (lComponent instanceof UserInternalFrame) {
+            Component hold = ((UserInternalFrame) lComponent).getSyntaxFacade()
+                .getContainer();
+            if (hold != null)
+            {
+                ((EditableComponent) hold).setOver(false);
+                hold.repaint();
+            }
+
+            containerPoint =
+                SwingUtilities.convertPoint(
+                    (Component) pME.getSource(),
+                    pME.getPoint(),
+                    ((UserInternalFrame) lComponent).getContentPane());
+            if (lUBB.getButtonType() instanceof SyntacticStructureType)
+            {
+                try {
+                    ((UserInternalFrame)lComponent).getSyntaxFacade().
+                    addSyntacticStructure((SyntacticStructureType)
+                        lUBB.getButtonType(),((UserInternalFrame)lComponent),
+                        ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (lUBB.getButtonType() instanceof SyntacticFeatureType)
+            {
+                try {
+                    ((UserInternalFrame)lComponent).getSyntaxFacade().addSyntacticFeatureToStructure((SyntacticFeatureType) lUBB.getButtonType(),
+                        ((UserInternalFrame)lComponent),
+                        ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (lUBB.getButtonType() instanceof SyntacticOperationType)
+            {
+                if (lUBB.getButtonType() == SyntacticOperationType.MOVEMENT)
+                {
+
+                    mUserFrame.getInternalFrame().activateMovementPane((Component) ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer(), pME);
+
+                }
+                if (lUBB.getButtonType() == SyntacticOperationType.ERASE)
+                {
+                    hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+                    if (hold instanceof SyntacticStructure)
+                    {
+                        mUserFrame.getSyntaxFacade().deleteSyntacticStructure((SyntacticStructure) hold);
+                    }
+                    if (hold instanceof SyntacticFeature)
+                    {
+                        mUserFrame.getSyntaxFacade().deleteSyntacticFeature((SyntacticFeature) hold);
+                    }
+                    if (hold instanceof SyntacticAssociation)
+                    {
+                        mUserFrame.getSyntaxFacade().deleteSyntacticAssociation((SyntacticAssociation) hold);
+                    }
+                }
+                if (lUBB.getButtonType() == SyntacticOperationType.ADD)
+                {
+                    hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+
+                    if (hold instanceof SyntacticFeature)
+                    {
+                        mUserFrame.getSyntaxFacade().addSyntacticFeature((SyntacticFeature) hold);
+                    }
+                }
+                if (lUBB.getButtonType() == SyntacticOperationType.ASSOCIATION)
+                {
+                    hold = ((UserInternalFrame)lComponent).getSyntaxFacade().getContainer();
+                    if (hold instanceof SyntacticFeature)
+                    {
+                        mUserFrame.getInternalFrame().activateAssociationPane((SyntacticFeature) hold);
+                    }
+                }
+            }
+        }
+    }
 }

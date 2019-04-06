@@ -21,7 +21,7 @@ package staticFunctions;
 
 import java.io.File;
 /**
- * 
+ *
  * @author NOT Donald Derrick
  * @version 0.1
  * <br>
@@ -32,45 +32,45 @@ import java.io.File;
  */
 public final class StringManipulator {
 
-// Source code obtained from http://www.rgagnon.com/javadetails/java-0352.html
+    // Source code obtained from http://www.rgagnon.com/javadetails/java-0352.html
 
-		/* remove leading whitespace */
-		
-		// cannot instantiate
-		private StringManipulator()
-		{
-		}
-		public static String ltrim(String source) {
-			return source.replaceAll("^\\s+", "");
-		}
+    /* remove leading whitespace */
 
-		/* remove trailing whitespace */
-		public static String rtrim(String source) {
-			return source.replaceAll("\\s+$", "");
-		}
+    // cannot instantiate
+    private StringManipulator()
+    {
+    }
+    public static String ltrim(String source) {
+        return source.replaceAll("^\\s+", "");
+    }
 
-		/* replace multiple whitespaces between words with single blank */
-		public static String itrim(String source) {
-			return source.replaceAll("\\b\\s{2,}\\b", " ");
-		}
+    /* remove trailing whitespace */
+    public static String rtrim(String source) {
+        return source.replaceAll("\\s+$", "");
+    }
 
-		/* remove all superfluous whitespaces in source string */
-		public static String trim(String source) {
-			return itrim(ltrim(rtrim(source)));
-		}
+    /* replace multiple whitespaces between words with single blank */
+    public static String itrim(String source) {
+        return source.replaceAll("\\b\\s{2,}\\b", " ");
+    }
 
-		public static String lrtrim(String source){
-			return ltrim(rtrim(source));
-		}
-		public static String getExtension(File f) {
-			String ext = null;
-			String s = f.getName();
-			int i = s.lastIndexOf('.');
+    /* remove all superfluous whitespaces in source string */
+    public static String trim(String source) {
+        return itrim(ltrim(rtrim(source)));
+    }
 
-			if (i > 0 &&  i < s.length() - 1) {
-				ext = s.substring(i+1).toLowerCase();
-			}
-			return ext;
-		}
+    public static String lrtrim(String source){
+        return ltrim(rtrim(source));
+    }
+    public static String getExtension(File f) {
+        String ext = null;
+        String s = f.getName();
+        int i = s.lastIndexOf('.');
+
+        if (i > 0 &&  i < s.length() - 1) {
+            ext = s.substring(i+1).toLowerCase();
+        }
+        return ext;
+    }
 
 }

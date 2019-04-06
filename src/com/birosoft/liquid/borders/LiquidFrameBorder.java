@@ -24,10 +24,10 @@ import javax.swing.plaf.UIResource;
  */
 public class LiquidFrameBorder extends AbstractBorder implements UIResource {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static LiquidFrameBorder onlyInstance;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private static LiquidFrameBorder onlyInstance;
     private static Robot robot;
     private static boolean robotsSupported = true;
     private boolean prevState = false;
@@ -83,7 +83,7 @@ public class LiquidFrameBorder extends AbstractBorder implements UIResource {
         }
 
         int frameTitleHeight = UIManager.getInt(
-                "InternalFrame.frameTitleHeight");
+            "InternalFrame.frameTitleHeight");
 
         drawLeftTop(g, isActive, 4, frameTitleHeight);
 

@@ -26,55 +26,55 @@ import staticFunctions.StringManipulator;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several file filter objects used in a JFileChooser object
- *  
+ *
  * This class is NOT in use yet.
- * 
+ *
  */
 public class FileFilterLTX extends FileFilter {
 
-	/**
-	 * Constructor
-	 */
-	public FileFilterLTX() {
-		super();
-	}
+    /**
+     * Constructor
+     */
+    public FileFilterLTX() {
+        super();
+    }
 
-	/**
-	 * @param pF - a File object for testing.
-	 * @return accept - Returns whether the file is a valid type for display
-	 * PRE: must pass a valid file object
-	 * POST: returns a boolean indicating whether the file is accepted.
-	 * This is based on whether the file is a directory or has a .lin extension.
-	 * 
-	 */
-	public boolean accept(File pF) {
-		if (pF.isDirectory()) {
-	return true;
-	}
+    /**
+     * @param pF - a File object for testing.
+     * @return accept - Returns whether the file is a valid type for display
+     * PRE: must pass a valid file object
+     * POST: returns a boolean indicating whether the file is accepted.
+     * This is based on whether the file is a directory or has a .lin extension.
+     *
+     */
+    public boolean accept(File pF) {
+        if (pF.isDirectory()) {
+            return true;
+        }
 
-	String extension = StringManipulator.getExtension(pF);
+        String extension = StringManipulator.getExtension(pF);
 
-	if (extension != null) {
-		if (extension.equals("ltx"))
-		{
-				return true;
-		} 
-		else 
-		{
-			return false;
-		}
-	}
-	return false;
-	}
+        if (extension != null) {
+            if (extension.equals("ltx"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
 
-	/**
-	 * @return String - Returns the file type description.
-	 */
-	public String getDescription() {
-		return "Latex File";
-	}
+    /**
+     * @return String - Returns the file type description.
+     */
+    public String getDescription() {
+        return "Latex File";
+    }
 
 }

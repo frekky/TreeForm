@@ -24,7 +24,7 @@ public class LiquidSplitPaneUI extends BasicSplitPaneUI
     {
         return new LiquidSplitPaneUI();
     }
-    
+
     /**
      * Creates the default divider.
      */

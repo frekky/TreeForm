@@ -20,7 +20,7 @@
 package userInterface;
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Observable classes (part of Java's implementation of the
  * Observer design pattern).  These classes are needed to easily add objects
@@ -32,41 +32,41 @@ import java.util.Observable;
 
 public class ObservableStack extends Observable
 {
-   private Object mObject;
-   /**
-	* Constructor
-	* @param pObject - passes in the stack count
-	* <br>
-	* 
-	*/
-   public ObservableStack(Object pObject)
-   {
-	mObject = pObject;
-   }
-   /**
-	 * 
-	 * @param pObject - the Objects in the stack
-	 * <br>
-	 * Once this command is invoked, the superclass change notification is sent,
-	 * and all the subscribed observers are told about the event.
-	 */  
-   public void setValue(Object pObject)
-   {
-	mObject = pObject;
+    private Object mObject;
+    /**
+     * Constructor
+     * @param pObject - passes in the stack count
+     * <br>
+     *
+     */
+    public ObservableStack(Object pObject)
+    {
+        mObject = pObject;
+    }
+    /**
+     *
+     * @param pObject - the Objects in the stack
+     * <br>
+     * Once this command is invoked, the superclass change notification is sent,
+     * and all the subscribed observers are told about the event.
+     */
+    public void setValue(Object pObject)
+    {
+        mObject = pObject;
 
-	  setChanged();
-	  notifyObservers();
-   }
-   /**
-	* 
-	* @return getValue - passes a value from the Observable, in this case the
-	* objects in the stack
-	* <br>
-	* A convenience function for returning the observable value.
-	*/
-   public Object getValue()
-   {
-	  return mObject;
-   }
+        setChanged();
+        notifyObservers();
+    }
+    /**
+     *
+     * @return getValue - passes a value from the Observable, in this case the
+     * objects in the stack
+     * <br>
+     * A convenience function for returning the observable value.
+     */
+    public Object getValue()
+    {
+        return mObject;
+    }
 
 }

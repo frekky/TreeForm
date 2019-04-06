@@ -48,27 +48,27 @@ public class LiquidButtonUI extends BasicButtonUI {
 
     /** the stroke for the fcouse */
     static BasicStroke focusStroke = new BasicStroke(1.0f,
-            BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1.0f,
-            new float[] { 1.0f, 1.0f }, 1.0f);
+        BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 1.0f,
+        new float[] { 1.0f, 1.0f }, 1.0f);
 
-	/**
-	 * the index model. Allow default buttons
-	 * 
-	 * @uml.property name="buttonIndexModel"
-	 * @uml.associationEnd 
-	 * @uml.property name="buttonIndexModel" multiplicity="(1 1)"
-	 */
-	SkinToggleButtonIndexModel buttonIndexModel = new SkinToggleButtonIndexModel(
-		true);
+    /**
+     * the index model. Allow default buttons
+     *
+     * @uml.property name="buttonIndexModel"
+     * @uml.associationEnd
+     * @uml.property name="buttonIndexModel" multiplicity="(1 1)"
+     */
+    SkinToggleButtonIndexModel buttonIndexModel = new SkinToggleButtonIndexModel(
+        true);
 
-	/**
-	 * the index model. Forbid default buttons
-	 * 
-	 * @uml.property name="toolbarIndexModel"
-	 * @uml.associationEnd 
-	 * @uml.property name="toolbarIndexModel" multiplicity="(1 1)"
-	 */
-	SkinToggleButtonIndexModel toolbarIndexModel = new SkinToggleButtonIndexModel();
+    /**
+     * the index model. Forbid default buttons
+     *
+     * @uml.property name="toolbarIndexModel"
+     * @uml.associationEnd
+     * @uml.property name="toolbarIndexModel" multiplicity="(1 1)"
+     */
+    SkinToggleButtonIndexModel toolbarIndexModel = new SkinToggleButtonIndexModel();
 
 
     // ********************************
@@ -92,7 +92,7 @@ public class LiquidButtonUI extends BasicButtonUI {
         }
 
         if ((b.getClientProperty("JToolBar.isToolbarButton") != Boolean.TRUE) &&
-                b.isFocusPainted()) {
+            b.isFocusPainted()) {
             paintFocus(g, offset);
         }
     }
@@ -120,10 +120,10 @@ public class LiquidButtonUI extends BasicButtonUI {
         c.setOpaque(false);
         c.addPropertyChangeListener("opaque",
             new PropertyChangeListener() {
-                public void propertyChange(PropertyChangeEvent evt) {
-                    c.setOpaque(false);
-                }
-            });
+            public void propertyChange(PropertyChangeEvent evt) {
+                c.setOpaque(false);
+            }
+        });
 
         return buttonUI;
     }
@@ -189,30 +189,30 @@ public class LiquidButtonUI extends BasicButtonUI {
         super.paint(g, c);
     }
 
-	/**
-	 * 
-	 * @uml.property name="skinButton"
-	 */
-	public Skin getSkinButton() {
-		if (skinButton == null) {
-			skinButton = new Skin("button.png", 5, 10, 10, 12, 12);
-			skinButton.colourImage();
-		}
+    /**
+     *
+     * @uml.property name="skinButton"
+     */
+    public Skin getSkinButton() {
+        if (skinButton == null) {
+            skinButton = new Skin("button.png", 5, 10, 10, 12, 12);
+            skinButton.colourImage();
+        }
 
-		return skinButton;
-	}
+        return skinButton;
+    }
 
-	/**
-	 * 
-	 * @uml.property name="skinToolbar"
-	 */
-	public Skin getSkinToolbar() {
-		if (skinToolbar == null) {
-			skinToolbar = new Skin("toolbar.png", 8, 4, 13, 4, 10);
-		}
+    /**
+     *
+     * @uml.property name="skinToolbar"
+     */
+    public Skin getSkinToolbar() {
+        if (skinToolbar == null) {
+            skinToolbar = new Skin("toolbar.png", 8, 4, 13, 4, 10);
+        }
 
-		return skinToolbar;
-	}
+        return skinToolbar;
+    }
 
     public void update(Graphics g, JComponent c) {
         paint(g, c);

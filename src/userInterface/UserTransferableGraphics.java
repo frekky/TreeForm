@@ -25,7 +25,7 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -36,44 +36,44 @@ import java.io.IOException;
  */
 public class UserTransferableGraphics implements Transferable {
 
-	protected static DataFlavor[] mDataFlavors = {
-	   DataFlavor.imageFlavor      // Transfer as a String object
-	 };
-	 Image mI;
-/**
- * 
- * @param lAT Sets the attributed string in the clipboard
- */
-	public UserTransferableGraphics(Image lI)
-	{
-		mI = lI;
-	}
-/**
- * gets the list of transferrable data flavors
- */
-	public DataFlavor[] getTransferDataFlavors() {
-		return mDataFlavors;
-	}
-/**
- * checks to see if a "flavor" is supported.  For this program, Unicode Text, Strings,
- * and AttributedStrings are exported to the system clipboard.
- */
-	public boolean isDataFlavorSupported(DataFlavor pFlavor) {
-		if (
-		pFlavor.equals(DataFlavor.imageFlavor)) return true;
-	return false;
-	}
-/**
- * gets the transfer data for the given data flavor
- */
+    protected static DataFlavor[] mDataFlavors = {
+            DataFlavor.imageFlavor      // Transfer as a String object
+    };
+    Image mI;
+    /**
+     *
+     * @param lAT Sets the attributed string in the clipboard
+     */
+    public UserTransferableGraphics(Image lI)
+    {
+        mI = lI;
+    }
+    /**
+     * gets the list of transferrable data flavors
+     */
+    public DataFlavor[] getTransferDataFlavors() {
+        return mDataFlavors;
+    }
+    /**
+     * checks to see if a "flavor" is supported.  For this program, Unicode Text, Strings,
+     * and AttributedStrings are exported to the system clipboard.
+     */
+    public boolean isDataFlavorSupported(DataFlavor pFlavor) {
+        if (
+            pFlavor.equals(DataFlavor.imageFlavor)) return true;
+        return false;
+    }
+    /**
+     * gets the transfer data for the given data flavor
+     */
 
-	public Object getTransferData(DataFlavor flavor)
-	throws UnsupportedFlavorException, IOException 
-	{
-		if (flavor.equals(DataFlavor.imageFlavor)) 
-		{
-			return mI;
-		} 
-		else throw new UnsupportedFlavorException(flavor);
-	}
+    public Object getTransferData(DataFlavor flavor)
+        throws UnsupportedFlavorException, IOException
+    {
+        if (flavor.equals(DataFlavor.imageFlavor))
+        {
+            return mI;
+        }
+        else throw new UnsupportedFlavorException(flavor);
+    }
 }

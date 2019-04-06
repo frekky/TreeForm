@@ -31,125 +31,125 @@ import staticFunctions.Sizer;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Object Browser buttons designed to contain the necessary
- * information to drive sentence generation using the GUI.  
- *  
+ * information to drive sentence generation using the GUI.
+ *
  */
 public class ButtonUIAdjunct extends UserBrowserButton{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	public ButtonUIAdjunct(UserFrame pUserFrame, Object pButtonType) {
-		super(pUserFrame, pButtonType);
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
-	 * @param pC  This parameter is the component to be painted.  repaint() sends
-	 * the component holding this UI to paint(a,b), but a programmer may send
-	 * any component they wish.
-	 * 
-	 * Like all the painting tasks for Object Broser buttons, this draws the text
-	 * you see in the button, and resizes it according to your screen resolution.
-	 * 
-	 */
-	public void paintComponent(Graphics pG) {
-		super.paintComponent(pG);
-		this.prepaint(pG);	
-		
-		AttributedString ats;
-		AttributedCharacterIterator iter;
-		TextLayout tl;
-		if (!mDrag)
-		{
-		ats = new AttributedString("F11");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,4,11);
-		}
-		AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("ADJUNCT_TEXT"));
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator lIter = lAts.getIterator();
-		TextLayout lTl = new TextLayout(lIter, mFrc);			
-		lTl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) (mDim.getHeight() - 4));
+    public ButtonUIAdjunct(UserFrame pUserFrame, Object pButtonType) {
+        super(pUserFrame, pButtonType);
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
+     * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
+     * @param pC  This parameter is the component to be painted.  repaint() sends
+     * the component holding this UI to paint(a,b), but a programmer may send
+     * any component they wish.
+     *
+     * Like all the painting tasks for Object Broser buttons, this draws the text
+     * you see in the button, and resizes it according to your screen resolution.
+     *
+     */
+    public void paintComponent(Graphics pG) {
+        super.paintComponent(pG);
+        this.prepaint(pG);
+
+        AttributedString ats;
+        AttributedCharacterIterator iter;
+        TextLayout tl;
+        if (!mDrag)
+        {
+            ats = new AttributedString("F11");
+            ats.addAttribute(TextAttribute.FONT, mFont);
+            iter = ats.getIterator();
+            // create a textlayout from the font, string, and font render context.
+            tl = new TextLayout(iter, mFrc);
+            // draw the font
+            tl.draw(
+                mGraphics2D,4,11);
+        }
+        AttributedString lAts = new AttributedString((String) getResourceBundle().getObject("ADJUNCT_TEXT"));
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        AttributedCharacterIterator lIter = lAts.getIterator();
+        TextLayout lTl = new TextLayout(lIter, mFrc);
+        lTl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
+            (float) (mDim.getHeight() - 4));
 
 
-		lAts = new AttributedString("X(P)");
-		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		lIter = lAts.getIterator();
-		lTl = new TextLayout(lIter, mFrc);
-		lTl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)-6);
+        lAts = new AttributedString("X(P)");
+        mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        lIter = lAts.getIterator();
+        lTl = new TextLayout(lIter, mFrc);
+        lTl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - lTl.getBounds().getWidth()) / 2),
+            (float) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)-6);
 
-		// draw the lines below the X-double-bar
-		Rectangle lDrawRight =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
-				(int) ((mDim.getWidth()) / 2)
-					+ 13,
-				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength() -4);
-					
-						
-		Rectangle lDrawLeft =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
-				(int) ((mDim.getWidth()) / 2)
-					- 13,
-				(int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					-4);
+        // draw the lines below the X-double-bar
+        Rectangle lDrawRight =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
+                (int) ((mDim.getWidth()) / 2)
+                + 13,
+                (int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength() -4);
 
-		mGraphics2D.drawLine(
-			lDrawRight.width,
-			lDrawRight.height,
-			lDrawRight.x,
-			lDrawRight.y);
-		mGraphics2D.drawLine(lDrawLeft.width, lDrawLeft.height, lDrawLeft.x, lDrawLeft.y);
 
-		
-		// repeat for the title X
-		lAts = new AttributedString("X(P)");
-		lAts.addAttribute(TextAttribute.FONT, mFont);
-		lIter = lAts.getIterator();
-		lTl = new TextLayout(lIter, mFrc);
-		Dimension lPositionRight =
-			new Dimension(
-				(int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
-				(int) (lDrawRight.height + lTl.getBounds().getHeight()));
-		lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
+        Rectangle lDrawLeft =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (lTl.getBounds().getHeight() * 1.5) -4),
+                (int) ((mDim.getWidth()) / 2)
+                - 13,
+                (int) ((mDim.getHeight() /4) + lTl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                -4);
 
-//		repeat for the X
-			 lAts = new AttributedString((String) getResourceBundle().getObject("ADJUNCT_TEXT"));
-			 lAts.addAttribute(TextAttribute.FONT, mFont);
-			 lIter = lAts.getIterator();
-			 lTl = new TextLayout(lIter, mFrc);
-			 Dimension positionLeft =
-				 new Dimension(
-					 (int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2),
-					 (int) (lDrawLeft.height + lTl.getBounds().getHeight()));
-			 lTl.draw(mGraphics2D, positionLeft.width, positionLeft.height);
-			 
-		// surround in a gray rectangle.
-		this.postpaint();
+        mGraphics2D.drawLine(
+            lDrawRight.width,
+            lDrawRight.height,
+            lDrawRight.x,
+            lDrawRight.y);
+        mGraphics2D.drawLine(lDrawLeft.width, lDrawLeft.height, lDrawLeft.x, lDrawLeft.y);
 
-		}
+
+        // repeat for the title X
+        lAts = new AttributedString("X(P)");
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        lIter = lAts.getIterator();
+        lTl = new TextLayout(lIter, mFrc);
+        Dimension lPositionRight =
+            new Dimension(
+                (int) (lDrawRight.width - lTl.getBounds().getWidth() / 2),
+                (int) (lDrawRight.height + lTl.getBounds().getHeight()));
+        lTl.draw(mGraphics2D, lPositionRight.width, lPositionRight.height);
+
+        //		repeat for the X
+        lAts = new AttributedString((String) getResourceBundle().getObject("ADJUNCT_TEXT"));
+        lAts.addAttribute(TextAttribute.FONT, mFont);
+        lIter = lAts.getIterator();
+        lTl = new TextLayout(lIter, mFrc);
+        Dimension positionLeft =
+            new Dimension(
+                (int) (lDrawLeft.width - lTl.getBounds().getWidth() / 2),
+                (int) (lDrawLeft.height + lTl.getBounds().getHeight()));
+        lTl.draw(mGraphics2D, positionLeft.width, positionLeft.height);
+
+        // surround in a gray rectangle.
+        this.postpaint();
+
+    }
 }

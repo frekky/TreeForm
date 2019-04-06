@@ -26,78 +26,72 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import sun.misc.Launcher;
+
 /**
- * TreeForm 0.2
- * 
+ * TreeForm 1.0.3
+ *
  * @author Donald Derrick
- * @version 0.1 
- * <br>
- * � 2004 Donald Derrick
- * This program may be used Royalty Free but it may not be distributed, in any format
- * without permission of the author.  As an alpha version this code is not in a 
- * suitable state for open source placement.
- * 
- * <br>
- * 
- * The content of this project was created by Donald Derrick except where otherwise 
+ * @version 1.0.3
+ * Copyright (C) 2004-2010 Donald Derrick
+ *
+ * The content of this project was created by Donald Derrick except where otherwise
  * noted in code comments and in the about.htm page which must be distributed with
  * each copy of this software.
- * 
- * @see <a href="http://www.ece.ubc.ca/~donaldd/treeform.htm">TreeForm Home Page</a>
- * @see <a href="http://www.ece.ubc.ca/~donaldd">My Home Page</a>
- * 
+ *
+ * @see <a href="http://www.mapsofspeech.com/2017/10/02/treeform">TreeForm Home Page</a>
+ *
  */
 public class Start {
 
-	private static UserSplashScreen mUserSplashScreen;
-	private static final Logger pLogger = 
-							Logger.getLogger(Launcher.class.getPackage().getName()); 
-/**
- * 
- * @param args Unused right now, contains command-line argumenets
- * TODO: Implement command-line arguments for syntax level versions
- * such as "100", "200", "300", blank, for full version.
- */
+    private static UserSplashScreen mUserSplashScreen;
+    private static final Logger pLogger =
+        Logger.getLogger(Launcher.class.getPackage().getName());
+    /**
+     *
+     * @param args Unused right now, contains command-line argumenets
+     * TODO: Implement command-line arguments for syntax level versions
+     * such as "100", "200", "300", blank, for full version.
+     */
 
-	public static void main(String[] args) {
-		System.setProperty("apple.laf.useScreenMenuBar", "true"); 
-		
-			try {
-				UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-			} catch (ClassNotFoundException e) {
-	
-				e.printStackTrace();
-			} catch (InstantiationException e) {
-	
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-	
-				e.printStackTrace();
-			} catch (UnsupportedLookAndFeelException e) {
-	
-				e.printStackTrace();
-			}
-		pLogger.info("Launching the application...");
-    
-			mUserSplashScreen = new UserSplashScreen("image/sunset800.jpg");
-			mUserSplashScreen.splash();
-			UserFrame userUI = new UserFrame();
-			//userUI.addKeyListener(new ListenerKeyboard());
-			userUI.validate();
-			EventQueue.invokeLater( new SplashScreenCloser() );
-    
-		pLogger.info("Launch thread now exiting...");
-	}
-/**
- * 
- * @author Donald Derrick
- *
- *The basic splash screen.
- *
- */
-	private static final class SplashScreenCloser implements Runnable {
-		public void run(){
-		  mUserSplashScreen.dispose();
-		}
-	  }
+    public static void main(String[] args) {
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
+
+        try {
+            UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
+        } catch (ClassNotFoundException e) {
+
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+
+            e.printStackTrace();
+        }
+        pLogger.info("Launching the application...");
+
+        mUserSplashScreen = new UserSplashScreen("image/sunset800.jpg");
+        mUserSplashScreen.splash();
+        UserFrame userUI = new UserFrame();
+        //userUI.addKeyListener(new ListenerKeyboard());
+        userUI.validate();
+        EventQueue.invokeLater( new SplashScreenCloser() );
+
+        pLogger.info("Launch thread now exiting...");
+    }
+    /**
+     *
+     * @author Donald Derrick
+     *
+     *The basic splash screen.
+     *
+     */
+    private static final class SplashScreenCloser implements Runnable {
+        public void run(){
+            mUserSplashScreen.dispose();
+        }
+    }
 }

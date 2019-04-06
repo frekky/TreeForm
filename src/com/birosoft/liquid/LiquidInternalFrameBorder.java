@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -25,24 +25,24 @@ import javax.swing.plaf.UIResource;
  */
 public class LiquidInternalFrameBorder extends AbstractBorder implements UIResource
 {
-    
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	/** indicates whether the internal frame is active */
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    /** indicates whether the internal frame is active */
     boolean isActive;
-    
+
     boolean  isPalette = false;
-    
+
     public LiquidInternalFrameBorder()
     {
     }
-    
+
     /** insets of the frame */
     private static final Insets insets = new Insets(0, 4, 4, 4);
-    
+
     /**
      * Uses the skins to paint the border
      * @see javax.swing.border.Border#paintBorder(Component, Graphics, int, int, int, int)
@@ -52,27 +52,27 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
         int frameTitleHeight = isPalette ? UIManager.getInt("InternalFrame.paletteTitleHeight") : UIManager.getInt("InternalFrame.frameTitleHeight");
 
         drawLeftTop(g, isActive, 4, frameTitleHeight);
-        
+
         g.translate(0, frameTitleHeight);
         drawLeft(g, isActive, 4, h - frameTitleHeight - 4);
         g.translate(0, -frameTitleHeight);
-        
+
         g.translate(0, h - 4);
         //getSkinBottom().draw(g, index, w, 4);
         drawBottom(g, isActive, w, 4);
         g.translate(0, - (h - 4));
-        
+
         g.translate(w - 4, 0);
-        
+
         drawRightTop(g, isActive, 4, frameTitleHeight);
-        
+
         g.translate(0, frameTitleHeight);
         drawRight(g, isActive, 4, h - frameTitleHeight - 4);
         g.translate(0, -frameTitleHeight);
-        
+
         g.translate(- (w - 4), 0);
     }
-    
+
     private void drawLeftTop(Graphics g, boolean isSelected, int w, int h)
     {
         Color c = isSelected ? new Color(62,145,235) : new Color(175,214,255);
@@ -96,9 +96,9 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
         }
         c = isSelected ? new Color(47,111,180) : new Color(135,164,196);
         g.setColor(c);
-        g.drawLine(w-1, h-1, w-1, h-1);        
+        g.drawLine(w-1, h-1, w-1, h-1);
     }
-    
+
     private void drawLeft(Graphics g, boolean isSelected, int w, int h)
     {
         Color c = isSelected ? new Color(62,145,235) : new Color(175,214,255);
@@ -121,9 +121,9 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
         }
         c = isSelected ? new Color(47,111,180) : new Color(135,164,196);
         g.setColor(c);
-        g.drawLine(w-1, 0, w-1, h);        
+        g.drawLine(w-1, 0, w-1, h);
     }
-    
+
     private void drawRightTop(Graphics g, boolean isSelected, int w, int h)
     {
         Color c = isSelected ? new Color(62,145,235) : new Color(175,214,255);
@@ -149,9 +149,9 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
         g.drawLine(0, h-1, 0, h-1);
         c = isSelected ? new Color(47,111,180) : new Color(135,164,196);
         g.setColor(c);
-        g.drawLine(w-1, 0, w-1, h);        
+        g.drawLine(w-1, 0, w-1, h);
     }
-    
+
     private void drawRight(Graphics g, boolean isSelected, int w, int h)
     {
         Color c = isSelected ? new Color(62,145,235) : new Color(175,214,255);
@@ -174,9 +174,9 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
         }
         c = isSelected ? new Color(47,111,180) : new Color(135,164,196);
         g.setColor(c);
-        g.drawLine(w-1, 0, w-1, h);        
+        g.drawLine(w-1, 0, w-1, h);
     }
-    
+
     private void drawBottom(Graphics g, boolean isSelected, int w, int h)
     {
         Color c = isSelected ? new Color(62,145,235) : new Color(175,214,255);
@@ -191,7 +191,7 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
         g.drawLine(0, h-1, w, h-1);
         g.drawLine(w-1, 0, w-1, h-1);
     }
-    
+
     /**
      *
      * @see javax.swing.border.Border#getBorderInsets(Component)
@@ -200,7 +200,7 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
     {
         return insets;
     }
-    
+
     /**
      *  inform the border whether the internal frame is active or not
      * @param isActive
@@ -209,5 +209,5 @@ public class LiquidInternalFrameBorder extends AbstractBorder implements UIResou
     {
         this.isActive = isActive;
     }
-    
+
 }

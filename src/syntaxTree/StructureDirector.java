@@ -21,7 +21,7 @@ package syntaxTree;
 
 import userInterface.UserInternalFrame;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -31,14 +31,14 @@ import userInterface.UserInternalFrame;
  * Structure Director (part of the Builder Design pattern)
  */
 public class StructureDirector {
-	/**
-	 * 
-	 * @param pA The AbstractFeatureBuilder called by the directory
-	 * @param pUserInternalFrame The InternalFrame needed by the ConcreteFeatureBuilder
-	 * @return The built Structure.
-	 */
-	public static SyntacticStructure build(AbstractStructureBuilder pA, UserInternalFrame pUserInternalFrame) 
-	{
-		return pA.buildSentence(pUserInternalFrame);
-	}		
+    /**
+     *
+     * @param pA The AbstractFeatureBuilder called by the directory
+     * @param pUserInternalFrame The InternalFrame needed by the ConcreteFeatureBuilder
+     * @return The built Structure.
+     */
+    public static SyntacticStructure build(AbstractStructureBuilder pA, UserInternalFrame pUserInternalFrame)
+    {
+        return pA.buildSentence(pUserInternalFrame);
+    }
 }

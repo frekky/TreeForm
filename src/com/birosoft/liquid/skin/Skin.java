@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*        Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *        Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid.skin;
 
 import java.awt.Color;
@@ -272,25 +272,25 @@ public class Skin extends SkinElement {
             0, offset + w, h, null);
     }
 
-	/**
-	 * Returns the horizontal size of the skin, this is the width of each subimage
-	 * @return int
-	 * 
-	 * @uml.property name="hsize"
-	 */
-	public int getHsize() {
-		return hsize;
-	}
+    /**
+     * Returns the horizontal size of the skin, this is the width of each subimage
+     * @return int
+     *
+     * @uml.property name="hsize"
+     */
+    public int getHsize() {
+        return hsize;
+    }
 
-	/**
-	 * Returns the vertical size of the skin, this is the height of each subimage
-	 * @return int
-	 * 
-	 * @uml.property name="vsize"
-	 */
-	public int getVsize() {
-		return vsize;
-	}
+    /**
+     * Returns the vertical size of the skin, this is the height of each subimage
+     * @return int
+     *
+     * @uml.property name="vsize"
+     */
+    public int getVsize() {
+        return vsize;
+    }
 
     /**
      * Returns the size of the skin, this is the height of each subimage
@@ -441,7 +441,7 @@ public class Skin extends SkinElement {
         int w = hsize * nrImages;
         int h = vsize;
         BufferedImage newImage = new BufferedImage(w, h,
-                BufferedImage.TYPE_4BYTE_ABGR);
+            BufferedImage.TYPE_4BYTE_ABGR);
 
         int[] pixels = new int[w * h];
         PixelGrabber pg = new PixelGrabber(getImage(), x, y, w, h, pixels, 0, w);
@@ -471,11 +471,11 @@ public class Skin extends SkinElement {
                     colourWith = LiquidLookAndFeel.getButtonBackground();
                 } else if (i == 78) {
                     colourWith = dark(LiquidLookAndFeel.getButtonBackground(),
-                            115);
+                        115);
                 }
 
                 g.setColor(colourSinglePixel(x + i, y + j, pixels[(j * w) + i],
-                        colourWith));
+                    colourWith));
                 g.drawLine(x + i, y + j, x + i, y + j);
             }
 

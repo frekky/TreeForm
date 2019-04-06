@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*        Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *        Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 package com.birosoft.liquid.borders;
 
 import com.birosoft.liquid.skin.Skin;
@@ -23,10 +23,10 @@ import javax.swing.plaf.UIResource;
  */
 public class LiquidTextFieldBorder extends AbstractBorder implements UIResource {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static final Insets defaultInsets = new Insets(3, 5, 3, 5);
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private static final Insets defaultInsets = new Insets(3, 5, 3, 5);
     static Skin skin;
     private Insets insets;
 
@@ -48,26 +48,26 @@ public class LiquidTextFieldBorder extends AbstractBorder implements UIResource 
         return insets;
     }
 
-	/**
-	 * 
-	 * @uml.property name="insets"
-	 */
-	public void setInsets(Insets i) {
-		insets = i;
-	}
+    /**
+     *
+     * @uml.property name="insets"
+     */
+    public void setInsets(Insets i) {
+        insets = i;
+    }
 
-	/**
-	 * lazy initialization of the skin
-	 * 
-	 * @uml.property name="skin"
-	 */
-	public Skin getSkin() {
-		if (skin == null) {
-			skin = new Skin("textbox.png", 2, 3);
-		}
+    /**
+     * lazy initialization of the skin
+     *
+     * @uml.property name="skin"
+     */
+    public Skin getSkin() {
+        if (skin == null) {
+            skin = new Skin("textbox.png", 2, 3);
+        }
 
-		return skin;
-	}
+        return skin;
+    }
 
     /**
      * Use the skin to paint the border
@@ -77,5 +77,5 @@ public class LiquidTextFieldBorder extends AbstractBorder implements UIResource 
         int index = c.isEnabled() ? 0 : 1;
         getSkin().draw(g, index, w, h);
     }
-    
+
 }

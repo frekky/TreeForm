@@ -30,63 +30,63 @@ import java.text.AttributedString;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Object Browser buttons designed to contain the necessary
- * information to drive sentence generation using the GUI.  
- *  
+ * information to drive sentence generation using the GUI.
+ *
  */
 public class ButtonUIIndex extends UserBrowserButton {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public ButtonUIIndex(UserFrame pUserFrame, Object pButtonType) {
-		super(pUserFrame, pButtonType);
-		// TODO Auto-generated constructor stub
-	}
+    public ButtonUIIndex(UserFrame pUserFrame, Object pButtonType) {
+        super(pUserFrame, pButtonType);
+        // TODO Auto-generated constructor stub
+    }
 
-	public void paintComponent(Graphics pG) {
-		super.paintComponent(pG);
-		this.prepaint(pG);	
-		// set the string (internationalize later!)		
-		AttributedString ats = new AttributedString("Index");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		AttributedCharacterIterator iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		TextLayout tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-			(float) (mDim.getHeight() - 2));
+    public void paintComponent(Graphics pG) {
+        super.paintComponent(pG);
+        this.prepaint(pG);
+        // set the string (internationalize later!)
+        AttributedString ats = new AttributedString("Index");
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        AttributedCharacterIterator iter = ats.getIterator();
+        // create a textlayout from the font, string, and font render context.
+        TextLayout tl = new TextLayout(iter, mFrc);
+        // draw the font
+        tl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+            (float) (mDim.getHeight() - 2));
 
-		// repeat for the SPEC
-		ats = new AttributedString("[Xi,Yi]");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		mFont = mFont.deriveFont((float)(mFont.getSize()*2/3));
-		AffineTransform aft = new AffineTransform();
-		aft.translate(0,1);
-		mFont= mFont.deriveFont(aft);
-		ats.addAttribute(TextAttribute.FONT, mFont,2,3);
-		ats.addAttribute(TextAttribute.FONT,mFont,5,6);
-		
-				
-		iter = ats.getIterator();
-		tl = new TextLayout(iter, mFrc);
-		Dimension positionCenter =
-			new Dimension(
-				(int) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-				(int) ((mDim.getHeight() + tl.getBounds().getHeight())/2) );
-		tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
-		
+        // repeat for the SPEC
+        ats = new AttributedString("[Xi,Yi]");
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        mFont = mFont.deriveFont((float)(mFont.getSize()*2/3));
+        AffineTransform aft = new AffineTransform();
+        aft.translate(0,1);
+        mFont= mFont.deriveFont(aft);
+        ats.addAttribute(TextAttribute.FONT, mFont,2,3);
+        ats.addAttribute(TextAttribute.FONT,mFont,5,6);
 
 
-		// surround in a gray rectangle.
-		mGraphics2D.setColor(Color.GRAY);
-		mGraphics2D.drawRect(0, 0, (int) mDim.getWidth() - 1, (int) mDim.getHeight() - 1);
-		this.postpaint();
-	}
+        iter = ats.getIterator();
+        tl = new TextLayout(iter, mFrc);
+        Dimension positionCenter =
+            new Dimension(
+                (int) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+                (int) ((mDim.getHeight() + tl.getBounds().getHeight())/2) );
+        tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
+
+
+
+        // surround in a gray rectangle.
+        mGraphics2D.setColor(Color.GRAY);
+        mGraphics2D.drawRect(0, 0, (int) mDim.getWidth() - 1, (int) mDim.getHeight() - 1);
+        this.postpaint();
+    }
 }

@@ -27,53 +27,53 @@ import javax.swing.JToggleButton;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerUnderline implements ActionListener {
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * <br>
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     * <br>
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-		public ListenerUnderline(UserFrame pUserFrame) {
-			super();
-			mUserFrame = pUserFrame;
-	}
+    public ListenerUnderline(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+    }
 
-	/**
-	 * @param pAE Passes a mouse event to the listener
-	 * <br>
-	 * This command calls the ObservableUnderline that underline is toggled
-	 * <br>
-	 * This command then calls the ObservableClipboard and changes the highlighted text.
-	 * <br>
-	 * 
-	 */
-	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getObservableFontUnderline().setValue(((JToggleButton)pAE.getSource()).isSelected());
-		if (mUserFrame.getObservableFontUnderline().getValue())
-		{
-			mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
-		}
-		else
-		{
-			mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE);
-		}
-	}
+    /**
+     * @param pAE Passes a mouse event to the listener
+     * <br>
+     * This command calls the ObservableUnderline that underline is toggled
+     * <br>
+     * This command then calls the ObservableClipboard and changes the highlighted text.
+     * <br>
+     *
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        mUserFrame.getObservableFontUnderline().setValue(((JToggleButton)pAE.getSource()).isSelected());
+        if (mUserFrame.getObservableFontUnderline().getValue())
+        {
+            mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE_ON);
+        }
+        else
+        {
+            mUserFrame.getInternalFrame().getSyntaxFacade().changeAttributes(TextAttribute.UNDERLINE,TextAttribute.UNDERLINE);
+        }
+    }
 }

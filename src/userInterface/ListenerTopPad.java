@@ -9,17 +9,17 @@ import syntaxTree.SyntaxFacade;
 
 public class ListenerTopPad implements ChangeListener {
 
-	private Properties mProperties;
-	private SyntaxFacade mSyntaxFacade;
+    private Properties mProperties;
+    private SyntaxFacade mSyntaxFacade;
 
-	public ListenerTopPad(Properties properties, SyntaxFacade syntaxFacade) {
-		mProperties = properties;
-		mSyntaxFacade = syntaxFacade;
-	}
+    public ListenerTopPad(Properties properties, SyntaxFacade syntaxFacade) {
+        mProperties = properties;
+        mSyntaxFacade = syntaxFacade;
+    }
 
-	public void stateChanged(ChangeEvent e) {
-		mProperties.setTopTranslate(((JSlider)e.getSource()).getValue());
-		mSyntaxFacade.displayTree();
-	}
+    public void stateChanged(ChangeEvent e) {
+        mProperties.setTopTranslate(((JSlider)e.getSource()).getValue());
+        mSyntaxFacade.displayTree();
+    }
 
 }

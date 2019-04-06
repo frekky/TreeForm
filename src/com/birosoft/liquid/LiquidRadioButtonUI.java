@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -27,7 +27,7 @@ public class LiquidRadioButtonUI extends BasicRadioButtonUI
     private static final LiquidRadioButtonUI metouiaRadioButtonUI = new LiquidRadioButtonUI();
     /* the only instance of the radiobutton icon*/
     private static LiquidRadioButtonIcon skinnedIcon;
-    
+
     /**
      * Creates the singleton for the UI
      * @see javax.swing.plaf.ComponentUI#createUI(JComponent)
@@ -49,7 +49,7 @@ public class LiquidRadioButtonUI extends BasicRadioButtonUI
         }
         return metouiaRadioButtonUI;
     }
-    
+
     /**
      * Installs the icon for the UI
      * @see javax.swing.plaf.ComponentUI#installUI(JComponent)
@@ -60,20 +60,20 @@ public class LiquidRadioButtonUI extends BasicRadioButtonUI
         icon = getSkinnedIcon();
     }
 
-	/**
-	 * Returns the skinned Icon
-	 * @return LiquidRadioButtonIcon
-	 * 
-	 * @uml.property name="skinnedIcon"
-	 */
-	protected LiquidRadioButtonIcon getSkinnedIcon() {
-		if (skinnedIcon == null)
-			skinnedIcon = new LiquidRadioButtonIcon();
-		return skinnedIcon;
-	}
+    /**
+     * Returns the skinned Icon
+     * @return LiquidRadioButtonIcon
+     *
+     * @uml.property name="skinnedIcon"
+     */
+    protected LiquidRadioButtonIcon getSkinnedIcon() {
+        if (skinnedIcon == null)
+            skinnedIcon = new LiquidRadioButtonIcon();
+        return skinnedIcon;
+    }
 
-    
-    
+
+
     /**
      * Paints the focus for the radiobutton
      * @see javax.swing.plaf.basic.BasicRadioButtonUI#paintFocus(java.awt.Graphics, java.awt.Rectangle, java.awt.Dimension)
@@ -83,7 +83,7 @@ public class LiquidRadioButtonUI extends BasicRadioButtonUI
         /*
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.black);
-        
+
         g2d.setStroke(focusStroke);
         g2d.drawLine(t.x -1, 			 t.y -1, 		       t.x -1 + t.width+1,  t.y -1);
         g2d.drawLine(t.x -1, 			 t.y -1 + t.height+1,    t.x -1 + t.width+1,  t.y -1 + t.height+1);

@@ -38,28 +38,28 @@ import javax.swing.JComboBox;
  */
 public class UserComboZoom extends JComboBox implements Observer {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableZoom"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableZoom" multiplicity="(1 1)"
-	 */
-	private ObservableZoom mObservableZoom;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableZoom"
+     * @uml.associationEnd
+     * @uml.property name="mObservableZoom" multiplicity="(1 1)"
+     */
+    private ObservableZoom mObservableZoom;
 
-	public UserComboZoom(ObservableZoom pObservableZoom)
-	{
-		mObservableZoom = pObservableZoom;
-	}
-	public void update(Observable arg0, Object arg1) {
-		if (arg0 == mObservableZoom)
-		{
-			int lZoom = (int) (100 * mObservableZoom.getValue());
-			this.setSelectedItem(lZoom + "%");
-		}
-	}
+    public UserComboZoom(ObservableZoom pObservableZoom)
+    {
+        mObservableZoom = pObservableZoom;
+    }
+    public void update(Observable arg0, Object arg1) {
+        if (arg0 == mObservableZoom)
+        {
+            int lZoom = (int) (100 * mObservableZoom.getValue());
+            this.setSelectedItem(lZoom + "%");
+        }
+    }
 
 }

@@ -16,25 +16,25 @@ import java.awt.geom.Rectangle2D;
  */
 public class Panel extends javax.swing.JPanel {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	Image image;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    Image image;
     static Color buttonBg = new Color(215, 231, 249);
     static Color bg = new Color(246, 245, 244);
-    
-    
+
+
     /** Creates a new instance of Panel */
     public Panel(Image i) {
         image = i;
     }
-    
+
     public void paint(Graphics g) {
         super.paint(g);
         //g.drawImage(image, 10, 100, null);
         drawIt(g, 10, 10, 48, 48, bg, bg);
     }
-    
+
     private void drawIt(Graphics g, int x, int y, int w, int h, Color c, Color bg) {
         //g.setColor(Color.white);
         //g.fillRect(0, 0, this.getWidth(), this.getHeight());
@@ -52,7 +52,7 @@ public class Panel extends javax.swing.JPanel {
         g.setColor(Colors.dark(c, 132));
         g.drawLine(x2-1, y+1, x2-1, y+1); // tr
         g.drawLine(x+1, y2-1, x+1, y2-1); // bl
-        
+
         // inner top light lines
         g.setColor(Colors.light(c, 105));
         g.drawLine(x+2, y+1, x2-2, y+1);
@@ -61,7 +61,7 @@ public class Panel extends javax.swing.JPanel {
         g.drawLine(x2-2, y+3, x2-1, y+3);
         g.drawLine(x+1, y+4, x+1, y+4);
         g.drawLine(x2-1, y+4, x2-1, y+4);
-        
+
         // inner bottom light lines
         g.setColor(Colors.light(c, 110));
         g.drawLine(x+2, y2-1, x2-2, y2-1);
@@ -70,16 +70,16 @@ public class Panel extends javax.swing.JPanel {
         g.drawLine(x2-2, y2-3, x2-1, y2-3);
         g.drawLine(x+1, y2-4, x+1, y2-4);
         g.drawLine(x2-1, y2-4, x2-1, y2-4);
-        
+
         // inner left mid lines
         g.setColor(c);
         g.drawLine(x+1, y+5, x+1, y2-5);
         g.drawLine(x+2, y+4, x+2, y2-4);
-        
+
         // inner right mid lines
         g.drawLine(x2-1, y+5, x2-1, y2-5);
         g.drawLine(x2-2, y+4, x2-2, y2-4);
-        
+
         Graphics2D g2 = (Graphics2D)g;
         BufferedImage img = Colors.getClearFill();
         TexturePaint tp = new TexturePaint(img, new Rectangle2D.Float(0.0f,0.0f,img.getWidth(),img.getHeight()));
@@ -93,18 +93,18 @@ public class Panel extends javax.swing.JPanel {
         green = (btnColor.getGreen() >> 1) + (bg.getGreen() >> 1);
         blue = (btnColor.getBlue() >> 1) + (bg.getBlue() >> 1);
         btnColor = new Color(red, green, blue);
-        
+
         g.setColor(btnColor);
         g.drawLine(x+1, y, x+1, y);
         g.drawLine(x, y+1, x, y+1);
         g.drawLine(x+1, y2, x+1, y2);
         g.drawLine(x, y2-1, x, y2-1);
-        
+
         g.drawLine(x2-1, y, x2-1, y);
         g.drawLine(x2, y+1, x2, y+1);
         g.drawLine(x2-1, y2, x2-1, y2);
         g.drawLine(x2, y2-1, x2, y2-1);
-        
+
     }
-    
+
 }

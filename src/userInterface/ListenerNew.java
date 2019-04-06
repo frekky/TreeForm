@@ -24,45 +24,45 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
+ * @version 0.1
  * <br>
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerNew implements ActionListener {
 
-	/**
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * <br>
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 */
-	public ListenerNew(UserFrame pUserFrame) {
-		super();
-		mUserFrame = pUserFrame;
-	}
-	/**
-	 * @param pAE - Passes a mouse event to the listener
-	 * <br>
-	 * This command tells the ObservableNew that a new tree has been created,
-	 * and then passes the creation command to the UserControl.
-	 */
-	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getUserControl().createNewTree();
-		mUserFrame.getObservableNew().setValue(mUserFrame.getDesktopPane().getAllFrames().length + 1);
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     * <br>
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     */
+    public ListenerNew(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+    }
+    /**
+     * @param pAE - Passes a mouse event to the listener
+     * <br>
+     * This command tells the ObservableNew that a new tree has been created,
+     * and then passes the creation command to the UserControl.
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        mUserFrame.getUserControl().createNewTree();
+        mUserFrame.getObservableNew().setValue(mUserFrame.getDesktopPane().getAllFrames().length + 1);
 
-	}
+    }
 }

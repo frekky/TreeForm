@@ -22,7 +22,7 @@ package syntaxTree;
 import userInterface.UserInternalFrame;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -32,5 +32,5 @@ import userInterface.UserInternalFrame;
  * Abstract Structure Builder class
  */
 public abstract class AbstractStructureBuilder {
-	public abstract SyntacticStructure buildSentence(UserInternalFrame pInternalFrame);
+    public abstract SyntacticStructure buildSentence(UserInternalFrame pInternalFrame);
 }

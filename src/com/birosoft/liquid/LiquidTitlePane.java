@@ -80,10 +80,10 @@ import javax.swing.plaf.UIResource;
  */
 class LiquidTitlePane extends JComponent {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static final int IMAGE_HEIGHT = 16;
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private static final int IMAGE_HEIGHT = 16;
     private static final int IMAGE_WIDTH = 16;
     private static LiquidWindowButtonUI iconButtonUI;
     private static LiquidWindowButtonUI maxButtonUI;
@@ -110,77 +110,77 @@ class LiquidTitlePane extends JComponent {
      */
     private PropertyChangeListener propertyChangeListener;
 
-	/**
-	 * JMenuBar, typically renders the system menu items.
-	 * 
-	 * @uml.property name="menuBar"
-	 * @uml.associationEnd 
-	 * @uml.property name="menuBar" multiplicity="(1 1)"
-	 */
-	private JMenuBar menuBar;
+    /**
+     * JMenuBar, typically renders the system menu items.
+     *
+     * @uml.property name="menuBar"
+     * @uml.associationEnd
+     * @uml.property name="menuBar" multiplicity="(1 1)"
+     */
+    private JMenuBar menuBar;
 
-	/**
-	 * Action used to close the Window.
-	 * 
-	 * @uml.property name="closeAction"
-	 * @uml.associationEnd 
-	 * @uml.property name="closeAction" multiplicity="(0 1)"
-	 */
-	private Action closeAction;
+    /**
+     * Action used to close the Window.
+     *
+     * @uml.property name="closeAction"
+     * @uml.associationEnd
+     * @uml.property name="closeAction" multiplicity="(0 1)"
+     */
+    private Action closeAction;
 
-	/**
-	 * Action used to iconify the Frame.
-	 * 
-	 * @uml.property name="iconifyAction"
-	 * @uml.associationEnd 
-	 * @uml.property name="iconifyAction" multiplicity="(0 1)"
-	 */
-	private Action iconifyAction;
+    /**
+     * Action used to iconify the Frame.
+     *
+     * @uml.property name="iconifyAction"
+     * @uml.associationEnd
+     * @uml.property name="iconifyAction" multiplicity="(0 1)"
+     */
+    private Action iconifyAction;
 
-	/**
-	 * Action to restore the Frame size.
-	 * 
-	 * @uml.property name="restoreAction"
-	 * @uml.associationEnd 
-	 * @uml.property name="restoreAction" multiplicity="(0 1)"
-	 */
-	private Action restoreAction;
+    /**
+     * Action to restore the Frame size.
+     *
+     * @uml.property name="restoreAction"
+     * @uml.associationEnd
+     * @uml.property name="restoreAction" multiplicity="(0 1)"
+     */
+    private Action restoreAction;
 
-	/**
-	 * Action to restore the Frame size.
-	 * 
-	 * @uml.property name="maximizeAction"
-	 * @uml.associationEnd 
-	 * @uml.property name="maximizeAction" multiplicity="(0 1)"
-	 */
-	private Action maximizeAction;
+    /**
+     * Action to restore the Frame size.
+     *
+     * @uml.property name="maximizeAction"
+     * @uml.associationEnd
+     * @uml.property name="maximizeAction" multiplicity="(0 1)"
+     */
+    private Action maximizeAction;
 
-	/**
-	 * Button used to maximize or restore the Frame.
-	 * 
-	 * @uml.property name="toggleButton"
-	 * @uml.associationEnd 
-	 * @uml.property name="toggleButton" multiplicity="(0 1)"
-	 */
-	private JButton toggleButton;
+    /**
+     * Button used to maximize or restore the Frame.
+     *
+     * @uml.property name="toggleButton"
+     * @uml.associationEnd
+     * @uml.property name="toggleButton" multiplicity="(0 1)"
+     */
+    private JButton toggleButton;
 
-	/**
-	 * Button used to maximize or restore the Frame.
-	 * 
-	 * @uml.property name="iconifyButton"
-	 * @uml.associationEnd 
-	 * @uml.property name="iconifyButton" multiplicity="(0 1)"
-	 */
-	private JButton iconifyButton;
+    /**
+     * Button used to maximize or restore the Frame.
+     *
+     * @uml.property name="iconifyButton"
+     * @uml.associationEnd
+     * @uml.property name="iconifyButton" multiplicity="(0 1)"
+     */
+    private JButton iconifyButton;
 
-	/**
-	 * Button used to maximize or restore the Frame.
-	 * 
-	 * @uml.property name="closeButton"
-	 * @uml.associationEnd 
-	 * @uml.property name="closeButton" multiplicity="(0 1)"
-	 */
-	private JButton closeButton;
+    /**
+     * Button used to maximize or restore the Frame.
+     *
+     * @uml.property name="closeButton"
+     * @uml.associationEnd
+     * @uml.property name="closeButton" multiplicity="(0 1)"
+     */
+    private JButton closeButton;
 
 
     /**
@@ -195,14 +195,14 @@ class LiquidTitlePane extends JComponent {
      */
     private Window window;
 
-	/**
-	 * JRootPane rendering for.
-	 * 
-	 * @uml.property name="rootPane"
-	 * @uml.associationEnd 
-	 * @uml.property name="rootPane" multiplicity="(1 1)"
-	 */
-	private JRootPane rootPane;
+    /**
+     * JRootPane rendering for.
+     *
+     * @uml.property name="rootPane"
+     * @uml.associationEnd
+     * @uml.property name="rootPane" multiplicity="(1 1)"
+     */
+    private JRootPane rootPane;
 
 
     /**
@@ -211,7 +211,7 @@ class LiquidTitlePane extends JComponent {
      */
     private int state;
 
-	public LiquidTitlePane(JRootPane root, LiquidRootPaneUI ui) {
+    public LiquidTitlePane(JRootPane root, LiquidRootPaneUI ui) {
         rootPane = root;
         state = -1;
 
@@ -262,14 +262,14 @@ class LiquidTitlePane extends JComponent {
         return new PropertyChangeHandler();
     }
 
-	/**
-	 * Returns the <code>JRootPane</code> this was created for.
-	 * 
-	 * @uml.property name="rootPane"
-	 */
-	public JRootPane getRootPane() {
-		return rootPane;
-	}
+    /**
+     * Returns the <code>JRootPane</code> this was created for.
+     *
+     * @uml.property name="rootPane"
+     */
+    public JRootPane getRootPane() {
+        return rootPane;
+    }
 
 
     /**
@@ -361,7 +361,7 @@ class LiquidTitlePane extends JComponent {
 
         if (window != null) {
             window.dispatchEvent(new WindowEvent(window,
-                    WindowEvent.WINDOW_CLOSING));
+                WindowEvent.WINDOW_CLOSING));
         }
     }
 
@@ -483,17 +483,17 @@ class LiquidTitlePane extends JComponent {
         }
 
         iconifyButton = new SpecialUIButton(iconButtonUI,
-                (java.awt.Frame) getFrame());
+            (java.awt.Frame) getFrame());
         iconifyButton.setAction(iconifyAction);
         iconifyButton.setRolloverEnabled(true);
 
         toggleButton = new SpecialUIButton(maxButtonUI,
-                (java.awt.Frame) getFrame());
+            (java.awt.Frame) getFrame());
         toggleButton.setAction(maximizeAction);
         toggleButton.setRolloverEnabled(true);
 
         closeButton = new SpecialUIButton(closeButtonUI,
-                (java.awt.Frame) getFrame());
+            (java.awt.Frame) getFrame());
         closeButton.setAction(closeAction);
         closeButton.setRolloverEnabled(true);
 
@@ -556,9 +556,9 @@ class LiquidTitlePane extends JComponent {
                 JRootPane rootPane = getRootPane();
 
                 if (((state & Frame.MAXIMIZED_BOTH) == Frame.MAXIMIZED_BOTH) &&
-                        ((rootPane.getBorder() == null) ||
+                    ((rootPane.getBorder() == null) ||
                         (rootPane.getBorder() instanceof UIResource)) &&
-                        frame.isShowing()) {
+                    frame.isShowing()) {
                     //rootPane.setBorder(null);
                 } else if ((state & Frame.MAXIMIZED_BOTH) != Frame.MAXIMIZED_BOTH) {
                     // This is a croak, if state becomes bound, this can
@@ -568,7 +568,7 @@ class LiquidTitlePane extends JComponent {
 
                 if (frame.isResizable()) {
                     if (((state & Frame.MAXIMIZED_VERT) == Frame.MAXIMIZED_VERT) ||
-                            ((state & Frame.MAXIMIZED_HORIZ) == Frame.MAXIMIZED_HORIZ)) {
+                        ((state & Frame.MAXIMIZED_HORIZ) == Frame.MAXIMIZED_HORIZ)) {
                         updateToggleButton(restoreAction);
                         maximizeAction.setEnabled(false);
                         restoreAction.setEnabled(true);
@@ -579,7 +579,7 @@ class LiquidTitlePane extends JComponent {
                     }
 
                     if ((toggleButton.getParent() == null) ||
-                            (iconifyButton.getParent() == null)) {
+                        (iconifyButton.getParent() == null)) {
                         add(toggleButton);
                         add(iconifyButton);
                         revalidate();
@@ -636,16 +636,16 @@ class LiquidTitlePane extends JComponent {
         return null;
     }
 
-	/**
-	 * Returns the <code>Window</code> the <code>JRootPane</code> is
-	 * contained in. This will return null if there is no parent ancestor
-	 * of the <code>JRootPane</code>.
-	 * 
-	 * @uml.property name="window"
-	 */
-	private Window getWindow() {
-		return window;
-	}
+    /**
+     * Returns the <code>Window</code> the <code>JRootPane</code> is
+     * contained in. This will return null if there is no parent ancestor
+     * of the <code>JRootPane</code>.
+     *
+     * @uml.property name="window"
+     */
+    private Window getWindow() {
+        return window;
+    }
 
     /**
      * Returns the String to display as the title.
@@ -728,9 +728,9 @@ class LiquidTitlePane extends JComponent {
                 // for an active window
                 Graphics2D g2 = (Graphics2D) g;
                 GradientPaint grad = new GradientPaint(xOffset +
-                        (titleLength / 2), yOffset - 15,
-                        new Color(60, 144, 233), xOffset + (titleLength / 2),
-                        fm.getHeight() + 6, new Color(102, 186, 255));
+                    (titleLength / 2), yOffset - 15,
+                    new Color(60, 144, 233), xOffset + (titleLength / 2),
+                    fm.getHeight() + 6, new Color(102, 186, 255));
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setPaint(grad);
@@ -755,9 +755,9 @@ class LiquidTitlePane extends JComponent {
                 // for an inactive window
                 Graphics2D g2 = (Graphics2D) g;
                 GradientPaint grad = new GradientPaint(xOffset +
-                        (titleLength / 2), yOffset - 15,
-                        new Color(191, 211, 233), xOffset + (titleLength / 2),
-                        fm.getHeight() + 6, new Color(233, 253, 255));
+                    (titleLength / 2), yOffset - 15,
+                    new Color(191, 211, 233), xOffset + (titleLength / 2),
+                    fm.getHeight() + 6, new Color(233, 253, 255));
                 g2.setPaint(grad);
 
                 //g2.fillRoundRect(xOffset-8, yOffset-15, titleLength+15, fm.getHeight()+1, 18, 18);
@@ -809,11 +809,11 @@ class LiquidTitlePane extends JComponent {
      */
     private class CloseAction extends AbstractAction {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
-		public CloseAction() {
+        public CloseAction() {
             super("Close");
         }
 
@@ -827,11 +827,11 @@ class LiquidTitlePane extends JComponent {
      */
     private class IconifyAction extends AbstractAction {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
-		public IconifyAction() {
+        public IconifyAction() {
             super("Minimize");
         }
 
@@ -845,11 +845,11 @@ class LiquidTitlePane extends JComponent {
      */
     private class RestoreAction extends AbstractAction {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
-		public RestoreAction() {
+        public RestoreAction() {
             super("Restore");
         }
 
@@ -863,11 +863,11 @@ class LiquidTitlePane extends JComponent {
      */
     private class MaximizeAction extends AbstractAction {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
-		public MaximizeAction() {
+        public MaximizeAction() {
             super("Maximize");
         }
 
@@ -883,10 +883,10 @@ class LiquidTitlePane extends JComponent {
      */
     private class SystemMenuBar extends JMenuBar implements MouseListener {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		private JPopupMenu systemMenu;
+         *
+         */
+        private static final long serialVersionUID = 1L;
+        private JPopupMenu systemMenu;
         private boolean isShowed = false;
 
         public SystemMenuBar(JPopupMenu menu) {
@@ -996,69 +996,69 @@ class LiquidTitlePane extends JComponent {
 
             boolean leftToRight = (window == null)
                 ? getRootPane().getComponentOrientation().isLeftToRight()
-                : window.getComponentOrientation().isLeftToRight();
+                    : window.getComponentOrientation().isLeftToRight();
 
-            int w = getWidth();
-            int x;
-            int spacing;
-            int buttonHeight;
-            int buttonWidth;
+                int w = getWidth();
+                int x;
+                int spacing;
+                int buttonHeight;
+                int buttonWidth;
 
-            if (closeButton != null) {
-                buttonHeight = closeButton.getPreferredSize().height;
-                buttonWidth = closeButton.getPreferredSize().width;
-            } else {
-                buttonHeight = IMAGE_HEIGHT;
-                buttonWidth = IMAGE_WIDTH;
-            }
+                if (closeButton != null) {
+                    buttonHeight = closeButton.getPreferredSize().height;
+                    buttonWidth = closeButton.getPreferredSize().width;
+                } else {
+                    buttonHeight = IMAGE_HEIGHT;
+                    buttonWidth = IMAGE_WIDTH;
+                }
 
-            int y = ((getHeight() - buttonHeight) / 2) + 1;
+                int y = ((getHeight() - buttonHeight) / 2) + 1;
 
-            //if (Theme.derivedStyle[Theme.style] == Theme.WIN_STYLE) {
-            //    y += 1;
-            //}
-            // assumes all buttons have the same dimensions
-            // these dimensions include the borders
-            x = leftToRight ? w : 0;
+                //if (Theme.derivedStyle[Theme.style] == Theme.WIN_STYLE) {
+                //    y += 1;
+                //}
+                // assumes all buttons have the same dimensions
+                // these dimensions include the borders
+                x = leftToRight ? w : 0;
 
-            spacing = 0;
-            x = leftToRight ? spacing : (w - buttonWidth - spacing);
+                spacing = 0;
+                x = leftToRight ? spacing : (w - buttonWidth - spacing);
 
-            if (menuBar != null) {
-                // this is a JFrame
-                menuBar.setBounds(x, y, buttonWidth, buttonHeight);
-            }
+                if (menuBar != null) {
+                    // this is a JFrame
+                    menuBar.setBounds(x, y, buttonWidth, buttonHeight);
+                }
 
-            x = leftToRight ? w : 0;
-            x += (leftToRight ? (-spacing - buttonWidth) : spacing);
+                x = leftToRight ? w : 0;
+                x += (leftToRight ? (-spacing - buttonWidth) : spacing);
 
-            if (closeButton != null) {
-                closeButton.setBounds(x, y, buttonWidth, buttonHeight);
-            }
+                if (closeButton != null) {
+                    closeButton.setBounds(x, y, buttonWidth, buttonHeight);
+                }
 
-            if (!leftToRight) {
-                x += buttonWidth;
-            }
+                if (!leftToRight) {
+                    x += buttonWidth;
+                }
 
-            if (Toolkit.getDefaultToolkit().isFrameStateSupported(Frame.MAXIMIZED_BOTH)) {
-                if (toggleButton.getParent() != null) {
+                if (Toolkit.getDefaultToolkit().isFrameStateSupported(Frame.MAXIMIZED_BOTH)) {
+                    if (toggleButton.getParent() != null) {
+                        x += (leftToRight ? (-spacing - buttonWidth) : spacing);
+                        toggleButton.setBounds(x, y, buttonWidth, buttonHeight);
+
+                        if (!leftToRight) {
+                            x += buttonWidth;
+                        }
+                    }
+                }
+
+                if ((iconifyButton != null) && (iconifyButton.getParent() != null)) {
                     x += (leftToRight ? (-spacing - buttonWidth) : spacing);
-                    toggleButton.setBounds(x, y, buttonWidth, buttonHeight);
+                    iconifyButton.setBounds(x, y, buttonWidth, buttonHeight);
 
                     if (!leftToRight) {
                         x += buttonWidth;
                     }
                 }
-            }
-
-            if ((iconifyButton != null) && (iconifyButton.getParent() != null)) {
-                x += (leftToRight ? (-spacing - buttonWidth) : spacing);
-                iconifyButton.setBounds(x, y, buttonWidth, buttonHeight);
-
-                if (!leftToRight) {
-                    x += buttonWidth;
-                }
-            }
         }
     }
 

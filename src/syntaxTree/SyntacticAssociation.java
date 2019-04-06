@@ -25,86 +25,86 @@ import userInterface.UserInternalFrame;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * The SyntacticAssociation subclass of EditableComponent.
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
- * @uml.stereotype name="entity" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
+ * @uml.stereotype name="entity"
  */
 
 public class SyntacticAssociation extends EditableComponent{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mSyntacticFeature"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSyntacticFeature" multiplicity="(0 1)" inverse="mSyntacticAssociation:syntaxTree.SyntacticFeature"
-	 */
-	private SyntacticFeature mSyntacticFeature;
+    /**
+     *
+     * @uml.property name="mSyntacticFeature"
+     * @uml.associationEnd
+     * @uml.property name="mSyntacticFeature" multiplicity="(0 1)" inverse="mSyntacticAssociation:syntaxTree.SyntacticFeature"
+     */
+    private SyntacticFeature mSyntacticFeature;
 
-	/**
-	 * 
-	 * @uml.property name="mSyntacticStructure"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSyntacticStructure" multiplicity="(0 1)" inverse="mSyntacticAssociation:syntaxTree.SyntacticStructure"
-	 */
-	private SyntacticStructure mSyntacticStructure;
+    /**
+     *
+     * @uml.property name="mSyntacticStructure"
+     * @uml.associationEnd
+     * @uml.property name="mSyntacticStructure" multiplicity="(0 1)" inverse="mSyntacticAssociation:syntaxTree.SyntacticStructure"
+     */
+    private SyntacticStructure mSyntacticStructure;
 
-/**
- * 
- * @param pUserInternalFrame The InternalFrame holding this SyntacticAssociation
- */
-	public SyntacticAssociation(UserInternalFrame pUserInternalFrame) {
-		super(pUserInternalFrame);	
-	}
-/**
- * 
- * @return Returns the SyntacticStructure holding this association 
- */
-	public SyntacticStructure getSyntacticStructure() {
-		return mSyntacticStructure;
-	}
-/**
- * 
- * @param pSyntacticStructure The SyntacticStructure that will hold this association
- */
-	public void setSyntacticStructure(SyntacticStructure pSyntacticStructure) {
-		mSyntacticStructure = pSyntacticStructure;
-	}
-/**
- * 
- * @return The SyntacticFeature producing this association
- */
-	public SyntacticFeature getSyntacticFeature() {
-		return mSyntacticFeature;
-	}
-/**
- * 
- * @param pSyntacticFeature The SyntacticFeature that is used to produce this
- * association.
- */
-	public void setSyntacticFeature(SyntacticFeature pSyntacticFeature) {
-		mSyntacticFeature = pSyntacticFeature;
-	}
-/**
- * @param pAS The attributedString for this association.  This command
- * overrides the superclass command of same name, and makes sure all
- * matched associations and features have the same text.
- */
-	public void setHead(AttributedString pAS)
-	{
-		super.setHead(pAS);
-		if (getHead() != getSyntacticFeature().getHead())
-		{
-			getSyntacticFeature().setHead(getHead());
-		}
-		getSyntacticStructure().testXY();
-	}
-	public void setHeadWithoutUpdate(AttributedString pAS)
-	{
-		super.setHead(pAS);
-	}
+    /**
+     *
+     * @param pUserInternalFrame The InternalFrame holding this SyntacticAssociation
+     */
+    public SyntacticAssociation(UserInternalFrame pUserInternalFrame) {
+        super(pUserInternalFrame);
+    }
+    /**
+     *
+     * @return Returns the SyntacticStructure holding this association
+     */
+    public SyntacticStructure getSyntacticStructure() {
+        return mSyntacticStructure;
+    }
+    /**
+     *
+     * @param pSyntacticStructure The SyntacticStructure that will hold this association
+     */
+    public void setSyntacticStructure(SyntacticStructure pSyntacticStructure) {
+        mSyntacticStructure = pSyntacticStructure;
+    }
+    /**
+     *
+     * @return The SyntacticFeature producing this association
+     */
+    public SyntacticFeature getSyntacticFeature() {
+        return mSyntacticFeature;
+    }
+    /**
+     *
+     * @param pSyntacticFeature The SyntacticFeature that is used to produce this
+     * association.
+     */
+    public void setSyntacticFeature(SyntacticFeature pSyntacticFeature) {
+        mSyntacticFeature = pSyntacticFeature;
+    }
+    /**
+     * @param pAS The attributedString for this association.  This command
+     * overrides the superclass command of same name, and makes sure all
+     * matched associations and features have the same text.
+     */
+    public void setHead(AttributedString pAS)
+    {
+        super.setHead(pAS);
+        if (getHead() != getSyntacticFeature().getHead())
+        {
+            getSyntacticFeature().setHead(getHead());
+        }
+        getSyntacticStructure().testXY();
+    }
+    public void setHeadWithoutUpdate(AttributedString pAS)
+    {
+        super.setHead(pAS);
+    }
 }

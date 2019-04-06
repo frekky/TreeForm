@@ -9,18 +9,18 @@ import syntaxTree.SyntaxFacade;
 
 public class ListenerDefaultFontSize implements ChangeListener {
 
-	private Properties mProperties;
-	private SyntaxFacade mSyntaxFacade;
+    private Properties mProperties;
+    private SyntaxFacade mSyntaxFacade;
 
-	public ListenerDefaultFontSize(Properties properties, SyntaxFacade syntaxFacade) {
-		mProperties = properties;
-		mSyntaxFacade = syntaxFacade;
-	}
+    public ListenerDefaultFontSize(Properties properties, SyntaxFacade syntaxFacade) {
+        mProperties = properties;
+        mSyntaxFacade = syntaxFacade;
+    }
 
-	public void stateChanged(ChangeEvent e) {
-		mProperties.setDefaultFontSize(((JSlider)e.getSource()).getValue());
-		mSyntaxFacade.displayTree();
+    public void stateChanged(ChangeEvent e) {
+        mProperties.setDefaultFontSize(((JSlider)e.getSource()).getValue());
+        mSyntaxFacade.displayTree();
 
-	}
+    }
 
 }

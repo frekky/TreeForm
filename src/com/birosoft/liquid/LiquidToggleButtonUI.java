@@ -27,21 +27,21 @@ import javax.swing.plaf.ComponentUI;
  * @author Taoufik Romdhane
  */
 public class LiquidToggleButtonUI extends LiquidButtonUI {
-    
+
     /**
      * The Cached UI delegate.
      */
     private static final LiquidToggleButtonUI toggleButtonUI = new LiquidToggleButtonUI();
-    
+
     private final static String propertyPrefix = "ToggleButton.";
 
-	/**
-	 * 
-	 * @uml.property name="propertyPrefix"
-	 */
-	protected String getPropertyPrefix() {
-		return propertyPrefix;
-	}
+    /**
+     *
+     * @uml.property name="propertyPrefix"
+     */
+    protected String getPropertyPrefix() {
+        return propertyPrefix;
+    }
 
     /**
      * Creates the UI delegate for the given component.
@@ -62,12 +62,12 @@ public class LiquidToggleButtonUI extends LiquidButtonUI {
         });
         return toggleButtonUI;
     }
-    
+
     public void paint(Graphics g, JComponent c) {
-        
+
         AbstractButton button = (AbstractButton) c;
         ButtonModel model = button.getModel();
-        
+
         buttonIndexModel.setButton(button);
         buttonIndexModel.setCheckForDefaultButton(false);
         int index=buttonIndexModel.getIndexForState();

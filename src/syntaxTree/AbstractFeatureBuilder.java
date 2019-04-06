@@ -22,7 +22,7 @@ package syntaxTree;
 import userInterface.UserInternalFrame;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -32,5 +32,5 @@ import userInterface.UserInternalFrame;
  * Abstract Feature Builder class
  */
 public abstract class AbstractFeatureBuilder {
-	public abstract SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame);
+    public abstract SyntacticFeatureSet buildFeature(UserInternalFrame pInternalFrame);
 }

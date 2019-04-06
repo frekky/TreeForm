@@ -34,128 +34,128 @@ import syntaxTree.SyntacticStructure;
 
 public class UserBezierPane extends JComponent {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private SyntacticStructure mSS;
+    private SyntacticStructure mSS;
 
-	private UserFrame mUserFrame;
+    private UserFrame mUserFrame;
 
-	private boolean mControlStart;
+    private boolean mControlStart;
 
-	private boolean mControlEnd;
+    private boolean mControlEnd;
 
-	public UserBezierPane(
-		UserFrame pUserFrame, SyntacticStructure pSS
-		) {
-		mUserFrame = pUserFrame;
-		mSS = pSS;
-	}
+    public UserBezierPane(
+        UserFrame pUserFrame, SyntacticStructure pSS
+        ) {
+        mUserFrame = pUserFrame;
+        mSS = pSS;
+    }
 
-	public void paintComponent(Graphics g) {
-		Graphics2D lGraphics2D = (Graphics2D) g;
-		lGraphics2D.setRenderingHint(
-			RenderingHints.KEY_ANTIALIASING,
-			RenderingHints.VALUE_ANTIALIAS_ON);
-		lGraphics2D.setRenderingHint(
-			RenderingHints.KEY_RENDERING,
-			RenderingHints.VALUE_RENDER_QUALITY);
-		lGraphics2D.scale(
-				Sizer.scaleWidth()
-					* mUserFrame.getDesktopPane().getInternalFrame().getScale(),
-				Sizer.scaleHeight()
-					* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-		lGraphics2D.translate(mUserFrame.getInternalFrame().getProperties().getLeftTranslate(),
-				mUserFrame.getInternalFrame().getProperties().getTopTranslate());
-		drawLines(lGraphics2D,mSS);
-		drawSquare(lGraphics2D, mSS.getStartX(),mSS.getStartY(), new Color(200,0,0));
-		drawSquare(lGraphics2D, mSS.getEndX(),mSS.getEndY(), new Color(200,0,0));
-		drawSquare(lGraphics2D, mSS.getControlStartX(),mSS.getControlStartY(), new Color(0,0,200));
-		drawSquare(lGraphics2D, mSS.getControlEndX(),mSS.getControlEndY(), new Color(0,0,200));
-		
-	}
+    public void paintComponent(Graphics g) {
+        Graphics2D lGraphics2D = (Graphics2D) g;
+        lGraphics2D.setRenderingHint(
+            RenderingHints.KEY_ANTIALIASING,
+            RenderingHints.VALUE_ANTIALIAS_ON);
+        lGraphics2D.setRenderingHint(
+            RenderingHints.KEY_RENDERING,
+            RenderingHints.VALUE_RENDER_QUALITY);
+        lGraphics2D.scale(
+            Sizer.scaleWidth()
+            * mUserFrame.getDesktopPane().getInternalFrame().getScale(),
+            Sizer.scaleHeight()
+            * mUserFrame.getDesktopPane().getInternalFrame().getScale());
+        lGraphics2D.translate(mUserFrame.getInternalFrame().getProperties().getLeftTranslate(),
+            mUserFrame.getInternalFrame().getProperties().getTopTranslate());
+        drawLines(lGraphics2D,mSS);
+        drawSquare(lGraphics2D, mSS.getStartX(),mSS.getStartY(), new Color(200,0,0));
+        drawSquare(lGraphics2D, mSS.getEndX(),mSS.getEndY(), new Color(200,0,0));
+        drawSquare(lGraphics2D, mSS.getControlStartX(),mSS.getControlStartY(), new Color(0,0,200));
+        drawSquare(lGraphics2D, mSS.getControlEndX(),mSS.getControlEndY(), new Color(0,0,200));
 
-	private void drawLines(Graphics2D graphics2D, SyntacticStructure mss2) {
-		graphics2D.setColor(new Color(0,0,100));
-		//graphics2D.setStroke(new BasicStroke(.5F));
-		graphics2D.drawLine(mSS.getStartX(),mSS.getStartY(),mSS.getControlStartX(),mSS.getControlStartY());
-		graphics2D.drawLine(mSS.getEndX(),mSS.getEndY(),mSS.getControlEndX(),mSS.getControlEndY());
-		graphics2D.drawLine(mSS.getControlStartX(),mSS.getControlStartY(),mSS.getControlEndX(),mSS.getControlEndY());
-	}
+    }
 
-	public void setSyntacticStructure(SyntacticStructure pSS) {
-		mSS = pSS;
-	}
+    private void drawLines(Graphics2D graphics2D, SyntacticStructure mss2) {
+        graphics2D.setColor(new Color(0,0,100));
+        //graphics2D.setStroke(new BasicStroke(.5F));
+        graphics2D.drawLine(mSS.getStartX(),mSS.getStartY(),mSS.getControlStartX(),mSS.getControlStartY());
+        graphics2D.drawLine(mSS.getEndX(),mSS.getEndY(),mSS.getControlEndX(),mSS.getControlEndY());
+        graphics2D.drawLine(mSS.getControlStartX(),mSS.getControlStartY(),mSS.getControlEndX(),mSS.getControlEndY());
+    }
 
-	private void drawSquare(
-		Graphics2D lGraphics2D,
-		int pX,
-		int pY,Color lColor) {
-		
-			
-			lGraphics2D.setColor(lColor);
-			GeneralPath polly = new GeneralPath();
-			polly.moveTo(pX-3, pY-3);
-			polly.lineTo(pX+3, pY-3);
-			polly.lineTo(pX+3, pY+3);
-			polly.lineTo(pX-3, pY+3);
-			polly.closePath();
-			lGraphics2D.fill(polly);
-		
-	}
+    public void setSyntacticStructure(SyntacticStructure pSS) {
+        mSS = pSS;
+    }
 
-	public void setPosition(MouseEvent e) {
-		//System.out.println(e.getX() + " : " + e.getY());
-		float scaleX = e.getX() / (Sizer.scaleWidth()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-		float scaleY = e.getY() / (Sizer.scaleHeight()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-			if(mControlStart)
-			{
-			mSS.setCustomTrace(true);
-			mSS.setControlStartX((int) scaleX - mUserFrame.getInternalFrame().getProperties().getLeftTranslate());
-			mSS.setControlStartY((int) scaleY - mUserFrame.getInternalFrame().getProperties().getTopTranslate());
-			mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
-			//System.out.println(1);
-			}
-			if(mControlEnd)
-			{
-			mSS.setCustomTrace(true);
-			mSS.setControlEndX((int) scaleX- mUserFrame.getInternalFrame().getProperties().getLeftTranslate());
-			mSS.setControlEndY((int) scaleY - mUserFrame.getInternalFrame().getProperties().getTopTranslate());
-			mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
-			//System.out.println(2);
-			}
-		
-	}
+    private void drawSquare(
+        Graphics2D lGraphics2D,
+        int pX,
+        int pY,Color lColor) {
 
-	public void setTarget(MouseEvent e)
-	{
-		float scaleX = e.getX() / (Sizer.scaleWidth()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-		float scaleY = e.getY() / (Sizer.scaleHeight()
-		* mUserFrame.getDesktopPane().getInternalFrame().getScale());
-		
-		if (scaleX > mSS.getControlStartX()+ mUserFrame.getInternalFrame().getProperties().getLeftTranslate() -10 && scaleX < mSS.getControlStartX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate() + 10
-				&& scaleY > mSS.getControlStartY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()-10 && scaleY < mSS.getControlStartY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()+ 10)
-		{
-			mControlStart = true;
-			mControlEnd = false;
-		}
-		else if (scaleX > mSS.getControlEndX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate()-10 && scaleX < mSS.getControlEndX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate()+ 10
-				&& scaleY > mSS.getControlEndY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()-10 && scaleY < mSS.getControlEndY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate() + 10)
-		{
-			mControlStart = false;
-			mControlEnd = true;
-		}
-		else
-		{
-			mControlStart = false;
-			mControlEnd = false;
-		}
-	}
-	
-	public void exit() {
-		mUserFrame.getDesktopPane().getInternalFrame().deactivateBezierPane();
-	}
+
+        lGraphics2D.setColor(lColor);
+        GeneralPath polly = new GeneralPath();
+        polly.moveTo(pX-3, pY-3);
+        polly.lineTo(pX+3, pY-3);
+        polly.lineTo(pX+3, pY+3);
+        polly.lineTo(pX-3, pY+3);
+        polly.closePath();
+        lGraphics2D.fill(polly);
+
+    }
+
+    public void setPosition(MouseEvent e) {
+        //System.out.println(e.getX() + " : " + e.getY());
+        float scaleX = e.getX() / (Sizer.scaleWidth()
+            * mUserFrame.getDesktopPane().getInternalFrame().getScale());
+        float scaleY = e.getY() / (Sizer.scaleHeight()
+            * mUserFrame.getDesktopPane().getInternalFrame().getScale());
+        if(mControlStart)
+        {
+            mSS.setCustomTrace(true);
+            mSS.setControlStartX((int) scaleX - mUserFrame.getInternalFrame().getProperties().getLeftTranslate());
+            mSS.setControlStartY((int) scaleY - mUserFrame.getInternalFrame().getProperties().getTopTranslate());
+            mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
+            //System.out.println(1);
+        }
+        if(mControlEnd)
+        {
+            mSS.setCustomTrace(true);
+            mSS.setControlEndX((int) scaleX- mUserFrame.getInternalFrame().getProperties().getLeftTranslate());
+            mSS.setControlEndY((int) scaleY - mUserFrame.getInternalFrame().getProperties().getTopTranslate());
+            mUserFrame.getDesktopPane().getInternalFrame().getTrace().repaint();
+            //System.out.println(2);
+        }
+
+    }
+
+    public void setTarget(MouseEvent e)
+    {
+        float scaleX = e.getX() / (Sizer.scaleWidth()
+            * mUserFrame.getDesktopPane().getInternalFrame().getScale());
+        float scaleY = e.getY() / (Sizer.scaleHeight()
+            * mUserFrame.getDesktopPane().getInternalFrame().getScale());
+
+        if (scaleX > mSS.getControlStartX()+ mUserFrame.getInternalFrame().getProperties().getLeftTranslate() -10 && scaleX < mSS.getControlStartX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate() + 10
+            && scaleY > mSS.getControlStartY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()-10 && scaleY < mSS.getControlStartY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()+ 10)
+        {
+            mControlStart = true;
+            mControlEnd = false;
+        }
+        else if (scaleX > mSS.getControlEndX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate()-10 && scaleX < mSS.getControlEndX() + mUserFrame.getInternalFrame().getProperties().getLeftTranslate()+ 10
+            && scaleY > mSS.getControlEndY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate()-10 && scaleY < mSS.getControlEndY() + mUserFrame.getInternalFrame().getProperties().getTopTranslate() + 10)
+        {
+            mControlStart = false;
+            mControlEnd = true;
+        }
+        else
+        {
+            mControlStart = false;
+            mControlEnd = false;
+        }
+    }
+
+    public void exit() {
+        mUserFrame.getDesktopPane().getInternalFrame().deactivateBezierPane();
+    }
 
 }

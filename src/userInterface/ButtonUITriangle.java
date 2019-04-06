@@ -31,119 +31,119 @@ import staticFunctions.Sizer;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Object Browser buttons designed to contain the necessary
- * information to drive sentence generation using the GUI.  
- *  
+ * information to drive sentence generation using the GUI.
+ *
  */
 public class ButtonUITriangle extends UserBrowserButton {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public ButtonUITriangle(UserFrame pUserFrame, Object pButtonType) {
-		super(pUserFrame, pButtonType);
-		// TODO Auto-generated constructor stub
-	}
+    public ButtonUITriangle(UserFrame pUserFrame, Object pButtonType) {
+        super(pUserFrame, pButtonType);
+        // TODO Auto-generated constructor stub
+    }
 
-	public void paintComponent(Graphics pG) {
-		super.paintComponent(pG);
-		this.prepaint(pG);	
-		
-		AttributedString ats;
-		AttributedCharacterIterator iter;
-		TextLayout tl;
-		if (!mDrag)
-		{
-		ats = new AttributedString("F4");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,4,11);
-		}
-		
-		ats = new AttributedString((String) getResourceBundle().getObject("TRIANGLE_TEXT"));
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-			(float) (mDim.getHeight() - 4));
+    public void paintComponent(Graphics pG) {
+        super.paintComponent(pG);
+        this.prepaint(pG);
 
-		// repeat for the title X-double-bar
+        AttributedString ats;
+        AttributedCharacterIterator iter;
+        TextLayout tl;
+        if (!mDrag)
+        {
+            ats = new AttributedString("F4");
+            ats.addAttribute(TextAttribute.FONT, mFont);
+            iter = ats.getIterator();
+            // create a textlayout from the font, string, and font render context.
+            tl = new TextLayout(iter, mFrc);
+            // draw the font
+            tl.draw(
+                mGraphics2D,4,11);
+        }
 
-		ats = new AttributedString(" ");
-		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		tl = new TextLayout(iter, mFrc);
-		tl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5));
+        ats = new AttributedString((String) getResourceBundle().getObject("TRIANGLE_TEXT"));
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        iter = ats.getIterator();
+        // create a textlayout from the font, string, and font render context.
+        tl = new TextLayout(iter, mFrc);
+        // draw the font
+        tl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+            (float) (mDim.getHeight() - 4));
 
-		// draw the lines below the X-double-bar
-		Rectangle drawRight =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
-				(int) ((mDim.getWidth()) / 2)
-					+ 13,
-				(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					+ 2);
-					
-						
-		Rectangle drawLeft =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
-				(int) ((mDim.getWidth()) / 2)
-					- 13,
-				(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					+ 2);
-					
-		Rectangle drawBottom =
-		new Rectangle(
-		(int) ((mDim.getWidth()) / 2)
-			+ 13,
-		(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-			+ Sizer.UILineLength()
-			+ 2,
-		(int) ((mDim.getWidth()) / 2)
-				- 13,
-			(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-				+ Sizer.UILineLength()
-				+ 2);
+        // repeat for the title X-double-bar
 
-		mGraphics2D.drawLine(
-			drawRight.width,
-			drawRight.height,
-			drawRight.x,
-			drawRight.y);
-		mGraphics2D.drawLine(drawLeft.width, drawLeft.height, drawLeft.x, drawLeft.y);
-		mGraphics2D.drawLine(drawBottom.width, drawBottom.height, drawBottom.x, drawBottom.y);
+        ats = new AttributedString(" ");
+        mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        iter = ats.getIterator();
+        tl = new TextLayout(iter, mFrc);
+        tl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+            (float) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5));
 
-		// repeat for the X
-		ats = new AttributedString("text");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		tl = new TextLayout(iter, mFrc);
-		Dimension positionLeft =
-			new Dimension(
-				(int) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-				(int) (drawLeft.height + tl.getBounds().getHeight() + 3));
-		tl.draw(mGraphics2D, positionLeft.width, positionLeft.height);
-		this.postpaint();
-	}
+        // draw the lines below the X-double-bar
+        Rectangle drawRight =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
+                (int) ((mDim.getWidth()) / 2)
+                + 13,
+                (int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2);
+
+
+        Rectangle drawLeft =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
+                (int) ((mDim.getWidth()) / 2)
+                - 13,
+                (int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2);
+
+        Rectangle drawBottom =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2)
+                + 13,
+                (int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2,
+                (int) ((mDim.getWidth()) / 2)
+                - 13,
+                (int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2);
+
+        mGraphics2D.drawLine(
+            drawRight.width,
+            drawRight.height,
+            drawRight.x,
+            drawRight.y);
+        mGraphics2D.drawLine(drawLeft.width, drawLeft.height, drawLeft.x, drawLeft.y);
+        mGraphics2D.drawLine(drawBottom.width, drawBottom.height, drawBottom.x, drawBottom.y);
+
+        // repeat for the X
+        ats = new AttributedString("text");
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        iter = ats.getIterator();
+        tl = new TextLayout(iter, mFrc);
+        Dimension positionLeft =
+            new Dimension(
+                (int) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+                (int) (drawLeft.height + tl.getBounds().getHeight() + 3));
+        tl.draw(mGraphics2D, positionLeft.width, positionLeft.height);
+        this.postpaint();
+    }
 }

@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -34,41 +34,41 @@ import java.awt.event.ActionListener;
  */
 public class ListenerAssociation implements ActionListener {
 
-	/**
-	 * 
-	 * @uml.property name="mSA"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSA" multiplicity="(1 1)"
-	 */
-	private SyntacticAssociation mSA;
+    /**
+     *
+     * @uml.property name="mSA"
+     * @uml.associationEnd
+     * @uml.property name="mSA" multiplicity="(1 1)"
+     */
+    private SyntacticAssociation mSA;
 
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mSF;
+    /**
+     *
+     * @uml.property name="mSF"
+     * @uml.associationEnd
+     * @uml.property name="mSF" multiplicity="(1 1)"
+     */
+    private SyntaxFacade mSF;
 
-/**
- * 
- * @param pSF The SyntaxFacade holding all these commands
- * @param pSA The SyntacticAssociation attached to this listener.
- */
-	public ListenerAssociation(SyntaxFacade pSF, SyntacticAssociation pSA)
-	{
-		mSF = pSF;
-		mSA = pSA;
-	}
-/**
- * @param pAE The ActionEvent
- * <br>
- * Calls deleteSyntacticAssociation
- */
-	public void actionPerformed(ActionEvent pAE) {
-		mSF.deleteSyntacticAssociation(mSA);
+    /**
+     *
+     * @param pSF The SyntaxFacade holding all these commands
+     * @param pSA The SyntacticAssociation attached to this listener.
+     */
+    public ListenerAssociation(SyntaxFacade pSF, SyntacticAssociation pSA)
+    {
+        mSF = pSF;
+        mSA = pSA;
+    }
+    /**
+     * @param pAE The ActionEvent
+     * <br>
+     * Calls deleteSyntacticAssociation
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        mSF.deleteSyntacticAssociation(mSA);
 
-	}
+    }
 
 
 

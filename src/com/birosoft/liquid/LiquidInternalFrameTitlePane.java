@@ -41,22 +41,22 @@ import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane implements LayoutManager
 {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	protected boolean isPalette = false;
+    protected boolean isPalette = false;
 
-	/**
-	 * 
-	 * @uml.property name="paletteCloseIcon"
-	 * @uml.associationEnd 
-	 * @uml.property name="paletteCloseIcon" multiplicity="(0 1)"
-	 */
-	protected Icon paletteCloseIcon;
+    /**
+     *
+     * @uml.property name="paletteCloseIcon"
+     * @uml.associationEnd
+     * @uml.property name="paletteCloseIcon" multiplicity="(0 1)"
+     */
+    protected Icon paletteCloseIcon;
 
     protected int paletteTitleHeight;
-    
+
     /**
      * Color for the title in a normal sized internal frame
      */
@@ -69,13 +69,13 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
      * Color for the title in a normal sized internal frame that is not enabled
      */
     Color disabledTitleColor=new Color(64,63,63);
-    
-    
+
+
     /**
      * The frame's title height, read from the UIDefaults table.
      */
     protected int frameTitleHeight;
-    
+
     /**
      * Installs some default values.
      * Reads the internalframe title height from the ui defaults table.
@@ -89,7 +89,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         paletteCloseIcon = UIManager.getIcon("InternalFrame.paletteCloseIcon");
         //wasClosable = frame.isClosable();
     }
-    
+
     protected void uninstallDefaults()
     {
         super.uninstallDefaults();
@@ -97,7 +97,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         //    frame.setClosable(wasClosable);
         //}
     }
-    
+
     /**
      * This constructor creates a title pane for the given internal frame
      * instance.
@@ -107,18 +107,18 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     public LiquidInternalFrameTitlePane(JInternalFrame frame)
     {
         super(frame);
-        
+
         //if (LiquidInternalFrameUI.allowRoundedWindows)
         //setOpaque(false);
     }
-    
-    
-    
+
+
+
     protected void paintTitleBackground(Graphics g)
     {
         return;
     }
-    
+
     /**
      * Paints this component.
      *
@@ -131,18 +131,18 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         //      paintPalette(g);
         //      return;
         //    }
-        
+
         boolean leftToRight = frame.getComponentOrientation().isLeftToRight();
         boolean isSelected = frame.isSelected();
-        
+
         int width = getWidth();
         int height = getHeight();
-        
+
         drawLiquidCaption(g, isSelected, width, height);
         int titleLength = 0;
         int xOffset = leftToRight ? 2 : width - 2;
         String frameTitle = frame.getTitle();
-        
+
         Icon icon = frame.getFrameIcon();
         if (icon != null)
         {
@@ -152,8 +152,8 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             icon.paintIcon(frame, g, xOffset, iconY);
             xOffset += leftToRight ? icon.getIconWidth() + 2 : -2;
         }
-        
-        
+
+
         if (frameTitle != null)
         {
             Font f = getFont();
@@ -162,7 +162,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             titleLength = fm.stringWidth(frameTitle);
             if (isPalette)
             {
-                
+
                 if (isSelected)
                 {
                     g.setColor(Color.white);
@@ -170,7 +170,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
                 {
                     g.setColor(Color.black);
                 }
-                
+
                 int yOffset = ((height - fm.getHeight()) / 2) + fm.getAscent();
                 if (!leftToRight)
                     xOffset -= titleLength;
@@ -182,9 +182,9 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
                 int yOffset = ((height - fm.getHeight()) / 2) + fm.getAscent() +1;
                 if (!leftToRight)
                     xOffset -= titleLength;
-                
+
                 xOffset = width / 2 - titleLength / 2;
-                
+
                 if (isSelected)
                 {
                     // for an active window
@@ -195,35 +195,35 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
                     g2.fillRoundRect(xOffset-8, yOffset-15, titleLength+15, fm.getHeight()+1, 18, 18);
                     g.setColor(new Color(0,78,167));
                     g2.drawRoundRect(xOffset-8, yOffset-15, titleLength+15, fm.getHeight()+1, 18, 18);
-                    
+
                     g.setColor(Color.black);
                     g.drawString(frameTitle, xOffset+1, yOffset);
-                    
+
                     g.setColor( normalTitleColor);
                     g.drawString(frameTitle, xOffset, yOffset-1);
-                    
-                    
+
+
                     xOffset += leftToRight ? titleLength + 2  : -2;
                 } else
                 {
                     // for an inactive window
                     Graphics2D g2 = (Graphics2D)g;
                     GradientPaint grad = new GradientPaint(xOffset+titleLength/2,yOffset-15,new Color(191,211,233), xOffset+titleLength/2, fm.getHeight()+6,new Color(233,253,255));
-                    g2.setPaint(grad);                    
+                    g2.setPaint(grad);
                     g2.fillRoundRect(xOffset-8, yOffset-15, titleLength+15, fm.getHeight()+1, 18, 18);
                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                     g.setColor(new Color(125,145,167));
                     g2.drawRoundRect(xOffset-8, yOffset-15, titleLength+15, fm.getHeight()+1, 18, 18);
-                    
+
                     g.setColor(Color.black);
                     g.drawString(frameTitle, xOffset, yOffset-1);
-                    
+
                     xOffset += leftToRight ? titleLength + 2  : -2;
                 }
             }
         }
     }
-    
+
     private void drawLiquidCaption(Graphics g, boolean isSelected, int w, int h)
     {
         Color c = isSelected ? new Color(62,145,235) : new Color(175,214,255);
@@ -248,7 +248,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         g.setColor(c);
         g.drawLine(0, h-1, w, h-1);
     }
-    
+
     /**
      * Creates the layout manager for the title pane.
      *
@@ -269,10 +269,10 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             //menuBar.setOpaque(false);
         }
     }
-    
+
     protected void setButtonIcons()
     {}
-    
+
     /**
      * This listener is added to the maximize, minimize and close button to
      * manage the rollover status of the buttons
@@ -282,7 +282,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     {
         JButton button;
         Action action;
-        
+
         public RolloverListener(JButton b,Action a)
         {
             button=b;
@@ -292,15 +292,15 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         {
             action.actionPerformed( new ActionEvent(this,Event.ACTION_EVENT,button.getText()) );
         }
-        
+
         public void mousePressed(MouseEvent e)
         {
         }
-        
+
         public void mouseReleased(MouseEvent e)
         {
         }
-        
+
         public void mouseEntered(MouseEvent e)
         {
             button.getModel().setRollover(true);
@@ -310,7 +310,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             }
             button.repaint();
         }
-        
+
         public void mouseExited(MouseEvent e)
         {
             button.getModel().setRollover(false);
@@ -321,8 +321,8 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             button.repaint();
         }
     }
-    
-    
+
+
     static LiquidWindowButtonUI iconButtonUI;
     static LiquidWindowButtonUI maxButtonUI;
     static LiquidWindowButtonUI closeButtonUI;
@@ -338,31 +338,31 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             maxButtonUI=LiquidWindowButtonUI.createButtonUIForType(LiquidWindowButtonUI.MAXIMIZE);
             closeButtonUI=LiquidWindowButtonUI.createButtonUIForType(LiquidWindowButtonUI.CLOSE);
         }
-        
+
         iconButton = new SpecialUIButton(iconButtonUI, frame);
         iconButton.addActionListener(iconifyAction);
         iconButton.setRolloverEnabled(true);
         iconButton.addMouseListener(new RolloverListener(iconButton,iconifyAction));
-        
+
         maxButton = new SpecialUIButton(maxButtonUI, frame);
         maxButton.addActionListener(maximizeAction);
         maxButton.setRolloverEnabled(true);
         maxButton.addMouseListener(new RolloverListener(maxButton,maximizeAction));
-        
+
         closeButton = new SpecialUIButton(closeButtonUI, frame);
         closeButton.addActionListener(closeAction);
         closeButton.setRolloverEnabled(true);
         closeButton.addMouseListener(new RolloverListener(closeButton,closeAction));
-        
+
         iconButton.getAccessibleContext().setAccessibleName(
-        UIManager.getString("InternalFrameTitlePane.iconifyButtonAccessibleName"));
-        
+            UIManager.getString("InternalFrameTitlePane.iconifyButtonAccessibleName"));
+
         maxButton.getAccessibleContext().setAccessibleName(
-        UIManager.getString("InternalFrameTitlePane.maximizeButtonAccessibleName"));
-        
+            UIManager.getString("InternalFrameTitlePane.maximizeButtonAccessibleName"));
+
         closeButton.getAccessibleContext().setAccessibleName(
-        UIManager.getString("InternalFrameTitlePane.closeButtonAccessibleName"));
-        
+            UIManager.getString("InternalFrameTitlePane.closeButtonAccessibleName"));
+
         if (frame.isSelected())
         {
             activate();
@@ -370,9 +370,9 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         {
             deactivate();
         }
-        
+
     }
-    
+
     /**
      * Paints the title pane for a palette.
      *
@@ -382,11 +382,11 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     {
         return;
     }
-    
+
     public void setPalette(boolean b)
     {
         isPalette = b;
-        
+
         if (isPalette)
         {
             closeButton.setIcon(paletteCloseIcon);
@@ -405,8 +405,8 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
         revalidate();
         repaint();
     }
-    
-    
+
+
     /**
      * Adds the specified component with the specified name to the layout.
      *
@@ -416,7 +416,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     public void addLayoutComponent(String name, Component c)
     {
     }
-    
+
     /**
      * Removes the specified component from the layout.
      *
@@ -425,7 +425,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     public void removeLayoutComponent(Component c)
     {
     }
-    
+
     /**
      * Calculates the preferred size dimensions for the specified
      * panel given the components in the specified parent container.
@@ -436,7 +436,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     {
         return getPreferredSize(c);
     }
-    
+
     /**
      * Gets the preferred size of the given container.
      *
@@ -446,11 +446,11 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     public Dimension getPreferredSize(Container c)
     {
         return
-        new Dimension(
-        c.getSize().width,
-        (isPalette ? paletteTitleHeight : frameTitleHeight));
+            new Dimension(
+                c.getSize().width,
+                (isPalette ? paletteTitleHeight : frameTitleHeight));
     }
-    
+
     /**
      * The minimum size of the frame.
      * This is used, for example, during resizing to
@@ -465,7 +465,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     {
         return new Dimension(70,25);
     }
-    
+
     /**
      * Calculates the minimum size dimensions for the specified
      * panel given the components in the specified parent container.
@@ -476,7 +476,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     {
         return preferredLayoutSize(c);
     }
-    
+
     /**
      * Lays out the container in the specified panel.
      *
@@ -485,18 +485,18 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     public void layoutContainer(Container c)
     {
         boolean leftToRight = frame.getComponentOrientation().isLeftToRight();
-        
+
         int buttonHeight = closeButton.getPreferredSize().height;
-        
+
         int w = getWidth();
         int x = leftToRight ? w : 0;
         int y = (getHeight()-buttonHeight)/2+1;
         int spacing;
-        
+
         // assumes all buttons have the same dimensions
         // these dimensions include the borders
         int buttonWidth = 18; //closeButton.getIcon().getIconWidth();
-        
+
         if (frame.isClosable())
         {
             if (isPalette)
@@ -516,7 +516,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
                     x += buttonWidth;
             }
         }
-        
+
         if (frame.isMaximizable() && !isPalette)
         {
             spacing = 0; //frame.isClosable() ? 2;
@@ -525,7 +525,7 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
             if (!leftToRight)
                 x += buttonWidth;
         }
-        
+
         if (frame.isIconifiable() && !isPalette)
         {
             spacing = 0; //frame.isMaximizable() ? 0 : (frame.isClosable() ? 0 : 2);
@@ -535,21 +535,21 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
                 x += buttonWidth;
         }
     }
-    
+
     public void activate()
     {
         closeButton.setEnabled(true);
         iconButton.setEnabled(true);
         maxButton.setEnabled(true);
     }
-    
+
     public void deactivate()
     {
         closeButton.setEnabled(false);
         iconButton.setEnabled(false);
         maxButton.setEnabled(false);
     }
-    
+
     /**
      * @see java.awt.Component#getFont()
      */
@@ -557,6 +557,6 @@ public class LiquidInternalFrameTitlePane extends BasicInternalFrameTitlePane im
     {
         return isPalette ? super.getFont() : UIManager.getFont("InternalFrame.normalTitleFont");
     }
-    
+
 }
 

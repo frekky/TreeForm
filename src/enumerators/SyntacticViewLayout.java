@@ -20,35 +20,35 @@ package enumerators;
 
 /**
  * @author Donald Derrick * @version 0.1 * <br> * date: 20-Aug-2004 * <br> * <br> * Unused as of yet, a list of view layouts
- * 
- * @uml.stereotype name="tagged" isDefined="true" 
+ *
+ * @uml.stereotype name="tagged" isDefined="true"
  */
 
 public final class SyntacticViewLayout {
-	private SyntacticViewLayout(){}
+    private SyntacticViewLayout(){}
 
-	/**
-	 * 
-	 * @uml.property name="d_STRUCTURE" changeability="frozen" 
-	 */
-	public static final SyntacticViewLayout D_STRUCTURE = new SyntacticViewLayout();
+    /**
+     *
+     * @uml.property name="d_STRUCTURE" changeability="frozen"
+     */
+    public static final SyntacticViewLayout D_STRUCTURE = new SyntacticViewLayout();
 
-	/**
-	 * 
-	 * @uml.property name="s_STRUCTURE" changeability="frozen" 
-	 */
-	public static final SyntacticViewLayout S_STRUCTURE = new SyntacticViewLayout();
+    /**
+     *
+     * @uml.property name="s_STRUCTURE" changeability="frozen"
+     */
+    public static final SyntacticViewLayout S_STRUCTURE = new SyntacticViewLayout();
 
-	/**
-	 * 
-	 * @uml.property name="l_STRUCTURE" changeability="frozen" 
-	 */
-	public static final SyntacticViewLayout L_STRUCTURE = new SyntacticViewLayout();
+    /**
+     *
+     * @uml.property name="l_STRUCTURE" changeability="frozen"
+     */
+    public static final SyntacticViewLayout L_STRUCTURE = new SyntacticViewLayout();
 
-	/**
-	 * 
-	 * @uml.property name="lABELLED_BRACKET" changeability="frozen" 
-	 */
-	public static final SyntacticViewLayout LABELLED_BRACKET = new SyntacticViewLayout();
+    /**
+     *
+     * @uml.property name="lABELLED_BRACKET" changeability="frozen"
+     */
+    public static final SyntacticViewLayout LABELLED_BRACKET = new SyntacticViewLayout();
 
 }

@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid;
 
@@ -20,34 +20,34 @@ import javax.swing.JComponent;
 
 public class LiquidDesktopManager extends DefaultDesktopManager
 {
-    
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	public void beginDraggingFrame(JComponent f)
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    public void beginDraggingFrame(JComponent f)
     {
     }
-    
+
     public void dragFrame(JComponent f, int newX, int newY)
     {
-        
+
         setBoundsForFrame(f, newX, newY, f.getWidth(), f.getHeight());
     }
-    
+
     public void endDraggingFrame(JComponent f)
     {
     }
-    
+
     public void resizeFrame(JComponent f, int newX, int newY, int newWidth, int newHeight)
     {
-        
+
         setBoundsForFrame(f, newX, newY, newWidth, newHeight);
     }
-    
+
     public void endResizingFrame(JComponent f)
     {
     }
-    
+
 }

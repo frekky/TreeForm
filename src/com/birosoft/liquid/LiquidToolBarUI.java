@@ -29,36 +29,36 @@ import com.birosoft.liquid.skin.Skin;
 public class LiquidToolBarUI extends BasicToolBarUI
 {
 
-	/**
-	 * The Border used for buttons in a toolbar
-	 * 
-	 * @uml.property name="border"
-	 * @uml.associationEnd 
-	 * @uml.property name="border" multiplicity="(1 1)"
-	 */
-	private Border border = new EmptyBorder(4, 4, 4, 4);
+    /**
+     * The Border used for buttons in a toolbar
+     *
+     * @uml.property name="border"
+     * @uml.associationEnd
+     * @uml.property name="border" multiplicity="(1 1)"
+     */
+    private Border border = new EmptyBorder(4, 4, 4, 4);
 
     private int orientation = -1;
     private boolean changeBorder = true;
 
-	/**
-	 * 
-	 * @uml.property name="vbarHandler"
-	 * @uml.associationEnd 
-	 * @uml.property name="vbarHandler" multiplicity="(1 1)"
-	 */
-	//private Skin vbarHandler = new Skin("vtoolbarhandler.png", 1, 0);
-	private Skin vbarHandler = new Skin("vtoolbarhandler.png", 1, 8, 3, 8, 3);
+    /**
+     *
+     * @uml.property name="vbarHandler"
+     * @uml.associationEnd
+     * @uml.property name="vbarHandler" multiplicity="(1 1)"
+     */
+    //private Skin vbarHandler = new Skin("vtoolbarhandler.png", 1, 0);
+    private Skin vbarHandler = new Skin("vtoolbarhandler.png", 1, 8, 3, 8, 3);
 
-	/**
-	 * 
-	 * @uml.property name="hbarHandler"
-	 * @uml.associationEnd 
-	 * @uml.property name="hbarHandler" multiplicity="(1 1)"
-	 */
-	private Skin hbarHandler = new Skin("htoolbarhandler.png", 1, 3, 8, 3, 8);
+    /**
+     *
+     * @uml.property name="hbarHandler"
+     * @uml.associationEnd
+     * @uml.property name="hbarHandler" multiplicity="(1 1)"
+     */
+    private Skin hbarHandler = new Skin("htoolbarhandler.png", 1, 3, 8, 3, 8);
 
-    
+
     /**
      * Creates the UI delegate for the given component.
      *
@@ -69,7 +69,7 @@ public class LiquidToolBarUI extends BasicToolBarUI
     {
         return new LiquidToolBarUI();
     }
-    
+
     /**
      * Installs some default values for the given toolbar.
      * The gets a rollover property.
@@ -81,8 +81,8 @@ public class LiquidToolBarUI extends BasicToolBarUI
         super.installUI(c);
         c.putClientProperty("JToolBar.isRollover", Boolean.TRUE);
     }
-    
-    
+
+
     /**
      * Paints the given component.
      *
@@ -95,7 +95,7 @@ public class LiquidToolBarUI extends BasicToolBarUI
             c.setOpaque(false);
             //Colors.drawStipples(g, c, c.getBackground());
         }
-        
+
         if (!isFloating())
         {
             if (toolBar.getOrientation() != orientation)
@@ -147,7 +147,7 @@ public class LiquidToolBarUI extends BasicToolBarUI
             }
         }
     }
-    
+
     /*
     // Liquid vertical handler , nice try but ...
     protected void drawHandler(Graphics g, int height)
@@ -202,7 +202,7 @@ public class LiquidToolBarUI extends BasicToolBarUI
         g2.fillRect(5, 5, 2, 10);
     }
      */
-    
+
     /**
      * Sets the border of the given component to a rollover border.
      *
@@ -216,7 +216,7 @@ public class LiquidToolBarUI extends BasicToolBarUI
             b.setBorder(border);
             b.putClientProperty("JToolBar.isToolbarButton", Boolean.TRUE);
         }
-        
+
     }
     protected void setBorderToNormal(Component c)
     {

@@ -1,12 +1,12 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-*	Liquid Look and Feel                                                   *
-*                                                                              *
-*  Author, Miroslav Lazarevic                                                  *
-*                                                                              *
-*   For licensing information and credits, please refer to the                 *
-*   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
-*                                                                              *
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+ *	Liquid Look and Feel                                                   *
+ *                                                                              *
+ *  Author, Miroslav Lazarevic                                                  *
+ *                                                                              *
+ *   For licensing information and credits, please refer to the                 *
+ *   comment in file com.birosoft.liquid.LiquidLookAndFeel                      *
+ *                                                                              *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 package com.birosoft.liquid.borders;
 
@@ -25,16 +25,16 @@ import javax.swing.plaf.UIResource;
  */
 public class LiquidPopupMenuBorder extends AbstractBorder implements UIResource
 {
-    
+
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
      * The border insets.
      */
     protected static Insets insets = new Insets(2, 2, 2, 2);
-    
+
     /**
      * Draws a simple 3d border for the given component.
      *
@@ -50,9 +50,9 @@ public class LiquidPopupMenuBorder extends AbstractBorder implements UIResource
         g.setColor(new Color(255,255,255));
         g.drawRect(1, 1, w-3, h-3);
         g.setColor(new Color(175,174,174));
-        g.drawRect(0, 0, w-1, h-1);        
+        g.drawRect(0, 0, w-1, h-1);
     }
-    
+
     /**
      * Gets the border insets for a given component.
      *

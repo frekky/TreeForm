@@ -97,16 +97,16 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
 
     static {
         java.security.AccessController.doPrivileged(new java.security.PrivilegedAction() {
-                public Object run() {
-                    newline = System.getProperty("line.separator");
+            public Object run() {
+                newline = System.getProperty("line.separator");
 
-                    if (newline == null) {
-                        newline = "\n";
-                    }
-
-                    return null;
+                if (newline == null) {
+                    newline = "\n";
                 }
-            });
+
+                return null;
+            }
+        });
     }
 
     /**
@@ -114,27 +114,27 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
      */
     private int[] mnemonics;
 
-	/**
-	 * <code>JOptionPane</code> that the receiver is providing the
-	 * look and feel for.
-	 * 
-	 * @uml.property name="optionPane"
-	 * @uml.associationEnd 
-	 * @uml.property name="optionPane" multiplicity="(0 1)"
-	 */
-	protected JOptionPane optionPane;
+    /**
+     * <code>JOptionPane</code> that the receiver is providing the
+     * look and feel for.
+     *
+     * @uml.property name="optionPane"
+     * @uml.associationEnd
+     * @uml.property name="optionPane" multiplicity="(0 1)"
+     */
+    protected JOptionPane optionPane;
 
     protected Dimension minimumSize;
 
-	/**
-	 * JComponent provide for input if optionPane.getWantsInput() returns
-	 * true.
-	 * 
-	 * @uml.property name="inputComponent"
-	 * @uml.associationEnd 
-	 * @uml.property name="inputComponent" multiplicity="(0 1)"
-	 */
-	protected JComponent inputComponent;
+    /**
+     * JComponent provide for input if optionPane.getWantsInput() returns
+     * true.
+     *
+     * @uml.property name="inputComponent"
+     * @uml.associationEnd
+     * @uml.property name="inputComponent" multiplicity="(0 1)"
+     */
+    protected JComponent inputComponent;
 
     /** Component to receive focus when messaged with selectInitialValue. */
     protected Component initialFocusComponent;
@@ -145,16 +145,16 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
     protected PropertyChangeListener propertyChangeListener;
 
     /**
-      * Creates a new BasicOptionPaneUI instance.
-      */
+     * Creates a new BasicOptionPaneUI instance.
+     */
     public static ComponentUI createUI(JComponent x) {
         return new LiquidOptionPaneUI();
     }
 
     /**
-      * Installs the receiver as the L&F for the passed in
-      * <code>JOptionPane</code>.
-      */
+     * Installs the receiver as the L&F for the passed in
+     * <code>JOptionPane</code>.
+     */
     public void installUI(JComponent c) {
         optionPane = (JOptionPane) c;
         installDefaults();
@@ -165,9 +165,9 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
     }
 
     /**
-      * Removes the receiver from the L&F controller of the passed in split
-      * pane.
-      */
+     * Removes the receiver from the L&F controller of the passed in split
+     * pane.
+     */
     public void uninstallUI(JComponent c) {
         uninstallComponents();
         optionPane.setLayout(null);
@@ -253,7 +253,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
     InputMap getInputMap(int condition) {
         if (condition == JComponent.WHEN_IN_FOCUSED_WINDOW) {
             Object[] bindings = (Object[]) UIManager.get(
-                    "OptionPane.windowBindings");
+                "OptionPane.windowBindings");
 
             if (bindings != null) {
                 return LookAndFeel.makeComponentInputMap(optionPane, bindings);
@@ -363,19 +363,19 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
         /* Fill the body. */
         Container body = new JPanel() {
 
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-            };
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+        };
 
         Container realBody = new JPanel() {
 
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-            };
+            /**
+             *
+             */
+            private static final long serialVersionUID = 1L;
+        };
 
         realBody.setLayout(new BorderLayout());
 
@@ -386,15 +386,15 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
 
         if (getIcon() != null) {
             Container sep = new JPanel() {
-                    /**
-				 * 
-				 */
-				private static final long serialVersionUID = 1L;
+                /**
+                 *
+                 */
+                private static final long serialVersionUID = 1L;
 
-					public Dimension getPreferredSize() {
-                        return new Dimension(15, 1);
-                    }
-                };
+                public Dimension getPreferredSize() {
+                    return new Dimension(15, 1);
+                }
+            };
 
             if (LiquidLookAndFeel.areStipplesUsed()) {
                 ((JPanel) sep).setOpaque(false);
@@ -497,21 +497,21 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                 if (nl == 0) {
                     addMessageComponents(container, cons,
                         new Component() {
-                            /**
-							 * 
-							 */
-							private static final long serialVersionUID = 1L;
+                        /**
+                         *
+                         */
+                        private static final long serialVersionUID = 1L;
 
-							public Dimension getPreferredSize() {
-                                Font f = getFont();
+                        public Dimension getPreferredSize() {
+                            Font f = getFont();
 
-                                if (f != null) {
-                                    return new Dimension(1, f.getSize() + 2);
-                                }
-
-                                return new Dimension(0, 0);
+                            if (f != null) {
+                                return new Dimension(1, f.getSize() + 2);
                             }
-                        }, maxll, true);
+
+                            return new Dimension(0, 0);
+                        }
+                    }, maxll, true);
                 } else {
                     addMessageComponents(container, cons, s.substring(0, nl),
                         maxll, false);
@@ -525,7 +525,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                 addMessageComponents(container, cons, c, maxll, true);
             } else {
                 JLabel label;
-                label = new JLabel(s, JLabel.LEADING);
+                label = new JLabel(s, SwingConstants.LEADING);
                 configureMessageLabel(label);
                 addMessageComponents(container, cons, label, maxll, true);
             }
@@ -555,7 +555,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                         JComboBox cBox = new JComboBox();
 
                         for (int counter = 0, maxCounter = sValues.length;
-                                counter < maxCounter; counter++) {
+                            counter < maxCounter; counter++) {
                             cBox.addItem(sValues[counter]);
                         }
 
@@ -585,7 +585,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
 
                     tf.setKeyStrokes(new KeyStroke[] {
                             KeyStroke.getKeyStroke("ENTER")
-                        });
+                    });
 
                     if (inputValue != null) {
                         String inputString = inputValue.toString();
@@ -683,9 +683,9 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
     }
 
     /**
-      * Recursively creates new JLabel instances to represent <code>d</code>.
-      * Each JLabel instance is added to <code>c</code>.
-      */
+     * Recursively creates new JLabel instances to represent <code>d</code>.
+     * Each JLabel instance is added to <code>c</code>.
+     */
     protected void burstStringInto(Container c, String d, int maxll) {
         // Primitive line wrapping
         int len = d.length();
@@ -709,7 +709,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
             }
         }
 
-        JLabel label = new JLabel(d, JLabel.LEFT);
+        JLabel label = new JLabel(d, SwingConstants.LEFT);
         configureMessageLabel(label);
         c.add(label);
     }
@@ -781,7 +781,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                     }
 
                     aButton.setMultiClickThreshhold(UIManager.getInt(
-                            "OptionPane.buttonClickThreshhold"));
+                        "OptionPane.buttonClickThreshhold"));
                     configureButton(aButton);
 
                     container.add(aButton);
@@ -800,10 +800,10 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                 }
 
                 if (sizeButtonsToSame && createdAll &&
-                        (newComponent instanceof JButton)) {
+                    (newComponent instanceof JButton)) {
                     createdButtons[counter] = (JButton) newComponent;
                     maxWidth = Math.max(maxWidth,
-                            newComponent.getMinimumSize().width);
+                        newComponent.getMinimumSize().width);
                 }
 
                 if (counter == initialIndex) {
@@ -812,21 +812,21 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                     if (initialFocusComponent instanceof JButton) {
                         JButton defaultB = (JButton) initialFocusComponent;
                         defaultB.addAncestorListener(new AncestorListener() {
-                                public void ancestorAdded(AncestorEvent e) {
-                                    JButton defaultButton = (JButton) e.getComponent();
-                                    JRootPane root = SwingUtilities.getRootPane(defaultButton);
+                            public void ancestorAdded(AncestorEvent e) {
+                                JButton defaultButton = (JButton) e.getComponent();
+                                JRootPane root = SwingUtilities.getRootPane(defaultButton);
 
-                                    if (root != null) {
-                                        root.setDefaultButton(defaultButton);
-                                    }
+                                if (root != null) {
+                                    root.setDefaultButton(defaultButton);
                                 }
+                            }
 
-                                public void ancestorRemoved(AncestorEvent event) {
-                                }
+                            public void ancestorRemoved(AncestorEvent event) {
+                            }
 
-                                public void ancestorMoved(AncestorEvent event) {
-                                }
-                            });
+                            public void ancestorMoved(AncestorEvent event) {
+                            }
+                        });
                     }
                 }
             }
@@ -876,39 +876,39 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                 if (type == JOptionPane.YES_NO_OPTION) {
                     defaultOptions = new String[2];
                     defaultOptions[0] = UIManager.get("OptionPane.yesButtonText",
-                            l);
+                        l);
                     defaultOptions[1] = UIManager.get("OptionPane.noButtonText",
-                            l);
+                        l);
                     mnemonics = new int[2];
                     mnemonics[0] = getMnemonic("OptionPane.yesButtonMnemonic", l);
                     mnemonics[1] = getMnemonic("OptionPane.noButtonMnemonic", l);
                 } else if (type == JOptionPane.YES_NO_CANCEL_OPTION) {
                     defaultOptions = new String[3];
                     defaultOptions[0] = UIManager.get("OptionPane.yesButtonText",
-                            l);
+                        l);
                     defaultOptions[1] = UIManager.get("OptionPane.noButtonText",
-                            l);
+                        l);
                     defaultOptions[2] = UIManager.get("OptionPane.cancelButtonText",
-                            l);
+                        l);
                     mnemonics = new int[3];
                     mnemonics[0] = getMnemonic("OptionPane.yesButtonMnemonic", l);
                     mnemonics[1] = getMnemonic("OptionPane.noButtonMnemonic", l);
                     mnemonics[2] = getMnemonic("OptionPane.cancelButtonMnemonic",
-                            l);
+                        l);
                 } else if (type == JOptionPane.OK_CANCEL_OPTION) {
                     defaultOptions = new String[2];
                     defaultOptions[0] = UIManager.get("OptionPane.okButtonText",
-                            l);
+                        l);
                     defaultOptions[1] = UIManager.get("OptionPane.cancelButtonText",
-                            l);
+                        l);
                     mnemonics = new int[2];
                     mnemonics[0] = getMnemonic("OptionPane.okButtonMnemonic", l);
                     mnemonics[1] = getMnemonic("OptionPane.cancelButtonMnemonic",
-                            l);
+                        l);
                 } else {
                     defaultOptions = new String[1];
                     defaultOptions[0] = UIManager.get("OptionPane.okButtonText",
-                            l);
+                        l);
                     mnemonics = new int[1];
                     mnemonics[0] = getMnemonic("OptionPane.okButtonMnemonic", l);
                 }
@@ -962,7 +962,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                 return 0;
             } else if (iv != null) {
                 for (int counter = options.length - 1; counter >= 0;
-                        counter--) {
+                    counter--) {
                     if (options[counter].equals(iv)) {
                         return counter;
                     }
@@ -981,7 +981,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
         if ((inputComponent != null) && (inputComponent instanceof JTextField)) {
             optionPane.setInputValue(((JTextField) inputComponent).getText());
         } else if ((inputComponent != null) &&
-                (inputComponent instanceof JComboBox)) {
+            (inputComponent instanceof JComboBox)) {
             optionPane.setInputValue(((JComboBox) inputComponent).getSelectedItem());
         } else if (inputComponent != null) {
             optionPane.setInputValue(((JList) inputComponent).getSelectedValue());
@@ -1141,7 +1141,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                         xLocation = (container.getSize().width - insets.left -
                             insets.right -
                             ((maxWidth * numChildren) +
-                            ((numChildren - 1) * padding))) / 2;
+                                ((numChildren - 1) * padding))) / 2;
                         xOffset = padding + maxWidth;
                     } else {
                         if (numChildren > 1) {
@@ -1153,7 +1153,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                         } else {
                             xLocation = insets.left +
                                 ((container.getSize().width - insets.left -
-                                insets.right - maxWidth) / 2);
+                                    insets.right - maxWidth) / 2);
                             xOffset = 0;
                         }
                     }
@@ -1189,7 +1189,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                     if (cc) {
                         xLocation = insets.left +
                             ((container.getSize().width - insets.left -
-                            insets.right - totalWidth) / 2);
+                                insets.right - totalWidth) / 2);
                         xOffset = padding;
                     } else {
                         if (numChildren > 1) {
@@ -1199,7 +1199,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                         } else {
                             xLocation = insets.left +
                                 ((container.getSize().width - insets.left -
-                                insets.right - totalWidth) / 2);
+                                    insets.right - totalWidth) / 2);
                             xOffset = 0;
                         }
                     }
@@ -1242,7 +1242,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                         int maxWidth = 0;
 
                         for (int counter = 0; counter < numChildren;
-                                counter++) {
+                            counter++) {
                             aSize = children[counter].getPreferredSize();
                             height = Math.max(height, aSize.height);
                             maxWidth = Math.max(maxWidth, aSize.width);
@@ -1256,7 +1256,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                         int totalWidth = 0;
 
                         for (int counter = 0; counter < numChildren;
-                                counter++) {
+                            counter++) {
                             aSize = children[counter].getPreferredSize();
                             height = Math.max(height, aSize.height);
                             totalWidth += aSize.width;
@@ -1297,7 +1297,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
             if (e.getSource() == optionPane) {
                 // Option Pane Auditory Cue Activation
                 // only respond to "ancestor" changes
-                // the idea being that a JOptionPane gets a JDialog when it is 
+                // the idea being that a JOptionPane gets a JDialog when it is
                 // set to appear and loses it's JDialog when it is dismissed.
                 if ("ancestor" == e.getPropertyName()) {
                     JOptionPane op = (JOptionPane) e.getSource();
@@ -1365,15 +1365,15 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                 String changeName = e.getPropertyName();
 
                 if (changeName.equals(JOptionPane.OPTIONS_PROPERTY) ||
-                        changeName.equals(JOptionPane.INITIAL_VALUE_PROPERTY) ||
-                        changeName.equals(JOptionPane.ICON_PROPERTY) ||
-                        changeName.equals(JOptionPane.MESSAGE_TYPE_PROPERTY) ||
-                        changeName.equals(JOptionPane.OPTION_TYPE_PROPERTY) ||
-                        changeName.equals(JOptionPane.MESSAGE_PROPERTY) ||
-                        changeName.equals(JOptionPane.SELECTION_VALUES_PROPERTY) ||
-                        changeName.equals(
-                            JOptionPane.INITIAL_SELECTION_VALUE_PROPERTY) ||
-                        changeName.equals(JOptionPane.WANTS_INPUT_PROPERTY)) {
+                    changeName.equals(JOptionPane.INITIAL_VALUE_PROPERTY) ||
+                    changeName.equals(JOptionPane.ICON_PROPERTY) ||
+                    changeName.equals(JOptionPane.MESSAGE_TYPE_PROPERTY) ||
+                    changeName.equals(JOptionPane.OPTION_TYPE_PROPERTY) ||
+                    changeName.equals(JOptionPane.MESSAGE_PROPERTY) ||
+                    changeName.equals(JOptionPane.SELECTION_VALUES_PROPERTY) ||
+                    changeName.equals(
+                        JOptionPane.INITIAL_SELECTION_VALUE_PROPERTY) ||
+                    changeName.equals(JOptionPane.WANTS_INPUT_PROPERTY)) {
                     uninstallComponents();
                     installComponents();
                     optionPane.validate();
@@ -1413,8 +1413,8 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
                  */
                 if (inputComponent != null) {
                     if ((options != null) ||
-                            (optionType == JOptionPane.DEFAULT_OPTION) ||
-                            (((optionType == JOptionPane.YES_NO_OPTION) ||
+                        (optionType == JOptionPane.DEFAULT_OPTION) ||
+                        (((optionType == JOptionPane.YES_NO_OPTION) ||
                             (optionType == JOptionPane.YES_NO_CANCEL_OPTION) ||
                             (optionType == JOptionPane.OK_CANCEL_OPTION)) &&
                             (buttonIndex == 0))) {
@@ -1424,7 +1424,7 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
 
                 if (options == null) {
                     if ((optionType == JOptionPane.OK_CANCEL_OPTION) &&
-                            (buttonIndex == 1)) {
+                        (buttonIndex == 1)) {
                         optionPane.setValue(new Integer(2));
                     } else {
                         optionPane.setValue(new Integer(buttonIndex));
@@ -1473,10 +1473,10 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
      */
     private static class MultiplexingTextField extends JTextField {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
-		private KeyStroke[] strokes;
+         *
+         */
+        private static final long serialVersionUID = 1L;
+        private KeyStroke[] strokes;
 
         MultiplexingTextField(int cols) {
             super(cols);
@@ -1493,11 +1493,11 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
         protected boolean processKeyBinding(KeyStroke ks, KeyEvent e,
             int condition, boolean pressed) {
             boolean processed = super.processKeyBinding(ks, e, condition,
-                    pressed);
+                pressed);
 
             if (processed && (condition != JComponent.WHEN_IN_FOCUSED_WINDOW)) {
                 for (int counter = strokes.length - 1; counter >= 0;
-                        counter--) {
+                    counter--) {
                     if (strokes[counter].equals(ks)) {
                         // Returning false will allow further processing
                         // of the bindings, eg our parent Containers will get a
@@ -1521,11 +1521,11 @@ public class LiquidOptionPaneUI extends OptionPaneUI {
      */
     private static class CloseAction extends AbstractAction {
         /**
-		 * 
-		 */
-		private static final long serialVersionUID = 1L;
+         *
+         */
+        private static final long serialVersionUID = 1L;
 
-		public void actionPerformed(ActionEvent e) {
+        public void actionPerformed(ActionEvent e) {
             JOptionPane optionPane = (JOptionPane) e.getSource();
 
             optionPane.setValue(new Integer(JOptionPane.CLOSED_OPTION));

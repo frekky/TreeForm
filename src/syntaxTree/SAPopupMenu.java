@@ -22,7 +22,7 @@ package syntaxTree;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -33,50 +33,50 @@ import javax.swing.JPopupMenu;
  */
 public class SAPopupMenu extends JPopupMenu {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * 
-	 * @uml.property name="mSF"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSF" multiplicity="(1 1)"
-	 */
-	private SyntaxFacade mSF;
+    /**
+     *
+     * @uml.property name="mSF"
+     * @uml.associationEnd
+     * @uml.property name="mSF" multiplicity="(1 1)"
+     */
+    private SyntaxFacade mSF;
 
-	/**
-	 * 
-	 * @uml.property name="mSA"
-	 * @uml.associationEnd 
-	 * @uml.property name="mSA" multiplicity="(1 1)"
-	 */
-	private SyntacticAssociation mSA;
+    /**
+     *
+     * @uml.property name="mSA"
+     * @uml.associationEnd
+     * @uml.property name="mSA" multiplicity="(1 1)"
+     */
+    private SyntacticAssociation mSA;
 
-	/**
-	 * 
-	 * @uml.property name="mDeleteSubtree"
-	 * @uml.associationEnd 
-	 * @uml.property name="mDeleteSubtree" multiplicity="(1 1)"
-	 */
-	private JMenuItem mDeleteAssociation;
+    /**
+     *
+     * @uml.property name="mDeleteSubtree"
+     * @uml.associationEnd
+     * @uml.property name="mDeleteSubtree" multiplicity="(1 1)"
+     */
+    private JMenuItem mDeleteAssociation;
 
-/**
- * 
- * @param pSF The SyntaxFacade for this menu
- * @param pSA The SyntacticAssociation associated with this menu
- * <br>
- * This menu includes only DeleteAssociation.  
- * TODO: Add i18n
- */
-	public SAPopupMenu(SyntaxFacade pSF, SyntacticAssociation pSA)
-	{
-		mSA = pSA;
-		mSF = pSF;
-		mDeleteAssociation = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_ASSOCIATION"));
-		mDeleteAssociation.addActionListener(new ListenerAssociation(mSF, mSA));
-		add(mDeleteAssociation);
-		
-	}
+    /**
+     *
+     * @param pSF The SyntaxFacade for this menu
+     * @param pSA The SyntacticAssociation associated with this menu
+     * <br>
+     * This menu includes only DeleteAssociation.
+     * TODO: Add i18n
+     */
+    public SAPopupMenu(SyntaxFacade pSF, SyntacticAssociation pSA)
+    {
+        mSA = pSA;
+        mSF = pSF;
+        mDeleteAssociation = new JMenuItem((String) pSF.getUIF().getUserFrame().getI18n().getObject("DELETE_ASSOCIATION"));
+        mDeleteAssociation.addActionListener(new ListenerAssociation(mSF, mSA));
+        add(mDeleteAssociation);
+
+    }
 }

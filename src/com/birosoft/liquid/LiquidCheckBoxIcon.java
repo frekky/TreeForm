@@ -29,19 +29,19 @@ import javax.swing.plaf.UIResource;
  */
 public class LiquidCheckBoxIcon implements Icon, UIResource, Serializable {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	protected static Skin skin;
+    protected static Skin skin;
 
-	/**
-	 * 
-	 * @uml.property name="indexModel"
-	 * @uml.associationEnd 
-	 * @uml.property name="indexModel" multiplicity="(1 1)"
-	 */
-	private SkinToggleButtonIndexModel indexModel = new SkinToggleButtonIndexModel();
+    /**
+     *
+     * @uml.property name="indexModel"
+     * @uml.associationEnd
+     * @uml.property name="indexModel" multiplicity="(1 1)"
+     */
+    private SkinToggleButtonIndexModel indexModel = new SkinToggleButtonIndexModel();
 
 
     /**
@@ -74,16 +74,16 @@ public class LiquidCheckBoxIcon implements Icon, UIResource, Serializable {
         return getSkin().getVsize();
     }
 
-	/**
-	 * 
-	 * @uml.property name="skin"
-	 */
-	public Skin getSkin() {
-		if (skin == null) {
-			skin = new Skin("checkbox.png", 8, 0);
-		}
+    /**
+     *
+     * @uml.property name="skin"
+     */
+    public Skin getSkin() {
+        if (skin == null) {
+            skin = new Skin("checkbox.png", 8, 0);
+        }
 
-		return skin;
-	}
+        return skin;
+    }
 
 }

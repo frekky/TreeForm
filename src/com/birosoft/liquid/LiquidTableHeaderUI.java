@@ -55,43 +55,43 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
     protected final static int HEADER_HEIGHT = 22;
     private int columnSelected = -1;
 
-	/**
-	 * 
-	 * @uml.property name="skin"
-	 * @uml.associationEnd 
-	 * @uml.property name="skin" multiplicity="(0 1)"
-	 */
-	private Skin skin;
+    /**
+     *
+     * @uml.property name="skin"
+     * @uml.associationEnd
+     * @uml.property name="skin" multiplicity="(0 1)"
+     */
+    private Skin skin;
 
-	//
-	// Instance Variables
-	//
+    //
+    // Instance Variables
+    //
 
-	/**
-	 * The JTableHeader that is delegating the painting to this UI.
-	 * 
-	 * @uml.property name="header"
-	 * @uml.associationEnd 
-	 * @uml.property name="header" multiplicity="(0 -1)" elementType="javax.swing.table.TableColumn"
-	 */
-	protected JTableHeader header;
+    /**
+     * The JTableHeader that is delegating the painting to this UI.
+     *
+     * @uml.property name="header"
+     * @uml.associationEnd
+     * @uml.property name="header" multiplicity="(0 -1)" elementType="javax.swing.table.TableColumn"
+     */
+    protected JTableHeader header;
 
-	/**
-	 * 
-	 * @uml.property name="rendererPane"
-	 * @uml.associationEnd 
-	 * @uml.property name="rendererPane" multiplicity="(0 1)"
-	 */
-	protected CellRendererPane rendererPane;
+    /**
+     *
+     * @uml.property name="rendererPane"
+     * @uml.associationEnd
+     * @uml.property name="rendererPane" multiplicity="(0 1)"
+     */
+    protected CellRendererPane rendererPane;
 
-	/**
-	 * 
-	 * @uml.property name="mouseInputListener"
-	 * @uml.associationEnd 
-	 * @uml.property name="mouseInputListener" multiplicity="(0 1)"
-	 */
-	// Listeners that are attached to the JTable
-	protected MouseInputListener mouseInputListener;
+    /**
+     *
+     * @uml.property name="mouseInputListener"
+     * @uml.associationEnd
+     * @uml.property name="mouseInputListener" multiplicity="(0 1)"
+     */
+    // Listeners that are attached to the JTable
+    protected MouseInputListener mouseInputListener;
 
     //
     //  Factory methods for the Listeners
@@ -193,7 +193,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
         int cMin = header.columnAtPoint(ltr ? left : right);
         int cMax = header.columnAtPoint(ltr ? right : left);
 
-        // This should never happen. 
+        // This should never happen.
         if (cMin == -1) {
             cMin = 0;
         }
@@ -244,19 +244,19 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
             }
         }
 
-        // Paint the dragged column if we are dragging. 
+        // Paint the dragged column if we are dragging.
         if (draggedColumn != null) {
             int draggedColumnIndex = viewIndexForColumn(draggedColumn);
             Rectangle draggedCellRect = header.getHeaderRect(draggedColumnIndex);
 
-            // Draw a gray well in place of the moving column. 
+            // Draw a gray well in place of the moving column.
             g.setColor(header.getParent().getBackground());
             g.fillRect(draggedCellRect.x, draggedCellRect.y,
                 draggedCellRect.width, draggedCellRect.height);
 
             draggedCellRect.x += header.getDraggedDistance();
 
-            // Fill the background. 
+            // Fill the background.
             g.setColor(header.getBackground());
             g.fillRect(draggedCellRect.x, draggedCellRect.y,
                 draggedCellRect.width, draggedCellRect.height);
@@ -264,7 +264,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
             paintCell(g, draggedCellRect, draggedColumnIndex);
         }
 
-        // Remove all components in the rendererPane. 
+        // Remove all components in the rendererPane.
         rendererPane.removeAll();
     }
 
@@ -358,8 +358,8 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
      * Return the minimum size of the header. The minimum width is the sum
      * of the minimum widths of each column (plus inter-cell spacing).
      */
- //   @SuppressWarnings("unchecked")
-	public Dimension getMinimumSize(JComponent c) {
+    //   @SuppressWarnings("unchecked")
+    public Dimension getMinimumSize(JComponent c) {
         long width = 0;
         Enumeration enumeration = header.getColumnModel().getColumns();
 
@@ -377,8 +377,8 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
      * by the header renderers. The preferred width is the sum of the
      * preferred widths of each column (plus inter-cell spacing).
      */
- //   @SuppressWarnings("unchecked")
-	public Dimension getPreferredSize(JComponent c) {
+    //   @SuppressWarnings("unchecked")
+    public Dimension getPreferredSize(JComponent c) {
         long width = 0;
         Enumeration enumeration = header.getColumnModel().getColumns();
 
@@ -394,8 +394,8 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
      * Return the maximum size of the header. The maximum width is the sum
      * of the maximum widths of each column (plus inter-cell spacing).
      */
- //   @SuppressWarnings("unchecked")
-	public Dimension getMaximumSize(JComponent c) {
+    //   @SuppressWarnings("unchecked")
+    public Dimension getMaximumSize(JComponent c) {
         long width = 0;
         Enumeration enumeration = header.getColumnModel().getColumns();
 
@@ -429,7 +429,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
 
         private boolean canResize(TableColumn column) {
             return (column != null) && header.getResizingAllowed() &&
-            column.getResizable();
+                column.getResizable();
         }
 
         private TableColumn getResizingColumn(Point p) {
@@ -522,7 +522,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
             TableColumn draggedColumn = header.getDraggedColumn();
 
             boolean headerLeftToRight = header.getComponentOrientation()
-                                              .isLeftToRight();
+                .isLeftToRight();
 
             if (resizingColumn != null) {
                 int oldWidth = resizingColumn.getWidth();
@@ -539,13 +539,13 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
                 Container container;
 
                 if ((header.getParent() == null) ||
-                        ((container = header.getParent().getParent()) == null) ||
-                        !(container instanceof JScrollPane)) {
+                    ((container = header.getParent().getParent()) == null) ||
+                    !(container instanceof JScrollPane)) {
                     return;
                 }
 
                 if (!container.getComponentOrientation().isLeftToRight() &&
-                        !headerLeftToRight) {
+                    !headerLeftToRight) {
                     JTable table = header.getTable();
 
                     if (table != null) {
@@ -564,11 +564,11 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
                          * a view's position.
                          */
                         if ((newHeaderWidth >= viewportWidth) &&
-                                (table.getAutoResizeMode() == JTable.AUTO_RESIZE_OFF)) {
+                            (table.getAutoResizeMode() == JTable.AUTO_RESIZE_OFF)) {
                             Point p = viewport.getViewPosition();
                             p.x = Math.max(0,
-                                    Math.min(newHeaderWidth - viewportWidth,
-                                        p.x + diff));
+                                Math.min(newHeaderWidth - viewportWidth,
+                                    p.x + diff));
                             viewport.setViewPosition(p);
 
                             /* Update the original X offset value. */
@@ -585,7 +585,7 @@ public class LiquidTableHeaderUI extends TableHeaderUI {
                     (headerLeftToRight ? direction : (-direction));
 
                 if ((0 <= newColumnIndex) &&
-                        (newColumnIndex < cm.getColumnCount())) {
+                    (newColumnIndex < cm.getColumnCount())) {
                     int width = cm.getColumn(newColumnIndex).getWidth();
 
                     if (Math.abs(draggedDistance) > (width / 2)) {

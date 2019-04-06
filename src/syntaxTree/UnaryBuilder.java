@@ -26,7 +26,7 @@ import java.text.AttributedString;
 import userInterface.UserInternalFrame;
 import enumerators.SyntacticLevel;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -37,49 +37,49 @@ import enumerators.SyntacticLevel;
  */
 public class UnaryBuilder extends AbstractStructureBuilder {
 
-/**
- * @param pInternalFrame The internal Frame that this structure will be attached to.
- * @return Returns a constructed SyntacticStructure
- * <br>
- * <br>
- * This structure contains a tree with "XP" text and a subtree with "X"
- * <br><br>
- * Note that SyntacticLevels are not inforced.
- */
-//@SupressWarnings("unchecked")
-public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
+    /**
+     * @param pInternalFrame The internal Frame that this structure will be attached to.
+     * @return Returns a constructed SyntacticStructure
+     * <br>
+     * <br>
+     * This structure contains a tree with "XP" text and a subtree with "X"
+     * <br><br>
+     * Note that SyntacticLevels are not inforced.
+     */
+    //@SupressWarnings("unchecked")
+    public SyntacticStructure buildSentence(UserInternalFrame pInternalFrame) {
 
-	SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
-	lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
+        SyntacticStructure lSyntacticStructureTop = new SyntacticStructure(pInternalFrame,null);
+        lSyntacticStructureTop.setLineColor(pInternalFrame.getProperties().getLineColor());
 
-	AttributedString lAttributedString = new AttributedString("XP");
-	Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
-	lAttributedString.addAttribute(TextAttribute.FONT, lFont);
-	lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
-	lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
-	lSyntacticStructureTop.setHead(lAttributedString);
-	lSyntacticStructureTop.setSyntacticLevel(SyntacticLevel.DOUBLE_BAR);
-	pInternalFrame.getContentPane().add(lSyntacticStructureTop);	
-	pInternalFrame.getContentPane().add(lSyntacticStructureTop.getSyntacticStructureLines());
-			
-	SyntacticStructure lSyntacticStructureCenter = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
-	lSyntacticStructureCenter.setLineColor(pInternalFrame.getProperties().getLineColor());
+        AttributedString lAttributedString = new AttributedString("XP");
+        Font lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
+        lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+        lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+        lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
+        lSyntacticStructureTop.setHead(lAttributedString);
+        lSyntacticStructureTop.setSyntacticLevel(SyntacticLevel.DOUBLE_BAR);
+        pInternalFrame.getContentPane().add(lSyntacticStructureTop);
+        pInternalFrame.getContentPane().add(lSyntacticStructureTop.getSyntacticStructureLines());
 
-	lAttributedString = new AttributedString("X");
-	lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
-	lAttributedString.addAttribute(TextAttribute.FONT, lFont);
-	lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
-	lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
-	lSyntacticStructureCenter.setHead(lAttributedString);
-	lSyntacticStructureCenter.setSyntacticLevel(SyntacticLevel.HEAD);
-	pInternalFrame.getContentPane().add(lSyntacticStructureCenter);
-	pInternalFrame.getContentPane().add(lSyntacticStructureCenter.getSyntacticStructureLines());
-			
-	lSyntacticStructureTop.getChildren().add(lSyntacticStructureCenter);
-		
-	return lSyntacticStructureTop;
-	
-		}
+        SyntacticStructure lSyntacticStructureCenter = new SyntacticStructure(pInternalFrame,lSyntacticStructureTop);
+        lSyntacticStructureCenter.setLineColor(pInternalFrame.getProperties().getLineColor());
+
+        lAttributedString = new AttributedString("X");
+        lFont = new Font("Doulos SIL", Font.PLAIN, pInternalFrame.getProperties().getDefaultFontSize());
+        lAttributedString.addAttribute(TextAttribute.FONT, lFont);
+        lAttributedString.addAttribute(TextAttribute.FOREGROUND, pInternalFrame.getProperties().getFontColor());
+        lAttributedString.addAttribute(TextAttribute.BACKGROUND,pInternalFrame.getProperties().getBackgroundColor());
+        lSyntacticStructureCenter.setHead(lAttributedString);
+        lSyntacticStructureCenter.setSyntacticLevel(SyntacticLevel.HEAD);
+        pInternalFrame.getContentPane().add(lSyntacticStructureCenter);
+        pInternalFrame.getContentPane().add(lSyntacticStructureCenter.getSyntacticStructureLines());
+
+        lSyntacticStructureTop.getChildren().add(lSyntacticStructureCenter);
+
+        return lSyntacticStructureTop;
+
+    }
 
 
 }

@@ -31,109 +31,109 @@ import javax.swing.JComponent;
 
 public class UserHighlightPane extends JComponent {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	private UserFrame mUserFrame;
+    private UserFrame mUserFrame;
 
-	private int mEndX;
+    private int mEndX;
 
-	private int mEndY;
+    private int mEndY;
 
-	private int mStartX;
+    private int mStartX;
 
-	private int mStartY;
+    private int mStartY;
 
-	private boolean mHighlight;
+    private boolean mHighlight;
 
 
-	public UserHighlightPane(
-		UserFrame pUserFrame
-		) {
-		mUserFrame = pUserFrame;
-	}
+    public UserHighlightPane(
+        UserFrame pUserFrame
+        ) {
+        mUserFrame = pUserFrame;
+    }
 
-	public void paint(Graphics g) {
-		Graphics2D lGraphics2D = (Graphics2D) g;
-		lGraphics2D.setRenderingHint(
-			RenderingHints.KEY_ANTIALIASING,
-			RenderingHints.VALUE_ANTIALIAS_ON);
-		lGraphics2D.setRenderingHint(
-			RenderingHints.KEY_RENDERING,
-			RenderingHints.VALUE_RENDER_QUALITY);
-		
-		GeneralPath polly = new GeneralPath();
-		// move the pollygon to the middle and bottom
-		polly.moveTo(mStartX,mStartY);
-		polly.lineTo(mStartX,mEndY);
-		polly.lineTo(mEndX,mEndY);
-		polly.lineTo(mEndX,mStartY);
-		polly.closePath();
-		if (mHighlight)
-		{
-		lGraphics2D.setColor(new Color(0,0,255,90));
-		}
-		else
-		{
-			lGraphics2D.setColor(new Color(0,0,0,90));
-		}
-		lGraphics2D.draw(polly);
-		if (mHighlight)
-		{
-			lGraphics2D.setColor(new Color(0,0,255,30));
-			}
-			else
-			{
-				lGraphics2D.setColor(new Color(0,0,0,30));
-			}
-		lGraphics2D.fill(polly);
-		//System.out.println(mStartX + " : " + mStartY + " : " + mEndX + " : " + mEndY);
-	}
+    public void paint(Graphics g) {
+        Graphics2D lGraphics2D = (Graphics2D) g;
+        lGraphics2D.setRenderingHint(
+            RenderingHints.KEY_ANTIALIASING,
+            RenderingHints.VALUE_ANTIALIAS_ON);
+        lGraphics2D.setRenderingHint(
+            RenderingHints.KEY_RENDERING,
+            RenderingHints.VALUE_RENDER_QUALITY);
 
-	
+        GeneralPath polly = new GeneralPath();
+        // move the pollygon to the middle and bottom
+        polly.moveTo(mStartX,mStartY);
+        polly.lineTo(mStartX,mEndY);
+        polly.lineTo(mEndX,mEndY);
+        polly.lineTo(mEndX,mStartY);
+        polly.closePath();
+        if (mHighlight)
+        {
+            lGraphics2D.setColor(new Color(0,0,255,90));
+        }
+        else
+        {
+            lGraphics2D.setColor(new Color(0,0,0,90));
+        }
+        lGraphics2D.draw(polly);
+        if (mHighlight)
+        {
+            lGraphics2D.setColor(new Color(0,0,255,30));
+        }
+        else
+        {
+            lGraphics2D.setColor(new Color(0,0,0,30));
+        }
+        lGraphics2D.fill(polly);
+        //System.out.println(mStartX + " : " + mStartY + " : " + mEndX + " : " + mEndY);
+    }
 
-	public void exit() {
-		mUserFrame.getDesktopPane().getInternalFrame().deactivateHighlightPane();
-	}
 
-	public void setEndPosition(int x, int y) {
-		mEndX = x;
-		mEndY = y;
-		repaint();
-	}
 
-	public void copyImage() {
-		if (!mHighlight)
-		{	
-			mUserFrame.getUserControl().copyTree(Math.abs(mStartX - mEndX),
-					Math.abs(mStartY - mEndY),
-					((mStartX < mEndX) ? mStartX : mEndX), 
-					((mStartY < mEndY) ? mStartY : mEndY));
-		}
-		else
-		{
-			mUserFrame.getSyntaxFacade().selectTree(
-					((mStartX < mEndX) ? mStartX : mEndX), 
-					((mStartY < mEndY) ? mStartY : mEndY),
-					((mStartX > mEndX) ? mStartX : mEndX), 
-					((mStartY > mEndY) ? mStartY : mEndY));
-		}
-		exit();
-	}
+    public void exit() {
+        mUserFrame.getDesktopPane().getInternalFrame().deactivateHighlightPane();
+    }
 
-	public void setStartPosition(int x, int y) {
-		mStartX = x;
-		mStartY = y;	
-	}
+    public void setEndPosition(int x, int y) {
+        mEndX = x;
+        mEndY = y;
+        repaint();
+    }
 
-	public void setHighlightType(MouseEvent e) {
-		if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) !=0)  
-		{
-			mHighlight = false;
-		}
-		else
-		{
-			mHighlight = true;
-		}
-		
-	}
+    public void copyImage() {
+        if (!mHighlight)
+        {
+            mUserFrame.getUserControl().copyTree(Math.abs(mStartX - mEndX),
+                Math.abs(mStartY - mEndY),
+                ((mStartX < mEndX) ? mStartX : mEndX),
+                ((mStartY < mEndY) ? mStartY : mEndY));
+        }
+        else
+        {
+            mUserFrame.getSyntaxFacade().selectTree(
+                ((mStartX < mEndX) ? mStartX : mEndX),
+                ((mStartY < mEndY) ? mStartY : mEndY),
+                ((mStartX > mEndX) ? mStartX : mEndX),
+                ((mStartY > mEndY) ? mStartY : mEndY));
+        }
+        exit();
+    }
+
+    public void setStartPosition(int x, int y) {
+        mStartX = x;
+        mStartY = y;
+    }
+
+    public void setHighlightType(MouseEvent e) {
+        if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) !=0)
+        {
+            mHighlight = false;
+        }
+        else
+        {
+            mHighlight = true;
+        }
+
+    }
 }

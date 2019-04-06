@@ -20,7 +20,7 @@
 package syntaxTree;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -31,13 +31,13 @@ package syntaxTree;
  * but time runs out!
  */
 public class TypeNotFoundError extends Exception {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public String getMessage()
-	{
-		return "Please supply a SyntacticStructureType";
-	}
+    public String getMessage()
+    {
+        return "Please supply a SyntacticStructureType";
+    }
 }

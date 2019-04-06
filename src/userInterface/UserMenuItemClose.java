@@ -25,7 +25,7 @@ import java.util.Observer;
 import javax.swing.JMenuItem;
 
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -36,40 +36,40 @@ import javax.swing.JMenuItem;
  */
 public class UserMenuItemClose extends JMenuItem implements Observer {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * 
-	 * @uml.property name="mObservableNew"
-	 * @uml.associationEnd 
-	 * @uml.property name="mObservableNew" multiplicity="(1 1)"
-	 */
-	private ObservableNew mObservableNew;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    /**
+     *
+     * @uml.property name="mObservableNew"
+     * @uml.associationEnd
+     * @uml.property name="mObservableNew" multiplicity="(1 1)"
+     */
+    private ObservableNew mObservableNew;
 
-/**
- * 
- * @param string The title of this menu
- * @param pObservableNew The ObservableNew Object needed to keep track of InternalFrames
- */
-	public UserMenuItemClose(String string , ObservableNew pObservableNew) {
-		super(string);
-		mObservableNew = pObservableNew;
-	}
+    /**
+     *
+     * @param string The title of this menu
+     * @param pObservableNew The ObservableNew Object needed to keep track of InternalFrames
+     */
+    public UserMenuItemClose(String string , ObservableNew pObservableNew) {
+        super(string);
+        mObservableNew = pObservableNew;
+    }
 
-	public void update(Observable pObservable, Object pObject) {
-		if (pObservable == mObservableNew)
-	   {
-		  if (mObservableNew.getValue() == 0)
-		  {
-			this.setEnabled(false);
-		  }
-		  else
-		  {
-			this.setEnabled(true);
-		  }
-	   }
-	}
+    public void update(Observable pObservable, Object pObject) {
+        if (pObservable == mObservableNew)
+        {
+            if (mObservableNew.getValue() == 0)
+            {
+                this.setEnabled(false);
+            }
+            else
+            {
+                this.setEnabled(true);
+            }
+        }
+    }
 
 }

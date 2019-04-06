@@ -22,7 +22,7 @@ package syntaxTree;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 /**
- * 
+ *
  * @author Donald Derrick
  * @version 0.1
  * <br>
@@ -33,20 +33,20 @@ import java.awt.event.ActionListener;
  */
 public class ListenerMove implements ActionListener {
 
-	/**
-	 * 
-	 * @param pSF The SyntaxFacade holding all these commands
-	 * @param pSS The SyntacticStructure attached to this listener.
-	 */
-	public ListenerMove(SyntaxFacade pSF, SyntacticStructure pSS)
-	{
-	}
-/**
- * DISABLED
- */
-	public void actionPerformed(ActionEvent pAE) {
-		//mSF.moveSyntacticStructure()
+    /**
+     *
+     * @param pSF The SyntaxFacade holding all these commands
+     * @param pSS The SyntacticStructure attached to this listener.
+     */
+    public ListenerMove(SyntaxFacade pSF, SyntacticStructure pSS)
+    {
+    }
+    /**
+     * DISABLED
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        //mSF.moveSyntacticStructure()
 
-	}
+    }
 
 }

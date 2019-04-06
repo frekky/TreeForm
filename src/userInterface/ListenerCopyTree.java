@@ -24,48 +24,48 @@ import java.awt.event.ActionListener;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Listener classes (part of the Java Command design pattern
  * interface) designed to fire UserControl commands that operate non-sentence
  * GUI interaction in TreeFrom
- *  
+ *
  */
 public class ListenerCopyTree implements ActionListener {
 
-	/**
-	 * Constructor
-	 * @param pUserFrame - Passes a copy of the user frame (which currently works
-	 * as the facade for this program 
-	 * 
-	 * NOTE: This is not strictly speaking the correct way to do things, and
-	 * future revisions should involve implementing a joined facade class instead of
-	 * using the UserFrame and the UserInternalFrame as the two facades.
-	 * 
-	 * @uml.property name="mUserFrame"
-	 * @uml.associationEnd 
-	 * @uml.property name="mUserFrame" multiplicity="(1 1)"
-	 */
-	private UserFrame mUserFrame;
+    /**
+     * Constructor
+     * @param pUserFrame - Passes a copy of the user frame (which currently works
+     * as the facade for this program
+     *
+     * NOTE: This is not strictly speaking the correct way to do things, and
+     * future revisions should involve implementing a joined facade class instead of
+     * using the UserFrame and the UserInternalFrame as the two facades.
+     *
+     * @uml.property name="mUserFrame"
+     * @uml.associationEnd
+     * @uml.property name="mUserFrame" multiplicity="(1 1)"
+     */
+    private UserFrame mUserFrame;
 
-	public ListenerCopyTree(UserFrame pUserFrame) {
-		super();
-		mUserFrame = pUserFrame;
-	}
+    public ListenerCopyTree(UserFrame pUserFrame) {
+        super();
+        mUserFrame = pUserFrame;
+    }
 
-	/**
-	 * @param pAE - Passes an action event to the listener
-	 * 
-	 * This listener copies the selected item into the clipboard.
-	 * 
-	 * TODO: Delete not implemented.
-	 * 
-	 */
-	public void actionPerformed(ActionEvent pAE) {
-		mUserFrame.getUserControl().copyTree(
-				mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().getRightShift() + 40,
-				mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().getBottomShift() + 40,
-				0,0);
-	}
+    /**
+     * @param pAE - Passes an action event to the listener
+     *
+     * This listener copies the selected item into the clipboard.
+     *
+     * TODO: Delete not implemented.
+     *
+     */
+    public void actionPerformed(ActionEvent pAE) {
+        mUserFrame.getUserControl().copyTree(
+            mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().getRightShift() + 40,
+            mUserFrame.getDesktopPane().getInternalFrame().getSyntaxFacade().getBottomShift() + 40,
+            0,0);
+    }
 
 }

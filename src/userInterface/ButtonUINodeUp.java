@@ -30,102 +30,102 @@ import staticFunctions.Sizer;
 
 /**
  * @author Donald Derrick
- * @version 0.1 
- * 
+ * @version 0.1
+ *
  * This is one of several Object Browser buttons designed to contain the necessary
- * information to drive sentence generation using the GUI.  
- *  
+ * information to drive sentence generation using the GUI.
+ *
  */
 public class ButtonUINodeUp extends UserBrowserButton {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	public ButtonUINodeUp(UserFrame pUserFrame, Object pButtonType) {
-		super(pUserFrame, pButtonType);
-		// TODO Auto-generated constructor stub
-	}
+    public ButtonUINodeUp(UserFrame pUserFrame, Object pButtonType) {
+        super(pUserFrame, pButtonType);
+        // TODO Auto-generated constructor stub
+    }
 
-	/**
-	 * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
-	 * @param pC  This parameter is the component to be painted.  repaint() sends
-	 * the component holding this UI to paint(a,b), but a programmer may send
-	 * any component they wish.
-	 * 
-	 * Like all the painting tasks for Object Broser buttons, this draws the text
-	 * you see in the button, and resizes it according to your screen resolution.
-	 * 
-	 */
-	public void paintComponent(Graphics pG) {
-		super.paintComponent(pG);
-		this.prepaint(pG);	
-		AttributedString ats;
-		AttributedCharacterIterator iter;
-		TextLayout tl;
-		if (!mDrag)
-		{
-		ats = new AttributedString("F2");
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,4,11);
-		
-		}
-//		 set the string (internationalize later!)		
-		ats = new AttributedString((String) getResourceBundle().getObject("NODE_UP_TEXT"));
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		// create a textlayout from the font, string, and font render context.
-		tl = new TextLayout(iter, mFrc);
-		// draw the font				
-		tl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-			(float) (mDim.getHeight() - 2));
+    /**
+     * @param pG  This parameter is the Graphics (and 2DGraphics) from the component
+     * @param pC  This parameter is the component to be painted.  repaint() sends
+     * the component holding this UI to paint(a,b), but a programmer may send
+     * any component they wish.
+     *
+     * Like all the painting tasks for Object Broser buttons, this draws the text
+     * you see in the button, and resizes it according to your screen resolution.
+     *
+     */
+    public void paintComponent(Graphics pG) {
+        super.paintComponent(pG);
+        this.prepaint(pG);
+        AttributedString ats;
+        AttributedCharacterIterator iter;
+        TextLayout tl;
+        if (!mDrag)
+        {
+            ats = new AttributedString("F2");
+            ats.addAttribute(TextAttribute.FONT, mFont);
+            iter = ats.getIterator();
+            // create a textlayout from the font, string, and font render context.
+            tl = new TextLayout(iter, mFrc);
+            // draw the font
+            tl.draw(
+                mGraphics2D,4,11);
 
-		ats = new AttributedString("X");
-		mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
-		ats.addAttribute(TextAttribute.FONT, mFont);
-		iter = ats.getIterator();
-		tl = new TextLayout(iter, mFrc);
-		tl.draw(
-			mGraphics2D,
-			(float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
-			(float) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5) -1);
+        }
+        //		 set the string (internationalize later!)
+        ats = new AttributedString((String) getResourceBundle().getObject("NODE_UP_TEXT"));
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        iter = ats.getIterator();
+        // create a textlayout from the font, string, and font render context.
+        tl = new TextLayout(iter, mFrc);
+        // draw the font
+        tl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+            (float) (mDim.getHeight() - 2));
 
-		// draw the lines below the X-double-bar
+        ats = new AttributedString("X");
+        mFont = mFont.deriveFont(mFont.getStyle(), mFont.getSize() - 2);
+        ats.addAttribute(TextAttribute.FONT, mFont);
+        iter = ats.getIterator();
+        tl = new TextLayout(iter, mFrc);
+        tl.draw(
+            mGraphics2D,
+            (float) ((mDim.getWidth() - tl.getBounds().getWidth()) / 2),
+            (float) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5) -1);
 
-		Rectangle drawCenter =
-			new Rectangle(
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
-				(int) ((mDim.getWidth()) / 2),
-				(int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
-					+ Sizer.UILineLength()
-					+ 2);
+        // draw the lines below the X-double-bar
 
-		mGraphics2D.drawLine(
-			drawCenter.width,
-			drawCenter.height,
-			drawCenter.x,
-			drawCenter.y);
-		
+        Rectangle drawCenter =
+            new Rectangle(
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + (tl.getBounds().getHeight() * 1.5) + 2),
+                (int) ((mDim.getWidth()) / 2),
+                (int) ((mDim.getHeight() /4) + tl.getBounds().getHeight() * 1.5)
+                + Sizer.UILineLength()
+                + 2);
 
-		// repeat for the SPEC
-//		ats = new AttributedString("X");
-//		ats.addAttribute(TextAttribute.FONT, mFont);
-//		iter = ats.getIterator();
-//		tl = new TextLayout(iter, mFrc);
-//		Dimension positionCenter =
-//			new Dimension(
-//				(int) (drawCenter.width - tl.getBounds().getWidth() / 2),
-//				(int) (drawCenter.height + tl.getBounds().getHeight() + 3));
-//		tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
-		this.postpaint();
-	}
+        mGraphics2D.drawLine(
+            drawCenter.width,
+            drawCenter.height,
+            drawCenter.x,
+            drawCenter.y);
+
+
+        // repeat for the SPEC
+        //		ats = new AttributedString("X");
+        //		ats.addAttribute(TextAttribute.FONT, mFont);
+        //		iter = ats.getIterator();
+        //		tl = new TextLayout(iter, mFrc);
+        //		Dimension positionCenter =
+        //			new Dimension(
+        //				(int) (drawCenter.width - tl.getBounds().getWidth() / 2),
+        //				(int) (drawCenter.height + tl.getBounds().getHeight() + 3));
+        //		tl.draw(mGraphics2D, positionCenter.width, positionCenter.height);
+        this.postpaint();
+    }
 }
