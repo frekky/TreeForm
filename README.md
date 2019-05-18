@@ -1,29 +1,28 @@
 TreeForm - Syntax Tree Drawing Software
 =======================================
 
-Forked from [https://sourceforge.net/projects/treeform/].
+Forked from https://sourceforge.net/projects/treeform/.
 
-See also [http://www.mapsofspeech.com/2017/10/02/treeform].
+See also http://www.mapsofspeech.com/2017/10/02/treeform.
 
 Copyright 2004-2010, Donald James Derrick
+
+Usage
+-----
+
+- Make sure TreeForm is run with the files & directories `images`, `help` and `about.htm` accessible from its working directory, otherwise it will not load icons properly.
 
 Development Software
 --------------------
 
-**This list is likely outdated. See [userInterface/about.htm] for more details.**
+- [Eclipse IDE for Java Developers](https://www.eclipse.org/download) - version 2019.03
+- Java 8 JDK (OpenJDK) - note that this is not compatible with Java 10.
 
-1) Eclipse Platform
+**The list is mostly outdated. See userInterface/about.htm for more details.**
 
-Version: 2.1.3
-Build id: 200403101828
+1) [Eclipse IDE](http://www.eclipse.org/platform)
 
-(c) Copyright IBM Corp. and others 2000, 2003.  All rights reserved.
-Visit http://www.eclipse.org/platform
-
-This product includes software developed by the
-Apache Software Foundation http://www.apache.org/
-
-2) Eclipse UML Plugin 
+2) Eclipse UML Plugin
 
 Version: 1.2.1
 Build id: 20031103
