@@ -467,10 +467,12 @@ public class EditableComponent extends JComponent {
 
         public void mousePressed(MouseEvent e) {
             if ((e.getModifiersEx() & InputEvent.SHIFT_DOWN_MASK) != 0) {
+                /* shift click and drag to add an association (like theta roles) */
                 mMove = true;
                 Cursor lMoveCursor = new Cursor(Cursor.HAND_CURSOR);
                 mUserInternalFrame.setCursor(lMoveCursor);
             } else if ((e.getModifiersEx() & InputEvent.ALT_DOWN_MASK) != 0) {
+                /* alt+click and drag to add a movement line */
                 mTrace = true;
                 Cursor lMoveCursor = new Cursor(Cursor.HAND_CURSOR);
                 setCursor(lMoveCursor);
@@ -1350,15 +1352,28 @@ public class EditableComponent extends JComponent {
     {
         mSyntaxFacade = syntaxFacade;
     }
-    public void selectAll() {
+    
+    public void selectAll(boolean carat) {
         setOver(false);
-        setCarat(false);
-        Rectangle2D lRectangle = mTextLayoutHead.getBounds();
-        setHighlightBegin((int) lRectangle.getX());
-        setHighlightEnd((int) lRectangle.getWidth());
+        setCarat(carat);
+        setHighlightBegin(0);
+        setHighlightEnd(getHeadLength());
         repaint();
-
     }
+    
+    public void selectAll() {
+        selectAll(false);
+    }
+    
+    /** gets the focus, selects text and deselects everything else */
+    public void selectAndFocus() {
+        getSyntaxFacade().deselectTree();
+        setInsertionIndex(getHeadLength());
+        
+        requestFocus(true);
+        selectAll(true);
+    }
+
     public InputMethodRequests getInputMethodRequests()
     {
         return (InputMethodRequests) this.getInputContext();

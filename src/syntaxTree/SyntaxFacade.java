@@ -234,6 +234,10 @@ public class SyntaxFacade {
         } else {
             getSentence().addChild(lSyntacticStructure);
         }
+
+        /* give focus and select text of newly added thing */
+        lSyntacticStructure.selectAndFocus();
+        
         displayTree();
     }
 
@@ -1192,7 +1196,12 @@ public class SyntaxFacade {
             SyntacticFeatureSet lSFS = FeatureDirector.build(lAB, pUIF);
             SyntacticStructure lSS = ((SyntacticStructure) getContainer());
             lSS.getSyntacticFeatureSet().add(lSFS);
-            ((SyntacticStructure) getContainer()).testXY();
+            lSS.testXY();
+            
+            /* select & focus new feature */
+            SyntacticFeature sf = (SyntacticFeature) lSFS.getSyntacticFeature().get(0);
+            sf.selectAndFocus();
+            
             displayTree();
         }
     }
@@ -1596,6 +1605,7 @@ public class SyntaxFacade {
         mSF.getSyntacticFeatureSet().getSyntacticFeature().add(lSF);
         lSF.setHead(lAttributedString);
         getUIF().getContentPane().add(lSF);
+        lSF.selectAndFocus();
         displayTree();
     }
     /**
